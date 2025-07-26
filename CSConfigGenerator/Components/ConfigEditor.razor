@@ -1,12 +1,32 @@
 @using CSConfigGenerator.Services
 @inject ConfigStateService ConfigState
+@inject IJSRuntime JSRuntime
 @implements IDisposable
+
 <div class="config-editor">
-    <h3>Editor</h3>
+    <div class="config-editor-header">
+        <h3>Config Preview</h3>
+        <div class="config-editor-actions">
+            <button class="btn btn-sm btn-outline-primary" @onclick="CopyToClipboard" title="Copy to clipboard">
+                📋 Copy
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="RefreshConfig" title="Refresh">
+                🔄 Refresh
+            </button>
+        </div>
+    </div>
+    
     <textarea class="form-control config-editor-textarea" 
-              rows="15"
+              rows="20"
               value="@configText"
-              @oninput="HandleInput" />
+              @oninput="HandleInput"
+              placeholder="Your generated config will appear here..." />
+              
+    <div class="config-editor-footer">
+        <small class="text-muted">
+            Config auto-updates when you change settings. You can also edit directly here.
+        </small>
+    </div>
 </div>
 
 @code {
@@ -14,19 +34,51 @@
 
     protected override void OnInitialized()
     {
-        configText = ConfigState.GenerateConfigFile();
+        RefreshConfigText();
         ConfigState.OnStateChange += HandleStateChange;
     }
 
     private void HandleStateChange()
     {
-        configText = ConfigState.GenerateConfigFile();
+        RefreshConfigText();
         StateHasChanged();
     }
+
+    private void RefreshConfigText()
+    {
+        configText = ConfigState.GenerateConfigFile();
+    }
+
     private void HandleInput(ChangeEventArgs e)
     {
         configText = e.Value?.ToString() ?? string.Empty;
-        ConfigState.ParseAndUpdateState(configText);
+        
+        try
+        {
+            ConfigState.ParseAndUpdateState(configText);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error parsing config: {ex.Message}");
+        }
+    }
+
+    private void RefreshConfig()
+    {
+        RefreshConfigText();
+        StateHasChanged();
+    }
+
+    private async Task CopyToClipboard()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", configText);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to copy to clipboard: {ex.Message}");
+        }
     }
 
     public void Dispose()

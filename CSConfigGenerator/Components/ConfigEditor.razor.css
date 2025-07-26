@@ -3,11 +3,36 @@
     right: 0;
     top: 4rem;
     width: 50rem;
+    max-width: 50vw;
+    height: calc(100vh - 4rem);
     background-color: #f8f9fa;
     border-left: 1px solid #ddd;
-    padding: 1rem;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.config-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.config-editor-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #495057;
+}
+
+.config-editor-actions {
+    display: flex;
+    gap: 0.5rem;
 }
 
 .config-editor-textarea {
@@ -15,5 +40,51 @@
     font-size: 0.9rem;
     color: #a2d2fb;
     background-color: #2b2d42;
-    border: 1px solid #8d99ae;
+    border: none;
+    border-radius: 0;
+    resize: none;
+    flex: 1;
+    outline: none;
+    padding: 1rem;
+    line-height: 1.4;
+}
+
+.config-editor-textarea:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.config-editor-footer {
+    padding: 0.5rem 1rem;
+    background-color: #e9ecef;
+    border-top: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .config-editor {
+        width: 45rem;
+        max-width: 45vw;
+    }
+}
+
+@media (max-width: 992px) {
+    .config-editor {
+        width: 40rem;
+        max-width: 50vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .config-editor {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 400px;
+        top: 0;
+        right: 0;
+        margin-top: 2rem;
+    }
 }

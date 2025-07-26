@@ -1,35 +1,43 @@
 @page "/playerconfig"
 @using CSConfigGenerator.Components
+@using CSConfigGenerator.Components.Dynamic
 @using CSConfigGenerator.Services
 @inject ConfigStateService ConfigState
+@inject SchemaService SchemaService
+@implements IDisposable
 
-<PageTitle>Player settings</PageTitle>
+<PageTitle>Player Settings</PageTitle>
 
-<h1>Player settings</h1>
-<p>Change a setting here and watch the editor update in real-time.</p>
+<h1>Player Settings</h1>
+<p>Configure your player settings using the dynamic form below. Changes are reflected in real-time in the config editor.</p>
 
-<div class="mb-3">
-    <label for="sensitivity" class="form-label">Mouse sensitivity</label>
-    
-    <input id="sensitivity" 
-           type="number" 
-           step="0.01" 
-           class="form-control" 
-           @bind="ConfigState.MouseSensitivity" 
-           @bind:event="oninput" />
-</div>
-
-<div class="mb-3">
-    <label for="crosshaircolor" class="form-label">Crosshair color</label>
-
-    <input id="crosshaircolor"
-           type="text"
-           class="form-control"
-           @bind="ConfigState.CrossHairColor"
-           @bind:event="oninput" />
-</div>
-
-<hr />
+@if (SchemaService.Commands.Any())
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Configuration Options</h4>
+                </div>
+                <div class="card-body">
+                    <DynamicForm Commands="SchemaService.Commands" />
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-secondary" @onclick="ResetToDefaults">
+                        Reset to Defaults
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <h4>No Commands Loaded</h4>
+        <p>No command definitions were found. Make sure your schema files are properly configured.</p>
+    </div>
+}
 
 <ConfigEditor />
 
@@ -37,6 +45,11 @@
     protected override void OnInitialized()
     {
         ConfigState.OnStateChange += StateHasChanged;
+    }
+
+    private void ResetToDefaults()
+    {
+        ConfigState.ResetToDefaults();
     }
 
     public void Dispose()

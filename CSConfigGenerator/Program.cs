@@ -11,8 +11,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Singleton services
-builder.Services.AddSingleton<ConfigStateService>();
-builder.Services.AddSingleton<SchemaService>();
+builder.Services.AddScoped<ConfigStateService>();
+builder.Services.AddScoped<SchemaService>();
 
 var host = builder.Build();
 
