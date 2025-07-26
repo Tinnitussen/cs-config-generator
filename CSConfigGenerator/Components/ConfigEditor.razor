@@ -1,0 +1,18 @@
+<div class="config-editor">
+    <h3>Config Editor</h3>
+    <pre contenteditable="true" @ref="editableConfig">
+        cl_crosshaircolor 1
+        sensitivity 2.5
+        bind "w" "+forward"
+        bind "a" "+moveleft"
+        bind "s" "+back"
+        bind "d" "+moveright"
+    </pre>
+</div>
+
+@code {
+    [Parameter] public string ConfigContent { get; set; } = string.Empty;
+    [Parameter] public EventCallback<string> ConfigContentChanged { get; set; }
+
+    private ElementReference editableConfig;
+}
