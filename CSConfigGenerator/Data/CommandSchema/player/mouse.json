@@ -1,0 +1,22 @@
+[
+  {
+    "name": "sensitivity",
+    "description": "The master mouse sensitivity setting.",
+    "type": "numeric",
+    "defaultValue": 1.25,
+    "requiresCheats": false,
+    "minValue": 0.1,
+    "maxValue": null,
+    "step": 0.01
+  },
+  {
+    "name": "zoom_sensitivity_ratio",
+    "description": "The additional sensitivity multiplier applied when zoomed in with a sniper rifle.",
+    "type": "numeric",
+    "defaultValue": 1.0,
+    "requiresCheats": false,
+    "minValue": 0,
+    "maxValue": null,
+    "step": 0.1
+  }
+]
