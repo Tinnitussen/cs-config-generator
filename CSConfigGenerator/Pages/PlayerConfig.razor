@@ -1,5 +1,35 @@
 @page "/playerconfig"
 @using CSConfigGenerator.Components
+@using CSConfigGenerator.Services
+@inject ConfigStateService ConfigState
 
-<h1>Player Config Test</h1>
+<PageTitle>Player settings</PageTitle>
+
+<h1>Player settings</h1>
+<p>Change a setting here and watch the editor update in real-time.</p>
+
+<div class="mb-3">
+    <label for="sensitivity" class="form-label">Mouse sensitivity</label>
+    
+    <input id="sensitivity" 
+           type="number" 
+           step="0.01" 
+           class="form-control" 
+           @bind="ConfigState.MouseSensitivity" 
+           @bind:event="oninput" />
+</div>
+
+<hr />
 <ConfigEditor />
+
+@code {
+    protected override void OnInitialized()
+    {
+        ConfigState.OnStateChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        ConfigState.OnStateChange -= StateHasChanged;
+    }
+}

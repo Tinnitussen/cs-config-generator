@@ -1,0 +1,19 @@
+.config-editor {
+    position: fixed;
+    right: 0;
+    top: 4rem;
+    width: 50rem;
+    background-color: #f8f9fa;
+    border-left: 1px solid #ddd;
+    padding: 1rem;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.config-editor-textarea {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    color: #a2d2fb;
+    background-color: #2b2d42;
+    border: 1px solid #8d99ae;
+}

@@ -1,18 +1,36 @@
+@using CSConfigGenerator.Services
+@inject ConfigStateService ConfigState
+@implements IDisposable
 <div class="config-editor">
-    <h3>Config Editor</h3>
-    <pre contenteditable="true" @ref="editableConfig">
-        cl_crosshaircolor 1
-        sensitivity 2.5
-        bind "w" "+forward"
-        bind "a" "+moveleft"
-        bind "s" "+back"
-        bind "d" "+moveright"
-    </pre>
+    <h3>Editor</h3>
+    <textarea class="form-control config-editor-textarea" 
+              rows="15"
+              value="@configText"
+              @oninput="HandleInput" />
 </div>
 
 @code {
-    [Parameter] public string ConfigContent { get; set; } = string.Empty;
-    [Parameter] public EventCallback<string> ConfigContentChanged { get; set; }
+    private string configText = string.Empty;
 
-    private ElementReference editableConfig;
+    protected override void OnInitialized()
+    {
+        configText = ConfigState.GenerateConfigFile();
+        ConfigState.OnStateChange += HandleStateChange;
+    }
+
+    private void HandleStateChange()
+    {
+        configText = ConfigState.GenerateConfigFile();
+        StateHasChanged();
+    }
+    private void HandleInput(ChangeEventArgs e)
+    {
+        configText = e.Value?.ToString() ?? string.Empty;
+        ConfigState.ParseAndUpdateState(configText);
+    }
+
+    public void Dispose()
+    {
+        ConfigState.OnStateChange -= HandleStateChange;
+    }
 }
