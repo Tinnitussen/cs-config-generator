@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    paths:
+      - CSConfigGenerator/**
+    branches: 
+      - main
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0"
+
+      - name: Create .nojekyll file
+        run: touch CSConfigGenerator/wwwroot/.nojekyll
+
+      - name: Publish Blazor WebAssembly app
+        run: dotnet publish CSConfigGenerator/CSConfigGenerator.csproj --configuration Release --output ./publish
+
+      - name: Rewrite base href
+        run: sed -i 's|<base href="/" />|<base href="/cs-config-generator/" />|' ./publish/wwwroot/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./publish/wwwroot
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
