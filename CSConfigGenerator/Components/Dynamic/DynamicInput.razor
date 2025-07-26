@@ -1,13 +1,47 @@
 @using CSConfigGenerator.Models
 @using CSConfigGenerator.Services
-@using Microsoft.AspNetCore.Components.Forms
-@using System.Linq.Expressions
 
 @inject ConfigStateService ConfigState
 
 <div class="mb-3">
     <label class="form-label" for="@Command.Name">@Command.Description</label>
-    <DynamicComponent Type="@_componentType" Parameters="@_componentParameters" />
+    
+    @if (Command.Type == CommandValueType.Boolean)
+    {
+        <input type="checkbox" 
+               id="@Command.Name" 
+               class="form-check-input" 
+               @bind="BoolValue" />
+    }
+    else if (Command.Type == CommandValueType.Numeric)
+    {
+        <input type="number" 
+               id="@Command.Name" 
+               class="form-control" 
+               @bind="FloatValue"
+               step="@(Command.Step?.ToString() ?? "0.01")"
+               min="@Command.MinValue"
+               max="@Command.MaxValue" />
+    }
+    else if (Command.Type == CommandValueType.Enum && Command.Options != null)
+    {
+        <select id="@Command.Name" 
+                class="form-control" 
+                @bind="StringValue">
+            @foreach (var option in Command.Options)
+            {
+                <option value="@option.Key">@option.Value</option>
+            }
+        </select>
+    }
+    else
+    {
+        <input type="text" 
+               id="@Command.Name" 
+               class="form-control" 
+               @bind="StringValue" />
+    }
+    
     <small class="form-text text-muted">Command: @Command.Name</small>
 </div>
 
@@ -15,82 +49,108 @@
     [Parameter, EditorRequired]
     public CommandDefinition Command { get; set; } = null!;
 
-    private Type? _componentType;
-    private Dictionary<string, object>? _componentParameters;
-
-    protected override void OnInitialized()
+    private bool BoolValue
     {
-        // Get the base component type (e.g., InputNumber<>, InputSelect<>)
-        var baseComponentType = InputComponentMap.GetComponentTypeFor(Command.Type);
+        get => GetValue<bool>();
+        set => SetValue(value);
+    }
 
-        // Get the underlying data type for the command (e.g., float, bool, string)
-        var valueType = GetValueTypeForCommand();
+    private float FloatValue
+    {
+        get => GetValue<float>();
+        set => SetValue(value);
+    }
 
-        // If the component is generic (like InputNumber<>), we need to construct the full generic type
-        if (baseComponentType.IsGenericTypeDefinition)
-        {
-            _componentType = baseComponentType.MakeGenericType(valueType);
-        }
-        else
-        {
-            _componentType = baseComponentType;
-        }
+    private string StringValue
+    {
+        get => GetValue<string>();
+        set => SetValue(value ?? string.Empty);
+    }
 
-        // Prepare the parameters dictionary to pass to the dynamic component
-        _componentParameters = new Dictionary<string, object>
+    private T GetValue<T>()
+    {
+        if (ConfigState.Settings.TryGetValue(Command.Name, out var value))
         {
-            { "id", Command.Name },
-            { "class", "form-control" },
-            { "Value", GetCurrentValue() },
-            { "ValueChanged", CreateValueChangedCallback(valueType) },
-            { "ValueExpression", CreateValueExpression(valueType) }
-        };
-
-        // Add specific parameters for numeric types
-        if (Command.Type == CommandValueType.Numeric)
-        {
-            if (Command.Step.HasValue)
+            // Handle direct type match
+            if (value is T directValue)
+                return directValue;
+                
+            // Handle conversions
+            if (typeof(T) == typeof(bool))
             {
-                _componentParameters.Add("Step", Command.Step.Value.ToString());
+                return (T)(object)ConvertToBoolean(value);
+            }
+            
+            if (typeof(T) == typeof(float))
+            {
+                return (T)(object)ConvertToFloat(value);
+            }
+            
+            if (typeof(T) == typeof(string))
+            {
+                return (T)(object)(value?.ToString() ?? string.Empty);
             }
         }
+        
+        return GetDefaultValue<T>();
     }
 
-    private object GetCurrentValue()
+    private void SetValue(object value)
     {
-        return ConfigState.Settings.TryGetValue(Command.Name, out var value) ? value : GetDefaultValue();
+        ConfigState.UpdateSetting(Command.Name, value);
     }
-    
-    // Creates a callback that updates the state when the input value changes.
-    private EventCallback<object> CreateValueChangedCallback(Type valueType)
+
+    private static bool ConvertToBoolean(object? value)
     {
-        return EventCallback.Factory.Create<object>(this, value =>
+        return value switch
         {
-            var convertedValue = Convert.ChangeType(value, valueType);
-            ConfigState.UpdateSetting(Command.Name, convertedValue);
-        });
+            bool b => b,
+            string s => s == "1" || s.Equals("true", StringComparison.OrdinalIgnoreCase),
+            int i => i != 0,
+            float f => f != 0,
+            _ => false
+        };
     }
 
-    // Creates a lambda expression that Blazor's EditForm needs for validation.
-    private LambdaExpression CreateValueExpression(Type valueType)
+    private static float ConvertToFloat(object? value)
     {
-        // Expression: () => ConfigState.Settings[Command.Name]
-        var access = Expression.Property(Expression.Constant(ConfigState.Settings), "Item", Expression.Constant(Command.Name));
-        var conversion = Expression.Convert(access, valueType);
-        return Expression.Lambda(conversion);
+        return value switch
+        {
+            float f => f,
+            int i => i,
+            string s when float.TryParse(s, out var parsed) => parsed,
+            _ => 0f
+        };
     }
 
-    private Type GetValueTypeForCommand() => Command.Type switch
+    private T GetDefaultValue<T>()
     {
-        CommandValueType.Boolean => typeof(bool),
-        CommandValueType.Numeric => typeof(float),
-        _ => typeof(string)
-    };
+        if (Command.DefaultValue != null)
+        {
+            try
+            {
+                if (Command.DefaultValue is T defaultValue)
+                    return defaultValue;
+                    
+                if (typeof(T) == typeof(bool))
+                    return (T)(object)ConvertToBoolean(Command.DefaultValue);
+                if (typeof(T) == typeof(float))
+                    return (T)(object)ConvertToFloat(Command.DefaultValue);
+                if (typeof(T) == typeof(string))
+                    return (T)(object)(Command.DefaultValue.ToString() ?? string.Empty);
+            }
+            catch
+            {
+            }
+        }
 
-    private object GetDefaultValue() => Command.Type switch
-    {
-        CommandValueType.Boolean => false,
-        CommandValueType.Numeric => 0f,
-        _ => string.Empty
-    };
+        if (typeof(T) == typeof(bool))
+            return (T)(object)false;
+        if (typeof(T) == typeof(float))
+            return (T)(object)0f;
+        if (typeof(T) == typeof(string))
+            return (T)(object)string.Empty;
+            
+        return default(T)!;
+    }
 }

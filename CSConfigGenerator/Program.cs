@@ -19,4 +19,7 @@ var host = builder.Build();
 var schemaService = host.Services.GetRequiredService<SchemaService>();
 await schemaService.InitializeAsync();
 
+var configStateService = host.Services.GetRequiredService<ConfigStateService>();
+configStateService.InitializeDefaultValues();
+
 await host.RunAsync();

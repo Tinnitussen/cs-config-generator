@@ -20,33 +20,44 @@ public class ConfigStateService
     public ConfigStateService(SchemaService schemaService)
     {
         _schemaService = schemaService;
-        InitializeDefaultValues();
+        // Note: Don't initialize defaults here since schema might not be loaded yet
     }
 
     /// <summary>
     /// Initialize settings with default values from the schema
+    /// This should be called after the schema is loaded
     /// </summary>
-    private void InitializeDefaultValues()
+    public void InitializeDefaultValues()
     {
+        _settings.Clear();
+        
         foreach (var command in _schemaService.Commands)
         {
-            if (command.DefaultValue != null)
-            {
-                var convertedValue = ConvertValueToCorrectType(command.DefaultValue, command.Type);
-                _settings[command.Name] = convertedValue;
-            }
-            else
-            {
-                // Provide sensible defaults if no default is specified
-                _settings[command.Name] = command.Type switch
-                {
-                    CommandValueType.Boolean => false,
-                    CommandValueType.Numeric => 0f,
-                    CommandValueType.Enum => command.Options?.Keys.FirstOrDefault() ?? "0",
-                    _ => string.Empty
-                };
-            }
+            var defaultValue = GetDefaultValueForCommand(command);
+            _settings[command.Name] = defaultValue;
         }
+        
+        NotifyStateChanged();
+    }
+
+    /// <summary>
+    /// Gets the appropriate default value for a command
+    /// </summary>
+    private object GetDefaultValueForCommand(CommandDefinition command)
+    {
+        if (command.DefaultValue != null)
+        {
+            return ConvertJsonValueToCorrectType(command.DefaultValue, command.Type);
+        }
+        
+        // Fallback defaults
+        return command.Type switch
+        {
+            CommandValueType.Boolean => false,
+            CommandValueType.Numeric => 0f,
+            CommandValueType.Enum => command.Options?.Keys.FirstOrDefault() ?? "0",
+            _ => string.Empty
+        };
     }
 
     /// <summary>
@@ -57,7 +68,7 @@ public class ConfigStateService
         var command = _schemaService.Commands.FirstOrDefault(c => c.Name == commandName);
         if (command != null)
         {
-            var convertedValue = ConvertValueToCorrectType(value, command.Type);
+            var convertedValue = ConvertJsonValueToCorrectType(value, command.Type);
             _settings[commandName] = convertedValue;
             NotifyStateChanged();
         }
@@ -68,73 +79,98 @@ public class ConfigStateService
     /// </summary>
     public object GetSetting(string commandName)
     {
-        return _settings.TryGetValue(commandName, out var value) ? value : GetDefaultForCommand(commandName);
-    }
-
-    /// <summary>
-    /// Converts a value to the correct type based on the command definition
-    /// </summary>
-    private static object ConvertValueToCorrectType(object value, CommandValueType type)
-    {
-         if (value is JsonElement element)
-    {
-        switch (type)
-        {
-            case CommandValueType.Boolean:
-                if (element.ValueKind == JsonValueKind.True || element.ValueKind == JsonValueKind.False)
-                    return element.GetBoolean();
-                else if (element.ValueKind == JsonValueKind.String)
-                {
-                    var s = element.GetString();
-                    if (s == "0") return false;
-                    if (s == "1") return true;
-                    return bool.Parse(s);
-                }
-                break;
-            case CommandValueType.Numeric:
-                if (element.ValueKind == JsonValueKind.Number)
-                    return element.GetSingle();
-                else if (element.ValueKind == JsonValueKind.String)
-                {
-                    if (float.TryParse(element.GetString(), NumberStyles.Any, CultureInfo.InvariantCulture, out var parsed))
-                    {
-                        return parsed;
-                    }
-                    throw new InvalidCastException($"Unable to parse '{element.GetString()}' as a float.");
-                }
-                break;
-            case CommandValueType.Enum:
-                return element.ValueKind == JsonValueKind.String ? element.GetString() ?? "0" : element.ToString();
-            default:
-                return element.ToString() ?? string.Empty;
-        }
-    }
-
-    // For non-JsonElement values, add extra handling for booleans
-    return type switch
-    {
-        CommandValueType.Boolean => value is string str 
-                                        ? (str == "0" ? false : str == "1" ? true : bool.Parse(str))
-                                        : Convert.ToBoolean(value),
-        CommandValueType.Numeric => Convert.ToSingle(value),
-        CommandValueType.Enum => value.ToString() ?? "0",
-        _ => value.ToString() ?? string.Empty
-    };
-    }
-
-    /// <summary>
-    /// Gets the default value for a command
-    /// </summary>
-    private object GetDefaultForCommand(string commandName)
-    {
+        if (_settings.TryGetValue(commandName, out var value))
+            return value;
+            
         var command = _schemaService.Commands.FirstOrDefault(c => c.Name == commandName);
-        return command?.Type switch
+        return command != null ? GetDefaultValueForCommand(command) : string.Empty;
+    }
+
+    /// <summary>
+    /// Converts a value to the correct type, handling JsonElement properly
+    /// </summary>
+    private static object ConvertJsonValueToCorrectType(object value, CommandValueType type)
+    {
+        // Handle JsonElement from JSON deserialization
+        if (value is JsonElement element)
         {
-            CommandValueType.Boolean => false,
-            CommandValueType.Numeric => 0f,
-            CommandValueType.Enum => command.Options?.Keys.FirstOrDefault() ?? "0",
-            _ => string.Empty
+            switch (type)
+            {
+                case CommandValueType.Boolean:
+                    return element.ValueKind switch
+                    {
+                        JsonValueKind.True => true,
+                        JsonValueKind.False => false,
+                        JsonValueKind.String => ParseBooleanFromString(element.GetString() ?? "false"),
+                        JsonValueKind.Number => element.GetInt32() != 0,
+                        _ => false
+                    };
+
+                case CommandValueType.Numeric:
+                    return element.ValueKind switch
+                    {
+                        JsonValueKind.Number => element.GetSingle(),
+                        JsonValueKind.String => ParseFloatFromString(element.GetString() ?? "0"),
+                        _ => 0f
+                    };
+
+                case CommandValueType.Enum:
+                case CommandValueType.String:
+                default:
+                    return element.ValueKind switch
+                    {
+                        JsonValueKind.String => element.GetString() ?? string.Empty,
+                        JsonValueKind.Number => element.GetRawText(),
+                        JsonValueKind.True => "true",
+                        JsonValueKind.False => "false",
+                        _ => element.ToString()
+                    };
+            }
+        }
+
+        // Handle regular .NET types
+        return type switch
+        {
+            CommandValueType.Boolean => ConvertToBoolean(value),
+            CommandValueType.Numeric => ConvertToFloat(value),
+            CommandValueType.Enum => value.ToString() ?? "0",
+            _ => value.ToString() ?? string.Empty
         };
+    }
+
+    private static bool ConvertToBoolean(object value)
+    {
+        if (value is bool b) return b;
+        if (value is string str) return ParseBooleanFromString(str);
+        if (value is int i) return i != 0;
+        if (value is float f) return f != 0;
+        return Convert.ToBoolean(value);
+    }
+
+    private static bool ParseBooleanFromString(string str)
+    {
+        return str switch
+        {
+            "0" => false,
+            "1" => true,
+            "true" => true,
+            "false" => false,
+            _ => bool.Parse(str)
+        };
+    }
+
+    private static float ConvertToFloat(object value)
+    {
+        if (value is float f) return f;
+        if (value is string str) return ParseFloatFromString(str);
+        return Convert.ToSingle(value);
+    }
+
+    private static float ParseFloatFromString(string str)
+    {
+        if (float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out var result))
+            return result;
+        return 0f;
     }
 
     /// <summary>
@@ -144,6 +180,7 @@ public class ConfigStateService
     {
         var builder = new StringBuilder();
         builder.AppendLine("// Generated by CS Config Generator");
+        builder.AppendLine($"// Generated on: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
         builder.AppendLine();
 
         foreach (var command in _schemaService.Commands)
@@ -185,11 +222,12 @@ public class ConfigStateService
             if (string.IsNullOrEmpty(trimmedLine) || trimmedLine.StartsWith("//")) 
                 continue;
 
-            var parts = trimmedLine.Split([' '], 2, StringSplitOptions.RemoveEmptyEntries);
-            if (parts.Length < 2) continue;
+            // Split on first space to handle values with spaces
+            var firstSpaceIndex = trimmedLine.IndexOf(' ');
+            if (firstSpaceIndex <= 0) continue;
 
-            var commandName = parts[0].Trim();
-            var valueStr = parts[1].Trim().Replace("\"", "");
+            var commandName = trimmedLine[..firstSpaceIndex].Trim();
+            var valueStr = trimmedLine[(firstSpaceIndex + 1)..].Trim().Trim('"');
 
             // Find the command definition to get the correct type
             var command = _schemaService.Commands.FirstOrDefault(c => c.Name == commandName);
@@ -216,8 +254,8 @@ public class ConfigStateService
     {
         return type switch
         {
-            CommandValueType.Boolean => valueStr == "1" || bool.Parse(valueStr),
-            CommandValueType.Numeric => float.Parse(valueStr, CultureInfo.InvariantCulture),
+            CommandValueType.Boolean => ParseBooleanFromString(valueStr),
+            CommandValueType.Numeric => ParseFloatFromString(valueStr),
             _ => valueStr
         };
     }
@@ -227,9 +265,7 @@ public class ConfigStateService
     /// </summary>
     public void ResetToDefaults()
     {
-        _settings.Clear();
         InitializeDefaultValues();
-        NotifyStateChanged();
     }
 
     private void NotifyStateChanged() => OnStateChange?.Invoke();
