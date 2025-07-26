@@ -1,0 +1,96 @@
+@using CSConfigGenerator.Models
+@using CSConfigGenerator.Services
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Linq.Expressions
+
+@inject ConfigStateService ConfigState
+
+<div class="mb-3">
+    <label class="form-label" for="@Command.Name">@Command.Description</label>
+    <DynamicComponent Type="@_componentType" Parameters="@_componentParameters" />
+    <small class="form-text text-muted">Command: @Command.Name</small>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public CommandDefinition Command { get; set; } = null!;
+
+    private Type? _componentType;
+    private Dictionary<string, object>? _componentParameters;
+
+    protected override void OnInitialized()
+    {
+        // Get the base component type (e.g., InputNumber<>, InputSelect<>)
+        var baseComponentType = InputComponentMap.GetComponentTypeFor(Command.Type);
+
+        // Get the underlying data type for the command (e.g., float, bool, string)
+        var valueType = GetValueTypeForCommand();
+
+        // If the component is generic (like InputNumber<>), we need to construct the full generic type
+        if (baseComponentType.IsGenericTypeDefinition)
+        {
+            _componentType = baseComponentType.MakeGenericType(valueType);
+        }
+        else
+        {
+            _componentType = baseComponentType;
+        }
+
+        // Prepare the parameters dictionary to pass to the dynamic component
+        _componentParameters = new Dictionary<string, object>
+        {
+            { "id", Command.Name },
+            { "class", "form-control" },
+            { "Value", GetCurrentValue() },
+            { "ValueChanged", CreateValueChangedCallback(valueType) },
+            { "ValueExpression", CreateValueExpression(valueType) }
+        };
+
+        // Add specific parameters for numeric types
+        if (Command.Type == CommandValueType.Numeric)
+        {
+            if (Command.Step.HasValue)
+            {
+                _componentParameters.Add("Step", Command.Step.Value.ToString());
+            }
+        }
+    }
+
+    private object GetCurrentValue()
+    {
+        return ConfigState.Settings.TryGetValue(Command.Name, out var value) ? value : GetDefaultValue();
+    }
+    
+    // Creates a callback that updates the state when the input value changes.
+    private EventCallback<object> CreateValueChangedCallback(Type valueType)
+    {
+        return EventCallback.Factory.Create<object>(this, value =>
+        {
+            var convertedValue = Convert.ChangeType(value, valueType);
+            ConfigState.UpdateSetting(Command.Name, convertedValue);
+        });
+    }
+
+    // Creates a lambda expression that Blazor's EditForm needs for validation.
+    private LambdaExpression CreateValueExpression(Type valueType)
+    {
+        // Expression: () => ConfigState.Settings[Command.Name]
+        var access = Expression.Property(Expression.Constant(ConfigState.Settings), "Item", Expression.Constant(Command.Name));
+        var conversion = Expression.Convert(access, valueType);
+        return Expression.Lambda(conversion);
+    }
+
+    private Type GetValueTypeForCommand() => Command.Type switch
+    {
+        CommandValueType.Boolean => typeof(bool),
+        CommandValueType.Numeric => typeof(float),
+        _ => typeof(string)
+    };
+
+    private object GetDefaultValue() => Command.Type switch
+    {
+        CommandValueType.Boolean => false,
+        CommandValueType.Numeric => 0f,
+        _ => string.Empty
+    };
+}

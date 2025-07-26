@@ -1,0 +1,14 @@
+@using CSConfigGenerator.Models
+
+@if (Commands is not null)
+{
+    foreach (var command in Commands)
+    {
+        <DynamicInput Command="command" />
+    }
+}
+
+@code {
+    [Parameter]
+    public IEnumerable<CommandDefinition>? Commands { get; set; }
+}
