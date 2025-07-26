@@ -19,7 +19,18 @@
            @bind:event="oninput" />
 </div>
 
+<div class="mb-3">
+    <label for="crosshaircolor" class="form-label">Crosshair color</label>
+
+    <input id="crosshaircolor"
+           type="text"
+           class="form-control"
+           @bind="ConfigState.CrossHairColor"
+           @bind:event="oninput" />
+</div>
+
 <hr />
+
 <ConfigEditor />
 
 @code {
