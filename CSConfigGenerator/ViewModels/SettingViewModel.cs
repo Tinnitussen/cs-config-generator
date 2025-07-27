@@ -15,16 +15,9 @@ public class SettingViewModel(CommandDefinition command, IConfigStateService con
         set => _configState.SetValue(Command.Name, value);
     }
 
-    public string StatusBadgeClass => Setting.Status switch
-    {
-        SettingStatus.Visible => "bg-info text-dark",
-        SettingStatus.Added => "bg-success",
-        SettingStatus.Removed => "bg-warning text-dark",
-        SettingStatus.Hidden => "bg-secondary",
-        _ => "bg-light text-dark"
-    };
-    
-    public void Add() => _configState.AddSetting(Command.Name);
-    public void Remove() => _configState.RemoveSetting(Command.Name);
-    public void Restore() => _configState.RestoreSetting(Command.Name);
+    public string StatusBadgeClass => Setting.IsInConfigEditor ? "bg-success" : "bg-secondary";
+
+    public void Add() => _configState.SetIncluded(Command.Name, true);
+    public void Remove() => _configState.SetIncluded(Command.Name, false);
+    public void Restore() => _configState.SetIncluded(Command.Name, true);
 }

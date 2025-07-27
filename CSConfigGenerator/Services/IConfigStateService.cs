@@ -10,10 +10,8 @@ public interface IConfigStateService
     void InitializeDefaults();
     Setting GetSetting(string commandName);
     void SetValue(string commandName, object value, object? originator = null);
-    void AddSetting(string commandName, object? originator = null);
-    void RemoveSetting(string commandName, object? originator = null);
-    void RestoreSetting(string commandName, object? originator = null);
-    
+    void SetIncluded(string commandName, bool IsInConfigEditor, object? originator = null);
+
     string GenerateConfigFile();
     void ParseConfigFile(string configText, object? originator = null);
     void ResetToDefaults();

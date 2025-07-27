@@ -12,7 +12,7 @@
         @foreach (var command in Section.Commands.OrderBy(c => c.Name))
         {
             var viewModel = new SettingViewModel(command, ConfigState);
-            if (viewModel.Setting.Status != SettingStatus.Hidden)
+            if (!command.HideFromDefaultView)
             {
                 <DynamicInput ViewModel="viewModel" />
             }

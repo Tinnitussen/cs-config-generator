@@ -14,7 +14,7 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
     public void InitializeDefaults()
     {
         _settings.Clear();
-        
+
         foreach (var section in _schemaService.Sections)
         {
             foreach (var command in section.Commands)
@@ -23,21 +23,12 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
                 _settings[command.Name] = new Setting
                 {
                     Value = defaultValue,
-                    Status = command.HideFromDefaultView ? SettingStatus.Hidden : SettingStatus.Visible
+                    IsInConfigEditor = !command.HideFromDefaultView
                 };
             }
         }
-        
-        NotifyStateChanged();
-    }
 
-    public void UpdateSetting(string commandName, Action<Setting> updateAction, object? originator = null)
-    {
-        if (_settings.TryGetValue(commandName, out var setting))
-        {
-            updateAction(setting);
-            NotifyStateChanged(originator);
-        }
+        NotifyStateChanged();
     }
     
     private void NotifyStateChanged(object? originator = null)
@@ -68,8 +59,7 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
             
             foreach (var command in section.Commands.OrderBy(c => c.Name))
             {
-                if (_settings.TryGetValue(command.Name, out var setting) && 
-                    (setting.Status == SettingStatus.Visible || setting.Status == SettingStatus.Added))
+                if (_settings.TryGetValue(command.Name, out var setting) && setting.IsInConfigEditor)
                 {
                     if (!sectionHasContent)
                     {
@@ -115,14 +105,8 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
                 if (_settings.TryGetValue(commandName, out var setting))
                 {
                     setting.Value = parsedValue;
-                    if (setting.Status == SettingStatus.Hidden)
-                    {
-                        setting.Status = SettingStatus.Added;
-                    }
-                    else if(setting.Status == SettingStatus.Removed)
-                    {
-                        setting.Status = SettingStatus.Visible;
-                    }
+                    // If a command is present in the file, it is considered included.
+                    setting.IsInConfigEditor = true;
                 }
             }
             catch (Exception ex)
@@ -131,17 +115,12 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
             }
         }
         
+        // For any setting that was NOT in the config file, mark it as not included.
         foreach (var (commandName, setting) in _settings)
         {
-            if (commandsInFile.Contains(commandName)) continue;
-
-            if (setting.Status == SettingStatus.Visible)
+            if (!commandsInFile.Contains(commandName))
             {
-                setting.Status = SettingStatus.Removed;
-            }
-            else if (setting.Status == SettingStatus.Added)
-            {
-                setting.Status = SettingStatus.Hidden;
+                setting.IsInConfigEditor = false;
             }
         }
 
@@ -152,7 +131,6 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
     {
         if (_settings.TryGetValue(commandName, out var setting))
         {
-            // Business logic: only update if value actually changed
             if (!setting.Value.Equals(value))
             {
                 setting.Value = value;
@@ -160,31 +138,16 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
             }
         }
     }
-
-    public void AddSetting(string commandName, object? originator = null) 
+    
+    public void SetIncluded(string commandName, bool IsInConfigEditor, object? originator = null)
     {
         if (_settings.TryGetValue(commandName, out var setting))
         {
-            setting.Status = setting.Status == SettingStatus.Hidden ? SettingStatus.Added : SettingStatus.Visible;
-            NotifyStateChanged(originator);
-        }
-    }
-
-    public void RemoveSetting(string commandName, object? originator = null)
-    {
-        if (_settings.TryGetValue(commandName, out var setting))
-        {
-            setting.Status = setting.Status == SettingStatus.Added ? SettingStatus.Hidden : SettingStatus.Removed;
-            NotifyStateChanged(originator);
-        }
-    }
-
-    public void RestoreSetting(string commandName, object? originator = null)
-    {
-        if (_settings.TryGetValue(commandName, out var setting))
-        {
-            setting.Status = SettingStatus.Visible;
-            NotifyStateChanged(originator);
+            if (setting.IsInConfigEditor != IsInConfigEditor)
+            {
+                setting.IsInConfigEditor = IsInConfigEditor;
+                NotifyStateChanged(originator);
+            }
         }
     }
 

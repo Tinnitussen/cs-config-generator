@@ -1,14 +1,14 @@
 @using CSConfigGenerator.Models
 @using CSConfigGenerator.ViewModels
 
-@if (ViewModel.Setting.Status == SettingStatus.Visible || ViewModel.Setting.Status == SettingStatus.Added)
+@if (ViewModel.Setting.IsInConfigEditor)
 {
     <div class="mb-3">
         <div class="d-flex justify-content-between">
             <label class="form-label" for="@ViewModel.Command.Name">@ViewModel.Command.Description</label>
             <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
         </div>
-        
+
         @switch (ViewModel.Command.Type)
         {
             case SettingType.Bool:
@@ -36,11 +36,11 @@
                 <input type="text" id="@ViewModel.Command.Name" class="form-control" @bind="StringValue" />
                 break;
         }
-        
+
         <small class="form-text text-muted">Command: <code>@ViewModel.Command.Name</code></small>
     </div>
 }
-else if (ViewModel.Setting.Status == SettingStatus.Removed)
+else
 {
     <div class="mb-3">
         <div class="d-flex justify-content-between align-items-center">
@@ -53,6 +53,7 @@ else if (ViewModel.Setting.Status == SettingStatus.Removed)
         <small class="form-text text-muted">Command: <code>@ViewModel.Command.Name</code></small>
     </div>
 }
+
 
 @code {
     [Parameter, EditorRequired]
