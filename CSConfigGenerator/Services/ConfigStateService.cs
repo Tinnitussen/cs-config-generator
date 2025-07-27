@@ -8,8 +8,8 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
 {
     private readonly ISchemaService _schemaService = schemaService;
     private readonly Dictionary<string, object> _settings = [];
-    
-    public event Action? OnStateChange;
+
+    public event Action<object?>? OnStateChange;
     public IReadOnlyDictionary<string, object> Settings => _settings.AsReadOnly();
 
     public void InitializeDefaults()
@@ -25,16 +25,16 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
             }
         }
         
-        OnStateChange?.Invoke();
+        OnStateChange?.Invoke(null);
     }
 
-    public void UpdateSetting(string commandName, object value)
+    public void UpdateSetting(string commandName, object value, object? originator = null)
     {
         var command = _schemaService.GetCommand(commandName)
             ?? throw new ArgumentException($"Command '{commandName}' not found.");
         var convertedValue = ConvertToType(value, command.Type);
         _settings[commandName] = convertedValue;
-        OnStateChange?.Invoke();
+        OnStateChange?.Invoke(originator);
     }
 
     public T GetSetting<T>(string commandName)
@@ -76,7 +76,7 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
         return builder.ToString();
     }
 
-    public void ParseConfigFile(string configText)
+    public void ParseConfigFile(string configText, object? originator = null)
     {
         var lines = configText.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
         
@@ -105,8 +105,8 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
                 Console.WriteLine($"Error parsing value '{valueStr}' for command '{commandName}': {ex.Message}");
             }
         }
-        
-        OnStateChange?.Invoke();
+
+        OnStateChange?.Invoke(originator);
     }
 
     public void ResetToDefaults()

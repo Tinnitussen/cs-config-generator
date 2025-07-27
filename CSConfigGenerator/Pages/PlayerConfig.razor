@@ -41,16 +41,23 @@ else
 @code {
     protected override void OnInitialized()
     {
-        ConfigState.OnStateChange += StateHasChanged;
+        ConfigState.OnStateChange += HandleStateHasChanged;
     }
 
+    private void HandleStateHasChanged(object? originator)
+    {
+        if (originator is ComponentBase component && component is not ConfigEditor)
+        {
+            return;
+        }
+        StateHasChanged();
+    }
     private void ResetToDefaults()
     {
         ConfigState.ResetToDefaults();
     }
-
     public void Dispose()
     {
-        ConfigState.OnStateChange -= StateHasChanged;
+        ConfigState.OnStateChange -= HandleStateHasChanged;
     }
 }

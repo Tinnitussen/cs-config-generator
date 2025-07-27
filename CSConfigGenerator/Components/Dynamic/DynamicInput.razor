@@ -66,24 +66,24 @@
     private bool BoolValue
     {
         get => ConfigState.GetSetting<bool>(Command.Name);
-        set => ConfigState.UpdateSetting(Command.Name, value);
+        set => ConfigState.UpdateSetting(Command.Name, value, this);
     }
 
     private int IntValue
     {
         get => ConfigState.GetSetting<int>(Command.Name);
-        set => ConfigState.UpdateSetting(Command.Name, value);
+        set => ConfigState.UpdateSetting(Command.Name, value, this);
     }
 
     private float FloatValue
     {
         get => ConfigState.GetSetting<float>(Command.Name);
-        set => ConfigState.UpdateSetting(Command.Name, value);
+        set => ConfigState.UpdateSetting(Command.Name, value, this);
     }
 
     private string StringValue
     {
         get => ConfigState.GetSetting<string>(Command.Name);
-        set => ConfigState.UpdateSetting(Command.Name, value ?? string.Empty);
+        set => ConfigState.UpdateSetting(Command.Name, value ?? string.Empty, this);
     }
 }
