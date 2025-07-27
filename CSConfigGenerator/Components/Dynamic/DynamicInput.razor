@@ -19,6 +19,7 @@
                    id="@Command.Name" 
                    class="form-control" 
                    @bind="IntValue"
+                   @bind:event="oninput"
                    min="@((int?)Command.MinValue)"
                    max="@((int?)Command.MaxValue)"
                    step="@((int?)Command.Step ?? 1)" />
@@ -29,6 +30,7 @@
                    id="@Command.Name" 
                    class="form-control" 
                    @bind="FloatValue"
+                   @bind:event="oninput"
                    min="@Command.MinValue"
                    max="@Command.MaxValue"
                    step="@(Command.Step?.ToString() ?? "0.01")" />
