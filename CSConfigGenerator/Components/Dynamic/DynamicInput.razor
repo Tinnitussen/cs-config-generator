@@ -1,91 +1,64 @@
 @using CSConfigGenerator.Models
-@using CSConfigGenerator.Services
-@inject IConfigStateService ConfigState
+@using CSConfigGenerator.ViewModels
 
-<div class="mb-3">
-    <label class="form-label" for="@Command.Name">@Command.Description</label>
-    
-    @switch (Command.Type.ToLower())
-    {
-        case "bool":
-            <input type="checkbox" 
-                   id="@Command.Name" 
-                   class="form-check-input" 
-                   @bind="BoolValue" />
-            break;
-            
-        case "int":
-            <input type="number" 
-                   id="@Command.Name" 
-                   class="form-control" 
-                   @bind="IntValue"
-                   @bind:event="oninput"
-                   min="@((int?)Command.MinValue)"
-                   max="@((int?)Command.MaxValue)"
-                   step="@((int?)Command.Step ?? 1)" />
-            break;
-            
-        case "float":
-            <input type="number" 
-                   id="@Command.Name" 
-                   class="form-control" 
-                   @bind="FloatValue"
-                   @bind:event="oninput"
-                   min="@Command.MinValue"
-                   max="@Command.MaxValue"
-                   step="@(Command.Step?.ToString() ?? "0.01")" />
-            break;
-            
-        case "enum":
-            <select id="@Command.Name" 
-                    class="form-control" 
-                    @bind="StringValue">
-                @if (Command.Options != null)
-                {
-                    @foreach (var option in Command.Options)
+@if (ViewModel.Setting.Status == SettingStatus.Visible || ViewModel.Setting.Status == SettingStatus.Added)
+{
+    <div class="mb-3">
+        <div class="d-flex justify-content-between">
+            <label class="form-label" for="@ViewModel.Command.Name">@ViewModel.Command.Description</label>
+            <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
+        </div>
+        
+        @switch (ViewModel.Command.Type.ToLower())
+        {
+            case "bool":
+                <input type="checkbox" id="@ViewModel.Command.Name" class="form-check-input" @bind="BoolValue" />
+                break;
+            case "int":
+                <input type="number" id="@ViewModel.Command.Name" class="form-control" @bind="IntValue" @bind:event="oninput" />
+                break;
+            case "float":
+                <input type="number" id="@ViewModel.Command.Name" class="form-control" @bind="FloatValue" @bind:event="oninput" />
+                break;
+            case "enum":
+                <select id="@ViewModel.Command.Name" class="form-control" @bind="StringValue">
+                    @if (ViewModel.Command.Options != null)
                     {
-                        <option value="@option.Key">@option.Value</option>
+                        @foreach (var option in ViewModel.Command.Options)
+                        {
+                            <option value="@option.Key">@option.Value</option>
+                        }
                     }
-                }
-            </select>
-            break;
-            
-        default:
-            <input type="text" 
-                   id="@Command.Name" 
-                   class="form-control" 
-                   @bind="StringValue" />
-            break;
-    }
-    
-    <small class="form-text text-muted">Command: @Command.Name</small>
-</div>
+                </select>
+                break;
+            default:
+                <input type="text" id="@ViewModel.Command.Name" class="form-control" @bind="StringValue" />
+                break;
+        }
+        
+        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Name</code></small>
+    </div>
+}
+else if (ViewModel.Setting.Status == SettingStatus.Removed)
+{
+    <div class="mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span class="form-label text-muted">@ViewModel.Command.Description</span>
+                <span class="badge bg-secondary">Removed</span>
+            </div>
+            <button class="btn btn-sm btn-outline-success" @onclick="ViewModel.Restore">Restore</button>
+        </div>
+        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Name</code></small>
+    </div>
+}
 
 @code {
     [Parameter, EditorRequired]
-    public CommandDefinition Command { get; set; } = null!;
+    public SettingViewModel ViewModel { get; set; } = null!;
 
-    private bool BoolValue
-    {
-        get => ConfigState.GetSetting<bool>(Command.Name);
-        set => ConfigState.UpdateSetting(Command.Name, value, this);
-    }
-
-    private int IntValue
-    {
-        get => ConfigState.GetSetting<int>(Command.Name);
-        set => ConfigState.UpdateSetting(Command.Name, value, this);
-    }
-
-    private float FloatValue
-    {
-        get => ConfigState.GetSetting<float>(Command.Name);
-        set => ConfigState.UpdateSetting(Command.Name, value, this);
-    }
-
-    private string StringValue
-    {
-        get => ConfigState.GetSetting<string>(Command.Name);
-        set => ConfigState.UpdateSetting(Command.Name, value ?? string.Empty, this);
-    }
+    private bool BoolValue { get => (bool)ViewModel.Value; set => ViewModel.Value = value; }
+    private int IntValue { get => (int)ViewModel.Value; set => ViewModel.Value = value; }
+    private float FloatValue { get => (float)ViewModel.Value; set => ViewModel.Value = value; }
+    private string StringValue { get => (string)ViewModel.Value; set => ViewModel.Value = value; }
 }

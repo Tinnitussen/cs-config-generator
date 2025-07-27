@@ -1,16 +1,17 @@
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
+using CSConfigGenerator.Models;
 
 namespace CSConfigGenerator.Services;
 
 public class ConfigStateService(ISchemaService schemaService) : IConfigStateService
 {
     private readonly ISchemaService _schemaService = schemaService;
-    private readonly Dictionary<string, object> _settings = [];
+    private readonly Dictionary<string, Setting> _settings = [];
 
     public event Action<object?>? OnStateChange;
-    public IReadOnlyDictionary<string, object> Settings => _settings.AsReadOnly();
+    public IReadOnlyDictionary<string, Setting> Settings => _settings.AsReadOnly();
 
     public void InitializeDefaults()
     {
@@ -21,33 +22,39 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
             foreach (var command in section.Commands)
             {
                 var defaultValue = ConvertJsonValue(command.DefaultValue, command.Type);
-                _settings[command.Name] = defaultValue;
+                _settings[command.Name] = new Setting
+                {
+                    Value = defaultValue,
+                    Status = command.HideFromDefaultView ? SettingStatus.Hidden : SettingStatus.Visible
+                };
             }
         }
         
-        OnStateChange?.Invoke(null);
+        NotifyStateChanged();
     }
 
-    public void UpdateSetting(string commandName, object value, object? originator = null)
+    public void UpdateSetting(string commandName, Action<Setting> updateAction, object? originator = null)
     {
-        var command = _schemaService.GetCommand(commandName)
-            ?? throw new ArgumentException($"Command '{commandName}' not found.");
-        var convertedValue = ConvertToType(value, command.Type);
-        _settings[commandName] = convertedValue;
+        if (_settings.TryGetValue(commandName, out var setting))
+        {
+            updateAction(setting);
+            NotifyStateChanged(originator);
+        }
+    }
+    
+    private void NotifyStateChanged(object? originator = null)
+    {
         OnStateChange?.Invoke(originator);
     }
 
-    public T GetSetting<T>(string commandName)
+    public Setting GetSetting(string commandName)
     {
-        if (_settings.TryGetValue(commandName, out var value) && value is T typedValue)
+        if (_settings.TryGetValue(commandName, out var setting))
         {
-            return typedValue;
+            return setting;
         }
 
-        var command = _schemaService.GetCommand(commandName)
-            ?? throw new ArgumentException($"Command '{commandName}' not found.");
-        var defaultValue = ConvertJsonValue(command.DefaultValue, command.Type);
-        return (T)defaultValue;
+        throw new ArgumentException($"Command '{commandName}' not found.");
     }
 
     public string GenerateConfigFile()
@@ -57,20 +64,26 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
         builder.AppendLine($"// Generated on: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
         builder.AppendLine();
 
-        foreach (var section in _schemaService.Sections)
+        foreach (var section in _schemaService.Sections.OrderBy(s => s.DisplayName))
         {
-            builder.AppendLine($"// {section.DisplayName} Settings");
+            var sectionHasContent = false;
             
-            foreach (var command in section.Commands)
+            foreach (var command in section.Commands.OrderBy(c => c.Name))
             {
-                if (_settings.TryGetValue(command.Name, out var value))
+                if (_settings.TryGetValue(command.Name, out var setting) && 
+                    (setting.Status == SettingStatus.Visible || setting.Status == SettingStatus.Added))
                 {
-                    var formattedValue = FormatValueForConfig(value);
+                    if (!sectionHasContent)
+                    {
+                        builder.AppendLine($"// {section.DisplayName} Settings");
+                        sectionHasContent = true;
+                    }
+                    var formattedValue = FormatValueForConfig(setting.Value);
                     builder.AppendLine($"{command.Name} {formattedValue}");
                 }
             }
             
-            builder.AppendLine();
+            if(sectionHasContent) builder.AppendLine();
         }
 
         return builder.ToString();
@@ -79,7 +92,9 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
     public void ParseConfigFile(string configText, object? originator = null)
     {
         var lines = configText.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
-        
+        var commandsInFile = new HashSet<string>();
+
+        // First pass: update settings based on the file content
         foreach (var line in lines)
         {
             var trimmedLine = line.Trim();
@@ -94,19 +109,47 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
 
             var command = _schemaService.GetCommand(commandName);
             if (command == null) continue;
+            
+            commandsInFile.Add(commandName);
 
             try
             {
                 var parsedValue = ParseValueFromString(valueStr, command.Type);
-                _settings[commandName] = parsedValue;
+                if (_settings.TryGetValue(commandName, out var setting))
+                {
+                    setting.Value = parsedValue;
+                    if (setting.Status == SettingStatus.Hidden)
+                    {
+                        setting.Status = SettingStatus.Added;
+                    }
+                    else if(setting.Status == SettingStatus.Removed)
+                    {
+                        setting.Status = SettingStatus.Visible;
+                    }
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error parsing value '{valueStr}' for command '{commandName}': {ex.Message}");
             }
         }
+        
+        // Second pass: update status for settings that were removed from the text
+        foreach (var (commandName, setting) in _settings)
+        {
+            if (commandsInFile.Contains(commandName)) continue;
 
-        OnStateChange?.Invoke(originator);
+            if (setting.Status == SettingStatus.Visible)
+            {
+                setting.Status = SettingStatus.Removed;
+            }
+            else if (setting.Status == SettingStatus.Added)
+            {
+                setting.Status = SettingStatus.Hidden;
+            }
+        }
+
+        NotifyStateChanged(originator);
     }
 
     public void ResetToDefaults()
@@ -167,7 +210,6 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
                 return i.ToString(CultureInfo.InvariantCulture);
 
             case string s:
-                // Quote the string only if it contains a space or semicolon.
                 if (s.Contains(' ') || s.Contains(';'))
                 {
                     return $"\"{s}\"";

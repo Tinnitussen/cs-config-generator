@@ -1,14 +1,21 @@
 @using CSConfigGenerator.Models
+@using CSConfigGenerator.ViewModels
+@using CSConfigGenerator.Services
 @using CSConfigGenerator.Components.Dynamic
+@inject IConfigStateService ConfigState
 
 <div class="card mb-4">
     <div class="card-header">
         <h5 class="mb-0">@Section.DisplayName</h5>
     </div>
     <div class="card-body">
-        @foreach (var command in Section.Commands.Where(c => !c.HideFromDefaultView))
+        @foreach (var command in Section.Commands.OrderBy(c => c.Name))
         {
-            <DynamicInput Command="command" />
+            var viewModel = new SettingViewModel(command, ConfigState);
+            if (viewModel.Setting.Status != SettingStatus.Hidden)
+            {
+                <DynamicInput ViewModel="viewModel" />
+            }
         }
     </div>
 </div>

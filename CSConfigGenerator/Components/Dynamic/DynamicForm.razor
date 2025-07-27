@@ -1,10 +1,14 @@
 @using CSConfigGenerator.Models
+@using CSConfigGenerator.ViewModels
+@using CSConfigGenerator.Services
+@inject IConfigStateService ConfigState
 
 @if (Commands is not null)
 {
     foreach (var command in Commands)
     {
-        <DynamicInput Command="command" />
+        var viewModel = new SettingViewModel(command, ConfigState);
+        <DynamicInput ViewModel="viewModel" />
     }
 }
 
