@@ -9,18 +9,18 @@
             <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
         </div>
         
-        @switch (ViewModel.Command.Type.ToLower())
+        @switch (ViewModel.Command.Type)
         {
-            case "bool":
+            case SettingType.Bool:
                 <input type="checkbox" id="@ViewModel.Command.Name" class="form-check-input" @bind="BoolValue" />
                 break;
-            case "int":
+            case SettingType.Int:
                 <input type="number" id="@ViewModel.Command.Name" class="form-control" @bind="IntValue" @bind:event="oninput" />
                 break;
-            case "float":
+            case SettingType.Float:
                 <input type="number" id="@ViewModel.Command.Name" class="form-control" @bind="FloatValue" @bind:event="oninput" />
                 break;
-            case "enum":
+            case SettingType.Enum:
                 <select id="@ViewModel.Command.Name" class="form-control" @bind="StringValue">
                     @if (ViewModel.Command.Options != null)
                     {
@@ -31,6 +31,7 @@
                     }
                 </select>
                 break;
+            case SettingType.String:
             default:
                 <input type="text" id="@ViewModel.Command.Name" class="form-control" @bind="StringValue" />
                 break;

@@ -1,6 +1,4 @@
-using System.Globalization;
 using System.Text;
-using System.Text.Json;
 using CSConfigGenerator.Models;
 
 namespace CSConfigGenerator.Services;
@@ -21,7 +19,7 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
         {
             foreach (var command in section.Commands)
             {
-                var defaultValue = ConvertJsonValue(command.DefaultValue, command.Type);
+                var defaultValue = SettingTypeHelpers.ConvertFromJson(command.Type, command.DefaultValue);
                 _settings[command.Name] = new Setting
                 {
                     Value = defaultValue,
@@ -78,7 +76,7 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
                         builder.AppendLine($"// {section.DisplayName} Settings");
                         sectionHasContent = true;
                     }
-                    var formattedValue = FormatValueForConfig(setting.Value);
+                    var formattedValue = SettingTypeHelpers.FormatForConfig(command.Type, setting.Value);
                     builder.AppendLine($"{command.Name} {formattedValue}");
                 }
             }
@@ -114,7 +112,7 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
 
             try
             {
-                var parsedValue = ParseValueFromString(valueStr, command.Type);
+                var parsedValue = SettingTypeHelpers.ParseFromString(command.Type, valueStr);
                 if (_settings.TryGetValue(commandName, out var setting))
                 {
                     setting.Value = parsedValue;
@@ -134,7 +132,6 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
             }
         }
         
-        // Second pass: update status for settings that were removed from the text
         foreach (var (commandName, setting) in _settings)
         {
             if (commandsInFile.Contains(commandName)) continue;
@@ -155,68 +152,5 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
     public void ResetToDefaults()
     {
         InitializeDefaults();
-    }
-
-    private static object ConvertJsonValue(JsonElement element, string type)
-    {
-        return type.ToLower() switch
-        {
-            "bool" => element.GetBoolean(),
-            "int" => element.GetInt32(),
-            "float" => element.GetSingle(),
-            "string" => element.GetString() ?? string.Empty,
-            "enum" => element.GetString() ?? string.Empty,
-            _ => throw new ArgumentException($"Unsupported type: {type}")
-        };
-    }
-
-    private static object ConvertToType(object value, string type)
-    {
-        return type.ToLower() switch
-        {
-            "bool" => Convert.ToBoolean(value),
-            "int" => Convert.ToInt32(value),
-            "float" => Convert.ToSingle(value),
-            "string" => value.ToString() ?? string.Empty,
-            "enum" => value.ToString() ?? string.Empty,
-            _ => throw new ArgumentException($"Unsupported type: {type}")
-        };
-    }
-
-    private static object ParseValueFromString(string valueStr, string type)
-    {
-        return type.ToLower() switch
-        {
-            "bool" => valueStr is "1" or "true",
-            "int" => int.Parse(valueStr, CultureInfo.InvariantCulture),
-            "float" => float.Parse(valueStr, CultureInfo.InvariantCulture),
-            "string" => valueStr,
-            "enum" => valueStr,
-            _ => throw new ArgumentException($"Unsupported type: {type}")
-        };
-    }
-
-    private static string FormatValueForConfig(object value)
-    {
-        switch (value)
-        {
-            case bool b:
-                return b ? "true" : "false";
-
-            case float f:
-                return f.ToString(CultureInfo.InvariantCulture);
-
-            case int i:
-                return i.ToString(CultureInfo.InvariantCulture);
-
-            case string s:
-                if (s.Contains(' ') || s.Contains(';'))
-                {
-                    return $"\"{s}\"";
-                }
-                return s;
-            default:
-                throw new ArgumentException($"Unsupported type for config file generation: {value.GetType().Name}");
-        }
     }
 }

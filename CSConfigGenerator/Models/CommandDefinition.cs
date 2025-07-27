@@ -16,7 +16,8 @@ public record CommandDefinition
     public required string Description { get; init; }
 
     [JsonPropertyName("type")]
-    public required string Type { get; init; } // "bool", "float", "int", "string", "enum"
+    [JsonConverter(typeof(SettingTypeJsonConverter))]
+    public required SettingType Type { get; init; }
 
     [JsonPropertyName("defaultValue")]
     public required JsonElement DefaultValue { get; init; }

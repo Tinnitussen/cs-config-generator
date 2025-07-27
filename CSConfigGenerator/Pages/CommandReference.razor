@@ -34,11 +34,10 @@
                     <div class="col-md-6">
                         <select @bind="selectedType" class="form-select">
                             <option value="">All Types</option>
-                            <option value="bool">Bool</option>
-                            <option value="int">Int</option>
-                            <option value="float">Float</option>
-                            <option value="string">String</option>
-                            <option value="enum">Enum</option>
+                            @foreach (var type in Enum.GetValues<SettingType>())
+                            {
+                                <option value="@type">@type</option>
+                            }
                         </select>
                     </div>
                     <div class="col-md-6 d-flex align-items-end">
@@ -101,7 +100,7 @@
 @code {
     private string searchTerm = string.Empty;
     private string selectedStatus = string.Empty;
-    private string selectedType = string.Empty;
+    private SettingType? selectedType = null;
     private bool requiresCheatsFilter = false;
 
     private List<SettingViewModel> allViewModels = [];
@@ -109,7 +108,7 @@
         allViewModels
             .Where(vm => string.IsNullOrWhiteSpace(searchTerm) || vm.Command.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
             .Where(vm => string.IsNullOrWhiteSpace(selectedStatus) || vm.Setting.Status.ToString() == selectedStatus)
-            .Where(vm => string.IsNullOrWhiteSpace(selectedType) || vm.Command.Type.Equals(selectedType, StringComparison.OrdinalIgnoreCase))
+            .Where(vm => selectedType == null || vm.Command.Type == selectedType)
             .Where(vm => !requiresCheatsFilter || vm.Command.RequiresCheats);
 
     protected override void OnInitialized()
