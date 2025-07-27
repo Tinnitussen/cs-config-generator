@@ -1,6 +1,4 @@
-// /Services/SchemaService.cs
 using System.Net.Http.Json;
-using System.Text.Json;
 using CSConfigGenerator.Models;
 
 namespace CSConfigGenerator.Services;
@@ -14,21 +12,14 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
 
     public async Task InitializeAsync()
     {
-        var jsonOptions = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true,
-            AllowTrailingCommas = true,
-            ReadCommentHandling = JsonCommentHandling.Skip
-        };
-
         try
         {
-            var manifest = await _httpClient.GetFromJsonAsync<List<string>>("Data/manifest.json", jsonOptions)
+            var manifest = await _httpClient.GetFromJsonAsync("Data/manifest.json", JsonContext.Default.ListString)
                 ?? throw new InvalidOperationException("Manifest file could not be loaded or is empty.");
                 
             foreach (var filePath in manifest)
             {
-                var commands = await _httpClient.GetFromJsonAsync<List<CommandDefinition>>(filePath, jsonOptions);
+                var commands = await _httpClient.GetFromJsonAsync(filePath, JsonContext.Default.ListCommandDefinition);
 
                 var sectionName = ExtractSectionName(filePath);
                 var section = new ConfigSection
