@@ -1,0 +1,155 @@
+@page "/reference"
+@using CSConfigGenerator.Models
+@using CSConfigGenerator.Services
+@using CSConfigGenerator.Components
+@inject ISchemaService SchemaService
+@inject IConfigStateService ConfigState
+@inject IJSRuntime JSRuntime
+@inject ToastService ToastService
+
+<PageTitle>Command Reference</PageTitle>
+
+<div class="row">
+    <div class="col-lg-8">
+        <h1>Command Reference</h1>
+        <p>Browse, search, and add commands to your configuration.</p>
+
+        <div class="card bg-light mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <input @bind="searchTerm" @bind:event="oninput" class="form-control" placeholder="Search by name or description..." />
+                    </div>
+                    <div class="col-md-6">
+                        <select @bind="selectedType" class="form-select">
+                            <option value="">All Types</option>
+                            <option value="bool">Bool</option>
+                            <option value="int">Int</option>
+                            <option value="float">Float</option>
+                            <option value="string">String</option>
+                            <option value="enum">Enum</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row g-3 mt-2">
+                    <div class="col-md-6">
+                        <label for="visibilityFilter" class="form-label small">Filter by Builder Visibility</label>
+                        <select id="visibilityFilter" @bind="visibilityFilter" class="form-select">
+                            <option value="all">Show All</option>
+                            <option value="builder">In Builder Only</option>
+                            <option value="hidden">Hidden from Builder Only</option>
+                        </select>
+                    </div>
+                     <div class="col-md-6 d-flex align-items-end">
+                        <div class="form-check mb-1">
+                            <input @bind="requiresCheatsFilter" class="form-check-input" type="checkbox" id="cheatsFilter" />
+                            <label class="form-check-label" for="cheatsFilter">Requires Cheats?</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (filteredCommands.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Builder Visibility</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var command in filteredCommands)
+                        {
+                            <tr>
+                                <td><code>@command.Name</code></td>
+                                <td>@command.Description</td>
+                                <td><span class="badge bg-secondary">@command.Type</span></td>
+                                <td>
+                                    @if (command.HideFromDefaultView)
+                                    {
+                                        <span class="badge bg-warning text-dark">Hidden</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-info text-dark">Visible</span>
+                                    }
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" @onclick="() => AddToConfig(command)">
+                                        + Add
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>No commands found matching your criteria.</p>
+        }
+    </div>
+    <div class="col-lg-4">
+        <ConfigEditor />
+    </div>
+</div>
+
+@code {
+    private string searchTerm = string.Empty;
+    private string selectedType = string.Empty;
+    private bool requiresCheatsFilter = false;
+    private string visibilityFilter = "all"; // all, builder, hidden
+
+    private IEnumerable<CommandDefinition> allCommands = new List<CommandDefinition>();
+    private IEnumerable<CommandDefinition> filteredCommands =>
+        allCommands
+            .Where(c => visibilityFilter switch {
+                "builder" => !c.HideFromDefaultView,
+                "hidden" => c.HideFromDefaultView,
+                _ => true
+            })
+            .Where(c => string.IsNullOrWhiteSpace(searchTerm) || c.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || c.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .Where(c => string.IsNullOrWhiteSpace(selectedType) || c.Type.Equals(selectedType, StringComparison.OrdinalIgnoreCase))
+            .Where(c => !requiresCheatsFilter || c.RequiresCheats);
+
+    protected override void OnInitialized()
+    {
+        allCommands = SchemaService.Sections.SelectMany(s => s.Commands).OrderBy(c => c.Name);
+    }
+
+    private void AddToConfig(CommandDefinition command)
+    {
+        try
+        {
+            var defaultValue = ConvertJsonValue(command.DefaultValue, command.Type);
+            ConfigState.UpdateSetting(command.Name, defaultValue, this);
+            
+            ToastService.ShowToast($"Added '{command.Name}' to your config!", ToastLevel.Success);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error adding command to config: {ex.Message}");
+            ToastService.ShowToast($"Error: Could not add '{command.Name}'.", ToastLevel.Error);
+        }
+    }
+
+    private static object ConvertJsonValue(System.Text.Json.JsonElement element, string type)
+    {
+        return type.ToLower() switch
+        {
+            "bool" => element.GetBoolean(),
+            "int" => element.GetInt32(),
+            "float" => element.GetSingle(),
+            "string" => element.GetString() ?? string.Empty,
+            "enum" => element.GetString() ?? string.Empty,
+            _ => throw new ArgumentException($"Unsupported type: {type}")
+        };
+    }
+}

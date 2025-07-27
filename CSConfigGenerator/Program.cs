@@ -11,6 +11,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<ISchemaService, SchemaService>();
 builder.Services.AddScoped<IConfigStateService, ConfigStateService>();
+builder.Services.AddScoped<ToastService>();
 
 // Initialize services
 var host = builder.Build();

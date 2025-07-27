@@ -50,5 +50,16 @@
     "minValue": 0,
     "maxValue": 255,
     "step": 1
+  },
+  {
+    "name": "cl_advancedcrosshair",
+    "description": "Enables advanced crosshair settings",
+    "type": "bool",
+    "defaultValue": false,
+    "requiresCheats": false,
+    "minValue": 0,
+    "maxValue": 255,
+    "step": 1,
+    "hideFromDefaultView": true
   }
 ]

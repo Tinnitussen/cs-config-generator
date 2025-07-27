@@ -1,11 +1,12 @@
 @using CSConfigGenerator.Models
+@using CSConfigGenerator.Components.Dynamic
 
 <div class="card mb-4">
     <div class="card-header">
         <h5 class="mb-0">@Section.DisplayName</h5>
     </div>
     <div class="card-body">
-        @foreach (var command in Section.Commands)
+        @foreach (var command in Section.Commands.Where(c => !c.HideFromDefaultView))
         {
             <DynamicInput Command="command" />
         }

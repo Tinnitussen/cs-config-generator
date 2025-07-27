@@ -24,6 +24,10 @@ public record CommandDefinition
     [JsonPropertyName("requiresCheats")]
     public bool RequiresCheats { get; init; }
 
+    // New property for advanced/uncommon commands
+    [JsonPropertyName("hideFromDefaultView")]
+    public bool HideFromDefaultView { get; init; }
+
     // Numeric constraints
     [JsonPropertyName("minValue")]
     public float? MinValue { get; init; }

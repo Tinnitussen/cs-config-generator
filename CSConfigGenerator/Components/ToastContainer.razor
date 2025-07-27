@@ -1,0 +1,70 @@
+@using CSConfigGenerator.Services
+@inject ToastService ToastService
+@implements IDisposable
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    @if (toastMessage != null)
+    {
+        <div class="@toastCssClass" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @toastMessage
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" @onclick="HideToast" aria-label="Close"></button>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private string? toastMessage;
+    private string toastCssClass = "toast show";
+    private Timer? countdown;
+
+    protected override void OnInitialized()
+    {
+        ToastService.OnShow += ShowToast;
+    }
+
+    private void ShowToast(string message, ToastLevel level)
+    {
+        toastMessage = message;
+        toastCssClass = $"toast show {GetToastCssClass(level)}";
+        StateHasChanged();
+
+        // Auto-hide after 5 seconds
+        StartCountdown();
+    }
+    
+    private void HideToast()
+    {
+        toastMessage = null;
+        toastCssClass = "toast";
+        StateHasChanged();
+    }
+
+    private string GetToastCssClass(ToastLevel level) => level switch
+    {
+        ToastLevel.Success => "bg-success text-white",
+        ToastLevel.Warning => "bg-warning text-dark",
+        ToastLevel.Error => "bg-danger text-white",
+        _ => "bg-info text-white"
+    };
+    
+    private void StartCountdown()
+    {
+        countdown?.Dispose();
+        countdown = new Timer(TimerElapsed, null, 5000, Timeout.Infinite);
+    }
+
+    private void TimerElapsed(object? state)
+    {
+        InvokeAsync(HideToast);
+    }
+
+    public void Dispose()
+    {
+        ToastService.OnShow -= ShowToast;
+        countdown?.Dispose();
+    }
+}
