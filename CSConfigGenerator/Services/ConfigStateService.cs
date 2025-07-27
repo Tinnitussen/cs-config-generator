@@ -92,7 +92,6 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
         var lines = configText.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
         var commandsInFile = new HashSet<string>();
 
-        // First pass: update settings based on the file content
         foreach (var line in lines)
         {
             var trimmedLine = line.Trim();
@@ -147,6 +146,46 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
         }
 
         NotifyStateChanged(originator);
+    }
+
+    public void SetValue(string commandName, object value, object? originator = null)
+    {
+        if (_settings.TryGetValue(commandName, out var setting))
+        {
+            // Business logic: only update if value actually changed
+            if (!setting.Value.Equals(value))
+            {
+                setting.Value = value;
+                NotifyStateChanged(originator);
+            }
+        }
+    }
+
+    public void AddSetting(string commandName, object? originator = null) 
+    {
+        if (_settings.TryGetValue(commandName, out var setting))
+        {
+            setting.Status = setting.Status == SettingStatus.Hidden ? SettingStatus.Added : SettingStatus.Visible;
+            NotifyStateChanged(originator);
+        }
+    }
+
+    public void RemoveSetting(string commandName, object? originator = null)
+    {
+        if (_settings.TryGetValue(commandName, out var setting))
+        {
+            setting.Status = setting.Status == SettingStatus.Added ? SettingStatus.Hidden : SettingStatus.Removed;
+            NotifyStateChanged(originator);
+        }
+    }
+
+    public void RestoreSetting(string commandName, object? originator = null)
+    {
+        if (_settings.TryGetValue(commandName, out var setting))
+        {
+            setting.Status = SettingStatus.Visible;
+            NotifyStateChanged(originator);
+        }
     }
 
     public void ResetToDefaults()

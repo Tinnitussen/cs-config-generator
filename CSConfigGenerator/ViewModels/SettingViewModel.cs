@@ -7,20 +7,12 @@ public class SettingViewModel(CommandDefinition command, IConfigStateService con
 {
     private readonly IConfigStateService _configState = configState;
     public CommandDefinition Command { get; } = command;
-
-    // The ViewModel gets the Setting, but doesn't store it long-term.
-    // It always asks the service for the current truth.
     public Setting Setting => _configState.GetSetting(Command.Name);
 
-    // Value property for two-way binding now requests changes from the service.
     public object Value
     {
         get => Setting.Value;
-        set
-        {
-            if (Setting.Value.Equals(value)) return;
-            _configState.UpdateSetting(Command.Name, s => s.Value = value);
-        }
+        set => _configState.SetValue(Command.Name, value);
     }
 
     public string StatusBadgeClass => Setting.Status switch
@@ -32,22 +24,7 @@ public class SettingViewModel(CommandDefinition command, IConfigStateService con
         _ => "bg-light text-dark"
     };
     
-    public void Add()
-    {
-        _configState.UpdateSetting(Command.Name, s => 
-            s.Status = s.Status == SettingStatus.Hidden ? SettingStatus.Added : SettingStatus.Visible
-        );
-    }
-    
-    public void Remove()
-    {
-        _configState.UpdateSetting(Command.Name, s => 
-            s.Status = s.Status == SettingStatus.Added ? SettingStatus.Hidden : SettingStatus.Removed
-        );
-    }
-    
-    public void Restore()
-    {
-        _configState.UpdateSetting(Command.Name, s => s.Status = SettingStatus.Visible);
-    }
+    public void Add() => _configState.AddSetting(Command.Name);
+    public void Remove() => _configState.RemoveSetting(Command.Name);
+    public void Restore() => _configState.RestoreSetting(Command.Name);
 }
