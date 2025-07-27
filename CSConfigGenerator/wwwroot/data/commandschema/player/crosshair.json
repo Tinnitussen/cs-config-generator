@@ -1,14 +1,14 @@
 [
   {
     "name": "cl_crosshairdot",
-    "description": "Toggles the dot in the center of the crosshair.",
-    "type": "boolean",
+    "description": "Toggles the dot in the center of the crosshair",
+    "type": "bool",
     "defaultValue": false,
     "requiresCheats": false
   },
   {
     "name": "cl_crosshaircolor",
-    "description": "Sets the crosshair to a preset color. 'Custom' enables RGB values.",
+    "description": "Sets the crosshair to a preset color. 'Custom' enables RGB values",
     "type": "enum",
     "defaultValue": "5",
     "requiresCheats": false,
@@ -23,8 +23,28 @@
   },
   {
     "name": "cl_crosshaircolor_r",
-    "description": "The RED component of the crosshair color (0-255).",
-    "type": "numeric",
+    "description": "The RED component of the crosshair color (0-255)",
+    "type": "int",
+    "defaultValue": 50,
+    "requiresCheats": false,
+    "minValue": 0,
+    "maxValue": 255,
+    "step": 1
+  },
+  {
+    "name": "cl_crosshaircolor_g", 
+    "description": "The GREEN component of the crosshair color (0-255)",
+    "type": "int",
+    "defaultValue": 250,
+    "requiresCheats": false,
+    "minValue": 0,
+    "maxValue": 255,
+    "step": 1
+  },
+  {
+    "name": "cl_crosshaircolor_b",
+    "description": "The BLUE component of the crosshair color (0-255)", 
+    "type": "int",
     "defaultValue": 50,
     "requiresCheats": false,
     "minValue": 0,

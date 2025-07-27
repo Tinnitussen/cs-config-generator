@@ -1,0 +1,18 @@
+@using CSConfigGenerator.Models
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0">@Section.DisplayName</h5>
+    </div>
+    <div class="card-body">
+        @foreach (var command in Section.Commands)
+        {
+            <DynamicInput Command="command" />
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public ConfigSection Section { get; set; } = null!;
+}

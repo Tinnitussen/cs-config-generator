@@ -1,22 +1,27 @@
 [
   {
     "name": "sensitivity",
-    "description": "The master mouse sensitivity setting.",
-    "type": "numeric",
+    "description": "The master mouse sensitivity setting",
+    "type": "float",
     "defaultValue": 1.25,
     "requiresCheats": false,
     "minValue": 0.1,
-    "maxValue": null,
     "step": 0.01
   },
   {
     "name": "zoom_sensitivity_ratio",
-    "description": "The additional sensitivity multiplier applied when zoomed in with a sniper rifle.",
-    "type": "numeric",
+    "description": "The additional sensitivity multiplier applied when zoomed in with a sniper rifle",
+    "type": "float",
     "defaultValue": 1.0,
     "requiresCheats": false,
     "minValue": 0,
-    "maxValue": null,
     "step": 0.1
+  },
+  {
+    "name": "m_rawinput",
+    "description": "Use raw mouse input (bypasses Windows mouse acceleration)",
+    "type": "bool",
+    "defaultValue": true,
+    "requiresCheats": false
   }
 ]

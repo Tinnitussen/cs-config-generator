@@ -1,5 +1,5 @@
 @using CSConfigGenerator.Services
-@inject ConfigStateService ConfigState
+@inject IConfigStateService ConfigState
 @inject IJSRuntime JSRuntime
 @implements IDisposable
 
@@ -55,7 +55,7 @@
         
         try
         {
-            ConfigState.ParseAndUpdateState(configText);
+            ConfigState.ParseConfigFile(configText);
         }
         catch (Exception ex)
         {

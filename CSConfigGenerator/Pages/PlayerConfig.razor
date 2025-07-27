@@ -2,31 +2,28 @@
 @using CSConfigGenerator.Components
 @using CSConfigGenerator.Components.Dynamic
 @using CSConfigGenerator.Services
-@inject ConfigStateService ConfigState
-@inject SchemaService SchemaService
+@inject IConfigStateService ConfigState
+@inject ISchemaService SchemaService
 @implements IDisposable
 
 <PageTitle>Player Settings</PageTitle>
 
 <h1>Player Settings</h1>
-<p>Configure your player settings using the dynamic form below. Changes are reflected in real-time in the config editor.</p>
+<p>Configure your player settings. Changes are reflected in real-time in the config editor.</p>
 
-@if (SchemaService.Commands.Any())
+@if (SchemaService.Sections.Any())
 {
     <div class="row">
         <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Configuration Options</h4>
-                </div>
-                <div class="card-body">
-                    <DynamicForm Commands="SchemaService.Commands" />
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-secondary" @onclick="ResetToDefaults">
-                        Reset to Defaults
-                    </button>
-                </div>
+            @foreach (var section in SchemaService.Sections)
+            {
+                <ConfigSectionGroup Section="section" />
+            }
+            
+            <div class="mb-3">
+                <button class="btn btn-secondary" @onclick="ResetToDefaults">
+                    Reset to Defaults
+                </button>
             </div>
         </div>
     </div>

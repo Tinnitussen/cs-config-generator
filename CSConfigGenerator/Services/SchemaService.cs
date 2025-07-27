@@ -1,69 +1,70 @@
 // /Services/SchemaService.cs
-using CSConfigGenerator.Models;
 using System.Net.Http.Json;
 using System.Text.Json;
-using System.Text.Json.Serialization;
+using CSConfigGenerator.Models;
 
 namespace CSConfigGenerator.Services;
 
-/// <summary>
-/// A singleton service responsible for loading all command schema definitions
-/// from the /wwwroot/Data directory on application startup.
-/// In a WASM app, this is done via HTTP requests.
-/// </summary>
-/// <remarks>
-/// The service is initialized with an HttpClient to fetch the schema files.
-/// </remarks>
-public class SchemaService(HttpClient httpClient)
+public class SchemaService(HttpClient httpClient) : ISchemaService
 {
     private readonly HttpClient _httpClient = httpClient;
-    private readonly List<CommandDefinition> _commands = [];
+    private readonly List<ConfigSection> _sections = [];
 
-    /// <summary>
-    /// A read-only list of all command definitions loaded from the JSON files.
-    /// </summary>
-    public IReadOnlyList<CommandDefinition> Commands => _commands.AsReadOnly();
+    public IReadOnlyList<ConfigSection> Sections => _sections.AsReadOnly();
 
-    /// <summary>
-    /// Asynchronously loads all schemas. This method must be called explicitly
-    /// from Program.cs during application startup.
-    /// </summary>
     public async Task InitializeAsync()
     {
-        // Configure the JSON serializer to be case-insensitive and to handle enums as strings.
         var jsonOptions = new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true,
+            AllowTrailingCommas = true,
+            ReadCommentHandling = JsonCommentHandling.Skip
         };
-        jsonOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
-        
+
         try
         {
-            // First, fetch a manifest file that lists all other schema files.
-            // This avoids trying to "list a directory" over HTTP, which isn't possible.
-            var manifest = await _httpClient.GetFromJsonAsync<List<string>>("Data/manifest.json", jsonOptions);
-
-            if (manifest is null) return;
-
+            var manifest = await _httpClient.GetFromJsonAsync<List<string>>("Data/manifest.json", jsonOptions)
+                ?? throw new InvalidOperationException("Manifest file could not be loaded or is empty.");
+                
             foreach (var filePath in manifest)
             {
-                try
+                var commands = await _httpClient.GetFromJsonAsync<List<CommandDefinition>>(filePath, jsonOptions);
+
+                var sectionName = ExtractSectionName(filePath);
+                var section = new ConfigSection
                 {
-                    var commandsInFile = await _httpClient.GetFromJsonAsync<List<CommandDefinition>>(filePath, jsonOptions);
-                    if (commandsInFile != null)
-                    {
-                        _commands.AddRange(commandsInFile);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error loading schema from {filePath}: {ex.Message}");
-                }
+                    Name = sectionName,
+                    DisplayName = FormatDisplayName(sectionName),
+                    Commands = (commands ?? []).AsReadOnly()
+                };
+
+                _sections.Add(section);
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Failed to load the schema manifest: {ex.Message}");
+            throw new InvalidOperationException("Failed to initialize schema service", ex);
         }
+    }
+
+    public CommandDefinition? GetCommand(string name)
+    {
+        return _sections
+            .SelectMany(s => s.Commands)
+            .FirstOrDefault(c => c.Name == name);
+    }
+
+    private static string ExtractSectionName(string filePath)
+    {
+        // Extract section name from path like "data/commandschema/player/mouse.json"
+        var parts = filePath.Split('/');
+        
+        var fileName = Path.GetFileNameWithoutExtension(parts[^1]);
+        return fileName;
+    }
+
+    private static string FormatDisplayName(string sectionName)
+    {
+        return char.ToUpper(sectionName[0]) + sectionName[1..];
     }
 }

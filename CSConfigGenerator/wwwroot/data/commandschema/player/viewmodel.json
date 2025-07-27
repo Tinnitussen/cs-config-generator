@@ -1,0 +1,42 @@
+[
+  {
+    "name": "viewmodel_fov",
+    "description": "Field of view for the weapon viewmodel",
+    "type": "int",
+    "defaultValue": 60,
+    "requiresCheats": false,
+    "minValue": 54,
+    "maxValue": 68,
+    "step": 1
+  },
+  {
+    "name": "viewmodel_offset_x",
+    "description": "Viewmodel offset on the X axis (left/right)",
+    "type": "float",
+    "defaultValue": 0.0,
+    "requiresCheats": false,
+    "minValue": -2.0,
+    "maxValue": 2.0,
+    "step": 0.1
+  },
+  {
+    "name": "viewmodel_offset_y",
+    "description": "Viewmodel offset on the Y axis (forward/back)",
+    "type": "float",
+    "defaultValue": 0.0,
+    "requiresCheats": false,
+    "minValue": -2.0,
+    "maxValue": 2.0,
+    "step": 0.1
+  },
+  {
+    "name": "viewmodel_offset_z",
+    "description": "Viewmodel offset on the Z axis (up/down)",
+    "type": "float",
+    "defaultValue": 0.0,
+    "requiresCheats": false,
+    "minValue": -2.0,
+    "maxValue": 2.0,
+    "step": 0.1
+  }
+]

@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CSConfigGenerator.Models;
@@ -6,37 +7,38 @@ namespace CSConfigGenerator.Models;
 /// Represents the complete definition for a single console variable (cvar).
 /// This class is designed to be deserialized from your JSON schema files.
 /// </summary>
-public class CommandDefinition
+public record CommandDefinition
 {
     [JsonPropertyName("name")]
-    public string Name { get; set; } = string.Empty;
+    public required string Name { get; init; }
 
     [JsonPropertyName("description")]
-    public string Description { get; set; } = string.Empty;
+    public required string Description { get; init; }
 
     [JsonPropertyName("type")]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    public CommandValueType Type { get; set; }
+    public required string Type { get; init; } // "bool", "float", "int", "string", "enum"
 
     [JsonPropertyName("defaultValue")]
-    public object? DefaultValue { get; set; }
+    public required JsonElement DefaultValue { get; init; }
 
     [JsonPropertyName("requiresCheats")]
-    public bool RequiresCheats { get; set; }
+    public bool RequiresCheats { get; init; }
 
-    // --- Numeric-specific properties ---
-    // These will be null if the type is not 'numeric'.
+    // Numeric constraints
     [JsonPropertyName("minValue")]
-    public float? MinValue { get; set; }
+    public float? MinValue { get; init; }
 
     [JsonPropertyName("maxValue")]
-    public float? MaxValue { get; set; }
+    public float? MaxValue { get; init; }
 
     [JsonPropertyName("step")]
-    public float? Step { get; set; }
+    public float? Step { get; init; }
 
-    // --- Enum-specific properties ---
-    // This will be null if the type is not 'enum'.
+    // Enum options
     [JsonPropertyName("options")]
-    public Dictionary<string, string>? Options { get; set; }
+    public Dictionary<string, string>? Options { get; init; }
+
+    // UI metadata for extensibility
+    [JsonPropertyName("ui")]
+    public JsonElement? UiMetadata { get; init; }
 }
