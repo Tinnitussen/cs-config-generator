@@ -46,11 +46,7 @@ else
 
     private void HandleStateHasChanged(object? originator)
     {
-        if (originator is ComponentBase component && component is not ConfigEditor)
-        {
-            return;
-        }
-        StateHasChanged();
+            StateHasChanged();
     }
     private void ResetToDefaults()
     {
