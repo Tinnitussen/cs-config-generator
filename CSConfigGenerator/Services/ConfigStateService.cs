@@ -66,7 +66,7 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
                 if (_settings.TryGetValue(command.Name, out var value))
                 {
                     var formattedValue = FormatValueForConfig(value);
-                    builder.AppendLine($"{command.Name} \"{formattedValue}\"");
+                    builder.AppendLine($"{command.Name} {formattedValue}");
                 }
             }
             
@@ -155,12 +155,26 @@ public class ConfigStateService(ISchemaService schemaService) : IConfigStateServ
 
     private static string FormatValueForConfig(object value)
     {
-        return value switch
+        switch (value)
         {
-            bool b => b ? "1" : "0",
-            float f => f.ToString(CultureInfo.InvariantCulture),
-            int i => i.ToString(CultureInfo.InvariantCulture),
-            _ => value.ToString() ?? string.Empty
-        };
+            case bool b:
+                return b ? "true" : "false";
+
+            case float f:
+                return f.ToString(CultureInfo.InvariantCulture);
+
+            case int i:
+                return i.ToString(CultureInfo.InvariantCulture);
+
+            case string s:
+                // Quote the string only if it contains a space or semicolon.
+                if (s.Contains(' ') || s.Contains(';'))
+                {
+                    return $"\"{s}\"";
+                }
+                return s;
+            default:
+                throw new ArgumentException($"Unsupported type for config file generation: {value.GetType().Name}");
+        }
     }
 }
