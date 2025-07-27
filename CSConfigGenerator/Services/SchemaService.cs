@@ -14,7 +14,7 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     {
         try
         {
-            var manifest = await _httpClient.GetFromJsonAsync("Data/manifest.json", JsonContext.Default.ListString)
+            var manifest = await _httpClient.GetFromJsonAsync("data/manifest.json", JsonContext.Default.ListString)
                 ?? throw new InvalidOperationException("Manifest file could not be loaded or is empty.");
                 
             foreach (var filePath in manifest)
