@@ -1,17 +1,24 @@
-# Project File Structure and UI Mapping
+# CS2 Config Schema Documentation
+
+This document defines the JSON schema used for all command configuration files in this project. The goal is to create a clear separation between raw data extracted from the game and the curated data used to build the user interface.
+
+## Project File Structure and UI Mapping
+
 The organization of the JSON files directly maps to the layout of the config generator's user interface. This creates a logical and predictable structure for both developers and users.
 
 ### The Rule: Folders are Pages, Files are Sections
 
-1. Top-Level Folders: Each main folder (PlayerConfig, ServerConfig, etc.) represents a major page or navigation tab in the application.
-1. JSON Files: Each JSON file within a folder (crosshair.json, teams.json, etc.) becomes a distinct section on that page. The filename is used as the title for that section.
+* **Top-Level Folders:** Each main folder (`PlayerConfig`, `ServerConfig`, etc.) represents a major page or navigation tab in the application.
+* **JSON Files:** Each JSON file within a folder (`crosshair.json`, `teams.json`, etc.) becomes a distinct section on that page. The filename is used as the title for that section.
 
-### File structure
+### File Structure
+
 ```
+
 /
-├── PlayerConfig/         (-> "Player" Page)
-│   ├── crosshair.json    (-> "Crosshair" Section)
-│   ├── viewmodel.json    (-> "Viewmodel" Section)
+├── PlayerConfig/         (-\> "Player" Page)
+│   ├── crosshair.json    (-\> "Crosshair" Section)
+│   ├── viewmodel.json    (-\> "Viewmodel" Section)
 │   ├── hud.json
 │   ├── radar.json
 │   ├── input.json
@@ -19,7 +26,7 @@ The organization of the JSON files directly maps to the layout of the config gen
 │   ├── network.json
 │   └── misc.json
 │
-├── ServerConfig/         (-> "Server" Page)
+├── ServerConfig/         (-\> "Server" Page)
 │   ├── setup.json
 │   ├── teams.json
 │   ├── rounds.json
@@ -30,19 +37,18 @@ The organization of the JSON files directly maps to the layout of the config gen
 │   ├── bots.json
 │   └── gotv.json
 │
-├── PracticeConfig/       (-> "Practice" Page)
+├── PracticeConfig/       (-\> "Practice" Page)
 │   ├── cheats.json
 │   └── utilities.json
 │
-└── Developer/            (-> "Developer" Page)
-    ├── debugging.json
-    ├── navigation.json
-    └── rendering.json
-```
+└── Developer/            (-\> "Developer" Page)
+├── debugging.json
+├── navigation.json
+└── rendering.json
 
-# CS2 Config Schema Documentation
+````
 
-This document defines the JSON schema used for all command configuration files in this project. The goal is to create a clear separation between raw data extracted from the game and the curated data used to build the user interface.
+---
 
 ## Common Command Structure
 
@@ -60,7 +66,7 @@ This object serves as the "source of truth," containing only data parsed directl
 
 ```json
 "consoleData": {
-  "defaultValue": "default command value",
+  "defaultValue": "raw_value_from_console (string or null)",
   "flags": [ "flag1", "flag2" ],
   "description": "The raw description text from the console."
 }
@@ -83,9 +89,9 @@ Used for simple on/off toggle switches.
   "type": "boolean",
   "defaultValue": true,
   "requiresCheats": false,
-  "hideFromDefaultView": false, // If this setting should be part of the UI or not
-  "aliasFor": "actual command name", // Optional property show if the command is an alias or not
-  "visibilityCondition": { // Optional for more complex display rules
+  "hideFromDefaultView": false,
+  "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
+  "visibilityCondition": { // Optional: Controls visibility based on another command.
     "command": "parent_command_name",
     "value": "required_value"
   }
@@ -103,12 +109,16 @@ Used for whole numbers, typically with sliders or steppers.
   "type": "integer",
   "defaultValue": 10,
   "requiresCheats": false,
-  "hideFromDefaultView": true, // This setting wont be displayed in the UI now
-  "aliasFor": "actual command name", // Optional property show if the command is an alias or not
-  "range": {
+  "hideFromDefaultView": false,
+  "range": { // Required for this type
     "minValue": 0,
     "maxValue": 100,
     "step": 1
+  },
+  "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
+  "visibilityCondition": { // Optional: Controls visibility based on another command.
+    "command": "parent_command_name",
+    "value": "required_value"
   }
 }
 ```
@@ -125,12 +135,12 @@ Used for numbers with decimal points.
   "defaultValue": 1.5,
   "requiresCheats": false,
   "hideFromDefaultView": false,
-  "aliasFor": "actual command name", // Optional property show if the command is an alias or not
-  "range": {
+  "range": { // Required for this type
     "minValue": 0.0,
     "maxValue": 10.0,
     "step": 0.1
-  }
+  },
+  "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
 }
 ```
 
@@ -146,7 +156,7 @@ Used for free-form text input.
   "defaultValue": "default_text",
   "requiresCheats": false,
   "hideFromDefaultView": false,
-  "aliasFor": "actual command name", // Optional property show if the command is an alias or not
+  "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
 }
 ```
 
@@ -160,14 +170,14 @@ Used for dropdown menus or radio buttons with a predefined set of options.
   "helperText": "Helpful description for this enum setting.",
   "type": "enum",
   "defaultValue": "1",
-  "options": {
+  "options": { // Required for this type
     "0": "Display Value A",
     "1": "Display Value B"
   },
   "requiresCheats": false,
   "hideFromDefaultView": false,
-  "aliasFor": "actual command name", // Optional property show if the command is an alias or not
-  "visibilityCondition": { // Optional for more complex display rules
+  "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
+  "visibilityCondition": { // Optional: Controls visibility based on another command.
     "command": "parent_command_name",
     "value": "required_value"
   }
@@ -183,11 +193,10 @@ Used for action commands that may take arguments.
   "label": "Action Label",
   "helperText": "Helpful description for this action.",
   "type": "command",
-  "defaultValue": null,
+  "defaultValue": null, // Must be null
   "requiresCheats": true,
   "hideFromDefaultView": false,
-  "aliasFor": "actual command name", // Optional property show if the command is an alias or not
-  "arguments": [ // Optional (e.g disconnect)
+  "arguments": [ // Optional
     {
       "name": "argument_name",
       "label": "Argument Label",
@@ -195,28 +204,28 @@ Used for action commands that may take arguments.
       "placeholder": "e.g. weapon_ak47",
       "required": true
     }
-  ]
+  ],
+  "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
 }
 ```
 
-### 6\. For `type: "bitmask"`
+### 7\. For `type: "bitmask"`
 
 Used for commands where multiple checkbox options are combined into a single integer value.
 
 ```json
 "uiData": {
-  "label": "HUD Visibility",
-  "helperText": "Select which HUD elements to hide.",
+  "label": "Bitmask Label",
+  "helperText": "Select which options to enable.",
   "type": "bitmask",
   "defaultValue": 0,
   "options": { // Required for this type
-    "1": "Weapon Selection",
-    "2": "Flashlight",
-    "4": "All",
-    "8": "Health"
+    "1": "Option A (Value 1)",
+    "2": "Option B (Value 2)",
+    "4": "Option C (Value 4)"
   },
-  "requiresCheats": true,
+  "requiresCheats": false,
   "hideFromDefaultView": false,
-  "aliasFor": "actual command name", // Optional property show if the command is an alias or not
+  "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
 }
 ```
