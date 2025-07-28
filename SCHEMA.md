@@ -1,3 +1,45 @@
+# Project File Structure and UI Mapping
+The organization of the JSON files directly maps to the layout of the config generator's user interface. This creates a logical and predictable structure for both developers and users.
+
+### The Rule: Folders are Pages, Files are Sections
+
+1. Top-Level Folders: Each main folder (PlayerConfig, ServerConfig, etc.) represents a major page or navigation tab in the application.
+1. JSON Files: Each JSON file within a folder (crosshair.json, teams.json, etc.) becomes a distinct section on that page. The filename is used as the title for that section.
+
+### File structure
+```
+/
+├── PlayerConfig/         (-> "Player" Page)
+│   ├── crosshair.json    (-> "Crosshair" Section)
+│   ├── viewmodel.json    (-> "Viewmodel" Section)
+│   ├── hud.json
+│   ├── radar.json
+│   ├── input.json
+│   ├── audio.json
+│   ├── network.json
+│   └── misc.json
+│
+├── ServerConfig/         (-> "Server" Page)
+│   ├── setup.json
+│   ├── teams.json
+│   ├── rounds.json
+│   ├── objectives.json
+│   ├── spawning.json
+│   ├── rules.json
+│   ├── economy.json
+│   ├── bots.json
+│   └── gotv.json
+│
+├── PracticeConfig/       (-> "Practice" Page)
+│   ├── cheats.json
+│   └── utilities.json
+│
+└── Developer/            (-> "Developer" Page)
+    ├── debugging.json
+    ├── navigation.json
+    └── rendering.json
+```
+
 # CS2 Config Schema Documentation
 
 This document defines the JSON schema used for all command configuration files in this project. The goal is to create a clear separation between raw data extracted from the game and the curated data used to build the user interface.
