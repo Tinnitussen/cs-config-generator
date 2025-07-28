@@ -2,7 +2,7 @@ import json
 import re
 
 input_file = "data/all_commands.txt"
-output_file = "data/combined.json"
+output_file = "data/parsed_commands.json"
 
 # Regex to parse valid console lines
 pattern = re.compile(
