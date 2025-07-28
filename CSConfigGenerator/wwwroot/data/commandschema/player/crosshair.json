@@ -52,8 +52,8 @@
     "step": 1
   },
   {
-    "name": "cl_advancedcrosshair",
-    "description": "Enables advanced crosshair settings",
+    "name": "test",
+    "description": "test",
     "type": "bool",
     "defaultValue": false,
     "requiresCheats": false,
