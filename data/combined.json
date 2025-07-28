@@ -1663,6 +1663,28 @@
     }
   },
   {
+    "command": "fog_color",
+    "consoleData": {
+      "defaultValue": "-1.000000 -1.000000 -1.000000",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": ""
+    }
+  },
+  {
+    "command": "fog_colorskybox",
+    "consoleData": {
+      "defaultValue": "-1.000000 -1.000000 -1.000000",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": ""
+    }
+  },
+  {
     "command": "fog_enable",
     "consoleData": {
       "defaultValue": "true",
@@ -4110,6 +4132,16 @@
     }
   },
   {
+    "command": "mat_overdraw_color",
+    "consoleData": {
+      "defaultValue": "0.075000 0.150000 0.300000",
+      "flags": [
+        "cheat"
+      ],
+      "description": ""
+    }
+  },
+  {
     "command": "mat_shading_complexity",
     "consoleData": {
       "defaultValue": "false",
@@ -4117,6 +4149,16 @@
         "cheat"
       ],
       "description": "Visualize shading complexity"
+    }
+  },
+  {
+    "command": "mat_shading_complexity_color",
+    "consoleData": {
+      "defaultValue": "1.000000 0.500000 0.250000",
+      "flags": [
+        "cheat"
+      ],
+      "description": ""
     }
   },
   {
@@ -12934,6 +12976,16 @@
         "cheat"
       ],
       "description": "Show LPV debug grid, 0: off, 1: closest only 2: closest and keep 3: all"
+    }
+  },
+  {
+    "command": "r_light_probe_volume_debug_grid_albedo",
+    "consoleData": {
+      "defaultValue": "128 128 128",
+      "flags": [
+        "cheat"
+      ],
+      "description": "albedo for LPV debug grid"
     }
   },
   {
@@ -23648,6 +23700,17 @@
     }
   },
   {
+    "command": "cl_autobuy",
+    "consoleData": {
+      "defaultValue": "vesthelm vest m4a1 ak47 famas galilar mp7 nova defuser",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "The order in which autobuy will attempt to purchase items"
+    }
+  },
+  {
     "command": "cl_autohelp",
     "consoleData": {
       "defaultValue": "true",
@@ -26804,6 +26867,17 @@
         "release"
       ],
       "description": "Mainly cosmetic, client-only effect: when client doesn't know the last position of another player that spawns a ragdoll, the ragdoll creation is simplified and ragdoll is created in the right place. If you increase this significantly, ragdoll positions on your client may be dramatically wrong, but it won't affect other clients"
+    }
+  },
+  {
+    "command": "cl_rebuy",
+    "consoleData": {
+      "defaultValue": "Armor PrimaryWeapon Flashbang SmokeGrenade Defuser HEGrenade Flashbang SecondaryWeapon Molotov IncGrenade Decoy Taser",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "The order in which rebuy will attempt to repurchase items"
     }
   },
   {

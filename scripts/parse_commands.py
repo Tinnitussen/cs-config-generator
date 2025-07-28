@@ -5,7 +5,13 @@ input_file = "data/all_commands.txt"
 output_file = "data/combined.json"
 
 # Regex to parse valid console lines
-pattern = re.compile(r"^\[Console\]\s+([^\s]+)\s+:\s+([^\s]+)\s+:\s+([^:]*)(?::\s*(.*))?")
+pattern = re.compile(
+    r"^\[Console\]\s+"               # Literal prefix
+    r"([^\s]+)\s+:\s+"               # Command name
+    r"(.+?)\s+:\s+"                   # Default value: anything up to the next colon
+    r"([^:]+?)\s*"                     # Flags (comma-separated)
+    r"(?::\s*(.*))?$"                   # Optional description
+)
 
 # Valid command name pattern
 valid_command = re.compile(
