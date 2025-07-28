@@ -78,7 +78,7 @@ This object serves as the "source of truth," containing only data parsed directl
 
 The structure of the `uiData` object changes based on its `type` property. Below are the definitions for each possible type.
 
-### 1\. For `type: "boolean"`
+### 1\. For `type: "bool"`
 
 Used for simple on/off toggle switches.
 
@@ -86,7 +86,7 @@ Used for simple on/off toggle switches.
 "uiData": {
   "label": "Boolean Label",
   "helperText": "Helpful description for this boolean setting.",
-  "type": "boolean",
+  "type": "bool",
   "defaultValue": true,
   "requiresCheats": false,
   "hideFromDefaultView": false,
@@ -184,7 +184,7 @@ Used for dropdown menus or radio buttons with a predefined set of options.
 }
 ```
 
-### 6\. For `type: "command"`
+### 6\. For `type: "action"`
 
 Used for action commands that may take arguments.
 
@@ -192,7 +192,7 @@ Used for action commands that may take arguments.
 "uiData": {
   "label": "Action Label",
   "helperText": "Helpful description for this action.",
-  "type": "command",
+  "type": "action",
   "defaultValue": null, // Must be null
   "requiresCheats": true,
   "hideFromDefaultView": false,
