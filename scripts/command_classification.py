@@ -1,4 +1,5 @@
 import json
+import re
 from typing import Dict, List, Any
 
 def load_commands(filepath: str) -> List[Dict]:
@@ -22,7 +23,7 @@ def create_ui_data_skeleton(command: Dict) -> Dict:
         "type": "unknown",
         "defaultValue": 0, # Generic placeholder, always overwritten
         "requiresCheats": "cheat" in command["consoleData"]["flags"],
-        "hideFromDefaultView": False
+        "hideFromDefaultView": True
     }
 
 def add_type_classification(commands: List[Dict]) -> tuple[List[Dict], Dict]:
@@ -64,7 +65,6 @@ def add_type_classification(commands: List[Dict]) -> tuple[List[Dict], Dict]:
             if '.' in str(console_default):
                 cmd_type = 'float'
                 ui_default = float(console_default)
-            # Otherwise, it's an ambiguous number that needs review.
             else:
                 cmd_type = 'unknown_numeric'
                 ui_default = int(float(console_default))
