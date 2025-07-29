@@ -3,7 +3,7 @@ using CSConfigGenerator.Models;
 
 namespace CSConfigGenerator.Services;
 
-public class ConfigStateService(ISchemaService schemaService) : IConfigStateService
+public class PlayerConfigStateService(ISchemaService schemaService) : IConfigStateService
 {
     private readonly ISchemaService _schemaService = schemaService;
     private readonly Dictionary<string, Setting> _settings = [];

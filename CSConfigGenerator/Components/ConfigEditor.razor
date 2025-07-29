@@ -1,5 +1,4 @@
 @using CSConfigGenerator.Services
-@inject IConfigStateService ConfigState
 @inject IJSRuntime JSRuntime
 @implements IDisposable
 
@@ -30,6 +29,10 @@
 </div>
 
 @code {
+    [Parameter]
+    [EditorRequired]
+    public IConfigStateService ConfigStateService { get; set; }
+
     private string configText = string.Empty;
     private string BoundConfigText
     {
@@ -39,7 +42,7 @@
             configText = value;
             try
             {
-                ConfigState.ParseConfigFile(configText, this);
+                ConfigStateService.ParseConfigFile(configText, this);
             }
             catch (Exception ex)
             {
@@ -50,28 +53,29 @@
 
     protected override void OnInitialized()
     {
+        if (ConfigStateService == null)
+            throw new InvalidOperationException("ConfigStateService is not set on ConfigEditor.");
         RefreshConfigText();
-        ConfigState.OnStateChange += HandleStateChange;
+        ConfigStateService.OnStateChange += HandleStateChange;
     }
 
     private void HandleStateChange(object? originator)
     {
-        if (originator == this)
+        if (originator != this)
         {
-            return;
+            RefreshConfigText();
+            StateHasChanged();
         }
-        RefreshConfigText();
-        StateHasChanged();
     }
 
     private void RefreshConfigText()
     {
-        configText = ConfigState.GenerateConfigFile();
+        configText = ConfigStateService.GenerateConfigFile();
     }
 
     private void ResetToDefaults()
     {
-        ConfigState.ResetToDefaults();
+        ConfigStateService.ResetToDefaults();
     }
 
     private async Task CopyToClipboard()
@@ -88,6 +92,6 @@
 
     public void Dispose()
     {
-        ConfigState.OnStateChange -= HandleStateChange;
+        ConfigStateService.OnStateChange -= HandleStateChange;
     }
 }

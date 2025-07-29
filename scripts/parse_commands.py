@@ -1,7 +1,7 @@
 import json
 import re
 
-input_file = "data/all_commands.txt"
+input_file = "data/commands.txt"
 output_file = "data/parsed_commands.json"
 
 # Regex to parse valid console lines
@@ -13,15 +13,8 @@ pattern = re.compile(
     r"(?::\s*(.*))?$"                   # Optional description
 )
 
-# Valid command name pattern
-valid_command = re.compile(
-    r"^[a-zA-Z0-9_\-\.\+]+$"      # Letters, numbers, underscore, dash, dot, plus
-)
-
-# Valid default value pattern
+valid_command = re.compile(r"^[a-zA-Z0-9_\-\.\+]+$")
 valid_default_value = re.compile(r"^.{0,256}$")
-
-# Valid flags set
 valid_flags = set([
     "cl", "sv", "cheat", "a", "release", "rep", "user", "norecord",
     "clientcmd_can_execute", "server_can_execute", "execute_per_tick",
@@ -30,7 +23,7 @@ valid_flags = set([
 ])
 
 entries = []
-seen_entries = set()  # Set to track unique entries
+seen_entries = set()
 
 with open(input_file, encoding="utf-8") as f:
     for line in f:
@@ -42,7 +35,6 @@ with open(input_file, encoding="utf-8") as f:
         command, default_value, flags_raw, description = match.groups()
         flags = [f.strip() for f in flags_raw.split(',') if f.strip()]
         
-        # Validate components
         is_valid_command = valid_command.match(command)
         is_valid_value = default_value == "cmd" or valid_default_value.match(default_value)
         is_valid_flags = all(flag in valid_flags for flag in flags)
@@ -57,7 +49,6 @@ with open(input_file, encoding="utf-8") as f:
             print(f"Invalid flags for {command}: {flags}")
             continue
         
-        # Create entry
         entry = {
             "command": command.strip(),
             "consoleData": {
@@ -67,8 +58,6 @@ with open(input_file, encoding="utf-8") as f:
             }
         }
         
-        # Create a hashable representation for duplicate detection
-        # Sort flags to ensure consistent ordering for comparison
         entry_key = (
             entry["command"],
             entry["consoleData"]["defaultValue"],
@@ -76,7 +65,6 @@ with open(input_file, encoding="utf-8") as f:
             entry["consoleData"]["description"]
         )
         
-        # Only add if we haven't seen this exact entry before
         if entry_key not in seen_entries:
             seen_entries.add(entry_key)
             entries.append(entry)

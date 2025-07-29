@@ -2,8 +2,7 @@
 @using CSConfigGenerator.Components
 @using CSConfigGenerator.Components.Dynamic
 @using CSConfigGenerator.Services
-@inject IConfigStateService ConfigState
-@inject ISchemaService SchemaService
+@using Microsoft.Extensions.DependencyInjection
 @implements IDisposable
 
 <PageTitle>Player Settings</PageTitle>
@@ -17,7 +16,7 @@
         <div class="col-md-6">
             @foreach (var section in SchemaService.Sections)
             {
-                <ConfigSectionGroup Section="section" />
+                <ConfigSectionGroup Section="section" ConfigStateService="@PlayerConfigStateService" />
             }
             
             <div class="mb-3">
@@ -36,12 +35,16 @@ else
     </div>
 }
 
-<ConfigEditor />
+<ConfigEditor ConfigStateService="@PlayerConfigStateService"/>
 
 @code {
+    [Inject(Key="PlayerConfigStateServiceKey")]
+    public IConfigStateService PlayerConfigStateService { get; set; } = default!;
+    [Inject]
+    public ISchemaService SchemaService { get; set; } = default!;
     protected override void OnInitialized()
     {
-        ConfigState.OnStateChange += HandleStateHasChanged;
+        PlayerConfigStateService.OnStateChange += HandleStateHasChanged;
     }
 
     private void HandleStateHasChanged(object? originator)
@@ -50,10 +53,10 @@ else
     }
     private void ResetToDefaults()
     {
-        ConfigState.ResetToDefaults();
+        PlayerConfigStateService.ResetToDefaults();
     }
     public void Dispose()
     {
-        ConfigState.OnStateChange -= HandleStateHasChanged;
+        PlayerConfigStateService.OnStateChange -= HandleStateHasChanged;
     }
 }

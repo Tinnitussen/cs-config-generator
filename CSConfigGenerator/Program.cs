@@ -10,13 +10,14 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 // Scoped services
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<ISchemaService, SchemaService>();
-builder.Services.AddScoped<IConfigStateService, ConfigStateService>();
 builder.Services.AddScoped<ToastService>();
+builder.Services.AddKeyedScoped<IConfigStateService, PlayerConfigStateService>("PlayerConfigStateServiceKey");
+//builder.Services.AddKeyedScoped<IConfigStateService, ServerConfigStateService>("ServerConfigStateService");
 
 // Initialize services
 var host = builder.Build();
 var schemaService = host.Services.GetRequiredService<ISchemaService>();
-var configStateService = host.Services.GetRequiredService<IConfigStateService>();
+var configStateService = host.Services.GetRequiredKeyedService<IConfigStateService>("PlayerConfigStateServiceKey");
 
 await schemaService.InitializeAsync();
 configStateService.InitializeDefaults();

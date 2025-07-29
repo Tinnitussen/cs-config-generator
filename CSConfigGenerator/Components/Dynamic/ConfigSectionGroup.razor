@@ -2,7 +2,6 @@
 @using CSConfigGenerator.ViewModels
 @using CSConfigGenerator.Services
 @using CSConfigGenerator.Components.Dynamic
-@inject IConfigStateService ConfigState
 
 <div class="card mb-4">
     <div class="card-header">
@@ -11,7 +10,7 @@
     <div class="card-body">
         @foreach (var command in Section.Commands.OrderBy(c => c.Name))
         {
-            var viewModel = new SettingViewModel(command, ConfigState);
+            var viewModel = new SettingViewModel(command, ConfigStateService);
             if (!command.HideFromDefaultView)
             {
                 <DynamicInput ViewModel="viewModel" />
@@ -23,4 +22,7 @@
 @code {
     [Parameter, EditorRequired]
     public ConfigSection Section { get; set; } = null!;
+
+    [Parameter, EditorRequired]
+    public IConfigStateService ConfigStateService { get; set; }
 }

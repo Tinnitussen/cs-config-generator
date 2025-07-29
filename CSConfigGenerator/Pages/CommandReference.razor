@@ -4,7 +4,6 @@
 @using CSConfigGenerator.ViewModels
 @using CSConfigGenerator.Components
 @inject ISchemaService SchemaService
-@inject IConfigStateService ConfigState
 @inject ToastService ToastService
 
 <PageTitle>Command Reference</PageTitle>
@@ -97,11 +96,13 @@
         }
     </div>
     <div class="col-lg-4">
-        <ConfigEditor />
+        <ConfigEditor ConfigStateService="@PlayerConfigStateService"/>
     </div>
 </div>
 
 @code {
+    [Inject(Key="PlayerConfigStateServiceKey")]
+    public IConfigStateService PlayerConfigStateService { get; set; } = default!;
     private string searchTerm = string.Empty;
     private string selectedInclusion = string.Empty;
     private SettingType? selectedType = null;
@@ -118,8 +119,8 @@
     protected override void OnInitialized()
     {
         var allCommands = SchemaService.Sections.SelectMany(s => s.Commands).OrderBy(c => c.Name);
-        allViewModels = allCommands.Select(c => new SettingViewModel(c, ConfigState)).ToList();
-        ConfigState.OnStateChange += (o) => InvokeAsync(StateHasChanged);
+        allViewModels = allCommands.Select(c => new SettingViewModel(c, PlayerConfigStateService)).ToList();
+        PlayerConfigStateService.OnStateChange += (o) => InvokeAsync(StateHasChanged);
     }
 
     private void AddCommand(SettingViewModel vm)
@@ -130,6 +131,6 @@
 
     public void Dispose()
     {
-        ConfigState.OnStateChange -= (o) => InvokeAsync(StateHasChanged);
+        PlayerConfigStateService.OnStateChange -= (o) => InvokeAsync(StateHasChanged);
     }
 }

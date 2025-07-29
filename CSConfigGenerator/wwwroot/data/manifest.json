@@ -1,5 +1,4 @@
 [
-  "data/commandschema/player/mouse.json",
   "data/commandschema/player/crosshair.json",
   "data/commandschema/player/viewmodel.json"
 ]
