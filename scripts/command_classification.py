@@ -8,15 +8,8 @@ def load_commands(filepath: str) -> List[Dict]:
 
 def is_numeric_string(value: Any) -> bool:
     """Check if a string-like value represents a number."""
-    if value is None:
-        return False
-    value_str = str(value)
-    if value_str.isspace() or value_str == "":
-        return False
-    if ' ' in value_str:
-        return False
     try:
-        float(value_str)
+        float(value)
         return True
     except (ValueError, TypeError):
         return False
