@@ -1210,7 +1210,7 @@
       "type": "unknown_numeric",
       "defaultValue": 20,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -3503,7 +3503,7 @@
       "type": "unknown_numeric",
       "defaultValue": 15,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -3680,7 +3680,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -4523,7 +4523,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -4543,7 +4543,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -5520,7 +5520,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -5539,7 +5539,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -5558,7 +5558,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -5577,7 +5577,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -5596,7 +5596,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -5615,7 +5615,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -5634,7 +5634,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -5652,7 +5652,7 @@
       "type": "float",
       "defaultValue": 0.3,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -5974,7 +5974,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6014,7 +6014,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6033,7 +6033,7 @@
       "type": "string",
       "defaultValue": "joystick",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6073,7 +6073,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6093,7 +6093,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6113,7 +6113,7 @@
       "type": "unknown_numeric",
       "defaultValue": 9,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6152,7 +6152,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6192,7 +6192,7 @@
       "type": "unknown_numeric",
       "defaultValue": -1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6211,7 +6211,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6675,7 +6675,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6694,7 +6694,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -6998,7 +6998,7 @@
       "type": "float",
       "defaultValue": 0.022,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -7024,7 +7024,7 @@
       "type": "float",
       "defaultValue": 0.022,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -7192,7 +7192,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -7917,7 +7917,7 @@
       "type": "unknown_numeric",
       "defaultValue": 3,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -7953,7 +7953,7 @@
       "type": "unknown_numeric",
       "defaultValue": 150,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -7992,7 +7992,7 @@
       "type": "string",
       "defaultValue": "27015,27016,27017,27018,27019,27020",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -13053,7 +13053,7 @@
       "type": "string",
       "defaultValue": "Tinnitus",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -18660,7 +18660,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -19211,7 +19211,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -19232,7 +19232,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -19463,7 +19463,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -19852,7 +19852,7 @@
       "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -19948,7 +19948,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -20006,7 +20006,7 @@
       "type": "string",
       "defaultValue": "mg_dz_blacksite,mg_dz_sirocco,mg_dz_vineyard,mg_dz_ember",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -20026,7 +20026,7 @@
       "type": "unknown_numeric",
       "defaultValue": 3,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -22043,7 +22043,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -23085,7 +23085,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -23895,7 +23895,7 @@
       "type": "unknown_numeric",
       "defaultValue": 786432,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -24462,7 +24462,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -24481,7 +24481,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -25569,7 +25569,7 @@
       "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -26109,7 +26109,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -26567,7 +26567,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -26657,7 +26657,7 @@
       "type": "float",
       "defaultValue": 0.5,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -26680,7 +26680,7 @@
       "type": "float",
       "defaultValue": 2.5,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -26703,7 +26703,7 @@
       "type": "float",
       "defaultValue": 0.15,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -26726,7 +26726,7 @@
       "type": "float",
       "defaultValue": 0.55,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -27101,7 +27101,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -27141,7 +27141,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -27159,7 +27159,7 @@
       "type": "float",
       "defaultValue": 0.001,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -27236,7 +27236,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -27256,7 +27256,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -27276,7 +27276,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -27601,7 +27601,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -27621,7 +27621,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -29310,7 +29310,7 @@
       "type": "float",
       "defaultValue": 0.041705,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -29445,7 +29445,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -29995,7 +29995,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -30196,7 +30196,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -30215,7 +30215,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -32866,7 +32866,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -32904,7 +32904,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -32941,7 +32941,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -32960,7 +32960,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -32979,7 +32979,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -32998,7 +32998,7 @@
       "type": "string",
       "defaultValue": "logs",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -33449,7 +33449,7 @@
       "type": "unknown_numeric",
       "defaultValue": 5,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -33514,7 +33514,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1200,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -34497,7 +34497,7 @@
       "type": "string",
       "defaultValue": "sky_urb01",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -34621,7 +34621,7 @@
       "type": "unknown_numeric",
       "defaultValue": 5,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -34643,7 +34643,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -34665,7 +34665,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1200,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -35298,7 +35298,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -35511,7 +35511,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -36619,7 +36619,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -37346,7 +37346,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -37835,7 +37835,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -37855,7 +37855,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -37875,7 +37875,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -37895,7 +37895,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -37935,7 +37935,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -37994,7 +37994,7 @@
       "type": "string",
       "defaultValue": "competitive",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38014,7 +38014,7 @@
       "type": "string",
       "defaultValue": "https://www.counter-strike.net/newsentry/529852487375519751",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38073,7 +38073,7 @@
       "type": "string",
       "defaultValue": "mg_de_inferno,mg_de_nuke,mg_de_overpass",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38093,7 +38093,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38113,7 +38113,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38133,7 +38133,7 @@
       "type": "unknown_numeric",
       "defaultValue": 16,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38153,7 +38153,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38173,7 +38173,7 @@
       "type": "unknown_numeric",
       "defaultValue": 32,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38193,7 +38193,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38213,7 +38213,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38233,7 +38233,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38253,7 +38253,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38273,7 +38273,7 @@
       "type": "unknown_numeric",
       "defaultValue": 16,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38293,7 +38293,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38313,7 +38313,7 @@
       "type": "unknown_numeric",
       "defaultValue": 32,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38333,7 +38333,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38353,7 +38353,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38373,7 +38373,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38473,7 +38473,7 @@
       "type": "string",
       "defaultValue": "mg_de_dust2",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38493,7 +38493,7 @@
       "type": "string",
       "defaultValue": "mg_de_inferno",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38513,7 +38513,7 @@
       "type": "string",
       "defaultValue": "mg_de_dust2",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38533,7 +38533,7 @@
       "type": "string",
       "defaultValue": "mg_de_inferno",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38553,7 +38553,7 @@
       "type": "string",
       "defaultValue": "mg_skirmish_armsrace",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38573,7 +38573,7 @@
       "type": "string",
       "defaultValue": "mg_dust247",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38593,7 +38593,7 @@
       "type": "string",
       "defaultValue": "mg_casualalpha",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38633,7 +38633,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38653,7 +38653,7 @@
       "type": "string",
       "defaultValue": "competitive",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38673,7 +38673,7 @@
       "type": "string",
       "defaultValue": "scrimcomp2v2",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38693,7 +38693,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38713,7 +38713,7 @@
       "type": "string",
       "defaultValue": "de_mirage",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38733,7 +38733,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38829,7 +38829,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38849,7 +38849,7 @@
       "type": "string",
       "defaultValue": "/competitive",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38869,7 +38869,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38889,7 +38889,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38908,7 +38908,7 @@
       "type": "string",
       "defaultValue": "bottomleft",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38966,7 +38966,7 @@
       "type": "string",
       "defaultValue": "rifle2",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -38986,7 +38986,7 @@
       "type": "string",
       "defaultValue": "smg2",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39006,7 +39006,7 @@
       "type": "string",
       "defaultValue": "ct",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39043,7 +39043,7 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "arguments": []
     }
   },
@@ -39126,7 +39126,7 @@
       "type": "unknown_numeric",
       "defaultValue": 60,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39147,7 +39147,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39168,7 +39168,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39189,7 +39189,7 @@
       "type": "unknown_numeric",
       "defaultValue": -1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39208,7 +39208,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39492,7 +39492,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39573,7 +39573,7 @@
       "type": "unknown_numeric",
       "defaultValue": -120,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -39611,7 +39611,7 @@
       "type": "float",
       "defaultValue": 0.3,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -40022,7 +40022,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40041,7 +40041,7 @@
       "type": "unknown_numeric",
       "defaultValue": 200,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40060,7 +40060,7 @@
       "type": "unknown_numeric",
       "defaultValue": 90,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40079,7 +40079,7 @@
       "type": "unknown_numeric",
       "defaultValue": 135,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40098,7 +40098,7 @@
       "type": "unknown_numeric",
       "defaultValue": 30,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40117,7 +40117,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40136,7 +40136,7 @@
       "type": "unknown_numeric",
       "defaultValue": -135,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40155,7 +40155,7 @@
       "type": "unknown_numeric",
       "defaultValue": 100,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40174,7 +40174,7 @@
       "type": "unknown_numeric",
       "defaultValue": 100,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40193,7 +40193,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40212,7 +40212,7 @@
       "type": "unknown_numeric",
       "defaultValue": 120,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40231,7 +40231,7 @@
       "type": "unknown_numeric",
       "defaultValue": 40,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40250,7 +40250,7 @@
       "type": "unknown_numeric",
       "defaultValue": 5,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40269,7 +40269,7 @@
       "type": "unknown_numeric",
       "defaultValue": 20,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40307,7 +40307,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40346,7 +40346,7 @@
       "type": "unknown_numeric",
       "defaultValue": 4,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40365,7 +40365,7 @@
       "type": "unknown_numeric",
       "defaultValue": 150,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40384,7 +40384,7 @@
       "type": "unknown_numeric",
       "defaultValue": 4,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40403,7 +40403,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40422,7 +40422,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -40460,7 +40460,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -41359,7 +41359,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -41378,7 +41378,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -41416,7 +41416,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -41608,7 +41608,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -41814,7 +41814,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -41835,7 +41835,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -41971,7 +41971,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42027,7 +42027,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42047,7 +42047,7 @@
       "type": "float",
       "defaultValue": 0.35,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -42137,7 +42137,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42157,7 +42157,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42177,7 +42177,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42197,7 +42197,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42217,7 +42217,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42237,7 +42237,7 @@
       "type": "unknown_numeric",
       "defaultValue": 200,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42257,7 +42257,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42277,7 +42277,7 @@
       "type": "unknown_numeric",
       "defaultValue": 50,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42297,7 +42297,7 @@
       "type": "unknown_numeric",
       "defaultValue": 250,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42317,7 +42317,7 @@
       "type": "unknown_numeric",
       "defaultValue": 50,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42337,7 +42337,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42357,7 +42357,7 @@
       "type": "unknown_numeric",
       "defaultValue": -1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42377,7 +42377,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42397,7 +42397,7 @@
       "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42417,7 +42417,7 @@
       "type": "unknown_numeric",
       "defaultValue": 4,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42437,7 +42437,7 @@
       "type": "float",
       "defaultValue": 0.5,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -42462,7 +42462,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42895,7 +42895,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -42934,7 +42934,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -44627,7 +44627,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -44668,7 +44668,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -44733,7 +44733,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45145,7 +45145,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45165,7 +45165,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45185,7 +45185,7 @@
       "type": "string",
       "defaultValue": "all",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45205,7 +45205,7 @@
       "type": "string",
       "defaultValue": "inv_sort_age",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45225,7 +45225,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45245,7 +45245,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45285,7 +45285,7 @@
       "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45394,7 +45394,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45568,7 +45568,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45587,7 +45587,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45606,7 +45606,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45704,7 +45704,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45748,7 +45748,7 @@
       "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45938,7 +45938,7 @@
       "type": "unknown_numeric",
       "defaultValue": 60,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -45958,7 +45958,7 @@
       "type": "unknown_numeric",
       "defaultValue": 300,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46016,7 +46016,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46213,7 +46213,7 @@
       "type": "string",
       "defaultValue": "1:1739182228855",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46273,7 +46273,7 @@
       "type": "string",
       "defaultValue": "radial_quickinventory.txt",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46293,7 +46293,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46313,7 +46313,7 @@
       "type": "unknown_numeric",
       "defaultValue": 65,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46333,7 +46333,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46353,7 +46353,7 @@
       "type": "float",
       "defaultValue": 0.6,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -46378,7 +46378,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46398,7 +46398,7 @@
       "type": "float",
       "defaultValue": 0.7,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -46463,7 +46463,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46482,7 +46482,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46502,7 +46502,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_requestspend",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46522,7 +46522,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_requestweapon",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46542,7 +46542,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_bplan",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46562,7 +46562,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_followingyou",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46582,7 +46582,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_midplan",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46602,7 +46602,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_followme",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46622,7 +46622,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_aplan",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46642,7 +46642,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_requestecoround",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46662,7 +46662,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_enemyspotted",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46682,7 +46682,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_needbackup",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46702,7 +46702,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_bplan",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46722,7 +46722,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_bombcarrierspotted",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46742,7 +46742,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_multipleenemieshere",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46762,7 +46762,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_sniperspotted",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46782,7 +46782,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_aplan",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46802,7 +46802,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_inposition",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46822,7 +46822,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_affirmative",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46842,7 +46842,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_negative",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46862,7 +46862,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_compliment",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46882,7 +46882,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_thanks",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46902,7 +46902,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_cheer",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46922,7 +46922,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_peptalk",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46942,7 +46942,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_sorry",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46962,7 +46962,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_sectorclear",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -46982,7 +46982,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -47002,7 +47002,7 @@
       "type": "unknown_numeric",
       "defaultValue": 12,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -47021,7 +47021,7 @@
       "type": "float",
       "defaultValue": 0.4,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -47046,7 +47046,7 @@
       "type": "float",
       "defaultValue": 0.17,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "range": {
         "minValue": 0,
         "maxValue": 0,
@@ -47269,7 +47269,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -47308,7 +47308,7 @@
       "type": "string",
       "defaultValue": "+attack2",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -47328,7 +47328,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -47826,7 +47826,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -47865,7 +47865,7 @@
       "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -47943,7 +47943,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -48140,7 +48140,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -48403,7 +48403,7 @@
       "type": "unknown_numeric",
       "defaultValue": 3,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -48423,7 +48423,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -48553,7 +48553,7 @@
       "type": "unknown_numeric",
       "defaultValue": 30,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -48593,7 +48593,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -48631,7 +48631,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -49029,7 +49029,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -49126,7 +49126,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -49834,7 +49834,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -50726,7 +50726,7 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "arguments": []
     }
   },
@@ -52063,7 +52063,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
