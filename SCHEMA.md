@@ -14,39 +14,37 @@ The organization of the JSON files directly maps to the layout of the config gen
 ### File Structure
 
 ```
-
 /
-├── PlayerConfig/         (-\> "Player" Page)
-│   ├── crosshair.json    (-\> "Crosshair" Section)
-│   ├── viewmodel.json    (-\> "Viewmodel" Section)
+├── player/             (For autoexec.cfg)
+│   ├── crosshair.json
+│   ├── viewmodel.json        (Includes FOV and camera-related commands)
 │   ├── hud.json
 │   ├── radar.json
-│   ├── input.json
+│   ├── input.json            (Contains mouse settings)
+│   ├── gameplay.json            (Contains game behavior settings like autowepswitch)
 │   ├── audio.json
+│   ├── communication.json    (Contains voice, radio and chat commands)
 │   ├── network.json
+│   ├── cheats.json         (Commands for practice servers like giving items, noclip, etc.)
+│   ├── actions.json         (Commands with type actions)
 │   └── misc.json
+│   │
+│   └── developer/            (Advanced group)
+│       ├── rendering.json      (Contains graphics, lighting, and fog commands)
+│       ├── debugging.json
+│       └── spectator.json    (Commands for Demo and Overwatch functionality)
 │
-├── ServerConfig/         (-\> "Server" Page)
-│   ├── setup.json
-│   ├── teams.json
-│   ├── rounds.json
-│   ├── objectives.json
-│   ├── spawning.json
-│   ├── rules.json
-│   ├── economy.json
-│   ├── bots.json
-│   └── gotv.json
-│
-├── PracticeConfig/       (-\> "Practice" Page)
-│   ├── cheats.json
-│   └── utilities.json
-│
-└── Developer/            (-\> "Developer" Page)
-├── debugging.json
-├── navigation.json
-└── rendering.json
-
-````
+└── server/             (For server.cfg)
+    ├── setup.json            (Basic server settings like hostname, passwords)
+    ├── teams.json
+    ├── rounds.json
+    ├── objectives.json
+    ├── spawning.json
+    ├── rules.json            (Game rules like friendly fire, etc.)
+    ├── economy.json
+    ├── bots.json
+    └── gotv.json
+```
 
 ---
 
@@ -66,9 +64,10 @@ This object serves as the "source of truth," containing only data parsed directl
 
 ```json
 "consoleData": {
+  "sourcedAt": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this data was pulled from the game console 
   "defaultValue": "raw_value_from_console (string or null)",
   "flags": [ "flag1", "flag2" ],
-  "description": "The raw description text from the console."
+  "description": "The raw description text from the console.",
 }
 ````
 
@@ -84,12 +83,13 @@ Used for simple on/off toggle switches.
 
 ```json
 "uiData": {
+  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
   "label": "Boolean Label",
   "helperText": "Helpful description for this boolean setting.",
   "type": "bool",
   "defaultValue": true,
   "requiresCheats": false,
-  "hideFromDefaultView": false,
+  "hideFromDefaultView": false, // If set to true, hide command from the main UI (not command reference page)
   "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
   "visibilityCondition": { // Optional: Controls visibility based on another command.
     "command": "parent_command_name",
@@ -104,6 +104,7 @@ Used for whole numbers, typically with sliders or steppers.
 
 ```json
 "uiData": {
+  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
   "label": "Integer Label",
   "helperText": "Helpful description for this integer setting.",
   "type": "integer",
@@ -129,6 +130,7 @@ Used for numbers with decimal points.
 
 ```json
 "uiData": {
+  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
   "label": "Float Label",
   "helperText": "Helpful description for this float setting.",
   "type": "float",
@@ -150,6 +152,7 @@ Used for free-form text input.
 
 ```json
 "uiData": {
+  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
   "label": "String Label",
   "helperText": "Helpful description for this string setting.",
   "type": "string",
@@ -166,6 +169,7 @@ Used for dropdown menus or radio buttons with a predefined set of options.
 
 ```json
 "uiData": {
+  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
   "label": "Enum Label",
   "helperText": "Helpful description for this enum setting.",
   "type": "enum",
@@ -190,6 +194,7 @@ Used for action commands that may take arguments.
 
 ```json
 "uiData": {
+  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
   "label": "Action Label",
   "helperText": "Helpful description for this action.",
   "type": "action",
@@ -215,6 +220,7 @@ Used for commands where multiple checkbox options are combined into a single int
 
 ```json
 "uiData": {
+  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
   "label": "Bitmask Label",
   "helperText": "Select which options to enable.",
   "type": "bitmask",
