@@ -129,24 +129,49 @@ def find_anomalies(all_stats: List[CommandStats]) -> List[CommandStats]:
             stats.current_type not in ("float",) + UNKNOWN_TYPES)
     ]
 
-def print_sanity_check(all_stats: List[CommandStats], limit: int = 10) -> None:
-    """Print sanity check information"""
-    print("Sanity check: command stats (first 10 commands with enough occurrences):")
+def print_sanity_check(all_stats: List[CommandStats]) -> None:
+    """Print sanity check information for interesting classifications"""
+    # Find commands that will be classified as float or unknown_integer
+    float_candidates = []
+    int_candidates = []
     
-    count = 0
     for stats in all_stats:
-        if count >= limit:
-            break
-        
-        print(f"{stats.command}: total={stats.total}, float_count={stats.float_count}, "
-              f"int_count={stats.int_count}, float_ratio={stats.float_ratio:.2f}, "
+        new_type = classify_command(stats)
+        if new_type == "float" and new_type != stats.current_type:
+            float_candidates.append((stats, new_type))
+        elif new_type == "unknown_integer" and new_type != stats.current_type:
+            int_candidates.append((stats, new_type))
+    
+    print("Sanity check: Commands that will be reclassified")
+    print(f"\nFloat candidates (showing up to 5):")
+    for i, (stats, new_type) in enumerate(float_candidates[:5]):
+        print(f"{stats.command}: {stats.current_type} -> {new_type}, "
+              f"total={stats.total}, float_ratio={stats.float_ratio:.2f}, "
               f"sample_values={stats.values[:5]}")
-        count += 1
+    
+    print(f"\nUnknown integer candidates (showing up to 5):")
+    for i, (stats, new_type) in enumerate(int_candidates[:5]):
+        print(f"{stats.command}: {stats.current_type} -> {new_type}, "
+              f"total={stats.total}, all_int={stats.is_all_int}, "
+              f"sample_values={stats.values[:5]}")
+    
+    print(f"\nSummary: {len(float_candidates)} float candidates, {len(int_candidates)} integer candidates")
 
 def main():
     # Load existing data
     commands_data = load_json(COMMANDS_JSON)
     known_commands = {entry["command"]: entry for entry in commands_data if "command" in entry}
+    
+    # TEMPORARY: Reset all floats and unknown_integers to unknown for testing
+    print("TEMPORARY: Resetting all 'float' and 'unknown_integer' types to 'unknown'...")
+    reset_count = 0
+    for entry in commands_data:
+        if "command" in entry and "uiData" in entry and "type" in entry["uiData"]:
+            current_type = entry["uiData"]["type"]
+            if current_type in ("float", "unknown_integer"):
+                entry["uiData"]["type"] = "unknown"
+                reset_count += 1
+    print(f"Reset {reset_count} commands to 'unknown' type.\n")
     
     # Gather all values
     all_values = gather_all_values(CONFIGS_DIR, set(known_commands.keys()))
@@ -163,7 +188,8 @@ def main():
     print_sanity_check(all_stats)
     
     # Classify commands and track changes
-    results = {"floats": {}, "integers": {}, "updated_float": 0, "updated_integer": 0}
+    updated_float = 0
+    updated_integer = 0
     anomalies = find_anomalies(all_stats)
     
     for stats in all_stats:
@@ -175,33 +201,17 @@ def main():
             entry.setdefault("uiData", {})["type"] = new_type
             
             if new_type == "float":
-                results["updated_float"] += 1
-                results["floats"][stats.command] = {
-                    "total": stats.total,
-                    "float_count": stats.float_count,
-                    "float_ratio": stats.float_ratio,
-                    "values": stats.values,
-                    "current_type": stats.current_type
-                }
+                updated_float += 1
             elif new_type == "unknown_integer":
-                results["updated_integer"] += 1
-                results["integers"][stats.command] = {
-                    "total": stats.total,
-                    "values": stats.values,
-                    "current_type": stats.current_type
-                }
+                updated_integer += 1
     
-    # Save results
+    # Save updated commands
     save_json(commands_data, COMMANDS_JSON)
-    save_json(results["integers"], "detected_unknown_integers.json")
-    save_json(results["floats"], "detected_floats.json")
     
     # Print summary
     print(f"\nProcessed {len(all_stats)} commands with enough occurrences.")
-    print(f"Updated {results['updated_float']} commands to type 'float'.")
-    print(f"Updated {results['updated_integer']} commands to type 'unknown_integer'.")
-    print("Saved int candidates to detected_unknown_integers.json")
-    print("Saved float candidates to detected_floats.json")
+    print(f"Updated {updated_float} commands to type 'float'.")
+    print(f"Updated {updated_integer} commands to type 'unknown_integer'.")
     
     if anomalies:
         print("\nAnomalies found (classified as non-float but used as float in configs):")
