@@ -1,0 +1,861 @@
+{
+  "adsp_debug": {
+    "total": 74,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "c_maxdistance": {
+    "total": 74,
+    "values": [
+      "200"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "c_maxpitch": {
+    "total": 74,
+    "values": [
+      "90"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "c_maxyaw": {
+    "total": 74,
+    "values": [
+      "135"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "c_mindistance": {
+    "total": 74,
+    "values": [
+      "30"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "c_minpitch": {
+    "total": 74,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "c_minyaw": {
+    "total": 74,
+    "values": [
+      "-135"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "c_orthoheight": {
+    "total": 74,
+    "values": [
+      "100"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "c_orthowidth": {
+    "total": 74,
+    "values": [
+      "100"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cam_collision": {
+    "total": 74,
+    "values": [
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cam_idealdist": {
+    "total": 74,
+    "values": [
+      "150"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cam_snapto": {
+    "total": 74,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cc_subtitles": {
+    "total": 74,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_autohelp": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_crosshair_friendly_warning": {
+    "total": 63,
+    "values": [
+      "0",
+      "1",
+      "2"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_crosshair_sniper_width": {
+    "total": 89,
+    "values": [
+      "0",
+      "1",
+      "2"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_crosshairalpha": {
+    "total": 95,
+    "values": [
+      "1",
+      "200",
+      "235",
+      "250",
+      "255",
+      "800",
+      "999"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_crosshaircolor": {
+    "total": 96,
+    "values": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "9"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_crosshaircolor_b": {
+    "total": 93,
+    "values": [
+      "0",
+      "129",
+      "135",
+      "140",
+      "145",
+      "154",
+      "157",
+      "160",
+      "165",
+      "168",
+      "170",
+      "178",
+      "180",
+      "185",
+      "187",
+      "199",
+      "2",
+      "200",
+      "211",
+      "255",
+      "50"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_crosshaircolor_g": {
+    "total": 93,
+    "values": [
+      "0",
+      "100",
+      "195",
+      "220",
+      "223",
+      "230",
+      "250",
+      "254",
+      "255",
+      "50"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_crosshaircolor_r": {
+    "total": 93,
+    "values": [
+      "0",
+      "1",
+      "100",
+      "132",
+      "148",
+      "250",
+      "255",
+      "50"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_crosshairstyle": {
+    "total": 96,
+    "values": [
+      "2",
+      "4",
+      "5"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_dm_buyrandomweapons": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_hud_color": {
+    "total": 92,
+    "values": [
+      "0",
+      "1",
+      "10",
+      "11",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_invites_only_mainmenu": {
+    "total": 63,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_itemimages_dynamically_generated": {
+    "total": 57,
+    "values": [
+      "2"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_mute_enemy_team": {
+    "total": 74,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_obs_interp_enable": {
+    "total": 76,
+    "values": [
+      "0",
+      "1",
+      "15"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_player_ping_mute": {
+    "total": 68,
+    "values": [
+      "0",
+      "1",
+      "2"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_quickinventory_lastinv": {
+    "total": 70,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_radar_always_centered": {
+    "total": 80,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_radar_rotate": {
+    "total": 80,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_radar_square_with_scoreboard": {
+    "total": 77,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_radial_radio_tab": {
+    "total": 25,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_sanitize_player_names": {
+    "total": 69,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_scoreboard_survivors_always_on": {
+    "total": 70,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_sniper_delay_unscope": {
+    "total": 57,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_versus_intro": {
+    "total": 57,
+    "values": [
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "closecaption": {
+    "total": 76,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "engine_no_focus_sleep": {
+    "total": 75,
+    "values": [
+      "50"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "func_break_max_pieces": {
+    "total": 76,
+    "values": [
+      "15"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "gameinstructor_enable": {
+    "total": 77,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "joy_advanced": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "joy_advaxisr": {
+    "total": 76,
+    "values": [
+      "0",
+      "2"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joy_advaxisu": {
+    "total": 76,
+    "values": [
+      "0",
+      "4"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joy_advaxisv": {
+    "total": 76,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joy_advaxisx": {
+    "total": 76,
+    "values": [
+      "0",
+      "3"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joy_advaxisy": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joy_advaxisz": {
+    "total": 76,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joy_display_input": {
+    "total": 76,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "joy_response_look": {
+    "total": 77,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joy_response_move": {
+    "total": 77,
+    "values": [
+      "1",
+      "5"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joy_sidesensitivity": {
+    "total": 76,
+    "values": [
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "joystick": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "lobby_default_privacy_bits2": {
+    "total": 67,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "lockMoveControllerRet": {
+    "total": 76,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "mm_csgo_community_search_players_min": {
+    "total": 76,
+    "values": [
+      "3"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "net_allow_multicast": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "player_nevershow_communityservermessage": {
+    "total": 77,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "player_teamplayedlast": {
+    "total": 77,
+    "values": [
+      "2",
+      "3"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "r_drawtracers_firstperson": {
+    "total": 78,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "sk_autoaim_mode": {
+    "total": 76,
+    "values": [
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "snd_mute_mvp_music_live_players": {
+    "total": 67,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "spec_replay_autostart": {
+    "total": 73,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "spec_show_xray": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "spec_usenumberkeys_nobinds": {
+    "total": 76,
+    "values": [
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "sv_log_onefile": {
+    "total": 76,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "sv_logbans": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "sv_logecho": {
+    "total": 76,
+    "values": [
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "sv_logfile": {
+    "total": 76,
+    "values": [
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "sv_logflush": {
+    "total": 76,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "sv_noclipaccelerate": {
+    "total": 76,
+    "values": [
+      "5"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "sv_noclipspeed": {
+    "total": 76,
+    "values": [
+      "1200",
+      "5"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "sv_specaccelerate": {
+    "total": 76,
+    "values": [
+      "5"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "sv_specnoclip": {
+    "total": 76,
+    "values": [
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "sv_specspeed": {
+    "total": 76,
+    "values": [
+      "1200",
+      "3"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "sv_unlockedchapters": {
+    "total": 76,
+    "values": [
+      "1",
+      "99"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "tv_nochat": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "ui_playsettings_survival_solo": {
+    "total": 69,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "ui_popup_weaponupdate_version": {
+    "total": 70,
+    "values": [
+      "0",
+      "1",
+      "2",
+      "2109",
+      "3"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "ui_setting_advertiseforhire_auto": {
+    "total": 67,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "viewmodel_presetpos": {
+    "total": 96,
+    "values": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "voice_modenable": {
+    "total": 76,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "voice_threshold": {
+    "total": 76,
+    "values": [
+      "2000",
+      "4000"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_buywheel_donate_key": {
+    "total": 40,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_disable_round_end_report": {
+    "total": 42,
+    "values": [
+      "0"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_observed_bot_crosshair": {
+    "total": 42,
+    "values": [
+      "0",
+      "2"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_ping_fade_deadzone": {
+    "total": 42,
+    "values": [
+      "60"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_ping_fade_distance": {
+    "total": 42,
+    "values": [
+      "300"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_radial_radio_tap_to_ping": {
+    "total": 23,
+    "values": [
+      "1"
+    ],
+    "current_type": "bool",
+    "skipped_reason": "type already set or not unknown"
+  },
+  "cl_radial_radio_version_reset": {
+    "total": 42,
+    "values": [
+      "12"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "cl_show_observer_crosshair": {
+    "total": 49,
+    "values": [
+      "0",
+      "1",
+      "2"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "r_player_visibility_mode": {
+    "total": 48,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "trusted_launch": {
+    "total": 47,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "ui_deepstats_radio_heat_figurine": {
+    "total": 42,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "ui_deepstats_radio_heat_tab": {
+    "total": 42,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "ui_deepstats_radio_heat_team": {
+    "total": 42,
+    "values": [
+      "0"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "ui_deepstats_toplevel_mode": {
+    "total": 42,
+    "values": [
+      "0",
+      "12288",
+      "16",
+      "240"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "ui_playsettings_flags_official_competitive": {
+    "total": 27,
+    "values": [
+      "0",
+      "16",
+      "32"
+    ],
+    "current_type": "unknown_numeric"
+  },
+  "ui_show_subscription_alert": {
+    "total": 31,
+    "values": [
+      "0",
+      "1"
+    ],
+    "current_type": "unknown_numeric"
+  }
+}
