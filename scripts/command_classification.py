@@ -1,5 +1,4 @@
 import json
-import re
 from typing import Dict, List, Any
 
 def load_commands(filepath: str) -> List[Dict]:
@@ -29,13 +28,27 @@ def create_ui_data_skeleton(command: Dict) -> Dict:
 def add_type_classification(commands: List[Dict]) -> tuple[List[Dict], Dict]:
     """
     Adds a uiData skeleton to each command and classifies its type using
-    a conservative and reliable set of rules.
+    a conservative and reliable set of rules. Only updates commands that
+    don't already have type classification.
     """
     processed_commands = []
     type_counts = {}
+    updated_count = 0
+    skipped_count = 0
     
     for cmd in commands:
-        cmd['uiData'] = create_ui_data_skeleton(cmd)
+        # Create uiData if it doesn't exist
+        if 'uiData' not in cmd:
+            cmd['uiData'] = create_ui_data_skeleton(cmd)
+        
+        # Only classify if type is exactly 'unknown'
+        existing_type = cmd['uiData'].get('type')
+        if existing_type != 'unknown':
+            # Skip classification - preserve all existing types except 'unknown'
+            skipped_count += 1
+            type_counts[existing_type] = type_counts.get(existing_type, 0) + 1
+            processed_commands.append(cmd)
+            continue
         
         console_default = cmd['consoleData']['defaultValue']
         description = cmd['consoleData']['description'].lower()
@@ -78,18 +91,19 @@ def add_type_classification(commands: List[Dict]) -> tuple[List[Dict], Dict]:
         cmd['uiData']['type'] = cmd_type
         cmd['uiData']['defaultValue'] = ui_default
 
-        # Conditionally add type-specific placeholders
-        if cmd_type == 'float':
-            cmd['uiData']['range'] = {"minValue": 0, "maxValue": 0, "step": 0}
-        elif cmd_type == 'bitmask':
+        # Conditionally add type-specific placeholders (only if they don't exist)
+        if cmd_type == 'float' and 'range' not in cmd['uiData']:
+            cmd['uiData']['range'] = {"minValue": -1, "maxValue": -1, "step": -1}
+        elif cmd_type == 'bitmask' and 'options' not in cmd['uiData']:
             cmd['uiData']['options'] = {}
-        elif cmd_type == 'action':
+        elif cmd_type == 'action' and 'arguments' not in cmd['uiData']:
             cmd['uiData']['arguments'] = []
 
         processed_commands.append(cmd)
         type_counts[cmd_type] = type_counts.get(cmd_type, 0) + 1
+        updated_count += 1
             
-    return processed_commands, type_counts
+    return processed_commands, type_counts, updated_count, skipped_count
 
 def save_json(data: List[Dict], filepath: str):
     """Save data to JSON file"""
@@ -97,24 +111,26 @@ def save_json(data: List[Dict], filepath: str):
         json.dump(data, f, indent=2)
 
 def main():
-    input_file = "data/parsed_commands.json"
+    input_file = "data/commands_with_types.json"
     output_file = "data/commands_with_types.json"
     
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
     
     print("Classifying command types and building schema skeleton...")
-    processed_commands, type_counts = add_type_classification(commands)
+    processed_commands, type_counts, updated_count, skipped_count = add_type_classification(commands)
     
-    print(f"Saving file to '{output_file}'...")
+    print(f"Saving updated file to '{output_file}'...")
     save_json(processed_commands, output_file)
     
     total = len(commands)
     auto_classified = sum(v for k, v in type_counts.items() if 'unknown' not in k)
-    unknown_total = total - auto_classified
+    unknown_total = type_counts.get('unknown', 0) + type_counts.get('unknown_numeric', 0)
 
     print("\n--- SCRIPT EXECUTION SUMMARY ---")
     print(f"Total commands processed: {total}")
+    print(f"Commands updated in this run: {updated_count}")
+    print(f"Commands skipped (already classified): {skipped_count}")
     print(f"Auto-classified: {auto_classified} ({auto_classified/total*100:.1f}%)")
     print(f"Marked as 'unknown' for manual review: {unknown_total} ({unknown_total/total*100:.1f}%)")
     
@@ -122,7 +138,7 @@ def main():
     for cmd_type, count in sorted(type_counts.items()):
         print(f"  - {cmd_type.replace('_', ' ').capitalize()}: {count}")
     
-    print(f"\nOutput file created: {output_file}")
+    print(f"\nOutput file updated: {output_file}")
 
 
 if __name__ == "__main__":

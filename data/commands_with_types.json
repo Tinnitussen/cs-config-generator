@@ -1662,6 +1662,14 @@
         "rep"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "automatically_open_saved_animgraph_recording",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -4506,9 +4514,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -4909,6 +4917,14 @@
         "release"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "cl_buffer_incoming_net_messages",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5062,9 +5078,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -5266,9 +5282,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -5313,9 +5329,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -5675,9 +5691,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -5762,9 +5778,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -5788,9 +5804,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -5813,9 +5829,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -5858,9 +5874,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -5883,9 +5899,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -6515,6 +6531,14 @@
         "cheat"
       ],
       "description": "If an attachment's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '|' character."
+    },
+    "uiData": {
+      "label": "cl_ent_attachment_filter_substrings",
+      "helperText": "If an attachment's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '|' character.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7498,9 +7522,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -7663,9 +7687,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -7688,9 +7712,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -8050,9 +8074,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -8067,6 +8091,14 @@
         "release"
       ],
       "description": "Blurs the radar background."
+    },
+    "uiData": {
+      "label": "cl_hud_radar_blur_background",
+      "helperText": "Blurs the radar background.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9155,9 +9187,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -9351,6 +9383,14 @@
         "cheat"
       ],
       "description": "if true, impact sounds wont play if no soft impact sound is present and the impact is below the hard velocity threshold."
+    },
+    "uiData": {
+      "label": "cl_phys_sound_disable_impact_sounds_under_hard_threshold",
+      "helperText": "if true, impact sounds wont play if no soft impact sound is present and the impact is below the hard velocity threshold.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9547,6 +9587,14 @@
         "release"
       ],
       "description": "Enable polling for network messages every frame, instead of every tick"
+    },
+    "uiData": {
+      "label": "cl_poll_network_early",
+      "helperText": "Enable polling for network messages every frame, instead of every tick",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9662,6 +9710,14 @@
         "release"
       ],
       "description": "Experimental optimization.  If you are reading this in 2026, please delete this convar."
+    },
+    "uiData": {
+      "label": "cl_prediction_savedata_postentitypacketreceived",
+      "helperText": "Experimental optimization.  If you are reading this in 2026, please delete this convar.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9852,9 +9908,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -9899,9 +9955,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -9958,6 +10014,14 @@
         "release"
       ],
       "description": "If set, the radar will always be square."
+    },
+    "uiData": {
+      "label": "cl_radar_square_always",
+      "helperText": "If set, the radar will always be square.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -10566,9 +10630,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -10592,9 +10656,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -10760,9 +10824,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -10776,6 +10840,15 @@
         "cheat"
       ],
       "description": "Print all response rules"
+    },
+    "uiData": {
+      "label": "cl_rr_dump_rules",
+      "helperText": "Print all response rules",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -11598,6 +11671,15 @@
         "release"
       ],
       "description": "Show current tick/time values.  Bitmask:  1='render time'  2='GameTime'   4=time of predicted entities  8=offset of predicted entities    (-1 means 'everything')"
+    },
+    "uiData": {
+      "label": "cl_showtick",
+      "helperText": "Show current tick/time values.  Bitmask:  1='render time'  2='GameTime'   4=time of predicted entities  8=offset of predicted entities    (-1 means 'everything')",
+      "type": "bitmask",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "options": {}
     }
   },
   {
@@ -11714,6 +11796,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "cl_smooth_draw_debug",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11726,6 +11816,19 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "cl_smooth_root_catchup_factor",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.21,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   },
   {
@@ -11738,6 +11841,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "cl_smooth_root_max_accel",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11750,6 +11861,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "cl_smooth_root_origin_coeff",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 100,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11762,6 +11881,19 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "cl_smooth_root_timehorizon",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.125,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   },
   {
@@ -11774,6 +11906,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "cl_smooth_root_velocity_coeff",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 20,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11786,6 +11926,14 @@
         "release"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "cl_smooth_targetspeed",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 150,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12058,9 +12206,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -12316,6 +12464,14 @@
         "release"
       ],
       "description": "Use the last selected weapon slot position when switching back to a weapon slot."
+    },
+    "uiData": {
+      "label": "cl_use_last_selected_weapon_slot_position",
+      "helperText": "Use the last selected weapon slot position when switching back to a weapon slot.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -13810,9 +13966,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -14177,9 +14333,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -14353,9 +14509,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -14497,6 +14653,14 @@
         "cheat"
       ],
       "description": "Toggle enabling/disabling the destructible parts system for debug."
+    },
+    "uiData": {
+      "label": "debug_destructible_parts_enabled",
+      "helperText": "Toggle enabling/disabling the destructible parts system for debug.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -14531,6 +14695,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "debug_error_model",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -14567,6 +14739,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "debug_radial_damage",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -14890,9 +15070,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -15045,6 +15225,15 @@
         "release"
       ],
       "description": "Pauses when the 'render time' reaches the specified tick."
+    },
+    "uiData": {
+      "label": "demo_pauseatservertick",
+      "helperText": "Pauses when the 'render time' reaches the specified tick.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -15134,6 +15323,15 @@
         "release"
       ],
       "description": "Play for N ticks (default=1) and then pause."
+    },
+    "uiData": {
+      "label": "demo_step_tick",
+      "helperText": "Play for N ticks (default=1) and then pause.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -15599,9 +15797,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -16024,6 +16222,14 @@
         "cheat"
       ],
       "description": "If an attachment's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '|' character."
+    },
+    "uiData": {
+      "label": "ent_attachment_filter_substrings",
+      "helperText": "If an attachment's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '|' character.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -16099,6 +16305,15 @@
         "cheat"
       ],
       "description": "Bonemerge the player onto the entity under the crosshairs"
+    },
+    "uiData": {
+      "label": "ent_bonemergeplayer",
+      "helperText": "Bonemerge the player onto the entity under the crosshairs",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -16261,6 +16476,15 @@
         "cheat"
       ],
       "description": "Gibs the given entity(s)  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}"
+    },
+    "uiData": {
+      "label": "ent_gib",
+      "helperText": "Gibs the given entity(s)  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -17525,9 +17749,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -17552,9 +17776,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -17601,9 +17825,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -18046,9 +18270,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -18219,6 +18443,14 @@
         "release"
       ],
       "description": "Add N ms of delay to every low-level read operation, to simulate a slow disk"
+    },
+    "uiData": {
+      "label": "fs_fake_read_delay_ms",
+      "helperText": "Add N ms of delay to every low-level read operation, to simulate a slow disk",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -18755,9 +18987,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -19605,9 +19837,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -19775,9 +20007,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -19820,9 +20052,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -19865,9 +20097,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -19890,9 +20122,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -19998,9 +20230,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20105,9 +20337,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20130,9 +20362,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20155,9 +20387,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20540,9 +20772,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20565,9 +20797,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20610,9 +20842,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20655,9 +20887,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20700,9 +20932,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20745,9 +20977,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -20790,9 +21022,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -21465,9 +21697,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -21931,9 +22163,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -21958,9 +22190,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -23207,6 +23439,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "movement_stats_debug_draw",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -23219,6 +23459,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "movement_stats_force_calculate",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -25673,9 +25921,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -25940,9 +26188,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -25967,9 +26215,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -26629,9 +26877,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -26656,9 +26904,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -26683,9 +26931,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -26766,6 +27014,14 @@
         "release"
       ],
       "description": "How solid are enemies: 0 = transparent; 1 = fully solid"
+    },
+    "uiData": {
+      "label": "mp_solid_enemies",
+      "helperText": "How solid are enemies: 0 = transparent; 1 = fully solid",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -27134,9 +27390,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -28028,9 +28284,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -28056,9 +28312,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -28374,6 +28630,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_attribute_obstacle_draw",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -28386,6 +28650,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_attribute_obstacle_draw_elements",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -28667,6 +28939,15 @@
         "cheat"
       ],
       "description": "Create a connection between the current 'from' and 'to' locations."
+    },
+    "uiData": {
+      "label": "nav_create_indirect_connection_from_to",
+      "helperText": "Create a connection between the current 'from' and 'to' locations.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -28679,6 +28960,14 @@
         "cheat"
       ],
       "description": "Set the 'from' location of an indirect connection."
+    },
+    "uiData": {
+      "label": "nav_create_indirect_connection_set_from",
+      "helperText": "Set the 'from' location of an indirect connection.",
+      "type": "string",
+      "defaultValue": "0.000000 0.000000 0.000000",
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -28691,6 +28980,15 @@
         "cheat"
       ],
       "description": "Set the 'from' location of an indirect connection to be the current edit pos of nav_edit."
+    },
+    "uiData": {
+      "label": "nav_create_indirect_connection_set_from_using_editpos",
+      "helperText": "Set the 'from' location of an indirect connection to be the current edit pos of nav_edit.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -28703,6 +29001,14 @@
         "cheat"
       ],
       "description": "Set the 'to' location of an indirect connection."
+    },
+    "uiData": {
+      "label": "nav_create_indirect_connection_set_to",
+      "helperText": "Set the 'to' location of an indirect connection.",
+      "type": "string",
+      "defaultValue": "0.000000 0.000000 0.000000",
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -28715,6 +29021,15 @@
         "cheat"
       ],
       "description": "Set the 'to' location of an indirect connection to be the current edit pos of nav_edit."
+    },
+    "uiData": {
+      "label": "nav_create_indirect_connection_set_to_using_editpos",
+      "helperText": "Set the 'to' location of an indirect connection to be the current edit pos of nav_edit.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -28836,9 +29151,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -29279,6 +29594,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_draw_boundary_areas",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -29331,6 +29654,14 @@
         "cheat"
       ],
       "description": "Draw dormant movable meshes."
+    },
+    "uiData": {
+      "label": "nav_draw_dormant_movable_meshes",
+      "helperText": "Draw dormant movable meshes.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -29563,6 +29894,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_draw_space_boundary",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -29716,6 +30055,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_draw_space_transitions",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -29748,6 +30095,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_edit_use_camera",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -29913,9 +30268,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -29998,9 +30353,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30063,9 +30418,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30088,9 +30443,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30113,9 +30468,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30138,9 +30493,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30243,9 +30598,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30548,9 +30903,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30573,9 +30928,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30598,9 +30953,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30743,9 +31098,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -30882,6 +31237,15 @@
         "cheat"
       ],
       "description": "List the movable meshes registered with the movable meshes manager."
+    },
+    "uiData": {
+      "label": "nav_list_movable_meshes",
+      "helperText": "List the movable meshes registered with the movable meshes manager.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -31017,6 +31381,14 @@
         "cheat"
       ],
       "description": "Split wide nav links into narrower ones to increase lanes and alleviate 'crossing' effect."
+    },
+    "uiData": {
+      "label": "nav_navlink_enable_splits",
+      "helperText": "Split wide nav links into narrower ones to increase lanes and alleviate 'crossing' effect.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -31029,6 +31401,14 @@
         "cheat"
       ],
       "description": "The maximum desired width of a nav link split."
+    },
+    "uiData": {
+      "label": "nav_navlink_split_max_width",
+      "helperText": "The maximum desired width of a nav link split.",
+      "type": "unknown_numeric",
+      "defaultValue": 144,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -31041,6 +31421,14 @@
         "cheat"
       ],
       "description": "Nav link splits' widths are proportional to the nav link's length."
+    },
+    "uiData": {
+      "label": "nav_navlink_split_scale_with_length",
+      "helperText": "Nav link splits' widths are proportional to the nav link's length.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -31765,9 +32153,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -32008,6 +32396,15 @@
         "cheat"
       ],
       "description": "Set the movable mesh dormant flag (0=active, 1=dormant)"
+    },
+    "uiData": {
+      "label": "nav_set_movable_mesh_dormant_flag",
+      "helperText": "Set the movable mesh dormant flag (0=active, 1=dormant)",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -32143,6 +32540,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_show_elem_info",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -32155,6 +32560,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_show_elem_info_font",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "Consolas",
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -32167,6 +32580,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_show_elem_info_font_size",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -32179,6 +32600,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_show_elem_info_font_voffset",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -11,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -32239,9 +32668,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -32284,9 +32713,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -32709,9 +33138,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -32734,9 +33163,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -33492,6 +33921,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_test_genrt_tile_removal_extent",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 50,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -33504,6 +33941,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "nav_test_genrt_tile_removal_place",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -34502,6 +34947,14 @@
         "cheat"
       ],
       "description": "Draw blocks when they change"
+    },
+    "uiData": {
+      "label": "navspace_draw_changes_blocks",
+      "helperText": "Draw blocks when they change",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -34514,6 +34967,14 @@
         "cheat"
       ],
       "description": "Draw water volumes when they change"
+    },
+    "uiData": {
+      "label": "navspace_draw_changes_waters",
+      "helperText": "Draw water volumes when they change",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -35541,9 +36002,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -36967,9 +37428,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -37012,9 +37473,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -37068,6 +37529,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "r_csgo_merge_resolve_with_histogram",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -37621,6 +38090,14 @@
         "release"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "r_csgo_test1",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -37712,6 +38189,14 @@
         "cheat"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "r_debug_depth_holes",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -37886,9 +38371,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -38232,6 +38717,14 @@
         "release"
       ],
       "description": "Aggressively unbind bound resources to cleanup DX11 debug warnings."
+    },
+    "uiData": {
+      "label": "r_dx11_debug_clean",
+      "helperText": "Aggressively unbind bound resources to cleanup DX11 debug warnings.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -38331,9 +38824,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -38646,9 +39139,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -38806,9 +39299,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -38963,9 +39456,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -39066,9 +39559,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -39092,9 +39585,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -39136,9 +39629,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -39473,9 +39966,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -39546,6 +40039,14 @@
         "release"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "r_test1_maximum_wait_ms",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 10,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -39644,9 +40145,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -39689,9 +40190,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -39800,9 +40301,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -40507,6 +41008,15 @@
         "cheat"
       ],
       "description": "Print all response rules"
+    },
+    "uiData": {
+      "label": "rr_dump_rules",
+      "helperText": "Print all response rules",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -41811,6 +42321,14 @@
         "per_user"
       ],
       "description": "Multiplies the mouse Y axis for finer pitch vs yaw aim"
+    },
+    "uiData": {
+      "label": "sensitivity_y_scale",
+      "helperText": "Multiplies the mouse Y axis for finer pitch vs yaw aim",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -42307,6 +42825,15 @@
         "cheat"
       ],
       "description": "Dump entity list to console."
+    },
+    "uiData": {
+      "label": "showents",
+      "helperText": "Dump entity list to console.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -42967,9 +43494,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -42991,9 +43518,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -43015,9 +43542,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -43039,9 +43566,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -43063,9 +43590,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -43164,9 +43691,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -43287,9 +43814,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -43494,9 +44021,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -43909,6 +44436,15 @@
         "cheat"
       ],
       "description": "Restores audio DSP state for the UI."
+    },
+    "uiData": {
+      "label": "snd_refresh_ui_audio_state",
+      "helperText": "Restores audio DSP state for the UI.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -43920,6 +44456,14 @@
         "release"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "snd_report_audio_nan",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -45372,9 +45916,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -45446,6 +45990,14 @@
         "cheat"
       ],
       "description": "0: distance ratio only. 1: deviation only (1/r). 2: deviation only (linear). 3: Mode 0 and Mode 1, 4: Mode 0 and Mode 2"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_baked_occlusion_mode",
+      "helperText": "0: distance ratio only. 1: deviation only (1/r). 2: deviation only (linear). 3: Mode 0 and Mode 1, 4: Mode 0 and Mode 2",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -45786,6 +46338,19 @@
         "release"
       ],
       "description": "The volume of the wind when surfing."
+    },
+    "uiData": {
+      "label": "snd_surf_volume_inair",
+      "helperText": "The volume of the wind when surfing.",
+      "type": "float",
+      "defaultValue": 0.5,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   },
   {
@@ -45799,6 +46364,19 @@
         "release"
       ],
       "description": "The volume of ambient sounds when surfing is enabled."
+    },
+    "uiData": {
+      "label": "snd_surf_volume_map",
+      "helperText": "The volume of ambient sounds when surfing is enabled.",
+      "type": "float",
+      "defaultValue": 0.3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   },
   {
@@ -45812,6 +46390,19 @@
         "release"
       ],
       "description": "The volume of sliding along surfaces when surfing."
+    },
+    "uiData": {
+      "label": "snd_surf_volume_slide",
+      "helperText": "The volume of sliding along surfaces when surfing.",
+      "type": "float",
+      "defaultValue": 0.5,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   },
   {
@@ -45834,9 +46425,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -46221,9 +46812,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -46292,9 +46883,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -46357,9 +46948,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -46382,9 +46973,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -46613,9 +47204,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -46638,9 +47229,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -47022,6 +47613,14 @@
         "release"
       ],
       "description": "Speed above which a player is considered to be going fast."
+    },
+    "uiData": {
+      "label": "surf_speed_fast",
+      "helperText": "Speed above which a player is considered to be going fast.",
+      "type": "unknown_numeric",
+      "defaultValue": 3000,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -47036,6 +47635,14 @@
         "release"
       ],
       "description": "Speed above which a player is considered to be going medium."
+    },
+    "uiData": {
+      "label": "surf_speed_med",
+      "helperText": "Speed above which a player is considered to be going medium.",
+      "type": "unknown_numeric",
+      "defaultValue": 2000,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -47050,6 +47657,14 @@
         "release"
       ],
       "description": "Speed above which a player is considered to be going slow."
+    },
+    "uiData": {
+      "label": "surf_speed_slow",
+      "helperText": "Speed above which a player is considered to be going slow.",
+      "type": "unknown_numeric",
+      "defaultValue": 50,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -47092,9 +47707,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -47160,9 +47775,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -48443,6 +49058,14 @@
         "release"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "sv_enable_removearrayelementsoutsidemetadatabounds",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -48635,9 +49258,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -48663,9 +49286,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -49132,9 +49755,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -49265,9 +49888,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -49314,9 +49937,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -49385,9 +50008,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -49412,9 +50035,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -49428,6 +50051,14 @@
         "cheat"
       ],
       "description": "If true, player pawn will filter lag compensation targets by their view angle."
+    },
+    "uiData": {
+      "label": "sv_lagcomp_filterbyviewangle",
+      "helperText": "If true, player pawn will filter lag compensation targets by their view angle.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -49993,9 +50624,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -50009,6 +50640,14 @@
         "release"
       ],
       "description": "If >0, maximumum lag compensation used for other human pawns. Applied after sv_maxunlag!"
+    },
+    "uiData": {
+      "label": "sv_maxunlag_player",
+      "helperText": "If >0, maximumum lag compensation used for other human pawns. Applied after sv_maxunlag!",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -50556,6 +51195,14 @@
         "cheat"
       ],
       "description": "if true, impact sounds wont play if no soft impact sound is present and the impact is below the hard velocity threshold."
+    },
+    "uiData": {
+      "label": "sv_phys_sound_disable_impact_sounds_under_hard_threshold",
+      "helperText": "if true, impact sounds wont play if no soft impact sound is present and the impact is below the hard velocity threshold.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -50769,6 +51416,14 @@
         "release"
       ],
       "description": ""
+    },
+    "uiData": {
+      "label": "sv_pvs_shadows_include_env",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -50843,6 +51498,14 @@
         "release"
       ],
       "description": "When packing entities, check that recipient bits match for fast path packing."
+    },
+    "uiData": {
+      "label": "sv_recipients_check",
+      "helperText": "When packing entities, check that recipient bits match for fast path packing.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -50935,6 +51598,14 @@
         "release"
       ],
       "description": "The replay group that this server will be uploading files to"
+    },
+    "uiData": {
+      "label": "sv_replay_group_id",
+      "helperText": "The replay group that this server will be uploading files to",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -51601,9 +52272,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -51628,9 +52299,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -51700,9 +52371,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -51850,9 +52521,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -51901,9 +52572,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -51938,6 +52609,14 @@
         "release"
       ],
       "description": "Whether or not subtick view angles are taken into account during movement."
+    },
+    "uiData": {
+      "label": "sv_subtick_movement_view_angles",
+      "helperText": "Whether or not subtick view angles are taken into account during movement.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -51952,6 +52631,14 @@
         "release"
       ],
       "description": "Should we try to play sounds for surf?"
+    },
+    "uiData": {
+      "label": "sv_surf_sounds",
+      "helperText": "Should we try to play sounds for surf?",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -52151,9 +52838,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -52202,9 +52889,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -52803,9 +53490,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -52893,9 +53580,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -52962,9 +53649,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -53313,6 +54000,15 @@
         "release"
       ],
       "description": "Generate an assert to test shipping assertion code"
+    },
+    "uiData": {
+      "label": "test_shipping_assert",
+      "helperText": "Generate an assert to test shipping assertion code",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -53828,6 +54524,19 @@
         "release"
       ],
       "description": "The threshold, in seconds, that we'll spew about the snapshot tick"
+    },
+    "uiData": {
+      "label": "tv_broadcast_spew_threshold",
+      "helperText": "The threshold, in seconds, that we'll spew about the snapshot tick",
+      "type": "float",
+      "defaultValue": 0.1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   },
   {
@@ -53944,9 +54653,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -56414,9 +57123,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -56638,9 +57347,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -56722,9 +57431,9 @@
       "requiresCheats": false,
       "hideFromDefaultView": false,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
@@ -56978,9 +57687,9 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "range": {
-        "minValue": 0,
-        "maxValue": 0,
-        "step": 0
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
       }
     }
   },
