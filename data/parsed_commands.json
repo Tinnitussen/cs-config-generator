@@ -3097,7 +3097,8 @@
       "flags": [
         "cheat"
       ],
-      "description": "Maximum number of ticks the clock is allowed to drift before the client snaps its clock to the server's."
+      "description": "Maximum number of ticks the clock is allowed to drift before the client snaps its clock to the server's.",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -5201,7 +5202,8 @@
       "flags": [
         "cheat"
       ],
-      "description": "Display physics-based 'jiggle bone' debugging information"
+      "description": "Display physics-based 'jiggle bone' debugging information",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -5212,7 +5214,8 @@
       "flags": [
         "cheat"
       ],
-      "description": "Display physics-based 'jiggle bone' debugging information"
+      "description": "Display physics-based 'jiggle bone' debugging information",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -5223,7 +5226,8 @@
       "flags": [
         "cheat"
       ],
-      "description": "Display physics-based 'jiggle bone' debugging information"
+      "description": "Display physics-based 'jiggle bone' debugging information",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -5234,7 +5238,8 @@
       "flags": [
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -7010,7 +7015,8 @@
         "cl",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -11153,7 +11159,8 @@
         "cl",
         "cheat"
       ],
-      "description": "Clear the back buffer to gray every frame."
+      "description": "Clear the back buffer to gray every frame.",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -11165,7 +11172,8 @@
         "cl",
         "cheat"
       ],
-      "description": "Clear the back buffer to random colors every frame. Helps spot open seams in geometry."
+      "description": "Clear the back buffer to random colors every frame. Helps spot open seams in geometry.",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -17494,7 +17502,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -17530,7 +17539,8 @@
         "sv",
         "cheat"
       ],
-      "description": "Draw all nav areas with this dynamic attribute"
+      "description": "Draw all nav areas with this dynamic attribute",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -17542,7 +17552,8 @@
         "sv",
         "cheat"
       ],
-      "description": "Draw all nav areas with this game attribute"
+      "description": "Draw all nav areas with this game attribute",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -17830,7 +17841,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -18213,7 +18225,8 @@
       "flags": [
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -18489,7 +18502,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -18501,7 +18515,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -18513,7 +18528,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -18644,7 +18660,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -18944,7 +18961,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -18956,7 +18974,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -19232,7 +19251,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -19244,7 +19264,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -19256,7 +19277,8 @@
         "sv",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -20742,7 +20764,8 @@
         "sv",
         "cheat"
       ],
-      "description": "Draw changes in water volumes"
+      "description": "Draw changes in water volumes",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -21277,7 +21300,8 @@
       "flags": [
         "cheat"
       ],
-      "description": "If enabled, surfaces with default material are highlighted in physics debug geometry."
+      "description": "If enabled, surfaces with default material are highlighted in physics debug geometry.",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -21373,7 +21397,8 @@
         "sv",
         "cheat"
       ],
-      "description": "Mark object for debug"
+      "description": "Mark object for debug",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -21966,7 +21991,8 @@
         "cl",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -22014,7 +22040,8 @@
         "cl",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -22026,7 +22053,8 @@
         "cl",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -22362,7 +22390,8 @@
         "cl",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -23512,7 +23541,8 @@
         "cl",
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -24082,7 +24112,8 @@
         "cl",
         "cheat"
       ],
-      "description": "Restores audio DSP state for the UI."
+      "description": "Restores audio DSP state for the UI.",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -24422,7 +24453,8 @@
       "flags": [
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -26470,7 +26502,8 @@
       "flags": [
         "cheat"
       ],
-      "description": ""
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -33972,7 +34005,8 @@
       "flags": [
         "cheat"
       ],
-      "description": "Change global friction factor"
+      "description": "Change global friction factor",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
@@ -33983,7 +34017,8 @@
       "flags": [
         "cheat"
       ],
-      "description": "Change global restitution factor"
+      "description": "Change global restitution factor",
+      "sourcedAt": "2025-07-28T00:00:00Z"
     },
     "deprecated": true
   },
