@@ -32,6 +32,9 @@
                 </select>
                 break;
             case SettingType.String:
+            case SettingType.Action: // Add action to default string handling if it uses text input
+            case SettingType.UnknownNumeric: // If you decide to handle these with text input for flexibility
+            case SettingType.UnknownInteger: // If you decide to handle these with text input for flexibility
             default:
                 <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" />
                 break;
@@ -59,8 +62,24 @@ else
     [Parameter, EditorRequired]
     public SettingViewModel ViewModel { get; set; } = null!;
 
-    private bool BoolValue { get => (bool)ViewModel.Value; set => ViewModel.Value = value; }
-    private int IntValue { get => (int)ViewModel.Value; set => ViewModel.Value = value; }
-    private float FloatValue { get => (float)ViewModel.Value; set => ViewModel.Value = value; }
-    private string StringValue { get => (string)ViewModel.Value; set => ViewModel.Value = value; }
+    private bool BoolValue
+    {
+        get => ViewModel.Value is bool b ? b : false; // Safely cast with pattern matching
+        set => ViewModel.Value = value;
+    }
+    private int IntValue
+    {
+        get => ViewModel.Value is int i ? i : (ViewModel.Value is float f ? (int)f : 0); // Handle int or float and provide a default
+        set => ViewModel.Value = value;
+    }
+    private float FloatValue
+    {
+        get => ViewModel.Value is float f ? f : (ViewModel.Value is int i ? (float)i : 0.0f); // Handle float or int and provide a default
+        set => ViewModel.Value = value;
+    }
+    private string StringValue
+    {
+        get => ViewModel.Value?.ToString() ?? string.Empty; // Safely convert to string
+        set => ViewModel.Value = value;
+    }
 }
