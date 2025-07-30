@@ -94,7 +94,8 @@ Used for simple on/off toggle switches.
   "visibilityCondition": { // Optional: Controls visibility based on another command.
     "command": "parent_command_name",
     "value": "required_value"
-  }
+  },
+  "deprecated": true // Optional: If the command was removed from the game, can be added to any command
 }
 ```
 

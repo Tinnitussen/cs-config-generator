@@ -5,26 +5,26 @@
 {
     <div class="mb-3">
         <div class="d-flex justify-content-between">
-            <label class="form-label" for="@ViewModel.Command.Name">@ViewModel.Command.Description</label>
+            <label class="form-label" for="@ViewModel.Command.Command">@ViewModel.Command.UiData.Label</label>
             <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
         </div>
 
-        @switch (ViewModel.Command.Type)
+        @switch (ViewModel.Command.UiData.Type)
         {
             case SettingType.Bool:
-                <input type="checkbox" id="@ViewModel.Command.Name" class="form-check-input" @bind="BoolValue" />
+                <input type="checkbox" id="@ViewModel.Command.Command" class="form-check-input" @bind="BoolValue" />
                 break;
             case SettingType.Int:
-                <input type="number" id="@ViewModel.Command.Name" class="form-control" @bind="IntValue" @bind:event="oninput" />
+                <input type="number" id="@ViewModel.Command.Command" class="form-control" @bind="IntValue" @bind:event="oninput" />
                 break;
             case SettingType.Float:
-                <input type="number" id="@ViewModel.Command.Name" class="form-control" @bind="FloatValue" @bind:event="oninput" />
+                <input type="number" id="@ViewModel.Command.Command" class="form-control" @bind="FloatValue" @bind:event="oninput" />
                 break;
             case SettingType.Enum:
-                <select id="@ViewModel.Command.Name" class="form-control" @bind="StringValue">
-                    @if (ViewModel.Command.Options != null)
+                <select id="@ViewModel.Command.Command" class="form-control" @bind="StringValue">
+                    @if (ViewModel.Command.UiData.Options != null)
                     {
-                        @foreach (var option in ViewModel.Command.Options)
+                        @foreach (var option in ViewModel.Command.UiData.Options)
                         {
                             <option value="@option.Key">@option.Value</option>
                         }
@@ -33,11 +33,11 @@
                 break;
             case SettingType.String:
             default:
-                <input type="text" id="@ViewModel.Command.Name" class="form-control" @bind="StringValue" />
+                <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" />
                 break;
         }
 
-        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Name</code></small>
+        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
     </div>
 }
 else
@@ -45,12 +45,12 @@ else
     <div class="mb-3">
         <div class="d-flex justify-content-between align-items-center">
             <div>
-                <span class="form-label text-muted">@ViewModel.Command.Description</span>
+                <span class="form-label text-muted">@ViewModel.Command.UiData.Label</span>
                 <span class="badge bg-secondary">Removed</span>
             </div>
             <button class="btn btn-sm btn-outline-success" @onclick="ViewModel.Restore">Restore</button>
         </div>
-        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Name</code></small>
+        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
     </div>
 }
 

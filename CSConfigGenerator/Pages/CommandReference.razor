@@ -63,8 +63,8 @@
                         @foreach (var vm in viewModels)
                         {
                             <tr>
-                                <td><code>@vm.Command.Name</code></td>
-                                <td>@vm.Command.Description</td>
+                                <td><code>@vm.Command.Command</code></td>
+                                <td>@vm.Command.UiData.HelperText</td>
                                 <td>
                                     <span class="badge @vm.StatusBadgeClass">
                                         @(vm.Setting.IsInConfigEditor ? "Included" : "Not Included")
@@ -111,14 +111,14 @@
     private List<SettingViewModel> allViewModels = [];
     private IEnumerable<SettingViewModel> viewModels =>
         allViewModels
-            .Where(vm => string.IsNullOrWhiteSpace(searchTerm) || vm.Command.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .Where(vm => string.IsNullOrWhiteSpace(searchTerm) || vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
             .Where(vm => string.IsNullOrWhiteSpace(selectedInclusion) || vm.Setting.IsInConfigEditor.ToString().ToLower() == selectedInclusion)
-            .Where(vm => selectedType == null || vm.Command.Type == selectedType)
-            .Where(vm => !requiresCheatsFilter || vm.Command.RequiresCheats);
+            .Where(vm => selectedType == null || vm.Command.UiData.Type == selectedType)
+            .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats);
 
     protected override void OnInitialized()
     {
-        var allCommands = SchemaService.Sections.SelectMany(s => s.Commands).OrderBy(c => c.Name);
+        var allCommands = SchemaService.Sections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
         allViewModels = allCommands.Select(c => new SettingViewModel(c, PlayerConfigStateService)).ToList();
         PlayerConfigStateService.OnStateChange += (o) => InvokeAsync(StateHasChanged);
     }
@@ -126,7 +126,7 @@
     private void AddCommand(SettingViewModel vm)
     {
         vm.Add();
-        ToastService.ShowToast($"'{vm.Command.Name}' has been added to your config.", ToastLevel.Success);
+        ToastService.ShowToast($"'{vm.Command.Command}' has been added to your config.", ToastLevel.Success);
     }
 
     public void Dispose()

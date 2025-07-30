@@ -10,6 +10,9 @@ namespace CSConfigGenerator.Services;
     AllowTrailingCommas = true)]
 [JsonSerializable(typeof(List<string>))]
 [JsonSerializable(typeof(List<CommandDefinition>))]
+[JsonSerializable(typeof(ConsoleData))]
+[JsonSerializable(typeof(UiData))]
+[JsonSerializable(typeof(NumericRange))]
 public partial class JsonContext : JsonSerializerContext
 {
 }

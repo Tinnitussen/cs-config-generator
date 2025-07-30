@@ -1,4 +1,4 @@
 [
-  "data/commandschema/player/crosshair.json",
-  "data/commandschema/player/viewmodel.json"
+  "data/commandschema/player/player.json",
+  "data/commandschema/server/server.json"
 ]

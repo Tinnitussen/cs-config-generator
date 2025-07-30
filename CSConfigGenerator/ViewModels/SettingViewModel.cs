@@ -7,17 +7,17 @@ public class SettingViewModel(CommandDefinition command, IConfigStateService con
 {
     private readonly IConfigStateService _configState = configState;
     public CommandDefinition Command { get; } = command;
-    public Setting Setting => _configState.GetSetting(Command.Name);
+    public Setting Setting => _configState.GetSetting(Command.Command);
 
     public object Value
     {
         get => Setting.Value;
-        set => _configState.SetValue(Command.Name, value);
+        set => _configState.SetValue(Command.Command, value);
     }
 
     public string StatusBadgeClass => Setting.IsInConfigEditor ? "bg-success" : "bg-secondary";
 
-    public void Add() => _configState.SetIncluded(Command.Name, true);
-    public void Remove() => _configState.SetIncluded(Command.Name, false);
-    public void Restore() => _configState.SetIncluded(Command.Name, true);
+    public void Add() => _configState.SetIncluded(Command.Command, true);
+    public void Remove() => _configState.SetIncluded(Command.Command, false);
+    public void Restore() => _configState.SetIncluded(Command.Command, true);
 }

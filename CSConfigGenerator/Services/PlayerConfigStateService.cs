@@ -19,11 +19,11 @@ public class PlayerConfigStateService(ISchemaService schemaService) : IConfigSta
         {
             foreach (var command in section.Commands)
             {
-                var defaultValue = SettingTypeHelpers.ConvertFromJson(command.Type, command.DefaultValue);
-                _settings[command.Name] = new Setting
+                var defaultValue = SettingTypeHelpers.ConvertFromJson(command.UiData.Type, command.UiData.DefaultValue);
+                _settings[command.Command] = new Setting
                 {
                     Value = defaultValue,
-                    IsInConfigEditor = !command.HideFromDefaultView
+                    IsInConfigEditor = !command.UiData.HideFromDefaultView
                 };
             }
         }
@@ -57,17 +57,17 @@ public class PlayerConfigStateService(ISchemaService schemaService) : IConfigSta
         {
             var sectionHasContent = false;
             
-            foreach (var command in section.Commands.OrderBy(c => c.Name))
+            foreach (var command in section.Commands.OrderBy(c => c.Command))
             {
-                if (_settings.TryGetValue(command.Name, out var setting) && setting.IsInConfigEditor)
+                if (_settings.TryGetValue(command.Command, out var setting) && setting.IsInConfigEditor)
                 {
                     if (!sectionHasContent)
                     {
                         builder.AppendLine($"// {section.DisplayName} Settings");
                         sectionHasContent = true;
                     }
-                    var formattedValue = SettingTypeHelpers.FormatForConfig(command.Type, setting.Value);
-                    builder.AppendLine($"{command.Name} {formattedValue}");
+                    var formattedValue = SettingTypeHelpers.FormatForConfig(command.UiData.Type, setting.Value);
+                    builder.AppendLine($"{command.Command} {formattedValue}");
                 }
             }
             
@@ -101,7 +101,7 @@ public class PlayerConfigStateService(ISchemaService schemaService) : IConfigSta
 
             try
             {
-                var parsedValue = SettingTypeHelpers.ParseFromString(command.Type, valueStr);
+                var parsedValue = SettingTypeHelpers.ParseFromString(command.UiData.Type, valueStr);
                 if (_settings.TryGetValue(commandName, out var setting))
                 {
                     setting.Value = parsedValue;

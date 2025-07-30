@@ -42,7 +42,7 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     {
         return _sections
             .SelectMany(s => s.Commands)
-            .FirstOrDefault(c => c.Name == name);
+            .FirstOrDefault(c => c.Command == name); // Changed c.Name to c.Command
     }
 
     private static string ExtractSectionName(string filePath)

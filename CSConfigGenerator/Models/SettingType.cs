@@ -10,7 +10,11 @@ public enum SettingType
     Int,
     Float,
     String,
-    Enum
+    Enum,
+    Bitmask,
+    UnknownNumeric,
+    UnknownInteger,
+    Action
 }
 
 public static class SettingTypeHelpers
@@ -27,6 +31,10 @@ public static class SettingTypeHelpers
             SettingType.Float => element.GetSingle(),
             SettingType.String => element.GetString() ?? string.Empty,
             SettingType.Enum => element.GetString() ?? string.Empty,
+            SettingType.Bitmask => element.GetInt32(),
+            SettingType.UnknownNumeric => element.GetSingle(),
+            SettingType.UnknownInteger => element.GetInt32(),
+            SettingType.Action => element.GetString() ?? string.Empty,
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
     }
@@ -43,6 +51,10 @@ public static class SettingTypeHelpers
             SettingType.Float => float.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.String => valueStr,
             SettingType.Enum => valueStr,
+            SettingType.Bitmask => int.Parse(valueStr, CultureInfo.InvariantCulture),
+            SettingType.UnknownNumeric => float.Parse(valueStr, CultureInfo.InvariantCulture),
+            SettingType.UnknownInteger => int.Parse(valueStr, CultureInfo.InvariantCulture),
+            SettingType.Action => valueStr,
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
     }
@@ -59,6 +71,10 @@ public static class SettingTypeHelpers
             SettingType.Int => ((int)value).ToString(CultureInfo.InvariantCulture),
             SettingType.String => FormatStringValue((string)value),
             SettingType.Enum => FormatStringValue((string)value),
+            SettingType.Bitmask => ((int)value).ToString(CultureInfo.InvariantCulture),
+            SettingType.UnknownNumeric => ((float)value).ToString(CultureInfo.InvariantCulture),
+            SettingType.UnknownInteger => ((int)value).ToString(CultureInfo.InvariantCulture),
+            SettingType.Action => (string)value,
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
     }
@@ -75,6 +91,10 @@ public static class SettingTypeHelpers
             SettingType.Float => Convert.ToSingle(value),
             SettingType.String => value.ToString() ?? string.Empty,
             SettingType.Enum => value.ToString() ?? string.Empty,
+            SettingType.Bitmask => Convert.ToInt32(value),
+            SettingType.UnknownNumeric => Convert.ToSingle(value),
+            SettingType.UnknownInteger => Convert.ToInt32(value),
+            SettingType.Action => value.ToString() ?? string.Empty,
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
     }
@@ -91,6 +111,10 @@ public static class SettingTypeHelpers
             SettingType.Float => 0.0f,
             SettingType.String => string.Empty,
             SettingType.Enum => string.Empty,
+            SettingType.Bitmask => 0,
+            SettingType.UnknownNumeric => 0.0f,
+            SettingType.UnknownInteger => 0,
+            SettingType.Action => string.Empty,
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
     }
@@ -120,6 +144,10 @@ public class SettingTypeJsonConverter : JsonConverter<SettingType>
             "float" => SettingType.Float,
             "string" => SettingType.String,
             "enum" => SettingType.Enum,
+            "bitmask" => SettingType.Bitmask,
+            "unknown_numeric" => SettingType.UnknownNumeric,
+            "unknown_integer" => SettingType.UnknownInteger,
+            "action" => SettingType.Action,
             _ => throw new JsonException($"Unknown setting type: {value}")
         };
     }
@@ -133,6 +161,10 @@ public class SettingTypeJsonConverter : JsonConverter<SettingType>
             SettingType.Float => "float",
             SettingType.String => "string",
             SettingType.Enum => "enum",
+            SettingType.Bitmask => "bitmask",
+            SettingType.UnknownNumeric => "unknown_numeric",
+            SettingType.UnknownInteger => "unknown_integer",
+            SettingType.Action => "action",
             _ => throw new ArgumentException($"Unknown setting type: {value}")
         };
         writer.WriteStringValue(stringValue);
