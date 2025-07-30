@@ -1,167 +1,213 @@
 import os
 import json
-from collections import defaultdict
 import re
+from collections import defaultdict
+from dataclasses import dataclass
+from typing import List, Dict, Any
 
+# Configuration
 COMMANDS_JSON = "data/commands_with_types.json"
 CONFIGS_DIR = "data/pro-player-configs/unzipped-configs"
 MIN_OCCURRENCES = 4
 FLOAT_RATIO = 0.5
 MIN_INT_OCCURRENCES = 15
-
 UNKNOWN_TYPES = ("unknown", "unknown_numeric")
+PROTECTED_TYPES = ("float", "bool", "bitmask", "action")
 
-def clean_value(val):
-    if (val.startswith('"') and val.endswith('"')) or (val.startswith("'") and val.endswith("'")):
-        return val[1:-1]
-    return val
+@dataclass
+class CommandStats:
+    """Statistics for a command's values"""
+    command: str
+    total: int
+    float_count: int
+    int_count: int
+    values: List[str]
+    current_type: str
+    
+    @property
+    def float_ratio(self) -> float:
+        return self.float_count / self.total if self.total > 0 else 0
+    
+    @property
+    def is_all_int(self) -> bool:
+        return self.int_count == self.total
 
-def is_float(val):
+def clean_value(val: str) -> str:
+    """Remove quotes from value"""
+    return val.strip('"\'')
+
+def is_float(val: str) -> bool:
+    """Check if value is a float"""
     val = clean_value(val)
-    if re.match(r"^-?\d+\.\d+$", val):  # e.g. 2.0, -3.14
-        return True
-    if re.match(r"^-?\d+e-?\d+$", val, re.IGNORECASE):  # e.g. 1e-5
-        return True
-    return False
+    return bool(re.match(r"^-?\d+\.\d+$|^-?\d+e-?\d+$", val, re.IGNORECASE))
 
-def is_int(val):
+def is_int(val: str) -> bool:
+    """Check if value is an integer"""
     val = clean_value(val)
-    return re.match(r"^-?\d+$", val) is not None
+    return bool(re.match(r"^-?\d+$", val))
 
-def load_commands_with_types(filepath):
+def load_json(filepath: str) -> Any:
+    """Load JSON file"""
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def save_commands_with_types(data, filepath):
+def save_json(data: Any, filepath: str) -> None:
+    """Save JSON file"""
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
-def extract_command_values_from_cfg(filepath):
+def extract_command_values(cfg_path: str) -> Dict[str, List[str]]:
+    """Extract command values from a single config file"""
     cmd_values = defaultdict(list)
-    with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
+    
+    with open(cfg_path, "r", encoding="utf-8", errors="ignore") as f:
         for line in f:
             line = line.strip()
-            if not line or line.startswith("//") or line.startswith("#"):
+            if not line or line.startswith(("//", "#")):
                 continue
+            
             parts = line.split()
-            if len(parts) < 2:
-                continue
-            cmd, val = parts[0], clean_value(parts[1])
-            cmd_values[cmd].append(val)
+            if len(parts) >= 2:
+                cmd, val = parts[0], clean_value(parts[1])
+                cmd_values[cmd].append(val)
+    
     return cmd_values
 
-def main():
-    commands_data = load_commands_with_types(COMMANDS_JSON)
-    known_commands = {entry["command"]: entry for entry in commands_data if "command" in entry}
-
-    # Gather all values for each command across all configs
-    all_cmd_values = defaultdict(list)
-    cfg_files = [
-        os.path.join(CONFIGS_DIR, f)
-        for f in os.listdir(CONFIGS_DIR)
-        if f.endswith(".cfg")
-    ]
-    for cfg_path in cfg_files:
-        cmd_vals = extract_command_values_from_cfg(cfg_path)
-        for cmd, vals in cmd_vals.items():
+def gather_all_values(configs_dir: str, known_commands: set) -> Dict[str, List[str]]:
+    """Gather all command values from all config files"""
+    all_values = defaultdict(list)
+    
+    cfg_files = [f for f in os.listdir(configs_dir) if f.endswith(".cfg")]
+    
+    for cfg_file in cfg_files:
+        cfg_path = os.path.join(configs_dir, cfg_file)
+        cmd_values = extract_command_values(cfg_path)
+        
+        for cmd, values in cmd_values.items():
             if cmd in known_commands:
-                all_cmd_values[cmd].extend(vals)
+                all_values[cmd].extend(values)
+    
+    return all_values
 
-    # Sanity check: print stats for each command with enough occurrences
+def create_command_stats(cmd: str, values: List[str], current_type: str) -> CommandStats:
+    """Create CommandStats from raw values"""
+    float_count = sum(1 for v in values if is_float(v))
+    int_count = sum(1 for v in values if is_int(v))
+    
+    return CommandStats(
+        command=cmd,
+        total=len(values),
+        float_count=float_count,
+        int_count=int_count,
+        values=sorted(set(values)),
+        current_type=current_type
+    )
+
+def classify_command(stats: CommandStats) -> str:
+    """Determine the appropriate type for a command based on its stats"""
+    # Don't reclassify protected types
+    if stats.current_type in PROTECTED_TYPES:
+        return stats.current_type
+    
+    # Classify as float if enough float usage
+    if stats.float_ratio > FLOAT_RATIO:
+        return "float"
+    
+    # Classify as unknown_integer if all values are integers and enough occurrences
+    if (stats.total >= MIN_INT_OCCURRENCES and 
+        stats.is_all_int and 
+        stats.current_type not in ("int", "unknown_integer")):
+        return "unknown_integer"
+    
+    return stats.current_type
+
+def find_anomalies(all_stats: List[CommandStats]) -> List[CommandStats]:
+    """Find commands classified as non-float but used as float"""
+    return [
+        stats for stats in all_stats
+        if (stats.float_ratio > FLOAT_RATIO and 
+            stats.current_type not in ("float",) + UNKNOWN_TYPES)
+    ]
+
+def print_sanity_check(all_stats: List[CommandStats], limit: int = 10) -> None:
+    """Print sanity check information"""
     print("Sanity check: command stats (first 10 commands with enough occurrences):")
-    sanity_count = 0
-    for cmd, values in all_cmd_values.items():
-        if len(values) < MIN_OCCURRENCES:
-            continue
-        float_count = sum(1 for v in values if is_float(v))
-        int_count = sum(1 for v in values if is_int(v))
-        print(
-            f"{cmd}: total={len(values)}, float_count={float_count}, "
-            f"int_count={int_count}, float_ratio={float_count/len(values):.2f}, "
-            f"sample_values={values[:5]}"
-        )
-        sanity_count += 1
-        if sanity_count >= 10:
+    
+    count = 0
+    for stats in all_stats:
+        if count >= limit:
             break
+        
+        print(f"{stats.command}: total={stats.total}, float_count={stats.float_count}, "
+              f"int_count={stats.int_count}, float_ratio={stats.float_ratio:.2f}, "
+              f"sample_values={stats.values[:5]}")
+        count += 1
 
-    updated_float = 0
-    updated_unknown_int = 0
-    anomalies = []
-    classified = 0
-    unknown_int_candidates = {}
-    detected_floats = {}
-
-    for cmd, values in all_cmd_values.items():
-        if len(values) < MIN_OCCURRENCES:
-            continue
-        float_count = sum(1 for v in values if is_float(v))
-        ratio = float_count / len(values)
-        entry = known_commands[cmd]
-        current_type = entry.get("uiData", {}).get("type", "unknown")
-        # Detect anomaly: classified as non-float but used as float
-        if ratio > FLOAT_RATIO and current_type not in ("float",) + UNKNOWN_TYPES:
-            anomalies.append({
-                "command": cmd,
-                "current_type": current_type,
-                "float_ratio": ratio,
-                "occurrences": len(values)
-            })
-        # Classify as float if eligible
-        if (
-            ratio > FLOAT_RATIO
-            and current_type not in ("float", "bool", "bitmask", "action")
-        ):
-            entry.setdefault("uiData", {})["type"] = "float"
-            updated_float += 1
-            detected_floats[cmd] = {
-                "total": len(values),
-                "float_count": float_count,
-                "float_ratio": ratio,
-                "values": list(sorted(set(values))),
-                "current_type": current_type
-            }
-        # Classify as unknown_integer if eligible
-        elif (
-            len(values) >= MIN_INT_OCCURRENCES
-            and all(is_int(v) for v in values)
-            and current_type not in ("float", "int", "bool", "bitmask", "action", "unknown_integer")
-        ):
-            entry.setdefault("uiData", {})["type"] = "unknown_integer"
-            updated_unknown_int += 1
-            unknown_int_candidates[cmd] = {
-                "total": len(values),
-                "values": list(sorted(set(values))),
-                "current_type": current_type
-            }
-        # Save all int candidates for debugging
-        elif (
-            len(values) >= MIN_INT_OCCURRENCES
-            and all(is_int(v) for v in values)
-        ):
-            unknown_int_candidates[cmd] = {
-                "total": len(values),
-                "values": list(sorted(set(values))),
-                "current_type": current_type,
-                "skipped_reason": "type already set or not unknown"
-            }
-        classified += 1
-
-    save_commands_with_types(commands_data, COMMANDS_JSON)
-    # Save all int and float candidates for inspection
-    with open("detected_unknown_integers.json", "w", encoding="utf-8") as f:
-        json.dump(unknown_int_candidates, f, indent=2)
-    with open("detected_floats.json", "w", encoding="utf-8") as f:
-        json.dump(detected_floats, f, indent=2)
-
-    print(f"Processed {classified} commands with enough occurrences.")
-    print(f"Updated {updated_float} commands to type 'float'.")
-    print(f"Updated {updated_unknown_int} commands to type 'unknown_integer'.")
-    print(f"Saved int candidates to detected_unknown_integers.json")
-    print(f"Saved float candidates to detected_floats.json")
+def main():
+    # Load existing data
+    commands_data = load_json(COMMANDS_JSON)
+    known_commands = {entry["command"]: entry for entry in commands_data if "command" in entry}
+    
+    # Gather all values
+    all_values = gather_all_values(CONFIGS_DIR, set(known_commands.keys()))
+    
+    # Create stats for commands with enough occurrences
+    all_stats = []
+    for cmd, values in all_values.items():
+        if len(values) >= MIN_OCCURRENCES:
+            current_type = known_commands[cmd].get("uiData", {}).get("type", "unknown")
+            stats = create_command_stats(cmd, values, current_type)
+            all_stats.append(stats)
+    
+    # Print sanity check
+    print_sanity_check(all_stats)
+    
+    # Classify commands and track changes
+    results = {"floats": {}, "integers": {}, "updated_float": 0, "updated_integer": 0}
+    anomalies = find_anomalies(all_stats)
+    
+    for stats in all_stats:
+        new_type = classify_command(stats)
+        entry = known_commands[stats.command]
+        
+        # Update type if it changed
+        if new_type != stats.current_type:
+            entry.setdefault("uiData", {})["type"] = new_type
+            
+            if new_type == "float":
+                results["updated_float"] += 1
+                results["floats"][stats.command] = {
+                    "total": stats.total,
+                    "float_count": stats.float_count,
+                    "float_ratio": stats.float_ratio,
+                    "values": stats.values,
+                    "current_type": stats.current_type
+                }
+            elif new_type == "unknown_integer":
+                results["updated_integer"] += 1
+                results["integers"][stats.command] = {
+                    "total": stats.total,
+                    "values": stats.values,
+                    "current_type": stats.current_type
+                }
+    
+    # Save results
+    save_json(commands_data, COMMANDS_JSON)
+    save_json(results["integers"], "detected_unknown_integers.json")
+    save_json(results["floats"], "detected_floats.json")
+    
+    # Print summary
+    print(f"\nProcessed {len(all_stats)} commands with enough occurrences.")
+    print(f"Updated {results['updated_float']} commands to type 'float'.")
+    print(f"Updated {results['updated_integer']} commands to type 'unknown_integer'.")
+    print("Saved int candidates to detected_unknown_integers.json")
+    print("Saved float candidates to detected_floats.json")
+    
     if anomalies:
         print("\nAnomalies found (classified as non-float but used as float in configs):")
-        for a in anomalies:
-            print(f"  {a['command']}: type={a['current_type']}, float_ratio={a['float_ratio']:.2f}, occurrences={a['occurrences']}")
+        for stats in anomalies:
+            print(f"  {stats.command}: type={stats.current_type}, "
+                  f"float_ratio={stats.float_ratio:.2f}, occurrences={stats.total}")
     else:
         print("No anomalies found.")
 

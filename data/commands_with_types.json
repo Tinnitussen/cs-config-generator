@@ -48420,7 +48420,7 @@
     "uiData": {
       "label": "cl_teammate_colors_show",
       "helperText": "In competitive, 1 = show teammates as separate colors in the radar, scoreboard, etc., 2 = show colors and letters",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": false
