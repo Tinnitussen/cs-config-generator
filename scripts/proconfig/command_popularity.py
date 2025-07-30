@@ -2,7 +2,7 @@ import os
 import json
 from collections import Counter
 
-COMMANDS_JSON = "data/commands_with_types.json"
+COMMANDS_JSON = "data/commands.json"
 CONFIGS_DIR = "data/pro-player-configs/unzipped-configs"
 POPULARITY_THRESHOLD = 0.10  # 10%
 
@@ -27,7 +27,7 @@ def extract_commands_from_cfg(filepath):
     return commands
 
 def main():
-    # 1. Load all known commands from commands_with_types.json
+    # 1. Load all known commands from commands.json
     commands_data = load_commands_with_types(COMMANDS_JSON)
     known_commands = set()
     for entry in commands_data:
@@ -62,7 +62,7 @@ def main():
                 entry["uiData"]["hideFromDefaultView"] = False
                 flagged_count += 1
 
-    # 4. Save updated commands_with_types.json
+    # 4. Save updated commands.json
     save_commands_with_types(commands_data, COMMANDS_JSON)
     print(f"Processed {total_cfgs} configs.")
     print(f"Updated {COMMANDS_JSON} with popular commands marked as visible.")

@@ -2,7 +2,7 @@ import json
 from typing import Dict, List, Any
 
 def load_commands(filepath: str) -> List[Dict]:
-    """Load the parsed_commands.json file"""
+    """Load the commands.json file"""
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
 
@@ -111,8 +111,8 @@ def save_json(data: List[Dict], filepath: str):
         json.dump(data, f, indent=2)
 
 def main():
-    input_file = "data/commands_with_types.json"
-    output_file = "data/commands_with_types.json"
+    input_file = "data/commands.json"
+    output_file = "data/commands.json"
     
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)

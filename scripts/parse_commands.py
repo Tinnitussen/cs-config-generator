@@ -43,7 +43,7 @@ def load_existing_data(output_file):
 
 def main():
     input_file = "data/all_commands-2025-30-07.txt"
-    output_file = "data/parsed_commands.json"
+    output_file = "data/commands.json"
     
     # Extract timestamp from filename
     sourced_at = extract_date_from_filename(input_file)

@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from typing import List, Dict, Any
 
 # Configuration
-COMMANDS_JSON = "data/commands_with_types.json"
+COMMANDS_JSON = "data/commands.json"
 CONFIGS_DIR = "data/pro-player-configs/unzipped-configs"
 MIN_OCCURRENCES = 4
 FLOAT_RATIO = 0.5
@@ -161,17 +161,6 @@ def main():
     # Load existing data
     commands_data = load_json(COMMANDS_JSON)
     known_commands = {entry["command"]: entry for entry in commands_data if "command" in entry}
-    
-    # TEMPORARY: Reset all floats and unknown_integers to unknown for testing
-    print("TEMPORARY: Resetting all 'float' and 'unknown_integer' types to 'unknown'...")
-    reset_count = 0
-    for entry in commands_data:
-        if "command" in entry and "uiData" in entry and "type" in entry["uiData"]:
-            current_type = entry["uiData"]["type"]
-            if current_type in ("float", "unknown_integer"):
-                entry["uiData"]["type"] = "unknown"
-                reset_count += 1
-    print(f"Reset {reset_count} commands to 'unknown' type.\n")
     
     # Gather all values
     all_values = gather_all_values(CONFIGS_DIR, set(known_commands.keys()))
