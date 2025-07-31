@@ -62,7 +62,7 @@
 
 /* WebKit scrollbar styling */
 .config-editor-textarea::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    width: 0.5rem; /* Width of the scrollbar */
     background-color: #1e1e1e; /* Background of the scrollbar area */
     display: none; /* Hidden by default */
 }
