@@ -103,3 +103,10 @@ h1, h2, h3, h4, h5, h6 {
 .loading-progress-text {
     display: none;
 }
+
+.search-highlight {
+    background-color: #ffc107;
+    color: #212529;
+    padding: 0.1em;
+    border-radius: 0.2rem;
+}

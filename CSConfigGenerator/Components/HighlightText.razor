@@ -1,0 +1,32 @@
+@using System.Text.RegularExpressions
+
+@if (!string.IsNullOrEmpty(Text))
+{
+    if (string.IsNullOrWhiteSpace(Highlight))
+    {
+        @Text
+    }
+    else
+    {
+        var parts = Regex.Split(Text, $"({Regex.Escape(Highlight)})", RegexOptions.IgnoreCase);
+        foreach (var part in parts)
+        {
+            if (part.Equals(Highlight, StringComparison.OrdinalIgnoreCase))
+            {
+                <span class="search-highlight">@part</span>
+            }
+            else
+            {
+                @part
+            }
+        }
+    }
+}
+
+@code {
+    [Parameter]
+    public string? Text { get; set; }
+
+    [Parameter]
+    public string? Highlight { get; set; }
+}

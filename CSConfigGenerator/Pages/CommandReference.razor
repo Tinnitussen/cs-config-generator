@@ -3,6 +3,8 @@
 @using CSConfigGenerator.Services
 @using CSConfigGenerator.ViewModels
 @using CSConfigGenerator.Components
+@using System.Text.RegularExpressions
+
 @inject ISchemaService SchemaService
 @inject ToastService ToastService
 
@@ -16,35 +18,35 @@
         <div class="card bg-light mb-2">
             <div class="card-body p-2">
                 <div class="row g-2 align-items-center">
-                    <div class="col-md-12">
-                        <input @bind="searchTerm" @bind:event="oninput" class="form-control form-control-sm" placeholder="Search commands..." />
+                    <div class="col-md-5">
+                        <input @bind="SearchTerm" @bind:event="oninput" class="form-control form-control-sm" placeholder="Search commands..." />
                     </div>
-                </div>
-                <div class="row g-2 align-items-center mt-1">
-                    <div class="col-md-6">
-                        <strong>Type:</strong>
-                        @foreach (var type in Enum.GetValues<SettingType>())
-                        {
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="type-@type" @onchange="() => ToggleTypeSelection(type)" />
-                                <label class="form-check-label" for="type-@type">@type</label>
+                    <div class="col-md-3">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100" type="button" @onclick="() => showTypeDropdown = !showTypeDropdown">
+                                Select Types
+                            </button>
+                            <div class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
+                                @foreach (var type in Enum.GetValues<SettingType>())
+                                {
+                                    <div class="px-2">
+                                        <input type="checkbox" id="type-@type" @bind="selectedTypes[type]" />
+                                        <label class="form-check-label ms-1" for="type-@type">@type</label>
+                                    </div>
+                                }
                             </div>
-                        }
-                    </div>
-                    <div class="col-md-4">
-                        <strong>Status:</strong>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="status-included" @onchange="() => ToggleInclusionSelection(true)" />
-                            <label class="form-check-label" for="status-included">Included</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="status-not-included" @onchange="() => ToggleInclusionSelection(false)" />
-                            <label class="form-check-label" for="status-not-included">Not Included</label>
                         </div>
                     </div>
                     <div class="col-md-2">
+                        <select @bind="SelectedInclusion" class="form-select form-select-sm">
+                            <option value="">All Statuses</option>
+                            <option value="true">Included</option>
+                            <option value="false">Not Included</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
                         <div class="form-check form-check-inline">
-                            <input @bind="requiresCheatsFilter" class="form-check-input" type="checkbox" id="cheatsFilter" />
+                            <input @bind="RequiresCheatsFilter" class="form-check-input" type="checkbox" id="cheatsFilter" />
                             <label class="form-check-label" for="cheatsFilter">Cheats</label>
                         </div>
                     </div>
@@ -68,8 +70,8 @@
                         @foreach (var vm in paginatedViewModels)
                         {
                             <tr @onclick="() => HighlightRow(vm)" @ondblclick="() => ToggleCommand(vm)" class="@(selectedViewModel == vm ? "table-active" : "")">
-                                <td><code>@vm.Command.Command</code></td>
-                                <td>@vm.Command.UiData.HelperText</td>
+                                <td><code><HighlightText Text="@vm.Command.Command" Highlight="@SearchTerm" /></code></td>
+                                <td><HighlightText Text="@vm.Command.UiData.HelperText" Highlight="@SearchTerm" /></td>
                                 <td class="text-center">
                                     <span class="badge @vm.StatusBadgeClass">
                                         @(vm.Setting.IsInConfigEditor ? "Included" : "Not Included")
@@ -114,75 +116,109 @@
 @code {
     [Inject(Key="PlayerConfigStateServiceKey")]
     public IConfigStateService PlayerConfigStateService { get; set; } = default!;
-    
+
     private string _searchTerm = string.Empty;
-    private string searchTerm 
+    public string SearchTerm
     {
         get => _searchTerm;
-        set { _searchTerm = value; _currentPage = 1; }
+        set
+        {
+            if (_searchTerm != value)
+            {
+                _searchTerm = value;
+                ApplyFilters();
+            }
+        }
     }
 
-    private List<SettingType> selectedTypes = new();
-    private List<bool> selectedInclusions = new();
+    private string? _selectedInclusion;
+    public string? SelectedInclusion
+    {
+        get => _selectedInclusion;
+        set
+        {
+            if (_selectedInclusion != value)
+            {
+                _selectedInclusion = value;
+                ApplyFilters();
+            }
+        }
+    }
 
     private bool _requiresCheatsFilter;
-    private bool requiresCheatsFilter 
+    public bool RequiresCheatsFilter
     {
         get => _requiresCheatsFilter;
-        set { _requiresCheatsFilter = value; _currentPage = 1; }
+        set
+        {
+            if (_requiresCheatsFilter != value)
+            {
+                _requiresCheatsFilter = value;
+                ApplyFilters();
+            }
+        }
     }
-
+    
+    private Dictionary<SettingType, bool> selectedTypes = new();
+    private bool showTypeDropdown = false;
+    
     private List<SettingViewModel> allViewModels = [];
+    private List<SettingViewModel> paginatedViewModels = [];
     private SettingViewModel? selectedViewModel;
     private int _currentPage = 1;
+    private int totalPages = 1;
     private const int PageSize = 50;
-    
-    private List<SettingViewModel> filteredViewModels =>
-        allViewModels
-            .Where(vm => string.IsNullOrWhiteSpace(searchTerm) || vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => !selectedTypes.Any() || selectedTypes.Contains(vm.Command.UiData.Type))
-            .Where(vm => !selectedInclusions.Any() || selectedInclusions.Contains(vm.Setting.IsInConfigEditor))
-            .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats)
-            .ToList();
-
-    private IEnumerable<SettingViewModel> paginatedViewModels =>
-        filteredViewModels
-            .Skip((_currentPage - 1) * PageSize)
-            .Take(PageSize);
-
-    private int totalPages => (int)Math.Ceiling(filteredViewModels.Count / (double)PageSize);
 
     protected override void OnInitialized()
     {
         var allCommands = SchemaService.Sections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
         allViewModels = allCommands.Select(c => new SettingViewModel(c, PlayerConfigStateService)).ToList();
-        PlayerConfigStateService.OnStateChange += (o) => InvokeAsync(StateHasChanged);
+        
+        foreach (var type in Enum.GetValues<SettingType>())
+        {
+            selectedTypes.Add(type, false);
+        }
+
+        PlayerConfigStateService.OnStateChange += (o) => InvokeAsync(ApplyFilters);
+        ApplyFilters();
     }
 
-    private void ToggleTypeSelection(SettingType type)
+    private void ApplyFilters()
     {
-        if (selectedTypes.Contains(type))
-        {
-            selectedTypes.Remove(type);
-        }
-        else
-        {
-            selectedTypes.Add(type);
-        }
         _currentPage = 1;
+        var filtered = allViewModels
+            .Where(vm => string.IsNullOrWhiteSpace(SearchTerm) || vm.Command.Command.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+            .Where(vm => !selectedTypes.Any(st => st.Value) || selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
+            .Where(vm => string.IsNullOrEmpty(SelectedInclusion) || vm.Setting.IsInConfigEditor.ToString().Equals(SelectedInclusion, StringComparison.OrdinalIgnoreCase))
+            .Where(vm => !RequiresCheatsFilter || vm.Command.UiData.RequiresCheats)
+            .ToList();
+
+        totalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
+        Paginate(filtered);
+        StateHasChanged();
     }
 
-    private void ToggleInclusionSelection(bool isInclusion)
+    private void Paginate(List<SettingViewModel> viewModels)
     {
-        if (selectedInclusions.Contains(isInclusion))
+        paginatedViewModels = viewModels
+            .Skip((_currentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int amount)
+    {
+        var newPage = _currentPage + amount;
+        if (newPage >= 1 && newPage <= totalPages)
         {
-            selectedInclusions.Remove(isInclusion);
+            _currentPage = newPage;
+            // We no longer need to call ApplyFilters here directly, as the pagination logic handles it
+            Paginate(allViewModels.Where(vm => string.IsNullOrWhiteSpace(SearchTerm) || vm.Command.Command.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
+                .Where(vm => !selectedTypes.Any(st => st.Value) || selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
+                .Where(vm => string.IsNullOrEmpty(SelectedInclusion) || vm.Setting.IsInConfigEditor.ToString().Equals(SelectedInclusion, StringComparison.OrdinalIgnoreCase))
+                .Where(vm => !RequiresCheatsFilter || vm.Command.UiData.RequiresCheats)
+                .ToList());
         }
-        else
-        {
-            selectedInclusions.Add(isInclusion);
-        }
-        _currentPage = 1;
     }
 
     private void HighlightRow(SettingViewModel vm)
@@ -209,17 +245,8 @@
         ToastService.ShowToast($"'{vm.Command.Command}' has been added to your config.", ToastLevel.Success);
     }
 
-    private void ChangePage(int amount)
-    {
-        var newPage = _currentPage + amount;
-        if (newPage >= 1 && newPage <= totalPages)
-        {
-            _currentPage = newPage;
-        }
-    }
-
     public void Dispose()
     {
-        PlayerConfigStateService.OnStateChange -= (o) => InvokeAsync(StateHasChanged);
+        PlayerConfigStateService.OnStateChange -= (o) => InvokeAsync(ApplyFilters);
     }
 }
