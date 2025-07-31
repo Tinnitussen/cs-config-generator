@@ -7,15 +7,22 @@
         <h3>Config Preview</h3>
         <div class="config-editor-actions">
             <button class="btn btn-sm btn-outline-primary" @onclick="CopyToClipboard" title="Copy to clipboard">
-                📋
+                @if (copied)
+                {
+                    <i class="bi bi-check-lg"></i>
+                }
+                else
+                {
+                    <i class="bi bi-clipboard"></i>
+                }
             </button>
             <button class="btn btn-sm btn-outline-secondary" @onclick="ResetToDefaults" title="Reset to defaults">
-                🔄
+                <i class="bi bi-arrow-clockwise"></i>
             </button>
         </div>
     </div>
-    
-    <textarea class="form-control config-editor-textarea" 
+
+    <textarea class="form-control config-editor-textarea"
               @bind="BoundConfigText"
               @bind:event="oninput"
               placeholder="Your generated config will appear here..." />
@@ -27,6 +34,8 @@
     public IConfigStateService ConfigStateService { get; set; }
 
     private string configText = string.Empty;
+    private bool copied = false;
+
     private string BoundConfigText
     {
         get => configText;
@@ -75,7 +84,10 @@
     {
         try
         {
+            copied = true;
             await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", configText);
+            await Task.Delay(1000);
+            copied = false;
         }
         catch (Exception ex)
         {

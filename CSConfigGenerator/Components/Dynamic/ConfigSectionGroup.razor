@@ -1,13 +1,12 @@
 @using CSConfigGenerator.Models
-@using CSConfigGenerator.ViewModels
 @using CSConfigGenerator.Services
-@using CSConfigGenerator.Components.Dynamic
+@using CSConfigGenerator.ViewModels
 
-<div class="card mb-4">
-    <div class="card-header">
+<div class="card mb-3 shadow-sm rounded-3">
+    <div class="card-header py-2 bg-light rounded-top">
         <h5 class="mb-0">@Section.DisplayName</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body py-2">
         @foreach (var command in Section.Commands.Where(c => !c.UiData.HideFromDefaultView))
         {
             var viewModel = new SettingViewModel(command, ConfigStateService);
