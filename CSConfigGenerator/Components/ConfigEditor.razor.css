@@ -62,12 +62,27 @@
 
 /* WebKit scrollbar styling */
 .config-editor-textarea::-webkit-scrollbar {
-    display: none;
+    width: 8px; /* Width of the scrollbar */
+    background-color: #1e1e1e; /* Background of the scrollbar area */
+    display: none; /* Hidden by default */
 }
 
 .config-editor-textarea:hover::-webkit-scrollbar {
     display: block; /* Show on hover */
-    background-color: #313631; /* Background of the scrollbar area - changed to a visible color */
+}
+
+.config-editor-textarea::-webkit-scrollbar-track {
+    background: #2d2d2d; /* Color of the track */
+    border-radius: 10px;
+}
+
+.config-editor-textarea::-webkit-scrollbar-thumb {
+    background: #555; /* Color of the scroll thumb */
+    border-radius: 10px;
+}
+
+.config-editor-textarea::-webkit-scrollbar-thumb:hover {
+    background: #777; /* Color of the scroll thumb on hover */
 }
 
 .config-editor-textarea:focus {
