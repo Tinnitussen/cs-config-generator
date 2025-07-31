@@ -7,7 +7,7 @@
 
 .config-editor {
     position: fixed;
-    right: 0;
+    right: 5rem;
     top: 4rem;
     width: 50rem;
     max-width: 50vw;
@@ -57,6 +57,17 @@
     padding: 1rem;
     line-height: 1.5;
     white-space: pre;
+    overflow: auto; /* Enable scrolling when content overflows */
+}
+
+/* WebKit scrollbar styling */
+.config-editor-textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.config-editor-textarea:hover::-webkit-scrollbar {
+    display: block; /* Show on hover */
+    background-color: #313631; /* Background of the scrollbar area - changed to a visible color */
 }
 
 .config-editor-textarea:focus {

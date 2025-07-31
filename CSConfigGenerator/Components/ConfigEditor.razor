@@ -7,10 +7,10 @@
         <h3>Config Preview</h3>
         <div class="config-editor-actions">
             <button class="btn btn-sm btn-outline-primary" @onclick="CopyToClipboard" title="Copy to clipboard">
-                📋 Copy
+                📋
             </button>
             <button class="btn btn-sm btn-outline-secondary" @onclick="ResetToDefaults" title="Reset to defaults">
-                🔄 Reset to defaults
+                🔄
             </button>
         </div>
     </div>
@@ -20,12 +20,6 @@
               @bind="BoundConfigText"
               @bind:event="oninput"
               placeholder="Your generated config will appear here..." />
-              
-    <div class="config-editor-footer">
-        <small class="text-muted">
-            Config auto-updates when you change settings. You can also edit directly here.
-        </small>
-    </div>
 </div>
 
 @code {
