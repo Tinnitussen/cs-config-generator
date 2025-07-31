@@ -7,12 +7,18 @@
 {
     foreach (var command in Commands)
     {
-        var viewModel = new SettingViewModel(command, ConfigState);
-        <DynamicInput ViewModel="viewModel" />
+        if (!HideFromDefaultView || !command.UiData.HideFromDefaultView)
+        {
+            var viewModel = new SettingViewModel(command, ConfigState);
+            <DynamicInput ViewModel="viewModel" />
+        }
     }
 }
 
 @code {
     [Parameter]
     public IEnumerable<CommandDefinition>? Commands { get; set; }
+    
+    [Parameter]
+    public bool HideFromDefaultView { get; set; } = true;
 }
