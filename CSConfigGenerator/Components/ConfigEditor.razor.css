@@ -6,20 +6,15 @@
 }
 
 .config-editor {
-    position: fixed;
-    right: 5rem;
-    top: 4rem;
-    width: 50rem;
-    max-width: 50vw;
-    height: calc(100vh - 4rem);
     background-color: #252526;
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #3a3a3a;
     display: flex;
     flex-direction: column;
-    height: 90%;
+    height: 100%; /* Take full height of parent flex item */
     width: 100%;
     overflow: hidden;
     border: 1px solid #3a3a3a;
+    border-radius: 8px;
 }
 
 .config-editor-header {

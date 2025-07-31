@@ -8,107 +8,102 @@
 
 <PageTitle>Command Reference</PageTitle>
 
-<div class="row">
+<div class="row g-0 h-100">
     <div class="col-lg-8">
-        <h1>Command Reference</h1>
-        <p class="text-muted">Browse, search, and manage all available commands for your configuration. Use the filters to narrow down the list.</p>
+        <div class="p-3">
+            <h1>Command Reference</h1>
+            <p class="text-muted">Browse, search, and manage all available commands for your configuration. Use the filters to narrow down the list.</p>
 
-        <div class="card bg-light mb-4">
-            <div class="card-body">
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <input @bind="searchTerm" @bind:event="oninput" class="form-control" placeholder="Search by name or description..." />
-                    </div>
-                    <div class="col-md-6">
-                        <select @bind="selectedInclusion" class="form-select">
-                            <option value="">All Statuses</option>
-                            <option value="true">Included</option>
-                            <option value="false">Not Included</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row g-3 mt-2">
-                    <div class="col-md-6">
-                        <select @bind="selectedType" class="form-select">
-                            <option value="">All Types</option>
-                            @foreach (var type in Enum.GetValues<SettingType>())
-                            {
-                                <option value="@type">@type</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-md-6 d-flex align-items-end">
-                        <div class="form-check mb-1">
-                            <input @bind="requiresCheatsFilter" class="form-check-input" type="checkbox" id="cheatsFilter" />
-                            <label class="form-check-label" for="cheatsFilter">Requires Cheats?</label>
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <input @bind="searchTerm" @bind:event="oninput" class="form-control form-control-sm" placeholder="Search..." />
+                        </div>
+                        <div class="col-md-6">
+                            <select @bind="selectedInclusion" class="form-select form-select-sm">
+                                <option value="">All Statuses</option>
+                                <option value="true">Included</option>
+                                <option value="false">Not Included</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select @bind="selectedType" class="form-select form-select-sm">
+                                <option value="">All Types</option>
+                                @foreach (var type in Enum.GetValues<SettingType>())
+                                {
+                                    <option value="@type">@type</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div class="form-check">
+                                <input @bind="requiresCheatsFilter" class="form-check-input" type="checkbox" id="cheatsFilter" />
+                                <label class="form-check-label" for="cheatsFilter">Requires Cheats</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        @if (paginatedViewModels.Any())
-        {
-            <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var vm in paginatedViewModels)
-                        {
+            @if (paginatedViewModels.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped table-hover table-bordered">
+                        <thead class="table-dark">
                             <tr>
-                                <td><code>@vm.Command.Command</code></td>
-                                <td>@vm.Command.UiData.HelperText</td>
-                                <td>
-                                    <span class="badge @vm.StatusBadgeClass">
-                                        @(vm.Setting.IsInConfigEditor ? "Included" : "Not Included")
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    @if (!vm.Setting.IsInConfigEditor)
-                                    {
-                                        <button class="btn btn-sm btn-outline-primary" @onclick="() => AddCommand(vm)">
-                                            Add
-                                        </button>
-                                    }
-                                    else
-                                    {
-                                        <button class="btn btn-sm btn-outline-danger" @onclick="() => vm.Remove()">
-                                            Remove
-                                        </button>
-                                    }
-                                </td>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th class="text-center">Action</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            @foreach (var vm in paginatedViewModels)
+                            {
+                                <tr>
+                                    <td><code>@vm.Command.Command</code></td>
+                                    <td>@vm.Command.UiData.HelperText</td>
+                                    <td>
+                                        <span class="badge @vm.StatusBadgeClass">
+                                            @(vm.Setting.IsInConfigEditor ? "Included" : "Not Included")
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        @if (!vm.Setting.IsInConfigEditor)
+                                        {
+                                            <button class="btn btn-xs btn-outline-primary" @onclick="() => AddCommand(vm)">
+                                                Add
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-xs btn-outline-danger" @onclick="() => vm.Remove()">
+                                                Remove
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <button class="btn btn-primary" @onclick="() => ChangePage(-1)" disabled="@(_currentPage <= 1)">Previous</button>
-                <span>Page @_currentPage of @totalPages</span>
-                <button class="btn btn-primary" @onclick="() => ChangePage(1)" disabled="@(_currentPage >= totalPages)">Next</button>
-            </div>
-        }
-        else
-        {
-            <p>No commands found matching your criteria.</p>
-        }
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <button class="btn btn-sm btn-primary" @onclick="() => ChangePage(-1)" disabled="@(_currentPage <= 1)">Previous</button>
+                    <span>Page @_currentPage of @totalPages</span>
+                    <button class="btn btn-sm btn-primary" @onclick="() => ChangePage(1)" disabled="@(_currentPage >= totalPages)">Next</button>
+                </div>
+            }
+            else
+            {
+                <p>No commands found matching your criteria.</p>
+            }
+        </div>
     </div>
-    <div class="col-lg-4">
-        <div class="card sticky-top" style="top: 2rem;">
-            <div class="card-header">
-                <h5>Your Configuration</h5>
-            </div>
-            <div class="card-body">
-                <ConfigEditor ConfigStateService="@PlayerConfigStateService"/>
-            </div>
+    <div class="col-lg-4 h-100">
+        <div class="config-editor-wrapper">
+            <ConfigEditor ConfigStateService="@PlayerConfigStateService"/>
         </div>
     </div>
 </div>
