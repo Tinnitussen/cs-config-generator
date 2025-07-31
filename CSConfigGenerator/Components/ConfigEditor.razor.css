@@ -1,3 +1,10 @@
+.config-editor-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .config-editor {
     position: fixed;
     right: 0;
@@ -5,29 +12,31 @@
     width: 50rem;
     max-width: 50vw;
     height: calc(100vh - 4rem);
-    background-color: #f8f9fa;
+    background-color: #252526;
     border-left: 1px solid #ddd;
     display: flex;
     flex-direction: column;
+    height: 90%;
+    width: 100%;
     overflow: hidden;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    border: 1px solid #3a3a3a;
 }
 
 .config-editor-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    background-color: #e9ecef;
-    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #3a3a3a;
     flex-shrink: 0;
 }
 
 .config-editor-header h3 {
     margin: 0;
-    font-size: 1.1rem;
-    color: #495057;
+    font-size: 1rem;
+    color: #d4d4d4;
+    font-weight: 500;
 }
 
 .config-editor-actions {
@@ -36,55 +45,31 @@
 }
 
 .config-editor-textarea {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9rem;
-    color: #a2d2fb;
-    background-color: #2b2d42;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #d4d4d4;
+    background-color: #1e1e1e;
     border: none;
     border-radius: 0;
     resize: none;
     flex: 1;
     outline: none;
     padding: 1rem;
-    line-height: 1.4;
+    line-height: 1.5;
+    white-space: pre;
 }
 
 .config-editor-textarea:focus {
     box-shadow: none;
     border: none;
+    background-color: #252526;
 }
 
-.config-editor-footer {
-    padding: 0.5rem 1rem;
-    background-color: #e9ecef;
-    border-top: 1px solid #ddd;
-    flex-shrink: 0;
+.config-editor .btn {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    .config-editor {
-        width: 45rem;
-        max-width: 45vw;
-    }
-}
-
-@media (max-width: 992px) {
-    .config-editor {
-        width: 40rem;
-        max-width: 50vw;
-    }
-}
-
-@media (max-width: 768px) {
-    .config-editor {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        min-height: 400px;
-        top: 0;
-        right: 0;
-        margin-top: 2rem;
-    }
+.config-editor .btn .oi {
+    margin-right: 0.25rem;
 }
