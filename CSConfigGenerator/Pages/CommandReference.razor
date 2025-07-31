@@ -16,29 +16,36 @@
         <div class="card bg-light mb-2">
             <div class="card-body p-2">
                 <div class="row g-2 align-items-center">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <input @bind="searchTerm" @bind:event="oninput" class="form-control form-control-sm" placeholder="Search commands..." />
                     </div>
+                </div>
+                <div class="row g-2 align-items-center mt-1">
+                    <div class="col-md-6">
+                        <strong>Type:</strong>
+                        @foreach (var type in Enum.GetValues<SettingType>())
+                        {
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="type-@type" @onchange="() => ToggleTypeSelection(type)" />
+                                <label class="form-check-label" for="type-@type">@type</label>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-4">
+                        <strong>Status:</strong>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="status-included" @onchange="() => ToggleInclusionSelection(true)" />
+                            <label class="form-check-label" for="status-included">Included</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="status-not-included" @onchange="() => ToggleInclusionSelection(false)" />
+                            <label class="form-check-label" for="status-not-included">Not Included</label>
+                        </div>
+                    </div>
                     <div class="col-md-2">
-                        <select @bind="selectedInclusion" class="form-select form-select-sm">
-                            <option value="">All Statuses</option>
-                            <option value="true">Included</option>
-                            <option value="false">Not Included</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <select @bind="selectedType" class="form-select form-select-sm">
-                            <option value="">All Types</option>
-                            @foreach (var type in Enum.GetValues<SettingType>())
-                            {
-                                <option value="@type">@type</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-check">
+                        <div class="form-check form-check-inline">
                             <input @bind="requiresCheatsFilter" class="form-check-input" type="checkbox" id="cheatsFilter" />
-                            <label class="form-check-label" for="cheatsFilter">Requires Cheats</label>
+                            <label class="form-check-label" for="cheatsFilter">Cheats</label>
                         </div>
                     </div>
                 </div>
@@ -60,7 +67,7 @@
                     <tbody>
                         @foreach (var vm in paginatedViewModels)
                         {
-                            <tr>
+                            <tr @onclick="() => HighlightRow(vm)" @ondblclick="() => ToggleCommand(vm)" class="@(selectedViewModel == vm ? "table-active" : "")">
                                 <td><code>@vm.Command.Command</code></td>
                                 <td>@vm.Command.UiData.HelperText</td>
                                 <td class="text-center">
@@ -115,19 +122,8 @@
         set { _searchTerm = value; _currentPage = 1; }
     }
 
-    private string _selectedInclusion = string.Empty;
-    private string selectedInclusion 
-    {
-        get => _selectedInclusion;
-        set { _selectedInclusion = value; _currentPage = 1; }
-    }
-
-    private SettingType? _selectedType;
-    private SettingType? selectedType 
-    {
-        get => _selectedType;
-        set { _selectedType = value; _currentPage = 1; }
-    }
+    private List<SettingType> selectedTypes = new();
+    private List<bool> selectedInclusions = new();
 
     private bool _requiresCheatsFilter;
     private bool requiresCheatsFilter 
@@ -137,19 +133,23 @@
     }
 
     private List<SettingViewModel> allViewModels = [];
+    private SettingViewModel? selectedViewModel;
     private int _currentPage = 1;
     private const int PageSize = 50;
+    
     private List<SettingViewModel> filteredViewModels =>
         allViewModels
             .Where(vm => string.IsNullOrWhiteSpace(searchTerm) || vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => string.IsNullOrWhiteSpace(selectedInclusion) || vm.Setting.IsInConfigEditor.ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => selectedType == null || vm.Command.UiData.Type == selectedType)
+            .Where(vm => !selectedTypes.Any() || selectedTypes.Contains(vm.Command.UiData.Type))
+            .Where(vm => !selectedInclusions.Any() || selectedInclusions.Contains(vm.Setting.IsInConfigEditor))
             .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats)
             .ToList();
+
     private IEnumerable<SettingViewModel> paginatedViewModels =>
         filteredViewModels
             .Skip((_currentPage - 1) * PageSize)
             .Take(PageSize);
+
     private int totalPages => (int)Math.Ceiling(filteredViewModels.Count / (double)PageSize);
 
     protected override void OnInitialized()
@@ -157,6 +157,50 @@
         var allCommands = SchemaService.Sections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
         allViewModels = allCommands.Select(c => new SettingViewModel(c, PlayerConfigStateService)).ToList();
         PlayerConfigStateService.OnStateChange += (o) => InvokeAsync(StateHasChanged);
+    }
+
+    private void ToggleTypeSelection(SettingType type)
+    {
+        if (selectedTypes.Contains(type))
+        {
+            selectedTypes.Remove(type);
+        }
+        else
+        {
+            selectedTypes.Add(type);
+        }
+        _currentPage = 1;
+    }
+
+    private void ToggleInclusionSelection(bool isInclusion)
+    {
+        if (selectedInclusions.Contains(isInclusion))
+        {
+            selectedInclusions.Remove(isInclusion);
+        }
+        else
+        {
+            selectedInclusions.Add(isInclusion);
+        }
+        _currentPage = 1;
+    }
+
+    private void HighlightRow(SettingViewModel vm)
+    {
+        selectedViewModel = vm;
+    }
+
+    private void ToggleCommand(SettingViewModel vm)
+    {
+        if (vm.Setting.IsInConfigEditor)
+        {
+            vm.Remove();
+            ToastService.ShowToast($"'{vm.Command.Command}' has been removed from your config.", ToastLevel.Warning);
+        }
+        else
+        {
+            AddCommand(vm);
+        }
     }
 
     private void AddCommand(SettingViewModel vm)

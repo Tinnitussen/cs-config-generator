@@ -18,11 +18,11 @@
 
 /* Creates the very slight rounded corners on the table header */
 .command-table thead th:first-child {
-    border-top-left-radius: 0.1rem;
+    border-top-left-radius: 0.25rem;
 }
 
 .command-table thead th:last-child {
-    border-top-right-radius: 0.1rem;
+    border-top-right-radius: 0.25rem;
 }
 
 /* Compact and aligned table cells for a denser view */
@@ -51,4 +51,9 @@
     font-size: 0.65rem;
     padding: 0.3em 0.5em;
     font-weight: 500;
+}
+
+/* Highlight style for the selected row */
+.table-active {
+    background-color: rgba(0, 123, 255, 0.25) !important;
 }
