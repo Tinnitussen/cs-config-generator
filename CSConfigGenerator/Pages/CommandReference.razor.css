@@ -1,0 +1,54 @@
+/* Style for the filter card to make it clean and rounded */
+.card.bg-light {
+    border-radius: 0.25rem;
+    border: 1px solid #dee2e6;
+}
+
+.card-body.p-2 {
+    padding: 0.75rem !important;
+}
+
+/* Main styles for the command table */
+.command-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Creates the very slight rounded corners on the table header */
+.command-table thead th:first-child {
+    border-top-left-radius: 0.1rem;
+}
+
+.command-table thead th:last-child {
+    border-top-right-radius: 0.1rem;
+}
+
+/* Compact and aligned table cells for a denser view */
+.command-table td, .command-table th {
+    padding: 0.1rem 0.5rem;
+    vertical-align: middle;
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+
+/* Tighter code block styling */
+.command-table td code {
+    padding: 0.1em 0.3em;
+    font-size: 0.9em;
+}
+
+/* Action button styling */
+.command-table .btn {
+    padding: 0.05rem 0.4rem;
+    font-size: 0.7rem;
+}
+
+/* Status badge styling for uniform look */
+.command-table .badge {
+    min-width: 80px;
+    font-size: 0.65rem;
+    padding: 0.3em 0.5em;
+    font-weight: 500;
+}
