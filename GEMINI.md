@@ -48,3 +48,17 @@ This is a Blazor WebAssembly application designed to generate Counter-Strike 2 c
 4.  **Dynamic Form Generation**: The `ConfigEditor` component, along with the dynamic components, uses the loaded schema to generate the appropriate input fields (text boxes, sliders, dropdowns, etc.) for each setting.
 5.  **State Management**: The `PlayerConfigStateService` (or `ServerConfigStateService`) holds the current values of all the settings. When the user changes a value in the UI, the corresponding property in the state service is updated.
 6.  **Config Generation**: There is likely a mechanism (perhaps a "Download" or "Generate" button) that takes the current state from the `IConfigStateService`, formats it into the correct `.cfg` file syntax, and makes it available for the user to download.
+
+### Best Practices for CSS Sizing
+
+**Rule: Use Relative Units When Possible**
+
+Use **relative units** like `rem` and `em` instead of static `px` values. This ensures your website is responsive and accessible, as the layout will scale correctly with user preferences and different screen sizes.
+
+* **`rem` for Global Sizing:** Use `rem` for things like `font-size`, `padding`, and `margin` on major components. This keeps your spacing consistent across the site, as `rem` is based on the root `<html>` font size.
+
+* **`em` for Component-Specific Sizing:** Use `em` for elements that should scale relative to their parent, such as padding inside a button or the size of an icon next to text.
+
+* **`px` for Fixed Sizes:** Use `px` only when a value should never change, like for a `1px` border or a tiny icon.
+
+**Violation:** Using hard-coded `px` values for most layout and text sizing.
