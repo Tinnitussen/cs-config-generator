@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        @if (viewModels.Any())
+        @if (paginatedViewModels.Any())
         {
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
@@ -60,7 +60,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var vm in viewModels)
+                        @foreach (var vm in paginatedViewModels)
                         {
                             <tr>
                                 <td><code>@vm.Command.Command</code></td>
@@ -89,6 +89,12 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-primary" @onclick="() => ChangePage(-1)" disabled="@(_currentPage <= 1)">Previous</button>
+                <span>Page @_currentPage of @totalPages</span>
+                <button class="btn btn-primary" @onclick="() => ChangePage(1)" disabled="@(_currentPage >= totalPages)">Next</button>
+            </div>
         }
         else
         {
@@ -103,18 +109,54 @@
 @code {
     [Inject(Key="PlayerConfigStateServiceKey")]
     public IConfigStateService PlayerConfigStateService { get; set; } = default!;
-    private string searchTerm = string.Empty;
-    private string selectedInclusion = string.Empty;
-    private SettingType? selectedType = null;
-    private bool requiresCheatsFilter = false;
+    
+    private string _searchTerm = string.Empty;
+    private string searchTerm 
+    {
+        get => _searchTerm;
+        set { _searchTerm = value; _currentPage = 1; }
+    }
+
+    private string _selectedInclusion = string.Empty;
+    private string selectedInclusion 
+    {
+        get => _selectedInclusion;
+        set { _selectedInclusion = value; _currentPage = 1; }
+    }
+
+    private SettingType? _selectedType;
+    private SettingType? selectedType 
+    {
+        get => _selectedType;
+        set { _selectedType = value; _currentPage = 1; }
+    }
+
+    private bool _requiresCheatsFilter;
+    private bool requiresCheatsFilter 
+    {
+        get => _requiresCheatsFilter;
+        set { _requiresCheatsFilter = value; _currentPage = 1; }
+    }
 
     private List<SettingViewModel> allViewModels = [];
-    private IEnumerable<SettingViewModel> viewModels =>
+    
+    private int _currentPage = 1;
+    private const int PageSize = 25;
+
+    private List<SettingViewModel> filteredViewModels =>
         allViewModels
             .Where(vm => string.IsNullOrWhiteSpace(searchTerm) || vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => string.IsNullOrWhiteSpace(selectedInclusion) || vm.Setting.IsInConfigEditor.ToString().ToLower() == selectedInclusion)
+            .Where(vm => string.IsNullOrWhiteSpace(selectedInclusion) || vm.Setting.IsInConfigEditor.ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase))
             .Where(vm => selectedType == null || vm.Command.UiData.Type == selectedType)
-            .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats);
+            .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats)
+            .ToList();
+
+    private IEnumerable<SettingViewModel> paginatedViewModels =>
+        filteredViewModels
+            .Skip((_currentPage - 1) * PageSize)
+            .Take(PageSize);
+
+    private int totalPages => (int)Math.Ceiling(filteredViewModels.Count / (double)PageSize);
 
     protected override void OnInitialized()
     {
@@ -127,6 +169,15 @@
     {
         vm.Add();
         ToastService.ShowToast($"'{vm.Command.Command}' has been added to your config.", ToastLevel.Success);
+    }
+
+    private void ChangePage(int amount)
+    {
+        var newPage = _currentPage + amount;
+        if (newPage >= 1 && newPage <= totalPages)
+        {
+            _currentPage = newPage;
+        }
     }
 
     public void Dispose()

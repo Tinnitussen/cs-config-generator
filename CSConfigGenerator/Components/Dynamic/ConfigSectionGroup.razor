@@ -8,13 +8,10 @@
         <h5 class="mb-0">@Section.DisplayName</h5>
     </div>
     <div class="card-body">
-        @foreach (var command in Section.Commands.OrderBy(c => c.Command))
+        @foreach (var command in Section.Commands.Where(c => !c.UiData.HideFromDefaultView))
         {
             var viewModel = new SettingViewModel(command, ConfigStateService);
-            if (!command.UiData.HideFromDefaultView)
-            {
-                <DynamicInput ViewModel="viewModel" />
-            }
+            <DynamicInput ViewModel="viewModel" />
         }
     </div>
 </div>
