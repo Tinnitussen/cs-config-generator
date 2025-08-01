@@ -23,8 +23,8 @@
     </div>
 
     <textarea class="form-control config-editor-textarea"
-              @bind="BoundConfigText"
-              @bind:event="oninput"
+              @oninput="OnTextInput"
+              value="@configText"
               placeholder="Your generated config will appear here..." />
 </div>
 
@@ -35,23 +35,6 @@
 
     private string configText = string.Empty;
     private bool copied = false;
-
-    private string BoundConfigText
-    {
-        get => configText;
-        set
-        {
-            configText = value;
-            try
-            {
-                ConfigStateService.ParseConfigFile(configText, this);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error parsing config: {ex.Message}");
-            }
-        }
-    }
 
     protected override void OnInitialized()
     {
@@ -73,6 +56,23 @@
     private void RefreshConfigText()
     {
         configText = ConfigStateService.GenerateConfigFile();
+    }
+
+    private void OnTextInput(ChangeEventArgs e)
+    {
+        string? newValue = e.Value?.ToString();
+        if (newValue != null && newValue != configText)
+        {
+            configText = newValue;
+            try
+            {
+                ConfigStateService.ParseConfigFile(configText, this);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error parsing config: {ex.Message}");
+            }
+        }
     }
 
     private void ResetToDefaults()

@@ -208,7 +208,11 @@
 
     private void HandleStateChanged(object? originator)
     {
-        InvokeAsync(ApplyFilters);
+        InvokeAsync(() => 
+        {
+            ApplyFilters();
+            StateHasChanged();
+        });
     }
     
     private void SwitchConfigType(ConfigType configType)
