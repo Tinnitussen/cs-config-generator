@@ -13,9 +13,9 @@
             <h1>Player Settings</h1>
             <p class="text-muted">Configure your player settings. Changes are reflected in real-time in the config editor.</p>
 
-            @if (SchemaService.Sections.Any())
+            @if (SchemaService.PlayerSections.Any())
             {
-                @foreach (var section in SchemaService.Sections)
+                @foreach (var section in SchemaService.PlayerSections)
                 {
                     <ConfigSectionGroup Section="section" ConfigStateService="@PlayerConfigStateService" />
                 }

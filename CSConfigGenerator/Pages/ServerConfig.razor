@@ -1,4 +1,67 @@
 @page "/serverconfig"
 @using CSConfigGenerator.Components
+@using CSConfigGenerator.Components.Dynamic
+@using CSConfigGenerator.Interfaces
+@implements IDisposable
 
-<h1>Server Config</h1>
+<PageTitle>Server Settings</PageTitle>
+
+<div class="row g-1 h-100">
+    <div class="col-lg-8">
+        <div class="p-3">
+            <h1>Server Settings</h1>
+            <p class="text-muted">Configure your server settings. Changes are reflected in real-time in the config editor.</p>
+
+            @if (SchemaService.ServerSections.Any())
+            {
+                @foreach (var section in SchemaService.ServerSections)
+                {
+                    <ConfigSectionGroup Section="section" ConfigStateService="@ServerConfigStateService" />
+                }
+                
+                <div class="mb-3">
+                    <button class="btn btn-secondary" @onclick="ResetToDefaults">
+                        Reset to Defaults
+                    </button>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    <h4>No Commands Loaded</h4>
+                    <p>No command definitions were found. Make sure your schema files are properly configured.</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-lg-4 h-100">
+        <ConfigEditor ConfigStateService="@ServerConfigStateService"/>
+    </div>
+</div>
+
+@code {
+    [Inject(Key="ServerConfigStateServiceKey")]
+    public IConfigStateService ServerConfigStateService { get; set; } = default!;
+    [Inject]
+    public ISchemaService SchemaService { get; set; } = default!;
+    
+    protected override void OnInitialized()
+    {
+        ServerConfigStateService.OnStateChange += HandleStateHasChanged;
+    }
+
+    private void HandleStateHasChanged(object? originator)
+    {
+        StateHasChanged();
+    }
+    
+    private void ResetToDefaults()
+    {
+        ServerConfigStateService.ResetToDefaults();
+    }
+    
+    public void Dispose()
+    {
+        ServerConfigStateService.OnStateChange -= HandleStateHasChanged;
+    }
+}

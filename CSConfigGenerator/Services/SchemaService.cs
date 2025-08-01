@@ -7,9 +7,12 @@ namespace CSConfigGenerator.Services;
 public class SchemaService(HttpClient httpClient) : ISchemaService
 {
     private readonly HttpClient _httpClient = httpClient;
-    private readonly List<ConfigSection> _sections = [];
+    private readonly List<ConfigSection> _playerSections = [];
+    private readonly List<ConfigSection> _serverSections = [];
 
-    public IReadOnlyList<ConfigSection> Sections => _sections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> Sections => _playerSections.Concat(_serverSections).ToList().AsReadOnly();
+    public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
 
     public async Task InitializeAsync()
     {
@@ -30,7 +33,14 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
                     Commands = (commands ?? []).AsReadOnly()
                 };
 
-                _sections.Add(section);
+                if (filePath.Contains("/player/"))
+                {
+                    _playerSections.Add(section);
+                }
+                else if (filePath.Contains("/server/"))
+                {
+                    _serverSections.Add(section);
+                }
             }
         }
         catch (Exception ex)
@@ -41,9 +51,23 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
 
     public CommandDefinition? GetCommand(string name)
     {
-        return _sections
+        return Sections
             .SelectMany(s => s.Commands)
-            .FirstOrDefault(c => c.Command == name); // Changed c.Name to c.Command
+            .FirstOrDefault(c => c.Command == name);
+    }
+    
+    public CommandDefinition? GetPlayerCommand(string name)
+    {
+        return PlayerSections
+            .SelectMany(s => s.Commands)
+            .FirstOrDefault(c => c.Command == name);
+    }
+    
+    public CommandDefinition? GetServerCommand(string name)
+    {
+        return ServerSections
+            .SelectMany(s => s.Commands)
+            .FirstOrDefault(c => c.Command == name);
     }
 
     private static string ExtractSectionName(string filePath)
