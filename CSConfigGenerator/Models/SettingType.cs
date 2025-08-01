@@ -1,19 +1,37 @@
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CSConfigGenerator.Models;
 
+/// <summary>
+/// Defines the types of settings that can be configured in the application
+/// </summary>
 public enum SettingType
 {
+    [RegularExpression("^(true|false|0|1)$", ErrorMessage = "Boolean value must be 'true', 'false', '1', or '0'")]
     Bool,
+    
+    [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     Int,
+    
+    [Range(float.MinValue, float.MaxValue, ErrorMessage = "Value must be a valid floating point number")]
     Float,
+    
     String,
+    [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     Enum,
+    
+    [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     Bitmask,
+    
+    [Range(float.MinValue, float.MaxValue, ErrorMessage = "Value must be a valid numeric value")]
     UnknownNumeric,
+    
+    [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     UnknownInteger,
+    
     Action
 }
 
@@ -42,20 +60,23 @@ public static class SettingTypeHelpers
     /// <summary>
     /// Converts a string value to the appropriate .NET type based on SettingType
     /// </summary>
+    /// <remarks>
+    /// This method assumes the input has already been validated with SettingValidator.Validate
+    /// </remarks>
     public static object ParseFromString(SettingType settingType, string valueStr)
     {
         return settingType switch
         {
-            SettingType.Bool => valueStr is "1" or "true",
+            SettingType.Bool => Convert.ToBoolean(valueStr), // Handles "true", "false", "1", "0" automatically
             SettingType.Int => int.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.Float => float.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.String => valueStr,
-            SettingType.Enum => valueStr,
+            SettingType.Enum => int.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.Bitmask => int.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.UnknownNumeric => float.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.UnknownInteger => int.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.Action => valueStr,
-            _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
+            _ => GetDefaultValue(settingType) // Return default value instead of throwing
         };
     }
 

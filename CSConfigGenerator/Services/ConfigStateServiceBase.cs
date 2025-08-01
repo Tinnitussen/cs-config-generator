@@ -89,24 +89,25 @@ public abstract class ConfigStateServiceBase : IConfigStateService
             var commandName = trimmedLine[..firstSpaceIndex].Trim();
             var valueStr = trimmedLine[(firstSpaceIndex + 1)..].Trim().Trim('"');
 
+            // Step 1: Check if this is a valid command
             var command = GetCommandDefinition(commandName);
             if (command == null) continue;
             
             commandsInFile.Add(commandName);
 
-            try
+            // Step 2: Validate the value against the command's type
+            var (isValid, _) = SettingValidator.Validate(command.UiData.Type, valueStr);
+            if (!isValid) continue; // Skip invalid values
+            
+            // Step 3: Parse the value (now we know it's valid)
+            var parsedValue = SettingTypeHelpers.ParseFromString(command.UiData.Type, valueStr);
+            
+            // Step 4: Update the setting
+            if (_settings.TryGetValue(commandName, out var setting))
             {
-                var parsedValue = SettingTypeHelpers.ParseFromString(command.UiData.Type, valueStr);
-                if (_settings.TryGetValue(commandName, out var setting))
-                {
-                    setting.Value = parsedValue;
-                    // If a command is present in the file, it is considered included.
-                    setting.IsInConfigEditor = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error parsing value '{valueStr}' for command '{commandName}': {ex.Message}");
+                setting.Value = parsedValue;
+                // If a command is present in the file, it is considered included.
+                setting.IsInConfigEditor = true;
             }
         }
         
@@ -126,7 +127,21 @@ public abstract class ConfigStateServiceBase : IConfigStateService
     {
         if (_settings.TryGetValue(commandName, out var setting))
         {
-            if (!setting.Value.Equals(value))
+            // Get the command definition to validate against
+            var commandDef = GetCommandDefinition(commandName);
+            if (commandDef != null)
+            {
+                // Convert the value to the appropriate type
+                var typedValue = SettingTypeHelpers.ConvertToType(commandDef.UiData.Type, value);
+                
+                // Only update if the value has changed
+                if (!setting.Value.Equals(typedValue))
+                {
+                    setting.Value = typedValue;
+                    NotifyStateChanged(originator);
+                }
+            }
+            else if (!setting.Value.Equals(value)) // Fallback if no command definition
             {
                 setting.Value = value;
                 NotifyStateChanged(originator);
