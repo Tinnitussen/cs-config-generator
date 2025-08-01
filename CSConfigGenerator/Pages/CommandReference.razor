@@ -1,7 +1,7 @@
 @page "/reference"
 @using CSConfigGenerator.Models
-@using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.Services
+@using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.ViewModels
 @using CSConfigGenerator.Components
 @using System.Text.RegularExpressions
@@ -19,47 +19,64 @@
         <div class="card bg-light mb-2">
             <div class="card-body p-2">
                 <div class="row g-2 align-items-center">
-                    <div class="col-md-5">
-                        <div class="autocomplete-wrapper">
-                            <input class="autocomplete-ghost" type="text" value="@GhostText" readonly tabindex="-1" />
-                            <input 
-                                @oninput="OnSearchInput" 
-                                @onkeydown="HandleKeyDown"
-                                @onkeydown:preventDefault="tabCompletionPreventDefault"
-                                value="@searchTerm"
-                                class="autocomplete-input" 
-                                placeholder="Search commands..." 
-                                autocomplete="off" />
+                    <div class="col-md-4">
+                        <div class="search-input-wrapper">
+                            <div class="autocomplete-wrapper">
+                                <input class="autocomplete-ghost" type="text" value="@GhostText" readonly tabindex="-1" />
+                                <input 
+                                    @oninput="OnSearchInput" 
+                                    @onkeydown="HandleKeyDown"
+                                    @onkeydown:preventDefault="tabCompletionPreventDefault"
+                                    value="@searchTerm"
+                                    class="autocomplete-input form-control form-control-sm" 
+                                    placeholder="Search commands..." 
+                                    autocomplete="off" />
+                            </div>
+                            @if (!string.IsNullOrEmpty(searchTerm))
+                            {
+                                <button class="search-clear-btn btn btn-sm" @onclick="ClearSearch" type="button">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            }
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="dropdown">
-                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100" type="button" @onclick="() => showTypeDropdown = !showTypeDropdown">
-                                Select Types
+                    <div class="col-md-2">
+                        <div class="dropdown filter-dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 filter-button" type="button" @onclick="() => showTypeDropdown = !showTypeDropdown">
+                                @GetTypeFilterText()
                             </button>
                             <div class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
                                 @foreach (var type in Enum.GetValues<SettingType>())
                                 {
-                                    <div class="px-2">
-                                        <input type="checkbox" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
-                                        <label class="form-check-label ms-1" for="type-@type">@type</label>
+                                    <div class="dropdown-item px-2">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
+                                            <label class="form-check-label" for="type-@type">@type</label>
+                                        </div>
                                     </div>
                                 }
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <select @bind="selectedInclusion" @bind:after="ApplyFilters" class="form-select form-select-sm">
+                        <select @bind="selectedInclusion" @bind:after="ApplyFilters" class="form-select form-select-sm filter-select">
                             <option value="">All Statuses</option>
                             <option value="true">Included</option>
                             <option value="false">Not Included</option>
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <div class="form-check form-check-inline">
-                            <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input" type="checkbox" id="cheatsFilter" />
-                            <label class="form-check-label" for="cheatsFilter">Cheats</label>
+                        <div class="filter-checkbox-wrapper">
+                            <div class="form-check d-flex align-items-center justify-content-center">
+                                <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input me-2" type="checkbox" id="cheatsFilter" />
+                                <label class="form-check-label" for="cheatsFilter">Cheats Only</label>
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-sm btn-outline-danger w-100 filter-clear-btn" @onclick="ClearFilters">
+                            Clear Filters
+                        </button>
                     </div>
                 </div>
             </div>
@@ -162,9 +179,21 @@
         ApplyFilters();
     }
 
+    public void Dispose()
+    {
+        PlayerConfigStateService.OnStateChange -= (o) => InvokeAsync(ApplyFilters);
+    }
+
     private void OnSearchInput(ChangeEventArgs e)
     {
         searchTerm = e.Value?.ToString() ?? string.Empty;
+        ApplyFilters();
+    }
+
+    private void ClearSearch()
+    {
+        searchTerm = string.Empty;
+        currentSuggestion = null;
         ApplyFilters();
     }
 
@@ -246,14 +275,37 @@
         }
     }
 
+    private void ClearFilters()
+    {
+        searchTerm = string.Empty;
+        selectedInclusion = null;
+        requiresCheatsFilter = false;
+        
+        // Clear all type selections
+        foreach (var key in selectedTypes.Keys.ToList())
+        {
+            selectedTypes[key] = false;
+        }
+        
+        showTypeDropdown = false;
+        currentSuggestion = null;
+        ApplyFilters();
+    }
+
+    private string GetTypeFilterText()
+    {
+        var selectedCount = selectedTypes.Count(st => st.Value);
+        return selectedCount switch
+        {
+            0 => "All Types",
+            1 => selectedTypes.First(st => st.Value).Key.ToString(),
+            _ => $"{selectedCount} Types"
+        };
+    }
+
     private void AddCommand(SettingViewModel vm)
     {
         vm.Add();
         ToastService.ShowToast($"'{vm.Command.Command}' has been added to your config.", ToastLevel.Success);
-    }
-
-    public void Dispose()
-    {
-        PlayerConfigStateService.OnStateChange -= (o) => InvokeAsync(ApplyFilters);
     }
 }
