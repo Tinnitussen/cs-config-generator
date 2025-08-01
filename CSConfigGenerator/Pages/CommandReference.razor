@@ -210,7 +210,7 @@
     {
         InvokeAsync(() => 
         {
-            ApplyFilters();
+            ApplyFiltersWithoutPageReset();
             StateHasChanged();
         });
     }
@@ -275,7 +275,26 @@
     private void ApplyFilters()
     {
         currentPage = 1;
-
+        ApplyFiltersInternal();
+    }
+    
+    private void ApplyFiltersWithoutPageReset()
+    {
+        // Preserve the current page, but make sure it's still valid after filtering
+        int originalPage = currentPage;
+        ApplyFiltersInternal();
+        
+        // Check if the original page is still valid after filtering
+        if (originalPage <= totalPages && originalPage > 0)
+        {
+            currentPage = originalPage;
+            var filtered = GetFilteredViewModels();
+            UpdatePagination(filtered);
+        }
+    }
+    
+    private void ApplyFiltersInternal()
+    {
         // Update autocomplete suggestion
         if (!string.IsNullOrWhiteSpace(searchTerm))
         {
