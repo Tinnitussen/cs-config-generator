@@ -1,6 +1,6 @@
 using CSConfigGenerator.Models;
 
-namespace CSConfigGenerator.Services;
+namespace CSConfigGenerator.Interfaces;
 
 public interface IConfigStateService
 {

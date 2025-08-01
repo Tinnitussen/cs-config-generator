@@ -1,4 +1,4 @@
-namespace CSConfigGenerator.Models;
+namespace CSConfigGenerator.Interfaces;
 public interface ISettingOperations
 {
     void UpdateValue(object value);

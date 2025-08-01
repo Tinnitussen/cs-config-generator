@@ -1,5 +1,5 @@
 using CSConfigGenerator.Models;
-using CSConfigGenerator.Services;
+using CSConfigGenerator.Interfaces;
 
 namespace CSConfigGenerator.ViewModels;
 
