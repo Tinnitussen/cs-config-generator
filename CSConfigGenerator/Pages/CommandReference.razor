@@ -25,7 +25,7 @@
                                 @oninput="OnSearchInput" 
                                 @onkeydown="HandleKeyDown"
                                 @onkeydown:preventDefault="tabCompletionPreventDefault"
-                                value="@SearchTerm"
+                                value="@searchTerm"
                                 class="autocomplete-input" 
                                 placeholder="Search commands..." 
                                 autocomplete="off" />
@@ -40,7 +40,7 @@
                                 @foreach (var type in Enum.GetValues<SettingType>())
                                 {
                                     <div class="px-2">
-                                        <input type="checkbox" id="type-@type" @bind="selectedTypes[type]" />
+                                        <input type="checkbox" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
                                         <label class="form-check-label ms-1" for="type-@type">@type</label>
                                     </div>
                                 }
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <select @bind="SelectedInclusion" class="form-select form-select-sm">
+                        <select @bind="selectedInclusion" @bind:after="ApplyFilters" class="form-select form-select-sm">
                             <option value="">All Statuses</option>
                             <option value="true">Included</option>
                             <option value="false">Not Included</option>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="form-check form-check-inline">
-                            <input @bind="RequiresCheatsFilter" class="form-check-input" type="checkbox" id="cheatsFilter" />
+                            <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input" type="checkbox" id="cheatsFilter" />
                             <label class="form-check-label" for="cheatsFilter">Cheats</label>
                         </div>
                     </div>
@@ -79,9 +79,9 @@
                     <tbody>
                         @foreach (var vm in paginatedViewModels)
                         {
-                            <tr @onclick="() => HighlightRow(vm)" @ondblclick="() => ToggleCommand(vm)" class="@(selectedViewModel == vm ? "table-active" : "")">
-                                <td><code><HighlightText Text="@vm.Command.Command" Highlight="@SearchTerm" /></code></td>
-                                <td><HighlightText Text="@vm.Command.UiData.HelperText" Highlight="@SearchTerm" /></td>
+                            <tr @onclick="() => selectedViewModel = vm" @ondblclick="() => ToggleCommand(vm)" class="@(selectedViewModel == vm ? "table-active" : "")">
+                                <td><code><HighlightText Text="@vm.Command.Command" Highlight="@searchTerm" /></code></td>
+                                <td><HighlightText Text="@vm.Command.UiData.HelperText" Highlight="@searchTerm" /></td>
                                 <td class="text-center">
                                     <span class="badge @vm.StatusBadgeClass">
                                         @(vm.Setting.IsInConfigEditor ? "Included" : "Not Included")
@@ -108,9 +108,9 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center mt-3">
-                <button class="btn btn-sm btn-outline-secondary" @onclick="() => ChangePage(-1)" disabled="@(_currentPage <= 1)">Previous</button>
-                <span>Page @_currentPage of @totalPages</span>
-                <button class="btn btn-sm btn-outline-secondary" @onclick="() => ChangePage(1)" disabled="@(_currentPage >= totalPages)">Next</button>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="() => ChangePage(-1)" disabled="@(currentPage <= 1)">Previous</button>
+                <span>Page @currentPage of @totalPages</span>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="() => ChangePage(1)" disabled="@(currentPage >= totalPages)">Next</button>
             </div>
         }
         else
@@ -127,63 +127,25 @@
     [Inject(Key="PlayerConfigStateServiceKey")]
     public IConfigStateService PlayerConfigStateService { get; set; } = default!;
 
-    private string _searchTerm = string.Empty;
-    public string SearchTerm
-    {
-        get => _searchTerm;
-        set
-        {
-            if (_searchTerm != value)
-            {
-                _searchTerm = value;
-                ApplyFilters();
-            }
-        }
-    }
-
-    private string? _selectedInclusion;
-    public string? SelectedInclusion
-    {
-        get => _selectedInclusion;
-        set
-        {
-            if (_selectedInclusion != value)
-            {
-                _selectedInclusion = value;
-                ApplyFilters();
-            }
-        }
-    }
-
-    private bool _requiresCheatsFilter;
-    public bool RequiresCheatsFilter
-    {
-        get => _requiresCheatsFilter;
-        set
-        {
-            if (_requiresCheatsFilter != value)
-            {
-                _requiresCheatsFilter = value;
-                ApplyFilters();
-            }
-        }
-    }
-    
+    // Private fields - no need for complex properties
+    private string searchTerm = string.Empty;
+    private string? selectedInclusion;
+    private bool requiresCheatsFilter;
     private Dictionary<SettingType, bool> selectedTypes = new();
     private bool showTypeDropdown = false;
     
     private List<SettingViewModel> allViewModels = [];
     private List<SettingViewModel> paginatedViewModels = [];
     private SettingViewModel? selectedViewModel;
-    private int _currentPage = 1;
+    private int currentPage = 1;
     private int totalPages = 1;
     private const int PageSize = 50;
 
     private string? currentSuggestion;
     private bool tabCompletionPreventDefault = false;
     private string? GhostText => 
-        (!string.IsNullOrEmpty(currentSuggestion) && !string.IsNullOrEmpty(SearchTerm) && currentSuggestion.StartsWith(SearchTerm, StringComparison.OrdinalIgnoreCase))
-        ? SearchTerm + currentSuggestion.Substring(SearchTerm.Length)
+        (!string.IsNullOrEmpty(currentSuggestion) && !string.IsNullOrEmpty(searchTerm) && currentSuggestion.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase))
+        ? searchTerm + currentSuggestion.Substring(searchTerm.Length)
         : null;
 
     protected override void OnInitialized()
@@ -201,7 +163,8 @@
 
     private void OnSearchInput(ChangeEventArgs e)
     {
-        SearchTerm = e.Value?.ToString() ?? string.Empty;
+        searchTerm = e.Value?.ToString() ?? string.Empty;
+        ApplyFilters();
     }
 
     private void HandleKeyDown(KeyboardEventArgs e)
@@ -209,7 +172,7 @@
         tabCompletionPreventDefault = false;
         if (e.Key == "Tab" && !string.IsNullOrEmpty(currentSuggestion))
         {
-            SearchTerm = currentSuggestion;
+            searchTerm = currentSuggestion;
             currentSuggestion = null; 
             tabCompletionPreventDefault = true;
         }
@@ -217,56 +180,56 @@
 
     private void ApplyFilters()
     {
-        _currentPage = 1;
+        currentPage = 1;
 
-        // --- Autocomplete Logic ---
-        if (!string.IsNullOrWhiteSpace(SearchTerm))
+        // Update autocomplete suggestion
+        if (!string.IsNullOrWhiteSpace(searchTerm))
         {
             currentSuggestion = allViewModels
-                .FirstOrDefault(vm => vm.Command.Command.StartsWith(SearchTerm, StringComparison.OrdinalIgnoreCase))
+                .FirstOrDefault(vm => vm.Command.Command.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase))
                 ?.Command.Command;
         }
         else
         {
             currentSuggestion = null;
         }
-        var filtered = allViewModels
-            .Where(vm => string.IsNullOrWhiteSpace(SearchTerm) || vm.Command.Command.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => !selectedTypes.Any(st => st.Value) || selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
-            .Where(vm => string.IsNullOrEmpty(SelectedInclusion) || vm.Setting.IsInConfigEditor.ToString().Equals(SelectedInclusion, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => !RequiresCheatsFilter || vm.Command.UiData.RequiresCheats)
-            .ToList();
 
+        var filtered = GetFilteredViewModels();
         totalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
-        Paginate(filtered);
+        UpdatePagination(filtered);
     }
 
-    private void Paginate(List<SettingViewModel> viewModels)
+    private List<SettingViewModel> GetFilteredViewModels()
+    {
+        return allViewModels
+            .Where(vm => string.IsNullOrWhiteSpace(searchTerm) || 
+                        vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || 
+                        vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .Where(vm => !selectedTypes.Any(st => st.Value) || 
+                        selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
+            .Where(vm => string.IsNullOrEmpty(selectedInclusion) || 
+                        vm.Setting.IsInConfigEditor.ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase))
+            .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats)
+            .ToList();
+    }
+
+    private void UpdatePagination(List<SettingViewModel> viewModels)
     {
         paginatedViewModels = viewModels
-            .Skip((_currentPage - 1) * PageSize)
+            .Skip((currentPage - 1) * PageSize)
             .Take(PageSize)
             .ToList();
     }
 
     private void ChangePage(int amount)
     {
-        var newPage = _currentPage + amount;
+        var newPage = currentPage + amount;
         if (newPage >= 1 && newPage <= totalPages)
         {
-            _currentPage = newPage;
-            // We no longer need to call ApplyFilters here directly, as the pagination logic handles it
-            Paginate(allViewModels.Where(vm => string.IsNullOrWhiteSpace(SearchTerm) || vm.Command.Command.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
-                .Where(vm => !selectedTypes.Any(st => st.Value) || selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
-                .Where(vm => string.IsNullOrEmpty(SelectedInclusion) || vm.Setting.IsInConfigEditor.ToString().Equals(SelectedInclusion, StringComparison.OrdinalIgnoreCase))
-                .Where(vm => !RequiresCheatsFilter || vm.Command.UiData.RequiresCheats)
-                .ToList());
+            currentPage = newPage;
+            var filtered = GetFilteredViewModels();
+            UpdatePagination(filtered);
         }
-    }
-
-    private void HighlightRow(SettingViewModel vm)
-    {
-        selectedViewModel = vm;
     }
 
     private void ToggleCommand(SettingViewModel vm)
@@ -292,5 +255,4 @@
     {
         PlayerConfigStateService.OnStateChange -= (o) => InvokeAsync(ApplyFilters);
     }
-}
 }
