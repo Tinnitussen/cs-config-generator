@@ -19,7 +19,17 @@
             <div class="card-body p-2">
                 <div class="row g-2 align-items-center">
                     <div class="col-md-5">
-                        <input @bind="SearchTerm" @bind:event="oninput" class="form-control form-control-sm" placeholder="Search commands..." />
+                        <div class="autocomplete-wrapper">
+                            <input class="autocomplete-ghost" type="text" value="@GhostText" readonly tabindex="-1" />
+                            <input 
+                                @oninput="OnSearchInput" 
+                                @onkeydown="HandleKeyDown"
+                                @onkeydown:preventDefault="tabCompletionPreventDefault"
+                                value="@SearchTerm"
+                                class="autocomplete-input" 
+                                placeholder="Search commands..." 
+                                autocomplete="off" />
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <div class="dropdown">
@@ -167,15 +177,21 @@
     private SettingViewModel? selectedViewModel;
     private int _currentPage = 1;
     private int totalPages = 1;
-    private const int PageSize = 40;
+    private const int PageSize = 50;
+
+    private string? currentSuggestion;
+    private bool tabCompletionPreventDefault = false;
+    private string? GhostText => 
+        (!string.IsNullOrEmpty(currentSuggestion) && !string.IsNullOrEmpty(SearchTerm) && currentSuggestion.StartsWith(SearchTerm, StringComparison.OrdinalIgnoreCase))
+        ? SearchTerm + currentSuggestion.Substring(SearchTerm.Length)
+        : null;
 
     protected override void OnInitialized()
     {
         var allCommands = SchemaService.Sections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
         allViewModels = allCommands.Select(c => new SettingViewModel(c, PlayerConfigStateService)).ToList();
         
-        foreach (var type in Enum.GetValues<SettingType>())
-        {
+        foreach (var type in Enum.GetValues<SettingType>()) {
             selectedTypes.Add(type, false);
         }
 
@@ -183,9 +199,37 @@
         ApplyFilters();
     }
 
+    private void OnSearchInput(ChangeEventArgs e)
+    {
+        SearchTerm = e.Value?.ToString() ?? string.Empty;
+    }
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        tabCompletionPreventDefault = false;
+        if (e.Key == "Tab" && !string.IsNullOrEmpty(currentSuggestion))
+        {
+            SearchTerm = currentSuggestion;
+            currentSuggestion = null; 
+            tabCompletionPreventDefault = true;
+        }
+    }
+
     private void ApplyFilters()
     {
         _currentPage = 1;
+
+        // --- Autocomplete Logic ---
+        if (!string.IsNullOrWhiteSpace(SearchTerm))
+        {
+            currentSuggestion = allViewModels
+                .FirstOrDefault(vm => vm.Command.Command.StartsWith(SearchTerm, StringComparison.OrdinalIgnoreCase))
+                ?.Command.Command;
+        }
+        else
+        {
+            currentSuggestion = null;
+        }
         var filtered = allViewModels
             .Where(vm => string.IsNullOrWhiteSpace(SearchTerm) || vm.Command.Command.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase) || vm.Command.UiData.HelperText.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
             .Where(vm => !selectedTypes.Any(st => st.Value) || selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
@@ -195,7 +239,6 @@
 
         totalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
         Paginate(filtered);
-        StateHasChanged();
     }
 
     private void Paginate(List<SettingViewModel> viewModels)
@@ -249,4 +292,5 @@
     {
         PlayerConfigStateService.OnStateChange -= (o) => InvokeAsync(ApplyFilters);
     }
+}
 }
