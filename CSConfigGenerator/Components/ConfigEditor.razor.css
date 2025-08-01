@@ -1,13 +1,12 @@
 .config-editor {
     background-color: #252526;
-    border-left: 1px solid #dee2e6;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     border: 1px solid #3a3a3a;
     border-radius: 0.5rem;
     height: 100%;
-    padding: 0.5rem;
+    padding: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -15,19 +14,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
+    background-color: #2d2d2d;
+    border-bottom: 2px solid #3a3a3a;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .config-editor-header h3 {
     margin: 0;
     font-size: 1.25rem;
-    color: #d4d4d4;
+    color: #e2e2e2;
     font-weight: 500;
 }
 
 .config-editor-actions {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.5rem;
+}
+
+.config-editor-actions .btn {
+    background-color: #333333;
+    color: #d4d4d4;
+    border-color: #444444;
+}
+
+.config-editor-actions .btn:hover {
+    background-color: #444444;
+    color: #ffffff;
 }
 
 .config-editor-textarea {
@@ -36,7 +49,7 @@
     color: #d4d4d4;
     background-color: #1e1e1e;
     border: none;
-    border-radius: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
     outline: none;
     padding: 1rem;
     line-height: 1.4;
@@ -44,6 +57,7 @@
     overflow: auto; /* Enable scrolling when content overflows */
     resize: none; /* Disable manual resizing */
     flex-grow: 1;
+    margin: 0;
 }
 
 
