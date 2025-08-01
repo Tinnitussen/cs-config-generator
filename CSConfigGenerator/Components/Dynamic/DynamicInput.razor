@@ -38,7 +38,7 @@
                 case SettingType.UnknownNumeric: // If you decide to handle these with text input for flexibility
                 case SettingType.UnknownInteger: // If you decide to handle these with text input for flexibility
                 default:
-                    <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" />
+                    <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" spellcheck="false" />
                     break;
             }
 
