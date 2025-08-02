@@ -12,8 +12,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<ISchemaService, SchemaService>();
 builder.Services.AddScoped<IPresetService, PresetService>();
-builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
-builder.Services.AddScoped<IUserConfigService, UserConfigService>();
 builder.Services.AddScoped<ToastService>();
 builder.Services.AddKeyedScoped<IConfigStateService, PlayerConfigStateService>("PlayerConfigStateServiceKey");
 builder.Services.AddKeyedScoped<IConfigStateService, ServerConfigStateService>("ServerConfigStateServiceKey");

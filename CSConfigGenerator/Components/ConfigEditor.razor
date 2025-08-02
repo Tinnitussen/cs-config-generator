@@ -1,8 +1,6 @@
 @using CSConfigGenerator.Interfaces
-@using Microsoft.AspNetCore.Components.Forms
 @inject IJSRuntime JSRuntime
 @inject IPresetService PresetService
-@inject IUserConfigService UserConfigService
 @implements IDisposable
 
 <div class="config-editor">
@@ -19,16 +17,6 @@
                     }
                 </select>
             }
-            <select class="form-select form-select-sm" @onchange="OnUserConfigSelected">
-                <option value="">-- My Configs --</option>
-                @foreach (var config in _userConfigs)
-                {
-                    <option value="@config">@config</option>
-                }
-            </select>
-            <button class="btn btn-sm btn-outline-success" @onclick="SaveConfig" title="Save current config">
-                <i class="bi bi-save"></i>
-            </button>
             <button class="btn btn-sm btn-outline-primary" @onclick="CopyToClipboard" title="Copy to clipboard">
                 @if (copied)
                 {
@@ -38,13 +26,6 @@
                 {
                     <i class="bi bi-clipboard"></i>
                 }
-            </button>
-            <InputFile OnChange="OnUpload" class="d-none" @ref="_inputFile" accept=".cfg" />
-            <button class="btn btn-sm btn-outline-info" @onclick="TriggerUpload" title="Upload a config file">
-                <i class="bi bi-upload"></i>
-            </button>
-            <button class="btn btn-sm btn-outline-info" @onclick="DownloadConfig" title="Download current config">
-                <i class="bi bi-download"></i>
             </button>
             <button class="btn btn-sm btn-outline-secondary" @onclick="ResetToDefaults" title="Reset to defaults">
                 <i class="bi bi-arrow-clockwise"></i>
@@ -70,8 +51,6 @@
     private string configText = string.Empty;
     private bool copied = false;
     private List<string> _presets = new();
-    private List<string> _userConfigs = new();
-    private InputFile? _inputFile;
 
     protected override async Task OnInitializedAsync()
     {
@@ -84,7 +63,6 @@
         if (PresetType != null)
         {
             _presets = await PresetService.GetPresetNamesAsync(PresetType);
-            await LoadUserConfigs();
         }
     }
 
@@ -97,74 +75,10 @@
             if (!string.IsNullOrEmpty(presetContent))
             {
                 ConfigStateService.ParseConfigFile(presetContent, this);
+                // Explicitly refresh the editor text content after parsing
                 RefreshConfigText();
                 StateHasChanged();
             }
-        }
-    }
-
-    private async Task OnUserConfigSelected(ChangeEventArgs e)
-    {
-        var configName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
-        {
-            var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
-            if (!string.IsNullOrEmpty(configContent))
-            {
-                ConfigStateService.ParseConfigFile(configContent, this);
-                RefreshConfigText();
-                StateHasChanged();
-            }
-        }
-    }
-
-    private async Task LoadUserConfigs()
-    {
-        if (PresetType != null)
-        {
-            _userConfigs = await UserConfigService.GetConfigNamesAsync(PresetType);
-            StateHasChanged();
-        }
-    }
-
-    private async Task SaveConfig()
-    {
-        var configName = await JSRuntime.InvokeAsync<string>("prompt", "Enter a name for your config:");
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
-        {
-            await UserConfigService.SaveConfigAsync(PresetType, configName, configText);
-            await LoadUserConfigs();
-        }
-    }
-
-    private async Task OnUpload(InputFileChangeEventArgs e)
-    {
-        var file = e.File;
-        if (file != null)
-        {
-            using var stream = file.OpenReadStream(file.Size);
-            using var reader = new StreamReader(stream);
-            var content = await reader.ReadToEndAsync();
-            ConfigStateService.ParseConfigFile(content, this);
-            RefreshConfigText();
-            StateHasChanged();
-        }
-    }
-
-    private async Task DownloadConfig()
-    {
-        if (PresetType != null)
-        {
-            var fileName = $"{PresetType}_config.cfg";
-            await JSRuntime.InvokeVoidAsync("downloadFile", fileName, configText);
-        }
-    }
-
-    private async Task TriggerUpload()
-    {
-        if (_inputFile?.Element != null)
-        {
-            await JSRuntime.InvokeVoidAsync("clickElement", _inputFile.Element);
         }
     }
 
