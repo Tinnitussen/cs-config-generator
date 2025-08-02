@@ -114,3 +114,9 @@
 .refresh-animation {
     animation: spin 0.5s ease-in-out;
 }
+
+.sticky {
+    position: fixed;
+    top: 1rem; /* A bit of margin from the top of the viewport */
+    z-index: 1020; /* Ensure it's above other content, bootstrap's navbar is 1030 */
+}

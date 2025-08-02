@@ -3,7 +3,7 @@
 @inject IPresetService PresetService
 @implements IDisposable
 
-<div class="config-editor">
+<div @ref="_editorDiv" class="config-editor">
     <div class="config-editor-header">
         <h3>Config Preview</h3>
         <div class="config-editor-actions">
@@ -51,6 +51,15 @@
     private string configText = string.Empty;
     private bool copied = false;
     private List<string> _presets = new();
+    private ElementReference _editorDiv;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("makeEditorSticky", _editorDiv);
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
