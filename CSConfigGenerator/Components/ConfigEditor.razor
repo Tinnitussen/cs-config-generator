@@ -75,6 +75,9 @@
             if (!string.IsNullOrEmpty(presetContent))
             {
                 ConfigStateService.ParseConfigFile(presetContent, this);
+                // Explicitly refresh the editor text content after parsing
+                RefreshConfigText();
+                StateHasChanged();
             }
         }
     }
