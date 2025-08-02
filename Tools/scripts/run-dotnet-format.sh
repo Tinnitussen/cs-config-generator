@@ -1,3 +1,3 @@
 #!/bin/sh
 set -eu
-dotnet-format --check --include "$@"
+dotnet-format CSConfigGenerator.slnx --check --include "$@"
