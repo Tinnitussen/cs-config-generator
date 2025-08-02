@@ -1,18 +1,23 @@
 import json
+import os
+import sys
+import argparse
 from typing import Dict, List, Any
+
+# --- Path setup ---
+# Add the 'rules' directory to the Python path to import the classification rules.
+# This makes the script runnable from any directory.
+script_dir = os.path.dirname(os.path.abspath(__file__))
+rules_dir = os.path.join(os.path.dirname(script_dir), 'rules')
+if rules_dir not in sys.path:
+    sys.path.append(rules_dir)
+
+from type_classification_rules import CLASSIFICATION_RULES
 
 def load_commands(filepath: str) -> List[Dict]:
     """Load the commands.json file"""
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
-
-def is_numeric_string(value: Any) -> bool:
-    """Check if a string-like value represents a number."""
-    try:
-        float(value)
-        return True
-    except (ValueError, TypeError):
-        return False
 
 def create_ui_data_skeleton(command: Dict) -> Dict:
     """Creates a lean, base uiData object with default values."""
@@ -25,11 +30,11 @@ def create_ui_data_skeleton(command: Dict) -> Dict:
         "hideFromDefaultView": True
     }
 
-def add_type_classification(commands: List[Dict]) -> tuple[List[Dict], Dict]:
+def add_type_classification(commands: List[Dict], reclassify_all: bool = False) -> tuple[List[Dict], Dict, int, int]:
     """
     Adds a uiData skeleton to each command and classifies its type using
-    a conservative and reliable set of rules. Only updates commands that
-    don't already have type classification.
+    an ordered set of rules from an external file.
+    By default, it skips commands that already have a 'uiData' field.
     """
     processed_commands = []
     type_counts = {}
@@ -37,61 +42,31 @@ def add_type_classification(commands: List[Dict]) -> tuple[List[Dict], Dict]:
     skipped_count = 0
     
     for cmd in commands:
-        # Create uiData if it doesn't exist
-        if 'uiData' not in cmd:
-            cmd['uiData'] = create_ui_data_skeleton(cmd)
-        
-        # Only classify if type is exactly 'unknown'
-        existing_type = cmd['uiData'].get('type')
-        if existing_type != 'unknown':
-            # Skip classification - preserve all existing types except 'unknown'
+        # If reclassify_all is False, skip commands that are already classified.
+        if not reclassify_all and 'uiData' in cmd:
             skipped_count += 1
-            type_counts[existing_type] = type_counts.get(existing_type, 0) + 1
+            type_counts[cmd['uiData'].get('type', 'unknown')] = type_counts.get(cmd['uiData'].get('type', 'unknown'), 0) + 1
             processed_commands.append(cmd)
             continue
-        
-        console_default = cmd['consoleData']['defaultValue']
-        description = cmd['consoleData']['description'].lower()
+
+        # Create or reset uiData
+        cmd['uiData'] = create_ui_data_skeleton(cmd)
 
         cmd_type = "unknown"
         ui_default: Any = None
 
-        # Rule 1: Null default is an 'action'.
-        if console_default is None:
-            cmd_type = 'action'
-            ui_default = None
+        # Apply rules from the external file in order
+        for rule in CLASSIFICATION_RULES:
+            result = rule(cmd)
+            if result:
+                cmd_type, ui_default = result
+                break
         
-        # Rule 2: 'true'/'false' or '0'/'1' with a boolean-like description are 'bool'.
-        elif str(console_default).lower() in ['true', 'false']:
-            cmd_type = 'bool'
-            default_str = str(console_default).lower()
-            ui_default = default_str == 'true' or default_str == '1'
-
-        # Rule 3: Description contains "bitmask". This is a very strong indicator.
-        elif 'bitmask' in description:
-            cmd_type = 'bitmask'
-            ui_default = int(console_default) if is_numeric_string(console_default) else 0
-
-        # Rule 4 (REVISED): Numeric values.
-        elif is_numeric_string(console_default):
-            # If it contains a decimal, it's definitively a float.
-            if '.' in str(console_default):
-                cmd_type = 'float'
-                ui_default = float(console_default)
-            else:
-                cmd_type = 'unknown_numeric'
-                ui_default = int(float(console_default))
-
-        # Rule 5 (NEW): If it's not null, not boolean-like, and not numeric, it's a string.
-        else:
-            cmd_type = 'string'
-            ui_default = console_default
-
         # Update uiData with classification results
         cmd['uiData']['type'] = cmd_type
         cmd['uiData']['defaultValue'] = ui_default
 
-        # Conditionally add type-specific placeholders (only if they don't exist)
+        # Conditionally add type-specific placeholders
         if cmd_type == 'float' and 'range' not in cmd['uiData']:
             cmd['uiData']['range'] = {"minValue": -1, "maxValue": -1, "step": -1}
         elif cmd_type == 'bitmask' and 'options' not in cmd['uiData']:
@@ -111,14 +86,30 @@ def save_json(data: List[Dict], filepath: str):
         json.dump(data, f, indent=2)
 
 def main():
-    input_file = "data/commands.json"
-    output_file = "data/commands.json"
+    parser = argparse.ArgumentParser(description="Classify commands and generate UI schema skeletons.")
+    parser.add_argument(
+        '--reclassify-all',
+        action='store_true',
+        help="If set, the script will re-classify all commands, overwriting any existing classifications."
+    )
+    args = parser.parse_args()
+
+    # --- Path setup ---
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    tools_dir = os.path.dirname(script_dir)
+
+    input_file = os.path.join(tools_dir, "data", "commands.json")
+    output_file = os.path.join(tools_dir, "data", "commands.json")
     
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
     
-    print("Classifying command types and building schema skeleton...")
-    processed_commands, type_counts, updated_count, skipped_count = add_type_classification(commands)
+    if args.reclassify_all:
+        print("Re-classifying all commands...")
+    else:
+        print("Classifying new commands and building schema skeleton...")
+
+    processed_commands, type_counts, updated_count, skipped_count = add_type_classification(commands, args.reclassify_all)
     
     print(f"Saving updated file to '{output_file}'...")
     save_json(processed_commands, output_file)

@@ -1,6 +1,18 @@
 import json
 import os
+import sys
 from typing import Dict, List, Any
+from collections import defaultdict
+
+# --- Path setup ---
+# Add the 'rules' directory to the Python path to import the classification rules.
+# This makes the script runnable from any directory.
+script_dir = os.path.dirname(os.path.abspath(__file__))
+rules_dir = os.path.join(os.path.dirname(os.path.dirname(script_dir)), 'rules')
+if rules_dir not in sys.path:
+    sys.path.append(rules_dir)
+
+from splitting_rules import get_command_category
 
 def load_commands(filepath: str) -> List[Dict]:
     """Load the commands.json file"""
@@ -14,68 +26,24 @@ def save_json(data: List[Dict], filepath: str):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
 
-def get_prefix(command_name: str):
-    """Extracts the prefix from a command name."""
-    if command_name.startswith('+'):
-        return '+'
-    parts = command_name.split('_')
-    if len(parts) > 1:
-        return f"{parts[0]}_"
-    return None
-
 def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
     """
-    Classify commands into server, player, shared, and uncategorized.
+    Classify commands into server, player, shared, and uncategorized
+    by using rules from an external file.
     """
-    classified_commands = {
-        "server": [],
-        "player": [],
-        "shared": [],
-        "uncategorized": []
-    }
-
-    player_prefixes = ["cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_"]
-    server_prefixes = ["sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_", "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_", "test_", "soundscape_", "scene_", "particle_", "shatterglass_", "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_", "contributionscore_"]
-    shared_prefixes = ["ai_", "weapon_", "ragdoll_", "ik_", "skeleton_"]
+    classified_commands = defaultdict(list)
 
     for command in commands:
-        manual_category = command.get('uiData', {}).get('manual_category')
-        if manual_category:
-            category, _ = manual_category.split('/')
-            classified_commands[category].append(command)
-            continue
+        category = get_command_category(command)
+        classified_commands[category].append(command)
 
-        flags = command.get('consoleData', {}).get('flags', [])
-        is_server = 'sv' in flags
-        is_client = 'cl' in flags
-        is_replicated = 'rep' in flags
-        is_archived = 'a' in flags
-        is_user = 'user' in flags
-        command_name = command['command']
-        prefix = get_prefix(command_name)
-
-        if is_replicated or (is_server and is_client):
-            classified_commands["shared"].append(command)
-        elif is_server:
-            classified_commands["server"].append(command)
-        elif is_client:
-            classified_commands["player"].append(command)
-        elif prefix in player_prefixes:
-            classified_commands["player"].append(command)
-        elif prefix in server_prefixes:
-            classified_commands["server"].append(command)
-        elif prefix in shared_prefixes:
-            classified_commands["shared"].append(command)
-        elif is_archived or is_user:
-            classified_commands["player"].append(command)
-        else:
-            classified_commands["uncategorized"].append(command)
-
-    return classified_commands
+    return dict(classified_commands)
 
 def main():
-    input_file = "Tools/data/commands.json"
-    output_dir = "Tools/data/classified_commands"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    tools_dir = os.path.dirname(os.path.dirname(script_dir))
+    input_file = os.path.join(tools_dir, "data", "commands.json")
+    output_dir = os.path.join(tools_dir, "data", "classified_commands")
 
     # Check if input file exists
     if not os.path.exists(input_file):
