@@ -7,9 +7,13 @@ def load_commands(filepath: str) -> List[Dict]:
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
 
+def load_splitting_rules(filepath: str) -> Dict:
+    """Load the splitting rules from a JSON file."""
+    with open(filepath, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
 def save_json(data: List[Dict], filepath: str):
     """Save data to JSON file"""
-    # Create output directory if it doesn't exist
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
@@ -23,7 +27,7 @@ def get_prefix(command_name: str):
         return f"{parts[0]}_"
     return None
 
-def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
+def classify_commands(commands: List[Dict], rules: Dict) -> Dict[str, List[Dict]]:
     """
     Classify commands into server, player, shared, and uncategorized.
     """
@@ -34,9 +38,9 @@ def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
         "uncategorized": []
     }
 
-    player_prefixes = ["cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_"]
-    server_prefixes = ["sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_", "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_", "test_", "soundscape_", "scene_", "particle_", "shatterglass_", "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_", "contributionscore_"]
-    shared_prefixes = ["ai_", "weapon_", "ragdoll_", "ik_", "skeleton_"]
+    player_prefixes = rules["player_prefixes"]
+    server_prefixes = rules["server_prefixes"]
+    shared_prefixes = rules["shared_prefixes"]
     
     for command in commands:
         flags = command.get('consoleData', {}).get('flags', [])
@@ -94,10 +98,11 @@ def verify_data_integrity(original: List[Dict], classified: Dict[str, List[Dict]
     return True
 
 def main():
-    input_file = "Tools/data/commands.json"
-    output_dir = "Tools/data/classified_commands"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    input_file = os.path.join(script_dir, "..", "..", "data", "commands.json")
+    output_dir = os.path.join(script_dir, "..", "..", "data", "classified_commands")
+    rules_file = os.path.join(script_dir, "..", "config", "splitting_rules.json")
     
-    # Check if input file exists
     if not os.path.exists(input_file):
         print(f"Error: Input file '{input_file}' not found.")
         return
@@ -105,10 +110,12 @@ def main():
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
     
+    print(f"Loading splitting rules from '{rules_file}'...")
+    rules = load_splitting_rules(rules_file)
+
     print("Classifying commands with new logic...")
-    classified_commands = classify_commands(commands)
+    classified_commands = classify_commands(commands, rules)
     
-    # Save the classified commands into separate files
     for category, command_list in classified_commands.items():
         output_file = os.path.join(output_dir, f"{category}_commands.json")
         print(f"Saving {len(command_list)} {category} commands to '{output_file}'...")

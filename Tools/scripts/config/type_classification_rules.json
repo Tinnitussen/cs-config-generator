@@ -1,0 +1,32 @@
+{
+    "rules": [
+      {
+        "key": "defaultValue",
+        "value": null,
+        "type": "action"
+      },
+      {
+        "key": "defaultValue",
+        "value": ["true", "false"],
+        "type": "bool"
+      },
+      {
+        "key": "description",
+        "contains": "bitmask",
+        "type": "bitmask"
+      },
+      {
+        "key": "defaultValue",
+        "is_numeric": true,
+        "contains_decimal": true,
+        "type": "float"
+      },
+      {
+        "key": "defaultValue",
+        "is_numeric": true,
+        "contains_decimal": false,
+        "type": "unknown_numeric"
+      }
+    ],
+    "default_type": "string"
+  }

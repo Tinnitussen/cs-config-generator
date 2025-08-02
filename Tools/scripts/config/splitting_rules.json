@@ -1,0 +1,15 @@
+{
+  "player_prefixes": [
+    "cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_"
+  ],
+  "server_prefixes": [
+    "sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_",
+    "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_",
+    "test_", "soundscape_", "scene_", "particle_", "shatterglass_",
+    "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_",
+    "contributionscore_"
+  ],
+  "shared_prefixes": [
+    "ai_", "weapon_", "ragdoll_", "ik_", "skeleton_"
+  ]
+}

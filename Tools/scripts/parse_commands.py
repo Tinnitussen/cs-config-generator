@@ -132,8 +132,9 @@ def unmark_deprecated_commands(existing_commands, current_commands, sourced_at):
     return unmarked_count
 
 def main():
-    input_file = "data/all_commands-2025-30-07.txt"
-    output_file = "data/commands.json"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    input_file = os.path.join(script_dir, "..", "data", "all_commands-2025-30-07.txt")
+    output_file = os.path.join(script_dir, "..", "data", "commands.json")
     
     # Extract timestamp from filename
     sourced_at = extract_date_from_filename(input_file)

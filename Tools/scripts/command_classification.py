@@ -1,8 +1,14 @@
 import json
+import os
 from typing import Dict, List, Any
 
 def load_commands(filepath: str) -> List[Dict]:
     """Load the commands.json file"""
+    with open(filepath, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def load_classification_rules(filepath: str) -> Dict:
+    """Load the classification rules from a JSON file."""
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
 
@@ -25,7 +31,33 @@ def create_ui_data_skeleton(command: Dict) -> Dict:
         "hideFromDefaultView": True
     }
 
-def add_type_classification(commands: List[Dict]) -> tuple[List[Dict], Dict]:
+def classify_command_type(command: Dict, rules: Dict) -> str:
+    """Classify a single command based on the provided rules."""
+    console_default = command['consoleData']['defaultValue']
+    description = command['consoleData']['description'].lower()
+
+    for rule in rules['rules']:
+        key = rule.get('key')
+
+        if key == 'defaultValue':
+            value = rule.get('value')
+            if value is None and console_default is None:
+                return rule['type']
+            if isinstance(value, list) and str(console_default).lower() in value:
+                return rule['type']
+            if rule.get('is_numeric') and is_numeric_string(console_default):
+                if rule.get('contains_decimal') and '.' in str(console_default):
+                    return rule['type']
+                if not rule.get('contains_decimal') and '.' not in str(console_default):
+                    return rule['type']
+
+        elif key == 'description':
+            if rule.get('contains') and rule['contains'] in description:
+                return rule['type']
+
+    return rules['default_type']
+
+def add_type_classification(commands: List[Dict], rules: Dict) -> tuple[List[Dict], Dict, int, int]:
     """
     Adds a uiData skeleton to each command and classifies its type using
     a conservative and reliable set of rules. Only updates commands that
@@ -37,61 +69,36 @@ def add_type_classification(commands: List[Dict]) -> tuple[List[Dict], Dict]:
     skipped_count = 0
     
     for cmd in commands:
-        # Create uiData if it doesn't exist
         if 'uiData' not in cmd:
             cmd['uiData'] = create_ui_data_skeleton(cmd)
         
-        # Only classify if type is exactly 'unknown'
         existing_type = cmd['uiData'].get('type')
         if existing_type != 'unknown':
-            # Skip classification - preserve all existing types except 'unknown'
             skipped_count += 1
             type_counts[existing_type] = type_counts.get(existing_type, 0) + 1
             processed_commands.append(cmd)
             continue
         
+        cmd_type = classify_command_type(cmd, rules)
+
         console_default = cmd['consoleData']['defaultValue']
-        description = cmd['consoleData']['description'].lower()
+        ui_default: Any = console_default
 
-        cmd_type = "unknown"
-        ui_default: Any = None
-
-        # Rule 1: Null default is an 'action'.
-        if console_default is None:
-            cmd_type = 'action'
+        if cmd_type == 'action':
             ui_default = None
-        
-        # Rule 2: 'true'/'false' or '0'/'1' with a boolean-like description are 'bool'.
-        elif str(console_default).lower() in ['true', 'false']:
-            cmd_type = 'bool'
+        elif cmd_type == 'bool':
             default_str = str(console_default).lower()
             ui_default = default_str == 'true' or default_str == '1'
-
-        # Rule 3: Description contains "bitmask". This is a very strong indicator.
-        elif 'bitmask' in description:
-            cmd_type = 'bitmask'
+        elif cmd_type == 'bitmask':
             ui_default = int(console_default) if is_numeric_string(console_default) else 0
+        elif cmd_type == 'float':
+            ui_default = float(console_default)
+        elif cmd_type == 'unknown_numeric':
+            ui_default = int(float(console_default))
 
-        # Rule 4 (REVISED): Numeric values.
-        elif is_numeric_string(console_default):
-            # If it contains a decimal, it's definitively a float.
-            if '.' in str(console_default):
-                cmd_type = 'float'
-                ui_default = float(console_default)
-            else:
-                cmd_type = 'unknown_numeric'
-                ui_default = int(float(console_default))
-
-        # Rule 5 (NEW): If it's not null, not boolean-like, and not numeric, it's a string.
-        else:
-            cmd_type = 'string'
-            ui_default = console_default
-
-        # Update uiData with classification results
         cmd['uiData']['type'] = cmd_type
         cmd['uiData']['defaultValue'] = ui_default
 
-        # Conditionally add type-specific placeholders (only if they don't exist)
         if cmd_type == 'float' and 'range' not in cmd['uiData']:
             cmd['uiData']['range'] = {"minValue": -1, "maxValue": -1, "step": -1}
         elif cmd_type == 'bitmask' and 'options' not in cmd['uiData']:
@@ -111,14 +118,19 @@ def save_json(data: List[Dict], filepath: str):
         json.dump(data, f, indent=2)
 
 def main():
-    input_file = "data/commands.json"
-    output_file = "data/commands.json"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    input_file = os.path.join(script_dir, "..", "data", "commands.json")
+    output_file = os.path.join(script_dir, "..", "data", "commands.json")
+    rules_file = os.path.join(script_dir, "config", "type_classification_rules.json")
     
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
     
+    print(f"Loading classification rules from '{rules_file}'...")
+    rules = load_classification_rules(rules_file)
+
     print("Classifying command types and building schema skeleton...")
-    processed_commands, type_counts, updated_count, skipped_count = add_type_classification(commands)
+    processed_commands, type_counts, updated_count, skipped_count = add_type_classification(commands, rules)
     
     print(f"Saving updated file to '{output_file}'...")
     save_json(processed_commands, output_file)
