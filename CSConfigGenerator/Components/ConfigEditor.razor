@@ -23,31 +23,18 @@
                     </select>
                 </div>
             }
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    My Configs
-                </button>
-                <ul class="dropdown-menu">
-                    @if (_userConfigs.Any())
+            <div class="custom-select-wrapper">
+                <select class="custom-select" @bind="SelectedUserConfig">
+                    <option value="">My Configs</option>
+                    @foreach (var config in _userConfigs)
                     {
-                        @foreach (var configName in _userConfigs)
-                        {
-                            <li class="d-flex align-items-center justify-content-between p-1">
-                                <a class="dropdown-item" href="#" @onclick="() => OnUserConfigSelected(configName)" @onclick:preventDefault>
-                                    @configName
-                                </a>
-                                <button class="btn btn-sm btn-danger" @onclick="() => DeleteConfig(configName)" title="Delete @configName">
-                                    <i class="bi bi-x-lg"></i>
-                                </button>
-                            </li>
-                        }
+                        <option value="@config">@config</option>
                     }
-                    else
-                    {
-                        <li><span class="dropdown-item-text">No configs saved yet.</span></li>
-                    }
-                </ul>
+                </select>
             </div>
+            <button class="btn btn-sm btn-outline-danger" @onclick="DeleteSelectedConfig" disabled="@(string.IsNullOrEmpty(SelectedUserConfig))">
+                <i class="bi bi-trash"></i>
+            </button>
             <button class="btn btn-sm btn-outline-success" @onclick="SaveConfig" title="Save current config">
                 <i class="bi bi-save"></i>
             </button>
@@ -95,6 +82,23 @@
     private List<string> _userConfigs = new();
     private InputFile? _inputFile;
     private string? _selectedPreset;
+    private string? _selectedUserConfig;
+
+    private string? SelectedUserConfig
+    {
+        get => _selectedUserConfig;
+        set
+        {
+            if (_selectedUserConfig != value)
+            {
+                _selectedUserConfig = value;
+                if (!string.IsNullOrEmpty(_selectedUserConfig))
+                {
+                    OnUserConfigSelected(_selectedUserConfig);
+                }
+            }
+        }
+    }
 
     private string? SelectedPreset
     {
@@ -151,20 +155,26 @@
             {
                 ConfigStateService.ParseConfigFile(configContent, this);
                 RefreshConfigText();
-                StateHasChanged();
             }
         }
+
+        // We need to reset the underlying field directly and call StateHasChanged
+        // to avoid triggering the setter's logic again.
+        _selectedUserConfig = null;
+        await InvokeAsync(StateHasChanged);
     }
 
-    private async Task DeleteConfig(string configName)
+    private async Task DeleteSelectedConfig()
     {
-        if (PresetType != null)
+        var configName = _selectedUserConfig;
+        if (!string.IsNullOrEmpty(configName) && PresetType != null)
         {
             var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete '{configName}'?");
             if (confirmed)
             {
                 await UserConfigService.DeleteConfigAsync(PresetType, configName);
                 await LoadUserConfigs();
+                _selectedUserConfig = null;
                 ToastService.ShowToast($"Config '{configName}' deleted.", ToastLevel.Success);
             }
         }
