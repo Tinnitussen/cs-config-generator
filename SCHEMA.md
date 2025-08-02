@@ -44,6 +44,9 @@ The organization of the JSON files directly maps to the layout of the config gen
     ├── economy.json
     ├── bots.json
     └── gotv.json
+└── shared/             (For commands that work on both server and client)
+    ├── tbd.json            (TODO: Need to map out the shared commands)
+    └── tbd.json
 ```
 
 ---

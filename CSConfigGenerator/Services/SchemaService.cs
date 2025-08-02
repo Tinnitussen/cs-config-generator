@@ -10,7 +10,6 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     private readonly List<ConfigSection> _playerSections = [];
     private readonly List<ConfigSection> _serverSections = [];
 
-    public IReadOnlyList<ConfigSection> Sections => _playerSections.Concat(_serverSections).ToList().AsReadOnly();
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
 
@@ -41,6 +40,15 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
                 {
                     _serverSections.Add(section);
                 }
+                else if (filePath.Contains("/shared/"))
+                {
+                    _playerSections.Add(section);
+                    _serverSections.Add(section);
+                }
+                else
+                {
+                    throw new InvalidOperationException($"Unknown section type in file path: {filePath}");
+                }
             }
         }
         catch (Exception ex)
@@ -48,14 +56,6 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
             throw new InvalidOperationException("Failed to initialize schema service", ex);
         }
     }
-
-    public CommandDefinition? GetCommand(string name)
-    {
-        return Sections
-            .SelectMany(s => s.Commands)
-            .FirstOrDefault(c => c.Command == name);
-    }
-    
     public CommandDefinition? GetPlayerCommand(string name)
     {
         return PlayerSections
