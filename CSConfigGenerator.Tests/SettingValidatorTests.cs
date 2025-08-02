@@ -27,7 +27,7 @@ public class SettingValidatorTests
     {
         // Act
         var (isValid, _) = SettingValidator.Validate(settingType, value);
-        
+
         // Assert
         Assert.Equal(expectedIsValid, isValid);
     }

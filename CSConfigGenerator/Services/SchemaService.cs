@@ -23,7 +23,7 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
         {
             var manifest = await _httpClient.GetFromJsonAsync("data/manifest.json", JsonContext.Default.ListString)
                 ?? throw new InvalidOperationException("Manifest file could not be loaded or is empty.");
-                
+
             foreach (var filePath in manifest)
             {
                 var commands = await _httpClient.GetFromJsonAsync(filePath, JsonContext.Default.ListCommandDefinition);
@@ -69,7 +69,7 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
             .SelectMany(s => s.Commands)
             .FirstOrDefault(c => c.Command == name);
     }
-    
+
     public CommandDefinition? GetServerCommand(string name)
     {
         return ServerSections
@@ -81,7 +81,7 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     {
         // Extract section name from path like "data/commandschema/player/mouse.json"
         var parts = filePath.Split('/');
-        
+
         var fileName = Path.GetFileNameWithoutExtension(parts[^1]);
         return fileName;
     }

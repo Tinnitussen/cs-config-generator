@@ -77,7 +77,7 @@ public abstract class ConfigStateServiceBase : IConfigStateService
         foreach (var section in GetSections().OrderBy(s => s.DisplayName))
         {
             var sectionHasContent = false;
-            
+
             foreach (var command in section.Commands.OrderBy(c => c.Command))
             {
                 if (_settings.TryGetValue(command.Command, out var setting) && setting.IsInConfigEditor)
@@ -91,8 +91,8 @@ public abstract class ConfigStateServiceBase : IConfigStateService
                     builder.AppendLine($"{command.Command} {formattedValue}");
                 }
             }
-            
-            if(sectionHasContent) builder.AppendLine();
+
+            if (sectionHasContent) builder.AppendLine();
         }
 
         return builder.ToString();
@@ -106,7 +106,7 @@ public abstract class ConfigStateServiceBase : IConfigStateService
         foreach (var line in lines)
         {
             var trimmedLine = line.Trim();
-            if (string.IsNullOrEmpty(trimmedLine) || trimmedLine.StartsWith("//")) 
+            if (string.IsNullOrEmpty(trimmedLine) || trimmedLine.StartsWith("//"))
                 continue;
 
             var firstSpaceIndex = trimmedLine.IndexOf(' ');
@@ -118,16 +118,16 @@ public abstract class ConfigStateServiceBase : IConfigStateService
             // Step 1: Check if this is a valid command
             var command = GetCommandDefinition(commandName);
             if (command == null) continue;
-            
+
             commandsInFile.Add(commandName);
 
             // Step 2: Validate the value against the command's type
             var (isValid, _) = SettingValidator.Validate(command.UiData.Type, valueStr);
             if (!isValid) continue; // Skip invalid values
-            
+
             // Step 3: Parse the value (now we know it's valid)
             var parsedValue = SettingTypeHelpers.ParseFromString(command.UiData.Type, valueStr);
-            
+
             // Step 4: Update the setting
             if (_settings.TryGetValue(commandName, out var setting))
             {
@@ -136,7 +136,7 @@ public abstract class ConfigStateServiceBase : IConfigStateService
                 setting.IsInConfigEditor = true;
             }
         }
-        
+
         // For any setting that was NOT in the config file, mark it as not included.
         foreach (var (commandName, setting) in _settings)
         {
@@ -159,7 +159,7 @@ public abstract class ConfigStateServiceBase : IConfigStateService
             {
                 // Convert the value to the appropriate type
                 var typedValue = SettingTypeHelpers.ConvertToType(commandDef.UiData.Type, value);
-                
+
                 // Only update if the value has changed
                 if (!setting.Value.Equals(typedValue))
                 {
@@ -174,7 +174,7 @@ public abstract class ConfigStateServiceBase : IConfigStateService
             }
         }
     }
-    
+
     public void SetIncluded(string commandName, bool IsInConfigEditor, object? originator = null)
     {
         if (_settings.TryGetValue(commandName, out var setting))
