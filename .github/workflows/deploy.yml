@@ -42,7 +42,7 @@ jobs:
         run: dotnet test --configuration Release --no-build --verbosity normal
 
       - name: Publish Blazor WebAssembly app
-        run: dotnet publish CSConfigGenerator/CSConfigGenerator.csproj --configuration Release --output ./publish --no-restore
+        run: dotnet publish CSConfigGenerator/CSConfigGenerator.csproj --configuration Release --output ./publish --no-restore /p:InformationalVersion='1.0.${{ github.run_id }}'
 
       - name: Create .nojekyll file
         run: touch ./publish/wwwroot/.nojekyll

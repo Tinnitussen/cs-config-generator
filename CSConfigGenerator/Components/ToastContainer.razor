@@ -1,8 +1,9 @@
-@using CSConfigGenerator.Services
-@inject ToastService ToastService
+@using CSConfigGenerator.Interfaces
+@using CSConfigGenerator.Models
+@inject IToastService ToastService
 @implements IDisposable
 
-<div class="toast-container position-fixed top-0 end-0 p-3">
+<div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1080;">
     @if (toastMessage != null)
     {
         <div class="@toastCssClass" role="alert" aria-live="assertive" aria-atomic="true">
@@ -35,7 +36,7 @@
         // Auto-hide after 5 seconds
         StartCountdown();
     }
-    
+
     private void HideToast()
     {
         toastMessage = null;
@@ -50,7 +51,7 @@
         ToastLevel.Error => "bg-danger text-white",
         _ => "bg-info text-white"
     };
-    
+
     private void StartCountdown()
     {
         countdown?.Dispose();

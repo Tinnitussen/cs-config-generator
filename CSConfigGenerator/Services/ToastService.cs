@@ -1,6 +1,9 @@
+using CSConfigGenerator.Interfaces;
+using CSConfigGenerator.Models;
+
 namespace CSConfigGenerator.Services;
 
-public class ToastService : IDisposable
+public class ToastService : IToastService, IDisposable
 {
     public event Action<string, ToastLevel>? OnShow;
     public event Action? OnHide;
@@ -20,12 +23,4 @@ public class ToastService : IDisposable
         OnShow = null;
         OnHide = null;
     }
-}
-
-public enum ToastLevel
-{
-    Info,
-    Success,
-    Warning,
-    Error
 }
