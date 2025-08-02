@@ -419,3 +419,6 @@ FodyWeavers.xsd
 
 # My settings
 .vscode/
+
+# .NET SDK
+dotnet/
