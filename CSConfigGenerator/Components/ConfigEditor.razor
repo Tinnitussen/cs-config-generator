@@ -1,11 +1,22 @@
 @using CSConfigGenerator.Interfaces
 @inject IJSRuntime JSRuntime
+@inject IPresetService PresetService
 @implements IDisposable
 
 <div class="config-editor">
     <div class="config-editor-header">
         <h3>Config Preview</h3>
         <div class="config-editor-actions">
+            @if (PresetType != null)
+            {
+                <select class="form-select form-select-sm" @onchange="OnPresetSelected">
+                    <option value="">-- Select a Preset --</option>
+                    @foreach (var preset in _presets)
+                    {
+                        <option value="@preset">@preset</option>
+                    }
+                </select>
+            }
             <button class="btn btn-sm btn-outline-primary" @onclick="CopyToClipboard" title="Copy to clipboard">
                 @if (copied)
                 {
@@ -32,17 +43,43 @@
 @code {
     [Parameter]
     [EditorRequired]
-    public IConfigStateService ConfigStateService { get; set; }
+    public IConfigStateService ConfigStateService { get; set; } = default!;
+
+    [Parameter]
+    public string? PresetType { get; set; }
 
     private string configText = string.Empty;
     private bool copied = false;
+    private List<string> _presets = new();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         if (ConfigStateService == null)
             throw new InvalidOperationException("ConfigStateService is not set on ConfigEditor.");
+        
         RefreshConfigText();
         ConfigStateService.OnStateChange += HandleStateChange;
+
+        if (PresetType != null)
+        {
+            _presets = await PresetService.GetPresetNamesAsync(PresetType);
+        }
+    }
+
+    private async Task OnPresetSelected(ChangeEventArgs e)
+    {
+        var presetName = e.Value?.ToString();
+        if (!string.IsNullOrEmpty(presetName) && PresetType != null)
+        {
+            var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
+            if (!string.IsNullOrEmpty(presetContent))
+            {
+                ConfigStateService.ParseConfigFile(presetContent, this);
+                // Explicitly refresh the editor text content after parsing
+                RefreshConfigText();
+                StateHasChanged();
+            }
+        }
     }
 
     private void HandleStateChange(object? originator)

@@ -17,22 +17,22 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
-    
+
     public async Task InitializeAsync()
     {
         var manifestPath = Path.Combine(_wwwrootPath, "data/manifest.json");
         var manifestJson = await File.ReadAllTextAsync(manifestPath);
-        var manifest = JsonSerializer.Deserialize<List<string>>(manifestJson, JsonContext.Default.Options) 
+        var manifest = JsonSerializer.Deserialize<List<string>>(manifestJson, JsonContext.Default.Options)
             ?? throw new InvalidOperationException("Manifest file could not be loaded or is empty.");
-            
+
         foreach (var filePath in manifest)
         {
             var fullPath = Path.Combine(_wwwrootPath, filePath);
             var commandsJson = await File.ReadAllTextAsync(fullPath);
             var commands = JsonSerializer.Deserialize<List<CommandDefinition>>(commandsJson, JsonContext.Default.ListCommandDefinition);
-            
+
             if (commands == null) continue;
-            
+
             // Process the commands similar to SchemaService
             if (filePath.Contains("/player/"))
             {
@@ -58,14 +58,14 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
             }
         }
     }
-    
+
     public CommandDefinition? GetPlayerCommand(string name)
     {
         return PlayerSections
             .SelectMany(section => section.Commands)
             .FirstOrDefault(cmd => cmd.Command.Equals(name, StringComparison.OrdinalIgnoreCase));
     }
-    
+
     public CommandDefinition? GetServerCommand(string name)
     {
         return ServerSections
@@ -83,26 +83,26 @@ public class ManifestValidationTests : IDisposable
     {
         // Get path to wwwroot directory for testing
         _wwwrootPath = Path.GetFullPath(Path.Combine(
-            Directory.GetCurrentDirectory(), 
-            "..", "..", "..", "..", 
+            Directory.GetCurrentDirectory(),
+            "..", "..", "..", "..",
             "CSConfigGenerator", "wwwroot"));
-            
+
         // Create a schema service with direct file access
         _schemaService = new TestSchemaService(_wwwrootPath);
     }
-    
+
     private string GetFullPath(string relativePath)
     {
         return Path.Combine(_wwwrootPath, relativePath);
     }
-    
+
     private async Task<List<string>?> ReadManifestAsync()
     {
         var manifestPath = GetFullPath("data/manifest.json");
         var json = await File.ReadAllTextAsync(manifestPath);
         return JsonSerializer.Deserialize<List<string>>(json, JsonContext.Default.Options);
     }
-    
+
     private async Task<List<CommandDefinition>?> ReadCommandsAsync(string relativePath)
     {
         var fullPath = GetFullPath(relativePath);
@@ -116,7 +116,7 @@ public class ManifestValidationTests : IDisposable
         // Act & Assert
         var manifestPath = GetFullPath("data/manifest.json");
         Assert.True(File.Exists(manifestPath), "Manifest file should exist");
-        
+
         var manifest = await ReadManifestAsync();
         Assert.NotNull(manifest);
     }
@@ -130,8 +130,8 @@ public class ManifestValidationTests : IDisposable
 
         // Assert
         Assert.False(string.IsNullOrWhiteSpace(content), "Manifest file should not be empty");
-        
-        var exception = await Record.ExceptionAsync(async () => 
+
+        var exception = await Record.ExceptionAsync(async () =>
             await Task.FromResult(JsonSerializer.Deserialize<List<string>>(content)));
         Assert.Null(exception);
     }
@@ -155,19 +155,20 @@ public class ManifestValidationTests : IDisposable
 
         // Assert
         Assert.NotNull(manifest);
-        
+
         foreach (var filePath in manifest)
         {
             Assert.False(string.IsNullOrWhiteSpace(filePath), "File path should not be null or empty");
             Assert.StartsWith("data/commandschema/", filePath);
             Assert.EndsWith(".json", filePath);
-            
+
             // Should contain one of the expected folder types
             Assert.True(
-                filePath.Contains("/player/") || 
-                filePath.Contains("/server/") || 
-                filePath.Contains("/shared/"),
-                $"File path '{filePath}' should contain /player/, /server/, or /shared/ folder");
+                filePath.Contains("/player/") ||
+                filePath.Contains("/server/") ||
+                filePath.Contains("/shared/") ||
+                filePath.Contains("/uncategorized/"),
+                $"File path '{filePath}' should contain /player/, /server/, /shared/, or /uncategorized/ folder");
         }
     }
 
@@ -182,7 +183,7 @@ public class ManifestValidationTests : IDisposable
         foreach (var filePath in manifest)
         {
             var fullPath = GetFullPath(filePath);
-            Assert.True(File.Exists(fullPath), 
+            Assert.True(File.Exists(fullPath),
                 $"File '{filePath}' referenced in manifest should exist and be accessible");
         }
     }
@@ -198,14 +199,14 @@ public class ManifestValidationTests : IDisposable
         foreach (var filePath in manifest)
         {
             var commands = await ReadCommandsAsync(filePath);
-            
+
             Assert.NotNull(commands);
             // It's okay for command files to be empty, but they should deserialize properly
-            
+
             // If commands exist, validate their structure
             foreach (var command in commands)
             {
-                Assert.False(string.IsNullOrWhiteSpace(command.Command), 
+                Assert.False(string.IsNullOrWhiteSpace(command.Command),
                     $"Command in '{filePath}' should have a non-empty Command property");
             }
         }
@@ -247,27 +248,27 @@ public class ManifestValidationTests : IDisposable
         {
             var fullPath = GetFullPath(filePath);
             var content = await File.ReadAllTextAsync(fullPath);
-            
-            Assert.False(string.IsNullOrWhiteSpace(content), 
+
+            Assert.False(string.IsNullOrWhiteSpace(content),
                 $"File '{filePath}' should not be empty");
 
             // Test that it's valid JSON
-            var jsonException = await Record.ExceptionAsync(() => 
+            var jsonException = await Record.ExceptionAsync(() =>
                 Task.FromResult(JsonDocument.Parse(content)));
-            Assert.True(jsonException == null, 
+            Assert.True(jsonException == null,
                 $"File '{filePath}' should contain valid JSON");
 
             // Test that it deserializes to the expected type
-            var deserializeException = await Record.ExceptionAsync(() => 
+            var deserializeException = await Record.ExceptionAsync(() =>
                 Task.FromResult(JsonSerializer.Deserialize<List<CommandDefinition>>(content, JsonContext.Default.Options)));
-            Assert.True(deserializeException == null, 
+            Assert.True(deserializeException == null,
                 $"File '{filePath}' should deserialize to List<CommandDefinition>");
         }
     }
 
     [Theory]
     [InlineData("player")]
-    [InlineData("server")]  
+    [InlineData("server")]
     [InlineData("shared")]
     public async Task ManifestPaths_ShouldContainExpectedSectionTypes(string sectionType)
     {
@@ -279,7 +280,7 @@ public class ManifestValidationTests : IDisposable
         var hasExpectedSection = manifest.Any(path => path.Contains($"/{sectionType}/"));
 
         // Assert
-        Assert.True(hasExpectedSection, 
+        Assert.True(hasExpectedSection,
             $"Manifest should contain at least one file with '/{sectionType}/' in the path");
     }
 

@@ -9,100 +9,93 @@ def load_commands(filepath: str) -> List[Dict]:
 
 def save_json(data: List[Dict], filepath: str):
     """Save data to JSON file"""
+    # Create output directory if it doesn't exist
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
 
-def has_sv_flag(command: Dict) -> bool:
-    """Check if a command has the 'sv' flag"""
-    flags = command.get('consoleData', {}).get('flags', [])
-    return 'sv' in flags
+def get_prefix(command_name: str):
+    """Extracts the prefix from a command name."""
+    if command_name.startswith('+'):
+        return '+'
+    parts = command_name.split('_')
+    if len(parts) > 1:
+        return f"{parts[0]}_"
+    return None
 
-
-
-def split_commands_by_sv_flag(commands: List[Dict]) -> tuple[List[Dict], List[Dict]]:
+def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
     """
-    Split commands into server and player commands based on 'sv' flag.
-    Returns (server_commands, player_commands)
+    Classify commands into server, player, shared, and uncategorized.
     """
-    server_commands = []
-    player_commands = []
+    classified_commands = {
+        "server": [],
+        "player": [],
+        "shared": [],
+        "uncategorized": []
+    }
+
+    player_prefixes = ["cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_"]
+    server_prefixes = ["sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_", "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_", "test_", "soundscape_", "scene_", "particle_", "shatterglass_", "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_", "contributionscore_"]
+    shared_prefixes = ["ai_", "weapon_", "ragdoll_", "ik_", "skeleton_"]
     
     for command in commands:
-        if has_sv_flag(command):
-            server_commands.append(command)
-        else:
-            player_commands.append(command)
-    
-    return server_commands, player_commands
+        flags = command.get('consoleData', {}).get('flags', [])
+        is_server = 'sv' in flags
+        is_client = 'cl' in flags
+        is_replicated = 'rep' in flags
+        is_archived = 'a' in flags
+        is_user = 'user' in flags
+        command_name = command['command']
+        prefix = get_prefix(command_name)
 
-def verify_data_integrity(original: List[Dict], server: List[Dict], player: List[Dict]) -> Dict[str, Any]:
+        if is_replicated or (is_server and is_client):
+            classified_commands["shared"].append(command)
+        elif is_server:
+            classified_commands["server"].append(command)
+        elif is_client:
+            classified_commands["player"].append(command)
+        elif prefix in player_prefixes:
+            classified_commands["player"].append(command)
+        elif prefix in server_prefixes:
+            classified_commands["server"].append(command)
+        elif prefix in shared_prefixes:
+            classified_commands["shared"].append(command)
+        elif is_archived or is_user:
+            classified_commands["player"].append(command)
+        else:
+            classified_commands["uncategorized"].append(command)
+
+    return classified_commands
+
+def verify_data_integrity(original: List[Dict], classified: Dict[str, List[Dict]]):
     """
     Verify that the split data maintains integrity with the original.
-    Returns verification results.
     """
-    results = {
-        'passed': True,
-        'issues': [],
-        'stats': {}
-    }
-    
-    # Check total count
     original_count = len(original)
-    combined_count = len(server) + len(player)
-    results['stats']['original_count'] = original_count
-    results['stats']['combined_count'] = combined_count
-    
-    if original_count != combined_count:
-        results['passed'] = False
-        results['issues'].append(f"Count mismatch: original={original_count}, combined={combined_count}")
-    
-    # Create sets of command names for comparison
+    classified_count = sum(len(commands) for commands in classified.values())
+
+    if original_count != classified_count:
+        print(f"Error: Command count mismatch. Original: {original_count}, Classified: {classified_count}")
+        return False
+
     original_commands = {cmd['command'] for cmd in original}
-    server_commands = {cmd['command'] for cmd in server}
-    player_commands = {cmd['command'] for cmd in player}
-    combined_commands = server_commands.union(player_commands)
-    
-    # Check for missing commands
-    missing_from_split = original_commands - combined_commands
-    if missing_from_split:
-        results['passed'] = False
-        results['issues'].append(f"Commands missing from split: {sorted(missing_from_split)}")
-    
-    # Check for extra commands
-    extra_in_split = combined_commands - original_commands
-    if extra_in_split:
-        results['passed'] = False
-        results['issues'].append(f"Extra commands in split: {sorted(extra_in_split)}")
-    
-    # Check for duplicates between server and player
-    duplicates = server_commands.intersection(player_commands)
-    if duplicates:
-        results['passed'] = False
-        results['issues'].append(f"Commands in both server and player: {sorted(duplicates)}")
-    
-    # Verify individual command data integrity
-    original_by_name = {cmd['command']: cmd for cmd in original}
-    all_split_commands = server + player
-    
-    for split_cmd in all_split_commands:
-        cmd_name = split_cmd['command']
-        if cmd_name in original_by_name:
-            original_cmd = original_by_name[cmd_name]
-            # Deep comparison of command data
-            if json.dumps(original_cmd, sort_keys=True) != json.dumps(split_cmd, sort_keys=True):
-                results['passed'] = False
-                results['issues'].append(f"Data mismatch for command '{cmd_name}'")
-    
-    results['stats']['server_count'] = len(server)
-    results['stats']['player_count'] = len(player)
-    results['stats']['duplicates_count'] = len(duplicates)
-    
-    return results
+    classified_commands = {cmd['command'] for commands in classified.values() for cmd in commands}
+
+    if original_commands != classified_commands:
+        print("Error: Command set mismatch.")
+        missing = original_commands - classified_commands
+        extra = classified_commands - original_commands
+        if missing:
+            print(f"Missing commands: {missing}")
+        if extra:
+            print(f"Extra commands: {extra}")
+        return False
+
+    return True
 
 def main():
-    input_file = "data/commands.json"
-    server_output = "data/server.json"
-    player_output = "data/player.json"
+    input_file = "Tools/data/commands.json"
+    output_dir = "Tools/data/classified_commands"
     
     # Check if input file exists
     if not os.path.exists(input_file):
@@ -112,71 +105,28 @@ def main():
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
     
-    print("Splitting commands by 'sv' flag...")
-    server_commands, player_commands = split_commands_by_sv_flag(commands)
+    print("Classifying commands with new logic...")
+    classified_commands = classify_commands(commands)
     
-    print("Verifying data integrity...")
-    integrity_check = verify_data_integrity(commands, server_commands, player_commands)
-    
-    # Print integrity check results
-    print("\n--- DATA INTEGRITY VERIFICATION ---")
-    if integrity_check['passed']:
-        print("✓ Data integrity check PASSED")
-        print("✓ All original data preserved in split")
-        print("✓ No duplicates or missing commands")
-    else:
-        print("✗ Data integrity check FAILED")
-        for issue in integrity_check['issues']:
-            print(f"  - {issue}")
-        print("\nAborting save due to integrity issues.")
-        return
-    
-    # Only proceed with saving if integrity check passed
-    # Create output directory if it doesn't exist
-    os.makedirs(os.path.dirname(server_output), exist_ok=True)
-    
-    print(f"\nSaving server commands to '{server_output}'...")
-    save_json(server_commands, server_output)
-    
-    print(f"Saving player commands to '{player_output}'...")
-    save_json(player_commands, player_output)
-    
-    # Print summary
-    stats = integrity_check['stats']
-    total_commands = stats['original_count']
-    server_count = stats['server_count']
-    player_count = stats['player_count']
-    
-    print("\n--- SPLIT SUMMARY ---")
+    # Save the classified commands into separate files
+    for category, command_list in classified_commands.items():
+        output_file = os.path.join(output_dir, f"{category}_commands.json")
+        print(f"Saving {len(command_list)} {category} commands to '{output_file}'...")
+        save_json(command_list, output_file)
+
+    print("\n--- CLASSIFICATION SUMMARY ---")
+    total_commands = len(commands)
     print(f"Total commands processed: {total_commands}")
-    print(f"Server commands (with 'sv' flag): {server_count} ({server_count/total_commands*100:.1f}%)")
-    print(f"Player commands (without 'sv' flag): {player_count} ({player_count/total_commands*100:.1f}%)")
-    print(f"Data integrity: {'✓ PASSED' if integrity_check['passed'] else '✗ FAILED'}")
-    
-    # Show some examples
-    if server_commands:
-        print(f"\nExample server commands:")
-        for i, cmd in enumerate(server_commands[:5]):
-            flags = cmd.get('consoleData', {}).get('flags', [])
-            print(f"  - {cmd['command']} (flags: {', '.join(flags)})")
-    
-    if player_commands:
-        print(f"\nExample player commands:")
-        for i, cmd in enumerate(player_commands[:5]):
-            flags = cmd.get('consoleData', {}).get('flags', [])
-            flag_str = ', '.join(flags) if flags else 'none'
-            print(f"  - {cmd['command']} (flags: {flag_str})")
-    
-    print(f"\nFiles created:")
-    print(f"  - {server_output}")
-    print(f"  - {player_output}")
-    
-    # Final verification summary
-    print(f"\n--- VERIFICATION SUMMARY ---")
-    print(f"Original commands: {stats['original_count']}")
-    print(f"Combined split commands: {stats['combined_count']}")
-    print(f"Duplicates between splits: {stats['duplicates_count']}")
-    print(f"Integrity check: {'PASSED' if integrity_check['passed'] else 'FAILED'}")
+    for category, command_list in classified_commands.items():
+        count = len(command_list)
+        percentage = (count / total_commands * 100) if total_commands > 0 else 0
+        print(f"- {category.capitalize()}: {count} commands ({percentage:.1f}%)")
+
+    print("\nVerifying data integrity...")
+    if not verify_data_integrity(commands, classified_commands):
+        print("Data integrity check failed. Aborting.")
+        return
+    print("Data integrity check passed.")
 
 if __name__ == "__main__":
     main()

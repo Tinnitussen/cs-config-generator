@@ -1,0 +1,3113 @@
+[
+  {
+    "command": "snd_arrangement_start",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Starts the specified arrangement.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_arrangement_start",
+      "helperText": "Starts the specified arrangement.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_autodetect_latency",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_autodetect_latency",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_cast",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Casts a ray and starts a sound event where the ray hits. The sound event will retrigger periodically if cl_snd_cast_retrigger is set. The sound event will clear previous snd_cast events if cl_snd_cast_clear is set. Usage: snd_cast <eventname> [<retrigger time>] [<max distance>]. Arguments that are specified will become defaults for the remainder of the session.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_cast",
+      "helperText": "Casts a ray and starts a sound event where the ray hits. The sound event will retrigger periodically if cl_snd_cast_retrigger is set. The sound event will clear previous snd_cast events if cl_snd_cast_clear is set. Usage: snd_cast <eventname> [<retrigger time>] [<max distance>]. Arguments that are specified will become defaults for the remainder of the session.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_deathcamera_volume",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of Deathcam Timers",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_deathcamera_volume",
+      "helperText": "Volume of Deathcam Timers",
+      "type": "float",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "snd_disable_mixer_duck",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_disable_mixer_duck",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_disable_mixer_solo",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_disable_mixer_solo",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_dsp_distance_max",
+    "consoleData": {
+      "defaultValue": "2000",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_dsp_distance_max",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 2000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_dsp_distance_min",
+    "consoleData": {
+      "defaultValue": "20",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_dsp_distance_min",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 20,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_duckerattacktime",
+    "consoleData": {
+      "defaultValue": "0.5",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_duckerattacktime",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.5,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_duckerreleasetime",
+    "consoleData": {
+      "defaultValue": "2.5",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_duckerreleasetime",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 2.5,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_duckerthreshold",
+    "consoleData": {
+      "defaultValue": "0.15",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_duckerthreshold",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.15,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_ducktovolume",
+    "consoleData": {
+      "defaultValue": "0.55",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_ducktovolume",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.55,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_envelope_rate",
+    "consoleData": {
+      "defaultValue": "0.9",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_envelope_rate",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.9,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_filter",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_filter",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_gain",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_gain",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_gain_max",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_gain_max",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_gain_min",
+    "consoleData": {
+      "defaultValue": "0.01",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_gain_min",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.01,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_gamevoicevolume",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a"
+      ],
+      "description": "Game v.o. volume",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_gamevoicevolume",
+      "helperText": "Game v.o. volume",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_gamevolume",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a"
+      ],
+      "description": "Game volume",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_gamevolume",
+      "helperText": "Game volume",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_get_physics_surface_properties",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Get physics surface properties for all the materials.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_get_physics_surface_properties",
+      "helperText": "Get physics surface properties for all the materials.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_headphone_eq",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "clientcmd_can_execute"
+      ],
+      "description": "Select Headphone EQ Preset",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_headphone_eq",
+      "helperText": "Select Headphone EQ Preset",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_headphone_eq_active",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Select Headphone EQ Preset",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_headphone_eq_active",
+      "helperText": "Select Headphone EQ Preset",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_list",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_list",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_log_empty_event_entities",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Logs the sound event entities that have empty names.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_log_empty_event_entities",
+      "helperText": "Logs the sound event entities that have empty names.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_mainmenu_music_break_time_max",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Maximum amount of time to pause between playing main menu music",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mainmenu_music_break_time_max",
+      "helperText": "Maximum amount of time to pause between playing main menu music",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_mainmenu_music_break_time_min",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Minimum amount of time to pause between playing main menu music",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mainmenu_music_break_time_min",
+      "helperText": "Minimum amount of time to pause between playing main menu music",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_mapobjective_volume",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of Map Objective Music",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mapobjective_volume",
+      "helperText": "Volume of Map Objective Music",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "snd_menumap_volume",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of background sounds for maps",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_menumap_volume",
+      "helperText": "Volume of background sounds for maps",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_menumusic_volume",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of Menu / Non-gameplay music",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_menumusic_volume",
+      "helperText": "Volume of Menu / Non-gameplay music",
+      "type": "float",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "snd_mixahead",
+    "consoleData": {
+      "defaultValue": "0.001",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mixahead",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.001,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_mixer_master_dsp",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mixer_master_dsp",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_mixer_master_level",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mixer_master_level",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_musicvolume",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a"
+      ],
+      "description": "Music volume",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_musicvolume",
+      "helperText": "Music volume",
+      "type": "float",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_mute_losefocus",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mute_losefocus",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "snd_mute_mvp_music_live_players",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "If set, MVP music is muted if players from both teams are still alive.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mute_mvp_music_live_players",
+      "helperText": "If set, MVP music is muted if players from both teams are still alive.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "snd_mvp_volume",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of MVP Music",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_mvp_volume",
+      "helperText": "Volume of MVP Music",
+      "type": "float",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "snd_op_test_convar",
+    "consoleData": {
+      "defaultValue": "720",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_op_test_convar",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 720,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_print_activetracks",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "List all active tracks",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_print_activetracks",
+      "helperText": "List all active tracks",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_print_arrangements",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "List all available sequence arrangments",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_print_arrangements",
+      "helperText": "List all available sequence arrangments",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_print_samplers",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "List all available samplers",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_print_samplers",
+      "helperText": "List all available samplers",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_print_sequences",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "List all available midi sequences",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_print_sequences",
+      "helperText": "List all available midi sequences",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_refdb",
+    "consoleData": {
+      "defaultValue": "60",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Reference dB at snd_refdist",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_refdb",
+      "helperText": "Reference dB at snd_refdist",
+      "type": "unknown_numeric",
+      "defaultValue": 60,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_refdist",
+    "consoleData": {
+      "defaultValue": "36",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Reference distance for snd_refdb",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_refdist",
+      "helperText": "Reference distance for snd_refdb",
+      "type": "unknown_numeric",
+      "defaultValue": 36,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_refresh_ui_audio_state",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Restores audio DSP state for the UI."
+    },
+    "uiData": {
+      "label": "snd_refresh_ui_audio_state",
+      "helperText": "Restores audio DSP state for the UI.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_report_audio_nan",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "false",
+      "flags": [
+        "release"
+      ],
+      "description": ""
+    },
+    "uiData": {
+      "label": "snd_report_audio_nan",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_report_verbose_error",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "If set to 1, report more error found when playing sounds.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_report_verbose_error",
+      "helperText": "If set to 1, report more error found when playing sounds.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_roundaction_volume",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of Move Action Music",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_roundaction_volume",
+      "helperText": "Volume of Move Action Music",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_roundend_volume",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of Won/Lost Music",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_roundend_volume",
+      "helperText": "Volume of Won/Lost Music",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "snd_roundstart_volume",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of Round Start Music",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_roundstart_volume",
+      "helperText": "Volume of Round Start Music",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "snd_samplers_play_note",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Play a note from a specified sampler",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_samplers_play_note",
+      "helperText": "Play a note from a specified sampler",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_samplers_stop_note",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Stop a note from a specified sampler",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_samplers_stop_note",
+      "helperText": "Stop a note from a specified sampler",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sequence_set_track_bpm",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Sets the tempo of the specified track",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sequence_set_track_bpm",
+      "helperText": "Sets the tempo of the specified track",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sequence_set_track_transpose",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Sets the transposition of the specified track",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sequence_set_track_transpose",
+      "helperText": "Sets the transposition of the specified track",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sequence_stop_all_tracks",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Stops all currently playing sequences",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sequence_stop_all_tracks",
+      "helperText": "Stops all currently playing sequences",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sequence_stop_track",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Stops the specified track",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sequence_stop_track",
+      "helperText": "Stops the specified track",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sequencer_show_bpm",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sequencer_show_bpm",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sequencer_show_events",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sequencer_show_events",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sequencer_show_quantize_queue",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sequencer_show_quantize_queue",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_set_physics_surface_properties",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Set physics surface properties for materials. Usage: <heuristic #> <commit>",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_set_physics_surface_properties",
+      "helperText": "Set physics surface properties for materials. Usage: <heuristic #> <commit>",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_showclassname",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_showclassname",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_showstart",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_showstart",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_block_global_stack",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_block_global_stack",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_block_stop_global_stack",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_block_stop_global_stack",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_compare_kv3_native_stacks",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_compare_kv3_native_stacks",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    },
+    "deprecated": true
+  },
+  {
+    "command": "snd_sos_compare_operator_stacks",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Compares 2 operator stacks and spews any errors",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_compare_operator_stacks",
+      "helperText": "Compares 2 operator stacks and spews any errors",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_flush_operators",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Flush and re-parse the sound operator system",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_flush_operators",
+      "helperText": "Flush and re-parse the sound operator system",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_get_operator_field_info",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Currently gets info for a single operator field",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_get_operator_field_info",
+      "helperText": "Currently gets info for a single operator field",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_ingame_debug",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_ingame_debug",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_list_operator_updates",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_list_operator_updates",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_opvar_debug",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_opvar_debug",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_pause_soundevent",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Pause the specified soundevent in the list",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_pause_soundevent",
+      "helperText": "Pause the specified soundevent in the list",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_pause_system",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_pause_system",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_print_addfield_dupes",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_addfield_dupes",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_print_class_sizes",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints the sizes of relevant sos classes.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_class_sizes",
+      "helperText": "Prints the sizes of relevant sos classes.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_field_name_strings",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints a list of currently cached field name strings",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_field_name_strings",
+      "helperText": "Prints a list of currently cached field name strings",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_field_references",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_field_references",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_print_fps",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_fps",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_print_full_field_info",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_full_field_info",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_print_groups",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints the current state of the groups system",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_groups",
+      "helperText": "Prints the current state of the groups system",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_operator_stack",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints a master list of currently exposed variables",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_operator_stack",
+      "helperText": "Prints a master list of currently exposed variables",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_operator_stack_operator",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints an operator from a stack",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_operator_stack_operator",
+      "helperText": "Prints an operator from a stack",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_operator_stacks",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints a list of currently available stacks",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_operator_stacks",
+      "helperText": "Prints a list of currently available stacks",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_operators",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints a list of currently available operators",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_operators",
+      "helperText": "Prints a list of currently available operators",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_stack_exec_list",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints the current stack execution list",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_stack_exec_list",
+      "helperText": "Prints the current stack execution list",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_strings",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints a list of currently cached strings",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_strings",
+      "helperText": "Prints a list of currently cached strings",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_print_table_arrays",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_table_arrays",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_print_tool_properties",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Prints the current state of tool properties.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_print_tool_properties",
+      "helperText": "Prints the current state of tool properties.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_resolve_execute_operator",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Resolve the inputs and execute one specified operator from a specified stack",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_resolve_execute_operator",
+      "helperText": "Resolve the inputs and execute one specified operator from a specified stack",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_set_operator_field",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Currently sets a single float operator field",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_set_operator_field",
+      "helperText": "Currently sets a single float operator field",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_set_operator_field_by_guid",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Currently sets a single float operator field",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_set_operator_field_by_guid",
+      "helperText": "Currently sets a single float operator field",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_show_block_debug",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Spew data about the list of block entries.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_block_debug",
+      "helperText": "Spew data about the list of block entries.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_event_and_stack",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_event_and_stack",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_event_filter",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_event_filter",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_field_filter",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_field_filter",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_init",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_init",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_not_executing",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_not_executing",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_operator_filter",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_operator_filter",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_pause_entry",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_pause_entry",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_shutdown",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_shutdown",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_stop_entry",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_stop_entry",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_operator_updates",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_operator_updates",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_opvar_updates",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_opvar_updates",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_opvar_updates_filter",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_opvar_updates_filter",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_queuetotrack",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_queuetotrack",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_soundevent_param_overwrite",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_soundevent_param_overwrite",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_show_soundevent_start",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_show_soundevent_start",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_soundevent_filter",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_soundevent_filter",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_sos_soundevent_profile",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Dump a record of current soundevents and profile data",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_soundevent_profile",
+      "helperText": "Dump a record of current soundevents and profile data",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_start_soundevent",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Starts a specified soundevent",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_start_soundevent",
+      "helperText": "Starts a specified soundevent",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_start_soundevent_at_pos",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Starts a specified soundevent at the given position",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_start_soundevent_at_pos",
+      "helperText": "Starts a specified soundevent at the given position",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_start_stack",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Starts a specified stack via an empty soundevent",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_start_stack",
+      "helperText": "Starts a specified stack via an empty soundevent",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_stop_all_soundevents",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Stops all soundevents currently on the execution list",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_stop_all_soundevents",
+      "helperText": "Stops all soundevents currently on the execution list",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_stop_soundevent_guid",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Stops a specified soundevent",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_stop_soundevent_guid",
+      "helperText": "Stops a specified soundevent",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_stop_soundevent_index",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Stops a specified soundevent",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_stop_soundevent_index",
+      "helperText": "Stops a specified soundevent",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_test_soundmessage",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "test",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_test_soundmessage",
+      "helperText": "test",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_sos_unpause_soundevent",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "UnPause the first soundevent in the list",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_sos_unpause_soundevent",
+      "helperText": "UnPause the first soundevent in the list",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_soundmixer_update_maximum_frame_rate",
+    "consoleData": {
+      "defaultValue": "10",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_soundmixer_update_maximum_frame_rate",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 10,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_spatialize_lerp",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_spatialize_lerp",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_baked_data_stats",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Display baked data stats for the current mod.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_baked_data_stats",
+      "helperText": "Display baked data stats for the current mod.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_steamaudio_baked_occlusion_mode",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "0: distance ratio only. 1: deviation only (1/r). 2: deviation only (linear). 3: Mode 0 and Mode 1, 4: Mode 0 and Mode 2"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_baked_occlusion_mode",
+      "helperText": "0: distance ratio only. 1: deviation only (1/r). 2: deviation only (linear). 3: Mode 0 and Mode 1, 4: Mode 0 and Mode 2",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_enable_pathing",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cheat"
+      ],
+      "description": "This variable is checked by soundstack to globally enabling pathing for audio processing.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_enable_pathing",
+      "helperText": "This variable is checked by soundstack to globally enabling pathing for audio processing.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_enable_perspective_correction",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Enable perspective correction for 3D audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_enable_perspective_correction",
+      "helperText": "Enable perspective correction for 3D audio.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_enable_reverb",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "release"
+      ],
+      "description": "Enable Steam Audio Reverb processor.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_enable_reverb",
+      "helperText": "Enable Steam Audio Reverb processor.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_enable_spatial_blend_fix",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Toggles the speculative fix for low-frequency issues when using spatial blend.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_enable_spatial_blend_fix",
+      "helperText": "Toggles the speculative fix for low-frequency issues when using spatial blend.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_steamaudio_export_scene",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Exports scene currently used by Steam Audio as a phononscene file.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_export_scene",
+      "helperText": "Exports scene currently used by Steam Audio as a phononscene file.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_steamaudio_halton_sequence",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Generate Halton Sequence for a given order and number of samples.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_halton_sequence",
+      "helperText": "Generate Halton Sequence for a given order and number of samples.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_steamaudio_ir_duration",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cheat"
+      ],
+      "description": "The time delay between a sound being emitted and the last audible reflection in Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_ir_duration",
+      "helperText": "The time delay between a sound being emitted and the last audible reflection in Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_max_convolution_sources",
+    "consoleData": {
+      "defaultValue": "4",
+      "flags": [
+        "cheat"
+      ],
+      "description": "The maximum number of simultaneous sources that can be modeled by Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_max_convolution_sources",
+      "helperText": "The maximum number of simultaneous sources that can be modeled by Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 4,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_max_occlusion_samples",
+    "consoleData": {
+      "defaultValue": "64",
+      "flags": [
+        "cheat"
+      ],
+      "description": "The maximum number of rays that can be traced for volumetric occlusion by Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_max_occlusion_samples",
+      "helperText": "The maximum number of rays that can be traced for volumetric occlusion by Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 64,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_num_bounces",
+    "consoleData": {
+      "defaultValue": "128",
+      "flags": [
+        "cheat"
+      ],
+      "description": "The maximum number of times any ray can bounce when using Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_num_bounces",
+      "helperText": "The maximum number of times any ray can bounce when using Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 128,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_num_diffuse_samples",
+    "consoleData": {
+      "defaultValue": "2048",
+      "flags": [
+        "cheat"
+      ],
+      "description": "The number of directions considered for ray bounce by Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_num_diffuse_samples",
+      "helperText": "The number of directions considered for ray bounce by Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 2048,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_num_rays",
+    "consoleData": {
+      "defaultValue": "65536",
+      "flags": [
+        "cheat"
+      ],
+      "description": "The number of rays to trace for reflection modeling by Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_num_rays",
+      "helperText": "The number of rays to trace for reflection modeling by Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 65536,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_num_threads",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Sets the number of threads used for realtime reflection by Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_num_threads",
+      "helperText": "Sets the number of threads used for realtime reflection by Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_pathing_order",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "The amount of directional detail in the simulated by Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_pathing_order",
+      "helperText": "The amount of directional detail in the simulated by Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_pathing_order_rendering",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "The amount of directional detail in the rendered audio by Steam Audio.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_pathing_order_rendering",
+      "helperText": "The amount of directional detail in the rendered audio by Steam Audio.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_reverb_level_db",
+    "consoleData": {
+      "defaultValue": "-3",
+      "flags": [
+        "release"
+      ],
+      "description": "Adjust overall volume (dB) of the output from Steam Audio Reverb processor.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_reverb_level_db",
+      "helperText": "Adjust overall volume (dB) of the output from Steam Audio Reverb processor.",
+      "type": "unknown_numeric",
+      "defaultValue": -3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_steamaudio_source_pathing_debug",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a"
+      ],
+      "description": "Enable path visualization for steam_audio_source operator.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_steamaudio_source_pathing_debug",
+      "helperText": "Enable path visualization for steam_audio_source operator.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_surf_volume_inair",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "0.5",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "The volume of the wind when surfing."
+    },
+    "uiData": {
+      "label": "snd_surf_volume_inair",
+      "helperText": "The volume of the wind when surfing.",
+      "type": "float",
+      "defaultValue": 0.5,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_surf_volume_map",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "0.3",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "The volume of ambient sounds when surfing is enabled."
+    },
+    "uiData": {
+      "label": "snd_surf_volume_map",
+      "helperText": "The volume of ambient sounds when surfing is enabled.",
+      "type": "float",
+      "defaultValue": 0.3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_surf_volume_slide",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "0.5",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "The volume of sliding along surfaces when surfing."
+    },
+    "uiData": {
+      "label": "snd_surf_volume_slide",
+      "helperText": "The volume of sliding along surfaces when surfing.",
+      "type": "float",
+      "defaultValue": 0.5,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_tensecondwarning_volume",
+    "consoleData": {
+      "defaultValue": "0.041705",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Volume of Ten Second Warnings",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_tensecondwarning_volume",
+      "helperText": "Volume of Ten Second Warnings",
+      "type": "float",
+      "defaultValue": 0.041705,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "snd_toolvolume",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a"
+      ],
+      "description": "Volume of sounds in tools (e.g. Hammer, SFM)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_toolvolume",
+      "helperText": "Volume of sounds in tools (e.g. Hammer, SFM)",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_vmidi_flush",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Purge and reload all vmidi data and files.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_vmidi_flush",
+      "helperText": "Purge and reload all vmidi data and files.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "snd_vmix_override_mix_decay_time",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "If set > 0, overrides how long the decay time is on all mix graphs (in seconds).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_vmix_override_mix_decay_time",
+      "helperText": "If set > 0, overrides how long the decay time is on all mix graphs (in seconds).",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_vmix_show_input_updates",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "If set to 1, show all incoming updates to vmix inputs.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_vmix_show_input_updates",
+      "helperText": "If set to 1, show all incoming updates to vmix inputs.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "snd_voipvolume",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a"
+      ],
+      "description": "Voice volume",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "snd_voipvolume",
+      "helperText": "Voice volume",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sound_device_override",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "ID of the sound device to use",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sound_device_override",
+      "helperText": "ID of the sound device to use",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "voice_always_sample_mic",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a"
+      ],
+      "description": "When enabled, open the voip audio input stream when the application launches.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_always_sample_mic",
+      "helperText": "When enabled, open the voip audio input stream when the application launches.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "voice_device_override",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Default device used for voice capture.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_device_override",
+      "helperText": "Default device used for voice capture.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "voice_input_stallout",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "user"
+      ],
+      "description": "Time before we consider a mic stalled out and need to reset it.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_input_stallout",
+      "helperText": "Time before we consider a mic stalled out and need to reset it.",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "voice_loopback",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_loopback",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "voice_loopback_no_networking",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_loopback_no_networking",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "voice_modenable",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "a",
+        "release",
+        "clientcmd_can_execute"
+      ],
+      "description": "Enable/disable voice in this mod.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_modenable",
+      "helperText": "Enable/disable voice in this mod.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "voice_modenable_toggle",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Toggle the voice_modenable convar.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_modenable_toggle",
+      "helperText": "Toggle the voice_modenable convar.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "voice_threshold",
+    "consoleData": {
+      "defaultValue": "-120",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "decibel threshold for how loud the talker's input signal is before we think they are talking.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_threshold",
+      "helperText": "decibel threshold for how loud the talker's input signal is before we think they are talking.",
+      "type": "unknown_integer",
+      "defaultValue": -120,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "voice_vox",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "Voice chat uses a vox-style always on",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "voice_vox",
+      "helperText": "Voice chat uses a vox-style always on",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  }
+]

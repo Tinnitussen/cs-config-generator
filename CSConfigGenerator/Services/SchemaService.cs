@@ -9,9 +9,13 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     private readonly HttpClient _httpClient = httpClient;
     private readonly List<ConfigSection> _playerSections = [];
     private readonly List<ConfigSection> _serverSections = [];
+    private readonly List<ConfigSection> _sharedSections = [];
+    private readonly List<ConfigSection> _uncategorizedSections = [];
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> SharedSections => _sharedSections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> UncategorizedSections => _uncategorizedSections.AsReadOnly();
 
     public async Task InitializeAsync()
     {
@@ -42,8 +46,11 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
                 }
                 else if (filePath.Contains("/shared/"))
                 {
-                    _playerSections.Add(section);
-                    _serverSections.Add(section);
+                    _sharedSections.Add(section);
+                }
+                else if (filePath.Contains("/uncategorized/"))
+                {
+                    _uncategorizedSections.Add(section);
                 }
                 else
                 {

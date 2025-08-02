@@ -1,0 +1,63 @@
+[
+  {
+    "command": "hud_fastswitch",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "hud_fastswitch",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "hud_scaling",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "Scales hud elements",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "hud_scaling",
+      "helperText": "Scales hud elements",
+      "type": "float",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "hud_showtargetid",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "Enables display of target names",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "hud_showtargetid",
+      "helperText": "Enables display of target names",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  }
+]

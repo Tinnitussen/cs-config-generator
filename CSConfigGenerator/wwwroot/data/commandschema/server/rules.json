@@ -1,0 +1,558 @@
+[
+  {
+    "command": "mp_backup_restore_list_files",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Lists recent backup round files matching the prefix, most recent files first, accepts a numeric parameter to limit the number of files displayed",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_restore_list_files",
+      "helperText": "Lists recent backup round files matching the prefix, most recent files first, accepts a numeric parameter to limit the number of files displayed",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_backup_restore_load_autopause",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Whether to automatically pause the match after restoring round data from backup",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_restore_load_autopause",
+      "helperText": "Whether to automatically pause the match after restoring round data from backup",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_backup_restore_load_file",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Loads player cash, KDA, scores and team scores; resets to the next round after the backup",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_restore_load_file",
+      "helperText": "Loads player cash, KDA, scores and team scores; resets to the next round after the backup",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_bot_ai_bt",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Use the specified behavior tree file to drive the bot behavior.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_bot_ai_bt",
+      "helperText": "Use the specified behavior tree file to drive the bot behavior.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_bot_ai_bt_clear_cache",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Clears the cache for behavior tree files.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_bot_ai_bt_clear_cache",
+      "helperText": "Clears the cache for behavior tree files.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_competitive_endofmatch_extra_time",
+    "consoleData": {
+      "defaultValue": "15",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "After a competitive match finishes rematch voting extra time is given for rankings.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_competitive_endofmatch_extra_time",
+      "helperText": "After a competitive match finishes rematch voting extra time is given for rankings.",
+      "type": "unknown_numeric",
+      "defaultValue": 15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_disable_autokick",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Prevents a userid from being auto-kicked",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_disable_autokick",
+      "helperText": "Prevents a userid from being auto-kicked",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_disconnect_kills_bots",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "When a bot disconnects, kill them first.  Requires mp_disconnect_kills_players.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_disconnect_kills_bots",
+      "helperText": "When a bot disconnects, kill them first.  Requires mp_disconnect_kills_players.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_disconnect_kills_players",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "When a player disconnects, kill them first (triggering item drops, stats, etc.)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_disconnect_kills_players",
+      "helperText": "When a player disconnects, kill them first (triggering item drops, stats, etc.)",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_endmatch_votenextleveltime",
+    "consoleData": {
+      "defaultValue": "20",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If mp_endmatch_votenextmap is set, players have this much time to vote on the next map at match end.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_endmatch_votenextleveltime",
+      "helperText": "If mp_endmatch_votenextmap is set, players have this much time to vote on the next map at match end.",
+      "type": "unknown_numeric",
+      "defaultValue": 20,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_endmatch_votenextmap_wargames_modes",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Modes available for endmatch voting during War Games. Separate names with spaces.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_endmatch_votenextmap_wargames_modes",
+      "helperText": "Modes available for endmatch voting during War Games. Separate names with spaces.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_endmatch_votenextmap_wargames_nummaps",
+    "consoleData": {
+      "defaultValue": "3",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Maximum number of maps to include in endmatch voting during War Games",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_endmatch_votenextmap_wargames_nummaps",
+      "helperText": "Maximum number of maps to include in endmatch voting during War Games",
+      "type": "unknown_numeric",
+      "defaultValue": 3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_endmatch_votenextmap_wargames_nummodes",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Maximum number of other War Games to include in endmatch voting during War Games",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_endmatch_votenextmap_wargames_nummodes",
+      "helperText": "Maximum number of other War Games to include in endmatch voting during War Games",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_footsteps_serverside",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Makes the server always play footstep sounds. Clients never calculate footstep sounds locally, instead relying on the server.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_footsteps_serverside",
+      "helperText": "Makes the server always play footstep sounds. Clients never calculate footstep sounds locally, instead relying on the server.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_fraglimit",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "nf",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_fraglimit",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_guardian_target_site",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If set to the index of a bombsite, will cause random spawns to be only created near that site.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_guardian_target_site",
+      "helperText": "If set to the index of a bombsite, will cause random spawns to be only created near that site.",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_logdetail",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Logs attacks.  Values are: 0=off, 1=enemy, 2=teammate, 3=both)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_logdetail",
+      "helperText": "Logs attacks.  Values are: 0=off, 1=enemy, 2=teammate, 3=both)",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_logdetail_items",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Logs a line any time a player acquires or loses an item.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_logdetail_items",
+      "helperText": "Logs a line any time a player acquires or loses an item.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_modify_timeouts",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "mp_modify_timeouts <CT|T> <N>, e.g., mp_modify ct -1",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_modify_timeouts",
+      "helperText": "mp_modify_timeouts <CT|T> <N>, e.g., mp_modify ct -1",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_pause_match",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Pause the match in the next freeze time",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_pause_match",
+      "helperText": "Pause the match in the next freeze time",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_require_gun_use_to_acquire",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Whether guns must be +used to acquire or default is touch-to-pickup",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_require_gun_use_to_acquire",
+      "helperText": "Whether guns must be +used to acquire or default is touch-to-pickup",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_restartgame",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If non-zero, game will restart in the specified number of seconds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_restartgame",
+      "helperText": "If non-zero, game will restart in the specified number of seconds",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_suicide_penalty",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Punish players for suicides",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_suicide_penalty",
+      "helperText": "Punish players for suicides",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_unpause_match",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Resume the match",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_unpause_match",
+      "helperText": "Resume the match",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_warmup_end",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "End warmup immediately.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_warmup_end",
+      "helperText": "End warmup immediately.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_warmup_start",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Start warmup.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_warmup_start",
+      "helperText": "Start warmup.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_weapon_next_owner_touch_time",
+    "consoleData": {
+      "defaultValue": "1.3",
+      "flags": [
+        "sv",
+        "cheat",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_weapon_next_owner_touch_time",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 1.3,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  }
+]

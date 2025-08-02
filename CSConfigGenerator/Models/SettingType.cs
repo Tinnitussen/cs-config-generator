@@ -67,7 +67,7 @@ public static class SettingTypeHelpers
     {
         return settingType switch
         {
-            SettingType.Bool => Convert.ToBoolean(valueStr), // Handles "true", "false", "1", "0" automatically
+            SettingType.Bool => ParseBooleanValue(valueStr),
             SettingType.Int => int.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.Float => float.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.String => valueStr,
@@ -77,6 +77,19 @@ public static class SettingTypeHelpers
             SettingType.UnknownInteger => int.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.Action => valueStr,
             _ => GetDefaultValue(settingType) // Return default value instead of throwing
+        };
+    }
+    
+    /// <summary>
+    /// Parses a string representation of a boolean value, handling "0" and "1" as well as "true" and "false"
+    /// </summary>
+    private static bool ParseBooleanValue(string valueStr)
+    {
+        return valueStr switch
+        {
+            "0" => false,
+            "1" => true,
+            _ => bool.Parse(valueStr) // This handles "true" and "false" (case-insensitive)
         };
     }
 
@@ -107,7 +120,7 @@ public static class SettingTypeHelpers
     {
         return settingType switch
         {
-            SettingType.Bool => Convert.ToBoolean(value),
+            SettingType.Bool => ConvertToBoolean(value),
             SettingType.Int => Convert.ToInt32(value),
             SettingType.Float => Convert.ToSingle(value),
             SettingType.String => value.ToString() ?? string.Empty,
@@ -118,6 +131,24 @@ public static class SettingTypeHelpers
             SettingType.Action => value.ToString() ?? string.Empty,
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
+    }
+    
+    /// <summary>
+    /// Converts an object to a boolean, handling integer values (0, 1) as well as standard boolean conversion
+    /// </summary>
+    private static bool ConvertToBoolean(object value)
+    {
+        if (value is int intValue)
+        {
+            return intValue != 0;
+        }
+        
+        if (value is string strValue)
+        {
+            return ParseBooleanValue(strValue);
+        }
+        
+        return Convert.ToBoolean(value);
     }
 
     /// <summary>

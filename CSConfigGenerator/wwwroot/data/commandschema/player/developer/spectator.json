@@ -1,0 +1,213 @@
+[
+  {
+    "command": "spec_autodirector",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Auto-director chooses best view modes while spectating",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_autodirector",
+      "helperText": "Auto-director chooses best view modes while spectating",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "spec_centerchasecam",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "Looks at the target player's center, instead of his eye position, in chase came mode",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_centerchasecam",
+      "helperText": "Looks at the target player's center, instead of his eye position, in chase came mode",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "spec_glow_decay_time",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Time to decay glow from 1.0 to spec_glow_silent_factor after spec_glow_full_time.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_glow_decay_time",
+      "helperText": "Time to decay glow from 1.0 to spec_glow_silent_factor after spec_glow_full_time.",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "spec_glow_full_time",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Noisy players stay at full brightness for this long.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_glow_full_time",
+      "helperText": "Noisy players stay at full brightness for this long.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "spec_glow_silent_factor",
+    "consoleData": {
+      "defaultValue": "0.4",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Lurking player xray glow scaling.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_glow_silent_factor",
+      "helperText": "Lurking player xray glow scaling.",
+      "type": "float",
+      "defaultValue": 0.4,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "spec_glow_spike_factor",
+    "consoleData": {
+      "defaultValue": "1.2",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Noisy player xray glow scaling (pop when noise is made).  Make >1 to add a 'spike' to noise-making players",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_glow_spike_factor",
+      "helperText": "Noisy player xray glow scaling (pop when noise is made).  Make >1 to add a 'spike' to noise-making players",
+      "type": "float",
+      "defaultValue": 1.2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "spec_glow_spike_time",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Time for noisy player glow 'spike' to show that they made noise very recently.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_glow_spike_time",
+      "helperText": "Time for noisy player glow 'spike' to show that they made noise very recently.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "spec_replay_autostart",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "Auto-start Killer Replay when available",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_replay_autostart",
+      "helperText": "Auto-start Killer Replay when available",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "spec_show_xray",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "If set to 1, you can see player outlines and name IDs through walls - who you can see depends on your team and mode",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_show_xray",
+      "helperText": "If set to 1, you can see player outlines and name IDs through walls - who you can see depends on your team and mode",
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "spec_usenumberkeys_nobinds",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "If set to 1, map voting and spectator view use the raw number keys instead of the weapon binds (slot1, slot2, etc).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_usenumberkeys_nobinds",
+      "helperText": "If set to 1, map voting and spectator view use the raw number keys instead of the weapon binds (slot1, slot2, etc).",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  }
+]
