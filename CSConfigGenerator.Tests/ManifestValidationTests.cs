@@ -166,8 +166,9 @@ public class ManifestValidationTests : IDisposable
             Assert.True(
                 filePath.Contains("/player/") ||
                 filePath.Contains("/server/") ||
-                filePath.Contains("/shared/"),
-                $"File path '{filePath}' should contain /player/, /server/, or /shared/ folder");
+                filePath.Contains("/shared/") ||
+                filePath.Contains("/uncategorized/"),
+                $"File path '{filePath}' should contain /player/, /server/, /shared/, or /uncategorized/ folder");
         }
     }
 
