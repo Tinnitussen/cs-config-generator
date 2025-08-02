@@ -14,5 +14,5 @@ public record ConsoleData
     public string Description { get; init; } = string.Empty;
 
     [JsonPropertyName("sourcedAt")]
-    public DateTime? SourcedAt { get; init; }
+    public DateTimeOffset? SourcedAt { get; init; }
 }
