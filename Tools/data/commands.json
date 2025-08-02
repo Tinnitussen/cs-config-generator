@@ -40281,6 +40281,29 @@
     }
   },
   {
+    "command": "ragdoll_cleanup_all",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cl",
+        "cheat",
+        "linked"
+      ],
+      "description": "Cleans up all ragdolls.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "ragdoll_cleanup_all",
+      "helperText": "Cleans up all ragdolls.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "ragdoll_friction_scale",
     "consoleData": {
       "defaultValue": "0.6",
