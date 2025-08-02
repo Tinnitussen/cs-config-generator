@@ -7,7 +7,7 @@
 @using System.Text.RegularExpressions
 
 @inject ISchemaService SchemaService
-@inject ToastService ToastService
+@inject IToastService ToastService
 
 <PageTitle>Command Reference</PageTitle>
 
@@ -15,7 +15,7 @@
     <div class="col-lg-8 pe-2">
         <h1>Command Reference</h1>
         <p class="text-muted">Browse, search, and manage all available commands for your configuration.</p>
-        
+
         <ul class="nav nav-tabs mb-3">
             <li class="nav-item">
                 <a class="nav-link @(currentConfigType == ConfigType.Player ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Player)">
@@ -36,13 +36,13 @@
                         <div class="search-input-wrapper">
                             <div class="autocomplete-wrapper">
                                 <input class="autocomplete-ghost" type="text" value="@GhostText" readonly tabindex="-1" />
-                                <input 
-                                    @oninput="OnSearchInput" 
+                                <input
+                                    @oninput="OnSearchInput"
                                     @onkeydown="HandleKeyDown"
                                     @onkeydown:preventDefault="tabCompletionPreventDefault"
                                     value="@searchTerm"
-                                    class="autocomplete-input form-control form-control-sm" 
-                                    placeholder="Search commands..." 
+                                    class="autocomplete-input form-control form-control-sm"
+                                    placeholder="Search commands..."
                                     autocomplete="off" />
                             </div>
                             @if (!string.IsNullOrEmpty(searchTerm))
@@ -160,16 +160,16 @@
         Player,
         Server
     }
-    
+
     private ConfigType currentConfigType = ConfigType.Player;
 
     [Inject(Key="PlayerConfigStateServiceKey")]
     public IConfigStateService PlayerConfigStateService { get; set; } = default!;
-    
+
     [Inject(Key="ServerConfigStateServiceKey")]
     public IConfigStateService ServerConfigStateService { get; set; } = default!;
-    
-    private IConfigStateService CurrentConfigStateService => 
+
+    private IConfigStateService CurrentConfigStateService =>
         currentConfigType == ConfigType.Player ? PlayerConfigStateService : ServerConfigStateService;
 
     // Private fields - no need for complex properties
@@ -178,7 +178,7 @@
     private bool requiresCheatsFilter;
     private Dictionary<SettingType, bool> selectedTypes = new();
     private bool showTypeDropdown = false;
-    
+
     private List<SettingViewModel> allViewModels = [];
     private List<SettingViewModel> paginatedViewModels = [];
     private SettingViewModel? selectedViewModel;
@@ -188,7 +188,7 @@
 
     private string? currentSuggestion;
     private bool tabCompletionPreventDefault = false;
-    private string? GhostText => 
+    private string? GhostText =>
         (!string.IsNullOrEmpty(currentSuggestion) && !string.IsNullOrEmpty(searchTerm) && currentSuggestion.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase))
         ? searchTerm + currentSuggestion.Substring(searchTerm.Length)
         : null;
@@ -201,20 +201,20 @@
 
         PlayerConfigStateService.OnStateChange += HandleStateChanged;
         ServerConfigStateService.OnStateChange += HandleStateChanged;
-        
+
         InitializeViewModels();
         ApplyFilters();
     }
 
     private void HandleStateChanged(object? originator)
     {
-        InvokeAsync(() => 
+        InvokeAsync(() =>
         {
             ApplyFiltersWithoutPageReset();
             StateHasChanged();
         });
     }
-    
+
     private void SwitchConfigType(ConfigType configType)
     {
         if (currentConfigType != configType)
@@ -224,12 +224,12 @@
             ApplyFilters();
         }
     }
-    
+
     private void InitializeViewModels()
     {
         IEnumerable<CommandDefinition> commands;
         IConfigStateService configStateService = CurrentConfigStateService;
-        
+
         if (currentConfigType == ConfigType.Player)
         {
             commands = SchemaService.PlayerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
@@ -238,7 +238,7 @@
         {
             commands = SchemaService.ServerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
         }
-        
+
         allViewModels = commands.Select(c => new SettingViewModel(c, configStateService)).ToList();
     }
 
@@ -267,7 +267,7 @@
         if (e.Key == "Tab" && !string.IsNullOrEmpty(currentSuggestion))
         {
             searchTerm = currentSuggestion;
-            currentSuggestion = null; 
+            currentSuggestion = null;
             tabCompletionPreventDefault = true;
         }
     }
@@ -277,13 +277,13 @@
         currentPage = 1;
         ApplyFiltersInternal();
     }
-    
+
     private void ApplyFiltersWithoutPageReset()
     {
         // Preserve the current page, but make sure it's still valid after filtering
         int originalPage = currentPage;
         ApplyFiltersInternal();
-        
+
         // Check if the original page is still valid after filtering
         if (originalPage <= totalPages && originalPage > 0)
         {
@@ -292,7 +292,7 @@
             UpdatePagination(filtered);
         }
     }
-    
+
     private void ApplyFiltersInternal()
     {
         // Update autocomplete suggestion
@@ -315,12 +315,12 @@
     private List<SettingViewModel> GetFilteredViewModels()
     {
         return allViewModels
-            .Where(vm => string.IsNullOrWhiteSpace(searchTerm) || 
-                        vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || 
+            .Where(vm => string.IsNullOrWhiteSpace(searchTerm) ||
+                        vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
                         vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => !selectedTypes.Any(st => st.Value) || 
+            .Where(vm => !selectedTypes.Any(st => st.Value) ||
                         selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
-            .Where(vm => string.IsNullOrEmpty(selectedInclusion) || 
+            .Where(vm => string.IsNullOrEmpty(selectedInclusion) ||
                         vm.Setting.IsInConfigEditor.ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase))
             .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats)
             .ToList();
@@ -363,13 +363,13 @@
         searchTerm = string.Empty;
         selectedInclusion = null;
         requiresCheatsFilter = false;
-        
+
         // Clear all type selections
         foreach (var key in selectedTypes.Keys.ToList())
         {
             selectedTypes[key] = false;
         }
-        
+
         showTypeDropdown = false;
         currentSuggestion = null;
         ApplyFilters();
