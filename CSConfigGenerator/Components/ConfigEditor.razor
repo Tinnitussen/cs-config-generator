@@ -14,7 +14,7 @@
             @if (PresetType != null)
             {
                 <div class="custom-select-wrapper">
-                    <select class="custom-select" @onchange="OnPresetSelected">
+                    <select class="custom-select" @bind="SelectedPreset">
                         <option value="">Pro Configs</option>
                         @foreach (var preset in _presets)
                         {
@@ -94,6 +94,23 @@
     private List<string> _presets = new();
     private List<string> _userConfigs = new();
     private InputFile? _inputFile;
+    private string? _selectedPreset;
+
+    private string? SelectedPreset
+    {
+        get => _selectedPreset;
+        set
+        {
+            if (_selectedPreset != value)
+            {
+                _selectedPreset = value;
+                if (!string.IsNullOrEmpty(_selectedPreset))
+                {
+                    OnPresetSelected(_selectedPreset);
+                }
+            }
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -110,9 +127,8 @@
         }
     }
 
-    private async Task OnPresetSelected(ChangeEventArgs e)
+    private async Task OnPresetSelected(string presetName)
     {
-        var presetName = e.Value?.ToString();
         if (!string.IsNullOrEmpty(presetName) && PresetType != null)
         {
             var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
@@ -120,9 +136,10 @@
             {
                 ConfigStateService.ParseConfigFile(presetContent, this);
                 RefreshConfigText();
-                StateHasChanged();
             }
         }
+        _selectedPreset = null;
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task OnUserConfigSelected(string configName)
