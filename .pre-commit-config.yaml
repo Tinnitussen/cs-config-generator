@@ -25,6 +25,6 @@ repos:
     -   id: dotnet-format
         name: dotnet-format
         language: system
-        entry: dotnet format CSConfigGenerator.slnx
+        entry: dotnet-format
         files: \.(cs|razor)$
         args: ["--verify-no-changes", "--include"]
