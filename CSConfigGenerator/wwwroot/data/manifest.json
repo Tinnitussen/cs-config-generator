@@ -1,5 +1,5 @@
 [
   "data/commandschema/player/player.json",
   "data/commandschema/server/server.json",
-  "data/commandschema/shared/shared.json"
+  "data/commandschema/shared/tbd.json"
 ]
