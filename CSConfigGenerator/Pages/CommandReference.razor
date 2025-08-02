@@ -150,7 +150,7 @@
         }
     </div>
     <div class="col-lg-4 h-100">
-        <ConfigEditor ConfigStateService="@CurrentConfigStateService" @key="currentConfigType"/>
+        <ConfigEditor ConfigStateService="@CurrentConfigStateService" PresetType="@currentConfigType.ToString().ToLower()" @key="currentConfigType"/>
     </div>
 </div>
 
