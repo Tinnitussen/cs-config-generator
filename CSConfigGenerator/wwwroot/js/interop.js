@@ -9,3 +9,7 @@ function downloadFile(fileName, content) {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
+
+function clickElement(element) {
+    element.click();
+}
