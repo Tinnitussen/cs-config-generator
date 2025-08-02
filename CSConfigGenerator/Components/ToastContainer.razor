@@ -1,4 +1,5 @@
 @using CSConfigGenerator.Interfaces
+@using CSConfigGenerator.Models
 @inject IToastService ToastService
 @implements IDisposable
 
@@ -35,7 +36,7 @@
         // Auto-hide after 5 seconds
         StartCountdown();
     }
-    
+
     private void HideToast()
     {
         toastMessage = null;
@@ -50,7 +51,7 @@
         ToastLevel.Error => "bg-danger text-white",
         _ => "bg-info text-white"
     };
-    
+
     private void StartCountdown()
     {
         countdown?.Dispose();

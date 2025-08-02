@@ -1,4 +1,4 @@
-using CSConfigGenerator.Services;
+using CSConfigGenerator.Models;
 
 namespace CSConfigGenerator.Interfaces;
 

@@ -1,4 +1,5 @@
 using CSConfigGenerator.Interfaces;
+using CSConfigGenerator.Models;
 
 namespace CSConfigGenerator.Services;
 
@@ -22,12 +23,4 @@ public class ToastService : IToastService, IDisposable
         OnShow = null;
         OnHide = null;
     }
-}
-
-public enum ToastLevel
-{
-    Info,
-    Success,
-    Warning,
-    Error
 }

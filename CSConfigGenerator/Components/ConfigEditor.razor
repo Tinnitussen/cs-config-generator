@@ -1,6 +1,6 @@
 @using CSConfigGenerator.Interfaces
+@using CSConfigGenerator.Models
 @using Microsoft.AspNetCore.Components.Forms
-@using CSConfigGenerator.Services
 @inject IJSRuntime JSRuntime
 @inject IPresetService PresetService
 @inject IUserConfigService UserConfigService
@@ -79,7 +79,7 @@
     {
         if (ConfigStateService == null)
             throw new InvalidOperationException("ConfigStateService is not set on ConfigEditor.");
-        
+
         RefreshConfigText();
         ConfigStateService.OnStateChange += HandleStateChange;
 
