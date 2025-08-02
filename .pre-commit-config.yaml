@@ -27,4 +27,4 @@ repos:
         language: system
         entry: dotnet-format
         files: \.(cs|razor)$
-        args: ["--verify-no-changes", "--include"]
+        args: ["--check"]
