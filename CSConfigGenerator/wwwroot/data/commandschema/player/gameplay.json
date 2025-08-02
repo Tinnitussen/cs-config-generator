@@ -1,0 +1,46 @@
+[
+  {
+    "command": "option_duck_method",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a",
+        "user",
+        "per_user"
+      ],
+      "description": "Input toggle control",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "option_duck_method",
+      "helperText": "Input toggle control",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "option_speed_method",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a",
+        "user",
+        "per_user"
+      ],
+      "description": "Input toggle control",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "option_speed_method",
+      "helperText": "Input toggle control",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  }
+]

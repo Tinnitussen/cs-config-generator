@@ -2,14 +2,34 @@
 
 This document defines the JSON schema used for all command configuration files in this project. The goal is to create a clear separation between raw data extracted from the game and the curated data used to build the user interface.
 
+## Command Classification
+
+Commands are classified into three main categories: `player`, `server`, and `shared`. This classification is done automatically by the `Tools/scripts/splitting/split.py` script, which uses a combination of flags and command prefixes to determine the category of each command.
+
+The classification logic is as follows:
+
+1.  **Explicit Flags (`sv`, `cl`, `rep`):**
+    *   If a command has the `rep` flag, it's classified as **shared**.
+    *   If a command has both `sv` and `cl` flags, it's classified as **shared**.
+    *   If a command has only the `sv` flag, it's classified as **server**.
+    *   If a command has only the `cl` flag, it's classified as **player**.
+2.  **Prefix-Based Classification (for commands not classified by explicit flags):**
+    *   **Player Prefixes:** `cl_`, `ui_`, `joy_`, `cam_`, `c_`, `+`, `snd_`, `r_`, `mat_`, `demo_`
+    *   **Server Prefixes:** `sv_`, `mp_`, `bot_`, `nav_`, `ent_`, `script_`, `logaddress_`, `rr_`, `cast_`, `navspace_`, `markup_`, `spawn_`, `vis_`, `telemetry_`, `test_`, `soundscape_`, `scene_`, `particle_`, `shatterglass_`, `create_`, `debugoverlay_`, `prop_`, `g_`, `ff_`, `cash_`, `contributionscore_`
+    *   **Shared Prefixes:** `ai_`, `weapon_`, `ragdoll_`, `ik_`, `skeleton_`
+3.  **User-Specific Flags (`a`, `user`):**
+    *   If a command has the `a` or `user` flag, and is not already classified, it will be classified as **player**.
+4.  **Uncategorized:**
+    *   Any command that doesn't meet any of the above criteria will be classified as **uncategorized**.
+
 ## Project File Structure and UI Mapping
 
 The organization of the JSON files directly maps to the layout of the config generator's user interface. This creates a logical and predictable structure for both developers and users.
 
 ### The Rule: Folders are Pages, Files are Sections
 
-* **Top-Level Folders:** Each main folder (`PlayerConfig`, `ServerConfig`, etc.) represents a major page or navigation tab in the application.
-* **JSON Files:** Each JSON file within a folder (`crosshair.json`, `teams.json`, etc.) becomes a distinct section on that page. The filename is used as the title for that section.
+*   **Top-Level Folders:** Each main folder (`PlayerConfig`, `ServerConfig`, etc.) represents a major page or navigation tab in the application.
+*   **JSON Files:** Each JSON file within a folder (`crosshair.json`, `teams.json`, etc.) becomes a distinct section on that page. The filename is used as the title for that section.
 
 ### File Structure
 
@@ -94,6 +114,7 @@ Used for simple on/off toggle switches.
   "requiresCheats": false,
   "hideFromDefaultView": false, // If set to true, hide command from the main UI (not command reference page)
   "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
+  "manual_category": "player/crosshair", // Optional: Manually sets the category and subcategory.
   "visibilityCondition": { // Optional: Controls visibility based on another command.
     "command": "parent_command_name",
     "value": "required_value"

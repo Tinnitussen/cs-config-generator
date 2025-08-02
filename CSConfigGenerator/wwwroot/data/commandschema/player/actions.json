@@ -1,0 +1,1972 @@
+[
+  {
+    "command": "+cl_show_team_equipment",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+cl_show_team_equipment",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+lookatweapon",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+lookatweapon",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+quickbuyradial",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+quickbuyradial",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+quickgrenaderadial",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+quickgrenaderadial",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+quickinv",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+quickinv",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+radialradio",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+radialradio",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+radialradio2",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+radialradio2",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+radialradio3",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+radialradio3",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+spray_menu",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+spray_menu",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-cl_show_team_equipment",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-cl_show_team_equipment",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-lookatweapon",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-lookatweapon",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-quickbuyradial",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-quickbuyradial",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-quickgrenaderadial",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-quickgrenaderadial",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-quickinv",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-quickinv",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-radialradio",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-radialradio",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-radialradio2",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-radialradio2",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-radialradio3",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-radialradio3",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "-spray_menu",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "-spray_menu",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "annotation_append",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Load annotation to a file without clearing existing annotations",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "annotation_append",
+      "helperText": "Load annotation to a file without clearing existing annotations",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "annotation_clear",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Clear all annotation",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "annotation_clear",
+      "helperText": "Clear all annotation",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "annotation_create",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Creates an annotation",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "annotation_create",
+      "helperText": "Creates an annotation",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "annotation_delete_previous_node_set",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Delete the last node set created",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "annotation_delete_previous_node_set",
+      "helperText": "Delete the last node set created",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "annotation_load",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Load annotation to a file after first clearing existing annotations",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "annotation_load",
+      "helperText": "Load annotation to a file after first clearing existing annotations",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "annotation_reload",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Reload the annotation file",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "annotation_reload",
+      "helperText": "Reload the annotation file",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "annotation_reload_language_file",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Creates an annotation",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "annotation_reload_language_file",
+      "helperText": "Creates an annotation",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "annotation_save",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Save annotation to a file",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "annotation_save",
+      "helperText": "Save annotation to a file",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "autobuy",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Attempt to purchase items with the order listed in cl_autobuy",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "autobuy",
+      "helperText": "Attempt to purchase items with the order listed in cl_autobuy",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "buymenu",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "Show or hide main buy menu",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "buymenu",
+      "helperText": "Show or hide main buy menu",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cancelselect",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cancelselect",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_interp",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Read the effective client simulation interpolation amount in terms of time.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_interp",
+      "helperText": "Read the effective client simulation interpolation amount in terms of time.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_net_printsummary",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Print a summary report of Source2 engine networking statistics.  (Ticks, netchan messages, etc.)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_net_printsummary",
+      "helperText": "Print a summary report of Source2 engine networking statistics.  (Ticks, netchan messages, etc.)",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_ticktiming",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "{print|<interval>} [summary|detail]  Print timing stats now, or set report interval",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_ticktiming",
+      "helperText": "{print|<interval>} [summary|detail]  Print timing stats now, or set report interval",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "clutch_mode_toggle",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Toggle clutch mode convar",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "clutch_mode_toggle",
+      "helperText": "Toggle clutch mode convar",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cs_quit_prompt",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Quit the game",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cs_quit_prompt",
+      "helperText": "Quit the game",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "csgo_download_match",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "norecord",
+        "clientcmd_can_execute"
+      ],
+      "description": "Downloads a match via serial code and starts playback",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csgo_download_match",
+      "helperText": "Downloads a match via serial code and starts playback",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "debug_purchase_defidx",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release",
+        "clientcmd_can_execute"
+      ],
+      "description": "Purchase an item by defindex",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "debug_purchase_defidx",
+      "helperText": "Purchase an item by defindex",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_goto",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Skips to location in demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_goto",
+      "helperText": "Skips to location in demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_gotomark",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Skips the current demo playback to the marked tick",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_gotomark",
+      "helperText": "Skips the current demo playback to the marked tick",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_gototick",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Skips to a tick in demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_gototick",
+      "helperText": "Skips to a tick in demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_info",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Print information about currently playing demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_info",
+      "helperText": "Print information about currently playing demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_marktick",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Marks the current demo playback tick for later use",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_marktick",
+      "helperText": "Marks the current demo playback tick for later use",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_pause",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Pauses demo playback.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_pause",
+      "helperText": "Pauses demo playback.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_pauseatservertick",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Pauses when the 'render time' reaches the specified tick."
+    },
+    "uiData": {
+      "label": "demo_pauseatservertick",
+      "helperText": "Pauses when the 'render time' reaches the specified tick.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_resume",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Resumes demo playback.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_resume",
+      "helperText": "Resumes demo playback.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_step_tick",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Play for N ticks (default=1) and then pause."
+    },
+    "uiData": {
+      "label": "demo_step_tick",
+      "helperText": "Play for N ticks (default=1) and then pause.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_timescale",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Sets demo replay speed.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_timescale",
+      "helperText": "Sets demo replay speed.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_togglepause",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Toggles demo playback.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_togglepause",
+      "helperText": "Toggles demo playback.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demoui",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Show/hide demo playback ui",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demoui",
+      "helperText": "Show/hide demo playback ui",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "dm_togglerandomweapons",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute",
+        "clientcmd_can_execute"
+      ],
+      "description": "Turns random weapons in deathmatch on/off",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dm_togglerandomweapons",
+      "helperText": "Turns random weapons in deathmatch on/off",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "endmatch_votenextmap",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Votes for the next map at the end of the match",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "endmatch_votenextmap",
+      "helperText": "Votes for the next map at the end of the match",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "firstperson",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release",
+        "execute_per_tick"
+      ],
+      "description": "Switch to firstperson camera.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "firstperson",
+      "helperText": "Switch to firstperson camera.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "impulse",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Triggers impulse command",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "impulse",
+      "helperText": "Triggers impulse command",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "invnext",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "invnext",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "invnextselect",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "invnextselect",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "invprev",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "invprev",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "invprevselect",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "invprevselect",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "lastinv",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "lastinv",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "launch_warmup_map",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "norecord",
+        "clientcmd_can_execute"
+      ],
+      "description": "Launches warmup map",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "launch_warmup_map",
+      "helperText": "Launches warmup map",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "map_workshop",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release",
+        "vconsole_fuzzy",
+        "vconsole_set_focus"
+      ],
+      "description": "Launch a workshop map",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "map_workshop",
+      "helperText": "Launch a workshop map",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "menuselect",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "menuselect",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "menuselect",
+      "helperText": "menuselect",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mm_queue_show_stats",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Display global server stats",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mm_queue_show_stats",
+      "helperText": "Display global server stats",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "print_mapgroup",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Prints the current mapgroup and the contained maps",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "print_mapgroup",
+      "helperText": "Prints the current mapgroup and the contained maps",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "radio",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Opens a radio menu",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "radio",
+      "helperText": "Opens a radio menu",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "radio1",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Opens a radio menu",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "radio1",
+      "helperText": "Opens a radio menu",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "radio2",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Opens a radio menu",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "radio2",
+      "helperText": "Opens a radio menu",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "radio3",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Opens a radio menu",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "radio3",
+      "helperText": "Opens a radio menu",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "rebuy",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Attempt to repurchase items with the order listed in cl_rebuy",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "rebuy",
+      "helperText": "Attempt to repurchase items with the order listed in cl_rebuy",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sellbackall",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Attempt to refund all equipment",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sellbackall",
+      "helperText": "Attempt to refund all equipment",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "show_loadout_toggle",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Toggles loadout display",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "show_loadout_toggle",
+      "helperText": "Toggles loadout display",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot0",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot0",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot1",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot1",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot10",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot10",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot11",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot11",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot12",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot12",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot13",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot13",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot2",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot2",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot3",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot3",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot4",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot4",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot5",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot5",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot6",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot6",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot7",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot7",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot8",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot8",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "slot9",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "slot9",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_goto",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Move the spectator camera to a specific location. `spec_goto x y z pitch yaw`",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_goto",
+      "helperText": "Move the spectator camera to a specific location. `spec_goto x y z pitch yaw`",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_mode",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Set spectator mode",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_mode",
+      "helperText": "Set spectator mode",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_next",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Spectate next player",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_next",
+      "helperText": "Spectate next player",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_player",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Spectate a player by name or slot",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_player",
+      "helperText": "Spectate a player by name or slot",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_prev",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Spectate previous player",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_prev",
+      "helperText": "Spectate previous player",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "switchhands",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "switchhands",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "switchhandsleft",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "switchhandsleft",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "switchhandsright",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "switchhandsright",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "teammenu",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "server_can_execute"
+      ],
+      "description": "Show team selection window",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "teammenu",
+      "helperText": "Show team selection window",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "toggleradarscale",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Toggles the radar scale",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "toggleradarscale",
+      "helperText": "Toggles the radar scale",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "workshop_annotation_submit",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Submit annotation to workshop. To update an existing submission add its ID number from the workshop URL as a second argument.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "workshop_annotation_submit",
+      "helperText": "Submit annotation to workshop. To update an existing submission add its ID number from the workshop URL as a second argument.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  }
+]

@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - CSConfigGenerator/**
+      - CSConfigGenerator.Tests/**
+      - .github/workflows/deploy.yml
     branches: 
       - main
   workflow_dispatch:
@@ -15,14 +17,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -33,14 +29,47 @@ jobs:
         with:
           dotnet-version: "9.0"
 
-      - name: Create .nojekyll file
-        run: touch CSConfigGenerator/wwwroot/.nojekyll
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test --configuration Release --no-build --verbosity normal
 
       - name: Publish Blazor WebAssembly app
-        run: dotnet publish CSConfigGenerator/CSConfigGenerator.csproj --configuration Release --output ./publish
+        run: dotnet publish CSConfigGenerator/CSConfigGenerator.csproj --configuration Release --output ./publish --no-restore
+
+      - name: Create .nojekyll file
+        run: touch ./publish/wwwroot/.nojekyll
 
       - name: Rewrite base href
         run: sed -i 's|<base href="/" />|<base href="/cs-config-generator/" />|' ./publish/wwwroot/index.html
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: published-app
+          path: ./publish/wwwroot
+          retention-days: 1
+
+  deploy:
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: published-app
+          path: ./publish/wwwroot
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

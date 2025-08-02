@@ -1,0 +1,202 @@
+[
+  {
+    "command": "tv_allow_autorecording_index",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "When >=0 restricts autorecording only to the specified TV index",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_allow_autorecording_index",
+      "helperText": "When >=0 restricts autorecording only to the specified TV index",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_allow_camera_man_steamid",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Allows tournament production cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the camera man.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_allow_camera_man_steamid",
+      "helperText": "Allows tournament production cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the camera man.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_allow_camera_man_steamid2",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Allows tournament production tv cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the tv camera man.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_allow_camera_man_steamid2",
+      "helperText": "Allows tournament production tv cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the tv camera man.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_allow_static_shots",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Auto director uses fixed level cameras for shots",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_allow_static_shots",
+      "helperText": "Auto director uses fixed level cameras for shots",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_delay",
+    "consoleData": {
+      "defaultValue": "105",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "SourceTV broadcast delay in seconds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_delay",
+      "helperText": "SourceTV broadcast delay in seconds",
+      "type": "unknown_numeric",
+      "defaultValue": 105,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_delay1",
+    "consoleData": {
+      "defaultValue": "15",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "SourceTV[instance 1] broadcast delay in seconds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_delay1",
+      "helperText": "SourceTV[instance 1] broadcast delay in seconds",
+      "type": "unknown_numeric",
+      "defaultValue": 15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_delaymapchange",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Delays map change until broadcast is complete",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_delaymapchange",
+      "helperText": "Delays map change until broadcast is complete",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_include_usercommands",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "HLTV streams will include player usercommands each tick",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_include_usercommands",
+      "helperText": "HLTV streams will include player usercommands each tick",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_relayradio",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Relay team radio commands to TV: 0=off, 1=on",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_relayradio",
+      "helperText": "Relay team radio commands to TV: 0=off, 1=on",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_show_allchat",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_show_allchat",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  }
+]

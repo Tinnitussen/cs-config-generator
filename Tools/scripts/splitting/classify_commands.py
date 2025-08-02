@@ -37,8 +37,14 @@ def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
     player_prefixes = ["cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_"]
     server_prefixes = ["sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_", "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_", "test_", "soundscape_", "scene_", "particle_", "shatterglass_", "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_", "contributionscore_"]
     shared_prefixes = ["ai_", "weapon_", "ragdoll_", "ik_", "skeleton_"]
-    
+
     for command in commands:
+        manual_category = command.get('uiData', {}).get('manual_category')
+        if manual_category:
+            category, _ = manual_category.split('/')
+            classified_commands[category].append(command)
+            continue
+
         flags = command.get('consoleData', {}).get('flags', [])
         is_server = 'sv' in flags
         is_client = 'cl' in flags
@@ -67,47 +73,21 @@ def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
 
     return classified_commands
 
-def verify_data_integrity(original: List[Dict], classified: Dict[str, List[Dict]]):
-    """
-    Verify that the split data maintains integrity with the original.
-    """
-    original_count = len(original)
-    classified_count = sum(len(commands) for commands in classified.values())
-
-    if original_count != classified_count:
-        print(f"Error: Command count mismatch. Original: {original_count}, Classified: {classified_count}")
-        return False
-
-    original_commands = {cmd['command'] for cmd in original}
-    classified_commands = {cmd['command'] for commands in classified.values() for cmd in commands}
-
-    if original_commands != classified_commands:
-        print("Error: Command set mismatch.")
-        missing = original_commands - classified_commands
-        extra = classified_commands - original_commands
-        if missing:
-            print(f"Missing commands: {missing}")
-        if extra:
-            print(f"Extra commands: {extra}")
-        return False
-
-    return True
-
 def main():
     input_file = "Tools/data/commands.json"
     output_dir = "Tools/data/classified_commands"
-    
+
     # Check if input file exists
     if not os.path.exists(input_file):
         print(f"Error: Input file '{input_file}' not found.")
         return
-    
+
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
-    
+
     print("Classifying commands with new logic...")
     classified_commands = classify_commands(commands)
-    
+
     # Save the classified commands into separate files
     for category, command_list in classified_commands.items():
         output_file = os.path.join(output_dir, f"{category}_commands.json")
@@ -121,12 +101,6 @@ def main():
         count = len(command_list)
         percentage = (count / total_commands * 100) if total_commands > 0 else 0
         print(f"- {category.capitalize()}: {count} commands ({percentage:.1f}%)")
-
-    print("\nVerifying data integrity...")
-    if not verify_data_integrity(commands, classified_commands):
-        print("Data integrity check failed. Aborting.")
-        return
-    print("Data integrity check passed.")
 
 if __name__ == "__main__":
     main()

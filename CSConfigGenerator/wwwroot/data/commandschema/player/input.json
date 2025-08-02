@@ -1,27 +1,821 @@
 [
   {
-    "name": "sensitivity",
-    "description": "The master mouse sensitivity setting",
-    "type": "float",
-    "defaultValue": 1.25,
-    "requiresCheats": false,
-    "minValue": 0.1,
-    "step": 0.01
+    "command": "input_button_code_is_scan_code_scd",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "Bind keys based on keyboard position instead of key name",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "input_button_code_is_scan_code_scd",
+      "helperText": "Bind keys based on keyboard position instead of key name",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
   },
   {
-    "name": "zoom_sensitivity_ratio",
-    "description": "The additional sensitivity multiplier applied when zoomed in with a sniper rifle",
-    "type": "float",
-    "defaultValue": 1.0,
-    "requiresCheats": false,
-    "minValue": 0,
-    "step": 0.1
+    "command": "input_filter_relative_analog_inputs",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "input_filter_relative_analog_inputs",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
   },
   {
-    "name": "m_rawinput",
-    "description": "Use raw mouse input (bypasses Windows mouse acceleration)",
-    "type": "bool",
-    "defaultValue": true,
-    "requiresCheats": false
+    "command": "joy_advanced",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_advanced",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_advaxisr",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_advaxisr",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_advaxisu",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_advaxisu",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_advaxisv",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_advaxisv",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_advaxisx",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_advaxisx",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_advaxisy",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_advaxisy",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_advaxisz",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_advaxisz",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_axisbutton_threshold",
+    "consoleData": {
+      "defaultValue": "0.3",
+      "flags": [
+        "a"
+      ],
+      "description": "Analog axis range before a button press is registered.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisbutton_threshold",
+      "helperText": "Analog axis range before a button press is registered.",
+      "type": "float",
+      "defaultValue": 0.3,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "joy_axisr_deadzone",
+    "consoleData": {
+      "defaultValue": "0.15",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisr_deadzone",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "joy_axisr_relative",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisr_relative",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_axisu_deadzone",
+    "consoleData": {
+      "defaultValue": "0.15",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisu_deadzone",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "joy_axisu_relative",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisu_relative",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_axisv_deadzone",
+    "consoleData": {
+      "defaultValue": "0.15",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisv_deadzone",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "joy_axisv_relative",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisv_relative",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_axisx_deadzone",
+    "consoleData": {
+      "defaultValue": "0.15",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisx_deadzone",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "joy_axisx_relative",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisx_relative",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_axisy_deadzone",
+    "consoleData": {
+      "defaultValue": "0.15",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisy_deadzone",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "joy_axisy_relative",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisy_relative",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_axisz_deadzone",
+    "consoleData": {
+      "defaultValue": "0.15",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisz_deadzone",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "joy_axisz_relative",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_axisz_relative",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_circle_correct_mode",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_circle_correct_mode",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_circle_correct_mode_vehicle",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_circle_correct_mode_vehicle",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_display_input",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_display_input",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_forward_sensitivity",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_forward_sensitivity",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_movement_stick",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "Which stick controls movement (0 is left stick)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_movement_stick",
+      "helperText": "Which stick controls movement (0 is left stick)",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_name",
+    "consoleData": {
+      "defaultValue": "joystick",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_name",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "joystick",
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_pitch_sensitivity",
+    "consoleData": {
+      "defaultValue": "3",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_pitch_sensitivity",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_pitchsensitivity",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_pitchsensitivity",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_response_look",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_response_look",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_response_move",
+    "consoleData": {
+      "defaultValue": "9",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_response_move",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 9,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_side_sensitivity",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_side_sensitivity",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_sidesensitivity",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_sidesensitivity",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "joy_yaw_sensitivity",
+    "consoleData": {
+      "defaultValue": "3",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_yaw_sensitivity",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "joy_yawsensitivity",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joy_yawsensitivity",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "m_pitch",
+    "consoleData": {
+      "defaultValue": "0.022",
+      "flags": [
+        "cl",
+        "a",
+        "user",
+        "per_user"
+      ],
+      "description": "Mouse pitch factor.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "m_pitch",
+      "helperText": "Mouse pitch factor.",
+      "type": "float",
+      "defaultValue": 0.022,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "m_yaw",
+    "consoleData": {
+      "defaultValue": "0.022",
+      "flags": [
+        "cl",
+        "a",
+        "user",
+        "per_user"
+      ],
+      "description": "Mouse yaw factor.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "m_yaw",
+      "helperText": "Mouse yaw factor.",
+      "type": "float",
+      "defaultValue": 0.022,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
   }
 ]

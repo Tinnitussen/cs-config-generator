@@ -1,0 +1,22 @@
+[
+  {
+    "command": "mp_logmoney",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Enables money logging.  Values are: 0=off, 1=on",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_logmoney",
+      "helperText": "Enables money logging.  Values are: 0=off, 1=on",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  }
+]

@@ -352,6 +352,1039 @@
     }
   },
   {
+    "command": "bot_add",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "bot_add <t|ct> <type> <difficulty> <name> - Adds a bot matching the given criteria.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_add",
+      "helperText": "bot_add <t|ct> <type> <difficulty> <name> - Adds a bot matching the given criteria.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_add_ct",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "bot_add_ct <type> <difficulty> <name> - Adds a Counter-Terrorist bot matching the given criteria.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_add_ct",
+      "helperText": "bot_add_ct <type> <difficulty> <name> - Adds a Counter-Terrorist bot matching the given criteria.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_add_t",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "bot_add_t <type> <difficulty> <name> - Adds a terrorist bot matching the given criteria.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_add_t",
+      "helperText": "bot_add_t <type> <difficulty> <name> - Adds a terrorist bot matching the given criteria.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_all_weapons",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Allows the bots to use all weapons",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_all_weapons",
+      "helperText": "Allows the bots to use all weapons",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_allow_grenades",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots may use grenades.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_allow_grenades",
+      "helperText": "If nonzero, bots may use grenades.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_allow_machine_guns",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots may use the machine gun.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_allow_machine_guns",
+      "helperText": "If nonzero, bots may use the machine gun.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_allow_pistols",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots may use pistols.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_allow_pistols",
+      "helperText": "If nonzero, bots may use pistols.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_allow_rifles",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots may use rifles.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_allow_rifles",
+      "helperText": "If nonzero, bots may use rifles.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_allow_rogues",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots may occasionally go 'rogue'. Rogue bots do not obey radio commands, nor pursue scenario goals.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_allow_rogues",
+      "helperText": "If nonzero, bots may occasionally go 'rogue'. Rogue bots do not obey radio commands, nor pursue scenario goals.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_allow_shotguns",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots may use shotguns.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_allow_shotguns",
+      "helperText": "If nonzero, bots may use shotguns.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_allow_snipers",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots may use sniper rifles.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_allow_snipers",
+      "helperText": "If nonzero, bots may use sniper rifles.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_allow_sub_machine_guns",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots may use sub-machine guns.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_allow_sub_machine_guns",
+      "helperText": "If nonzero, bots may use sub-machine guns.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_auto_follow",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots with high co-op may automatically follow a nearby human player.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_auto_follow",
+      "helperText": "If nonzero, bots with high co-op may automatically follow a nearby human player.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_auto_vacate",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots will automatically leave to make room for human players.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_auto_vacate",
+      "helperText": "If nonzero, bots will automatically leave to make room for human players.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_chatter",
+    "consoleData": {
+      "defaultValue": "normal",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Control how bots talk. Allowed values: 'off', 'radio', 'minimal', or 'normal'.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_chatter",
+      "helperText": "Control how bots talk. Allowed values: 'off', 'radio', 'minimal', or 'normal'.",
+      "type": "string",
+      "defaultValue": "normal",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_controllable",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Determines whether bots can be controlled by players",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_controllable",
+      "helperText": "Determines whether bots can be controlled by players",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_crouch",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_crouch",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_debug",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "For internal testing purposes.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_debug",
+      "helperText": "For internal testing purposes.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_debug_target",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "For internal testing purposes.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_debug_target",
+      "helperText": "For internal testing purposes.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_defer_to_human_goals",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero and there is a human on the team, the bots will not do the scenario tasks.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_defer_to_human_goals",
+      "helperText": "If nonzero and there is a human on the team, the bots will not do the scenario tasks.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_defer_to_human_items",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero and there is a human on the team, the bots will not get scenario items.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_defer_to_human_items",
+      "helperText": "If nonzero and there is a human on the team, the bots will not get scenario items.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_difficulty",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Defines the skill of bots joining the game.  Values are: 0=easy, 1=normal, 2=hard, 3=expert.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_difficulty",
+      "helperText": "Defines the skill of bots joining the game.  Values are: 0=easy, 1=normal, 2=hard, 3=expert.",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_dont_shoot",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat",
+        "release"
+      ],
+      "description": "If nonzero, bots will not fire weapons (for debugging).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_dont_shoot",
+      "helperText": "If nonzero, bots will not fire weapons (for debugging).",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_eco_limit",
+    "consoleData": {
+      "defaultValue": "2000",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots will not buy if their money falls below this amount.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_eco_limit",
+      "helperText": "If nonzero, bots will not buy if their money falls below this amount.",
+      "type": "unknown_numeric",
+      "defaultValue": 2000,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_flipout",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots use no CPU for AI. Instead, they run around randomly.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_flipout",
+      "helperText": "If nonzero, bots use no CPU for AI. Instead, they run around randomly.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_freeze",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_freeze",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_goto_mark",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Sends a bot to the marked nav area (useful for testing navigation meshes)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_goto_mark",
+      "helperText": "Sends a bot to the marked nav area (useful for testing navigation meshes)",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_goto_selected",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Sends a bot to the selected nav area (useful for testing navigation meshes)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_goto_selected",
+      "helperText": "Sends a bot to the selected nav area (useful for testing navigation meshes)",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_ignore_enemies",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "If nonzero, bots will ignore enemies (for debugging).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_ignore_enemies",
+      "helperText": "If nonzero, bots will ignore enemies (for debugging).",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_ignore_players",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Bots will not see non-bot players.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_ignore_players",
+      "helperText": "Bots will not see non-bot players.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_join_after_player",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots wait until a player joins before entering the game.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_join_after_player",
+      "helperText": "If nonzero, bots wait until a player joins before entering the game.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_join_team",
+    "consoleData": {
+      "defaultValue": "any",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Determines the team bots will join into. Allowed values: 'any', 'T', or 'CT'.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_join_team",
+      "helperText": "Determines the team bots will join into. Allowed values: 'any', 'T', or 'CT'.",
+      "type": "string",
+      "defaultValue": "any",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_kick",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "bot_kick <all> <t|ct> <type> <difficulty> <name> - Kicks a specific bot, or all bots, matching the given criteria.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_kick",
+      "helperText": "bot_kick <all> <t|ct> <type> <difficulty> <name> - Kicks a specific bot, or all bots, matching the given criteria.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_kill",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "bot_kill <all> <t|ct> <type> <difficulty> <name> - Kills a specific bot, or all bots, matching the given criteria.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_kill",
+      "helperText": "bot_kill <all> <t|ct> <type> <difficulty> <name> - Kills a specific bot, or all bots, matching the given criteria.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_knives_only",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Restricts the bots to only using knives",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_knives_only",
+      "helperText": "Restricts the bots to only using knives",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_loadout",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "bots are given these items at round start",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_loadout",
+      "helperText": "bots are given these items at round start",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_mimic_yaw_offset",
+    "consoleData": {
+      "defaultValue": "180",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_mimic_yaw_offset",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 180,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_pistols_only",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Restricts the bots to only using pistols",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_pistols_only",
+      "helperText": "Restricts the bots to only using pistols",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_place",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "bot_place - Places a bot from the map at where the local player is pointing.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_place",
+      "helperText": "bot_place - Places a bot from the map at where the local player is pointing.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_prefix",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "This string is prefixed to the name of all bots that join the game. <difficulty> will be replaced with the bot's difficulty. <weaponclass> will be replaced with the bot's desired weapon class. <skill> will be replaced with a 0-100 representation of the bot's skill.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_prefix",
+      "helperText": "This string is prefixed to the name of all bots that join the game. <difficulty> will be replaced with the bot's difficulty. <weaponclass> will be replaced with the bot's desired weapon class. <skill> will be replaced with a 0-100 representation of the bot's skill.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_quota",
+    "consoleData": {
+      "defaultValue": "10",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Determines the total number of bots in the game.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_quota",
+      "helperText": "Determines the total number of bots in the game.",
+      "type": "unknown_numeric",
+      "defaultValue": 10,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_quota_mode",
+    "consoleData": {
+      "defaultValue": "fill",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Determines the type of quota. Allowed values: 'normal', 'fill', and 'match'. If 'fill', the server will adjust bots to keep N players in the game, where N is bot_quota. If 'match', the server will maintain a 1:N ratio of humans to bots, where N is bot_quota.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_quota_mode",
+      "helperText": "Determines the type of quota. Allowed values: 'normal', 'fill', and 'match'. If 'fill', the server will adjust bots to keep N players in the game, where N is bot_quota. If 'match', the server will maintain a 1:N ratio of humans to bots, where N is bot_quota.",
+      "type": "string",
+      "defaultValue": "fill",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_randombuy",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "should bots ignore their prefered weapons and just buy weapons at random?",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_randombuy",
+      "helperText": "should bots ignore their prefered weapons and just buy weapons at random?",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_show_battlefront",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Show areas where rushing players will initially meet.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_show_battlefront",
+      "helperText": "Show areas where rushing players will initially meet.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_show_nav",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "For internal testing purposes.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_show_nav",
+      "helperText": "For internal testing purposes.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_show_occupy_time",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Show when each nav area can first be reached by each team.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_show_occupy_time",
+      "helperText": "Show when each nav area can first be reached by each team.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_snipers_only",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Restricts the bots to only using sniper rifles",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_snipers_only",
+      "helperText": "Restricts the bots to only using sniper rifles",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bot_stop",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "bot_stop <1|all> | <not_bomber> | <t> | <ct>",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_stop",
+      "helperText": "bot_stop <1|all> | <not_bomber> | <t> | <ct>",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_traceview",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "For internal testing purposes.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_traceview",
+      "helperText": "For internal testing purposes.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_walk",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If nonzero, bots can only walk, not run.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_walk",
+      "helperText": "If nonzero, bots can only walk, not run.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "bot_zombie",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "If nonzero, bots will stay in idle mode and not attack.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bot_zombie",
+      "helperText": "If nonzero, bots will stay in idle mode and not attack.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "box",
     "consoleData": {
       "defaultValue": null,
@@ -4173,6 +5206,1065 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_autoteambalance",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "nf",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_autoteambalance",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_backup_restore_list_files",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Lists recent backup round files matching the prefix, most recent files first, accepts a numeric parameter to limit the number of files displayed",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_restore_list_files",
+      "helperText": "Lists recent backup round files matching the prefix, most recent files first, accepts a numeric parameter to limit the number of files displayed",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_backup_restore_load_autopause",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Whether to automatically pause the match after restoring round data from backup",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_restore_load_autopause",
+      "helperText": "Whether to automatically pause the match after restoring round data from backup",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_backup_restore_load_file",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Loads player cash, KDA, scores and team scores; resets to the next round after the backup",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_restore_load_file",
+      "helperText": "Loads player cash, KDA, scores and team scores; resets to the next round after the backup",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_backup_round_auto",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If enabled will keep in-memory backups to handle reconnecting players even if the backup files aren't written to disk",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_round_auto",
+      "helperText": "If enabled will keep in-memory backups to handle reconnecting players even if the backup files aren't written to disk",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_backup_round_file",
+    "consoleData": {
+      "defaultValue": "backup",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If set then server will save all played rounds information to files filename_date_time_team1_team2_mapname_roundnum_score1_score2.txt",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_round_file",
+      "helperText": "If set then server will save all played rounds information to files filename_date_time_team1_team2_mapname_roundnum_score1_score2.txt",
+      "type": "string",
+      "defaultValue": "backup",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_backup_round_file_last",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Every time a backup file is written the value of this convar gets updated to hold the name of the backup file.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_round_file_last",
+      "helperText": "Every time a backup file is written the value of this convar gets updated to hold the name of the backup file.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_backup_round_file_pattern",
+    "consoleData": {
+      "defaultValue": "%prefix%_round%round%.txt",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If set then server will save all played rounds information to files named by this pattern, e.g.'%prefix%_%date%_%time%_%team1%_%team2%_%map%_round%round%_score_%score1%_%score2%.txt'",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_backup_round_file_pattern",
+      "helperText": "If set then server will save all played rounds information to files named by this pattern, e.g.'%prefix%_%date%_%time%_%team1%_%team2%_%map%_round%round%_score_%score1%_%score2%.txt'",
+      "type": "string",
+      "defaultValue": "%prefix%_round%round%.txt",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_bot_ai_bt",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Use the specified behavior tree file to drive the bot behavior.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_bot_ai_bt",
+      "helperText": "Use the specified behavior tree file to drive the bot behavior.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_bot_ai_bt_clear_cache",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Clears the cache for behavior tree files.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_bot_ai_bt_clear_cache",
+      "helperText": "Clears the cache for behavior tree files.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_competitive_endofmatch_extra_time",
+    "consoleData": {
+      "defaultValue": "15",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "After a competitive match finishes rematch voting extra time is given for rankings.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_competitive_endofmatch_extra_time",
+      "helperText": "After a competitive match finishes rematch voting extra time is given for rankings.",
+      "type": "unknown_numeric",
+      "defaultValue": 15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_disable_autokick",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Prevents a userid from being auto-kicked",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_disable_autokick",
+      "helperText": "Prevents a userid from being auto-kicked",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_disconnect_kills_bots",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "When a bot disconnects, kill them first.  Requires mp_disconnect_kills_players.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_disconnect_kills_bots",
+      "helperText": "When a bot disconnects, kill them first.  Requires mp_disconnect_kills_players.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_disconnect_kills_players",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "When a player disconnects, kill them first (triggering item drops, stats, etc.)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_disconnect_kills_players",
+      "helperText": "When a player disconnects, kill them first (triggering item drops, stats, etc.)",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_endmatch_votenextleveltime",
+    "consoleData": {
+      "defaultValue": "20",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If mp_endmatch_votenextmap is set, players have this much time to vote on the next map at match end.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_endmatch_votenextleveltime",
+      "helperText": "If mp_endmatch_votenextmap is set, players have this much time to vote on the next map at match end.",
+      "type": "unknown_numeric",
+      "defaultValue": 20,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_endmatch_votenextmap_wargames_modes",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Modes available for endmatch voting during War Games. Separate names with spaces.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_endmatch_votenextmap_wargames_modes",
+      "helperText": "Modes available for endmatch voting during War Games. Separate names with spaces.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_endmatch_votenextmap_wargames_nummaps",
+    "consoleData": {
+      "defaultValue": "3",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Maximum number of maps to include in endmatch voting during War Games",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_endmatch_votenextmap_wargames_nummaps",
+      "helperText": "Maximum number of maps to include in endmatch voting during War Games",
+      "type": "unknown_numeric",
+      "defaultValue": 3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_endmatch_votenextmap_wargames_nummodes",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Maximum number of other War Games to include in endmatch voting during War Games",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_endmatch_votenextmap_wargames_nummodes",
+      "helperText": "Maximum number of other War Games to include in endmatch voting during War Games",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_footsteps_serverside",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Makes the server always play footstep sounds. Clients never calculate footstep sounds locally, instead relying on the server.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_footsteps_serverside",
+      "helperText": "Makes the server always play footstep sounds. Clients never calculate footstep sounds locally, instead relying on the server.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_fraglimit",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "nf",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_fraglimit",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_guardian_force_collect_hostages_timeout",
+    "consoleData": {
+      "defaultValue": "50",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Force bots to collect hostages after this amount of time if no enemy has been seen.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_guardian_force_collect_hostages_timeout",
+      "helperText": "Force bots to collect hostages after this amount of time if no enemy has been seen.",
+      "type": "unknown_numeric",
+      "defaultValue": 50,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_guardian_target_site",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If set to the index of a bombsite, will cause random spawns to be only created near that site.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_guardian_target_site",
+      "helperText": "If set to the index of a bombsite, will cause random spawns to be only created near that site.",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_logdetail",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Logs attacks.  Values are: 0=off, 1=enemy, 2=teammate, 3=both)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_logdetail",
+      "helperText": "Logs attacks.  Values are: 0=off, 1=enemy, 2=teammate, 3=both)",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_logdetail_items",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Logs a line any time a player acquires or loses an item.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_logdetail_items",
+      "helperText": "Logs a line any time a player acquires or loses an item.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_logmoney",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Enables money logging.  Values are: 0=off, 1=on",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_logmoney",
+      "helperText": "Enables money logging.  Values are: 0=off, 1=on",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_modify_timeouts",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "mp_modify_timeouts <CT|T> <N>, e.g., mp_modify ct -1",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_modify_timeouts",
+      "helperText": "mp_modify_timeouts <CT|T> <N>, e.g., mp_modify ct -1",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_pause_match",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Pause the match in the next freeze time",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_pause_match",
+      "helperText": "Pause the match in the next freeze time",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_require_gun_use_to_acquire",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Whether guns must be +used to acquire or default is touch-to-pickup",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_require_gun_use_to_acquire",
+      "helperText": "Whether guns must be +used to acquire or default is touch-to-pickup",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_restartgame",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "If non-zero, game will restart in the specified number of seconds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_restartgame",
+      "helperText": "If non-zero, game will restart in the specified number of seconds",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_scrambleteams",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Scramble the teams and restart the game",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_scrambleteams",
+      "helperText": "Scramble the teams and restart the game",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_suicide_penalty",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Punish players for suicides",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_suicide_penalty",
+      "helperText": "Punish players for suicides",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_swapteams",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Swap the teams and restart the game",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_swapteams",
+      "helperText": "Swap the teams and restart the game",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_teamflag_1",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Enter a country's alpha 2 code to show that flag next to team 1's name in the spectator scoreboard.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamflag_1",
+      "helperText": "Enter a country's alpha 2 code to show that flag next to team 1's name in the spectator scoreboard.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamflag_2",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Enter a country's alpha 2 code to show that flag next to team 2's name in the spectator scoreboard.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamflag_2",
+      "helperText": "Enter a country's alpha 2 code to show that flag next to team 2's name in the spectator scoreboard.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamlogo_1",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Enter a team's shorthand image name to display their logo. Images can be found here: 'resource/flash/econ/tournaments/teams'",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamlogo_1",
+      "helperText": "Enter a team's shorthand image name to display their logo. Images can be found here: 'resource/flash/econ/tournaments/teams'",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamlogo_2",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Enter a team's shorthand image name to display their logo. Images can be found here: 'resource/flash/econ/tournaments/teams'",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamlogo_2",
+      "helperText": "Enter a team's shorthand image name to display their logo. Images can be found here: 'resource/flash/econ/tournaments/teams'",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teammatchstat_1",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A non-empty string sets first team's match stat.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teammatchstat_1",
+      "helperText": "A non-empty string sets first team's match stat.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teammatchstat_2",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A non-empty string sets second team's match stat.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teammatchstat_2",
+      "helperText": "A non-empty string sets second team's match stat.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teammatchstat_cycletime",
+    "consoleData": {
+      "defaultValue": "45",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Cycle match stats after so many seconds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teammatchstat_cycletime",
+      "helperText": "Cycle match stats after so many seconds",
+      "type": "unknown_numeric",
+      "defaultValue": 45,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teammatchstat_holdtime",
+    "consoleData": {
+      "defaultValue": "5",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Decide on a match stat and hold it additionally for at least so many seconds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teammatchstat_holdtime",
+      "helperText": "Decide on a match stat and hold it additionally for at least so many seconds",
+      "type": "unknown_numeric",
+      "defaultValue": 5,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teammatchstat_txt",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A non-empty string sets the match stat description, e.g. 'Match 2 of 3'.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teammatchstat_txt",
+      "helperText": "A non-empty string sets the match stat description, e.g. 'Match 2 of 3'.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamname_1",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A non-empty string overrides the first team's name.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamname_1",
+      "helperText": "A non-empty string overrides the first team's name.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamname_2",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A non-empty string overrides the second team's name.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamname_2",
+      "helperText": "A non-empty string overrides the second team's name.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamprediction_pct",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A value between 1 and 99 will show predictions in favor of CT team.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamprediction_pct",
+      "helperText": "A value between 1 and 99 will show predictions in favor of CT team.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamprediction_txt",
+    "consoleData": {
+      "defaultValue": "#SFUIHUD_Spectate_Predictions",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A value between 1 and 99 will set predictions in favor of first team.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamprediction_txt",
+      "helperText": "A value between 1 and 99 will set predictions in favor of first team.",
+      "type": "string",
+      "defaultValue": "#SFUIHUD_Spectate_Predictions",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamscore_1",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A non-empty string for best-of-N maps won by the first team.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamscore_1",
+      "helperText": "A non-empty string for best-of-N maps won by the first team.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamscore_2",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A non-empty string for best-of-N maps won by the second team.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamscore_2",
+      "helperText": "A non-empty string for best-of-N maps won by the second team.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_teamscore_max",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "How many maps to win the series (bo3 max=2; bo5 max=3; bo7 max=4)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_teamscore_max",
+      "helperText": "How many maps to win the series (bo3 max=2; bo5 max=3; bo7 max=4)",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_unpause_match",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Resume the match",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_unpause_match",
+      "helperText": "Resume the match",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_warmup_end",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "End warmup immediately.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_warmup_end",
+      "helperText": "End warmup immediately.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_warmup_start",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Start warmup.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_warmup_start",
+      "helperText": "Start warmup.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "mp_weapon_next_owner_touch_time",
+    "consoleData": {
+      "defaultValue": "1.3",
+      "flags": [
+        "sv",
+        "cheat",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_weapon_next_owner_touch_time",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 1.3,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   },
   {
@@ -15829,6 +17921,206 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "arguments": []
+    }
+  },
+  {
+    "command": "tv_allow_autorecording_index",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "When >=0 restricts autorecording only to the specified TV index",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_allow_autorecording_index",
+      "helperText": "When >=0 restricts autorecording only to the specified TV index",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_allow_camera_man_steamid",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Allows tournament production cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the camera man.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_allow_camera_man_steamid",
+      "helperText": "Allows tournament production cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the camera man.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_allow_camera_man_steamid2",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Allows tournament production tv cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the tv camera man.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_allow_camera_man_steamid2",
+      "helperText": "Allows tournament production tv cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the tv camera man.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_allow_static_shots",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Auto director uses fixed level cameras for shots",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_allow_static_shots",
+      "helperText": "Auto director uses fixed level cameras for shots",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_delay",
+    "consoleData": {
+      "defaultValue": "105",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "SourceTV broadcast delay in seconds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_delay",
+      "helperText": "SourceTV broadcast delay in seconds",
+      "type": "unknown_numeric",
+      "defaultValue": 105,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_delay1",
+    "consoleData": {
+      "defaultValue": "15",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "SourceTV[instance 1] broadcast delay in seconds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_delay1",
+      "helperText": "SourceTV[instance 1] broadcast delay in seconds",
+      "type": "unknown_numeric",
+      "defaultValue": 15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_delaymapchange",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Delays map change until broadcast is complete",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_delaymapchange",
+      "helperText": "Delays map change until broadcast is complete",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_include_usercommands",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "HLTV streams will include player usercommands each tick",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_include_usercommands",
+      "helperText": "HLTV streams will include player usercommands each tick",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_relayradio",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Relay team radio commands to TV: 0=off, 1=on",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_relayradio",
+      "helperText": "Relay team radio commands to TV: 0=off, 1=on",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_show_allchat",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_show_allchat",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {

@@ -1,0 +1,22 @@
+[
+  {
+    "command": "mp_guardian_force_collect_hostages_timeout",
+    "consoleData": {
+      "defaultValue": "50",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Force bots to collect hostages after this amount of time if no enemy has been seen.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_guardian_force_collect_hostages_timeout",
+      "helperText": "Force bots to collect hostages after this amount of time if no enemy has been seen.",
+      "type": "unknown_numeric",
+      "defaultValue": 50,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  }
+]

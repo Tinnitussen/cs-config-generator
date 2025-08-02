@@ -1,0 +1,226 @@
+[
+  {
+    "command": "r_csgo_test1",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": ""
+    },
+    "uiData": {
+      "label": "r_csgo_test1",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "r_drawtracers_firstperson",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Toggle visibility of first person weapon tracers",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_drawtracers_firstperson",
+      "helperText": "Toggle visibility of first person weapon tracers",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "r_dx11_debug_clean",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "false",
+      "flags": [
+        "release"
+      ],
+      "description": "Aggressively unbind bound resources to cleanup DX11 debug warnings."
+    },
+    "uiData": {
+      "label": "r_dx11_debug_clean",
+      "helperText": "Aggressively unbind bound resources to cleanup DX11 debug warnings.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "r_flush_on_pooled_ib_resize",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_flush_on_pooled_ib_resize",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "r_fullscreen_gamma",
+    "consoleData": {
+      "defaultValue": "2.2",
+      "flags": [
+        "a"
+      ],
+      "description": "Screen Gamma (only in fullscreen modes)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_fullscreen_gamma",
+      "helperText": "Screen Gamma (only in fullscreen modes)",
+      "type": "float",
+      "defaultValue": 2.2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "r_particle_shadows_compute",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_particle_shadows_compute",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "r_player_visibility_mode",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_player_visibility_mode",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "r_show_build_info",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "Build information. Leave this enabled when submitting bug screenshots and videos, please!",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_show_build_info",
+      "helperText": "Build information. Leave this enabled when submitting bug screenshots and videos, please!",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "r_show_time_info",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Show real time, large.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_show_time_info",
+      "helperText": "Show real time, large.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "r_smooth_morph_normals",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_smooth_morph_normals",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "r_test1_maximum_wait_ms",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "10",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": ""
+    },
+    "uiData": {
+      "label": "r_test1_maximum_wait_ms",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 10,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  }
+]
