@@ -15,7 +15,7 @@
             {
                 <div class="custom-select-wrapper">
                     <select class="custom-select" @onchange="OnPresetSelected">
-                        <option value="">-- Select a Preset --</option>
+                        <option value="">Pro Configs</option>
                         @foreach (var preset in _presets)
                         {
                             <option value="@preset">@preset</option>
@@ -25,7 +25,7 @@
             }
             <div class="custom-select-wrapper">
                 <select class="custom-select" @onchange="OnUserConfigSelected">
-                    <option value="">-- My Configs --</option>
+                    <option value="">My Configs</option>
                     @foreach (var config in _userConfigs)
                     {
                         <option value="@config">@config</option>
