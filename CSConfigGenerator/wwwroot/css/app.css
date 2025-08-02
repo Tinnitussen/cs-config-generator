@@ -110,3 +110,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.1em;
     border-radius: 0.2rem;
 }
+
+.sticky-editor {
+    position: sticky;
+    top: 1rem;
+    height: calc(100vh - 2rem);
+}
