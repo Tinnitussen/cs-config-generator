@@ -14,7 +14,7 @@ builder.Services.AddScoped<ISchemaService, SchemaService>();
 builder.Services.AddScoped<IPresetService, PresetService>();
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 builder.Services.AddScoped<IUserConfigService, UserConfigService>();
-builder.Services.AddScoped<ToastService>();
+builder.Services.AddScoped<IToastService, ToastService>();
 builder.Services.AddKeyedScoped<IConfigStateService, PlayerConfigStateService>("PlayerConfigStateServiceKey");
 builder.Services.AddKeyedScoped<IConfigStateService, ServerConfigStateService>("ServerConfigStateServiceKey");
 

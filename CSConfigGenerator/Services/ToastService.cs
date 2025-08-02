@@ -1,6 +1,8 @@
+using CSConfigGenerator.Interfaces;
+
 namespace CSConfigGenerator.Services;
 
-public class ToastService : IDisposable
+public class ToastService : IToastService, IDisposable
 {
     public event Action<string, ToastLevel>? OnShow;
     public event Action? OnHide;
