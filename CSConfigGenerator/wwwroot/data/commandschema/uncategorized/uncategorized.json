@@ -254,7 +254,7 @@
     "uiData": {
       "label": "clientport",
       "helperText": "If non-zero, client binds port to specific address.  Usually you should leave this blank to use a different random system-assigned port for each connection.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -474,7 +474,7 @@
     "uiData": {
       "label": "csm_bias_override_0",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -493,7 +493,7 @@
     "uiData": {
       "label": "csm_bias_override_1",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -512,7 +512,7 @@
     "uiData": {
       "label": "csm_bias_override_2",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -531,7 +531,7 @@
     "uiData": {
       "label": "csm_bias_override_3",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -550,7 +550,7 @@
     "uiData": {
       "label": "csm_cascade0_override_dist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -569,7 +569,7 @@
     "uiData": {
       "label": "csm_cascade1_override_dist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -588,7 +588,7 @@
     "uiData": {
       "label": "csm_cascade2_override_dist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -607,7 +607,7 @@
     "uiData": {
       "label": "csm_cascade3_override_dist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -626,7 +626,7 @@
     "uiData": {
       "label": "csm_cascade_viewdir_shadow_bias_scale",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -645,7 +645,7 @@
     "uiData": {
       "label": "csm_max_dist_between_caster_and_receiver",
       "helperText": "default pushback",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 15000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -664,7 +664,7 @@
     "uiData": {
       "label": "csm_max_visible_dist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 7500,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -683,7 +683,7 @@
     "uiData": {
       "label": "csm_res_override_0",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -702,7 +702,7 @@
     "uiData": {
       "label": "csm_res_override_1",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -721,7 +721,7 @@
     "uiData": {
       "label": "csm_res_override_2",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -740,7 +740,7 @@
     "uiData": {
       "label": "csm_res_override_3",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -821,7 +821,7 @@
     "uiData": {
       "label": "csm_sst_max_visible_dist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -840,7 +840,7 @@
     "uiData": {
       "label": "csm_sst_pushback_distance",
       "helperText": "default pushback",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1500,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -859,7 +859,7 @@
     "uiData": {
       "label": "csm_sst_shadow_focus_region_maxz",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -878,7 +878,7 @@
     "uiData": {
       "label": "csm_sst_shadow_focus_region_minz",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -2000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -897,7 +897,7 @@
     "uiData": {
       "label": "csm_viewdir_shadow_bias",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -916,7 +916,7 @@
     "uiData": {
       "label": "csm_viewmodel_farz",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 30,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -935,7 +935,7 @@
     "uiData": {
       "label": "csm_viewmodel_max_shadow_dist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 21,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -954,7 +954,7 @@
     "uiData": {
       "label": "csm_viewmodel_max_visible_dist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1058,7 +1058,7 @@
     "uiData": {
       "label": "developer",
       "helperText": "Set developer message level.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -1136,7 +1136,7 @@
     "uiData": {
       "label": "dota_spatial_audio_mix",
       "helperText": "Mix value to blend spatial and non-spatial audio in Dota 2.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -1156,7 +1156,7 @@
     "uiData": {
       "label": "dsp_dist_max",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1440,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1176,7 +1176,7 @@
     "uiData": {
       "label": "dsp_dist_min",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1436,7 +1436,7 @@
     "uiData": {
       "label": "execute_command_every_frame",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1534,7 +1534,7 @@
     "uiData": {
       "label": "fog_override_end",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 3500,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1553,7 +1553,7 @@
     "uiData": {
       "label": "fog_override_exponent",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1596,7 +1596,7 @@
     "uiData": {
       "label": "fog_override_start",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1615,7 +1615,7 @@
     "uiData": {
       "label": "fs_fake_read_delay_ms",
       "helperText": "Add N ms of delay to every low-level read operation, to simulate a slow disk",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -1634,7 +1634,7 @@
     "uiData": {
       "label": "fs_report_sync_opens",
       "helperText": "0:Off, 1:Always, 2:Not during load",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -1774,7 +1774,7 @@
     "uiData": {
       "label": "host_framerate",
       "helperText": "Set to lock per-frame time elapse.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -1872,7 +1872,7 @@
     "uiData": {
       "label": "hostip",
       "helperText": "Host game server ip",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -1929,7 +1929,7 @@
     "uiData": {
       "label": "hostport",
       "helperText": "Host game server port",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 27015,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -1969,7 +1969,7 @@
     "uiData": {
       "label": "input_forceuser",
       "helperText": "Force user input to this split screen player.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1988,7 +1988,7 @@
     "uiData": {
       "label": "ip",
       "helperText": "Overrides IP for multihomed hosts",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2007,7 +2007,7 @@
     "uiData": {
       "label": "iv_debugbone",
       "helperText": "Debug bone name for interpolation spew of CAnimationState.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2378,7 +2378,7 @@
     "uiData": {
       "label": "mm_dedicated_force_servers",
       "helperText": "Comma delimited list of ip:port of servers used to search for dedicated servers instead of searching for public servers. Use syntax `publicip1:port|privateip1:port,publicip2:port|privateip2:port` if your server is behind NAT. If the server is behind NAT, you can specify `0.0.0.0|privateip:port` and if server port is in the list of `mm_server_search_lan_ports` its public address should be automatically detected.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2397,7 +2397,7 @@
     "uiData": {
       "label": "mm_session_search_qos_timeout",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 15,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2416,7 +2416,7 @@
     "uiData": {
       "label": "mm_session_sys_kick_ban_duration",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 180,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2435,7 +2435,7 @@
     "uiData": {
       "label": "mm_session_sys_pkey",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2615,7 +2615,7 @@
     "uiData": {
       "label": "net_limit_sv_recv_max_message_size_kb",
       "helperText": "Server will reject message larger than N kb",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 32,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2634,7 +2634,7 @@
     "uiData": {
       "label": "net_limit_sv_recv_segments_per_packet",
       "helperText": "Server will reject packets with more than N segments",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 50,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2653,7 +2653,7 @@
     "uiData": {
       "label": "net_limit_sv_recvbuffer_kb",
       "helperText": "Server will not buffer more than N kb from connected clients",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 128,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2672,7 +2672,7 @@
     "uiData": {
       "label": "net_limit_sv_recvbuffer_msg",
       "helperText": "Server will not buffer more than N messages from connected clients",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 100,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2771,7 +2771,7 @@
     "uiData": {
       "label": "net_public_adr",
       "helperText": "For servers behind NAT/DHCP meant to be exposed to the public internet, this is the public facing ip address string: ('x.x.x.x' )",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -2888,7 +2888,7 @@
     "uiData": {
       "label": "particles_multiplier",
       "helperText": "Multiply # of rendered particles by this for perf testing",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3194,7 +3194,7 @@
     "uiData": {
       "label": "rcon_address",
       "helperText": "Address of remote server if sending unconnected rcon commands (format x.x.x.x:p)",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -3215,7 +3215,7 @@
     "uiData": {
       "label": "rcon_password",
       "helperText": "remote console password.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -3377,7 +3377,7 @@
     "uiData": {
       "label": "sc_aggregate_indirect_draw_compaction_threshold",
       "helperText": "Threshold of indirect draws when we will do compaction",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 8,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -3627,7 +3627,7 @@
     "uiData": {
       "label": "sc_fade_distance_scale_override",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3646,7 +3646,7 @@
     "uiData": {
       "label": "sc_force_lod_level",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3780,7 +3780,7 @@
     "uiData": {
       "label": "sc_screen_size_lod_scale_override",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3858,7 +3858,7 @@
     "uiData": {
       "label": "screenmessage_show",
       "helperText": "Enable display of console messages on screen. 1 = Enabled, 0 = Disabled, -1 = Enabled if vgui is not present",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4137,7 +4137,7 @@
     "uiData": {
       "label": "sys_minidumpspewlines",
       "helperText": "Lines of crash dump console spew to keep.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2000,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4336,7 +4336,7 @@
     "uiData": {
       "label": "tv_broadcast_keyframe_interval",
       "helperText": "The frequency, in seconds, of sending keyframes and delta fragments to the broadcast relay server",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 3,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4355,7 +4355,7 @@
     "uiData": {
       "label": "tv_broadcast_keyframe_interval1",
       "helperText": "The frequency, in seconds, of sending keyframes and delta fragments to the broadcast1 relay server",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 3,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4374,7 +4374,7 @@
     "uiData": {
       "label": "tv_broadcast_max_requests",
       "helperText": "Max number of broadcast http requests in flight. If there is a network issue, the requests may start piling up, degrading server performance. If more than the specified number of requests are in flight, the new requests are dropped.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 20,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4393,7 +4393,7 @@
     "uiData": {
       "label": "tv_broadcast_max_requests1",
       "helperText": "Max number of broadcast1 http requests in flight. If there is a network issue, the requests may start piling up, degrading server performance. If more than the specified number of requests are in flight, the new requests are dropped.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 20,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4436,7 +4436,7 @@
     "uiData": {
       "label": "tv_broadcast_startup_resend_interval",
       "helperText": "The interval, in seconds, of re-sending startup data to the broadcast relay server (useful in case relay crashes, restarts or startup data http request fails)",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 10,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4513,7 +4513,7 @@
     "uiData": {
       "label": "tv_chatgroupsize",
       "helperText": "Set the default chat group size",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4576,7 +4576,7 @@
     "uiData": {
       "label": "tv_debug",
       "helperText": "SourceTV debug info.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4595,7 +4595,7 @@
     "uiData": {
       "label": "tv_deltacache",
       "helperText": "Enable delta entity bit stream cache",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4614,7 +4614,7 @@
     "uiData": {
       "label": "tv_dispatchmode",
       "helperText": "Dispatch clients to relay proxies: 0=never, 1=if appropriate, 2=always",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4712,7 +4712,7 @@
     "uiData": {
       "label": "tv_maxclients",
       "helperText": "Maximum client number on SourceTV server.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 128,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4731,7 +4731,7 @@
     "uiData": {
       "label": "tv_maxclients_relayreserved",
       "helperText": "This number of relay client connections are reserved for SourceTV relays.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4750,7 +4750,7 @@
     "uiData": {
       "label": "tv_maxrate",
       "helperText": "Max SourceTV spectator bandwidth rate allowed, 0 == unlimited",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4830,7 +4830,7 @@
     "uiData": {
       "label": "tv_password",
       "helperText": "SourceTV password for all clients of CSTV[0]",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4852,7 +4852,7 @@
     "uiData": {
       "label": "tv_password1",
       "helperText": "SourceTV password for all clients of CSTV[1]. If empty, tv_password is used",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4890,7 +4890,7 @@
     "uiData": {
       "label": "tv_playcast_delay_resync",
       "helperText": "To alleviate intermittent network connectivity problems, this is the number of seconds to wait before actually re-syncing the stream after failure",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4909,7 +4909,7 @@
     "uiData": {
       "label": "tv_playcast_retry_timeout",
       "helperText": "In case of intermittent network problems, how long should playcast retry fragment retrieval before resorting to resync",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 25,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4928,7 +4928,7 @@
     "uiData": {
       "label": "tv_port",
       "helperText": "Host SourceTV[0] port",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 27020,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4947,7 +4947,7 @@
     "uiData": {
       "label": "tv_port1",
       "helperText": "Host SourceTV[1] port",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 27021,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -4986,7 +4986,7 @@
     "uiData": {
       "label": "tv_record_immediate",
       "helperText": "tv_record starting the moment tv_record was executed, not tv_delay earlier",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -5028,7 +5028,7 @@
     "uiData": {
       "label": "tv_relaypassword",
       "helperText": "SourceTV password for relay proxies",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -5165,7 +5165,7 @@
     "uiData": {
       "label": "tv_timeout",
       "helperText": "SourceTV connection timeout in seconds.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 20,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -5203,7 +5203,7 @@
     "uiData": {
       "label": "tv_window_size",
       "helperText": "Specifies the number of seconds worth of frames that the tv replay system should keep in memory. Increasing this greatly increases the amount of memory consumed by the TV system",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 16,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -5284,7 +5284,7 @@
     "uiData": {
       "label": "vconsole_rcon_server_details",
       "helperText": "when non-empty allows for easy vconsole connection to the dedicated server.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -5381,7 +5381,7 @@
     "uiData": {
       "label": "volume_fog_dither_scale",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5419,7 +5419,7 @@
     "uiData": {
       "label": "vphys2_friction_factor",
       "helperText": "Change global friction factor",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5439,7 +5439,7 @@
     "uiData": {
       "label": "vphys2_restitution_factor",
       "helperText": "Change global restitution factor",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true

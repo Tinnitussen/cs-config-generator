@@ -1,22 +1,43 @@
 [
   {
-    "command": "mp_logmoney",
+    "command": "contributionscore_cash_bundle",
     "consoleData": {
-      "defaultValue": "false",
+      "defaultValue": "0",
       "flags": [
         "sv",
         "release"
       ],
-      "description": "Enables money logging.  Values are: 0=off, 1=on",
+      "description": "amount of contribution score for picking up a cash bundle",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "mp_logmoney",
-      "helperText": "Enables money logging.  Values are: 0=off, 1=on",
-      "type": "bool",
-      "defaultValue": false,
+      "label": "contributionscore_cash_bundle",
+      "helperText": "amount of contribution score for picking up a cash bundle",
+      "type": "unknown_integer",
+      "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "rr_forceconcept",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "fire a response concept directly at a given character. USAGE: rr_forceconcept <target name or index> <concept> 'criteria1:value1,criteria2:value2,...' criteria values are optional.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "rr_forceconcept",
+      "helperText": "fire a response concept directly at a given character. USAGE: rr_forceconcept <target name or index> <concept> 'criteria1:value1,criteria2:value2,...' criteria values are optional.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   }
 ]

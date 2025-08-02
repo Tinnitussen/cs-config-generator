@@ -1,5 +1,194 @@
 [
   {
+    "command": "+cl_show_team_equipment",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+cl_show_team_equipment",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+lookatweapon",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+lookatweapon",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+quickbuyradial",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+quickbuyradial",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+quickgrenaderadial",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+quickgrenaderadial",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+quickinv",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+quickinv",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+radialradio",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+radialradio",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+radialradio2",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+radialradio2",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+radialradio3",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+radialradio3",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "+spray_menu",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "+spray_menu",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "input_button_code_is_scan_code_scd",
     "consoleData": {
       "defaultValue": "true",
@@ -488,7 +677,7 @@
     "uiData": {
       "label": "joy_circle_correct_mode",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -509,7 +698,7 @@
     "uiData": {
       "label": "joy_circle_correct_mode_vehicle",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -550,7 +739,7 @@
     "uiData": {
       "label": "joy_forward_sensitivity",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -612,7 +801,7 @@
     "uiData": {
       "label": "joy_pitch_sensitivity",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 3,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -633,7 +822,7 @@
     "uiData": {
       "label": "joy_pitchsensitivity",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": false
@@ -696,7 +885,7 @@
     "uiData": {
       "label": "joy_side_sensitivity",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -737,7 +926,7 @@
     "uiData": {
       "label": "joy_yaw_sensitivity",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 3,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -758,7 +947,7 @@
     "uiData": {
       "label": "joy_yawsensitivity",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": false,
       "hideFromDefaultView": false

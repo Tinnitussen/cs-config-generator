@@ -1,5 +1,107 @@
 [
   {
+    "command": "create_radius_damage",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Causes radius damage where you're looking, at the passed in radius.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "create_radius_damage",
+      "helperText": "Causes radius damage where you're looking, at the passed in radius.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "debug_takedamage_summaries",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "debug_takedamage_summaries",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "ent_show_damage",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Sets damage display mode.  When on, you will see the amount of damage dealt over the target's head.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "ent_show_damage",
+      "helperText": "Sets damage display mode.  When on, you will see the amount of damage dealt over the target's head.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "inferno_damage",
+    "consoleData": {
+      "defaultValue": "40",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Damage per second",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "inferno_damage",
+      "helperText": "Damage per second",
+      "type": "unknown_integer",
+      "defaultValue": 40,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "inferno_damage_ct",
+    "consoleData": {
+      "defaultValue": "40",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Damage per second from CT inferno",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "inferno_damage_ct",
+      "helperText": "Damage per second from CT inferno",
+      "type": "unknown_integer",
+      "defaultValue": 40,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "mp_backup_restore_list_files",
     "consoleData": {
       "defaultValue": null,
@@ -75,7 +177,7 @@
     "uiData": {
       "label": "mp_bot_ai_bt",
       "helperText": "Use the specified behavior tree file to drive the bot behavior.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -116,7 +218,7 @@
     "uiData": {
       "label": "mp_competitive_endofmatch_extra_time",
       "helperText": "After a competitive match finishes rematch voting extra time is given for rankings.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 15,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -197,7 +299,7 @@
     "uiData": {
       "label": "mp_endmatch_votenextleveltime",
       "helperText": "If mp_endmatch_votenextmap is set, players have this much time to vote on the next map at match end.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 20,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -217,7 +319,7 @@
     "uiData": {
       "label": "mp_endmatch_votenextmap_wargames_modes",
       "helperText": "Modes available for endmatch voting during War Games. Separate names with spaces.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -237,7 +339,7 @@
     "uiData": {
       "label": "mp_endmatch_votenextmap_wargames_nummaps",
       "helperText": "Maximum number of maps to include in endmatch voting during War Games",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 3,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -257,7 +359,7 @@
     "uiData": {
       "label": "mp_endmatch_votenextmap_wargames_nummodes",
       "helperText": "Maximum number of other War Games to include in endmatch voting during War Games",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -298,7 +400,7 @@
     "uiData": {
       "label": "mp_fraglimit",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -318,7 +420,7 @@
     "uiData": {
       "label": "mp_guardian_target_site",
       "helperText": "If set to the index of a bombsite, will cause random spawns to be only created near that site.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -338,7 +440,7 @@
     "uiData": {
       "label": "mp_logdetail",
       "helperText": "Logs attacks.  Values are: 0=off, 1=enemy, 2=teammate, 3=both)",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -358,6 +460,26 @@
     "uiData": {
       "label": "mp_logdetail_items",
       "helperText": "Logs a line any time a player acquires or loses an item.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_logmoney",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Enables money logging.  Values are: 0=off, 1=on",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_logmoney",
+      "helperText": "Enables money logging.  Values are: 0=off, 1=on",
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
@@ -440,7 +562,7 @@
     "uiData": {
       "label": "mp_restartgame",
       "helperText": "If non-zero, game will restart in the specified number of seconds",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -553,6 +675,46 @@
         "maxValue": -1,
         "step": -1
       }
+    }
+  },
+  {
+    "command": "player_debug_print_damage",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "When true, print amount and type of all damage received by player to console.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "player_debug_print_damage",
+      "helperText": "When true, print amount and type of all damage received by player to console.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_predictable_damage_tag_ticks",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Delay player slowdown when damaged by # ticks to reduce misprediction effects",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_predictable_damage_tag_ticks",
+      "helperText": "Delay player slowdown when damaged by # ticks to reduce misprediction effects",
+      "type": "unknown_integer",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   }
 ]

@@ -217,7 +217,7 @@
     "uiData": {
       "label": "r_test1_maximum_wait_ms",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 10,
       "requiresCheats": false,
       "hideFromDefaultView": true

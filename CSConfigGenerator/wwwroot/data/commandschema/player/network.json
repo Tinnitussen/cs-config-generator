@@ -33,7 +33,7 @@
     "uiData": {
       "label": "net_client_steamdatagram_enable_override",
       "helperText": "0: Use connect method requested by GC.  >0: Always use SDR if possible.  <0: Always use direct UDP if possible",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true

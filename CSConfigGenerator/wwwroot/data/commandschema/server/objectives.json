@@ -1,5 +1,228 @@
 [
   {
+    "command": "clear_bombs",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "clear_bombs",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "contributionscore_bomb_defuse_major",
+    "consoleData": {
+      "defaultValue": "3",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "amount of contribution score for defusing a bomb while at least one enemy remains alive",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "contributionscore_bomb_defuse_major",
+      "helperText": "amount of contribution score for defusing a bomb while at least one enemy remains alive",
+      "type": "unknown_integer",
+      "defaultValue": 3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "contributionscore_bomb_defuse_minor",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "amount of contribution score for defusing a bomb after eliminating enemy team",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "contributionscore_bomb_defuse_minor",
+      "helperText": "amount of contribution score for defusing a bomb after eliminating enemy team",
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "contributionscore_bomb_exploded",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "amount of contribution score awarded to bomb planter and terrorists remaining alive if bomb explosion wins the round",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "contributionscore_bomb_exploded",
+      "helperText": "amount of contribution score awarded to bomb planter and terrorists remaining alive if bomb explosion wins the round",
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "contributionscore_bomb_planted",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "amount of contribution score for planting a bomb",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "contributionscore_bomb_planted",
+      "helperText": "amount of contribution score for planting a bomb",
+      "type": "unknown_integer",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "contributionscore_hostage_kill",
+    "consoleData": {
+      "defaultValue": "-2",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "amount of contribution score for killing a hostage, normally negative",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "contributionscore_hostage_kill",
+      "helperText": "amount of contribution score for killing a hostage, normally negative",
+      "type": "unknown_integer",
+      "defaultValue": -2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "contributionscore_hostage_rescue_major",
+    "consoleData": {
+      "defaultValue": "3",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "amount of contribution score added to rescuer per hostage rescued",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "contributionscore_hostage_rescue_major",
+      "helperText": "amount of contribution score added to rescuer per hostage rescued",
+      "type": "unknown_integer",
+      "defaultValue": 3,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "contributionscore_hostage_rescue_minor",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "amount of contribution score added to all alive CTs per hostage rescued",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "contributionscore_hostage_rescue_minor",
+      "helperText": "amount of contribution score added to all alive CTs per hostage rescued",
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cs_hostage_near_rescue_music_distance",
+    "consoleData": {
+      "defaultValue": "2000",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cs_hostage_near_rescue_music_distance",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 2000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "map_setbombradius",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Sets the bomb radius for the map.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "map_setbombradius",
+      "helperText": "Sets the bomb radius for the map.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "map_showbombradius",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Shows bomb radius from the center of each bomb site and planted bomb.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "map_showbombradius",
+      "helperText": "Shows bomb radius from the center of each bomb site and planted bomb.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "mp_guardian_force_collect_hostages_timeout",
     "consoleData": {
       "defaultValue": "50",
@@ -13,10 +236,31 @@
     "uiData": {
       "label": "mp_guardian_force_collect_hostages_timeout",
       "helperText": "Force bots to collect hostages after this amount of time if no enemy has been seen.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 50,
       "requiresCheats": false,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "plant_bomb",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Plant a bomb where the player is looking.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "plant_bomb",
+      "helperText": "Plant a bomb where the player is looking.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   }
 ]

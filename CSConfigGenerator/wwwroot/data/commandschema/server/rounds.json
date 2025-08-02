@@ -1,5 +1,46 @@
 [
   {
+    "command": "dev_add_onground_on_spawn",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Should we mess with the ground flag when we spawn? (I don't think we should). If we don't hit the assert in CCSPlayer_MovementServices::ProcessMovement, we should remove this by Dec 2022.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dev_add_onground_on_spawn",
+      "helperText": "Should we mess with the ground flag when we spawn? (I don't think we should). If we don't hit the assert in CCSPlayer_MovementServices::ProcessMovement, we should remove this by Dec 2022.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "endround",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "End the current round.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "endround",
+      "helperText": "End the current round.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "mp_backup_round_auto",
     "consoleData": {
       "defaultValue": "true",
@@ -53,7 +94,7 @@
     "uiData": {
       "label": "mp_backup_round_file_last",
       "helperText": "Every time a backup file is written the value of this convar gets updated to hold the name of the backup file.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -75,6 +116,106 @@
       "helperText": "If set then server will save all played rounds information to files named by this pattern, e.g.'%prefix%_%date%_%time%_%team1%_%team2%_%map%_round%round%_score_%score1%_%score2%.txt'",
       "type": "string",
       "defaultValue": "%prefix%_round%round%.txt",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "nav_draw_area_ground",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "nav_draw_area_ground",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "nav_gen_match_ground",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
+    },
+    "uiData": {
+      "label": "nav_gen_match_ground",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    },
+    "deprecated": true
+  },
+  {
+    "command": "nav_path_draw_ground_segments",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "nav_path_draw_ground_segments",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "spec_replay_round_delay",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Round can be delayed by this much due to someone watching a replay; must be at least 3-4 seconds, otherwise the last replay will always be interrupted by round start, assuming normal pause between round_end and round_start events (7 seconds) and freezecam delay (2 seconds) and 7.4 second full replay (5.4 second pre-death and ~2 seconds post-death) and replay in/out switching (up to a second)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_replay_round_delay",
+      "helperText": "Round can be delayed by this much due to someone watching a replay; must be at least 3-4 seconds, otherwise the last replay will always be interrupted by round start, assuming normal pause between round_end and round_start events (7 seconds) and freezecam delay (2 seconds) and 7.4 second full replay (5.4 second pre-death and ~2 seconds post-death) and replay in/out switching (up to a second)",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_log_roundstats",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_log_roundstats",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
       "requiresCheats": false,
       "hideFromDefaultView": true
     }

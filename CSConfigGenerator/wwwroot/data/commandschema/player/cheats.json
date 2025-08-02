@@ -260,7 +260,7 @@
     "uiData": {
       "label": "cl_clockdrift_max_ticks",
       "helperText": "Maximum number of ticks the clock is allowed to drift before the client snaps its clock to the server's.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 3,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -282,7 +282,7 @@
     "uiData": {
       "label": "cl_dangerzone_approaching_sound_radius",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 700,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -706,7 +706,7 @@
     "uiData": {
       "label": "cl_ent_attachment_filter_substrings",
       "helperText": "If an attachment's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '|' character.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1021,7 +1021,7 @@
     "uiData": {
       "label": "cl_ent_pivot_size",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 20,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1271,7 +1271,7 @@
     "uiData": {
       "label": "cl_ent_showonlyattachment",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1291,7 +1291,7 @@
     "uiData": {
       "label": "cl_ent_showonlyhitbox",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1418,7 +1418,7 @@
     "uiData": {
       "label": "cl_ent_text_flags_active",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1712,7 +1712,7 @@
     "uiData": {
       "label": "cl_flushentitypacket",
       "helperText": "For debugging. Force the engine to flush an entity packet.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1752,7 +1752,7 @@
     "uiData": {
       "label": "cl_glow_brightness",
       "helperText": "Brightness of player halos",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -1975,7 +1975,7 @@
     "uiData": {
       "label": "cl_leveloverview",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -2036,7 +2036,7 @@
     "uiData": {
       "label": "cl_paintkit_override",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -2055,7 +2055,7 @@
     "uiData": {
       "label": "cl_particle_retire_cost",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -2094,7 +2094,7 @@
     "uiData": {
       "label": "cl_pclass",
       "helperText": "Dump entity by prediction classname.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -2114,7 +2114,7 @@
     "uiData": {
       "label": "cl_pdump",
       "helperText": "Dump info about this entity to screen.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -2214,7 +2214,7 @@
     "uiData": {
       "label": "cl_phys_stop_at_collision",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -2234,7 +2234,7 @@
     "uiData": {
       "label": "cl_pitchdown",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 89,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -2254,7 +2254,7 @@
     "uiData": {
       "label": "cl_pitchup",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 89,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -2905,7 +2905,7 @@
     "uiData": {
       "label": "cl_showpos",
       "helperText": "Draw current position at top of screen",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3032,7 +3032,7 @@
     "uiData": {
       "label": "cl_smooth_root_max_accel",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3052,7 +3052,7 @@
     "uiData": {
       "label": "cl_smooth_root_origin_coeff",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 100,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3097,7 +3097,7 @@
     "uiData": {
       "label": "cl_smooth_root_velocity_coeff",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 20,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3222,7 +3222,7 @@
     "uiData": {
       "label": "cl_teamid_overhead_maxdist",
       "helperText": "max distance at which the overhead team id icons will show",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 6000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3243,7 +3243,7 @@
     "uiData": {
       "label": "cl_teamid_overhead_maxdist_spec",
       "helperText": "max distance at which the overhead team id icons will show when a spectator",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 4000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3305,7 +3305,7 @@
     "uiData": {
       "label": "cl_wallbang_heavy_threshold",
       "helperText": "The Threshold where to switch from Light to Heavy Wallbang tracer",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 22,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3326,7 +3326,7 @@
     "uiData": {
       "label": "cl_weapon_debug_show_accuracy",
       "helperText": "Draws a circle representing the effective range with every shot.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3347,7 +3347,7 @@
     "uiData": {
       "label": "cl_weapon_debug_show_accuracy_duration",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 10,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3512,7 +3512,7 @@
     "uiData": {
       "label": "default_fov",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 90,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3714,7 +3714,7 @@
     "uiData": {
       "label": "fog_end",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3734,7 +3734,7 @@
     "uiData": {
       "label": "fog_endskybox",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3754,7 +3754,7 @@
     "uiData": {
       "label": "fog_hdrcolorscale",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3774,7 +3774,7 @@
     "uiData": {
       "label": "fog_hdrcolorscaleskybox",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3794,7 +3794,7 @@
     "uiData": {
       "label": "fog_maxdensity",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3814,7 +3814,7 @@
     "uiData": {
       "label": "fog_maxdensityskybox",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3834,7 +3834,7 @@
     "uiData": {
       "label": "fog_override",
       "helperText": "Overrides the map's fog settings (-1 populates fog_ vars with map's values)",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3854,7 +3854,7 @@
     "uiData": {
       "label": "fog_start",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3874,7 +3874,7 @@
     "uiData": {
       "label": "fog_startskybox",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3894,7 +3894,7 @@
     "uiData": {
       "label": "fov_cs_debug",
       "helperText": "Sets the view fov if cheats are on.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -3996,7 +3996,7 @@
     "uiData": {
       "label": "gameinstructor_verbose",
       "helperText": "Set to 1 for standard debugging or 2 (in combo with gameinstructor_verbose_lesson) to show update actions.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4016,7 +4016,7 @@
     "uiData": {
       "label": "gameinstructor_verbose_lesson",
       "helperText": "Display more verbose information for lessons have this name.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4120,7 +4120,7 @@
     "uiData": {
       "label": "glow_outline_width",
       "helperText": "Width of glow outline effect in screen space.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 6,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4161,7 +4161,7 @@
     "uiData": {
       "label": "imgui_default_font_size",
       "helperText": "Default imgui font size",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 20,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4181,7 +4181,7 @@
     "uiData": {
       "label": "inferno_dlight_spacing",
       "helperText": "Inferno dlights are at least this far apart",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 7200,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4261,7 +4261,7 @@
     "uiData": {
       "label": "mat_fullbright",
       "helperText": "Debug rendering modes",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4318,7 +4318,7 @@
     "uiData": {
       "label": "mat_max_lighting_complexity",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 8,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4337,7 +4337,7 @@
     "uiData": {
       "label": "mat_overdraw",
       "helperText": "Visualize overdraw",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4413,7 +4413,7 @@
     "uiData": {
       "label": "mat_shading_complexity_max_instruction_count",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1024,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4432,7 +4432,7 @@
     "uiData": {
       "label": "mat_shading_complexity_max_register_count",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 128,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4470,7 +4470,7 @@
     "uiData": {
       "label": "mat_show_distance_field",
       "helperText": "0=Off, 1=Visualize trace from camera, 2=Visualize occlusion, 3=Visualize far field trace from camera",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4489,7 +4489,7 @@
     "uiData": {
       "label": "mat_tonemap_bloom_scale",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4508,7 +4508,7 @@
     "uiData": {
       "label": "mat_tonemap_bloom_start_value",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4527,7 +4527,7 @@
     "uiData": {
       "label": "mat_tonemap_force_accelerate_exposure_down",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4546,7 +4546,7 @@
     "uiData": {
       "label": "mat_tonemap_force_average_lum_min",
       "helperText": "Override. Old default was 3.0",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4565,7 +4565,7 @@
     "uiData": {
       "label": "mat_tonemap_force_log_lum_max",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4584,7 +4584,7 @@
     "uiData": {
       "label": "mat_tonemap_force_log_lum_min",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4603,7 +4603,7 @@
     "uiData": {
       "label": "mat_tonemap_force_max",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4622,7 +4622,7 @@
     "uiData": {
       "label": "mat_tonemap_force_min",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4641,7 +4641,7 @@
     "uiData": {
       "label": "mat_tonemap_force_percent_bright_pixels",
       "helperText": "Override. Old value was 1.0",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4660,7 +4660,7 @@
     "uiData": {
       "label": "mat_tonemap_force_percent_target",
       "helperText": "Override. Old default was 45.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4679,7 +4679,7 @@
     "uiData": {
       "label": "mat_tonemap_force_rate",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4698,7 +4698,7 @@
     "uiData": {
       "label": "mat_tonemap_force_scale",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4717,7 +4717,7 @@
     "uiData": {
       "label": "mat_tonemap_force_use_alpha",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4736,7 +4736,7 @@
     "uiData": {
       "label": "mat_tonemap_uncap_exposure",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4755,7 +4755,7 @@
     "uiData": {
       "label": "mat_wireframe",
       "helperText": "0=Off, 1=Surface Wireframe, 2=Transparent Wireframe",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4796,7 +4796,7 @@
     "uiData": {
       "label": "phys_expensive_shape_threshold",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 6,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4837,7 +4837,7 @@
     "uiData": {
       "label": "pwatchent",
       "helperText": "Entity to watch for prediction system changes.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4857,7 +4857,7 @@
     "uiData": {
       "label": "pwatchvar",
       "helperText": "Entity variable to watch in prediction system for changes.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4937,7 +4937,7 @@
     "uiData": {
       "label": "r_csgo_debug_reflection_rects",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -4998,7 +4998,7 @@
     "uiData": {
       "label": "r_csgo_depth_prepass_cull_threshold",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 60,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5080,7 +5080,7 @@
     "uiData": {
       "label": "r_csgo_depth_prepass_small_cull_threshold",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 10,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5450,7 +5450,7 @@
     "uiData": {
       "label": "r_csgo_mixed_resolution_particles_scale",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5590,7 +5590,7 @@
     "uiData": {
       "label": "r_csgo_reconstruct_normals_method",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5610,7 +5610,7 @@
     "uiData": {
       "label": "r_csgo_reflection_min_far_plane",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 5000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5671,7 +5671,7 @@
     "uiData": {
       "label": "r_csgo_render_dither_scale",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5771,7 +5771,7 @@
     "uiData": {
       "label": "r_csgo_render_post_bloom",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5791,7 +5791,7 @@
     "uiData": {
       "label": "r_csgo_render_post_bloom_strength",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5811,7 +5811,7 @@
     "uiData": {
       "label": "r_csgo_render_post_colorcorrection",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5831,7 +5831,7 @@
     "uiData": {
       "label": "r_csgo_render_post_film_grain",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5871,7 +5871,7 @@
     "uiData": {
       "label": "r_csgo_render_post_mirror_horizontal",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5891,7 +5891,7 @@
     "uiData": {
       "label": "r_csgo_render_post_mirror_vertical",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -5931,7 +5931,7 @@
     "uiData": {
       "label": "r_csgo_shadows_debug",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6010,7 +6010,7 @@
     "uiData": {
       "label": "r_cubemap_debug_colors",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6127,7 +6127,7 @@
     "uiData": {
       "label": "r_dof_override_far_blurry",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2000,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6146,7 +6146,7 @@
     "uiData": {
       "label": "r_dof_override_far_crisp",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 180,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6165,7 +6165,7 @@
     "uiData": {
       "label": "r_dof_override_near_blurry",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -100,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6184,7 +6184,7 @@
     "uiData": {
       "label": "r_dof_override_near_crisp",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6284,7 +6284,7 @@
     "uiData": {
       "label": "r_draw_particle_children_with_parents",
       "helperText": "Draw particle children with parents (-1=use gameinfo, 0=no, 1=yes)",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6537,7 +6537,7 @@
     "uiData": {
       "label": "r_extra_render_frames",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6556,7 +6556,7 @@
     "uiData": {
       "label": "r_fallback_texture_lod_scale",
       "helperText": "Scale factor for requested texture size (texture streaming) - used for geo that doesn't have a precomputed UV density measure",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6576,7 +6576,7 @@
     "uiData": {
       "label": "r_farz",
       "helperText": "Override the far clipping plane. -1 means to use the value in env_fog_controller.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6596,7 +6596,7 @@
     "uiData": {
       "label": "r_flashlightambient",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6641,7 +6641,7 @@
     "uiData": {
       "label": "r_flashlightladderdist",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 40,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6681,7 +6681,7 @@
     "uiData": {
       "label": "r_flashlightmuzzleflashfov",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 120,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6701,7 +6701,7 @@
     "uiData": {
       "label": "r_flashlightnearoffsetscale",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6746,7 +6746,7 @@
     "uiData": {
       "label": "r_flashlighttracedistcutoff",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 128,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6766,7 +6766,7 @@
     "uiData": {
       "label": "r_flashlighttracedistwatercutoff",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 80,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6824,7 +6824,7 @@
     "uiData": {
       "label": "r_force_zprepass",
       "helperText": "0: Force z prepass off. 1: Force on. -1: Don't force",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6881,8 +6881,8 @@
     "uiData": {
       "label": "r_light_probe_volume_debug_colors",
       "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
+      "type": "bool",
+      "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
@@ -6900,8 +6900,8 @@
     "uiData": {
       "label": "r_light_probe_volume_debug_grid",
       "helperText": "Show LPV debug grid, 0: off, 1: closest only 2: closest and keep 3: all",
-      "type": "bool",
-      "defaultValue": false,
+      "type": "unknown_integer",
+      "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
@@ -6957,7 +6957,7 @@
     "uiData": {
       "label": "r_light_probe_volume_debug_grid_metalness",
       "helperText": "metalness for LPV debug grid",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -6976,7 +6976,7 @@
     "uiData": {
       "label": "r_light_probe_volume_debug_grid_prim",
       "helperText": "0: spheres, 1: cubes",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7019,7 +7019,7 @@
     "uiData": {
       "label": "r_light_probe_volume_debug_grid_samplesize",
       "helperText": "sphere radius (world) for LPV debug grid",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 4,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7058,7 +7058,7 @@
     "uiData": {
       "label": "r_mapextents",
       "helperText": "Set the max dimension for the map.  This determines the far clipping plane",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 16384,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7097,7 +7097,7 @@
     "uiData": {
       "label": "r_nearz",
       "helperText": "Override the near clipping plane. -1 means use the default.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7179,7 +7179,7 @@
     "uiData": {
       "label": "r_refraction_clip_plane_adjust",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7238,7 +7238,7 @@
     "uiData": {
       "label": "r_replay_post_effect",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7433,7 +7433,7 @@
     "uiData": {
       "label": "r_texture_lod_scale",
       "helperText": "Scale factor for requested texture size (texture streaming)",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7657,7 +7657,7 @@
     "uiData": {
       "label": "soundscape_fadetime",
       "helperText": "Time to crossfade sound effects between soundscapes",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 3,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7718,7 +7718,7 @@
     "uiData": {
       "label": "splitscreen_mode",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -7829,7 +7829,7 @@
     "uiData": {
       "label": "weapon_debug_spread_show",
       "helperText": "Enables display of weapon accuracy; 1: show accuracy box, 3: show accuracy with dynamic crosshair",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true

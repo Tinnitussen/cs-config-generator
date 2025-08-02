@@ -13,7 +13,7 @@
     "uiData": {
       "label": "hud_fastswitch",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -33,7 +33,7 @@
     "uiData": {
       "label": "hud_scaling",
       "helperText": "Scales hud elements",
-      "type": "float",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": false

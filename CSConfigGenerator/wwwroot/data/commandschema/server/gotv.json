@@ -13,48 +13,8 @@
     "uiData": {
       "label": "tv_allow_autorecording_index",
       "helperText": "When >=0 restricts autorecording only to the specified TV index",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": -1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "tv_allow_camera_man_steamid",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Allows tournament production cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the camera man.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "tv_allow_camera_man_steamid",
-      "helperText": "Allows tournament production cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the camera man.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "tv_allow_camera_man_steamid2",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Allows tournament production tv cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the tv camera man.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "tv_allow_camera_man_steamid2",
-      "helperText": "Allows tournament production tv cameraman to run csgo.exe -interactivecaster on SteamID 7650123456XXX and be the tv camera man.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
     }
@@ -93,7 +53,7 @@
     "uiData": {
       "label": "tv_delay",
       "helperText": "SourceTV broadcast delay in seconds",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 105,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -113,7 +73,7 @@
     "uiData": {
       "label": "tv_delay1",
       "helperText": "SourceTV[instance 1] broadcast delay in seconds",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 15,
       "requiresCheats": false,
       "hideFromDefaultView": true

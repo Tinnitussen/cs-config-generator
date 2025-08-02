@@ -1,0 +1,44 @@
+{
+  "player": {
+    "subcategories": {
+      "crosshair": { "prefixes": ["crosshair_"] },
+      "viewmodel": { "prefixes": ["viewmodel_"] },
+      "hud": { "prefixes": ["hud_"] },
+      "radar": { "prefixes": ["radar_"] },
+      "input": { "prefixes": ["input_", "m_", "joy_", "+"] },
+      "gameplay": { "prefixes": ["gameplay_", "option_"] },
+      "audio": { "prefixes": ["snd_", "sound_", "voice_"] },
+      "communication": { "prefixes": ["comm_", "chat_"] },
+      "network": { "prefixes": ["net_"] },
+      "cheats": { "flags": ["cheat"] },
+      "actions": { "ui_type": "action" },
+      "developer/rendering": { "prefixes": ["r_"] },
+      "developer/debugging": { "prefixes": ["debug_", "dev_"] },
+      "developer/spectator": { "prefixes": ["spec_"] },
+      "misc": { "default": true }
+    }
+  },
+  "server": {
+    "subcategories": {
+      "setup": { "prefixes": ["hostname_", "log_", "rcon_"], "default": true },
+      "teams": { "keywords": ["team"] },
+      "rounds": { "keywords": ["round"] },
+      "objectives": { "keywords": ["bomb", "hostage"] },
+      "spawning": { "keywords": ["spawn"] },
+      "rules": { "prefixes": ["mp_"], "keywords": ["friendlyfire", "damage"] },
+      "economy": { "keywords": ["money", "cash", "econ"] },
+      "bots": { "prefixes": ["bot_"] },
+      "gotv": { "prefixes": ["tv_"] }
+    }
+  },
+  "shared": {
+    "subcategories": {
+      "tbd": { "default": true }
+    }
+  },
+  "uncategorized": {
+    "subcategories": {
+      "uncategorized": { "default": true }
+    }
+  }
+}

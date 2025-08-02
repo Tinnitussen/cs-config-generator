@@ -357,7 +357,7 @@
     "uiData": {
       "label": "bot_debug",
       "helperText": "For internal testing purposes.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -377,7 +377,7 @@
     "uiData": {
       "label": "bot_debug_target",
       "helperText": "For internal testing purposes.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -437,7 +437,7 @@
     "uiData": {
       "label": "bot_difficulty",
       "helperText": "Defines the skill of bots joining the game.  Values are: 0=easy, 1=normal, 2=hard, 3=expert.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -478,7 +478,7 @@
     "uiData": {
       "label": "bot_eco_limit",
       "helperText": "If nonzero, bots will not buy if their money falls below this amount.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 2000,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -627,26 +627,6 @@
     }
   },
   {
-    "command": "bot_join_team",
-    "consoleData": {
-      "defaultValue": "any",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Determines the team bots will join into. Allowed values: 'any', 'T', or 'CT'.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "bot_join_team",
-      "helperText": "Determines the team bots will join into. Allowed values: 'any', 'T', or 'CT'.",
-      "type": "string",
-      "defaultValue": "any",
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "bot_kick",
     "consoleData": {
       "defaultValue": null,
@@ -723,7 +703,7 @@
     "uiData": {
       "label": "bot_loadout",
       "helperText": "bots are given these items at round start",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -743,7 +723,7 @@
     "uiData": {
       "label": "bot_mimic_yaw_offset",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 180,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -805,7 +785,7 @@
     "uiData": {
       "label": "bot_prefix",
       "helperText": "This string is prefixed to the name of all bots that join the game. <difficulty> will be replaced with the bot's difficulty. <weaponclass> will be replaced with the bot's desired weapon class. <skill> will be replaced with a 0-100 representation of the bot's skill.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -825,7 +805,7 @@
     "uiData": {
       "label": "bot_quota",
       "helperText": "Determines the total number of bots in the game.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 10,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -966,7 +946,7 @@
     "uiData": {
       "label": "bot_stop",
       "helperText": "bot_stop <1|all> | <not_bomber> | <t> | <ct>",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
@@ -986,7 +966,7 @@
     "uiData": {
       "label": "bot_traceview",
       "helperText": "For internal testing purposes.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true

@@ -15,7 +15,7 @@
     "uiData": {
       "label": "viewmodel_fov",
       "helperText": "Viewmodel FOV",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 60,
       "requiresCheats": false,
       "hideFromDefaultView": false
@@ -37,7 +37,7 @@
     "uiData": {
       "label": "viewmodel_offset_x",
       "helperText": "viewmodel_offset_x",
-      "type": "float",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": false
@@ -59,7 +59,7 @@
     "uiData": {
       "label": "viewmodel_offset_y",
       "helperText": "viewmodel_offset_y",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": false
@@ -81,7 +81,7 @@
     "uiData": {
       "label": "viewmodel_offset_z",
       "helperText": "viewmodel_offset_z",
-      "type": "float",
+      "type": "unknown_integer",
       "defaultValue": -1,
       "requiresCheats": false,
       "hideFromDefaultView": false
