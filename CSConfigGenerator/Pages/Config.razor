@@ -24,7 +24,7 @@
                         .Select(c => _settingViewModels[c.Command])
                         .ToList();
 
-                    <ConfigSectionGroup Section="section" SettingViewModels="viewModels" />
+                    <ConfigSectionGroup Section="section" SettingViewModels="viewModels" ConfigStateService="ConfigStateService" />
                 }
 
                 <div class="mb-3">
@@ -57,7 +57,7 @@
     public ISchemaService SchemaService { get; set; } = default!;
 
     private IConfigStateService ConfigStateService { get; set; } = default!;
-    private List<ConfigSection> Sections { get; set; } = new();
+    private IReadOnlyList<ConfigSection> Sections { get; set; } = new List<ConfigSection>();
     private string Title { get; set; } = "";
     private string Description { get; set; } = "";
 
