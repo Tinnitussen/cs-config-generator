@@ -47,6 +47,8 @@ def check_condition(command: Dict, condition: Dict) -> bool:
         return is_numeric_string(field_value)
     if operator == "contains":
         return condition_value in str(field_value)
+    if operator == "contains_not":
+        return condition_value not in str(field_value)
 
     return False
 
@@ -69,8 +71,7 @@ def create_ui_data_skeleton(command: Dict) -> Dict:
         "helperText": command["consoleData"]["description"],
         "type": "unknown",
         "defaultValue": 0, # Generic placeholder, always overwritten
-        "requiresCheats": "cheat" in command["consoleData"]["flags"],
-        "hideFromDefaultView": True
+        "requiresCheats": "cheat" in command["consoleData"]["flags"]
     }
 
 def add_type_classification(commands: List[Dict], rules: List[Dict]) -> tuple:
@@ -102,8 +103,8 @@ def add_type_classification(commands: List[Dict], rules: List[Dict]) -> tuple:
         if cmd_type == 'action':
             cmd['uiData']['defaultValue'] = None
         elif cmd_type == 'bool':
-            cmd['uiData']['defaultValue'] = str(console_default).lower() == 'true'
-        elif cmd_type in ['bitmask', 'unknown_numeric']:
+            cmd['uiData']['defaultValue'] = str(console_default).lower() == 'true' or str(console_default).lower() == '1'
+        elif cmd_type in ['bitmask', 'unknown_numeric', 'unknown_integer']:
             cmd['uiData']['defaultValue'] = int(float(console_default)) if is_numeric_string(console_default) else 0
         elif cmd_type == 'float':
             cmd['uiData']['defaultValue'] = float(console_default) if is_numeric_string(console_default) else 0.0

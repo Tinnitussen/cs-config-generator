@@ -25,6 +25,13 @@
     ]
   },
   {
+    "type": "unknown_integer",
+    "conditions": [
+      { "field": "consoleData.defaultValue", "operator": "is_numeric" },
+      { "field": "consoleData.defaultValue", "operator": "contains_not", "value": "." }
+    ]
+  },
+  {
     "type": "unknown_numeric",
     "conditions": [
       { "field": "consoleData.defaultValue", "operator": "is_numeric" }
