@@ -3,14 +3,29 @@
 
 @if (!ViewModel.Command.UiData.HideFromDefaultView)
 {
-    @if (ViewModel.Setting.IsInConfigEditor)
-    {
-        <div class="mb-3">
-            <div class="d-flex justify-content-between">
-                <label class="form-label" for="@ViewModel.Command.Command">@ViewModel.Command.UiData.Label</label>
-                <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
+    <div class="mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <label class="form-label @(ViewModel.Setting.IsInConfigEditor ? "" : "text-muted")" for="@ViewModel.Command.Command">
+                    @ViewModel.Command.UiData.Label
+                </label>
+                @if (!ViewModel.Setting.IsInConfigEditor)
+                {
+                    <span class="badge bg-secondary ms-2">Removed</span>
+                }
             </div>
+            @if (ViewModel.Setting.IsInConfigEditor)
+            {
+                <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
+            }
+            else
+            {
+                <button class="btn btn-sm btn-outline-success" @onclick="ViewModel.Restore">Restore</button>
+            }
+        </div>
 
+        @if (ViewModel.Setting.IsInConfigEditor)
+        {
             @switch (ViewModel.Command.UiData.Type)
             {
                 case SettingType.Bool:
@@ -34,30 +49,17 @@
                     </select>
                     break;
                 case SettingType.String:
-                case SettingType.Action: // Add action to default string handling if it uses text input
-                case SettingType.UnknownNumeric: // If you decide to handle these with text input for flexibility
-                case SettingType.UnknownInteger: // If you decide to handle these with text input for flexibility
+                case SettingType.Action:
+                case SettingType.UnknownNumeric:
+                case SettingType.UnknownInteger:
                 default:
                     <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" spellcheck="false" />
                     break;
             }
+        }
 
-            <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
-        </div>
-    }
-    else
-    {
-        <div class="mb-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <span class="form-label text-muted">@ViewModel.Command.UiData.Label</span>
-                    <span class="badge bg-secondary">Removed</span>
-                </div>
-                <button class="btn btn-sm btn-outline-success" @onclick="ViewModel.Restore">Restore</button>
-            </div>
-            <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
-        </div>
-    }
+        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
+    </div>
 }
 
 

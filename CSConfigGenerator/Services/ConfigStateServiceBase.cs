@@ -8,22 +8,48 @@ public abstract class ConfigStateServiceBase : IConfigStateService
 {
     protected readonly ISchemaService _schemaService;
     protected readonly Dictionary<string, Setting> _settings = [];
+    private readonly IReadOnlyList<ConfigSection> _configSections;
+    private readonly Func<string, CommandDefinition?> _commandProvider;
+
 
     public event Action<object?>? OnStateChange;
     public IReadOnlyDictionary<string, Setting> Settings => _settings.AsReadOnly();
 
-    protected ConfigStateServiceBase(ISchemaService schemaService)
+    protected ConfigStateServiceBase(
+        ISchemaService schemaService,
+        IReadOnlyList<ConfigSection> configSections,
+        Func<string, CommandDefinition?> commandProvider)
     {
         _schemaService = schemaService;
+        _configSections = configSections;
+        _commandProvider = commandProvider;
     }
 
-    public abstract void InitializeDefaults();
-    
+    public virtual void InitializeDefaults()
+    {
+        _settings.Clear();
+
+        foreach (var section in _configSections)
+        {
+            foreach (var command in section.Commands)
+            {
+                var defaultValue = SettingTypeHelpers.ConvertFromJson(command.UiData.Type, command.UiData.DefaultValue);
+                _settings[command.Command] = new Setting
+                {
+                    Value = defaultValue,
+                    IsInConfigEditor = !command.UiData.HideFromDefaultView
+                };
+            }
+        }
+
+        NotifyStateChanged();
+    }
+
     protected abstract string GetConfigFileHeader();
-    
-    protected abstract IReadOnlyList<ConfigSection> GetSections();
-    
-    protected abstract CommandDefinition? GetCommandDefinition(string commandName);
+
+    private IReadOnlyList<ConfigSection> GetSections() => _configSections;
+
+    private CommandDefinition? GetCommandDefinition(string commandName) => _commandProvider(commandName);
 
     protected void NotifyStateChanged(object? originator = null)
     {
