@@ -1,18 +1,26 @@
 import os
 import json
 import re
+import sys
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import List, Dict, Any
 
+# --- Path setup ---
+# Add the 'rules' directory to the Python path to import the classification rules.
+# This makes the script runnable from any directory.
+script_dir = os.path.dirname(os.path.abspath(__file__))
+rules_dir = os.path.join(os.path.dirname(os.path.dirname(script_dir)), 'rules')
+if rules_dir not in sys.path:
+    sys.path.append(rules_dir)
+
+from numeric_detection_rules import classify_command_by_usage, UNKNOWN_TYPES, FLOAT_RATIO
+
 # Configuration
-COMMANDS_JSON = "data/commands.json"
-CONFIGS_DIR = "data/pro-player-configs/unzipped-configs"
+tools_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+COMMANDS_JSON = os.path.join(tools_dir, "data", "commands.json")
+CONFIGS_DIR = os.path.join(tools_dir, "data", "pro-player-configs", "unzipped-configs")
 MIN_OCCURRENCES = 4
-FLOAT_RATIO = 0.5
-MIN_INT_OCCURRENCES = 15
-UNKNOWN_TYPES = ("unknown", "unknown_numeric")
-PROTECTED_TYPES = ("float", "bool", "bitmask", "action")
 
 @dataclass
 class CommandStats:
@@ -103,24 +111,6 @@ def create_command_stats(cmd: str, values: List[str], current_type: str) -> Comm
         current_type=current_type
     )
 
-def classify_command(stats: CommandStats) -> str:
-    """Determine the appropriate type for a command based on its stats"""
-    # Don't reclassify protected types
-    if stats.current_type in PROTECTED_TYPES:
-        return stats.current_type
-    
-    # Classify as float if enough float usage
-    if stats.float_ratio > FLOAT_RATIO:
-        return "float"
-    
-    # Classify as unknown_integer if all values are integers and enough occurrences
-    if (stats.total >= MIN_INT_OCCURRENCES and 
-        stats.is_all_int and 
-        stats.current_type not in ("int", "unknown_integer")):
-        return "unknown_integer"
-    
-    return stats.current_type
-
 def find_anomalies(all_stats: List[CommandStats]) -> List[CommandStats]:
     """Find commands classified as non-float but used as float"""
     return [
@@ -136,7 +126,7 @@ def print_sanity_check(all_stats: List[CommandStats]) -> None:
     int_candidates = []
     
     for stats in all_stats:
-        new_type = classify_command(stats)
+        new_type = classify_command_by_usage(stats)
         if new_type == "float" and new_type != stats.current_type:
             float_candidates.append((stats, new_type))
         elif new_type == "unknown_integer" and new_type != stats.current_type:
@@ -182,7 +172,7 @@ def main():
     anomalies = find_anomalies(all_stats)
     
     for stats in all_stats:
-        new_type = classify_command(stats)
+        new_type = classify_command_by_usage(stats)
         entry = known_commands[stats.command]
         
         # Update type if it changed
