@@ -1,8 +1,9 @@
 window.makeEditorSticky = function (editorElement) {
-    if (!editorElement) {
-        console.warn('Sticky element not provided.');
+    if (!editorElement || editorElement.dataset.stickyInitialized) {
         return;
     }
+    editorElement.dataset.stickyInitialized = true;
+
     const editorContainerElement = editorElement.parentElement;
     if (!editorContainerElement) {
         console.warn('Sticky element\'s container not found.');
@@ -17,12 +18,7 @@ window.makeEditorSticky = function (editorElement) {
         return top;
     };
 
-    let containerTop = 0;
-
-    // Wait a bit for the layout to stabilize before getting the initial top position
-    setTimeout(() => {
-        containerTop = getContainerTop();
-    }, 200);
+    let containerTop = getContainerTop();
 
     window.addEventListener('resize', () => {
         const wasSticky = editorElement.classList.contains('sticky');
