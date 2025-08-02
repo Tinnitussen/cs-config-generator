@@ -13,3 +13,8 @@ function downloadFile(fileName, content) {
 function clickElement(element) {
     element.click();
 }
+
+function initializePopovers() {
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+}

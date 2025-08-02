@@ -1,8 +1,14 @@
 ﻿@using System.Reflection
+@inject IJSRuntime JSRuntime
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">CSConfigGenerator</a>
+        <span class="bi bi-info-circle text-white"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              title="Version"
+              data-bs-content="@version"></span>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,11 +37,6 @@
                 <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Command Reference
             </NavLink>
         </div>
-        <div class="nav-item px-3 mt-auto">
-            <div class="nav-link">
-                <span class="bi bi-info-circle-fill-nav-menu" aria-hidden="true"></span> Version: @version
-            </div>
-        </div>
     </nav>
 </div>
 
@@ -48,6 +49,14 @@
     protected override void OnInitialized()
     {
         version = typeof(NavMenu).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initializePopovers");
+        }
     }
 
     private void ToggleNavMenu()
