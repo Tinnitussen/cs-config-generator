@@ -38,8 +38,8 @@ public static class SettingValidator
                 {
                     return (false, $"Value must be a valid integer");
                 }
-                
-                if (intValue < (int)rangeAttr.Minimum || intValue > (int)rangeAttr.Maximum)
+
+                if (intValue < (int) rangeAttr.Minimum || intValue > (int) rangeAttr.Maximum)
                 {
                     return (false, rangeAttr.ErrorMessage);
                 }
@@ -50,8 +50,8 @@ public static class SettingValidator
                 {
                     return (false, $"Value must be a valid floating point number");
                 }
-                
-                if ((double)floatValue < (double)rangeAttr.Minimum || (double)floatValue > (double)rangeAttr.Maximum)
+
+                if ((double) floatValue < (double) rangeAttr.Minimum || (double) floatValue > (double) rangeAttr.Maximum)
                 {
                     return (false, rangeAttr.ErrorMessage);
                 }

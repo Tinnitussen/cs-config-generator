@@ -12,26 +12,26 @@ public enum SettingType
 {
     [RegularExpression("^(true|false|0|1)$", ErrorMessage = "Boolean value must be 'true', 'false', '1', or '0'")]
     Bool,
-    
+
     [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     Int,
-    
+
     [Range(float.MinValue, float.MaxValue, ErrorMessage = "Value must be a valid floating point number")]
     Float,
-    
+
     String,
     [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     Enum,
-    
+
     [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     Bitmask,
-    
+
     [Range(float.MinValue, float.MaxValue, ErrorMessage = "Value must be a valid numeric value")]
     UnknownNumeric,
-    
+
     [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     UnknownInteger,
-    
+
     Action
 }
 
@@ -79,7 +79,7 @@ public static class SettingTypeHelpers
             _ => GetDefaultValue(settingType) // Return default value instead of throwing
         };
     }
-    
+
     /// <summary>
     /// Parses a string representation of a boolean value, handling "0" and "1" as well as "true" and "false"
     /// </summary>
@@ -100,15 +100,15 @@ public static class SettingTypeHelpers
     {
         return settingType switch
         {
-            SettingType.Bool => (bool)value ? "true" : "false",
-            SettingType.Float => ((float)value).ToString(CultureInfo.InvariantCulture),
-            SettingType.Int => ((int)value).ToString(CultureInfo.InvariantCulture),
-            SettingType.String => FormatStringValue((string)value),
-            SettingType.Enum => FormatStringValue((string)value),
-            SettingType.Bitmask => ((int)value).ToString(CultureInfo.InvariantCulture),
-            SettingType.UnknownNumeric => ((float)value).ToString(CultureInfo.InvariantCulture),
-            SettingType.UnknownInteger => ((int)value).ToString(CultureInfo.InvariantCulture),
-            SettingType.Action => (string)value,
+            SettingType.Bool => (bool) value ? "true" : "false",
+            SettingType.Float => ((float) value).ToString(CultureInfo.InvariantCulture),
+            SettingType.Int => ((int) value).ToString(CultureInfo.InvariantCulture),
+            SettingType.String => FormatStringValue((string) value),
+            SettingType.Enum => FormatStringValue((string) value),
+            SettingType.Bitmask => ((int) value).ToString(CultureInfo.InvariantCulture),
+            SettingType.UnknownNumeric => ((float) value).ToString(CultureInfo.InvariantCulture),
+            SettingType.UnknownInteger => ((int) value).ToString(CultureInfo.InvariantCulture),
+            SettingType.Action => (string) value,
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
     }
@@ -132,7 +132,7 @@ public static class SettingTypeHelpers
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
     }
-    
+
     /// <summary>
     /// Converts an object to a boolean, handling integer values (0, 1) as well as standard boolean conversion
     /// </summary>
@@ -142,12 +142,12 @@ public static class SettingTypeHelpers
         {
             return intValue != 0;
         }
-        
+
         if (value is string strValue)
         {
             return ParseBooleanValue(strValue);
         }
-        
+
         return Convert.ToBoolean(value);
     }
 
