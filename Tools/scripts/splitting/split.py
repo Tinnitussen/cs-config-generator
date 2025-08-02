@@ -23,7 +23,31 @@ def get_prefix(command_name: str):
         return f"{parts[0]}_"
     return None
 
-def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
+def load_rules(filepath: str) -> Dict:
+    """Load categorization rules from JSON file"""
+    with open(filepath, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def classify_command(command: Dict, rules: Dict) -> str:
+    """Classify a single command based on the provided rules."""
+    flags = set(command.get('consoleData', {}).get('flags', []))
+    command_name = command['command']
+    prefix = get_prefix(command_name)
+
+    # Check flag-based rules first
+    for category, conditions in rules["by_flag"].items():
+        for condition in conditions:
+            if set(condition["requires"]).issubset(flags):
+                return category
+
+    # Check prefix-based rules
+    for category, prefixes in rules["by_prefix"].items():
+        if prefix in prefixes:
+            return category
+
+    return "uncategorized"
+
+def classify_commands(commands: List[Dict], rules: Dict) -> Dict[str, List[Dict]]:
     """
     Classify commands into server, player, shared, and uncategorized.
     """
@@ -34,36 +58,9 @@ def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
         "uncategorized": []
     }
 
-    player_prefixes = ["cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_"]
-    server_prefixes = ["sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_", "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_", "test_", "soundscape_", "scene_", "particle_", "shatterglass_", "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_", "contributionscore_"]
-    shared_prefixes = ["ai_", "weapon_", "ragdoll_", "ik_", "skeleton_"]
-    
     for command in commands:
-        flags = command.get('consoleData', {}).get('flags', [])
-        is_server = 'sv' in flags
-        is_client = 'cl' in flags
-        is_replicated = 'rep' in flags
-        is_archived = 'a' in flags
-        is_user = 'user' in flags
-        command_name = command['command']
-        prefix = get_prefix(command_name)
-
-        if is_replicated or (is_server and is_client):
-            classified_commands["shared"].append(command)
-        elif is_server:
-            classified_commands["server"].append(command)
-        elif is_client:
-            classified_commands["player"].append(command)
-        elif prefix in player_prefixes:
-            classified_commands["player"].append(command)
-        elif prefix in server_prefixes:
-            classified_commands["server"].append(command)
-        elif prefix in shared_prefixes:
-            classified_commands["shared"].append(command)
-        elif is_archived or is_user:
-            classified_commands["player"].append(command)
-        else:
-            classified_commands["uncategorized"].append(command)
+        category = classify_command(command, rules)
+        classified_commands[category].append(command)
 
     return classified_commands
 
@@ -94,9 +91,11 @@ def verify_data_integrity(original: List[Dict], classified: Dict[str, List[Dict]
     return True
 
 def main():
-    input_file = "Tools/data/commands.json"
-    output_dir = "Tools/data/classified_commands"
-    
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    input_file = os.path.join(script_dir, "../../data/commands.json")
+    output_dir = os.path.join(script_dir, "../../data/classified_commands")
+    rules_file = os.path.join(script_dir, "../../rules/category_rules.json")
+
     # Check if input file exists
     if not os.path.exists(input_file):
         print(f"Error: Input file '{input_file}' not found.")
@@ -104,9 +103,12 @@ def main():
     
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
+
+    print(f"Loading categorization rules from '{rules_file}'...")
+    rules = load_rules(rules_file)
     
     print("Classifying commands with new logic...")
-    classified_commands = classify_commands(commands)
+    classified_commands = classify_commands(commands, rules)
     
     # Save the classified commands into separate files
     for category, command_list in classified_commands.items():

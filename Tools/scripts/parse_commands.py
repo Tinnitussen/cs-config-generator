@@ -41,26 +41,19 @@ def load_existing_data(output_file):
             print("Starting with empty dataset.")
     return {}
 
-def parse_input_file(input_file):
+def load_parsing_rules(rules_file):
+    """Load parsing rules from a JSON file."""
+    with open(rules_file, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def parse_input_file(input_file, rules):
     """Parse the input file and return a set of current commands and their data."""
     # Regex to parse valid console lines
-    pattern = re.compile(
-        r"^\[Console\]\s+"               # Literal prefix
-        r"([^\s]+)\s+:\s+"               # Command name
-        r"(.+?)\s+:\s+"                   # Default value: anything up to the next colon
-        r"([^:]+?)\s*"                     # Flags (comma-separated)
-        r"(?::\s*(.*))?$"                   # Optional description
-    )
+    pattern = re.compile(rules["parse_pattern"])
     
-    valid_command = re.compile(r"^[a-zA-Z0-9_\-\.\+]+$")
-    valid_default_value = re.compile(r"^.{0,256}$")
-    valid_flags = set([
-        "cl", "sv", "cheat", "a", "release", "rep", "user", "norecord",
-        "clientcmd_can_execute", "server_can_execute", "execute_per_tick",
-        "vconsole_fuzzy", "vconsole_set_focus", "nf", "nolog",
-        "per_user", "disconnected", "demo", "prot", "server_cant_query",
-        "linked"
-    ])
+    valid_command = re.compile(rules["valid_command_pattern"])
+    valid_default_value = re.compile(rules["valid_default_value_pattern"])
+    valid_flags = set(rules["valid_flags"])
     
     current_commands = set()
     parsed_commands = {}
@@ -132,9 +125,18 @@ def unmark_deprecated_commands(existing_commands, current_commands, sourced_at):
     return unmarked_count
 
 def main():
-    input_file = "data/all_commands-2025-30-07.txt"
-    output_file = "data/commands.json"
+    # Determine the base directory of the script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     
+    # Define file paths relative to the script's location
+    input_file = os.path.join(script_dir, "../data/all_commands-2025-30-07.txt")
+    output_file = os.path.join(script_dir, "../data/commands.json")
+    rules_file = os.path.join(script_dir, "../rules/parsing_rules.json")
+
+    # Load parsing rules
+    print(f"Loading parsing rules from: {rules_file}")
+    parsing_rules = load_parsing_rules(rules_file)
+
     # Extract timestamp from filename
     sourced_at = extract_date_from_filename(input_file)
     print(f"Using timestamp: {sourced_at}")
@@ -145,7 +147,7 @@ def main():
     
     # Parse input file to get current commands and their data
     print("Parsing input file...")
-    current_commands, parsed_commands = parse_input_file(input_file)
+    current_commands, parsed_commands = parse_input_file(input_file, parsing_rules)
     print(f"Found {len(current_commands)} valid commands in input file")
     
     # Step 1: Unmark deprecated commands that are now back

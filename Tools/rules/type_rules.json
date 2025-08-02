@@ -1,0 +1,37 @@
+[
+  {
+    "type": "action",
+    "conditions": [
+      { "field": "consoleData.defaultValue", "operator": "is_null" }
+    ]
+  },
+  {
+    "type": "bool",
+    "conditions": [
+      { "field": "consoleData.defaultValue", "operator": "is_in_lower", "value": ["true", "false"] }
+    ]
+  },
+  {
+    "type": "bitmask",
+    "conditions": [
+      { "field": "consoleData.description", "operator": "contains_lower", "value": "bitmask" }
+    ]
+  },
+  {
+    "type": "float",
+    "conditions": [
+      { "field": "consoleData.defaultValue", "operator": "is_numeric" },
+      { "field": "consoleData.defaultValue", "operator": "contains", "value": "." }
+    ]
+  },
+  {
+    "type": "unknown_numeric",
+    "conditions": [
+      { "field": "consoleData.defaultValue", "operator": "is_numeric" }
+    ]
+  },
+  {
+    "type": "string",
+    "default": true
+  }
+]

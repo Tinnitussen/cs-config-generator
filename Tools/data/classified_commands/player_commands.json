@@ -390,10 +390,10 @@
     "uiData": {
       "label": "adsp_debug",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -718,10 +718,10 @@
     "uiData": {
       "label": "c_maxdistance",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 200,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -738,10 +738,10 @@
     "uiData": {
       "label": "c_maxpitch",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 90,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -758,10 +758,10 @@
     "uiData": {
       "label": "c_maxyaw",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 135,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -778,10 +778,10 @@
     "uiData": {
       "label": "c_mindistance",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 30,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -798,10 +798,10 @@
     "uiData": {
       "label": "c_minpitch",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -818,10 +818,10 @@
     "uiData": {
       "label": "c_minyaw",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": -135,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -838,10 +838,10 @@
     "uiData": {
       "label": "c_orthoheight",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 100,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -858,10 +858,10 @@
     "uiData": {
       "label": "c_orthowidth",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 100,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -881,7 +881,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -898,10 +898,10 @@
     "uiData": {
       "label": "c_thirdpersonshoulderaimdist",
       "helperText": "",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 120,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -918,10 +918,10 @@
     "uiData": {
       "label": "c_thirdpersonshoulderdist",
       "helperText": "",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 40,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -938,10 +938,10 @@
     "uiData": {
       "label": "c_thirdpersonshoulderheight",
       "helperText": "",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 5,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -958,10 +958,10 @@
     "uiData": {
       "label": "c_thirdpersonshoulderoffset",
       "helperText": "",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 20,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -978,10 +978,10 @@
     "uiData": {
       "label": "cam_collision",
       "helperText": "When in thirdperson and cam_collision is set to 1, an attempt is made to keep the camera from passing though walls.",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1019,10 +1019,10 @@
     "uiData": {
       "label": "cam_idealdelta",
       "helperText": "Controls the speed when matching offset to ideal angles in thirdperson view",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 4,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1039,10 +1039,10 @@
     "uiData": {
       "label": "cam_idealdist",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 150,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1059,10 +1059,10 @@
     "uiData": {
       "label": "cam_ideallag",
       "helperText": "Amount of lag used when matching offset to ideal angles in thirdperson view",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 4,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1082,7 +1082,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1102,7 +1102,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1142,7 +1142,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1229,7 +1229,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1246,10 +1246,10 @@
     "uiData": {
       "label": "cc_linger_time",
       "helperText": "Close caption linger time.",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1289,7 +1289,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1451,7 +1451,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1683,10 +1683,10 @@
     "uiData": {
       "label": "cl_buywheel_donate_key",
       "helperText": "Set the key to use for donation in the buy menu. 0: Left Control; 1: Left Alt; 2: Left Shift.",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1708,7 +1708,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1804,6 +1804,7 @@
       "description": "Maximum number of ticks the clock is allowed to drift before the client snaps its clock to the server's.",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "cl_clockdrift_max_ticks",
       "helperText": "Maximum number of ticks the clock is allowed to drift before the client snaps its clock to the server's.",
@@ -1811,8 +1812,7 @@
       "defaultValue": 3,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "cl_clutch_mode",
@@ -1852,7 +1852,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1911,7 +1911,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -1932,7 +1932,7 @@
       "type": "float",
       "defaultValue": 0.35,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -2023,10 +2023,10 @@
     "uiData": {
       "label": "cl_crosshair_friendly_warning",
       "helperText": "0: off, 1: on",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2047,7 +2047,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2068,7 +2068,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2086,10 +2086,10 @@
     "uiData": {
       "label": "cl_crosshair_sniper_width",
       "helperText": "If >1 sniper scope cross lines gain extra width (1 for single-pixel hairline)",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2110,7 +2110,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2128,10 +2128,10 @@
     "uiData": {
       "label": "cl_crosshairalpha",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 200,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2149,10 +2149,10 @@
     "uiData": {
       "label": "cl_crosshaircolor",
       "helperText": "Set crosshair color as defined in game_options.consoles.txt",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2170,10 +2170,10 @@
     "uiData": {
       "label": "cl_crosshaircolor_b",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 50,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2191,10 +2191,10 @@
     "uiData": {
       "label": "cl_crosshaircolor_g",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 250,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2212,10 +2212,10 @@
     "uiData": {
       "label": "cl_crosshaircolor_r",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 50,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2236,7 +2236,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2257,7 +2257,7 @@
       "type": "unknown_numeric",
       "defaultValue": -1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2278,7 +2278,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2299,7 +2299,7 @@
       "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2317,10 +2317,10 @@
     "uiData": {
       "label": "cl_crosshairstyle",
       "helperText": "0 = DEFAULT (DISABLED), 1 = DEFAULT STATIC (DISABLED), 2 = DEFAULT (accurate recoil/spread feedback with a fixed inner part), 3 = ACCURATE DYNAMIC (DISABLED) (accurate recoil/spread feedback), 4 = DEFAULT STATIC, 5 = LEGACY (fake recoil - inaccurate feedback)",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 4,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2341,7 +2341,7 @@
       "type": "float",
       "defaultValue": 0.5,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -2367,7 +2367,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2821,7 +2821,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -2862,7 +2862,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -3165,7 +3165,7 @@
     },
     "uiData": {
       "label": "cl_ent_animgraph_record",
-      "helperText": "Toggles recording of animgraph replay of the given entity(s)  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "helperText": "Toggles recording of animgraph replay of the given entity(s)  Arguments: entityName automaticallyOpenInAnimgraphEditor  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
@@ -4660,7 +4660,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -4700,10 +4700,10 @@
     "uiData": {
       "label": "cl_hud_color",
       "helperText": "0 = team color, 1 =  white, 2 = bright white, 3 = light blue, 4 = blue, 5 = purple, 6 = red, 7 = orange, 8 = yellow, 9 = green, 10 = aqua, 11 = pink, 12 = teammate color.",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -4792,7 +4792,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5016,7 +5016,7 @@
     },
     "uiData": {
       "label": "cl_imgui_debug_entity",
-      "helperText": "Shows the entity browswer, focused on the entity you specify.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "helperText": "Shows the entity browser, focused on the entity you specify.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
@@ -5225,7 +5225,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5246,7 +5246,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5267,7 +5267,7 @@
       "type": "string",
       "defaultValue": "all",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5288,7 +5288,7 @@
       "type": "string",
       "defaultValue": "inv_sort_age",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5309,7 +5309,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5330,7 +5330,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5369,10 +5369,10 @@
     "uiData": {
       "label": "cl_itemimages_dynamically_generated",
       "helperText": "2: use render-targets, fallback to cache and disk; 1: no render targets, but use cache and fallback to disk; 0: disk assets only",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5385,6 +5385,7 @@
       "description": "Display physics-based 'jiggle bone' debugging information",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "cl_jiggle_bone_debug",
       "helperText": "Display physics-based 'jiggle bone' debugging information",
@@ -5392,8 +5393,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "cl_jiggle_bone_debug_pitch_constraints",
@@ -5405,6 +5405,7 @@
       "description": "Display physics-based 'jiggle bone' debugging information",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "cl_jiggle_bone_debug_pitch_constraints",
       "helperText": "Display physics-based 'jiggle bone' debugging information",
@@ -5412,8 +5413,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "cl_jiggle_bone_debug_yaw_constraints",
@@ -5425,6 +5425,7 @@
       "description": "Display physics-based 'jiggle bone' debugging information",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "cl_jiggle_bone_debug_yaw_constraints",
       "helperText": "Display physics-based 'jiggle bone' debugging information",
@@ -5432,8 +5433,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "cl_jiggle_bone_invert",
@@ -5445,6 +5445,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "cl_jiggle_bone_invert",
       "helperText": "",
@@ -5452,8 +5453,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "cl_jitter_bad_threshold_up",
@@ -5491,7 +5491,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5674,7 +5674,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5694,7 +5694,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5714,7 +5714,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5817,7 +5817,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -5860,10 +5860,10 @@
     "uiData": {
       "label": "cl_observed_bot_crosshair",
       "helperText": "Control the crosshair shown when observing a bot. 0: Show player crosshair. 1: Show player crosshair only when bot can be taken over, otherwise show default.. 2: Always show default crosshair for bots.",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6080,10 +6080,10 @@
     "uiData": {
       "label": "cl_ping_fade_deadzone",
       "helperText": "Distance from the crosshair over which the ping is completely invisible",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 60,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6101,10 +6101,10 @@
     "uiData": {
       "label": "cl_ping_fade_distance",
       "helperText": "Distance from the crosshair over which the ping fades",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 300,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6162,10 +6162,10 @@
     "uiData": {
       "label": "cl_player_ping_mute",
       "helperText": "If 1, player pinging will make a sound, if 0, pings will be silent",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6390,7 +6390,7 @@
       "type": "string",
       "defaultValue": "1:1739182228855",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6453,7 +6453,7 @@
       "type": "string",
       "defaultValue": "radial_quickinventory.txt",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6474,7 +6474,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6495,7 +6495,7 @@
       "type": "unknown_numeric",
       "defaultValue": 65,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6516,7 +6516,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6537,7 +6537,7 @@
       "type": "float",
       "defaultValue": 0.6,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -6563,7 +6563,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6584,7 +6584,7 @@
       "type": "float",
       "defaultValue": 0.7,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -6673,7 +6673,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6690,10 +6690,10 @@
     "uiData": {
       "label": "cl_radial_radio_tab",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6714,7 +6714,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_requestspend",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6735,7 +6735,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_requestweapon",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6756,7 +6756,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_bplan",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6777,7 +6777,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_followingyou",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6798,7 +6798,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_midplan",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6819,7 +6819,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_followme",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6840,7 +6840,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_aplan",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6861,7 +6861,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_requestecoround",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6882,7 +6882,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_enemyspotted",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6903,7 +6903,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_needbackup",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6924,7 +6924,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_bplan",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6945,7 +6945,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_bombcarrierspotted",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6966,7 +6966,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_multipleenemieshere",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6987,7 +6987,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_sniperspotted",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7008,7 +7008,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_aplan",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7029,7 +7029,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_inposition",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7050,7 +7050,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_affirmative",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7071,7 +7071,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_negative",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7092,7 +7092,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_compliment",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7113,7 +7113,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_thanks",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7134,7 +7134,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_cheer",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7155,7 +7155,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_peptalk",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7176,7 +7176,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_sorry",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7197,7 +7197,7 @@
       "type": "string",
       "defaultValue": "#Chatwheel_sectorclear",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7218,7 +7218,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7236,10 +7236,10 @@
     "uiData": {
       "label": "cl_radial_radio_version_reset",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 12,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7259,7 +7259,7 @@
       "type": "float",
       "defaultValue": 0.4,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -7285,7 +7285,7 @@
       "type": "float",
       "defaultValue": 0.17,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -7519,7 +7519,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7535,7 +7535,7 @@
     },
     "uiData": {
       "label": "cl_save_animgraph_recording",
-      "helperText": "Saves all active animgraph recordings to disk",
+      "helperText": "Saves all active animgraph recordings to disk  Arguments: automaticallyOpenInAnimgraphEditor",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
@@ -7560,7 +7560,7 @@
       "type": "string",
       "defaultValue": "+attack2",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -7581,7 +7581,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -8104,7 +8104,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -8142,10 +8142,10 @@
     "uiData": {
       "label": "cl_show_observer_crosshair",
       "helperText": "Show the crosshair of the player being observed. 0: off 1: friends and party 2: everyone",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -8227,7 +8227,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -8366,6 +8366,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "cl_smoke_player_particle_effect",
       "helperText": "",
@@ -8373,8 +8374,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "cl_smooth_draw_debug",
@@ -8586,7 +8586,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -8862,7 +8862,7 @@
       "type": "unknown_numeric",
       "defaultValue": 3,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -8880,10 +8880,10 @@
     "uiData": {
       "label": "cl_teammate_colors_show",
       "helperText": "In competitive, 1 = show teammates as separate colors in the radar, scoreboard, etc., 2 = show colors and letters",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9020,7 +9020,7 @@
       "type": "unknown_numeric",
       "defaultValue": 30,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9083,7 +9083,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9123,7 +9123,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9354,7 +9354,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9395,7 +9395,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9416,7 +9416,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -9497,7 +9497,7 @@
       "label": "csgo_map_preview_scale",
       "helperText": "",
       "type": "float",
-      "defaultValue": 3.254,
+      "defaultValue": 3.284,
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "range": {
@@ -9567,6 +9567,26 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "arguments": []
+    }
+  },
+  {
+    "command": "debugoverlay_text_scale",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a",
+        "cheat"
+      ],
+      "description": "Scale of the text used for 3d display",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "debugoverlay_text_scale",
+      "helperText": "Scale of the text used for 3d display",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -10175,10 +10195,10 @@
     "uiData": {
       "label": "engine_no_focus_sleep",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 20,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -10723,7 +10743,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -10839,6 +10859,7 @@
       "description": "Clear the back buffer to gray every frame.",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "gl_clear_gray",
       "helperText": "Clear the back buffer to gray every frame.",
@@ -10846,8 +10867,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "gl_clear_randomcolor",
@@ -10860,6 +10880,7 @@
       "description": "Clear the back buffer to random colors every frame. Helps spot open seams in geometry.",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "gl_clear_randomcolor",
       "helperText": "Clear the back buffer to random colors every frame. Helps spot open seams in geometry.",
@@ -10867,8 +10888,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "glow_outline_width",
@@ -10965,10 +10985,10 @@
     "uiData": {
       "label": "hud_scaling",
       "helperText": "Scales hud elements",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -10989,7 +11009,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11214,7 +11234,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11231,10 +11251,10 @@
     "uiData": {
       "label": "joy_advaxisr",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11251,10 +11271,10 @@
     "uiData": {
       "label": "joy_advaxisu",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11271,10 +11291,10 @@
     "uiData": {
       "label": "joy_advaxisv",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11291,10 +11311,10 @@
     "uiData": {
       "label": "joy_advaxisx",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11311,10 +11331,10 @@
     "uiData": {
       "label": "joy_advaxisy",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11331,10 +11351,10 @@
     "uiData": {
       "label": "joy_advaxisz",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11353,7 +11373,7 @@
       "type": "float",
       "defaultValue": 0.3,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -11690,7 +11710,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11732,7 +11752,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11752,7 +11772,7 @@
       "type": "string",
       "defaultValue": "joystick",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11794,7 +11814,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11812,10 +11832,10 @@
     "uiData": {
       "label": "joy_response_look",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11833,10 +11853,10 @@
     "uiData": {
       "label": "joy_response_move",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 9,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11874,10 +11894,10 @@
     "uiData": {
       "label": "joy_sidesensitivity",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11919,7 +11939,7 @@
       "type": "unknown_numeric",
       "defaultValue": -1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -11939,7 +11959,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12000,10 +12020,10 @@
     "uiData": {
       "label": "lobby_default_privacy_bits2",
       "helperText": "Lobby default permissions (0: private, 1: public)",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12023,7 +12043,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12045,7 +12065,7 @@
       "type": "float",
       "defaultValue": 0.022,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -12072,7 +12092,7 @@
       "type": "float",
       "defaultValue": 0.022,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -12159,10 +12179,10 @@
     "uiData": {
       "label": "mapoverview_icon_scale",
       "helperText": "Sets the icon scale multiplier for the overview map. Valid values are 0.5 to 3.0.",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12774,10 +12794,10 @@
     "uiData": {
       "label": "mm_csgo_community_search_players_min",
       "helperText": "When performing CSGO community matchmaking look for servers with at least so many human players",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 3,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12796,7 +12816,7 @@
       "type": "unknown_numeric",
       "defaultValue": 150,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12837,7 +12857,7 @@
       "type": "string",
       "defaultValue": "27015,27016,27017,27018,27019,27020",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12935,7 +12955,7 @@
       "type": "string",
       "defaultValue": "Tinnitus",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12955,7 +12975,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -12997,7 +13017,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -13019,7 +13039,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -13099,7 +13119,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -13159,7 +13179,7 @@
       "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -13217,10 +13237,10 @@
     "uiData": {
       "label": "player_nevershow_communityservermessage",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -13240,7 +13260,7 @@
       "type": "string",
       "defaultValue": "mg_dz_blacksite,mg_dz_sirocco,mg_dz_vineyard,mg_dz_ember",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -13258,10 +13278,10 @@
     "uiData": {
       "label": "player_teamplayedlast",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 3,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -13437,6 +13457,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "r_csgo_debug_reflection_rects",
       "helperText": "",
@@ -13444,8 +13465,7 @@
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "r_csgo_decal_debug",
@@ -13518,6 +13538,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "r_csgo_depth_prepass_reflections_large",
       "helperText": "",
@@ -13525,8 +13546,7 @@
       "defaultValue": true,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "r_csgo_depth_prepass_reflections_small",
@@ -13539,6 +13559,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "r_csgo_depth_prepass_reflections_small",
       "helperText": "",
@@ -13546,8 +13567,7 @@
       "defaultValue": true,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "r_csgo_depth_prepass_skybox_alpha_tested",
@@ -14110,6 +14130,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "r_csgo_reflection_min_far_plane",
       "helperText": "",
@@ -14117,8 +14138,7 @@
       "defaultValue": 5000,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "r_csgo_render_decals",
@@ -15026,7 +15046,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -15487,8 +15507,8 @@
     "uiData": {
       "label": "r_light_probe_volume_debug_colors",
       "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
+      "type": "bool",
+      "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
@@ -15506,8 +15526,8 @@
     "uiData": {
       "label": "r_light_probe_volume_debug_grid",
       "helperText": "Show LPV debug grid, 0: off, 1: closest only 2: closest and keep 3: all",
-      "type": "bool",
-      "defaultValue": false,
+      "type": "unknown_numeric",
+      "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
@@ -15806,10 +15826,10 @@
     "uiData": {
       "label": "r_player_visibility_mode",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -15823,6 +15843,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "r_refraction_clip_plane_adjust",
       "helperText": "",
@@ -15830,8 +15851,7 @@
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "r_render_world_node_bounds",
@@ -16305,7 +16325,7 @@
       "type": "unknown_numeric",
       "defaultValue": 786432,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -16340,6 +16360,7 @@
       "description": "Restores audio DSP state for the UI.",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "refresh_ui_audio_state",
       "helperText": "Restores audio DSP state for the UI.",
@@ -16348,8 +16369,7 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "regenerate_weapon_skins",
@@ -16445,10 +16465,10 @@
     "uiData": {
       "label": "safezonex",
       "helperText": "The percentage of the screen width that is considered safe from overscan. Cannot result in a width less than the height.",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -16465,10 +16485,10 @@
     "uiData": {
       "label": "safezoney",
       "helperText": "The percentage of the screen height that is considered safe from overscan",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -16508,10 +16528,10 @@
     "uiData": {
       "label": "sensitivity",
       "helperText": "Mouse sensitivity.",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 2,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -16987,10 +17007,10 @@
     "uiData": {
       "label": "snd_deathcamera_volume",
       "helperText": "Volume of Deathcam Timers",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -17085,7 +17105,7 @@
       "type": "float",
       "defaultValue": 0.5,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -17109,7 +17129,7 @@
       "type": "float",
       "defaultValue": 2.5,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -17133,7 +17153,7 @@
       "type": "float",
       "defaultValue": 0.15,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -17157,7 +17177,7 @@
       "type": "float",
       "defaultValue": 0.55,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -17466,7 +17486,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -17505,10 +17525,10 @@
     "uiData": {
       "label": "snd_menumusic_volume",
       "helperText": "Volume of Menu / Non-gameplay music",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -17527,7 +17547,7 @@
       "type": "float",
       "defaultValue": 0.001,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -17586,7 +17606,7 @@
     "uiData": {
       "label": "snd_musicvolume",
       "helperText": "Music volume",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -17608,7 +17628,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -17629,7 +17649,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -17647,10 +17667,10 @@
     "uiData": {
       "label": "snd_mvp_volume",
       "helperText": "Volume of MVP Music",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -17888,7 +17908,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -17909,7 +17929,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -18195,6 +18215,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "snd_sos_compare_kv3_native_stacks",
       "helperText": "",
@@ -18202,8 +18223,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "snd_sos_compare_operator_stacks",
@@ -19720,7 +19740,7 @@
       "type": "float",
       "defaultValue": 0.041705,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -19841,7 +19861,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20217,7 +20237,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20235,10 +20255,10 @@
     "uiData": {
       "label": "spec_show_xray",
       "helperText": "If set to 1, you can see player outlines and name IDs through walls - who you can see depends on your team and mode",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20258,7 +20278,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20320,6 +20340,204 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
+    }
+  },
+  {
+    "command": "sv_log_onefile",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Log server information to only one file.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_log_onefile",
+      "helperText": "Log server information to only one file.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_logbans",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Log server bans in the server logs.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_logbans",
+      "helperText": "Log server bans in the server logs.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_logecho",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Echo log information to the console.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_logecho",
+      "helperText": "Echo log information to the console.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_logfile",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Log server information in the log file.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_logfile",
+      "helperText": "Log server information in the log file.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_logflush",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Flush the log file to disk on each write (slow).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_logflush",
+      "helperText": "Flush the log file to disk on each write (slow).",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_logsdir",
+    "consoleData": {
+      "defaultValue": "logs",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Folder in the game directory where server logs will be stored.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_logsdir",
+      "helperText": "Folder in the game directory where server logs will be stored.",
+      "type": "string",
+      "defaultValue": "logs",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_pause_on_console_open",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a"
+      ],
+      "description": "1 = Pause the game when pressing ~ to open the console. CTRL+~ opens the console without pause.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_pause_on_console_open",
+      "helperText": "1 = Pause the game when pressing ~ to open the console. CTRL+~ opens the console without pause.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_unlockedchapters",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a"
+      ],
+      "description": "Highest unlocked game chapter.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_unlockedchapters",
+      "helperText": "Highest unlocked game chapter.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_unpause_on_console_close",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a"
+      ],
+      "description": "1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_unpause_on_console_close",
+      "helperText": "1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_voiceenable",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a",
+        "nf",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_voiceenable",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20484,10 +20702,10 @@
     "uiData": {
       "label": "trusted_launch",
       "helperText": "Trusted launch status",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20547,7 +20765,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20585,10 +20803,10 @@
     "uiData": {
       "label": "ui_deepstats_radio_heat_figurine",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20606,10 +20824,10 @@
     "uiData": {
       "label": "ui_deepstats_radio_heat_tab",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20627,10 +20845,10 @@
     "uiData": {
       "label": "ui_deepstats_radio_heat_team",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20648,10 +20866,10 @@
     "uiData": {
       "label": "ui_deepstats_toplevel_mode",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20693,7 +20911,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20755,7 +20973,7 @@
       "type": "string",
       "defaultValue": "competitive",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20776,7 +20994,7 @@
       "type": "string",
       "defaultValue": "https://www.counter-strike.net/newsentry/529852487375519751",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20838,7 +21056,7 @@
       "type": "string",
       "defaultValue": "mg_de_inferno,mg_de_nuke,mg_de_overpass",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20859,7 +21077,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20880,7 +21098,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20901,7 +21119,7 @@
       "type": "unknown_numeric",
       "defaultValue": 16,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20922,7 +21140,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20943,7 +21161,7 @@
       "type": "unknown_numeric",
       "defaultValue": 32,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20964,7 +21182,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -20985,7 +21203,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21006,7 +21224,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21027,7 +21245,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21045,10 +21263,10 @@
     "uiData": {
       "label": "ui_playsettings_flags_official_competitive",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 16,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21069,7 +21287,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21090,7 +21308,7 @@
       "type": "unknown_numeric",
       "defaultValue": 32,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21111,7 +21329,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21132,7 +21350,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21153,7 +21371,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21258,7 +21476,7 @@
       "type": "string",
       "defaultValue": "mg_de_dust2",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21279,7 +21497,7 @@
       "type": "string",
       "defaultValue": "mg_de_inferno",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21300,7 +21518,7 @@
       "type": "string",
       "defaultValue": "mg_de_dust2",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21321,7 +21539,7 @@
       "type": "string",
       "defaultValue": "mg_de_inferno",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21342,7 +21560,7 @@
       "type": "string",
       "defaultValue": "mg_skirmish_armsrace",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21363,7 +21581,7 @@
       "type": "string",
       "defaultValue": "mg_dust247",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21384,7 +21602,7 @@
       "type": "string",
       "defaultValue": "mg_casualalpha",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21426,7 +21644,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21447,7 +21665,7 @@
       "type": "string",
       "defaultValue": "competitive",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21468,7 +21686,7 @@
       "type": "string",
       "defaultValue": "scrimcomp2v2",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21486,10 +21704,10 @@
     "uiData": {
       "label": "ui_playsettings_survival_solo",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21510,7 +21728,7 @@
       "type": "string",
       "defaultValue": "de_mirage",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21528,10 +21746,10 @@
     "uiData": {
       "label": "ui_popup_weaponupdate_version",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21629,10 +21847,10 @@
     "uiData": {
       "label": "ui_setting_advertiseforhire_auto",
       "helperText": "Whether users will automatically advertise for invites (0: off; 1: last; 2: auto)",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21653,7 +21871,7 @@
       "type": "string",
       "defaultValue": "/competitive",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21671,10 +21889,10 @@
     "uiData": {
       "label": "ui_show_subscription_alert",
       "helperText": "",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21695,7 +21913,7 @@
       "type": "unknown_numeric",
       "defaultValue": 0,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21715,7 +21933,7 @@
       "type": "string",
       "defaultValue": "bottomleft",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21776,7 +21994,7 @@
       "type": "string",
       "defaultValue": "rifle2",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21797,7 +22015,7 @@
       "type": "string",
       "defaultValue": "smg2",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21818,7 +22036,7 @@
       "type": "string",
       "defaultValue": "ct",
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21840,7 +22058,7 @@
       "type": "unknown_numeric",
       "defaultValue": 60,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21859,10 +22077,10 @@
     "uiData": {
       "label": "viewmodel_offset_x",
       "helperText": "viewmodel_offset_x",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21884,7 +22102,7 @@
       "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21903,10 +22121,10 @@
     "uiData": {
       "label": "viewmodel_offset_z",
       "helperText": "viewmodel_offset_z",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": -1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -21923,10 +22141,10 @@
     "uiData": {
       "label": "viewmodel_presetpos",
       "helperText": "1:'Desktop', 2:'Classic'",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -22120,7 +22338,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -22158,10 +22376,10 @@
     "uiData": {
       "label": "voice_threshold",
       "helperText": "decibel threshold for how loud the talker's input signal is before we think they are talking.",
-      "type": "unknown_integer",
+      "type": "unknown_numeric",
       "defaultValue": -120,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   },
   {
@@ -22201,7 +22419,7 @@
       "type": "float",
       "defaultValue": 0.3,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
+      "hideFromDefaultView": true,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -22292,10 +22510,10 @@
     "uiData": {
       "label": "zoom_sensitivity_ratio",
       "helperText": "Additional mouse sensitivity scale factor applied when FOV is zoomed in.",
-      "type": "float",
+      "type": "unknown_numeric",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": false
+      "hideFromDefaultView": true
     }
   }
 ]

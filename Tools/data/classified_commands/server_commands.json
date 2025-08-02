@@ -2525,26 +2525,6 @@
     }
   },
   {
-    "command": "debugoverlay_text_scale",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "a",
-        "cheat"
-      ],
-      "description": "Scale of the text used for 3d display",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "debugoverlay_text_scale",
-      "helperText": "Scale of the text used for 3d display",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "debugoverlay_toggle",
     "consoleData": {
       "defaultValue": null,
@@ -2806,7 +2786,7 @@
     },
     "uiData": {
       "label": "ent_animgraph_record",
-      "helperText": "Toggles recording of animgraph replay of the given entity(s)  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "helperText": "Toggles recording of animgraph replay of the given entity(s)  Arguments: entityName automaticallyOpenInAnimgraphEditor  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
@@ -4379,7 +4359,7 @@
     },
     "uiData": {
       "label": "imgui_debug_entity",
-      "helperText": "Shows the entity browswer, focused on the entity you specify.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "helperText": "Shows the entity browser, focused on the entity you specify.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
@@ -6942,7 +6922,7 @@
     },
     "uiData": {
       "label": "nav_disconnect",
-      "helperText": "To disconnect two Areas, mark an Area, highlight a second Area, then invoke the disconnect command. This will remove all connections between the two Areas.",
+      "helperText": "Disconnects selected area from all neighbor areas.",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
@@ -7141,6 +7121,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_draw_area_split_by_nav_link_mgr",
       "helperText": "",
@@ -7148,8 +7129,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_draw_area_split_by_obstacle_mgr",
@@ -7202,6 +7182,7 @@
       "description": "Draw all nav areas with this dynamic attribute",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_draw_attribute_dynamic",
       "helperText": "Draw all nav areas with this dynamic attribute",
@@ -7209,8 +7190,7 @@
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_draw_attribute_game",
@@ -7223,6 +7203,7 @@
       "description": "Draw all nav areas with this game attribute",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_draw_attribute_game",
       "helperText": "Draw all nav areas with this game attribute",
@@ -7230,8 +7211,7 @@
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_draw_blocked",
@@ -7647,8 +7627,8 @@
     "uiData": {
       "label": "nav_draw_space_neighbors",
       "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
+      "type": "unknown_numeric",
+      "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
@@ -7704,6 +7684,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_draw_space_scatter",
       "helperText": "",
@@ -7711,8 +7692,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_draw_space_swim",
@@ -8383,6 +8363,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_gen_match_ground",
       "helperText": "",
@@ -8390,8 +8371,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_gen_max_bottleneck_width",
@@ -8703,7 +8683,7 @@
       "label": "nav_gen_oriented_max_region_range",
       "helperText": "Max orientation range allowed within a region before it gets further split.",
       "type": "unknown_numeric",
-      "defaultValue": 30,
+      "defaultValue": 15,
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
@@ -8864,6 +8844,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_genrt_no_splice",
       "helperText": "",
@@ -8871,8 +8852,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_genrt_no_split",
@@ -8885,6 +8865,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_genrt_no_split",
       "helperText": "",
@@ -8892,8 +8873,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_genrt_step",
@@ -8906,6 +8886,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_genrt_step",
       "helperText": "",
@@ -8913,8 +8894,7 @@
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_list_movable_meshes",
@@ -9131,6 +9111,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_obstacle_genrt",
       "helperText": "",
@@ -9138,8 +9119,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_obstacle_validate",
@@ -9632,6 +9612,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_path_record_draw_last_fail",
       "helperText": "",
@@ -9639,8 +9620,7 @@
       "defaultValue": false,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_path_record_enable",
@@ -9653,6 +9633,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_path_record_enable",
       "helperText": "",
@@ -9660,8 +9641,7 @@
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_pathfind_debug_log",
@@ -10127,6 +10107,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_show_area_info_font",
       "helperText": "",
@@ -10134,8 +10115,7 @@
       "defaultValue": "Consolas",
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_show_area_info_font_size",
@@ -10148,6 +10128,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_show_area_info_font_size",
       "helperText": "",
@@ -10155,8 +10136,7 @@
       "defaultValue": -1,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_show_area_info_font_voffset",
@@ -10169,6 +10149,7 @@
       "description": "",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "nav_show_area_info_font_voffset",
       "helperText": "",
@@ -10176,8 +10157,7 @@
       "defaultValue": -11,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "nav_show_area_verts",
@@ -12677,6 +12657,7 @@
       "description": "Draw changes in water volumes",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "navspace_draw_water_changes",
       "helperText": "Draw changes in water volumes",
@@ -12684,8 +12665,7 @@
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "navspace_path_use_water_level_locator",
@@ -13025,6 +13005,7 @@
       "description": "Mark object for debug",
       "sourcedAt": "2025-07-28T00:00:00Z"
     },
+    "deprecated": true,
     "uiData": {
       "label": "phys_mark_debug",
       "helperText": "Mark object for debug",
@@ -13033,8 +13014,7 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
-    },
-    "deprecated": true
+    }
   },
   {
     "command": "phys_shoot",
@@ -13532,7 +13512,7 @@
     },
     "uiData": {
       "label": "replay_start",
-      "helperText": "Start GOTV replay: replay_start <delay> [<player name or index>]",
+      "helperText": "Start Source2 TV replay: replay_start <delay> [<player name or index>]",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
@@ -13698,7 +13678,7 @@
     },
     "uiData": {
       "label": "save_animgraph_recording",
-      "helperText": "Saves all active animgraph recordings to disk",
+      "helperText": "Saves all active animgraph recordings to disk  Arguments: automaticallyOpenInAnimgraphEditor",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
@@ -16053,26 +16033,6 @@
     }
   },
   {
-    "command": "sv_log_onefile",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a",
-        "release"
-      ],
-      "description": "Log server information to only one file.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_log_onefile",
-      "helperText": "Log server information to only one file.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
     "command": "sv_log_roundstats",
     "consoleData": {
       "defaultValue": "true",
@@ -16093,26 +16053,6 @@
     }
   },
   {
-    "command": "sv_logbans",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a",
-        "release"
-      ],
-      "description": "Log server bans in the server logs.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_logbans",
-      "helperText": "Log server bans in the server logs.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
     "command": "sv_logblocks",
     "consoleData": {
       "defaultValue": "false",
@@ -16129,86 +16069,6 @@
       "defaultValue": false,
       "requiresCheats": false,
       "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_logecho",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "a",
-        "release"
-      ],
-      "description": "Echo log information to the console.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_logecho",
-      "helperText": "Echo log information to the console.",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "sv_logfile",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a",
-        "release"
-      ],
-      "description": "Log server information in the log file.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_logfile",
-      "helperText": "Log server information in the log file.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "sv_logflush",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a",
-        "release"
-      ],
-      "description": "Flush the log file to disk on each write (slow).",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_logflush",
-      "helperText": "Flush the log file to disk on each write (slow).",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "sv_logsdir",
-    "consoleData": {
-      "defaultValue": "logs",
-      "flags": [
-        "a",
-        "release"
-      ],
-      "description": "Folder in the game directory where server logs will be stored.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_logsdir",
-      "helperText": "Folder in the game directory where server logs will be stored.",
-      "type": "string",
-      "defaultValue": "logs",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
     }
   },
   {
@@ -16620,25 +16480,6 @@
       "helperText": "Is the server pausable.",
       "type": "unknown_numeric",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_pause_on_console_open",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a"
-      ],
-      "description": "1 = Pause the game when pressing ~ to open the console. CTRL+~ opens the console without pause.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_pause_on_console_open",
-      "helperText": "1 = Pause the game when pressing ~ to open the console. CTRL+~ opens the console without pause.",
-      "type": "bool",
-      "defaultValue": false,
       "requiresCheats": false,
       "hideFromDefaultView": true
     }
@@ -17255,44 +17096,6 @@
     }
   },
   {
-    "command": "sv_unlockedchapters",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "a"
-      ],
-      "description": "Highest unlocked game chapter.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_unlockedchapters",
-      "helperText": "Highest unlocked game chapter.",
-      "type": "unknown_integer",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "sv_unpause_on_console_close",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a"
-      ],
-      "description": "1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_unpause_on_console_close",
-      "helperText": "1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_usercmd_custom_random_seed",
     "consoleData": {
       "defaultValue": "false",
@@ -17408,27 +17211,6 @@
       "defaultValue": "vaudio_speex",
       "requiresCheats": false,
       "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_voiceenable",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "a",
-        "nf",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_voiceenable",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
     }
   },
   {
