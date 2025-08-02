@@ -53,7 +53,7 @@
                 case SettingType.UnknownNumeric:
                 case SettingType.UnknownInteger:
                 default:
-                    <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" spellcheck="false" />
+                    <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" @bind:event="oninput" spellcheck="false" />
                     break;
             }
         }
