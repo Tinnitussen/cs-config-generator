@@ -3,6 +3,7 @@
 @using CSConfigGenerator.Components.Dynamic
 @using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.ViewModels
+@using CSConfigGenerator.Services
 @implements IDisposable
 
 <PageTitle>Server Settings</PageTitle>
@@ -50,6 +51,8 @@
     public IConfigStateService ServerConfigStateService { get; set; } = default!;
     [Inject]
     public ISchemaService SchemaService { get; set; } = default!;
+    [Inject]
+    public ToastService ToastService { get; set; } = default!;
 
     private readonly Dictionary<string, SettingViewModel> _settingViewModels = new();
 
@@ -74,6 +77,7 @@
     private void ResetToDefaults()
     {
         ServerConfigStateService.ResetToDefaults();
+        ToastService.ShowToast("Server config reset to default values.", ToastLevel.Info);
     }
 
     public void Dispose()

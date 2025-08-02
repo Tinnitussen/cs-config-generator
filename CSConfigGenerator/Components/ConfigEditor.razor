@@ -1,8 +1,10 @@
 @using CSConfigGenerator.Interfaces
 @using Microsoft.AspNetCore.Components.Forms
+@using CSConfigGenerator.Services
 @inject IJSRuntime JSRuntime
 @inject IPresetService PresetService
 @inject IUserConfigService UserConfigService
+@inject ToastService ToastService
 @implements IDisposable
 
 <div class="config-editor">
@@ -134,6 +136,7 @@
         {
             await UserConfigService.SaveConfigAsync(PresetType, configName, configText);
             await LoadUserConfigs();
+            ToastService.ShowToast($"Config '{configName}' saved successfully.", ToastLevel.Success);
         }
     }
 
@@ -142,12 +145,20 @@
         var file = e.File;
         if (file != null)
         {
-            using var stream = file.OpenReadStream(file.Size);
-            using var reader = new StreamReader(stream);
-            var content = await reader.ReadToEndAsync();
-            ConfigStateService.ParseConfigFile(content, this);
-            RefreshConfigText();
-            StateHasChanged();
+            try
+            {
+                using var stream = file.OpenReadStream(file.Size);
+                using var reader = new StreamReader(stream);
+                var content = await reader.ReadToEndAsync();
+                ConfigStateService.ParseConfigFile(content, this);
+                RefreshConfigText();
+                StateHasChanged();
+                ToastService.ShowToast($"Config '{file.Name}' uploaded successfully.", ToastLevel.Success);
+            }
+            catch (Exception ex)
+            {
+                ToastService.ShowToast($"Error uploading file: {ex.Message}", ToastLevel.Error);
+            }
         }
     }
 
@@ -157,6 +168,7 @@
         {
             var fileName = $"{PresetType}_config.cfg";
             await JSRuntime.InvokeVoidAsync("downloadFile", fileName, configText);
+            ToastService.ShowToast("Config downloaded successfully.", ToastLevel.Success);
         }
     }
 
@@ -202,6 +214,7 @@
     private void ResetToDefaults()
     {
         ConfigStateService.ResetToDefaults();
+        ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
     }
 
     private async Task CopyToClipboard()
@@ -210,11 +223,13 @@
         {
             copied = true;
             await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", configText);
+            ToastService.ShowToast("Config copied to clipboard.", ToastLevel.Success);
             await Task.Delay(1000);
             copied = false;
         }
         catch (Exception ex)
         {
+            ToastService.ShowToast($"Failed to copy to clipboard: {ex.Message}", ToastLevel.Error);
             Console.WriteLine($"Failed to copy to clipboard: {ex.Message}");
         }
     }
