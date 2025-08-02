@@ -1,44 +1,136 @@
 @page "/config/{ConfigType}"
 @using CSConfigGenerator.Components
-@using CSConfigGenerator.Components.Dynamic
 @using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.Models
+@using CSConfigGenerator.Services
 @using CSConfigGenerator.ViewModels
 @implements IDisposable
 
 <PageTitle>@Title</PageTitle>
 
-<div class="row g-1 h-100">
-    <div class="col-lg-8">
-        <div class="p-3">
-            <h1>@Title</h1>
-            <p class="text-muted">@Description</p>
+<div class="row g-0 h-100">
+    <div class="col-lg-8 pe-2">
+        <h1>@Title</h1>
+        <p class="text-muted">@Description</p>
 
-            @if (ConfigSections.Any())
-            {
-                @foreach (var section in ConfigSections)
-                {
-                    var viewModels = section.Commands
-                        .Where(c => !c.UiData.HideFromDefaultView)
-                        .Select(c => _settingViewModels[c.Command])
-                        .ToList();
-
-                    <ConfigSectionGroup Section="section" SettingViewModels="viewModels" />
-                }
-
-                <div class="mb-3">
-                    <button class="btn btn-secondary" @onclick="ResetToDefaults">
-                        Reset to Defaults
-                    </button>
+        <div class="card bg-light mb-2">
+            <div class="card-body p-2">
+                <div class="row g-2 align-items-center">
+                    <div class="col-md-4">
+                        <div class="search-input-wrapper">
+                            <div class="autocomplete-wrapper">
+                                <input class="autocomplete-ghost" type="text" value="@GhostText" readonly tabindex="-1" />
+                                <input
+                                    @oninput="OnSearchInput"
+                                    @onkeydown="HandleKeyDown"
+                                    @onkeydown:preventDefault="tabCompletionPreventDefault"
+                                    value="@searchTerm"
+                                    class="autocomplete-input form-control form-control-sm"
+                                    placeholder="Search commands..."
+                                    autocomplete="off" />
+                            </div>
+                            @if (!string.IsNullOrEmpty(searchTerm))
+                            {
+                                <button class="search-clear-btn btn btn-sm" @onclick="ClearSearch" type="button">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="dropdown filter-dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 filter-button" type="button" @onclick="() => showTypeDropdown = !showTypeDropdown">
+                                @GetTypeFilterText()
+                            </button>
+                            <div class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
+                                @foreach (var type in Enum.GetValues<SettingType>())
+                                {
+                                    <div class="dropdown-item px-2">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
+                                            <label class="form-check-label" for="type-@type">@type</label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <select @bind="selectedInclusion" @bind:after="ApplyFilters" class="form-select form-select-sm filter-select">
+                            <option value="">All Statuses</option>
+                            <option value="true">Included</option>
+                            <option value="false">Not Included</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="filter-checkbox-wrapper">
+                            <div class="form-check d-flex align-items-center justify-content-center">
+                                <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input me-2" type="checkbox" id="cheatsFilter" />
+                                <label class="form-check-label" for="cheatsFilter">Cheats Only</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-sm btn-outline-danger w-100 filter-clear-btn" @onclick="ClearFilters">
+                            Clear Filters
+                        </button>
+                    </div>
                 </div>
-            }
-            else
-            {
-                <div class="alert alert-warning">
-                    <h4>No Commands Loaded</h4>
-                    <p>No command definitions were found. Make sure your schema files are properly configured.</p>
-                </div>
-            }
+            </div>
+        </div>
+
+        @if (paginatedViewModels.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-sm table-striped table-hover command-table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var vm in paginatedViewModels)
+                        {
+                            <tr @onclick="() => selectedViewModel = vm" @ondblclick="() => ToggleCommand(vm)" class="@(selectedViewModel == vm ? "table-active" : "")">
+                                <td><code><HighlightText Text="@vm.Command.Command" Highlight="@searchTerm" /></code></td>
+                                <td><HighlightText Text="@vm.Command.UiData.HelperText" Highlight="@searchTerm" /></td>
+                                <td class="text-center">
+                                    <span class="badge @vm.StatusBadgeClass">
+                                        @(vm.Setting.IsInConfigEditor ? "Included" : "Not Included")
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    @if (!vm.Setting.IsInConfigEditor)
+                                    {
+                                        <button class="btn btn-xs btn-outline-success" @onclick="() => AddCommand(vm)">
+                                            Add
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-xs btn-outline-danger" @onclick="() => vm.Remove()">
+                                            Remove
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p>No commands found matching your criteria.</p>
+        }
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <button class="btn btn-sm btn-outline-secondary" @onclick="() => ChangePage(-1)" disabled="@(currentPage <= 1)">Previous</button>
+            <span>Page @currentPage of @totalPages</span>
+            <button class="btn btn-sm btn-outline-secondary" @onclick="() => ChangePage(1)" disabled="@(currentPage >= totalPages)">Next</button>
         </div>
     </div>
     <div class="col-lg-4 h-100">
@@ -62,12 +154,33 @@
     [Inject]
     private NavigationManager NavigationManager { get; set; } = default!;
 
+    [Inject]
+    private ToastService ToastService { get; set; } = default!;
+
     private IConfigStateService ConfigStateService { get; set; } = default!;
     private IReadOnlyList<ConfigSection> ConfigSections { get; set; } = new List<ConfigSection>();
     private string Title { get; set; } = "Settings";
     private string Description { get; set; } = "Configure your settings. Changes are reflected in real-time in the config editor.";
 
-    private readonly Dictionary<string, SettingViewModel> _settingViewModels = new();
+    private string searchTerm = string.Empty;
+    private string? selectedInclusion;
+    private bool requiresCheatsFilter;
+    private Dictionary<SettingType, bool> selectedTypes = new();
+    private bool showTypeDropdown = false;
+
+    private List<SettingViewModel> allViewModels = [];
+    private List<SettingViewModel> paginatedViewModels = [];
+    private SettingViewModel? selectedViewModel;
+    private int currentPage = 1;
+    private int totalPages = 1;
+    private const int PageSize = 50;
+
+    private string? currentSuggestion;
+    private bool tabCompletionPreventDefault = false;
+    private string? GhostText =>
+        (!string.IsNullOrEmpty(currentSuggestion) && !string.IsNullOrEmpty(searchTerm) && currentSuggestion.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase))
+        ? searchTerm + currentSuggestion.Substring(searchTerm.Length)
+        : null;
 
     protected override void OnParametersSet()
     {
@@ -87,12 +200,10 @@
         }
         else
         {
-            // if the config type is invalid, navigate to the player config page by default
             NavigationManager.NavigateTo("/config/player", replace: true);
             return;
         }
 
-        // Unsubscribe from previous service's event to avoid memory leaks and multiple triggers
         if (ConfigStateService != null)
         {
             ConfigStateService.OnStateChange -= HandleStateHasChanged;
@@ -100,14 +211,137 @@
 
         ConfigStateService.OnStateChange += HandleStateHasChanged;
 
-        _settingViewModels.Clear();
-        foreach (var section in ConfigSections)
+        InitializeViewModels();
+        ApplyFilters();
+    }
+
+    private void InitializeViewModels()
+    {
+        var commands = ConfigSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+        allViewModels = commands.Select(c => new SettingViewModel(c, ConfigStateService)).ToList();
+    }
+
+    private void OnSearchInput(ChangeEventArgs e)
+    {
+        searchTerm = e.Value?.ToString() ?? string.Empty;
+        ApplyFilters();
+    }
+
+    private void ClearSearch()
+    {
+        searchTerm = string.Empty;
+        currentSuggestion = null;
+        ApplyFilters();
+    }
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        tabCompletionPreventDefault = false;
+        if (e.Key == "Tab" && !string.IsNullOrEmpty(currentSuggestion))
         {
-            foreach (var command in section.Commands.Where(c => !c.UiData.HideFromDefaultView))
-            {
-                _settingViewModels[command.Command] = new SettingViewModel(command, ConfigStateService);
-            }
+            searchTerm = currentSuggestion;
+            currentSuggestion = null;
+            tabCompletionPreventDefault = true;
         }
+    }
+
+    private void ApplyFilters()
+    {
+        currentPage = 1;
+        ApplyFiltersInternal();
+    }
+
+    private void ApplyFiltersWithoutPageReset()
+    {
+        // Preserve the current page, but make sure it's still valid after filtering
+        int originalPage = currentPage;
+        ApplyFiltersInternal();
+
+        // Check if the original page is still valid after filtering
+        if (originalPage <= totalPages && originalPage > 0)
+        {
+            currentPage = originalPage;
+            var filtered = GetFilteredViewModels();
+            UpdatePagination(filtered);
+        }
+    }
+
+    private void ApplyFiltersInternal()
+    {
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            currentSuggestion = allViewModels
+                .FirstOrDefault(vm => vm.Command.Command.StartsWith(searchTerm, StringComparison.OrdinalIgnoreCase))
+                ?.Command.Command;
+        }
+        else
+        {
+            currentSuggestion = null;
+        }
+
+        var filtered = GetFilteredViewModels();
+        totalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
+        UpdatePagination(filtered);
+    }
+
+    private void UpdatePagination(List<SettingViewModel> viewModels)
+    {
+        paginatedViewModels = viewModels
+            .Skip((currentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int amount)
+    {
+        var newPage = currentPage + amount;
+        if (newPage >= 1 && newPage <= totalPages)
+        {
+            currentPage = newPage;
+            var filtered = GetFilteredViewModels();
+            UpdatePagination(filtered);
+        }
+    }
+
+    private List<SettingViewModel> GetFilteredViewModels()
+    {
+        return allViewModels
+            .Where(vm => string.IsNullOrWhiteSpace(searchTerm) ||
+                        vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                        vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+            .Where(vm => !selectedTypes.Any(st => st.Value) ||
+                        selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
+            .Where(vm => string.IsNullOrEmpty(selectedInclusion) ||
+                        vm.Setting.IsInConfigEditor.ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase))
+            .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats)
+            .ToList();
+    }
+
+    private void ClearFilters()
+    {
+        searchTerm = string.Empty;
+        selectedInclusion = null;
+        requiresCheatsFilter = false;
+
+        foreach (var key in selectedTypes.Keys.ToList())
+        {
+            selectedTypes[key] = false;
+        }
+
+        showTypeDropdown = false;
+        currentSuggestion = null;
+        ApplyFilters();
+    }
+
+    private string GetTypeFilterText()
+    {
+        var selectedCount = selectedTypes.Count(st => st.Value);
+        return selectedCount switch
+        {
+            0 => "All Types",
+            1 => selectedTypes.First(st => st.Value).Key.ToString(),
+            _ => $"{selectedCount} Types"
+        };
     }
 
     private void HandleStateHasChanged(object? originator)
@@ -115,9 +349,23 @@
         InvokeAsync(StateHasChanged);
     }
 
-    private void ResetToDefaults()
+    private void ToggleCommand(SettingViewModel vm)
     {
-        ConfigStateService.ResetToDefaults();
+        if (vm.Setting.IsInConfigEditor)
+        {
+            vm.Remove();
+            ToastService.ShowToast($"'{vm.Command.Command}' has been removed from your config.", ToastLevel.Warning);
+        }
+        else
+        {
+            AddCommand(vm);
+        }
+    }
+
+    private void AddCommand(SettingViewModel vm)
+    {
+        vm.Add();
+        ToastService.ShowToast($"'{vm.Command.Command}' has been added to your config.", ToastLevel.Success);
     }
 
     public void Dispose()
