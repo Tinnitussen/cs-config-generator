@@ -23,14 +23,30 @@
                     </select>
                 </div>
             }
-            <div class="custom-select-wrapper">
-                <select class="custom-select" @onchange="OnUserConfigSelected">
-                    <option value="">My Configs</option>
-                    @foreach (var config in _userConfigs)
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    My Configs
+                </button>
+                <ul class="dropdown-menu">
+                    @if (_userConfigs.Any())
                     {
-                        <option value="@config">@config</option>
+                        @foreach (var configName in _userConfigs)
+                        {
+                            <li class="d-flex align-items-center justify-content-between p-1">
+                                <a class="dropdown-item" href="#" @onclick="() => OnUserConfigSelected(configName)" @onclick:preventDefault>
+                                    @configName
+                                </a>
+                                <button class="btn btn-sm btn-danger" @onclick="() => DeleteConfig(configName)" title="Delete @configName">
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+                            </li>
+                        }
                     }
-                </select>
+                    else
+                    {
+                        <li><span class="dropdown-item-text">No configs saved yet.</span></li>
+                    }
+                </ul>
             </div>
             <button class="btn btn-sm btn-outline-success" @onclick="SaveConfig" title="Save current config">
                 <i class="bi bi-save"></i>
@@ -109,9 +125,8 @@
         }
     }
 
-    private async Task OnUserConfigSelected(ChangeEventArgs e)
+    private async Task OnUserConfigSelected(string configName)
     {
-        var configName = e.Value?.ToString();
         if (!string.IsNullOrEmpty(configName) && PresetType != null)
         {
             var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
@@ -120,6 +135,20 @@
                 ConfigStateService.ParseConfigFile(configContent, this);
                 RefreshConfigText();
                 StateHasChanged();
+            }
+        }
+    }
+
+    private async Task DeleteConfig(string configName)
+    {
+        if (PresetType != null)
+        {
+            var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", $"Are you sure you want to delete '{configName}'?");
+            if (confirmed)
+            {
+                await UserConfigService.DeleteConfigAsync(PresetType, configName);
+                await LoadUserConfigs();
+                ToastService.ShowToast($"Config '{configName}' deleted.", ToastLevel.Success);
             }
         }
     }
