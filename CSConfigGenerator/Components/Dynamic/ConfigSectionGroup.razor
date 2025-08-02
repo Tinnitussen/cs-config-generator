@@ -1,5 +1,4 @@
 @using CSConfigGenerator.Models
-@using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.ViewModels
 
 <div class="card mb-3 shadow-sm rounded-3">
@@ -7,9 +6,8 @@
         <h5 class="mb-0">@Section.DisplayName</h5>
     </div>
     <div class="card-body py-2">
-        @foreach (var command in Section.Commands.Where(c => !c.UiData.HideFromDefaultView))
+        @foreach (var viewModel in SettingViewModels)
         {
-            var viewModel = new SettingViewModel(command, ConfigStateService);
             <DynamicInput ViewModel="viewModel" />
         }
     </div>
@@ -20,5 +18,5 @@
     public ConfigSection Section { get; set; } = null!;
 
     [Parameter, EditorRequired]
-    public IConfigStateService ConfigStateService { get; set; }
+    public IReadOnlyList<SettingViewModel> SettingViewModels { get; set; } = null!;
 }

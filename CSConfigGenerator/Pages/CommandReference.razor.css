@@ -47,7 +47,7 @@
 
 /* Status badge styling for uniform look */
 .command-table .badge {
-    min-width: 80px;
+    min-width: 5rem;
     font-size: 0.65rem;
     padding: 0.3em 0.5em;
     font-weight: 500;
