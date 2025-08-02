@@ -115,7 +115,7 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
+      "hideFromDefaultView": false,
       "arguments": []
     }
   },

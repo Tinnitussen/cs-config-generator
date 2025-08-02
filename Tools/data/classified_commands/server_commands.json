@@ -15733,7 +15733,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -15773,7 +15773,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -15812,7 +15812,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -15832,7 +15832,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -15852,7 +15852,7 @@
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -15872,7 +15872,7 @@
       "type": "string",
       "defaultValue": "logs",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -16931,10 +16931,10 @@
     "uiData": {
       "label": "sv_unlockedchapters",
       "helperText": "Highest unlocked game chapter.",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -17092,7 +17092,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {

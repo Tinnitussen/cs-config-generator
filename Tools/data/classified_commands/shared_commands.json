@@ -2083,10 +2083,10 @@
     "uiData": {
       "label": "func_break_max_pieces",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 15,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -7808,10 +7808,10 @@
     "uiData": {
       "label": "sk_autoaim_mode",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -7873,7 +7873,7 @@
     "uiData": {
       "label": "skill",
       "helperText": "Game skill level.",
-      "type": "unknown_numeric",
+      "type": "float",
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
@@ -9958,10 +9958,10 @@
     "uiData": {
       "label": "sv_noclipaccelerate",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 5,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -10026,10 +10026,10 @@
     "uiData": {
       "label": "sv_noclipspeed",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1200,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -10549,7 +10549,7 @@
       "type": "string",
       "defaultValue": "sky_urb01",
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -10655,10 +10655,10 @@
     "uiData": {
       "label": "sv_specaccelerate",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 5,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -10681,7 +10681,7 @@
       "type": "bool",
       "defaultValue": true,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {
@@ -10701,10 +10701,10 @@
     "uiData": {
       "label": "sv_specspeed",
       "helperText": "",
-      "type": "unknown_numeric",
+      "type": "unknown_integer",
       "defaultValue": 1200,
       "requiresCheats": false,
-      "hideFromDefaultView": true
+      "hideFromDefaultView": false
     }
   },
   {

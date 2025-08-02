@@ -1,4 +1,5 @@
 {
+  "classification_rules": {
     "rules": [
       {
         "key": "defaultValue",
@@ -29,4 +30,15 @@
       }
     ],
     "default_type": "string"
+  },
+  "numeric_detection_rules": {
+    "min_occurrences": 4,
+    "float_ratio": 0.5,
+    "min_int_occurrences": 15,
+    "unknown_types": ["unknown", "unknown_numeric"],
+    "protected_types": ["float", "bool", "bitmask", "action"]
+  },
+  "popularity_rules": {
+    "popularity_threshold": 0.10
   }
+}
