@@ -1,14 +1,22 @@
 ﻿@using CSConfigGenerator.Components
+@using CSConfigGenerator.Interfaces
 @inherits LayoutComponentBase
+@implements IDisposable
 
-<div class="page">
+@inject IThemeService ThemeService
+
+<div class="page @themeClass">
     <div class="sidebar">
         <NavMenu />
     </div>
 
     <main>
+        <div class="top-bar-main-layout">
+            <div class="ms-auto">
+                <ThemeToggle />
+            </div>
+        </div>
         
-
         <article class="content px-4">
             @Body
         </article>
@@ -16,3 +24,31 @@
 </div>
 
 <ToastContainer />
+
+@code {
+    private string themeClass = "";
+
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += OnThemeChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ThemeService.InitializeAsync();
+        }
+    }
+
+    private void OnThemeChanged()
+    {
+        themeClass = ThemeService.EffectiveThemeClass;
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= OnThemeChanged;
+    }
+}

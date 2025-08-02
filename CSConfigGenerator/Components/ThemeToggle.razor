@@ -1,0 +1,41 @@
+@using CSConfigGenerator.Interfaces
+@using CSConfigGenerator.Models
+
+@inject IThemeService ThemeService
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="theme-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="@CurrentIcon"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="theme-dropdown">
+        <li>
+            <button class="dropdown-item @(ThemeService.CurrentTheme == Theme.Light ? "active" : "")" @onclick="() => SetThemeAsync(Theme.Light)">
+                <span class="bi bi-sun-fill me-2"></span> Light
+            </button>
+        </li>
+        <li>
+            <button class="dropdown-item @(ThemeService.CurrentTheme == Theme.Dark ? "active" : "")" @onclick="() => SetThemeAsync(Theme.Dark)">
+                <span class="bi bi-moon-stars-fill me-2"></span> Dark
+            </button>
+        </li>
+        <li>
+            <button class="dropdown-item @(ThemeService.CurrentTheme == Theme.System ? "active" : "")" @onclick="() => SetThemeAsync(Theme.System)">
+                <span class="bi bi-circle-half me-2"></span> System
+            </button>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private string CurrentIcon => ThemeService.CurrentTheme switch
+    {
+        Theme.Light => "bi bi-sun-fill",
+        Theme.Dark => "bi bi-moon-stars-fill",
+        _ => "bi bi-circle-half"
+    };
+
+    private async Task SetThemeAsync(Theme theme)
+    {
+        await ThemeService.SetThemeAsync(theme);
+    }
+}
