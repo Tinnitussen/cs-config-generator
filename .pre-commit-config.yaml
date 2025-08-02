@@ -26,5 +26,5 @@ repos:
         name: dotnet-format
         language: system
         entry: dotnet-format
-        types: [csharp, razor]
+        files: \.(cs|razor)$
         args: ["--verbosity", "diag", "--verify-no-changes", "CSConfigGenerator.slnx"]
