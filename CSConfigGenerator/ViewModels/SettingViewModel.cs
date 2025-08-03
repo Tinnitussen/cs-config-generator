@@ -12,7 +12,7 @@ public class SettingViewModel(CommandDefinition command, IConfigStateService con
     public object Value
     {
         get => Setting.Value;
-        set => _configState.SetValue(Command.Command, value);
+        private set => _configState.SetValue(Command.Command, value);
     }
 
     public (bool, string?) TrySetValueFromString(string value)

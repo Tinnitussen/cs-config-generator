@@ -158,5 +158,35 @@ namespace CSConfigGenerator.Tests
             Assert.False(_configStateService.GetSetting("cl_crosshairdot").IsInConfigEditor);
         }
 
+        [Theory]
+        [InlineData("sensitivity", "3.14", true, 3.14f)]
+        [InlineData("cl_crosshaircolor", "3", true, 3)]
+        [InlineData("cl_crosshairdot", "true", true, true)]
+        [InlineData("sensitivity", "invalid-float", false, null)]
+        [InlineData("cl_crosshaircolor", "invalid-int", false, null)]
+        [InlineData("cl_crosshairdot", "invalid-bool", false, null)]
+        [InlineData("non_existent_command", "123", false, null)]
+        public void TrySetValueFromString_ShouldWorkAsExpected(string command, string value, bool expectedSuccess, object? expectedValue)
+        {
+            // Arrange
+            _configStateService.InitializeDefaults();
+
+            // Act
+            var (isSuccess, errorMessage) = _configStateService.TrySetValueFromString(command, value);
+
+            // Assert
+            Assert.Equal(expectedSuccess, isSuccess);
+
+            if (expectedSuccess)
+            {
+                Assert.Null(errorMessage);
+                var setting = _configStateService.GetSetting(command);
+                Assert.Equal(expectedValue, setting.Value);
+            }
+            else
+            {
+                Assert.NotNull(errorMessage);
+            }
+        }
     }
 }
