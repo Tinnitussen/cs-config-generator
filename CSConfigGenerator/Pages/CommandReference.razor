@@ -82,14 +82,14 @@
                     </div>
                     <div class="col-md-2">
                         <div class="filter-checkbox-wrapper">
-                            <div class="form-check d-flex align-items-center justify-content-center">
-                                <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input me-2" type="checkbox" id="cheatsFilter" />
+                            <div class="form-check form-switch d-flex align-items-center justify-content-center">
+                                <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input" type="checkbox" role="switch" id="cheatsFilter" />
                                 <label class="form-check-label" for="cheatsFilter">Cheats Only</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-sm btn-danger w-100 filter-clear-btn" @onclick="ClearFilters">
+                        <button class="btn btn-sm btn-outline-danger w-100 filter-clear-btn" @onclick="ClearFilters" disabled="@(!isAnyFilterActive)">
                             Clear Filters
                         </button>
                     </div>
@@ -180,6 +180,7 @@
     private bool requiresCheatsFilter;
     private Dictionary<SettingType, bool> selectedTypes = new();
     private bool showTypeDropdown = false;
+    private bool isAnyFilterActive = false;
 
     private List<SettingViewModel> allViewModels = [];
     private List<SettingViewModel> paginatedViewModels = [];
@@ -312,6 +313,15 @@
         var filtered = GetFilteredViewModels();
         totalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
         UpdatePagination(filtered);
+        UpdateFilterActiveStatus();
+    }
+
+    private void UpdateFilterActiveStatus()
+    {
+        isAnyFilterActive = !string.IsNullOrEmpty(searchTerm) ||
+                            !string.IsNullOrEmpty(selectedInclusion) ||
+                            requiresCheatsFilter ||
+                            selectedTypes.Any(st => st.Value);
     }
 
     private List<SettingViewModel> GetFilteredViewModels()
