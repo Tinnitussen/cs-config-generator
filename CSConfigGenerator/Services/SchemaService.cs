@@ -11,6 +11,8 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     private readonly List<ConfigSection> _serverSections = [];
     private readonly List<ConfigSection> _sharedSections = [];
     private readonly List<ConfigSection> _uncategorizedSections = [];
+    private readonly Dictionary<string, CommandDefinition> _playerCommandsByName = [];
+    private readonly Dictionary<string, CommandDefinition> _serverCommandsByName = [];
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
@@ -27,22 +29,31 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
             foreach (var filePath in manifest)
             {
                 var commands = await _httpClient.GetFromJsonAsync(filePath, JsonContext.Default.ListCommandDefinition);
+                var commandList = (commands ?? []).AsReadOnly();
 
                 var sectionName = ExtractSectionName(filePath);
                 var section = new ConfigSection
                 {
                     Name = sectionName,
                     DisplayName = FormatDisplayName(sectionName),
-                    Commands = (commands ?? []).AsReadOnly()
+                    Commands = commandList
                 };
 
                 if (filePath.Contains("/player/"))
                 {
                     _playerSections.Add(section);
+                    foreach (var command in commandList)
+                    {
+                        _playerCommandsByName[command.Command] = command;
+                    }
                 }
                 else if (filePath.Contains("/server/"))
                 {
                     _serverSections.Add(section);
+                    foreach (var command in commandList)
+                    {
+                        _serverCommandsByName[command.Command] = command;
+                    }
                 }
                 else if (filePath.Contains("/shared/"))
                 {
@@ -65,16 +76,14 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     }
     public CommandDefinition? GetPlayerCommand(string name)
     {
-        return PlayerSections
-            .SelectMany(s => s.Commands)
-            .FirstOrDefault(c => c.Command == name);
+        _playerCommandsByName.TryGetValue(name, out var command);
+        return command;
     }
 
     public CommandDefinition? GetServerCommand(string name)
     {
-        return ServerSections
-            .SelectMany(s => s.Commands)
-            .FirstOrDefault(c => c.Command == name);
+        _serverCommandsByName.TryGetValue(name, out var command);
+        return command;
     }
 
     private static string ExtractSectionName(string filePath)
