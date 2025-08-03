@@ -1,3 +1,4 @@
+@using CSConfigGenerator.Components
 @using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.Models
 @using Microsoft.AspNetCore.Components.Forms
@@ -65,6 +66,22 @@
               spellcheck="false" />
 </div>
 
+<Modal Title="Save Config"
+       IsOpen="@isSaveModalVisible"
+       OnSubmit="HandleSaveModalSubmit"
+       OnCancel="CloseSaveModal"
+       SubmitButtonText="Save">
+    <input type="text" class="form-control" @bind="newConfigName" placeholder="Enter a name for your config..." />
+</Modal>
+
+<Modal Title="@confirmationTitle"
+       IsOpen="@isConfirmationModalVisible"
+       OnSubmit="HandleConfirmationSubmit"
+       OnCancel="HandleConfirmationCancel"
+       SubmitButtonText="Confirm">
+    <p>@confirmationMessage</p>
+</Modal>
+
 @code {
     [Parameter]
     [EditorRequired]
@@ -78,6 +95,13 @@
     private List<string> _presets = new();
     private List<string> _userConfigs = new();
     private InputFile? _inputFile;
+    private bool isSaveModalVisible = false;
+    private string newConfigName = "";
+
+    private bool isConfirmationModalVisible = false;
+    private string confirmationTitle = "";
+    private string confirmationMessage = "";
+    private Action? pendingAction;
 
     protected override async Task OnInitializedAsync()
     {
@@ -94,34 +118,40 @@
         }
     }
 
-    private async Task OnPresetSelected(ChangeEventArgs e)
+    private void OnPresetSelected(ChangeEventArgs e)
     {
         var presetName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(presetName) && PresetType != null)
-        {
-            var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
-            if (!string.IsNullOrEmpty(presetContent))
-            {
-                ConfigStateService.ParseConfigFile(presetContent, this);
-                RefreshConfigText();
-                StateHasChanged();
-            }
-        }
+        if (string.IsNullOrEmpty(presetName) || PresetType == null) return;
+
+        ShowConfirmationModal("Load Preset",
+            $"Are you sure you want to load the '{presetName}' preset? Any unsaved changes will be lost.",
+            async () => {
+                var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
+                if (!string.IsNullOrEmpty(presetContent))
+                {
+                    ConfigStateService.ParseConfigFile(presetContent, this);
+                    RefreshConfigText();
+                    StateHasChanged();
+                }
+            });
     }
 
-    private async Task OnUserConfigSelected(ChangeEventArgs e)
+    private void OnUserConfigSelected(ChangeEventArgs e)
     {
         var configName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
-        {
-            var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
-            if (!string.IsNullOrEmpty(configContent))
-            {
-                ConfigStateService.ParseConfigFile(configContent, this);
-                RefreshConfigText();
-                StateHasChanged();
-            }
-        }
+        if (string.IsNullOrEmpty(configName) || PresetType == null) return;
+
+        ShowConfirmationModal("Load Config",
+            $"Are you sure you want to load the '{configName}' config? Any unsaved changes will be lost.",
+            async () => {
+                var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
+                if (!string.IsNullOrEmpty(configContent))
+                {
+                    ConfigStateService.ParseConfigFile(configContent, this);
+                    RefreshConfigText();
+                    StateHasChanged();
+                }
+            });
     }
 
     private async Task LoadUserConfigs()
@@ -135,35 +165,75 @@
 
     private async Task SaveConfig()
     {
-        var configName = await JSRuntime.InvokeAsync<string>("prompt", "Enter a name for your config:");
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
-        {
-            await UserConfigService.SaveConfigAsync(PresetType, configName, configText);
-            await LoadUserConfigs();
-            ToastService.ShowToast($"Config '{configName}' saved successfully.", ToastLevel.Success);
-        }
+        isSaveModalVisible = true;
+        await InvokeAsync(StateHasChanged);
     }
 
-    private async Task OnUpload(InputFileChangeEventArgs e)
+    private async Task HandleSaveModalSubmit()
+    {
+        if (!string.IsNullOrEmpty(newConfigName) && PresetType != null)
+        {
+            await UserConfigService.SaveConfigAsync(PresetType, newConfigName, configText);
+            await LoadUserConfigs();
+            ToastService.ShowToast($"Config '{newConfigName}' saved successfully.", ToastLevel.Success);
+            newConfigName = "";
+        }
+        await CloseSaveModal();
+    }
+
+    private async Task CloseSaveModal()
+    {
+        isSaveModalVisible = false;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void ShowConfirmationModal(string title, string message, Action action)
+    {
+        confirmationTitle = title;
+        confirmationMessage = message;
+        pendingAction = action;
+        isConfirmationModalVisible = true;
+        StateHasChanged();
+    }
+
+    private async Task HandleConfirmationSubmit()
+    {
+        pendingAction?.Invoke();
+        pendingAction = null;
+        isConfirmationModalVisible = false;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task HandleConfirmationCancel()
+    {
+        pendingAction = null;
+        isConfirmationModalVisible = false;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void OnUpload(InputFileChangeEventArgs e)
     {
         var file = e.File;
-        if (file != null)
-        {
-            try
-            {
-                using var stream = file.OpenReadStream(file.Size);
-                using var reader = new StreamReader(stream);
-                var content = await reader.ReadToEndAsync();
-                ConfigStateService.ParseConfigFile(content, this);
-                RefreshConfigText();
-                StateHasChanged();
-                ToastService.ShowToast($"Config '{file.Name}' uploaded successfully.", ToastLevel.Success);
-            }
-            catch (Exception ex)
-            {
-                ToastService.ShowToast($"Error uploading file: {ex.Message}", ToastLevel.Error);
-            }
-        }
+        if (file == null) return;
+
+        ShowConfirmationModal("Upload Config",
+            $"Are you sure you want to load the config from '{file.Name}'? Any unsaved changes will be lost.",
+            async () => {
+                try
+                {
+                    using var stream = file.OpenReadStream(file.Size);
+                    using var reader = new StreamReader(stream);
+                    var content = await reader.ReadToEndAsync();
+                    ConfigStateService.ParseConfigFile(content, this);
+                    RefreshConfigText();
+                    StateHasChanged();
+                    ToastService.ShowToast($"Config '{file.Name}' uploaded successfully.", ToastLevel.Success);
+                }
+                catch (Exception ex)
+                {
+                    ToastService.ShowToast($"Error uploading file: {ex.Message}", ToastLevel.Error);
+                }
+            });
     }
 
     private async Task DownloadConfig()
@@ -217,8 +287,12 @@
 
     private void ResetToDefaults()
     {
-        ConfigStateService.ResetToDefaults();
-        ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
+        ShowConfirmationModal("Reset to Defaults",
+            "Are you sure you want to reset to default values? Any unsaved changes will be lost.",
+            () => {
+                ConfigStateService.ResetToDefaults();
+                ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
+            });
     }
 
     private async Task CopyToClipboard()
