@@ -22,5 +22,6 @@
   "data/commandschema/server/rules.json",
   "data/commandschema/server/economy.json",
   "data/commandschema/server/bots.json",
-  "data/commandschema/server/gotv.json"
+  "data/commandschema/server/gotv.json",
+  "data/commandschema/all/all_commands.json"
 ]

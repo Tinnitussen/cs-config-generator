@@ -9,15 +9,17 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     private readonly HttpClient _httpClient = httpClient;
     private readonly List<ConfigSection> _playerSections = [];
     private readonly List<ConfigSection> _serverSections = [];
-    private readonly List<ConfigSection> _sharedSections = [];
-    private readonly List<ConfigSection> _uncategorizedSections = [];
+    private readonly List<ConfigSection> _allSections = [];
+    private readonly List<CommandDefinition> _allCommands = [];
+
     private readonly Dictionary<string, CommandDefinition> _playerCommandsByName = [];
     private readonly Dictionary<string, CommandDefinition> _serverCommandsByName = [];
+    private readonly Dictionary<string, CommandDefinition> _allCommandsByName = [];
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
-    public IReadOnlyList<ConfigSection> SharedSections => _sharedSections.AsReadOnly();
-    public IReadOnlyList<ConfigSection> UncategorizedSections => _uncategorizedSections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> AllSections => _allSections.AsReadOnly();
+    public IReadOnlyList<CommandDefinition> AllCommands => _allCommands.AsReadOnly();
 
     public async Task InitializeAsync()
     {
@@ -55,17 +57,19 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
                         _serverCommandsByName[command.Command] = command;
                     }
                 }
-                else if (filePath.Contains("/shared/"))
+                else if (filePath.Contains("/all/"))
                 {
-                    _sharedSections.Add(section);
-                }
-                else if (filePath.Contains("/uncategorized/"))
-                {
-                    _uncategorizedSections.Add(section);
+                    _allSections.Add(section);
+                    _allCommands.AddRange(commandList);
+                    foreach (var command in commandList)
+                    {
+                        _allCommandsByName[command.Command] = command;
+                    }
                 }
                 else
                 {
-                    throw new InvalidOperationException($"Unknown section type in file path: {filePath}");
+                    // For now, we'll just ignore unknown section types.
+                    // In the future, we might want to log this.
                 }
             }
         }
@@ -83,6 +87,12 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     public CommandDefinition? GetServerCommand(string name)
     {
         _serverCommandsByName.TryGetValue(name, out var command);
+        return command;
+    }
+
+    public CommandDefinition? GetAllCommand(string name)
+    {
+        _allCommandsByName.TryGetValue(name, out var command);
         return command;
     }
 

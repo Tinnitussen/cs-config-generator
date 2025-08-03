@@ -19,12 +19,17 @@
         <ul class="nav nav-tabs mb-3">
             <li class="nav-item">
                 <a class="nav-link @(currentConfigType == ConfigType.Player ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Player)">
-                    Player Commands
+                    Player UI
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link @(currentConfigType == ConfigType.Server ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Server)">
-                    Server Commands
+                    Server UI
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(currentConfigType == ConfigType.All ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.All)">
+                    All Commands
                 </a>
             </li>
         </ul>
@@ -105,8 +110,11 @@
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Action</th>
+                            @if (currentConfigType != ConfigType.All)
+                            {
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Action</th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
@@ -115,25 +123,28 @@
                             <tr @onclick="() => selectedViewModel = vm" @ondblclick="() => ToggleCommand(vm)" class="@(selectedViewModel == vm ? "table-active" : "")">
                                 <td><code><HighlightText Text="@vm.Command.Command" Highlight="@searchTerm" /></code></td>
                                 <td><HighlightText Text="@vm.Command.UiData.HelperText" Highlight="@searchTerm" /></td>
-                                <td class="text-center">
-                                    <span class="badge @vm.StatusBadgeClass">
-                                        @(vm.Setting.IsInConfigEditor ? "Included" : "Not Included")
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    @if (!vm.Setting.IsInConfigEditor)
-                                    {
-                                        <button class="btn btn-xs btn-outline-success" @onclick="() => AddCommand(vm)">
-                                            Add
-                                        </button>
-                                    }
-                                    else
-                                    {
-                                        <button class="btn btn-xs btn-outline-danger" @onclick="() => vm.Remove()">
-                                            Remove
-                                        </button>
-                                    }
-                                </td>
+                                @if (currentConfigType != ConfigType.All)
+                                {
+                                    <td class="text-center">
+                                        <span class="badge @vm.StatusBadgeClass">
+                                            @(vm.Setting.IsInConfigEditor ? "Included" : "Not Included")
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        @if (!vm.Setting.IsInConfigEditor)
+                                        {
+                                            <button class="btn btn-xs btn-outline-success" @onclick="() => AddCommand(vm)">
+                                                Add
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-xs btn-outline-danger" @onclick="() => vm.Remove()">
+                                                Remove
+                                            </button>
+                                        }
+                                    </td>
+                                }
                             </tr>
                         }
                     </tbody>
@@ -152,7 +163,18 @@
         }
     </div>
     <div class="col-lg-4 sticky-editor">
-        <ConfigEditor ConfigStateService="@CurrentConfigStateService" PresetType="@currentConfigType.ToString().ToLower()" @key="currentConfigType"/>
+        @if (CurrentConfigStateService != null)
+        {
+            <ConfigEditor ConfigStateService="@CurrentConfigStateService" PresetType="@currentConfigType.ToString().ToLower()" @key="currentConfigType"/>
+        }
+        else
+        {
+            <div class="p-3">
+                <div class="alert alert-info">
+                    Select a command from the Player or Server tabs to edit it here.
+                </div>
+            </div>
+        }
     </div>
 </div>
 
@@ -160,7 +182,8 @@
     private enum ConfigType
     {
         Player,
-        Server
+        Server,
+        All
     }
 
     private ConfigType currentConfigType = ConfigType.Player;
@@ -171,8 +194,18 @@
     [Inject(Key="ServerConfigStateServiceKey")]
     public IConfigStateService ServerConfigStateService { get; set; } = default!;
 
-    private IConfigStateService CurrentConfigStateService =>
-        currentConfigType == ConfigType.Player ? PlayerConfigStateService : ServerConfigStateService;
+    private IConfigStateService? CurrentConfigStateService
+    {
+        get
+        {
+            return currentConfigType switch
+            {
+                ConfigType.Player => PlayerConfigStateService,
+                ConfigType.Server => ServerConfigStateService,
+                _ => null
+            };
+        }
+    }
 
     // Private fields - no need for complex properties
     private string searchTerm = string.Empty;
@@ -232,18 +265,37 @@
     private void InitializeViewModels()
     {
         IEnumerable<CommandDefinition> commands;
-        IConfigStateService configStateService = CurrentConfigStateService;
+        IConfigStateService? configStateService = CurrentConfigStateService;
 
-        if (currentConfigType == ConfigType.Player)
+        switch (currentConfigType)
         {
-            commands = SchemaService.PlayerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+            case ConfigType.Player:
+                commands = SchemaService.PlayerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+                break;
+            case ConfigType.Server:
+                commands = SchemaService.ServerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+                break;
+            case ConfigType.All:
+                commands = SchemaService.AllCommands.OrderBy(c => c.Command);
+                break;
+            default:
+                commands = [];
+                break;
+        }
+
+        if (configStateService != null)
+        {
+            allViewModels = commands.Select(c => new SettingViewModel(c, configStateService)).ToList();
         }
         else
         {
-            commands = SchemaService.ServerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+            // For the "All" tab, we don't have a specific config state.
+            // We can decide how to handle this - for now, we'll create the view models
+            // with a dummy/default state, or decide not to show status/actions.
+            // Let's use the PlayerConfigStateService as a default for status checking,
+            // but the UI will hide the actions.
+            allViewModels = commands.Select(c => new SettingViewModel(c, PlayerConfigStateService)).ToList();
         }
-
-        allViewModels = commands.Select(c => new SettingViewModel(c, configStateService)).ToList();
     }
 
     public void Dispose()
