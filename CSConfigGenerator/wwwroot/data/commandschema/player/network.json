@@ -1,5 +1,148 @@
 [
   {
+    "command": "cl_clock_correction",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Enable/disable clock correction on the client.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_clock_correction",
+      "helperText": "Enable/disable clock correction on the client.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cl_interp",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Read the effective client simulation interpolation amount in terms of time.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_interp",
+      "helperText": "Read the effective client simulation interpolation amount in terms of time.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_interp_ratio",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "user"
+      ],
+      "description": "Set number of client simulation interpolation ticks.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_interp_ratio",
+      "helperText": "Set number of client simulation interpolation ticks.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cl_resend",
+    "consoleData": {
+      "defaultValue": "0.5",
+      "flags": [
+        "release"
+      ],
+      "description": "Delay in seconds before the client will resend the 'connect' attempt",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_resend",
+      "helperText": "Delay in seconds before the client will resend the 'connect' attempt",
+      "type": "float",
+      "defaultValue": 0.5,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "cl_timeout",
+    "consoleData": {
+      "defaultValue": "30",
+      "flags": [
+        "a"
+      ],
+      "description": "After this many seconds without receiving a packet from the server, the client will disconnect itself",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_timeout",
+      "helperText": "After this many seconds without receiving a packet from the server, the client will disconnect itself",
+      "type": "unknown_numeric",
+      "defaultValue": 30,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "connect",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Connect to a remote server.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "connect",
+      "helperText": "Connect to a remote server.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "disconnect",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Disconnect from server",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "disconnect",
+      "helperText": "Disconnect from server",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "net_allow_multicast",
     "consoleData": {
       "defaultValue": "true",
@@ -430,6 +573,47 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
+    }
+  },
+  {
+    "command": "password",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "a",
+        "norecord",
+        "server_cant_query"
+      ],
+      "description": "Current server access password",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "password",
+      "helperText": "Current server access password",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "rate",
+    "consoleData": {
+      "defaultValue": "786432",
+      "flags": [
+        "a",
+        "user"
+      ],
+      "description": "Min bytes/sec the host can receive data",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "rate",
+      "helperText": "Min bytes/sec the host can receive data",
+      "type": "unknown_numeric",
+      "defaultValue": 786432,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
     }
   }
 ]

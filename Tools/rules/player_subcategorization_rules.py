@@ -2,61 +2,109 @@
 Player subcategorization rules for command classification.
 """
 
-def get_prefix(command_name: str):
-    """Extracts the prefix from a command name."""
-    parts = command_name.split('_')
-    if len(parts) > 1:
-        return f"{parts[0]}_"
-    return None
-
 def get_player_subcategory(command: dict) -> str:
     """
-    Determines the subcategory of a player command based on rules.
-
-    Args:
-        command: A dictionary representing a command.
-
-    Returns:
-        A string indicating the subcategory.
+    Determines the subcategory of a player command based on a set of rules.
+    The rules are processed in order, and the first match wins.
     """
-    # Check for manual category first
-    manual_category = command.get('uiData', {}).get('manual_category')
-    if manual_category:
-        _, subcategory = manual_category.split('/')
-        return subcategory
-
-    prefix = get_prefix(command['command'])
+    cmd_name = command.get('command', '')
     ui_type = command.get('uiData', {}).get('type')
     flags = command.get('consoleData', {}).get('flags', [])
+    description = command.get('consoleData', {}).get('description', '').lower()
 
-    # Apply prefix-based rules
-    if prefix == "crosshair_":
+    # Manual override check
+    manual_category = command.get('uiData', {}).get('manual_category')
+    if manual_category and '/' in manual_category:
+        return manual_category.split('/')[1]
+
+    # --- Crosshair ---
+    if cmd_name.startswith(('cl_crosshair', 'crosshair', 'cl_fixedcrosshairgap', 'cl_ironsight_usecrosshaircolor')):
         return "crosshair"
-    elif prefix == "viewmodel_":
+
+    # --- Viewmodel & FOV ---
+    if cmd_name.startswith(('viewmodel_', 'cl_bob', 'fov_', 'c_', 'cam_')) or cmd_name == 'cl_righthand':
         return "viewmodel"
-    elif prefix == "hud_":
+
+    # --- HUD ---
+    if (cmd_name.startswith(('hud_', 'cl_hud', 'ui_', 'panorama_', 'cl_teamcounter_', 'cl_teamid_overhead_')) or
+        cmd_name in ['cl_showloadout', 'cl_show_clan_in_death_notice', 'cl_draw_only_deathnotices',
+                     'safezonex', 'safezoney', 'cl_teammate_colors_show', 'cl_deathnotices_show_numbers',
+                     'cl_show_equipped_character_for_player_avatars', 'cl_hide_avatar_images',
+                     'cl_allow_animated_avatars', 'cl_scoreboard_survivors_always_on',
+                     'cl_weapon_selection_rarity_color', 'mapoverview_icon_scale']):
         return "hud"
-    elif prefix == "radar_":
+
+    # --- Radar ---
+    if cmd_name.startswith(('cl_radar', 'radar_')):
         return "radar"
-    elif prefix in ["input_", "m_", "joy_"]:
+
+    # --- Input ---
+    if (cmd_name.startswith(('input_', 'm_', 'joy_', 'key_')) or
+        cmd_name in ['bind', 'unbind', 'unbindall', 'alias', 'cl_mouselook',
+                     'sensitivity', 'zoom_sensitivity_ratio', 'cl_input_enable_raw_keyboard',
+                     'input_button_code_is_scan_code_scd', 'joystick']):
         return "input"
-    elif prefix in ["gameplay_", "option_"]:
+
+    # --- Gameplay ---
+    if (cmd_name.startswith(('gameplay_', 'option_', 'cl_buy', 'cl_rebuy', 'cl_autobuy', 'violence_')) or
+        cmd_name in ['cl_autowepswitch', 'cl_dm_buyrandomweapons', 'cl_use_opens_buy_menu',
+                     'cl_debounce_zoom', 'cl_silencer_mode', 'cl_autohelp', 'autobuy', 'rebuy',
+                     'cl_color', 'cl_join_advertise', 'cl_playerspraydisable',
+                     'cl_sniper_auto_rezoom', 'cl_sniper_delay_unscope', 'cl_prefer_lefthanded',
+                     'switchhands', 'switchhandsleft', 'switchhandsright', 'lastinv', 'invnext', 'invprev', 'battery_saver']):
         return "gameplay"
-    elif prefix in ["snd_", "sound_", "voice_"]:
+
+    # --- Audio ---
+    if (cmd_name.startswith(('snd_', 'sound_', 'voice_', 'dsp_', 'cc_')) or
+        'sound' in description or 'audio' in description or
+        cmd_name in ['volume', 'closecaption', 'soundinfo', 'speaker_config']):
         return "audio"
-    elif prefix in ["comm_", "chat_"]:
+
+    # --- Communication ---
+    if (cmd_name.startswith(('comm_', 'chat_', 'radio')) or 'chat' in description or
+        cmd_name.startswith(('cl_mute', 'cl_radial_')) or
+        cmd_name in ['cl_clutch_mode', 'clutch_mode_toggle', 'cl_sanitize_player_names']):
         return "communication"
-    elif prefix == "net_":
+
+    # --- Network ---
+    if cmd_name.startswith('net_') or cmd_name in [
+        'cl_timeout', 'cl_resend', 'rate', 'disconnect', 'connect', 'password',
+        'cl_interp', 'cl_interp_ratio', 'cl_clock_correction'
+    ]:
         return "network"
-    elif "cheat" in flags:
-        return "cheats"
-    elif ui_type == "action":
-        return "actions"
-    elif prefix == "r_":
-        return "developer/rendering"
-    elif prefix in ["debug_", "dev_"]:
-        return "developer/debugging"
-    elif prefix == "spec_":
+
+    # --- Developer/Spectator ---
+    # This is more specific than rendering/debugging, so check first.
+    if cmd_name.startswith(('spec_', 'tv_', 'demo_')) or cmd_name in ['demoui', 'playdemo', 'record', 'stop', 'gotv_theater_container']:
         return "developer/spectator"
-    else:
-        return "misc"
+
+    # --- Developer/Rendering ---
+    if cmd_name.startswith(('r_', 'mat_', 'gl_', 'csm_', 'fog_')) or 'render' in description or 'graphic' in description:
+        return "developer/rendering"
+
+    # --- Developer/Debugging ---
+    if (cmd_name.startswith(('debug_', 'dev_', 'cl_ent_', 'cl_phys_', 'cl_show', 'cl_debug', 'phys_', 'annotation_', 'adsp_debug', 'bug_submitter_')) or
+        cmd_name in ['pwatchent', 'pwatchvar', 'getpos', 'getpos_exact', 'cl_pclass',
+                     'cl_pdump', 'cl_showerror', 'con_enable'] or 'debug' in description):
+        return "developer/debugging"
+
+    # --- Actions ---
+    # Captures commands like +attack, -attack, slot*, etc.
+    if (ui_type == 'action'):
+        # Check if it's a simple command without arguments, often used for binds
+        is_simple_action = ' ' not in cmd_name and not cmd_name.startswith('_')
+        # Check if it's a bindable action like +jump
+        is_bindable_action = cmd_name.startswith(('+', '-'))
+
+        if is_simple_action or is_bindable_action:
+            # Exclude commands that are actions but better suited for other categories
+            if cmd_name not in ['bind', 'unbind', 'unbindall', 'alias', 'disconnect', 'connect', 'demoui', 'playdemo', 'record', 'stop', 'quit']:
+                 return "actions"
+
+    # --- Cheats ---
+    # Catch-all for cheat-flagged commands not caught by more specific rules.
+    if 'cheat' in flags:
+        return "cheats"
+
+    # --- Misc ---
+    return "misc"

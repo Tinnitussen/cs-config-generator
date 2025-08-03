@@ -1,5 +1,509 @@
 [
   {
+    "command": "demo_flush",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a"
+      ],
+      "description": "Flush writing the demo file every network update",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_flush",
+      "helperText": "Flush writing the demo file every network update",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demo_goto",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Skips to location in demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_goto",
+      "helperText": "Skips to location in demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_gotomark",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Skips the current demo playback to the marked tick",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_gotomark",
+      "helperText": "Skips the current demo playback to the marked tick",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_gototick",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Skips to a tick in demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_gototick",
+      "helperText": "Skips to a tick in demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_highlight_fade_duration",
+    "consoleData": {
+      "defaultValue": "0.25",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Duration of the fade in and of the fade out transitions (fade in + fade out is 2x this value).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_highlight_fade_duration",
+      "helperText": "Duration of the fade in and of the fade out transitions (fade in + fade out is 2x this value).",
+      "type": "float",
+      "defaultValue": 0.25,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "demo_highlight_seconds_after",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "How many seconds after the actual highlight event to show when viewing highlights.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_highlight_seconds_after",
+      "helperText": "How many seconds after the actual highlight event to show when viewing highlights.",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demo_highlight_seconds_before",
+    "consoleData": {
+      "defaultValue": "6",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "How many seconds before the actual highlight event to show when viewing highlights.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_highlight_seconds_before",
+      "helperText": "How many seconds before the actual highlight event to show when viewing highlights.",
+      "type": "unknown_numeric",
+      "defaultValue": 6,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demo_info",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Print information about currently playing demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_info",
+      "helperText": "Print information about currently playing demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_marktick",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Marks the current demo playback tick for later use",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_marktick",
+      "helperText": "Marks the current demo playback tick for later use",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_mouse_enable_binding",
+    "consoleData": {
+      "defaultValue": "drop",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "Name of the binding to enable mouse on demo playback UI",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_mouse_enable_binding",
+      "helperText": "Name of the binding to enable mouse on demo playback UI",
+      "type": "string",
+      "defaultValue": "drop",
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demo_pause",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Pauses demo playback.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_pause",
+      "helperText": "Pauses demo playback.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_pause_at_end",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Pause demo playback when the end of the file is reached, otherwise quit to main menu.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_pause_at_end",
+      "helperText": "Pause demo playback when the end of the file is reached, otherwise quit to main menu.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demo_pauseatservertick",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Pauses when the 'render time' reaches the specified tick."
+    },
+    "uiData": {
+      "label": "demo_pauseatservertick",
+      "helperText": "Pauses when the 'render time' reaches the specified tick.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_quitafterplayback",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "release"
+      ],
+      "description": "Quits game after demo playback.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_quitafterplayback",
+      "helperText": "Quits game after demo playback.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demo_recordcommands",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Record commands typed at console into .dem files.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_recordcommands",
+      "helperText": "Record commands typed at console into .dem files.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demo_resume",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Resumes demo playback.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_resume",
+      "helperText": "Resumes demo playback.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_skip_to_shot_seconds_before",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "How many seconds before the shot to skip to when skipping to a specific shot ID.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_skip_to_shot_seconds_before",
+      "helperText": "How many seconds before the shot to skip to when skipping to a specific shot ID.",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demo_step_tick",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Play for N ticks (default=1) and then pause."
+    },
+    "uiData": {
+      "label": "demo_step_tick",
+      "helperText": "Play for N ticks (default=1) and then pause.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_timescale",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Sets demo replay speed.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_timescale",
+      "helperText": "Sets demo replay speed.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_togglepause",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Toggles demo playback.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_togglepause",
+      "helperText": "Toggles demo playback.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "demo_ui_mode",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "UI mode for demo playback. 0 = disabled, 1 = minimal, 2 = full",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demo_ui_mode",
+      "helperText": "UI mode for demo playback. 0 = disabled, 1 = minimal, 2 = full",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "demoui",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Show/hide demo playback ui",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "demoui",
+      "helperText": "Show/hide demo playback ui",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "gotv_theater_container",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Enables GOTV theater mode for the specified container, setting it to 'live' will play top live matches",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "gotv_theater_container",
+      "helperText": "Enables GOTV theater mode for the specified container, setting it to 'live' will play top live matches",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "playdemo",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Play a recorded demo file (.dem ).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "playdemo",
+      "helperText": "Play a recorded demo file (.dem ).",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "record",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Record a demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "record",
+      "helperText": "Record a demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "spec_autodirector",
     "consoleData": {
       "defaultValue": "false",
@@ -150,6 +654,132 @@
     }
   },
   {
+    "command": "spec_goto",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Move the spectator camera to a specific location. `spec_goto x y z pitch yaw`",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_goto",
+      "helperText": "Move the spectator camera to a specific location. `spec_goto x y z pitch yaw`",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_mode",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Set spectator mode",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_mode",
+      "helperText": "Set spectator mode",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_next",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Spectate next player",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_next",
+      "helperText": "Spectate next player",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_player",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Spectate a player by name or slot",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_player",
+      "helperText": "Spectate a player by name or slot",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_pos",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "dump position and angles to the console",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_pos",
+      "helperText": "dump position and angles to the console",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "spec_prev",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "clientcmd_can_execute"
+      ],
+      "description": "Spectate previous player",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_prev",
+      "helperText": "Spectate previous player",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "spec_replay_autostart",
     "consoleData": {
       "defaultValue": "true",
@@ -208,6 +838,86 @@
       "defaultValue": true,
       "requiresCheats": false,
       "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "stop",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Finish recording demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "stop",
+      "helperText": "Finish recording demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "tv_listen_voice_indices",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "user"
+      ],
+      "description": "Bitfield of playerslots to listen to voice messages from when connected to SourceTV, default is none",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_listen_voice_indices",
+      "helperText": "Bitfield of playerslots to listen to voice messages from when connected to SourceTV, default is none",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_listen_voice_indices_h",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "user"
+      ],
+      "description": "High 32 bits of bitfield of playerslots to listen to voice messages from when connected to SourceTV, default is none",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_listen_voice_indices_h",
+      "helperText": "High 32 bits of bitfield of playerslots to listen to voice messages from when connected to SourceTV, default is none",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "tv_spectator_port_offset",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_spectator_port_offset",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   }
 ]

@@ -1,5 +1,87 @@
 [
   {
+    "command": "alias",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Alias a command.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "alias",
+      "helperText": "Alias a command.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "bind",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Bind a key.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bind",
+      "helperText": "Bind a key.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_input_enable_raw_keyboard",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "release"
+      ],
+      "description": "Enable raw keyboard input",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_input_enable_raw_keyboard",
+      "helperText": "Enable raw keyboard input",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cl_mouselook",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cl",
+        "a",
+        "user",
+        "per_user",
+        "disconnected"
+      ],
+      "description": "Set to 1 to use mouse for look, 0 for keyboard look. Cannot be set while connected to a server.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_mouselook",
+      "helperText": "Set to 1 to use mouse for look, 0 for keyboard look. Cannot be set while connected to a server.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
     "command": "input_button_code_is_scan_code_scd",
     "consoleData": {
       "defaultValue": "true",
@@ -765,6 +847,66 @@
     }
   },
   {
+    "command": "joystick",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "True if the joystick is enabled, false otherwise.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "joystick",
+      "helperText": "True if the joystick is enabled, false otherwise.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "key_findbinding",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Find key bound to specified command string.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "key_findbinding",
+      "helperText": "Find key bound to specified command string.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "key_listboundkeys",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "List bound keys with bindings.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "key_listboundkeys",
+      "helperText": "List bound keys with bindings.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "m_pitch",
     "consoleData": {
       "defaultValue": "0.022",
@@ -816,6 +958,89 @@
         "maxValue": -1,
         "step": -1
       }
+    }
+  },
+  {
+    "command": "sensitivity",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cl",
+        "a",
+        "user",
+        "per_user"
+      ],
+      "description": "Mouse sensitivity.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sensitivity",
+      "helperText": "Mouse sensitivity.",
+      "type": "float",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "unbind",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Unbind a key.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "unbind",
+      "helperText": "Unbind a key.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "unbindall",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Unbind all keys.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "unbindall",
+      "helperText": "Unbind all keys.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "arguments": []
+    }
+  },
+  {
+    "command": "zoom_sensitivity_ratio",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
+      ],
+      "description": "Additional mouse sensitivity scale factor applied when FOV is zoomed in.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "zoom_sensitivity_ratio",
+      "helperText": "Additional mouse sensitivity scale factor applied when FOV is zoomed in.",
+      "type": "float",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
     }
   }
 ]

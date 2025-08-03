@@ -1,5 +1,479 @@
 [
   {
+    "command": "cc_delay_time",
+    "consoleData": {
+      "defaultValue": "0.25",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "Close caption delay before showing caption.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cc_delay_time",
+      "helperText": "Close caption delay before showing caption.",
+      "type": "float",
+      "defaultValue": 0.25,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "cc_lang",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "Current close caption language (emtpy = use game UI language)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cc_lang",
+      "helperText": "Current close caption language (emtpy = use game UI language)",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "cc_linger_time",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "Close caption linger time.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cc_linger_time",
+      "helperText": "Close caption linger time.",
+      "type": "float",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "cc_spectator_only",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cc_spectator_only",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cc_subtitles",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "If set, don't show sound effect captions, just voice overs (i.e., won't help hearing impaired players).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cc_subtitles",
+      "helperText": "If set, don't show sound effect captions, just voice overs (i.e., won't help hearing impaired players).",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "cc_vr_caption_speed",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "0 = slow, 1 = medium (default), 2 = fast",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cc_vr_caption_speed",
+      "helperText": "0 = slow, 1 = medium (default), 2 = fast",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cc_vr_font_size",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "0 = small, 1 = med (default), 2 = large",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cc_vr_font_size",
+      "helperText": "0 = small, 1 = med (default), 2 = large",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cc_vr_width",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "description": "0 = narrow, 1 = med (default), 2 = wide",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cc_vr_width",
+      "helperText": "0 = narrow, 1 = med (default), 2 = wide",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cl_clutch_mode",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "Silence voice and other distracting sounds until the end of round or next death.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_clutch_mode",
+      "helperText": "Silence voice and other distracting sounds until the end of round or next death.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cl_disable_deathcam_audio_mix_fade_out",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "When set to true, disables audio being silenced while the death cam fades out.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_disable_deathcam_audio_mix_fade_out",
+      "helperText": "When set to true, disables audio being silenced while the death cam fades out.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cl_phys_sound_disable_impact_sounds_under_hard_threshold",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "if true, impact sounds wont play if no soft impact sound is present and the impact is below the hard velocity threshold."
+    },
+    "uiData": {
+      "label": "cl_phys_sound_disable_impact_sounds_under_hard_threshold",
+      "helperText": "if true, impact sounds wont play if no soft impact sound is present and the impact is below the hard velocity threshold.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cl_player_ping_mute",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "description": "If 1, player pinging will make a sound, if 0, pings will be silent",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_player_ping_mute",
+      "helperText": "If 1, player pinging will make a sound, if 0, pings will be silent",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "cl_snd_new_visualize",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Displays soundevent name played at it's 3d position",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_snd_new_visualize",
+      "helperText": "Displays soundevent name played at it's 3d position",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "cl_soundscape_flush",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat",
+        "server_can_execute"
+      ],
+      "description": "Flushes the client side soundscapes",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_soundscape_flush",
+      "helperText": "Flushes the client side soundscapes",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "closecaption",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "a",
+        "user"
+      ],
+      "description": "Enable close captioning.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "closecaption",
+      "helperText": "Enable close captioning.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "dota_enable_spatial_audio",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "release"
+      ],
+      "description": "Flag to enable spatial audio in Dota 2.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dota_enable_spatial_audio",
+      "helperText": "Flag to enable spatial audio in Dota 2.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "dota_spatial_audio_mix",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "release"
+      ],
+      "description": "Mix value to blend spatial and non-spatial audio in Dota 2.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dota_spatial_audio_mix",
+      "helperText": "Mix value to blend spatial and non-spatial audio in Dota 2.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "dsp_dist_max",
+    "consoleData": {
+      "defaultValue": "1440",
+      "flags": [
+        "cheat",
+        "demo"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dsp_dist_max",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1440,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "dsp_dist_min",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat",
+        "demo"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dsp_dist_min",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "dsp_off",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dsp_off",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "dsp_volume",
+    "consoleData": {
+      "defaultValue": "0.8",
+      "flags": [
+        "a",
+        "demo"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dsp_volume",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.8,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "playsoundscape",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Forces a soundscape to play",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "playsoundscape",
+      "helperText": "Forces a soundscape to play",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "refresh_ui_audio_state",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Restores audio DSP state for the UI.",
+      "sourcedAt": "2025-07-28T00:00:00Z"
+    },
+    "uiData": {
+      "label": "refresh_ui_audio_state",
+      "helperText": "Restores audio DSP state for the UI.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    },
+    "deprecated": true
+  },
+  {
     "command": "snd_arrangement_start",
     "consoleData": {
       "defaultValue": null,
@@ -2931,6 +3405,127 @@
     }
   },
   {
+    "command": "soundinfo",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Describe the current sound device with an active voice list.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "soundinfo",
+      "helperText": "Describe the current sound device with an active voice list.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "soundscape_dumpclient",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Dumps the client's soundscape data.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "soundscape_dumpclient",
+      "helperText": "Dumps the client's soundscape data.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "soundscape_fadetime",
+    "consoleData": {
+      "defaultValue": "3",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Time to crossfade sound effects between soundscapes",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "soundscape_fadetime",
+      "helperText": "Time to crossfade sound effects between soundscapes",
+      "type": "unknown_numeric",
+      "defaultValue": 3,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "soundscape_radius_debug",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Prints current volume of radius sounds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "soundscape_radius_debug",
+      "helperText": "Prints current volume of radius sounds",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "speaker_config",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "a"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "speaker_config",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "stopsoundscape",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Stops all soundscape processing and fades current looping sounds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "stopsoundscape",
+      "helperText": "Stops all soundscape processing and fades current looping sounds",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "voice_always_sample_mic",
     "consoleData": {
       "defaultValue": "false",
@@ -3108,6 +3703,30 @@
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "volume",
+    "consoleData": {
+      "defaultValue": "0.3",
+      "flags": [
+        "a"
+      ],
+      "description": "Sound volume",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "volume",
+      "helperText": "Sound volume",
+      "type": "float",
+      "defaultValue": 0.3,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   }
 ]

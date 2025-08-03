@@ -378,235 +378,6 @@
     }
   },
   {
-    "command": "alias",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Alias a command.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "alias",
-      "helperText": "Alias a command.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "annotation_append",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Load annotation to a file without clearing existing annotations",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "annotation_append",
-      "helperText": "Load annotation to a file without clearing existing annotations",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "annotation_clear",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Clear all annotation",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "annotation_clear",
-      "helperText": "Clear all annotation",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "annotation_create",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Creates an annotation",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "annotation_create",
-      "helperText": "Creates an annotation",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "annotation_delete_previous_node_set",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Delete the last node set created",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "annotation_delete_previous_node_set",
-      "helperText": "Delete the last node set created",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "annotation_load",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Load annotation to a file after first clearing existing annotations",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "annotation_load",
-      "helperText": "Load annotation to a file after first clearing existing annotations",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "annotation_reload",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Reload the annotation file",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "annotation_reload",
-      "helperText": "Reload the annotation file",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "annotation_reload_language_file",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Creates an annotation",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "annotation_reload_language_file",
-      "helperText": "Creates an annotation",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "annotation_save",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Save annotation to a file",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "annotation_save",
-      "helperText": "Save annotation to a file",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "autobuy",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "clientcmd_can_execute"
-      ],
-      "description": "Attempt to purchase items with the order listed in cl_autobuy",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "autobuy",
-      "helperText": "Attempt to purchase items with the order listed in cl_autobuy",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "bind",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Bind a key.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "bind",
-      "helperText": "Bind a key.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": false,
-      "arguments": []
-    }
-  },
-  {
     "command": "buymenu",
     "consoleData": {
       "defaultValue": null,
@@ -649,22 +420,274 @@
     }
   },
   {
-    "command": "cl_interp",
+    "command": "cl_avatar_convert_png",
     "consoleData": {
       "defaultValue": null,
       "flags": [
         "cl",
+        "cheat",
         "release"
       ],
-      "description": "Read the effective client simulation interpolation amount in terms of time.",
+      "description": "Converts all rgb avatars in the avatars directory to png",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "cl_interp",
-      "helperText": "Read the effective client simulation interpolation amount in terms of time.",
+      "label": "cl_avatar_convert_png",
+      "helperText": "Converts all rgb avatars in the avatars directory to png",
       "type": "action",
       "defaultValue": null,
-      "requiresCheats": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_avatar_convert_rgb",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat",
+        "release"
+      ],
+      "description": "Converts all png avatars in the avatars directory to rgb",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_avatar_convert_rgb",
+      "helperText": "Converts all png avatars in the avatars directory to rgb",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_axis",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Draw an axis  Arguments:  x y z pitch yaw roll <lifetime = 10.0> <r g b a>",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_axis",
+      "helperText": "Draw an axis  Arguments:  x y z pitch yaw roll <lifetime = 10.0> <r g b a>",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_box",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Draw a bbox  Arguments:  minx miny miny maxx maxy maxz <lifetime = 10.0> <r g b a>",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_box",
+      "helperText": "Draw a bbox  Arguments:  minx miny miny maxx maxy maxz <lifetime = 10.0> <r g b a>",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_checkdeclareclasses",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Check game code serializers",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_checkdeclareclasses",
+      "helperText": "Check game code serializers",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_drawcross",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Draws a cross at the given location  Arguments: x y z",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_drawcross",
+      "helperText": "Draws a cross at the given location  Arguments: x y z",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_drawline",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Draws line between two 3D Points.  Green if no collision  Red is collides with something  Arguments: x1 y1 z1 x2 y2 z2",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_drawline",
+      "helperText": "Draws line between two 3D Points.  Green if no collision  Red is collides with something  Arguments: x1 y1 z1 x2 y2 z2",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_dumpentity",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Dumps info about an entity",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_dumpentity",
+      "helperText": "Dumps info about an entity",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_fullupdate",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Force uncompressed update",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_fullupdate",
+      "helperText": "Force uncompressed update",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_groups",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Show status of all spawn groups.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_groups",
+      "helperText": "Show status of all spawn groups.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_imgui_debug_entity",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Shows the entity browser, focused on the entity you specify.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}"
+    },
+    "uiData": {
+      "label": "cl_imgui_debug_entity",
+      "helperText": "Shows the entity browswer, focused on the entity you specify.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_imgui_set_selection",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Sets ImGui selection",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_imgui_set_selection",
+      "helperText": "Sets ImGui selection",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_imgui_set_status_text",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Sets ImGui header status text",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_imgui_set_status_text",
+      "helperText": "Sets ImGui header status text",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -691,6 +714,488 @@
     }
   },
   {
+    "command": "cl_querycache_stats",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Display status of the query cache (client only)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_querycache_stats",
+      "helperText": "Display status of the query cache (client only)",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_removedecals",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Remove the decals from the entity under the crosshair.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_removedecals",
+      "helperText": "Remove the decals from the entity under the crosshair.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_rr_dump_rules",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Print all response rules"
+    },
+    "uiData": {
+      "label": "cl_rr_dump_rules",
+      "helperText": "Print all response rules",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_rr_reloadresponsesystems",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Reload all response system scripts.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_rr_reloadresponsesystems",
+      "helperText": "Reload all response system scripts.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_save_animgraph_recording",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Saves all active animgraph recordings to disk  Arguments: automaticallyOpenInAnimgraphEditor"
+    },
+    "uiData": {
+      "label": "cl_save_animgraph_recording",
+      "helperText": "Saves all active animgraph recordings to disk",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_dump_all",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Dump the state of the VM to the console",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_dump_all",
+      "helperText": "Dump the state of the VM to the console",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_find",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Find a key in the VM",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_find",
+      "helperText": "Find a key in the VM",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_help",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Output help for script functions",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_help",
+      "helperText": "Output help for script functions",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_reload",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Reload scripts",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_reload",
+      "helperText": "Reload scripts",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_reload_code",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Execute a vscript file, replacing existing functions with the functions in the run script",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_reload_code",
+      "helperText": "Execute a vscript file, replacing existing functions with the functions in the run script",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_reload_entity_code",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Execute all of this entity's VScripts, replacing existing functions with the functions in the run scripts",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_reload_entity_code",
+      "helperText": "Execute all of this entity's VScripts, replacing existing functions with the functions in the run scripts",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_resurrect_unreachable",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Use the garbage collector to track down reference cycles",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_resurrect_unreachable",
+      "helperText": "Use the garbage collector to track down reference cycles",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_trace_disable",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Turn off a particular trace output by file or function name",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_trace_disable",
+      "helperText": "Turn off a particular trace output by file or function name",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_trace_disable_all",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Turn off all trace output",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_trace_disable_all",
+      "helperText": "Turn off all trace output",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_trace_disable_key",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Turn off a particular trace output by table/instance",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_trace_disable_key",
+      "helperText": "Turn off a particular trace output by table/instance",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_trace_enable",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Turn on a particular trace output by file or function name",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_trace_enable",
+      "helperText": "Turn on a particular trace output by file or function name",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_trace_enable_all",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Turn on all trace output",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_trace_enable_all",
+      "helperText": "Turn on all trace output",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_script_trace_enable_key",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Turn on a particular trace output by table/instance",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_script_trace_enable_key",
+      "helperText": "Turn on a particular trace output by table/instance",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_sim_grenade_trajectory",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Draw trajectory of the deployed grenade if thrown from this position. Takes an optional parameter for how long the drawn trajectory will last.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_sim_grenade_trajectory",
+      "helperText": "Draw trajectory of the deployed grenade if thrown from this position. Takes an optional parameter for how long the drawn trajectory will last.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_sos_test_get_opvar",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_sos_test_get_opvar",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_sos_test_set_opvar",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_sos_test_set_opvar",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_spewserializers",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Spew serializers",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_spewserializers",
+      "helperText": "Spew serializers",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cl_test_list_entities",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "test-list entities",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_test_list_entities",
+      "helperText": "test-list entities",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "cl_ticktiming",
     "consoleData": {
       "defaultValue": null,
@@ -712,42 +1217,106 @@
     }
   },
   {
-    "command": "clutch_mode_toggle",
+    "command": "cli_ent_attachments",
     "consoleData": {
       "defaultValue": null,
       "flags": [
         "cl",
-        "release"
+        "cheat"
       ],
-      "description": "Toggle clutch mode convar",
+      "description": "Displays the interpolated attachment points on an entity.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "clutch_mode_toggle",
-      "helperText": "Toggle clutch mode convar",
+      "label": "cli_ent_attachments",
+      "helperText": "Displays the interpolated attachment points on an entity.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
       "type": "action",
       "defaultValue": null,
-      "requiresCheats": false,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
   },
   {
-    "command": "connect",
+    "command": "cli_ent_hitbox",
     "consoleData": {
       "defaultValue": null,
       "flags": [
-        "release"
+        "cl",
+        "cheat"
       ],
-      "description": "Connect to a remote server.",
+      "description": "Displays the skeleton for the given entity(ies).  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "connect",
-      "helperText": "Connect to a remote server.",
+      "label": "cli_ent_hitbox",
+      "helperText": "Displays the skeleton for the given entity(ies).  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
       "type": "action",
       "defaultValue": null,
-      "requiresCheats": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cli_ent_pivot",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Displays the interpolated pivot for the given entity(ies).  (y=up=green, z=forward=blue, x=left=red).   Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cli_ent_pivot",
+      "helperText": "Displays the interpolated pivot for the given entity(ies).  (y=up=green, z=forward=blue, x=left=red).   Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cli_ent_skeleton",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Displays the skeleton for the given entity(ies).  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cli_ent_skeleton",
+      "helperText": "Displays the skeleton for the given entity(ies).  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cli_ent_vcollide_wireframe",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Displays the interpolated vcollide wireframe pm am entity.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cli_ent_vcollide_wireframe",
+      "helperText": "Displays the interpolated vcollide wireframe pm am entity.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -817,284 +1386,22 @@
     }
   },
   {
-    "command": "debug_purchase_defidx",
+    "command": "dlight_debug",
     "consoleData": {
       "defaultValue": null,
       "flags": [
         "cl",
-        "release",
-        "clientcmd_can_execute"
+        "cheat"
       ],
-      "description": "Purchase an item by defindex",
+      "description": "Creates a dlight in front of the player",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "debug_purchase_defidx",
-      "helperText": "Purchase an item by defindex",
+      "label": "dlight_debug",
+      "helperText": "Creates a dlight in front of the player",
       "type": "action",
       "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_goto",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Skips to location in demo.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_goto",
-      "helperText": "Skips to location in demo.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_gotomark",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Skips the current demo playback to the marked tick",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_gotomark",
-      "helperText": "Skips the current demo playback to the marked tick",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_gototick",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Skips to a tick in demo.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_gototick",
-      "helperText": "Skips to a tick in demo.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_info",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Print information about currently playing demo.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_info",
-      "helperText": "Print information about currently playing demo.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_marktick",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Marks the current demo playback tick for later use",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_marktick",
-      "helperText": "Marks the current demo playback tick for later use",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_pause",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Pauses demo playback.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_pause",
-      "helperText": "Pauses demo playback.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_pauseatservertick",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Pauses when the 'render time' reaches the specified tick."
-    },
-    "uiData": {
-      "label": "demo_pauseatservertick",
-      "helperText": "Pauses when the 'render time' reaches the specified tick.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_resume",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Resumes demo playback.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_resume",
-      "helperText": "Resumes demo playback.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_step_tick",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Play for N ticks (default=1) and then pause."
-    },
-    "uiData": {
-      "label": "demo_step_tick",
-      "helperText": "Play for N ticks (default=1) and then pause.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_timescale",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Sets demo replay speed.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_timescale",
-      "helperText": "Sets demo replay speed.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demo_togglepause",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Toggles demo playback.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demo_togglepause",
-      "helperText": "Toggles demo playback.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "demoui",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Show/hide demo playback ui",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "demoui",
-      "helperText": "Show/hide demo playback ui",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "disconnect",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Disconnect from server",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "disconnect",
-      "helperText": "Disconnect from server",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -1122,6 +1429,27 @@
     }
   },
   {
+    "command": "dump_entity_report",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "List all client-side entities in the scene",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dump_entity_report",
+      "helperText": "List all client-side entities in the scene",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "endmatch_votenextmap",
     "consoleData": {
       "defaultValue": null,
@@ -1138,6 +1466,27 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "ent_rbox",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Displays the total bounding box for the given entity(s) in green.  Some entites will also display entity specific overlays.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "ent_rbox",
+      "helperText": "Displays the total bounding box for the given entity(s) in green.  Some entites will also display entity specific overlays.  Arguments:    {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -1227,6 +1576,48 @@
     }
   },
   {
+    "command": "gameinstructor_dump_open_lessons",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Gives a list of all currently open lessons.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "gameinstructor_dump_open_lessons",
+      "helperText": "Gives a list of all currently open lessons.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "gameinstructor_dump_run_lesson_counts",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Gives a list of lessons that been completed or shown",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "gameinstructor_dump_run_lesson_counts",
+      "helperText": "Gives a list of lessons that been completed or shown",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "help",
     "consoleData": {
       "defaultValue": null,
@@ -1289,27 +1680,6 @@
     }
   },
   {
-    "command": "invnext",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "server_can_execute"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "invnext",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "invnextselect",
     "consoleData": {
       "defaultValue": null,
@@ -1322,27 +1692,6 @@
     },
     "uiData": {
       "label": "invnextselect",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "invprev",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "server_can_execute"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "invprev",
       "helperText": "",
       "type": "action",
       "defaultValue": null,
@@ -1373,67 +1722,6 @@
     }
   },
   {
-    "command": "key_findbinding",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Find key bound to specified command string.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "key_findbinding",
-      "helperText": "Find key bound to specified command string.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "key_listboundkeys",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "List bound keys with bindings.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "key_listboundkeys",
-      "helperText": "List bound keys with bindings.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "lastinv",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "server_can_execute"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "lastinv",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "launch_warmup_map",
     "consoleData": {
       "defaultValue": null,
@@ -1451,6 +1739,27 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "map_enable_portrait_worlds",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Enables/disables portrait worlds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "map_enable_portrait_worlds",
+      "helperText": "Enables/disables portrait worlds",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -1500,6 +1809,27 @@
     }
   },
   {
+    "command": "minimap_create",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Does a bunch of work to create a minimap",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "minimap_create",
+      "helperText": "Does a bunch of work to create a minimap",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "mm_queue_show_stats",
     "consoleData": {
       "defaultValue": null,
@@ -1542,26 +1872,6 @@
     }
   },
   {
-    "command": "playdemo",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Play a recorded demo file (.dem ).",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "playdemo",
-      "helperText": "Play a recorded demo file (.dem ).",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "print_mapgroup",
     "consoleData": {
       "defaultValue": null,
@@ -1575,111 +1885,6 @@
     "uiData": {
       "label": "print_mapgroup",
       "helperText": "Prints the current mapgroup and the contained maps",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "quit",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release",
-        "vconsole_set_focus"
-      ],
-      "description": "Quit the game",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "quit",
-      "helperText": "Quit the game",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio1",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio1",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio2",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio2",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio3",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio3",
-      "helperText": "Opens a radio menu",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
@@ -1709,43 +1914,122 @@
     }
   },
   {
-    "command": "rebuy",
+    "command": "regenerate_weapon_skins",
     "consoleData": {
       "defaultValue": null,
       "flags": [
         "cl",
-        "clientcmd_can_execute"
+        "cheat"
       ],
-      "description": "Attempt to repurchase items with the order listed in cl_rebuy",
+      "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "rebuy",
-      "helperText": "Attempt to repurchase items with the order listed in cl_rebuy",
+      "label": "regenerate_weapon_skins",
+      "helperText": "",
       "type": "action",
       "defaultValue": null,
-      "requiresCheats": false,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
   },
   {
-    "command": "record",
+    "command": "sc_dumpworld",
     "consoleData": {
       "defaultValue": null,
       "flags": [
-        "norecord",
-        "release"
+        "cheat"
       ],
-      "description": "Record a demo.",
+      "description": "Dump a list of the objects in a sceneworld (Usage: sc_dumpworld <world_index>)",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "record",
-      "helperText": "Record a demo.",
+      "label": "sc_dumpworld",
+      "helperText": "Dump a list of the objects in a sceneworld (Usage: sc_dumpworld <world_index>)",
       "type": "action",
       "defaultValue": null,
-      "requiresCheats": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_dumpworld3d",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Dump the objects in a sceneworld into a 3d geoview buffer (Usage: sc_dumpworld3d <world_index>)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_dumpworld3d",
+      "helperText": "Dump the objects in a sceneworld into a 3d geoview buffer (Usage: sc_dumpworld3d <world_index>)",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_listworlds",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "List all the active sceneworlds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_listworlds",
+      "helperText": "List all the active sceneworlds",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_setclassflags",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Low level command to set the flags byte associated with an object class. sc_SetClassFlags <classname> <value>",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_setclassflags",
+      "helperText": "Low level command to set the flags byte associated with an object class. sc_SetClassFlags <classname> <value>",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_showclasses",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "List the object class names known by scenesystem",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_showclasses",
+      "helperText": "List the object class names known by scenesystem",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -1767,6 +2051,48 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "shake_stop",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Stops all active screen shakes.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "shake_stop",
+      "helperText": "Stops all active screen shakes.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "shake_testpunch",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Test a punch-style screen shake.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "shake_testpunch",
+      "helperText": "Test a punch-style screen shake.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -2087,209 +2413,21 @@
     }
   },
   {
-    "command": "soundinfo",
+    "command": "stopsound",
     "consoleData": {
       "defaultValue": null,
       "flags": [
-        "release"
-      ],
-      "description": "Describe the current sound device with an active voice list.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "soundinfo",
-      "helperText": "Describe the current sound device with an active voice list.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "spec_goto",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "clientcmd_can_execute"
-      ],
-      "description": "Move the spectator camera to a specific location. `spec_goto x y z pitch yaw`",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "spec_goto",
-      "helperText": "Move the spectator camera to a specific location. `spec_goto x y z pitch yaw`",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "spec_mode",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "clientcmd_can_execute"
-      ],
-      "description": "Set spectator mode",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "spec_mode",
-      "helperText": "Set spectator mode",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "spec_next",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "clientcmd_can_execute"
-      ],
-      "description": "Spectate next player",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "spec_next",
-      "helperText": "Spectate next player",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "spec_player",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "clientcmd_can_execute"
-      ],
-      "description": "Spectate a player by name or slot",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "spec_player",
-      "helperText": "Spectate a player by name or slot",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "spec_prev",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "clientcmd_can_execute"
-      ],
-      "description": "Spectate previous player",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "spec_prev",
-      "helperText": "Spectate previous player",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "stop",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Finish recording demo.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "stop",
-      "helperText": "Finish recording demo.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "switchhands",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
+        "cheat"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "switchhands",
+      "label": "stopsound",
       "helperText": "",
       "type": "action",
       "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "switchhandsleft",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "switchhandsleft",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "switchhandsright",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "switchhandsright",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -2311,6 +2449,49 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "thirdperson",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat",
+        "execute_per_tick"
+      ],
+      "description": "Switch to thirdperson camera.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "thirdperson",
+      "helperText": "Switch to thirdperson camera.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "thirdperson_mayamode",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "description": "Switch to thirdperson Maya-like camera controls.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "thirdperson_mayamode",
+      "helperText": "Switch to thirdperson Maya-like camera controls.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -2374,46 +2555,6 @@
       "defaultValue": null,
       "requiresCheats": false,
       "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "unbind",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Unbind a key.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "unbind",
-      "helperText": "Unbind a key.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "unbindall",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Unbind all keys.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "unbindall",
-      "helperText": "Unbind all keys.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": false,
       "arguments": []
     }
   },
