@@ -2,6 +2,85 @@
 
 This document defines the JSON schema used for all command configuration files in this project. The goal is to create a clear separation between raw data extracted from the game and the curated data used to build the user interface.
 
+## Command Processing Pipeline
+
+Commands are processed through an automated pipeline that transforms raw CS2 console data into the structured JSON schema used by the config generator.
+
+### Processing Steps
+
+The pipeline (`Tools/pipeline.py`) guides you through these steps:
+
+1. **Parse Commands** - Extract and validate commands from CS2 snapshot files
+2. **Classify Types** - Determine command types (bool, float, string, etc.) using rule-based logic
+3. **Split Categories** - Organize commands into player/server/shared groups
+4. **Subcategorize** - Create UI sections within each category
+
+### Classification Rules
+
+Command processing uses a rules-based system with logic separated into dedicated rule files:
+
+#### Type Classification (`Tools/rules/type_classification_rules.py`)
+Commands are classified by applying these rules in order:
+1. **Action**: `defaultValue` is `null`
+2. **Bool**: `defaultValue` is `"true"` or `"false"`
+3. **Bitmask**: Description contains `"bitmask"`
+4. **Float**: Numeric `defaultValue` with decimal point
+5. **Unknown Numeric**: Numeric `defaultValue` without decimal point
+6. **String**: Any other non-null `defaultValue`
+
+#### Category Classification (`Tools/rules/splitting_rules.py`)
+Commands are categorized using:
+1. **Console Flags**: `sv` → server, `cl` → player, `rep` → shared
+2. **Command Prefixes**: `cl_*` → player, `sv_*` → server, etc.
+3. **Fallback Rules**: `user`/`a` flags → player
+
+#### Subcategorization Rules
+- **Player** (`Tools/rules/player_subcategorization_rules.py`): crosshair, viewmodel, hud, audio, etc.
+- **Server** (`Tools/rules/server_subcategorization_rules.py`): setup, teams, rounds, economy, etc.
+- **Shared** (`Tools/rules/shared_subcategorization_rules.py`): Currently all commands go to "tbd"
+
+### Manual Category Override
+
+Any command can have its automatic classification overridden by adding a `manual_category` field:
+
+```json
+"uiData": {
+  "manual_category": "player/crosshair",
+  // ... other fields
+}
+```
+
+This bypasses all automatic classification rules and places the command in the specified category and subcategory.
+
+### Running the Pipeline
+
+To process a new command snapshot:
+
+```bash
+cd Tools/
+python pipeline.py
+```
+
+The pipeline will:
+1. Let you select a snapshot file
+2. Run each processing step
+3. Wait for your review after each step
+4. Allow you to abort with 'q' if issues are found
+
+### Data Flow
+
+```
+all_commands-YYYY-DD-MM.txt (Raw CS2 data)
+    ↓ parse_commands.py
+commands.json (Structured with consoleData)
+    ↓ command_classification.py
+commands.json (+ uiData with types)
+    ↓ splitting/classify_commands.py
+classified_commands/*.json (Split by category)
+    ↓ subcategorization/*.py
+CSConfigGenerator/wwwroot/data/commandschema/*/*.json (Final UI schema)
+```
+
 ## Command Classification
 
 Commands are classified into three main categories: `player`, `server`, and `shared`. This classification is done automatically by the `Tools/scripts/splitting/split.py` script, which uses a combination of flags and command prefixes to determine the category of each command.
@@ -87,7 +166,7 @@ This object serves as the "source of truth," containing only data parsed directl
 
 ```json
 "consoleData": {
-  "sourcedAt": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this data was pulled from the game console 
+  "sourcedAt": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this data was pulled from the game console
   "defaultValue": "raw_value_from_console (string or null)",
   "flags": [ "flag1", "flag2" ],
   "description": "The raw description text from the console.",
