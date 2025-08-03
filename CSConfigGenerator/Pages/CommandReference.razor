@@ -61,11 +61,11 @@
                             <ul class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
                                 @foreach (var type in Enum.GetValues<SettingType>())
                                 {
-                                    <li @onclick="() => { selectedTypes[type] = !selectedTypes[type]; ApplyFilters(); }">
+                                    <li>
                                         <div class="dropdown-item px-2" @onclick:stopPropagation="true">
                                             <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" @bind="selectedTypes[type]" />
-                                                <label class="form-check-label">@type</label>
+                                                <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
+                                                <label class="form-check-label" for="type-@type">@type</label>
                                             </div>
                                         </div>
                                     </li>
