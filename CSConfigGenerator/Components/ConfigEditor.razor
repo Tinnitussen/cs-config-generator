@@ -15,7 +15,7 @@
             @if (PresetType != null)
             {
                 <div class="custom-select-wrapper">
-                    <select class="custom-select" @onchange="OnPresetSelected">
+                    <select class="custom-select" id="preset-select" @onchange="OnPresetSelected">
                         <option value="">Pro Configs</option>
                         @foreach (var preset in _presets)
                         {
@@ -25,7 +25,7 @@
                 </div>
             }
             <div class="custom-select-wrapper">
-                <select class="custom-select" @onchange="OnUserConfigSelected">
+                <select class="custom-select" id="user-config-select" @onchange="OnUserConfigSelected">
                     <option value="">My Configs</option>
                     @foreach (var config in _userConfigs)
                     {
@@ -71,6 +71,12 @@
        OnSubmit="HandleSaveModalSubmit"
        OnCancel="CloseSaveModal" />
 
+<ConfirmationModal Title="@confirmationModalTitle"
+                   Body="@confirmationModalBody"
+                   IsOpen="@isConfirmationModalVisible"
+                   OnConfirm="HandleConfirmationSubmit"
+                   OnCancel="CloseConfirmationModal" />
+
 @code {
     [Parameter]
     [EditorRequired]
@@ -85,6 +91,11 @@
     private List<string> _userConfigs = new();
     private InputFile? _inputFile;
     private bool isSaveModalVisible = false;
+
+    private bool isConfirmationModalVisible = false;
+    private string confirmationModalTitle = string.Empty;
+    private RenderFragment? confirmationModalBody;
+    private Func<Task>? confirmationAction;
 
     protected override async Task OnInitializedAsync()
     {
@@ -104,7 +115,14 @@
     private async Task OnPresetSelected(ChangeEventArgs e)
     {
         var presetName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(presetName) && PresetType != null)
+        if (string.IsNullOrEmpty(presetName) || PresetType == null)
+        {
+            return;
+        }
+
+        confirmationModalTitle = "Load Preset";
+        confirmationModalBody = new RenderFragment(builder => builder.AddContent(0, $"Are you sure you want to load the preset '{presetName}'? Any unsaved changes will be lost."));
+        confirmationAction = async () =>
         {
             var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
             if (!string.IsNullOrEmpty(presetContent))
@@ -113,13 +131,22 @@
                 RefreshConfigText();
                 StateHasChanged();
             }
-        }
+        };
+        isConfirmationModalVisible = true;
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task OnUserConfigSelected(ChangeEventArgs e)
     {
         var configName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
+        if (string.IsNullOrEmpty(configName) || PresetType == null)
+        {
+            return;
+        }
+
+        confirmationModalTitle = "Load User Config";
+        confirmationModalBody = new RenderFragment(builder => builder.AddContent(0, $"Are you sure you want to load your config '{configName}'? Any unsaved changes will be lost."));
+        confirmationAction = async () =>
         {
             var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
             if (!string.IsNullOrEmpty(configContent))
@@ -128,7 +155,9 @@
                 RefreshConfigText();
                 StateHasChanged();
             }
-        }
+        };
+        isConfirmationModalVisible = true;
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task LoadUserConfigs()
@@ -166,7 +195,14 @@
     private async Task OnUpload(InputFileChangeEventArgs e)
     {
         var file = e.File;
-        if (file != null)
+        if (file == null)
+        {
+            return;
+        }
+
+        confirmationModalTitle = "Upload Config";
+        confirmationModalBody = new RenderFragment(builder => builder.AddContent(0, $"Are you sure you want to load the config from '{file.Name}'? Any unsaved changes will be lost."));
+        confirmationAction = async () =>
         {
             try
             {
@@ -182,7 +218,9 @@
             {
                 ToastService.ShowToast($"Error uploading file: {ex.Message}", ToastLevel.Error);
             }
-        }
+        };
+        isConfirmationModalVisible = true;
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task DownloadConfig()
@@ -234,10 +272,18 @@
         }
     }
 
-    private void ResetToDefaults()
+    private async Task ResetToDefaults()
     {
-        ConfigStateService.ResetToDefaults();
-        ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
+        confirmationModalTitle = "Reset to Defaults";
+        confirmationModalBody = new RenderFragment(builder => builder.AddContent(0, "Are you sure you want to reset to default values? Any unsaved changes will be lost."));
+        confirmationAction = () =>
+        {
+            ConfigStateService.ResetToDefaults();
+            ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
+            return Task.CompletedTask;
+        };
+        isConfirmationModalVisible = true;
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task CopyToClipboard()
@@ -255,6 +301,28 @@
             ToastService.ShowToast($"Failed to copy to clipboard: {ex.Message}", ToastLevel.Error);
             Console.WriteLine($"Failed to copy to clipboard: {ex.Message}");
         }
+    }
+
+    private async Task HandleConfirmationSubmit()
+    {
+        if (confirmationAction != null)
+        {
+            await confirmationAction();
+            // Reset the select elements to their default option
+            await JSRuntime.InvokeVoidAsync("resetSelectElement", "preset-select");
+            await JSRuntime.InvokeVoidAsync("resetSelectElement", "user-config-select");
+        }
+        await CloseConfirmationModal();
+    }
+
+    private async Task CloseConfirmationModal()
+    {
+        isConfirmationModalVisible = false;
+        confirmationAction = null;
+        // Reset the select elements to their default option
+        await JSRuntime.InvokeVoidAsync("resetSelectElement", "preset-select");
+        await JSRuntime.InvokeVoidAsync("resetSelectElement", "user-config-select");
+        await InvokeAsync(StateHasChanged);
     }
 
     public void Dispose()
