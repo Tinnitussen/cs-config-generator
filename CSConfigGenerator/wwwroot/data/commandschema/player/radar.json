@@ -94,69 +94,6 @@
     }
   },
   {
-    "command": "cl_radar_scale_alternate",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "Sets the alternate radar scale. Valid values are 0.25 to 1.0.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_radar_scale_alternate",
-      "helperText": "Sets the alternate radar scale. Valid values are 0.25 to 1.0.",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_radar_scale_dynamic",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "Toggles between a radar that scales dynamically to encompass all the detected elements on the map.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_radar_scale_dynamic",
-      "helperText": "Toggles between a radar that scales dynamically to encompass all the detected elements on the map.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_radar_square_always",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "If set, the radar will always be square."
-    },
-    "uiData": {
-      "label": "cl_radar_square_always",
-      "helperText": "If set, the radar will always be square.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "cl_radar_square_with_scoreboard",
     "consoleData": {
       "defaultValue": "true",

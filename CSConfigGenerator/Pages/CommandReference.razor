@@ -12,19 +12,24 @@
 <PageTitle>Command Reference</PageTitle>
 
 <div class="row g-0 h-100">
-    <div class="col-lg-8 pe-2">
+    <div class="@(ActiveTab == Tab.All ? "col-lg-12" : "col-lg-8 pe-2")">
         <h1>Command Reference</h1>
         <p class="text-muted">Browse, search, and manage all available commands for your configuration.</p>
 
         <ul class="nav nav-tabs mb-3">
             <li class="nav-item">
-                <a class="nav-link @(currentConfigType == ConfigType.Player ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Player)">
-                    Player Commands
+                <a class="nav-link @(ActiveTab == Tab.Player ? "active" : "")" href="javascript:void(0)" @onclick="() => SwitchTab(Tab.Player)">
+                    Player UI
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @(currentConfigType == ConfigType.Server ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Server)">
-                    Server Commands
+                <a class="nav-link @(ActiveTab == Tab.Server ? "active" : "")" href="javascript:void(0)" @onclick="() => SwitchTab(Tab.Server)">
+                    Server UI
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(ActiveTab == Tab.All ? "active" : "")" href="javascript:void(0)" @onclick="() => SwitchTab(Tab.All)">
+                    All Commands
                 </a>
             </li>
         </ul>
@@ -36,14 +41,8 @@
                         <div class="search-input-wrapper">
                             <div class="autocomplete-wrapper">
                                 <input class="autocomplete-ghost" type="text" value="@GhostText" readonly tabindex="-1" />
-                                <input
-                                    @oninput="OnSearchInput"
-                                    @onkeydown="HandleKeyDown"
-                                    @onkeydown:preventDefault="tabCompletionPreventDefault"
-                                    value="@searchTerm"
-                                    class="autocomplete-input form-control form-control-sm"
-                                    placeholder="Search commands..."
-                                    autocomplete="off" />
+                                <input @oninput="OnSearchInput" @onkeydown="HandleKeyDown" @onkeydown:preventDefault="tabCompletionPreventDefault"
+                                       value="@searchTerm" class="autocomplete-input form-control form-control-sm" placeholder="Search commands..." autocomplete="off" />
                             </div>
                             @if (!string.IsNullOrEmpty(searchTerm))
                             {
@@ -71,13 +70,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <select @bind="selectedInclusion" @bind:after="ApplyFilters" class="form-select form-select-sm filter-select">
-                            <option value="">All Statuses</option>
-                            <option value="true">Included</option>
-                            <option value="false">Not Included</option>
-                        </select>
-                    </div>
+                    @if (ActiveTab != Tab.All)
+                    {
+                        <div class="col-md-2">
+                            <select @bind="selectedInclusion" @bind:after="ApplyFilters" class="form-select form-select-sm filter-select">
+                                <option value="">All Statuses</option>
+                                <option value="true">Included</option>
+                                <option value="false">Not Included</option>
+                            </select>
+                        </div>
+                    }
                     <div class="col-md-2">
                         <div class="filter-checkbox-wrapper">
                             <div class="form-check d-flex align-items-center justify-content-center">
@@ -121,15 +123,11 @@
                                 <td class="text-center">
                                     @if (!vm.Setting.IsInConfigEditor)
                                     {
-                                        <button class="btn btn-xs btn-outline-success" @onclick="() => AddCommand(vm)">
-                                            Add
-                                        </button>
+                                        <button class="btn btn-xs btn-outline-success" @onclick="() => AddCommand(vm)">Add</button>
                                     }
                                     else
                                     {
-                                        <button class="btn btn-xs btn-outline-danger" @onclick="() => vm.Remove()">
-                                            Remove
-                                        </button>
+                                        <button class="btn btn-xs btn-outline-danger" @onclick="() => vm.Remove()">Remove</button>
                                     }
                                 </td>
                             </tr>
@@ -149,30 +147,32 @@
             <p>No commands found matching your criteria.</p>
         }
     </div>
-    <div class="col-lg-4 sticky-editor">
-        <ConfigEditor ConfigStateService="@CurrentConfigStateService" PresetType="@currentConfigType.ToString().ToLower()" @key="currentConfigType"/>
-    </div>
+    @if (ActiveTab != Tab.All)
+    {
+        <div class="col-lg-4 sticky-editor">
+            <ConfigEditor ConfigStateService="@CurrentConfigStateService" PresetType="@ActiveTab.ToString().ToLower()" @key="ActiveTab" />
+        </div>
+    }
 </div>
 
 @code {
-    private enum ConfigType
-    {
-        Player,
-        Server
-    }
+    private enum Tab { Player, Server, All }
+    private Tab ActiveTab = Tab.Player;
 
-    private ConfigType currentConfigType = ConfigType.Player;
-
-    [Inject(Key="PlayerConfigStateServiceKey")]
+    [Inject(Key = "PlayerConfigStateServiceKey")]
     public IConfigStateService PlayerConfigStateService { get; set; } = default!;
 
-    [Inject(Key="ServerConfigStateServiceKey")]
+    [Inject(Key = "ServerConfigStateServiceKey")]
     public IConfigStateService ServerConfigStateService { get; set; } = default!;
 
-    private IConfigStateService CurrentConfigStateService =>
-        currentConfigType == ConfigType.Player ? PlayerConfigStateService : ServerConfigStateService;
+    private IConfigStateService CurrentConfigStateService => ActiveTab switch
+    {
+        Tab.Player => PlayerConfigStateService,
+        Tab.Server => ServerConfigStateService,
+        Tab.All => PlayerConfigStateService, // Default to Player for 'add/remove' actions on All tab
+        _ => throw new InvalidOperationException("Invalid tab")
+    };
 
-    // Private fields - no need for complex properties
     private string searchTerm = string.Empty;
     private string? selectedInclusion;
     private bool requiresCheatsFilter;
@@ -195,7 +195,8 @@
 
     protected override void OnInitialized()
     {
-        foreach (var type in Enum.GetValues<SettingType>()) {
+        foreach (var type in Enum.GetValues<SettingType>())
+        {
             selectedTypes.Add(type, false);
         }
 
@@ -215,11 +216,15 @@
         });
     }
 
-    private void SwitchConfigType(ConfigType configType)
+    private void SwitchTab(Tab tab)
     {
-        if (currentConfigType != configType)
+        if (ActiveTab != tab)
         {
-            currentConfigType = configType;
+            ActiveTab = tab;
+            if (ActiveTab == Tab.All)
+            {
+                selectedInclusion = null; // Reset status filter for 'All' tab
+            }
             InitializeViewModels();
             ApplyFilters();
         }
@@ -230,13 +235,20 @@
         IEnumerable<CommandDefinition> commands;
         IConfigStateService configStateService = CurrentConfigStateService;
 
-        if (currentConfigType == ConfigType.Player)
+        switch (ActiveTab)
         {
-            commands = SchemaService.PlayerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
-        }
-        else
-        {
-            commands = SchemaService.ServerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+            case Tab.Player:
+                commands = SchemaService.PlayerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+                break;
+            case Tab.Server:
+                commands = SchemaService.ServerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+                break;
+            case Tab.All:
+                commands = SchemaService.AllCommands.OrderBy(c => c.Command);
+                break;
+            default:
+                commands = Enumerable.Empty<CommandDefinition>();
+                break;
         }
 
         allViewModels = commands.Select(c => new SettingViewModel(c, configStateService)).ToList();
@@ -280,11 +292,8 @@
 
     private void ApplyFiltersWithoutPageReset()
     {
-        // Preserve the current page, but make sure it's still valid after filtering
         int originalPage = currentPage;
         ApplyFiltersInternal();
-
-        // Check if the original page is still valid after filtering
         if (originalPage <= totalPages && originalPage > 0)
         {
             currentPage = originalPage;
@@ -295,7 +304,6 @@
 
     private void ApplyFiltersInternal()
     {
-        // Update autocomplete suggestion
         if (!string.IsNullOrWhiteSpace(searchTerm))
         {
             currentSuggestion = allViewModels
@@ -314,16 +322,20 @@
 
     private List<SettingViewModel> GetFilteredViewModels()
     {
-        return allViewModels
+        var viewModels = allViewModels
             .Where(vm => string.IsNullOrWhiteSpace(searchTerm) ||
                         vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
                         vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
             .Where(vm => !selectedTypes.Any(st => st.Value) ||
                         selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
-            .Where(vm => string.IsNullOrEmpty(selectedInclusion) ||
-                        vm.Setting.IsInConfigEditor.ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats)
-            .ToList();
+            .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats);
+
+        if (ActiveTab != Tab.All && !string.IsNullOrEmpty(selectedInclusion))
+        {
+            viewModels = viewModels.Where(vm => vm.Setting.IsInConfigEditor.ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return viewModels.ToList();
     }
 
     private void UpdatePagination(List<SettingViewModel> viewModels)
@@ -363,13 +375,10 @@
         searchTerm = string.Empty;
         selectedInclusion = null;
         requiresCheatsFilter = false;
-
-        // Clear all type selections
         foreach (var key in selectedTypes.Keys.ToList())
         {
             selectedTypes[key] = false;
         }
-
         showTypeDropdown = false;
         currentSuggestion = null;
         ApplyFilters();

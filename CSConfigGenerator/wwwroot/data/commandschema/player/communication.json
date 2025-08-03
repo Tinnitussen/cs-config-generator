@@ -626,129 +626,23 @@
     }
   },
   {
-    "command": "clutch_mode_toggle",
+    "command": "tv_nochat",
     "consoleData": {
-      "defaultValue": null,
+      "defaultValue": "false",
       "flags": [
-        "cl",
-        "release"
+        "a",
+        "user"
       ],
-      "description": "Toggle clutch mode convar",
+      "description": "Don't receive chat messages from other SourceTV spectators",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "clutch_mode_toggle",
-      "helperText": "Toggle clutch mode convar",
-      "type": "action",
-      "defaultValue": null,
+      "label": "tv_nochat",
+      "helperText": "Don't receive chat messages from other SourceTV spectators",
+      "type": "bool",
+      "defaultValue": false,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "hidehud",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "description": "bitmask: 1=weapon selection, 2=flashlight, 4=all, 8=health, 16=player dead, 32=needssuit, 64=misc, 128=chat, 256=crosshair, 512=vehicle crosshair, 1024=in vehicle",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "hidehud",
-      "helperText": "bitmask: 1=weapon selection, 2=flashlight, 4=all, 8=health, 16=player dead, 32=needssuit, 64=misc, 128=chat, 256=crosshair, 512=vehicle crosshair, 1024=in vehicle",
-      "type": "bitmask",
-      "defaultValue": 0,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "options": {}
-    }
-  },
-  {
-    "command": "radio",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio1",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio1",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio2",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio2",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio3",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio3",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
+      "hideFromDefaultView": false
     }
   }
 ]

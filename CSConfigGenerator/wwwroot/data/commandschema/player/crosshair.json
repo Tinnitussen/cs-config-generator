@@ -47,74 +47,6 @@
     }
   },
   {
-    "command": "cl_crosshair_dynamic_splitalpha_innermod",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "If using cl_crosshairstyle 2, this is the alpha modification that will be used for the INNER crosshair pips once they've split. [0 - 1]",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_crosshair_dynamic_splitalpha_innermod",
-      "helperText": "If using cl_crosshairstyle 2, this is the alpha modification that will be used for the INNER crosshair pips once they've split. [0 - 1]",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_crosshair_dynamic_splitalpha_outermod",
-    "consoleData": {
-      "defaultValue": "0.5",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "If using cl_crosshairstyle 2, this is the alpha modification that will be used for the OUTER crosshair pips once they've split. [0.3 - 1]",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_crosshair_dynamic_splitalpha_outermod",
-      "helperText": "If using cl_crosshairstyle 2, this is the alpha modification that will be used for the OUTER crosshair pips once they've split. [0.3 - 1]",
-      "type": "float",
-      "defaultValue": 0.5,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "cl_crosshair_dynamic_splitdist",
-    "consoleData": {
-      "defaultValue": "7",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "If using cl_crosshairstyle 2, this is the distance that the crosshair pips will split into 2. (default is 7)",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_crosshair_dynamic_splitdist",
-      "helperText": "If using cl_crosshairstyle 2, this is the distance that the crosshair pips will split into 2. (default is 7)",
-      "type": "unknown_numeric",
-      "defaultValue": 7,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "cl_crosshair_friendly_warning",
     "consoleData": {
       "defaultValue": "1",
@@ -474,48 +406,6 @@
       "defaultValue": true,
       "requiresCheats": false,
       "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_fixedcrosshairgap",
-    "consoleData": {
-      "defaultValue": "3",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "For crosshair style 1: How big to make the gap between the pips in the fixed crosshair",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_fixedcrosshairgap",
-      "helperText": "For crosshair style 1: How big to make the gap between the pips in the fixed crosshair",
-      "type": "unknown_numeric",
-      "defaultValue": 3,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_ironsight_usecrosshaircolor",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "Should the scope dot match the user's crosshair color",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_ironsight_usecrosshaircolor",
-      "helperText": "Should the scope dot match the user's crosshair color",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
     }
   },
   {

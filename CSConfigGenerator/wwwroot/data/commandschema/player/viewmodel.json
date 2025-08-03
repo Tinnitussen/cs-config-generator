@@ -280,27 +280,6 @@
     }
   },
   {
-    "command": "cam_command",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "description": "Tells camera to change modes",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cam_command",
-      "helperText": "Tells camera to change modes",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "cam_idealdelta",
     "consoleData": {
       "defaultValue": "4",
@@ -401,26 +380,6 @@
     }
   },
   {
-    "command": "cam_showangles",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "description": "When in thirdperson, print viewangles/idealangles/cameraoffsets to the console.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cam_showangles",
-      "helperText": "When in thirdperson, print viewangles/idealangles/cameraoffsets to the console.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "cam_snapto",
     "consoleData": {
       "defaultValue": "false",
@@ -438,47 +397,6 @@
       "defaultValue": false,
       "requiresCheats": false,
       "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "fov_cs_debug",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "description": "Sets the view fov if cheats are on.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "fov_cs_debug",
-      "helperText": "Sets the view fov if cheats are on.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "fov_desired",
-    "consoleData": {
-      "defaultValue": "75",
-      "flags": [
-        "cl",
-        "a",
-        "user"
-      ],
-      "description": "Sets the base field-of-view.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "fov_desired",
-      "helperText": "Sets the base field-of-view.",
-      "type": "unknown_numeric",
-      "defaultValue": 75,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
     }
   },
   {
