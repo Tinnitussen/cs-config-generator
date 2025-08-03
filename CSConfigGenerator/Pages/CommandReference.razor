@@ -79,9 +79,9 @@
                                 @GetStatusFilterText()
                             </button>
                             <ul class="dropdown-menu @(showStatusDropdown ? "show" : "")" style="width: 100%;">
-                                <li><a class="dropdown-item" href="#" @onclick="() => SelectStatus(null)" @onclick:preventDefault>All Statuses</a></li>
-                                <li><a class="dropdown-item" href="#" @onclick="() => SelectStatus("true")" @onclick:preventDefault>Included</a></li>
-                                <li><a class="dropdown-item" href="#" @onclick="() => SelectStatus("false")" @onclick:preventDefault>Not Included</a></li>
+                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus(null)' @onclick:preventDefault>All Statuses</a></li>
+                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus("true")' @onclick:preventDefault>Included</a></li>
+                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus("false")' @onclick:preventDefault>Not Included</a></li>
                             </ul>
                         </div>
                     </div>
