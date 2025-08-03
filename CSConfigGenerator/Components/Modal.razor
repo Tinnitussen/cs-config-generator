@@ -6,15 +6,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">@Title</h5>
-                    <button type="button" class="btn-close" @onclick="Cancel"></button>
+                    <button type="button" class="btn-close" @onclick="() => OnCancel.InvokeAsync()"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control" @bind="inputValue" @onkeydown="HandleKeyDown" placeholder="Enter name..." />
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @onclick="Cancel">Cancel</button>
-                    <button type="button" class="btn btn-primary" @onclick="Submit">Save</button>
-                </div>
+                @Body
+                @Footer
             </div>
         </div>
     </div>
@@ -28,34 +23,11 @@
     public string Title { get; set; } = "Modal Title";
 
     [Parameter]
-    public EventCallback<string> OnSubmit { get; set; }
-
-    [Parameter]
     public EventCallback OnCancel { get; set; }
 
-    private string inputValue = string.Empty;
+    [Parameter]
+    public RenderFragment? Body { get; set; }
 
-    private async Task Submit()
-    {
-        await OnSubmit.InvokeAsync(inputValue);
-        inputValue = string.Empty;
-    }
-
-    private async Task Cancel()
-    {
-        await OnCancel.InvokeAsync(null);
-        inputValue = string.Empty;
-    }
-
-    private async Task HandleKeyDown(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            await Submit();
-        }
-        else if (e.Key == "Escape")
-        {
-            await Cancel();
-        }
-    }
+    [Parameter]
+    public RenderFragment? Footer { get; set; }
 }

@@ -15,7 +15,7 @@
             @if (PresetType != null)
             {
                 <div class="custom-select-wrapper">
-                    <select class="custom-select" @onchange="OnPresetSelected">
+                    <select class="custom-select" @bind="_selectedPreset" @bind:after="OnPresetSelected">
                         <option value="">Pro Configs</option>
                         @foreach (var preset in _presets)
                         {
@@ -25,7 +25,7 @@
                 </div>
             }
             <div class="custom-select-wrapper">
-                <select class="custom-select" @onchange="OnUserConfigSelected">
+                <select class="custom-select" @bind="_selectedUserConfig" @bind:after="OnUserConfigSelected">
                     <option value="">My Configs</option>
                     @foreach (var config in _userConfigs)
                     {
@@ -66,10 +66,33 @@
               spellcheck="false" />
 </div>
 
-<Modal Title="Save Config"
-       IsOpen="@isSaveModalVisible"
-       OnSubmit="HandleSaveModalSubmit"
-       OnCancel="CloseSaveModal" />
+<Modal Title="Save Config" IsOpen="@isSaveModalVisible" OnCancel="CloseSaveModal">
+    <Body>
+        <div class="modal-body">
+            <input type="text" class="form-control" @bind-value="configNameToSave" @onkeydown="HandleSaveModalKeyDown" placeholder="Enter name..." />
+        </div>
+    </Body>
+    <Footer>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @onclick="CloseSaveModal">Cancel</button>
+            <button type="button" class="btn btn-primary" @onclick="HandleSaveModalSubmit">Save</button>
+        </div>
+    </Footer>
+</Modal>
+
+<Modal Title="@_confirmationTitle" IsOpen="@_isConfirmationVisible" OnCancel="CancelConfirmation">
+    <Body>
+        <div class="modal-body">
+            @_confirmationMessage
+        </div>
+    </Body>
+    <Footer>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @onclick="CancelConfirmation">Cancel</button>
+            <button type="button" class="btn btn-danger" @onclick="ConfirmAction">Confirm</button>
+        </div>
+    </Footer>
+</Modal>
 
 @code {
     [Parameter]
@@ -85,6 +108,15 @@
     private List<string> _userConfigs = new();
     private InputFile? _inputFile;
     private bool isSaveModalVisible = false;
+    private string configNameToSave = "";
+    private string _selectedPreset = "";
+    private string _selectedUserConfig = "";
+
+    private bool _isConfirmationVisible = false;
+    private string _confirmationTitle = "";
+    private string _confirmationMessage = "";
+    private Action? _confirmedAction;
+    private Action? _cancelAction;
 
     protected override async Task OnInitializedAsync()
     {
@@ -101,34 +133,54 @@
         }
     }
 
-    private async Task OnPresetSelected(ChangeEventArgs e)
+    private void OnPresetSelected()
     {
-        var presetName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(presetName) && PresetType != null)
+        if (string.IsNullOrEmpty(_selectedPreset))
         {
-            var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
+            return;
+        }
+
+        var presetName = _selectedPreset;
+        ShowConfirmation("Load Preset", $"Are you sure you want to load the preset '{presetName}'? Any unsaved changes will be lost.", async () =>
+        {
+            var presetContent = await PresetService.GetPresetContentAsync(PresetType!, presetName);
             if (!string.IsNullOrEmpty(presetContent))
             {
                 ConfigStateService.ParseConfigFile(presetContent, this);
                 RefreshConfigText();
-                StateHasChanged();
             }
-        }
+            _selectedPreset = "";
+            StateHasChanged();
+        }, () =>
+        {
+            _selectedPreset = "";
+            StateHasChanged();
+        });
     }
 
-    private async Task OnUserConfigSelected(ChangeEventArgs e)
+    private void OnUserConfigSelected()
     {
-        var configName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
+        if (string.IsNullOrEmpty(_selectedUserConfig))
         {
-            var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
+            return;
+        }
+
+        var configName = _selectedUserConfig;
+        ShowConfirmation("Load User Config", $"Are you sure you want to load '{configName}'? Any unsaved changes will be lost.", async () =>
+        {
+            var configContent = await UserConfigService.GetConfigContentAsync(PresetType!, configName);
             if (!string.IsNullOrEmpty(configContent))
             {
                 ConfigStateService.ParseConfigFile(configContent, this);
                 RefreshConfigText();
-                StateHasChanged();
             }
-        }
+            _selectedUserConfig = "";
+            StateHasChanged();
+        }, () =>
+        {
+            _selectedUserConfig = "";
+            StateHasChanged();
+        });
     }
 
     private async Task LoadUserConfigs()
@@ -146,27 +198,45 @@
         await InvokeAsync(StateHasChanged);
     }
 
-    private async Task HandleSaveModalSubmit(string configName)
+    private async Task HandleSaveModalSubmit()
     {
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
+        if (!string.IsNullOrEmpty(configNameToSave) && PresetType != null)
         {
-            await UserConfigService.SaveConfigAsync(PresetType, configName, configText);
+            await UserConfigService.SaveConfigAsync(PresetType, configNameToSave, configText);
             await LoadUserConfigs();
-            ToastService.ShowToast($"Config '{configName}' saved successfully.", ToastLevel.Success);
+            ToastService.ShowToast($"Config '{configNameToSave}' saved successfully.", ToastLevel.Success);
+            await CloseSaveModal();
         }
-        await CloseSaveModal();
     }
 
     private async Task CloseSaveModal()
     {
         isSaveModalVisible = false;
+        configNameToSave = "";
         await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task HandleSaveModalKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await HandleSaveModalSubmit();
+        }
+        else if (e.Key == "Escape")
+        {
+            await CloseSaveModal();
+        }
     }
 
     private async Task OnUpload(InputFileChangeEventArgs e)
     {
         var file = e.File;
-        if (file != null)
+        if (file == null)
+        {
+            return;
+        }
+
+        ShowConfirmation("Upload Config", $"Are you sure you want to load config from '{file.Name}'? Any unsaved changes will be lost.", async () =>
         {
             try
             {
@@ -182,6 +252,12 @@
             {
                 ToastService.ShowToast($"Error uploading file: {ex.Message}", ToastLevel.Error);
             }
+        });
+
+        // Clear the file input so the same file can be selected again
+        if (_inputFile?.Element != null)
+        {
+            await JSRuntime.InvokeVoidAsync("eval", "document.querySelector('input[type=file]').value = ''");
         }
     }
 
@@ -236,8 +312,12 @@
 
     private void ResetToDefaults()
     {
-        ConfigStateService.ResetToDefaults();
-        ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
+        ShowConfirmation("Reset to Defaults", "Are you sure you want to reset all values to their defaults? This action cannot be undone.", () =>
+        {
+            ConfigStateService.ResetToDefaults();
+            ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
+            StateHasChanged();
+        });
     }
 
     private async Task CopyToClipboard()
@@ -255,6 +335,29 @@
             ToastService.ShowToast($"Failed to copy to clipboard: {ex.Message}", ToastLevel.Error);
             Console.WriteLine($"Failed to copy to clipboard: {ex.Message}");
         }
+    }
+
+    private void ShowConfirmation(string title, string message, Action onConfirm, Action? onCancel = null)
+    {
+        _confirmationTitle = title;
+        _confirmationMessage = message;
+        _confirmedAction = onConfirm;
+        _cancelAction = onCancel;
+        _isConfirmationVisible = true;
+        StateHasChanged();
+    }
+
+    private void ConfirmAction()
+    {
+        _confirmedAction?.Invoke();
+        _isConfirmationVisible = false;
+    }
+
+    private void CancelConfirmation()
+    {
+        _cancelAction?.Invoke();
+        _isConfirmationVisible = false;
+        StateHasChanged();
     }
 
     public void Dispose()
