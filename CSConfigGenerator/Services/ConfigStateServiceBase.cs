@@ -175,6 +175,26 @@ public abstract class ConfigStateServiceBase : IConfigStateService
         }
     }
 
+    public (bool, string?) TrySetValueFromString(string commandName, string valueStr, object? originator = null)
+    {
+        var commandDef = GetCommandDefinition(commandName);
+        if (commandDef == null)
+        {
+            return (false, "Invalid command.");
+        }
+
+        var (isValid, errorMessage) = SettingValidator.Validate(commandDef.UiData.Type, valueStr);
+        if (!isValid)
+        {
+            return (false, errorMessage);
+        }
+
+        var parsedValue = SettingTypeHelpers.ParseFromString(commandDef.UiData.Type, valueStr);
+        SetValue(commandName, parsedValue, originator);
+
+        return (true, null);
+    }
+
     public void SetIncluded(string commandName, bool IsInConfigEditor, object? originator = null)
     {
         if (_settings.TryGetValue(commandName, out var setting))
