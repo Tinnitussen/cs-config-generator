@@ -109,15 +109,15 @@ namespace CSConfigGenerator.Tests
             var jsonString = JsonSerializer.SerializeToElement("hello");
 
             // Act & Assert
-            Assert.True((bool)SettingTypeHelpers.ConvertFromJson(SettingType.Bool, jsonBool));
-            Assert.Equal(123, (int)SettingTypeHelpers.ConvertFromJson(SettingType.Int, jsonInt));
-            Assert.Equal(123.45f, (float)SettingTypeHelpers.ConvertFromJson(SettingType.Float, jsonFloat));
-            Assert.Equal("hello", (string)SettingTypeHelpers.ConvertFromJson(SettingType.String, jsonString));
-            Assert.Equal(123, (int)SettingTypeHelpers.ConvertFromJson(SettingType.Enum, jsonInt));
-            Assert.Equal(123, (int)SettingTypeHelpers.ConvertFromJson(SettingType.Bitmask, jsonInt));
-            Assert.Equal(123.45f, (float)SettingTypeHelpers.ConvertFromJson(SettingType.UnknownNumeric, jsonFloat));
-            Assert.Equal(123, (int)SettingTypeHelpers.ConvertFromJson(SettingType.UnknownInteger, jsonInt));
-            Assert.Equal("hello", (string)SettingTypeHelpers.ConvertFromJson(SettingType.Action, jsonString));
+            Assert.True((bool) SettingTypeHelpers.ConvertFromJson(SettingType.Bool, jsonBool));
+            Assert.Equal(123, (int) SettingTypeHelpers.ConvertFromJson(SettingType.Int, jsonInt));
+            Assert.Equal(123.45f, (float) SettingTypeHelpers.ConvertFromJson(SettingType.Float, jsonFloat));
+            Assert.Equal("hello", (string) SettingTypeHelpers.ConvertFromJson(SettingType.String, jsonString));
+            Assert.Equal(123, (int) SettingTypeHelpers.ConvertFromJson(SettingType.Enum, jsonInt));
+            Assert.Equal(123, (int) SettingTypeHelpers.ConvertFromJson(SettingType.Bitmask, jsonInt));
+            Assert.Equal(123.45f, (float) SettingTypeHelpers.ConvertFromJson(SettingType.UnknownNumeric, jsonFloat));
+            Assert.Equal(123, (int) SettingTypeHelpers.ConvertFromJson(SettingType.UnknownInteger, jsonInt));
+            Assert.Equal("hello", (string) SettingTypeHelpers.ConvertFromJson(SettingType.Action, jsonString));
         }
 
         [Fact]

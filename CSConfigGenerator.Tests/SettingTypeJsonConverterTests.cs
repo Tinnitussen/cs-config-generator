@@ -67,7 +67,7 @@ namespace CSConfigGenerator.Tests
         public void Write_ShouldThrowArgumentException_ForInvalidEnumValue()
         {
             // Arrange
-            var invalidType = (SettingType)999; // An invalid enum value
+            var invalidType = (SettingType) 999; // An invalid enum value
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => JsonSerializer.Serialize(invalidType, _options));
