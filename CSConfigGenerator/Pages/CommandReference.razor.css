@@ -140,3 +140,9 @@
 .filter-checkbox-wrapper .form-check {
     height: 100%;
 }
+
+.filter-clear-btn:disabled {
+    color: #6c757d;
+    background-color: transparent;
+    border-color: #6c757d;
+}

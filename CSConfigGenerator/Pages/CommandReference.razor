@@ -61,11 +61,11 @@
                             <ul class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
                                 @foreach (var type in Enum.GetValues<SettingType>())
                                 {
-                                    <li>
+                                    <li @onclick="() => { selectedTypes[type] = !selectedTypes[type]; ApplyFilters(); }">
                                         <div class="dropdown-item px-2" @onclick:stopPropagation="true">
                                             <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
-                                                <label class="form-check-label" for="type-@type">@type</label>
+                                                <input type="checkbox" class="form-check-input" @bind="selectedTypes[type]" />
+                                                <label class="form-check-label">@type</label>
                                             </div>
                                         </div>
                                     </li>
@@ -74,17 +74,22 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <select @bind="selectedInclusion" @bind:after="ApplyFilters" class="form-select form-select-sm filter-select">
-                            <option value="">All Statuses</option>
-                            <option value="true">Included</option>
-                            <option value="false">Not Included</option>
-                        </select>
+                        <div class="dropdown filter-dropdown">
+                            <button class="btn btn-sm btn-light dropdown-toggle w-100 filter-button text-start" type="button" @onclick="() => showStatusDropdown = !showStatusDropdown" aria-expanded="@showStatusDropdown">
+                                @GetStatusFilterText()
+                            </button>
+                            <ul class="dropdown-menu @(showStatusDropdown ? "show" : "")" style="width: 100%;">
+                                <li><a class="dropdown-item" href="#" @onclick="() => SelectStatus(null)" @onclick:preventDefault>All Statuses</a></li>
+                                <li><a class="dropdown-item" href="#" @onclick="() => SelectStatus("true")" @onclick:preventDefault>Included</a></li>
+                                <li><a class="dropdown-item" href="#" @onclick="() => SelectStatus("false")" @onclick:preventDefault>Not Included</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-md-2">
                         <div class="filter-checkbox-wrapper">
-                            <div class="form-check form-switch d-flex align-items-center justify-content-center">
-                                <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input" type="checkbox" role="switch" id="cheatsFilter" />
+                            <div class="form-check form-switch d-flex flex-column align-items-center justify-content-center">
                                 <label class="form-check-label" for="cheatsFilter">Cheats Only</label>
+                                <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input" type="checkbox" role="switch" id="cheatsFilter" />
                             </div>
                         </div>
                     </div>
@@ -180,6 +185,7 @@
     private bool requiresCheatsFilter;
     private Dictionary<SettingType, bool> selectedTypes = new();
     private bool showTypeDropdown = false;
+    private bool showStatusDropdown = false;
     private bool isAnyFilterActive = false;
 
     private List<SettingViewModel> allViewModels = [];
@@ -396,6 +402,23 @@
             1 => selectedTypes.First(st => st.Value).Key.ToString(),
             _ => $"{selectedCount} Types"
         };
+    }
+
+    private string GetStatusFilterText()
+    {
+        return selectedInclusion switch
+        {
+            "true" => "Included",
+            "false" => "Not Included",
+            _ => "All Statuses",
+        };
+    }
+
+    private void SelectStatus(string? status)
+    {
+        selectedInclusion = status;
+        showStatusDropdown = false;
+        ApplyFilters();
     }
 
     private void AddCommand(SettingViewModel vm)
