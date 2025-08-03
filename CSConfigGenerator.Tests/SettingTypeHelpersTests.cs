@@ -15,8 +15,7 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.Int, "123", 123)]
         [InlineData(SettingType.Float, "123.45", 123.45f)]
         [InlineData(SettingType.String, "hello", "hello")]
-        [InlineData(SettingType.Enum, "1", "1")]
-        [InlineData(SettingType.Enum, "sv_cheats", "sv_cheats")]
+        [InlineData(SettingType.Enum, "1", 1)]
         [InlineData(SettingType.Bitmask, "2", 2)]
         [InlineData(SettingType.UnknownNumeric, "99.9", 99.9f)]
         [InlineData(SettingType.UnknownInteger, "789", 789)]
@@ -38,7 +37,7 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.String, "hello", "hello")]
         [InlineData(SettingType.String, "hello world", "\"hello world\"")]
         [InlineData(SettingType.String, "hello;world", "\"hello;world\"")]
-        [InlineData(SettingType.Enum, "some_enum_val", "some_enum_val")]
+        [InlineData(SettingType.Enum, 1, "1")]
         [InlineData(SettingType.Bitmask, 2, "2")]
         [InlineData(SettingType.UnknownNumeric, 99.9f, "99.9")]
         [InlineData(SettingType.UnknownInteger, 789, "789")]
@@ -57,7 +56,7 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.Int, 0)]
         [InlineData(SettingType.Float, 0.0f)]
         [InlineData(SettingType.String, "")]
-        [InlineData(SettingType.Enum, "")]
+        [InlineData(SettingType.Enum, 0)]
         [InlineData(SettingType.Bitmask, 0)]
         [InlineData(SettingType.UnknownNumeric, 0.0f)]
         [InlineData(SettingType.UnknownInteger, 0)]
@@ -85,7 +84,8 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.Float, 123.45f, 123.45f)]
         [InlineData(SettingType.Float, "123.45", 123.45f)]
         [InlineData(SettingType.String, "hello", "hello")]
-        [InlineData(SettingType.Enum, "some_enum_val", "some_enum_val")]
+        [InlineData(SettingType.Enum, 1, 1)]
+        [InlineData(SettingType.Enum, "1", 1)]
         [InlineData(SettingType.Bitmask, 2, 2)]
         [InlineData(SettingType.UnknownNumeric, 99.9f, 99.9f)]
         [InlineData(SettingType.UnknownInteger, 789, 789)]
@@ -113,6 +113,7 @@ namespace CSConfigGenerator.Tests
             Assert.Equal(123, (int)SettingTypeHelpers.ConvertFromJson(SettingType.Int, jsonInt));
             Assert.Equal(123.45f, (float)SettingTypeHelpers.ConvertFromJson(SettingType.Float, jsonFloat));
             Assert.Equal("hello", (string)SettingTypeHelpers.ConvertFromJson(SettingType.String, jsonString));
+            Assert.Equal(123, (int)SettingTypeHelpers.ConvertFromJson(SettingType.Enum, jsonInt));
             Assert.Equal(123, (int)SettingTypeHelpers.ConvertFromJson(SettingType.Bitmask, jsonInt));
             Assert.Equal(123.45f, (float)SettingTypeHelpers.ConvertFromJson(SettingType.UnknownNumeric, jsonFloat));
             Assert.Equal(123, (int)SettingTypeHelpers.ConvertFromJson(SettingType.UnknownInteger, jsonInt));
