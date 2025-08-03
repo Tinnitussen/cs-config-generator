@@ -1,5 +1,46 @@
 [
   {
+    "command": "clear_bombs",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "clear_bombs",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cs_hostage_near_rescue_music_distance",
+    "consoleData": {
+      "defaultValue": "2000",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cs_hostage_near_rescue_music_distance",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 2000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "mp_guardian_force_collect_hostages_timeout",
     "consoleData": {
       "defaultValue": "50",
@@ -17,6 +58,27 @@
       "defaultValue": 50,
       "requiresCheats": false,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "plant_bomb",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Plant a bomb where the player is looking.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "plant_bomb",
+      "helperText": "Plant a bomb where the player is looking.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   }
 ]

@@ -1031,5 +1031,125 @@
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
+  },
+  {
+    "command": "sv_bot_buy_decoy_weight",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_bot_buy_decoy_weight",
+      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_bot_buy_flash_weight",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_bot_buy_flash_weight",
+      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_bot_buy_grenade_chance",
+    "consoleData": {
+      "defaultValue": "33",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Chance bots will buy a grenade with leftover money (after prim, sec and armor). Input as percent (0-100.0)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_bot_buy_grenade_chance",
+      "helperText": "Chance bots will buy a grenade with leftover money (after prim, sec and armor). Input as percent (0-100.0)",
+      "type": "unknown_numeric",
+      "defaultValue": 33,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_bot_buy_hegrenade_weight",
+    "consoleData": {
+      "defaultValue": "6",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_bot_buy_hegrenade_weight",
+      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "type": "unknown_numeric",
+      "defaultValue": 6,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_bot_buy_molotov_weight",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_bot_buy_molotov_weight",
+      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_bot_buy_smoke_weight",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_bot_buy_smoke_weight",
+      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
   }
 ]

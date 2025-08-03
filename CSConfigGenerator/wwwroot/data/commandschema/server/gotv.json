@@ -1,5 +1,65 @@
 [
   {
+    "command": "spec_replay_bot",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Enable Spectator Hltv Replay when killed by bot",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_replay_bot",
+      "helperText": "Enable Spectator Hltv Replay when killed by bot",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "spec_replay_round_delay",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Round can be delayed by this much due to someone watching a replay; must be at least 3-4 seconds, otherwise the last replay will always be interrupted by round start, assuming normal pause between round_end and round_start events (7 seconds) and freezecam delay (2 seconds) and 7.4 second full replay (5.4 second pre-death and ~2 seconds post-death) and replay in/out switching (up to a second)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_replay_round_delay",
+      "helperText": "Round can be delayed by this much due to someone watching a replay; must be at least 3-4 seconds, otherwise the last replay will always be interrupted by round start, assuming normal pause between round_end and round_start events (7 seconds) and freezecam delay (2 seconds) and 7.4 second full replay (5.4 second pre-death and ~2 seconds post-death) and replay in/out switching (up to a second)",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "spec_replay_winddown_time",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "The trailing time, in seconds, of replay past the event, including fade-out",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "spec_replay_winddown_time",
+      "helperText": "The trailing time, in seconds, of replay past the event, including fade-out",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "tv_advertise_watchable",
     "consoleData": {
       "defaultValue": "false",
