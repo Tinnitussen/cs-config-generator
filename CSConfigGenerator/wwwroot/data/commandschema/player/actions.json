@@ -378,6 +378,26 @@
     }
   },
   {
+    "command": "alias",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Alias a command.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "alias",
+      "helperText": "Alias a command.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "annotation_append",
     "consoleData": {
       "defaultValue": null,
@@ -567,6 +587,26 @@
     }
   },
   {
+    "command": "bind",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Bind a key.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bind",
+      "helperText": "Bind a key.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
+      "arguments": []
+    }
+  },
+  {
     "command": "buymenu",
     "consoleData": {
       "defaultValue": null,
@@ -693,6 +733,26 @@
     }
   },
   {
+    "command": "connect",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Connect to a remote server.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "connect",
+      "helperText": "Connect to a remote server.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "cs_quit_prompt",
     "consoleData": {
       "defaultValue": null,
@@ -728,6 +788,27 @@
     "uiData": {
       "label": "csgo_download_match",
       "helperText": "Downloads a match via serial code and starts playback",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "cyclevar",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Cycle through specified convar values.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cyclevar",
+      "helperText": "Cycle through specified convar values.",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
@@ -999,6 +1080,26 @@
     }
   },
   {
+    "command": "disconnect",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Disconnect from server",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "disconnect",
+      "helperText": "Disconnect from server",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "dm_togglerandomweapons",
     "consoleData": {
       "defaultValue": null,
@@ -1042,6 +1143,68 @@
     }
   },
   {
+    "command": "exec",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Execute a cfg file",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "exec",
+      "helperText": "Execute a cfg file",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "execifexists",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Execute a cfg file if file exists",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "execifexists",
+      "helperText": "Execute a cfg file if file exists",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "find",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Find concommands with the specified string in their name/help text.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "find",
+      "helperText": "Find concommands with the specified string in their name/help text.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "firstperson",
     "consoleData": {
       "defaultValue": null,
@@ -1064,6 +1227,26 @@
     }
   },
   {
+    "command": "help",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Find help about a convar/concommand.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "help",
+      "helperText": "Find help about a convar/concommand.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "impulse",
     "consoleData": {
       "defaultValue": null,
@@ -1077,6 +1260,27 @@
     "uiData": {
       "label": "impulse",
       "helperText": "Triggers impulse command",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "incrementvar",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Increment specified convar value.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "incrementvar",
+      "helperText": "Increment specified convar value.",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
@@ -1161,6 +1365,46 @@
     "uiData": {
       "label": "invprevselect",
       "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "key_findbinding",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Find key bound to specified command string.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "key_findbinding",
+      "helperText": "Find key bound to specified command string.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "key_listboundkeys",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "List bound keys with bindings.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "key_listboundkeys",
+      "helperText": "List bound keys with bindings.",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
@@ -1277,6 +1521,47 @@
     }
   },
   {
+    "command": "multvar",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Multiply specified convar value.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "multvar",
+      "helperText": "Multiply specified convar value.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "playdemo",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Play a recorded demo file (.dem ).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "playdemo",
+      "helperText": "Play a recorded demo file (.dem ).",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "print_mapgroup",
     "consoleData": {
       "defaultValue": null,
@@ -1290,6 +1575,27 @@
     "uiData": {
       "label": "print_mapgroup",
       "helperText": "Prints the current mapgroup and the contained maps",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "quit",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release",
+        "vconsole_set_focus"
+      ],
+      "description": "Quit the game",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "quit",
+      "helperText": "Quit the game",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
@@ -1382,6 +1688,27 @@
     }
   },
   {
+    "command": "rcon",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Issue an rcon command.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "rcon",
+      "helperText": "Issue an rcon command.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "rebuy",
     "consoleData": {
       "defaultValue": null,
@@ -1395,6 +1722,27 @@
     "uiData": {
       "label": "rebuy",
       "helperText": "Attempt to repurchase items with the order listed in cl_rebuy",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "record",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Record a demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "record",
+      "helperText": "Record a demo.",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
@@ -1739,6 +2087,26 @@
     }
   },
   {
+    "command": "soundinfo",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Describe the current sound device with an active voice list.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "soundinfo",
+      "helperText": "Describe the current sound device with an active voice list.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "spec_goto",
     "consoleData": {
       "defaultValue": null,
@@ -1844,6 +2212,26 @@
     }
   },
   {
+    "command": "stop",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Finish recording demo.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "stop",
+      "helperText": "Finish recording demo.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "switchhands",
     "consoleData": {
       "defaultValue": null,
@@ -1928,6 +2316,47 @@
     }
   },
   {
+    "command": "timedemo",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Play a demo and report performance info.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "timedemo",
+      "helperText": "Play a demo and report performance info.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "toggle",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Toggles specified convar value on and off.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "toggle",
+      "helperText": "Toggles specified convar value on and off.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "toggleradarscale",
     "consoleData": {
       "defaultValue": null,
@@ -1945,6 +2374,46 @@
       "defaultValue": null,
       "requiresCheats": false,
       "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "unbind",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Unbind a key.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "unbind",
+      "helperText": "Unbind a key.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "unbindall",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Unbind all keys.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "unbindall",
+      "helperText": "Unbind all keys.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": false,
       "arguments": []
     }
   },

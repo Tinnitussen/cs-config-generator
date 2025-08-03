@@ -1791,6 +1791,46 @@
     }
   },
   {
+    "command": "echo",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "server_can_execute"
+      ],
+      "description": "Echo text to console.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "echo",
+      "helperText": "Echo text to console.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "echoln",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Echo the command arguments on the console",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "echoln",
+      "helperText": "Echo the command arguments on the console",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "ent_actornames_font",
     "consoleData": {
       "defaultValue": "Consolas",
@@ -2069,6 +2109,64 @@
     }
   },
   {
+    "command": "fs_fake_read_delay_ms",
+    "consoleData": {
+      "sourcedAt": "2025-07-30T00:00:00Z",
+      "defaultValue": "0",
+      "flags": [
+        "release"
+      ],
+      "description": "Add N ms of delay to every low-level read operation, to simulate a slow disk"
+    },
+    "uiData": {
+      "label": "fs_fake_read_delay_ms",
+      "helperText": "Add N ms of delay to every low-level read operation, to simulate a slow disk",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "fs_report_sync_opens",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "release"
+      ],
+      "description": "0:Off, 1:Always, 2:Not during load",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "fs_report_sync_opens",
+      "helperText": "0:Off, 1:Always, 2:Not during load",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "fs_spew_readfieldlist",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "index <threshold bytes>: spew changes to ent index, optionally only spewing if update is > than threshold bytes",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "fs_spew_readfieldlist",
+      "helperText": "index <threshold bytes>: spew changes to ent index, optionally only spewing if update is > than threshold bytes",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "func_break_max_pieces",
     "consoleData": {
       "defaultValue": "15",
@@ -2270,6 +2368,44 @@
     }
   },
   {
+    "command": "host_framerate",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "release"
+      ],
+      "description": "Set to lock per-frame time elapse.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "host_framerate",
+      "helperText": "Set to lock per-frame time elapse.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "host_readconfig_ignore_userconfig",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Whether we should ignore the user config file for reading/writing.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "host_readconfig_ignore_userconfig",
+      "helperText": "Whether we should ignore the user config file for reading/writing.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "host_timescale",
     "consoleData": {
       "defaultValue": "1",
@@ -2287,6 +2423,66 @@
       "defaultValue": 1,
       "requiresCheats": true,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "host_timescale_dec",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Decrement the timescale by one step",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "host_timescale_dec",
+      "helperText": "Decrement the timescale by one step",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "host_timescale_inc",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Increment the timescale by one step",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "host_timescale_inc",
+      "helperText": "Increment the timescale by one step",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "host_writeconfig",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Saves out the user config values.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "host_writeconfig",
+      "helperText": "Saves out the user config values.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -2766,6 +2962,111 @@
       "defaultValue": true,
       "requiresCheats": true,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "log_color",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Set the color of a logging channel.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "log_color",
+      "helperText": "Set the color of a logging channel.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "log_dumpchannels",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Dumps information about all logging channels.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "log_dumpchannels",
+      "helperText": "Dumps information about all logging channels.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "log_flags",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Set the flags on a logging channel.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "log_flags",
+      "helperText": "Set the flags on a logging channel.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "log_level",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Set the spew level of a logging channel.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "log_level",
+      "helperText": "Set the spew level of a logging channel.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "log_verbosity",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Set the verbosity of a logging channel.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "log_verbosity",
+      "helperText": "Set the verbosity of a logging channel.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {

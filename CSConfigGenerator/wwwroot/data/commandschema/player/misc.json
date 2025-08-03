@@ -5496,6 +5496,44 @@
     }
   },
   {
+    "command": "dota_enable_spatial_audio",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "release"
+      ],
+      "description": "Flag to enable spatial audio in Dota 2.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dota_enable_spatial_audio",
+      "helperText": "Flag to enable spatial audio in Dota 2.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "dota_spatial_audio_mix",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "release"
+      ],
+      "description": "Mix value to blend spatial and non-spatial audio in Dota 2.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dota_spatial_audio_mix",
+      "helperText": "Mix value to blend spatial and non-spatial audio in Dota 2.",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "dsp_volume",
     "consoleData": {
       "defaultValue": "0.8",
@@ -5862,6 +5900,25 @@
     }
   },
   {
+    "command": "mm_dedicated_force_servers",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "release"
+      ],
+      "description": "Comma delimited list of ip:port of servers used to search for dedicated servers instead of searching for public servers. Use syntax `publicip1:port|privateip1:port,publicip2:port|privateip2:port` if your server is behind NAT. If the server is behind NAT, you can specify `0.0.0.0|privateip:port` and if server port is in the list of `mm_server_search_lan_ports` its public address should be automatically detected.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mm_dedicated_force_servers",
+      "helperText": "Comma delimited list of ip:port of servers used to search for dedicated servers instead of searching for public servers. Use syntax `publicip1:port|privateip1:port,publicip2:port|privateip2:port` if your server is behind NAT. If the server is behind NAT, you can specify `0.0.0.0|privateip:port` and if server port is in the list of `mm_server_search_lan_ports` its public address should be automatically detected.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "mm_dedicated_search_maxping",
     "consoleData": {
       "defaultValue": "150",
@@ -5898,6 +5955,63 @@
       "defaultValue": "27015,27016,27017,27018,27019,27020",
       "requiresCheats": false,
       "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "mm_session_search_qos_timeout",
+    "consoleData": {
+      "defaultValue": "15",
+      "flags": [
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mm_session_search_qos_timeout",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mm_session_sys_kick_ban_duration",
+    "consoleData": {
+      "defaultValue": "180",
+      "flags": [
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mm_session_sys_kick_ban_duration",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 180,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mm_session_sys_pkey",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mm_session_sys_pkey",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6261,6 +6375,48 @@
     }
   },
   {
+    "command": "rcon_address",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "norecord",
+        "release",
+        "server_cant_query"
+      ],
+      "description": "Address of remote server if sending unconnected rcon commands (format x.x.x.x:p)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "rcon_address",
+      "helperText": "Address of remote server if sending unconnected rcon commands (format x.x.x.x:p)",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "rcon_password",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "norecord",
+        "release",
+        "server_cant_query"
+      ],
+      "description": "remote console password.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "rcon_password",
+      "helperText": "remote console password.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "reset_voice_on_input_stallout",
     "consoleData": {
       "defaultValue": "false",
@@ -6317,6 +6473,44 @@
       "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": false
+    }
+  },
+  {
+    "command": "sc_aggregate_indirect_draw_compaction",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "release"
+      ],
+      "description": "Use multidrawindirect...count if the driver/hardware supports it",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_aggregate_indirect_draw_compaction",
+      "helperText": "Use multidrawindirect...count if the driver/hardware supports it",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_aggregate_indirect_draw_compaction_threshold",
+    "consoleData": {
+      "defaultValue": "8",
+      "flags": [
+        "release"
+      ],
+      "description": "Threshold of indirect draws when we will do compaction",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_aggregate_indirect_draw_compaction_threshold",
+      "helperText": "Threshold of indirect draws when we will do compaction",
+      "type": "unknown_numeric",
+      "defaultValue": 8,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -6460,26 +6654,6 @@
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "tv_nochat",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a",
-        "user"
-      ],
-      "description": "Don't receive chat messages from other SourceTV spectators",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "tv_nochat",
-      "helperText": "Don't receive chat messages from other SourceTV spectators",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
     }
   },
   {

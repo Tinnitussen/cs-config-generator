@@ -3479,6 +3479,529 @@
     }
   },
   {
+    "command": "csm_bias_override_0",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_bias_override_0",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_bias_override_1",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_bias_override_1",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_bias_override_2",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_bias_override_2",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_bias_override_3",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_bias_override_3",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_cascade0_override_dist",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_cascade0_override_dist",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_cascade1_override_dist",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_cascade1_override_dist",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_cascade2_override_dist",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_cascade2_override_dist",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_cascade3_override_dist",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_cascade3_override_dist",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_cascade_viewdir_shadow_bias_scale",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_cascade_viewdir_shadow_bias_scale",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_max_dist_between_caster_and_receiver",
+    "consoleData": {
+      "defaultValue": "15000",
+      "flags": [
+        "cheat"
+      ],
+      "description": "default pushback",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_max_dist_between_caster_and_receiver",
+      "helperText": "default pushback",
+      "type": "unknown_numeric",
+      "defaultValue": 15000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_max_visible_dist",
+    "consoleData": {
+      "defaultValue": "7500",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_max_visible_dist",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 7500,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_res_override_0",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_res_override_0",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_res_override_1",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_res_override_1",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_res_override_2",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_res_override_2",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_res_override_3",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_res_override_3",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_shadow_worldview_align_x_to_u",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_shadow_worldview_align_x_to_u",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_shadow_worldview_shear_align_z_to_v",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_shadow_worldview_shear_align_z_to_v",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_split_log_scalar",
+    "consoleData": {
+      "defaultValue": "0.85",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_split_log_scalar",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.85,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "csm_sst_max_visible_dist",
+    "consoleData": {
+      "defaultValue": "2000",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_sst_max_visible_dist",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 2000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_sst_pushback_distance",
+    "consoleData": {
+      "defaultValue": "1500",
+      "flags": [
+        "cheat"
+      ],
+      "description": "default pushback",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_sst_pushback_distance",
+      "helperText": "default pushback",
+      "type": "unknown_numeric",
+      "defaultValue": 1500,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_sst_shadow_focus_region_maxz",
+    "consoleData": {
+      "defaultValue": "2000",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_sst_shadow_focus_region_maxz",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 2000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_sst_shadow_focus_region_minz",
+    "consoleData": {
+      "defaultValue": "-2000",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_sst_shadow_focus_region_minz",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -2000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_viewdir_shadow_bias",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_viewdir_shadow_bias",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_viewmodel_farz",
+    "consoleData": {
+      "defaultValue": "30",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_viewmodel_farz",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 30,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_viewmodel_max_shadow_dist",
+    "consoleData": {
+      "defaultValue": "21",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_viewmodel_max_shadow_dist",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 21,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_viewmodel_max_visible_dist",
+    "consoleData": {
+      "defaultValue": "1000",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_viewmodel_max_visible_dist",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1000,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "csm_viewmodel_nearz",
+    "consoleData": {
+      "defaultValue": "0.5",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "csm_viewmodel_nearz",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.5,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
     "command": "debug_entity_outline_highlight",
     "consoleData": {
       "defaultValue": "false",
@@ -3556,6 +4079,65 @@
       "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
+    }
+  },
+  {
+    "command": "dsp_dist_max",
+    "consoleData": {
+      "defaultValue": "1440",
+      "flags": [
+        "cheat",
+        "demo"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dsp_dist_max",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1440,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "dsp_dist_min",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cheat",
+        "demo"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dsp_dist_min",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "dsp_off",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "dsp_off",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
     }
   },
   {
@@ -3836,6 +4418,126 @@
       "helperText": "Overrides the map's fog settings (-1 populates fog_ vars with map's values)",
       "type": "unknown_numeric",
       "defaultValue": 0,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "fog_override_color",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Sets the fog color override",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "fog_override_color",
+      "helperText": "Sets the fog color override",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "fog_override_enable",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Use fog_override convars instead of world fog data",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "fog_override_enable",
+      "helperText": "Use fog_override convars instead of world fog data",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "fog_override_end",
+    "consoleData": {
+      "defaultValue": "3500",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "fog_override_end",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 3500,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "fog_override_exponent",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "fog_override_exponent",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "fog_override_max_density",
+    "consoleData": {
+      "defaultValue": "0.4",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "fog_override_max_density",
+      "helperText": "",
+      "type": "float",
+      "defaultValue": 0.4,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "fog_override_start",
+    "consoleData": {
+      "defaultValue": "1000",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "fog_override_start",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": 1000,
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
@@ -4783,6 +5485,26 @@
     }
   },
   {
+    "command": "phys_debug_showdefaultmaterial",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "If enabled, surfaces with default material are highlighted in physics debug geometry.",
+      "sourcedAt": "2025-07-28T00:00:00Z"
+    },
+    "uiData": {
+      "label": "phys_debug_showdefaultmaterial",
+      "helperText": "If enabled, surfaces with default material are highlighted in physics debug geometry.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    },
+    "deprecated": true
+  },
+  {
     "command": "phys_expensive_shape_threshold",
     "consoleData": {
       "defaultValue": "6",
@@ -4800,6 +5522,49 @@
       "defaultValue": 6,
       "requiresCheats": true,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "phys_highlight_expensive_objects",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Highlight expensive physics objects",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "phys_highlight_expensive_objects",
+      "helperText": "Highlight expensive physics objects",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "phys_highlight_expensive_objects_strength",
+    "consoleData": {
+      "defaultValue": "0.02",
+      "flags": [
+        "cheat"
+      ],
+      "description": "Highlight expensive physics objects strength",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "phys_highlight_expensive_objects_strength",
+      "helperText": "Highlight expensive physics objects strength",
+      "type": "float",
+      "defaultValue": 0.02,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
     }
   },
   {
@@ -7561,6 +8326,468 @@
     }
   },
   {
+    "command": "sc_check_world",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-28T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_check_world",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    },
+    "deprecated": true
+  },
+  {
+    "command": "sc_disableThreading",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_disableThreading",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_disable_culling_boxes",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_disable_culling_boxes",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_disable_procedural_layer_rendering",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_disable_procedural_layer_rendering",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_disable_shadow_fastpath",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_disable_shadow_fastpath",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_disable_shadow_materials",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_disable_shadow_materials",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_disable_spotlight_shadows",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_disable_spotlight_shadows",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_disable_world_materials",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_disable_world_materials",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_dump_lists",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_dump_lists",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_dumpworld",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Dump a list of the objects in a sceneworld (Usage: sc_dumpworld <world_index>)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_dumpworld",
+      "helperText": "Dump a list of the objects in a sceneworld (Usage: sc_dumpworld <world_index>)",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_dumpworld3d",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Dump the objects in a sceneworld into a 3d geoview buffer (Usage: sc_dumpworld3d <world_index>)",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_dumpworld3d",
+      "helperText": "Dump the objects in a sceneworld into a 3d geoview buffer (Usage: sc_dumpworld3d <world_index>)",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_extended_stats",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_extended_stats",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_fade_distance_scale_override",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_fade_distance_scale_override",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_force_lod_level",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_force_lod_level",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_force_materials_batchable",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_force_materials_batchable",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_force_translation_in_projection",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "If enabled, the camera's translation will be included in the projection matrix.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_force_translation_in_projection",
+      "helperText": "If enabled, the camera's translation will be included in the projection matrix.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_listworlds",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "List all the active sceneworlds",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_listworlds",
+      "helperText": "List all the active sceneworlds",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_only_render_opaque",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_only_render_opaque",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_only_render_shadowcasters",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_only_render_shadowcasters",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_reject_all_objects",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_reject_all_objects",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_screen_size_lod_scale_override",
+    "consoleData": {
+      "defaultValue": "-1",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_screen_size_lod_scale_override",
+      "helperText": "",
+      "type": "unknown_numeric",
+      "defaultValue": -1,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sc_setclassflags",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "Low level command to set the flags byte associated with an object class. sc_SetClassFlags <classname> <value>",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_setclassflags",
+      "helperText": "Low level command to set the flags byte associated with an object class. sc_SetClassFlags <classname> <value>",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_showclasses",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "List the object class names known by scenesystem",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_showclasses",
+      "helperText": "List the object class names known by scenesystem",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "sc_skip_traversal",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sc_skip_traversal",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "shake_stop",
     "consoleData": {
       "defaultValue": null,
@@ -7722,6 +8949,26 @@
       "defaultValue": 0,
       "requiresCheats": true,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "stopsound",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "cheat"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "stopsound",
+      "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
