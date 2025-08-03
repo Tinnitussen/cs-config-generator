@@ -18,14 +18,4 @@ builder.Services.AddScoped<IToastService, ToastService>();
 builder.Services.AddKeyedScoped<IConfigStateService, PlayerConfigStateService>("PlayerConfigStateServiceKey");
 builder.Services.AddKeyedScoped<IConfigStateService, ServerConfigStateService>("ServerConfigStateServiceKey");
 
-// Initialize services
-var host = builder.Build();
-var schemaService = host.Services.GetRequiredService<ISchemaService>();
-var playerConfigStateService = host.Services.GetRequiredKeyedService<IConfigStateService>("PlayerConfigStateServiceKey");
-var serverConfigStateService = host.Services.GetRequiredKeyedService<IConfigStateService>("ServerConfigStateServiceKey");
-
-await schemaService.InitializeAsync();
-playerConfigStateService.InitializeDefaults();
-serverConfigStateService.InitializeDefaults();
-
-await host.RunAsync();
+await builder.Build().RunAsync();
