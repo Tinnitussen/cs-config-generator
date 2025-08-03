@@ -12,38 +12,39 @@ from pathlib import Path
 from typing import List
 
 # Base directories - calculated dynamically from this file's location
-UTILS_DIR = Path(__file__).parent
+UTILS_DIR = Path(__file__).parent.resolve()
 TOOLS_DIR = UTILS_DIR.parent
 PROJECT_ROOT = TOOLS_DIR.parent
 
-# Input directories
+# --- Input Directories ---
 DATA_DIR = TOOLS_DIR / "data"
 RULES_DIR = TOOLS_DIR / "rules"
 SCRIPTS_DIR = TOOLS_DIR / "scripts"
-CONFIGS_DIR = DATA_DIR / "pro-player-configs" / "unzipped-configs"
 
-# Main data files
+# Config source directories
+PRO_PLAYER_CONFIGS_DIR = DATA_DIR / "pro-player-configs" / "unzipped-configs"
+SERVER_CONFIGS_DIR = DATA_DIR / "server-configs"
+
+# --- Main Data Files ---
 COMMANDS_JSON = DATA_DIR / "commands.json"
 PARSING_RULES_JSON = RULES_DIR / "parsing_validation_rules.json"
 
-# File patterns
+# --- File Patterns ---
 SNAPSHOT_PATTERN = "all_commands-*.txt"
 SNAPSHOT_GLOB = str(DATA_DIR / SNAPSHOT_PATTERN)
 
-# Output directories
+# --- Output Directories ---
 CLASSIFIED_DIR = DATA_DIR / "classified_commands"
 SCHEMA_DIR = PROJECT_ROOT / "CSConfigGenerator" / "wwwroot" / "data" / "commandschema"
 
 # Specific classified command files
 PLAYER_COMMANDS = CLASSIFIED_DIR / "player_commands.json"
 SERVER_COMMANDS = CLASSIFIED_DIR / "server_commands.json"
-SHARED_COMMANDS = CLASSIFIED_DIR / "shared_commands.json"
 UNCATEGORIZED_COMMANDS = CLASSIFIED_DIR / "uncategorized_commands.json"
 
 # Schema output directories
 PLAYER_SCHEMA_DIR = SCHEMA_DIR / "player"
 SERVER_SCHEMA_DIR = SCHEMA_DIR / "server"
-SHARED_SCHEMA_DIR = SCHEMA_DIR / "shared"
 UNCATEGORIZED_SCHEMA_DIR = SCHEMA_DIR / "uncategorized"
 
 def setup_rules_import():
@@ -65,7 +66,6 @@ def ensure_output_dirs():
         SCHEMA_DIR,
         PLAYER_SCHEMA_DIR,
         SERVER_SCHEMA_DIR,
-        SHARED_SCHEMA_DIR,
         UNCATEGORIZED_SCHEMA_DIR
     ]
 
@@ -141,11 +141,17 @@ def verify_paths():
     print(f"RULES_DIR: {RULES_DIR} (exists: {RULES_DIR.exists()})")
     print(f"COMMANDS_JSON: {COMMANDS_JSON} (exists: {COMMANDS_JSON.exists()})")
 
-    if CONFIGS_DIR.exists():
-        cfg_count = len(list(CONFIGS_DIR.glob("*.cfg")))
-        print(f"CONFIGS_DIR: {CONFIGS_DIR} (exists: True, .cfg files: {cfg_count})")
+    if PRO_PLAYER_CONFIGS_DIR.exists():
+        cfg_count = len(list(PRO_PLAYER_CONFIGS_DIR.glob("*.cfg")))
+        print(f"PRO_PLAYER_CONFIGS_DIR: {PRO_PLAYER_CONFIGS_DIR} (exists: True, .cfg files: {cfg_count})")
     else:
-        print(f"CONFIGS_DIR: {CONFIGS_DIR} (exists: False)")
+        print(f"PRO_PLAYER_CONFIGS_DIR: {PRO_PLAYER_CONFIGS_DIR} (exists: False)")
+
+    if SERVER_CONFIGS_DIR.exists():
+        cfg_count = len(list(SERVER_CONFIGS_DIR.glob("*.cfg")))
+        print(f"SERVER_CONFIGS_DIR: {SERVER_CONFIGS_DIR} (exists: True, .cfg files: {cfg_count})")
+    else:
+        print(f"SERVER_CONFIGS_DIR: {SERVER_CONFIGS_DIR} (exists: False)")
 
     snapshot_files = find_snapshot_files()
     print(f"Snapshot files found: {len(snapshot_files)}")
