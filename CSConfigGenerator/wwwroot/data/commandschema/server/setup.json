@@ -686,6 +686,26 @@
     }
   },
   {
+    "command": "changelevel",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "changelevel <mapname> :Multiplayer change level.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "changelevel",
+      "helperText": "changelevel <mapname> :Multiplayer change level.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "chicken_stop",
     "consoleData": {
       "defaultValue": "false",
@@ -3777,6 +3797,69 @@
     }
   },
   {
+    "command": "kick",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Kick a player by name.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "kick",
+      "helperText": "Kick a player by name.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "kickid",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Kick a player by userid or uniqueid, with a message.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "kickid",
+      "helperText": "Kick a player by userid or uniqueid, with a message.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "kickid_hltv",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "norecord",
+        "release"
+      ],
+      "description": "Kick a player by userid or uniqueid, with a message.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "kickid_hltv",
+      "helperText": "Kick a player by userid or uniqueid, with a message.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "kill",
     "consoleData": {
       "defaultValue": null,
@@ -3966,6 +4049,28 @@
       "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "map",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release",
+        "vconsole_fuzzy",
+        "vconsole_set_focus"
+      ],
+      "description": "map <mapname> :Load a new map.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "map",
+      "helperText": "map <mapname> :Load a new map.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   },
   {
@@ -10863,6 +10968,26 @@
     }
   },
   {
+    "command": "pause",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Toggle the server pause state.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "pause",
+      "helperText": "Toggle the server pause state.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
     "command": "phys_joint_teleport",
     "consoleData": {
       "defaultValue": "true",
@@ -12257,6 +12382,26 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "setpause",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Set the pause state of the server.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "setpause",
+      "helperText": "Set the pause state of the server.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -15824,6 +15969,26 @@
     "uiData": {
       "label": "timeout_terrorist_start",
       "helperText": "",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "unpause",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Clear the pause state of the server.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "unpause",
+      "helperText": "Clear the pause state of the server.",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,

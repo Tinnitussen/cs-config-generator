@@ -1,8 +1,12 @@
 # --- Rule-based classification logic for splitting commands ---
 
-PLAYER_PREFIXES = ["cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_"]
-SERVER_PREFIXES = ["sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_", "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_", "test_", "soundscape_", "scene_", "particle_", "shatterglass_", "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_", "contributionscore_"]
-SHARED_PREFIXES = ["ai_", "weapon_", "ragdoll_", "ik_", "skeleton_"]
+PLAYER_PREFIXES = ["cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_", "csm_", "sc_", "dsp_", "phys_", "rcon_", "net_", "mm_", "crash", "fog_", "key_", "dota_"]
+SERVER_PREFIXES = ["sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_", "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_", "test_", "soundscape_", "scene_", "particle_", "shatterglass_", "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_", "contributionscore_", "tv_"]
+SHARED_PREFIXES = ["ai_", "weapon_", "ragdoll_", "ik_", "skeleton_", "log_", "fs_", "host_"]
+
+PLAYER_COMMANDS = {"bind", "alias", "exec", "quit", "disconnect", "connect", "find", "help", "rcon", "unbind", "unbindall", "toggle", "execifexists", "incrementvar", "multvar", "cyclevar", "record", "stop", "playdemo", "timedemo", "soundinfo", "stopsound"}
+SERVER_COMMANDS = {"map", "changelevel", "kick", "kickid", "kickid_hltv", "pause", "unpause", "setpause"}
+SHARED_COMMANDS = {"echo", "echoln"}
 
 def get_prefix(command_name: str):
     """Extracts the prefix from a command name."""
@@ -48,6 +52,12 @@ def get_command_category(command: dict) -> str:
     elif prefix in SERVER_PREFIXES:
         return "server"
     elif prefix in SHARED_PREFIXES:
+        return "shared"
+    elif command_name in PLAYER_COMMANDS:
+        return "player"
+    elif command_name in SERVER_COMMANDS:
+        return "server"
+    elif command_name in SHARED_COMMANDS:
         return "shared"
     elif is_archived or is_user:
         return "player"

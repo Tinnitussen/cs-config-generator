@@ -2,7 +2,7 @@ import json
 import re
 from datetime import datetime
 import os
-
+import argparse
 def extract_date_from_filename(filename):
     """Extract date from filename and convert to ISO 8601 timestamp."""
     # Extract date pattern like "2025-30-07" from filename
@@ -131,18 +131,24 @@ def unmark_deprecated_commands(existing_commands, current_commands, sourced_at):
 
 def main():
     # --- Path setup ---
+    parser = argparse.ArgumentParser(description="Parse CS2 command snapshot file.")
+    parser.add_argument(
+        "input_file",
+        help="Path to the input command snapshot file (e.g., 'data/all_commands-YYYY-DD-MM.txt')."
+    )
+    args = parser.parse_args()
+
     # Get the directory of the current script
     script_dir = os.path.dirname(os.path.abspath(__file__))
     # Get the parent 'Tools' directory
     tools_dir = os.path.dirname(script_dir)
 
     # Define file paths relative to the 'Tools' directory
-    input_file = os.path.join(tools_dir, "data", "all_commands-2025-30-07.txt")
     output_file = os.path.join(tools_dir, "data", "commands.json")
     rules_file = os.path.join(tools_dir, "rules", "parsing_validation_rules.json")
     
     # Extract timestamp from filename
-    sourced_at = extract_date_from_filename(input_file)
+    sourced_at = extract_date_from_filename(args.input_file)
     print(f"Using timestamp: {sourced_at}")
     
     # Load existing data
@@ -151,7 +157,7 @@ def main():
     
     # Parse input file to get current commands and their data
     print("Parsing input file...")
-    current_commands, parsed_commands = parse_input_file(input_file, rules_file)
+    current_commands, parsed_commands = parse_input_file(args.input_file, rules_file)
     print(f"Found {len(current_commands)} valid commands in input file")
     
     # Step 1: Unmark deprecated commands that are now back
