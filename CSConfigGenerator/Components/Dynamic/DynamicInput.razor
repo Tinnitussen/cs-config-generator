@@ -40,6 +40,8 @@
                            id="@ViewModel.Command.Command"
                            class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
                            @oninput="OnInputChanged"
+                           @onfocus="OnFocus"
+                           @onblur="OnBlur"
                            value="@CurrentValue"
                            spellcheck="false" />
                     @if (!string.IsNullOrEmpty(ValidationMessage))
@@ -77,12 +79,26 @@
 
     private string CurrentValue { get; set; } = string.Empty;
     private string? ValidationMessage { get; set; }
+    private bool _isFocused;
 
     protected override void OnInitialized()
     {
         // Initialize CurrentValue with the value from the view model.
         // Use InvariantCulture for consistent formatting of numbers.
         CurrentValue = string.Format(CultureInfo.InvariantCulture, "{0}", ViewModel.Value);
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (!_isFocused)
+        {
+            var formattedValue = string.Format(CultureInfo.InvariantCulture, "{0}", ViewModel.Value);
+            if (formattedValue != CurrentValue)
+            {
+                CurrentValue = formattedValue;
+                ValidationMessage = null;
+            }
+        }
     }
 
     private bool BoolValue
@@ -130,6 +146,19 @@
         {
             ValidationMessage = errorMessage;
             // Do not update ViewModel.Value if validation fails
+        }
+    }
+
+    private void OnFocus() => _isFocused = true;
+    private void OnBlur()
+    {
+        _isFocused = false;
+        // Also, when focus is lost, if the current value is invalid, revert it.
+        var (isValid, _) = SettingValidator.Validate(ViewModel.Command.UiData.Type, CurrentValue);
+        if (!isValid)
+        {
+            CurrentValue = string.Format(CultureInfo.InvariantCulture, "{0}", ViewModel.Value);
+            ValidationMessage = null;
         }
     }
 }
