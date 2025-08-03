@@ -11,38 +11,9 @@
     </div>
 
     <main>
-        @if (_isLoading)
-        {
-            <article class="content px-4">
-                <p>Loading...</p>
-            </article>
-        }
-        else
-        {
-            <article class="content px-4">
-                @Body
-            </article>
-        }
+        <article class="content px-4">
+            @Body
+        </article>
     </main>
 </div>
-
 <ToastContainer />
-
-@code {
-    private bool _isLoading = true;
-
-    protected override async Task OnInitializedAsync()
-    {
-        // These services are not used directly in the component, but they need to be initialized.
-        // We can't inject them directly using `[Inject]` with a key without also using them,
-        // so we retrieve them from the service provider instead.
-        var playerConfigStateService = ServiceProvider.GetRequiredKeyedService<IConfigStateService>("PlayerConfigStateServiceKey");
-        var serverConfigStateService = ServiceProvider.GetRequiredKeyedService<IConfigStateService>("ServerConfigStateServiceKey");
-
-        await SchemaService.InitializeAsync();
-        playerConfigStateService.InitializeDefaults();
-        serverConfigStateService.InitializeDefaults();
-
-        _isLoading = false;
-    }
-}
