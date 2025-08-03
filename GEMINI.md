@@ -17,7 +17,8 @@ This is a Blazor WebAssembly application designed to generate Counter-Strike 2 c
 *   **Framework:** Blazor WebAssembly (standalone)
 *   **Language:** C#
 *   **.NET Version:** 9.0
-*   **UI:** Standard Blazor components with custom CSS. It does not appear to be using a UI library like MudBlazor or Blazorise.
+*   **UI Framework:** Bootstrap 5
+*   **Icon Library:** Bootstrap Icons
 *   **Deployment:** GitHub Actions to GitHub Pages.
 
 ### Project Structure and Key Components
