@@ -1,10 +1,19 @@
 import os
 import json
+import sys
 from collections import Counter
+
+# --- Path setup ---
+# Add the 'rules' directory to the Python path to import the classification rules.
+script_dir = os.path.dirname(os.path.abspath(__file__))
+rules_dir = os.path.join(os.path.dirname(os.path.dirname(script_dir)), 'rules')
+if rules_dir not in sys.path:
+    sys.path.append(rules_dir)
+
+from popularity_rules import extract_commands_from_cfg, should_mark_as_popular, should_update_visibility
 
 COMMANDS_JSON = "data/commands.json"
 CONFIGS_DIR = "data/pro-player-configs/unzipped-configs"
-POPULARITY_THRESHOLD = 0.10  # 10%
 
 def load_commands_with_types(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
@@ -13,18 +22,6 @@ def load_commands_with_types(filepath):
 def save_commands_with_types(data, filepath):
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
-
-def extract_commands_from_cfg(filepath):
-    commands = set()
-    with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith("//") or line.startswith("#"):
-                continue
-            # Extract the first word (the command)
-            cmd = line.split()[0]
-            commands.add(cmd)
-    return commands
 
 def main():
     # 1. Load all known commands from commands.json
@@ -57,10 +54,11 @@ def main():
         if not cmd:
             continue
         count = command_counter.get(cmd, 0)
-        if total_cfgs > 0 and (count / total_cfgs) > POPULARITY_THRESHOLD:
-            if "uiData" in entry and entry["uiData"].get("hideFromDefaultView", True):
-                entry["uiData"]["hideFromDefaultView"] = False
-                flagged_count += 1
+        is_popular = should_mark_as_popular(count, total_cfgs)
+
+        if should_update_visibility(entry, is_popular):
+            entry["uiData"]["hideFromDefaultView"] = False
+            flagged_count += 1
 
     # 4. Save updated commands.json
     save_commands_with_types(commands_data, COMMANDS_JSON)
