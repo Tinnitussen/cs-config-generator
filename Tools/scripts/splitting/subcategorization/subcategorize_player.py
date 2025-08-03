@@ -50,7 +50,7 @@ def subcategorize_player():
         subcategory = get_player_subcategory(command)
         subcategories[subcategory].append(command)
 
-    output_dir = "CSConfigGenerator/wwwroot/data/commandschema/player"
+    output_dir = os.path.join("CSConfigGenerator", "wwwroot", "data", "commandschema", "player")
     for category, command_list in subcategories.items():
         output_file = os.path.join(output_dir, f"{category}.json")
         print(f"Saving {len(command_list)} commands to '{output_file}'...")

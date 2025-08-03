@@ -10,7 +10,7 @@ rules_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(script_
 if rules_dir not in sys.path:
     sys.path.append(rules_dir)
 
-from shared_subcategorization_rules import get_shared_subcategory
+from server_subcategorization_rules import get_server_subcategory
 
 def load_commands(filepath: str):
     """Load the commands.json file"""
@@ -24,23 +24,34 @@ def save_json(data: list, filepath: str):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
 
-def subcategorize_shared():
-    """Subcategorizes the shared commands using external rules."""
-    commands = load_commands('Tools/data/classified_commands/shared_commands.json')
+def subcategorize_server():
+    """Subcategorizes the server commands using external rules."""
+    input_file = 'Tools/data/classified_commands/server_commands.json'
+    commands = load_commands(input_file)
+
+    print(f"Loaded {len(commands)} server commands from {input_file}")
 
     subcategories = {
-        "tbd": []
+        "setup": [],
+        "teams": [],
+        "rounds": [],
+        "objectives": [],
+        "spawning": [],
+        "rules": [],
+        "economy": [],
+        "bots": [],
+        "gotv": []
     }
 
     for command in commands:
-        subcategory = get_shared_subcategory(command)
+        subcategory = get_server_subcategory(command)
         subcategories[subcategory].append(command)
 
-    output_dir = "CSConfigGenerator/wwwroot/data/commandschema/shared"
+    output_dir = os.path.join("CSConfigGenerator", "wwwroot", "data", "commandschema", "server")
     for category, command_list in subcategories.items():
         output_file = os.path.join(output_dir, f"{category}.json")
         print(f"Saving {len(command_list)} commands to '{output_file}'...")
         save_json(command_list, output_file)
 
 if __name__ == "__main__":
-    subcategorize_shared()
+    subcategorize_server()
