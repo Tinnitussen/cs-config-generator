@@ -20,6 +20,11 @@
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="nav flex-column">
         <div class="nav-item px-3">
+            <button class="btn btn-link nav-link" @onclick="ToggleTheme">
+                <span class="bi bi-moon-stars-fill-nav-menu" aria-hidden="true"></span> Toggle Theme
+            </button>
+        </div>
+        <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
             </NavLink>
@@ -64,5 +69,10 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async Task ToggleTheme()
+    {
+        await JSRuntime.InvokeVoidAsync("toggleTheme");
     }
 }

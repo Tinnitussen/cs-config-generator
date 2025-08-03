@@ -1,8 +1,8 @@
 .config-editor {
-    background-color: #252526;
+    background-color: var(--card-background);
     display: flex;
     flex-direction: column;
-    border: 1px solid #3a3a3a;
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     height: 100%;
     padding: 0;
@@ -13,8 +13,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2d2d2d;
-    border-bottom: 2px solid #3a3a3a;
+    background-color: var(--card-background);
+    border-bottom: 2px solid var(--border-color);
     padding: 0.75rem 1rem;
     border-radius: 0.5rem 0.5rem 0 0;
 }
@@ -22,7 +22,7 @@
 .config-editor-header h3 {
     margin: 0;
     font-size: 1.25rem;
-    color: #e2e2e2;
+    color: var(--text-color);
     font-weight: 500;
 }
 
@@ -32,21 +32,21 @@
 }
 
 .config-editor-actions .btn {
-    background-color: #333333;
-    color: #d4d4d4;
-    border-color: #444444;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    border-color: var(--input-border);
 }
 
 .config-editor-actions .btn:hover {
-    background-color: #444444;
-    color: #ffffff;
+    background-color: var(--code-background);
+    color: var(--text-color);
 }
 
 .config-editor-textarea {
     font-family: Consolas, monospace;
     font-size: 0.875rem;
-    color: #d4d4d4;
-    background-color: #1e1e1e;
+    color: var(--code-text-color);
+    background-color: var(--code-background);
     border: none;
     border-radius: 0 0 0.5rem 0.5rem;
     outline: none;
@@ -63,7 +63,7 @@
 /* WebKit scrollbar styling */
 .config-editor-textarea::-webkit-scrollbar {
     width: 0.5rem; /* Width of the scrollbar */
-    background-color: #1e1e1e; /* Background of the scrollbar area */
+    background-color: var(--code-background); /* Background of the scrollbar area */
     display: none; /* Hidden by default */
 }
 
@@ -72,13 +72,13 @@
 }
 
 .config-editor-textarea::-webkit-scrollbar-track {
-    background: #2d2d2d; /* Color of the track */
-  border-radius: 10px;
+    background: var(--card-background); /* Color of the track */
+    border-radius: 10px;
 }
 
 
 .config-editor-textarea::-webkit-scrollbar-thumb {
-    background: #555; /* Color of the scroll thumb */
+    background: var(--secondary-color); /* Color of the scroll thumb */
     border-radius: 10px;
 }
 
@@ -89,7 +89,7 @@
 .config-editor-textarea:focus {
     box-shadow: none;
     border: none;
-    background-color: #252526;
+    background-color: var(--card-background);
 }
 
 .config-editor .btn {

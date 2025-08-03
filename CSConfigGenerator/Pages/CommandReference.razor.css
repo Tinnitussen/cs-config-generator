@@ -1,7 +1,8 @@
 /* Style for the filter card to make it clean and rounded */
-.card.bg-light {
+.card {
     border-radius: 0.25rem;
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-background);
 }
 
 .card-body.p-2 {
@@ -86,7 +87,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    color: #adb5bd; /* Bootstrap's placeholder color */
+    color: var(--secondary-color); /* Bootstrap's placeholder color */
     border-color: transparent;
     background-color: transparent;
     z-index: 1;
