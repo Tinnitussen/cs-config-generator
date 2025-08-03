@@ -1,10 +1,15 @@
-import json
+import sys
+from pathlib import Path
 from collections import defaultdict
 
-def load_commands(filepath: str):
-    """Load the commands.json file"""
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return json.load(f)
+# --- Path setup ---
+# Add the utils directory to path and import shared paths
+script_dir = Path(__file__).parent
+utils_dir = script_dir.parent.parent / 'utils'
+if str(utils_dir) not in sys.path:
+    sys.path.append(str(utils_dir))
+
+from paths import COMMANDS_JSON, load_json
 
 def get_prefix(command_name: str):
     """Extracts the prefix from a command name."""
@@ -15,7 +20,13 @@ def get_prefix(command_name: str):
 
 def analyze_prefixes():
     """Analyzes the prefixes of commands and their distribution across categories."""
-    commands = load_commands('Tools/data/commands.json')
+
+    if not COMMANDS_JSON.exists():
+        print(f"Error: Commands file not found at {COMMANDS_JSON}")
+        return 1
+
+    print(f"Loading commands from {COMMANDS_JSON}...")
+    commands = load_json(COMMANDS_JSON)
 
     prefix_counts = defaultdict(int)
 
@@ -32,11 +43,26 @@ def analyze_prefixes():
     # Sort prefixes by total count
     sorted_prefixes = sorted(prefix_counts.items(), key=lambda item: item[1], reverse=True)
 
+    print(f"\nPrefix Analysis (commands without 'sv' or 'cl' flags):")
     print(f"{'Prefix':<20} {'Count':<10}")
     print("-" * 30)
 
     for prefix, count in sorted_prefixes:
         print(f"{prefix:<20} {count:<10}")
 
+    print(f"\nTotal prefixes analyzed: {len(sorted_prefixes)}")
+    total_commands = sum(count for _, count in sorted_prefixes)
+    print(f"Total commands with prefixes: {total_commands}")
+
+    return 0
+
 if __name__ == "__main__":
-    analyze_prefixes()
+    try:
+        exit_code = analyze_prefixes()
+        sys.exit(exit_code)
+    except KeyboardInterrupt:
+        print("\nAborted by user.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)

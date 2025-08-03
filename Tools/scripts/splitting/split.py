@@ -1,71 +1,36 @@
-import json
-import os
+import sys
+from pathlib import Path
 from typing import Dict, List, Any
+from collections import defaultdict
 
-def load_commands(filepath: str) -> List[Dict]:
-    """Load the commands.json file"""
-    with open(filepath, 'r', encoding='utf-8') as f:
-        return json.load(f)
+# --- Path setup ---
+# Add the utils directory to path and import shared paths
+script_dir = Path(__file__).parent
+utils_dir = script_dir.parent.parent / 'utils'
+if str(utils_dir) not in sys.path:
+    sys.path.append(str(utils_dir))
 
-def save_json(data: List[Dict], filepath: str):
-    """Save data to JSON file"""
-    # Create output directory if it doesn't exist
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
-    with open(filepath, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=2)
+from paths import (
+    COMMANDS_JSON, CLASSIFIED_DIR, setup_rules_import,
+    load_json, save_json, ensure_output_dirs
+)
 
-def get_prefix(command_name: str):
-    """Extracts the prefix from a command name."""
-    if command_name.startswith('+'):
-        return '+'
-    parts = command_name.split('_')
-    if len(parts) > 1:
-        return f"{parts[0]}_"
-    return None
+# Setup rules import
+setup_rules_import()
+from splitting_rules import get_command_category
 
 def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
     """
-    Classify commands into server, player, shared, and uncategorized.
+    Classify commands into server, player, shared, and uncategorized
+    using rules from an external file.
     """
-    classified_commands = {
-        "server": [],
-        "player": [],
-        "shared": [],
-        "uncategorized": []
-    }
+    classified_commands = defaultdict(list)
 
-    player_prefixes = ["cl_", "ui_", "joy_", "cam_", "c_", "+", "snd_", "r_", "mat_", "demo_"]
-    server_prefixes = ["sv_", "mp_", "bot_", "nav_", "ent_", "script_", "logaddress_", "rr_", "cast_", "navspace_", "markup_", "spawn_", "vis_", "telemetry_", "test_", "soundscape_", "scene_", "particle_", "shatterglass_", "create_", "debugoverlay_", "prop_", "g_", "ff_", "cash_", "contributionscore_"]
-    shared_prefixes = ["ai_", "weapon_", "ragdoll_", "ik_", "skeleton_"]
-    
     for command in commands:
-        flags = command.get('consoleData', {}).get('flags', [])
-        is_server = 'sv' in flags
-        is_client = 'cl' in flags
-        is_replicated = 'rep' in flags
-        is_archived = 'a' in flags
-        is_user = 'user' in flags
-        command_name = command['command']
-        prefix = get_prefix(command_name)
+        category = get_command_category(command)
+        classified_commands[category].append(command)
 
-        if is_replicated or (is_server and is_client):
-            classified_commands["shared"].append(command)
-        elif is_server:
-            classified_commands["server"].append(command)
-        elif is_client:
-            classified_commands["player"].append(command)
-        elif prefix in player_prefixes:
-            classified_commands["player"].append(command)
-        elif prefix in server_prefixes:
-            classified_commands["server"].append(command)
-        elif prefix in shared_prefixes:
-            classified_commands["shared"].append(command)
-        elif is_archived or is_user:
-            classified_commands["player"].append(command)
-        else:
-            classified_commands["uncategorized"].append(command)
-
-    return classified_commands
+    return dict(classified_commands)
 
 def verify_data_integrity(original: List[Dict], classified: Dict[str, List[Dict]]):
     """
@@ -94,23 +59,25 @@ def verify_data_integrity(original: List[Dict], classified: Dict[str, List[Dict]
     return True
 
 def main():
-    input_file = "Tools/data/commands.json"
-    output_dir = "Tools/data/classified_commands"
-    
+    """Main function to split commands into categories."""
+
     # Check if input file exists
-    if not os.path.exists(input_file):
-        print(f"Error: Input file '{input_file}' not found.")
-        return
-    
-    print(f"Loading commands from '{input_file}'...")
-    commands = load_commands(input_file)
-    
-    print("Classifying commands with new logic...")
+    if not COMMANDS_JSON.exists():
+        print(f"Error: Input file '{COMMANDS_JSON}' not found.")
+        return 1
+
+    # Ensure output directory exists
+    ensure_output_dirs()
+
+    print(f"Loading commands from '{COMMANDS_JSON}'...")
+    commands = load_json(COMMANDS_JSON)
+
+    print("Classifying commands using external rules...")
     classified_commands = classify_commands(commands)
-    
+
     # Save the classified commands into separate files
     for category, command_list in classified_commands.items():
-        output_file = os.path.join(output_dir, f"{category}_commands.json")
+        output_file = CLASSIFIED_DIR / f"{category}_commands.json"
         print(f"Saving {len(command_list)} {category} commands to '{output_file}'...")
         save_json(command_list, output_file)
 
@@ -125,8 +92,19 @@ def main():
     print("\nVerifying data integrity...")
     if not verify_data_integrity(commands, classified_commands):
         print("Data integrity check failed. Aborting.")
-        return
+        return 1
     print("Data integrity check passed.")
 
+    print(f"\nClassified commands saved to: {CLASSIFIED_DIR}")
+    return 0
+
 if __name__ == "__main__":
-    main()
+    try:
+        exit_code = main()
+        sys.exit(exit_code)
+    except KeyboardInterrupt:
+        print("\nAborted by user.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
