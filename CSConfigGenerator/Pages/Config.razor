@@ -20,7 +20,6 @@
                 @foreach (var section in Sections)
                 {
                     var viewModels = section.Commands
-                        .Where(c => !c.UiData.HideFromDefaultView)
                         .Select(c => _settingViewModels[c.Command])
                         .ToList();
 
@@ -105,7 +104,7 @@
             _settingViewModels.Clear();
             foreach (var section in Sections)
             {
-                foreach (var command in section.Commands.Where(c => !c.UiData.HideFromDefaultView))
+            foreach (var command in section.Commands)
                 {
                     _settingViewModels[command.Command] = new SettingViewModel(command, ConfigStateService);
                 }

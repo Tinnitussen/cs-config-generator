@@ -14,9 +14,13 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
     private readonly string _wwwrootPath = wwwrootPath;
     private readonly List<ConfigSection> _playerSections = [];
     private readonly List<ConfigSection> _serverSections = [];
+    private readonly List<ConfigSection> _allSections = [];
+    private readonly List<CommandDefinition> _allCommands = [];
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> AllSections => _allSections.AsReadOnly();
+    public IReadOnlyList<CommandDefinition> AllCommands => _allCommands.AsReadOnly();
 
     public async Task InitializeAsync()
     {
@@ -33,28 +37,27 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
 
             if (commands == null) continue;
 
+            var sectionName = Path.GetFileNameWithoutExtension(filePath);
+            var section = new ConfigSection
+            {
+                Name = sectionName,
+                DisplayName = sectionName,
+                Commands = commands
+            };
+
             // Process the commands similar to SchemaService
             if (filePath.Contains("/player/"))
             {
-                // Add to player sections
-                var sectionName = Path.GetFileNameWithoutExtension(filePath);
-                _playerSections.Add(new ConfigSection
-                {
-                    Name = sectionName,
-                    DisplayName = sectionName,
-                    Commands = commands
-                });
+                _playerSections.Add(section);
             }
             else if (filePath.Contains("/server/"))
             {
-                // Add to server sections
-                var sectionName = Path.GetFileNameWithoutExtension(filePath);
-                _serverSections.Add(new ConfigSection
-                {
-                    Name = sectionName,
-                    DisplayName = sectionName,
-                    Commands = commands
-                });
+                _serverSections.Add(section);
+            }
+            else if (filePath.Contains("/all/"))
+            {
+                _allSections.Add(section);
+                _allCommands.AddRange(commands);
             }
         }
     }
@@ -70,6 +73,12 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
     {
         return ServerSections
             .SelectMany(section => section.Commands)
+            .FirstOrDefault(cmd => cmd.Command.Equals(name, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public CommandDefinition? GetAllCommand(string name)
+    {
+        return AllCommands
             .FirstOrDefault(cmd => cmd.Command.Equals(name, StringComparison.OrdinalIgnoreCase));
     }
 }
@@ -166,9 +175,8 @@ public class ManifestValidationTests : IDisposable
             Assert.True(
                 filePath.Contains("/player/") ||
                 filePath.Contains("/server/") ||
-                filePath.Contains("/shared/") ||
-                filePath.Contains("/uncategorized/"),
-                $"File path '{filePath}' should contain /player/, /server/, /shared/, or /uncategorized/ folder");
+                filePath.Contains("/all/"),
+                $"File path '{filePath}' should contain /player/, /server/, or /all/ folder");
         }
     }
 
@@ -269,7 +277,6 @@ public class ManifestValidationTests : IDisposable
     [Theory]
     [InlineData("player")]
     [InlineData("server")]
-    [InlineData("shared")]
     public async Task ManifestPaths_ShouldContainExpectedSectionTypes(string sectionType)
     {
         // Arrange
