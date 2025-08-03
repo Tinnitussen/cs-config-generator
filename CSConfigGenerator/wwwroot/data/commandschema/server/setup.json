@@ -436,26 +436,6 @@
     }
   },
   {
-    "command": "buyrandom",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv"
-      ],
-      "description": "Buy random primary and secondary. Primarily for deathmatch where cost is not an issue.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "buyrandom",
-      "helperText": "Buy random primary and secondary. Primarily for deathmatch where cost is not an issue.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "callvote",
     "consoleData": {
       "defaultValue": null,
@@ -726,27 +706,6 @@
     }
   },
   {
-    "command": "clear_bombs",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "clear_bombs",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "collect_entity_model_name",
     "consoleData": {
       "defaultValue": null,
@@ -805,366 +764,6 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "arguments": []
-    }
-  },
-  {
-    "command": "contributionscore_assist",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score added for an assist",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_assist",
-      "helperText": "amount of contribution score added for an assist",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_assist_reqs",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "extra requirements to earn contribution score for an assist",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_assist_reqs",
-      "helperText": "extra requirements to earn contribution score for an assist",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_bomb_defuse_major",
-    "consoleData": {
-      "defaultValue": "3",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score for defusing a bomb while at least one enemy remains alive",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_bomb_defuse_major",
-      "helperText": "amount of contribution score for defusing a bomb while at least one enemy remains alive",
-      "type": "unknown_numeric",
-      "defaultValue": 3,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_bomb_defuse_minor",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score for defusing a bomb after eliminating enemy team",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_bomb_defuse_minor",
-      "helperText": "amount of contribution score for defusing a bomb after eliminating enemy team",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_bomb_exploded",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score awarded to bomb planter and terrorists remaining alive if bomb explosion wins the round",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_bomb_exploded",
-      "helperText": "amount of contribution score awarded to bomb planter and terrorists remaining alive if bomb explosion wins the round",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_bomb_planted",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score for planting a bomb",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_bomb_planted",
-      "helperText": "amount of contribution score for planting a bomb",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_cash_bundle",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score for picking up a cash bundle",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_cash_bundle",
-      "helperText": "amount of contribution score for picking up a cash bundle",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_crate_break",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score for breaking an item crate",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_crate_break",
-      "helperText": "amount of contribution score for breaking an item crate",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_hostage_kill",
-    "consoleData": {
-      "defaultValue": "-2",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score for killing a hostage, normally negative",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_hostage_kill",
-      "helperText": "amount of contribution score for killing a hostage, normally negative",
-      "type": "unknown_numeric",
-      "defaultValue": -2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_hostage_rescue_major",
-    "consoleData": {
-      "defaultValue": "3",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score added to rescuer per hostage rescued",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_hostage_rescue_major",
-      "helperText": "amount of contribution score added to rescuer per hostage rescued",
-      "type": "unknown_numeric",
-      "defaultValue": 3,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_hostage_rescue_minor",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score added to all alive CTs per hostage rescued",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_hostage_rescue_minor",
-      "helperText": "amount of contribution score added to all alive CTs per hostage rescued",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_kill",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score added for a kill",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_kill",
-      "helperText": "amount of contribution score added for a kill",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_kill_factor",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "percentage of victim's contribution score to award to their killer as a bonus",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_kill_factor",
-      "helperText": "percentage of victim's contribution score to award to their killer as a bonus",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_kill_reqs",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "extra requirements to earn contribution score for a kill",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_kill_reqs",
-      "helperText": "extra requirements to earn contribution score for a kill",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_objective_kill",
-    "consoleData": {
-      "defaultValue": "3",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score added for an objective related kill",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_objective_kill",
-      "helperText": "amount of contribution score added for an objective related kill",
-      "type": "unknown_numeric",
-      "defaultValue": 3,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_participation",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score awarded to players for active participation in the round",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_participation",
-      "helperText": "amount of contribution score awarded to players for active participation in the round",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_suicide",
-    "consoleData": {
-      "defaultValue": "-2",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score for a suicide, normally negative",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_suicide",
-      "helperText": "amount of contribution score for a suicide, normally negative",
-      "type": "unknown_numeric",
-      "defaultValue": -2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "contributionscore_team_kill",
-    "consoleData": {
-      "defaultValue": "-2",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "amount of contribution score for a team kill, normally negative",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "contributionscore_team_kill",
-      "helperText": "amount of contribution score for a team kill, normally negative",
-      "type": "unknown_numeric",
-      "defaultValue": -2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
     }
   },
   {
@@ -1269,27 +868,6 @@
     }
   },
   {
-    "command": "create_radius_damage",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Causes radius damage where you're looking, at the passed in radius.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "create_radius_damage",
-      "helperText": "Causes radius damage where you're looking, at the passed in radius.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "cs_ShowStateTransitions",
     "consoleData": {
       "defaultValue": "-2",
@@ -1305,26 +883,6 @@
       "helperText": "cs_ShowStateTransitions <ent index or -1 for all>. Show player state transitions.",
       "type": "unknown_numeric",
       "defaultValue": -2,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cs_hostage_near_rescue_music_distance",
-    "consoleData": {
-      "defaultValue": "2000",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cs_hostage_near_rescue_music_distance",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 2000,
       "requiresCheats": true,
       "hideFromDefaultView": true
     }
@@ -1553,26 +1111,6 @@
     }
   },
   {
-    "command": "dev_add_onground_on_spawn",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Should we mess with the ground flag when we spawn? (I don't think we should). If we don't hit the assert in CCSPlayer_MovementServices::ProcessMovement, we should remove this by Dec 2022.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "dev_add_onground_on_spawn",
-      "helperText": "Should we mess with the ground flag when we spawn? (I don't think we should). If we don't hit the assert in CCSPlayer_MovementServices::ProcessMovement, we should remove this by Dec 2022.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "disable_dynamic_prop_loading",
     "consoleData": {
       "defaultValue": "false",
@@ -1692,27 +1230,6 @@
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "endround",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "End the current round.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "endround",
-      "helperText": "End the current round.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": true,
       "hideFromDefaultView": true,
       "arguments": []
     }
@@ -2580,27 +2097,6 @@
     }
   },
   {
-    "command": "ent_show_damage",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Sets damage display mode.  When on, you will see the amount of damage dealt over the target's head.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "ent_show_damage",
-      "helperText": "Sets damage display mode.  When on, you will see the amount of damage dealt over the target's head.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "ent_show_response_criteria",
     "consoleData": {
       "defaultValue": null,
@@ -3417,71 +2913,6 @@
     }
   },
   {
-    "command": "inferno_child_spawn_interval_multiplier",
-    "consoleData": {
-      "defaultValue": "0.1",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Amount spawn interval increases for each child",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "inferno_child_spawn_interval_multiplier",
-      "helperText": "Amount spawn interval increases for each child",
-      "type": "float",
-      "defaultValue": 0.1,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "inferno_damage",
-    "consoleData": {
-      "defaultValue": "40",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Damage per second",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "inferno_damage",
-      "helperText": "Damage per second",
-      "type": "unknown_numeric",
-      "defaultValue": 40,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "inferno_damage_ct",
-    "consoleData": {
-      "defaultValue": "40",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Damage per second from CT inferno",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "inferno_damage_ct",
-      "helperText": "Damage per second from CT inferno",
-      "type": "unknown_numeric",
-      "defaultValue": 40,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "inferno_debug",
     "consoleData": {
       "defaultValue": "false",
@@ -3567,76 +2998,6 @@
     }
   },
   {
-    "command": "inferno_initial_spawn_interval",
-    "consoleData": {
-      "defaultValue": "0.02",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Time between spawning flames for first fire",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "inferno_initial_spawn_interval",
-      "helperText": "Time between spawning flames for first fire",
-      "type": "float",
-      "defaultValue": 0.02,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "inferno_max_child_spawn_interval",
-    "consoleData": {
-      "defaultValue": "0.5",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Largest time interval for child flame spawning",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "inferno_max_child_spawn_interval",
-      "helperText": "Largest time interval for child flame spawning",
-      "type": "float",
-      "defaultValue": 0.5,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "inferno_per_flame_spawn_duration",
-    "consoleData": {
-      "defaultValue": "3",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Duration each new flame will attempt to spawn new flames",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "inferno_per_flame_spawn_duration",
-      "helperText": "Duration each new flame will attempt to spawn new flames",
-      "type": "unknown_numeric",
-      "defaultValue": 3,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "inferno_smoke_volume_density",
     "consoleData": {
       "defaultValue": "0.03",
@@ -3659,26 +3020,6 @@
         "maxValue": -1,
         "step": -1
       }
-    }
-  },
-  {
-    "command": "inferno_spawn_angle",
-    "consoleData": {
-      "defaultValue": "45",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Angular change from parent",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "inferno_spawn_angle",
-      "helperText": "Angular change from parent",
-      "type": "unknown_numeric",
-      "defaultValue": 45,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
     }
   },
   {
@@ -11111,27 +10452,6 @@
     }
   },
   {
-    "command": "plant_bomb",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Plant a bomb where the player is looking.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "plant_bomb",
-      "helperText": "Plant a bomb where the player is looking.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "player_debug_off_nav",
     "consoleData": {
       "defaultValue": "false",
@@ -11145,26 +10465,6 @@
     "uiData": {
       "label": "player_debug_off_nav",
       "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "player_debug_print_damage",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "When true, print amount and type of all damage received by player to console.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "player_debug_print_damage",
-      "helperText": "When true, print amount and type of all damage received by player to console.",
       "type": "bool",
       "defaultValue": false,
       "requiresCheats": true,
@@ -11594,27 +10894,6 @@
     }
   },
   {
-    "command": "respawn_player",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "description": "Respawns the player from death!",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "respawn_player",
-      "helperText": "Respawns the player from death!",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "rr_dump_rules",
     "consoleData": {
       "sourcedAt": "2025-07-30T00:00:00Z",
@@ -11772,26 +11051,6 @@
     "uiData": {
       "label": "say",
       "helperText": "Display player message",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "say_team",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv"
-      ],
-      "description": "Display player message to team",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "say_team",
-      "helperText": "Display player message to team",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,
@@ -12739,66 +11998,6 @@
     }
   },
   {
-    "command": "spec_replay_bot",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Enable Spectator Hltv Replay when killed by bot",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "spec_replay_bot",
-      "helperText": "Enable Spectator Hltv Replay when killed by bot",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "spec_replay_round_delay",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Round can be delayed by this much due to someone watching a replay; must be at least 3-4 seconds, otherwise the last replay will always be interrupted by round start, assuming normal pause between round_end and round_start events (7 seconds) and freezecam delay (2 seconds) and 7.4 second full replay (5.4 second pre-death and ~2 seconds post-death) and replay in/out switching (up to a second)",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "spec_replay_round_delay",
-      "helperText": "Round can be delayed by this much due to someone watching a replay; must be at least 3-4 seconds, otherwise the last replay will always be interrupted by round start, assuming normal pause between round_end and round_start events (7 seconds) and freezecam delay (2 seconds) and 7.4 second full replay (5.4 second pre-death and ~2 seconds post-death) and replay in/out switching (up to a second)",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "spec_replay_winddown_time",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "The trailing time, in seconds, of replay past the event, including fade-out",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "spec_replay_winddown_time",
-      "helperText": "The trailing time, in seconds, of replay past the event, including fade-out",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "subclass_change",
     "consoleData": {
       "defaultValue": null,
@@ -12929,68 +12128,6 @@
     }
   },
   {
-    "command": "sv_allchat",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "sv",
-        "nf",
-        "release"
-      ],
-      "description": "Players can receive all other players' text chat, no death restrictions",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_allchat",
-      "helperText": "Players can receive all other players' text chat, no death restrictions",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_allow_votes",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Allow voting?",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_allow_votes",
-      "helperText": "Allow voting?",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_alltalk",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "nf",
-        "release"
-      ],
-      "description": "Players can hear all other players' voice communication, no team restrictions",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_alltalk",
-      "helperText": "Players can hear all other players' voice communication, no team restrictions",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_auto_adjust_bot_difficulty",
     "consoleData": {
       "defaultValue": "true",
@@ -13026,26 +12163,6 @@
       "helperText": "The length of the window of trailing counter-strafe attempts considered during input automation detection.",
       "type": "unknown_numeric",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_auto_cstrafe_kick",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Whether or not to kick players when counter-strafe input automation is detected.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_auto_cstrafe_kick",
-      "helperText": "Whether or not to kick players when counter-strafe input automation is detected.",
-      "type": "bool",
-      "defaultValue": false,
       "requiresCheats": false,
       "hideFromDefaultView": true
     }
@@ -13171,26 +12288,6 @@
     }
   },
   {
-    "command": "sv_auto_full_alltalk_during_warmup_half_end",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "When enabled will automatically turn on full all talk mode in warmup, at halftime and at the end of the match",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_auto_full_alltalk_during_warmup_half_end",
-      "helperText": "When enabled will automatically turn on full all talk mode in warmup, at halftime and at the end of the match",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_autoexec_mapname_cfg",
     "consoleData": {
       "defaultValue": "false",
@@ -13230,126 +12327,6 @@
     }
   },
   {
-    "command": "sv_bot_buy_decoy_weight",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_bot_buy_decoy_weight",
-      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_bot_buy_flash_weight",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_bot_buy_flash_weight",
-      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_bot_buy_grenade_chance",
-    "consoleData": {
-      "defaultValue": "33",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Chance bots will buy a grenade with leftover money (after prim, sec and armor). Input as percent (0-100.0)",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_bot_buy_grenade_chance",
-      "helperText": "Chance bots will buy a grenade with leftover money (after prim, sec and armor). Input as percent (0-100.0)",
-      "type": "unknown_numeric",
-      "defaultValue": 33,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_bot_buy_hegrenade_weight",
-    "consoleData": {
-      "defaultValue": "6",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_bot_buy_hegrenade_weight",
-      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "type": "unknown_numeric",
-      "defaultValue": 6,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_bot_buy_molotov_weight",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_bot_buy_molotov_weight",
-      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_bot_buy_smoke_weight",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_bot_buy_smoke_weight",
-      "helperText": "Given a bot will buy a grenade, controls the odds of the grenade type. Proportional to all other sv_bot_buy_*_weight convars.",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_bots_get_easier_each_win",
     "consoleData": {
       "defaultValue": "0",
@@ -13365,26 +12342,6 @@
       "helperText": "If > 0, some # of bots will lower thier difficulty each time they win. The argument defines how many will lower their difficulty each time.",
       "type": "unknown_numeric",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_buymenu_open_prevents_opportunistic_pickup",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_buymenu_open_prevents_opportunistic_pickup",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
       "requiresCheats": false,
       "hideFromDefaultView": true
     }
@@ -13808,46 +12765,6 @@
     }
   },
   {
-    "command": "sv_guardian_spawn_health_ct",
-    "consoleData": {
-      "defaultValue": "100",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Starting health in guardian modes.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_guardian_spawn_health_ct",
-      "helperText": "Starting health in guardian modes.",
-      "type": "unknown_numeric",
-      "defaultValue": 100,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_guardian_spawn_health_t",
-    "consoleData": {
-      "defaultValue": "100",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Starting health in guardian modes.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_guardian_spawn_health_t",
-      "helperText": "Starting health in guardian modes.",
-      "type": "unknown_numeric",
-      "defaultValue": 100,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_hibernate_postgame_delay",
     "consoleData": {
       "defaultValue": "5",
@@ -14024,26 +12941,6 @@
     }
   },
   {
-    "command": "sv_limit_buyrandom_per_life",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Enable to limit buyrandom command to only run once per player life",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_limit_buyrandom_per_life",
-      "helperText": "Enable to limit buyrandom command to only run once per player life",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_load_forced_client_names_file",
     "consoleData": {
       "defaultValue": null,
@@ -14123,26 +13020,6 @@
       "defaultValue": false,
       "requiresCheats": false,
       "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "sv_log_roundstats",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_log_roundstats",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
     }
   },
   {
@@ -14340,26 +13217,6 @@
       "helperText": "Rewards gameplay time is always accumulated for players, but drops at the end of the match can be prevented",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_max_deathmatch_respawns_per_tick",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_max_deathmatch_respawns_per_tick",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
       "requiresCheats": false,
       "hideFromDefaultView": true
     }
@@ -14659,44 +13516,6 @@
     }
   },
   {
-    "command": "sv_pausable",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "release"
-      ],
-      "description": "Is the server pausable.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_pausable",
-      "helperText": "Is the server pausable.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_pause_on_console_open",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a"
-      ],
-      "description": "1 = Pause the game when pressing ~ to open the console. CTRL+~ opens the console without pause.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_pause_on_console_open",
-      "helperText": "1 = Pause the game when pressing ~ to open the console. CTRL+~ opens the console without pause.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_phys_debug_callback_entities",
     "consoleData": {
       "defaultValue": "false",
@@ -14817,26 +13636,6 @@
     }
   },
   {
-    "command": "sv_predictable_damage_tag_ticks",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Delay player slowdown when damaged by # ticks to reduce misprediction effects",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_predictable_damage_tag_ticks",
-      "helperText": "Delay player slowdown when damaged by # ticks to reduce misprediction effects",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_prime_accounts_only",
     "consoleData": {
       "defaultValue": "false",
@@ -14874,25 +13673,6 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "arguments": []
-    }
-  },
-  {
-    "command": "sv_pure_kick_clients",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "release"
-      ],
-      "description": "If set to 1, the server will kick clients with mismatching files. Otherwise, it will issue a warning to the client.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_pure_kick_clients",
-      "helperText": "If set to 1, the server will kick clients with mismatching files. Otherwise, it will issue a warning to the client.",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
     }
   },
   {
@@ -15072,25 +13852,6 @@
     }
   },
   {
-    "command": "sv_search_team_key",
-    "consoleData": {
-      "defaultValue": "public",
-      "flags": [
-        "release"
-      ],
-      "description": "When initiating team search, set this key to match with known opponents team",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_search_team_key",
-      "helperText": "When initiating team search, set this key to match with known opponents team",
-      "type": "string",
-      "defaultValue": "public",
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_setsteamaccount",
     "consoleData": {
       "defaultValue": null,
@@ -15108,26 +13869,6 @@
       "requiresCheats": false,
       "hideFromDefaultView": true,
       "arguments": []
-    }
-  },
-  {
-    "command": "sv_show_teammate_death_notification",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Show chat notification upon teammate death",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_show_teammate_death_notification",
-      "helperText": "Show chat notification upon teammate death",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
     }
   },
   {
@@ -15327,25 +14068,6 @@
     }
   },
   {
-    "command": "sv_unpause_on_console_close",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a"
-      ],
-      "description": "1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_unpause_on_console_close",
-      "helperText": "1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "sv_usercmd_custom_random_seed",
     "consoleData": {
       "defaultValue": "false",
@@ -15482,251 +14204,6 @@
       "defaultValue": true,
       "requiresCheats": false,
       "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "sv_vote_allow_in_warmup",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Allow voting during warmup?",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_allow_in_warmup",
-      "helperText": "Allow voting during warmup?",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_allow_spectators",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Allow spectators to initiate votes?",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_allow_spectators",
-      "helperText": "Allow spectators to initiate votes?",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_command_delay",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "How long after a vote passes until the action happens",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_command_delay",
-      "helperText": "How long after a vote passes until the action happens",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_count_spectator_votes",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Allow spectators to vote on issues?",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_count_spectator_votes",
-      "helperText": "Allow spectators to vote on issues?",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_creation_timer",
-    "consoleData": {
-      "defaultValue": "120",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "How often someone can individually call a vote.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_creation_timer",
-      "helperText": "How often someone can individually call a vote.",
-      "type": "unknown_numeric",
-      "defaultValue": 120,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_disallow_kick_on_match_point",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Disallow vote kicking on the match point round.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_disallow_kick_on_match_point",
-      "helperText": "Disallow vote kicking on the match point round.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_failure_timer",
-    "consoleData": {
-      "defaultValue": "300",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "A vote that fails cannot be re-submitted for this long",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_failure_timer",
-      "helperText": "A vote that fails cannot be re-submitted for this long",
-      "type": "unknown_numeric",
-      "defaultValue": 300,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_issue_loadbackup_spec_authoritative",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "When enabled, admins load match from backup without players vote",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_issue_loadbackup_spec_authoritative",
-      "helperText": "When enabled, admins load match from backup without players vote",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_issue_loadbackup_spec_safe",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "When enabled, admins load match from backup in safe time of the round only",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_issue_loadbackup_spec_safe",
-      "helperText": "When enabled, admins load match from backup in safe time of the round only",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_issue_restart_game_allowed",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Can people hold votes to restart the game?",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_issue_restart_game_allowed",
-      "helperText": "Can people hold votes to restart the game?",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "sv_vote_quorum_ratio",
-    "consoleData": {
-      "defaultValue": "0.501",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "The minimum ratio of players needed to vote on an issue to resolve it.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_quorum_ratio",
-      "helperText": "The minimum ratio of players needed to vote on an issue to resolve it.",
-      "type": "float",
-      "defaultValue": 0.501,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "sv_vote_timer_duration",
-    "consoleData": {
-      "defaultValue": "15",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "How long to allow voting on an issue",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "sv_vote_timer_duration",
-      "helperText": "How long to allow voting on an issue",
-      "type": "unknown_numeric",
-      "defaultValue": 15,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
     }
   },
   {
@@ -15969,26 +14446,6 @@
     "uiData": {
       "label": "timeout_terrorist_start",
       "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "unpause",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release"
-      ],
-      "description": "Clear the pause state of the server.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "unpause",
-      "helperText": "Clear the pause state of the server.",
       "type": "action",
       "defaultValue": null,
       "requiresCheats": false,

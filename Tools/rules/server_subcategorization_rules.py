@@ -2,12 +2,15 @@
 Server subcategorization rules for command classification.
 """
 
-def get_prefix(command_name: str):
-    """Extracts the prefix from a command name."""
-    parts = command_name.split('_')
-    if len(parts) > 1:
-        return f"{parts[0]}_"
-    return None
+# Order matters: more specific categories should come first.
+SUBCATEGORY_RULES = {
+    "economy": ["econ", "economy", "money", "cash", "price", "cost", "buy", "contributionscore"],
+    "teams": ["_team", "scramble", "swap"],
+    "rounds": ["_round", "warmup", "endmatch", "halftime", "overtime", "endround"],
+    "objectives": ["_bomb", "hostage", "plant", "defuse"],
+    "spawning": ["_spawn", "respawn"],
+    "rules": ["friendlyfire", "_damage", "_c4", "_tk", "_kick", "_vote", "cheat", "_pause", "unpause", "limitteams", "autokick", "alltalk", "allchat", "pausable"],
+}
 
 def get_server_subcategory(command: dict) -> str:
     """
@@ -22,33 +25,34 @@ def get_server_subcategory(command: dict) -> str:
     # Check for manual category first
     manual_category = command.get('uiData', {}).get('manual_category')
     if manual_category:
-        _, subcategory = manual_category.split('/')
-        return subcategory
+        try:
+            _, subcategory = manual_category.split('/')
+            return subcategory
+        except ValueError:
+            # Handle cases where manual_category might not be in the expected format
+            pass
 
-    prefix = get_prefix(command['command'])
-    command_name = command['command']
+    command_name = command['command'].lower()
 
-    # Apply prefix-based rules
-    if prefix in ["hostname_", "log_", "rcon_"]:
-        return "setup"
-    elif prefix == "mp_":
-        if "team" in command_name:
-            return "teams"
-        elif "round" in command_name:
-            return "rounds"
-        elif "bomb" in command_name or "hostage" in command_name:
-            return "objectives"
-        elif "spawn" in command_name:
-            return "spawning"
-        elif "friendlyfire" in command_name or "damage" in command_name:
-            return "rules"
-        elif "money" in command_name or "cash" in command_name or "econ" in command_name:
-            return "economy"
-        else:
-            return "rules"
-    elif prefix == "bot_":
+    if command_name == 'rr_forceconcept':
+        return 'setup'
+
+    # --- Prefix-based rules (highest priority) ---
+    if command_name.startswith(("bot_", "sv_bot_")):
         return "bots"
-    elif prefix == "tv_":
+    if command_name.startswith(("tv_", "spec_")):
         return "gotv"
-    else:
+    if command_name.startswith("nav_"):
         return "setup"
+
+    # --- Keyword-based rules ---
+    for category, keywords in SUBCATEGORY_RULES.items():
+        if any(keyword in command_name for keyword in keywords):
+            return category
+
+    # --- Fallback for mp_ commands ---
+    if command_name.startswith("mp_"):
+        return "rules"
+
+    # --- Default category ---
+    return "setup"

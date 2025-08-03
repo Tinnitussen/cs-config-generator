@@ -1,5 +1,108 @@
 [
   {
+    "command": "create_radius_damage",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Causes radius damage where you're looking, at the passed in radius.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "create_radius_damage",
+      "helperText": "Causes radius damage where you're looking, at the passed in radius.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "ent_show_damage",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Sets damage display mode.  When on, you will see the amount of damage dealt over the target's head.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "ent_show_damage",
+      "helperText": "Sets damage display mode.  When on, you will see the amount of damage dealt over the target's head.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": true,
+      "hideFromDefaultView": true,
+      "arguments": []
+    }
+  },
+  {
+    "command": "inferno_damage",
+    "consoleData": {
+      "defaultValue": "40",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Damage per second",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "inferno_damage",
+      "helperText": "Damage per second",
+      "type": "unknown_numeric",
+      "defaultValue": 40,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "inferno_damage_ct",
+    "consoleData": {
+      "defaultValue": "40",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "Damage per second from CT inferno",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "inferno_damage_ct",
+      "helperText": "Damage per second from CT inferno",
+      "type": "unknown_numeric",
+      "defaultValue": 40,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "mp_autoteambalance",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "nf",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "mp_autoteambalance",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
     "command": "mp_backup_restore_list_files",
     "consoleData": {
       "defaultValue": null,
@@ -179,86 +282,6 @@
       "helperText": "When a player disconnects, kill them first (triggering item drops, stats, etc.)",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mp_endmatch_votenextleveltime",
-    "consoleData": {
-      "defaultValue": "20",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "If mp_endmatch_votenextmap is set, players have this much time to vote on the next map at match end.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mp_endmatch_votenextleveltime",
-      "helperText": "If mp_endmatch_votenextmap is set, players have this much time to vote on the next map at match end.",
-      "type": "unknown_numeric",
-      "defaultValue": 20,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mp_endmatch_votenextmap_wargames_modes",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Modes available for endmatch voting during War Games. Separate names with spaces.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mp_endmatch_votenextmap_wargames_modes",
-      "helperText": "Modes available for endmatch voting during War Games. Separate names with spaces.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mp_endmatch_votenextmap_wargames_nummaps",
-    "consoleData": {
-      "defaultValue": "3",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Maximum number of maps to include in endmatch voting during War Games",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mp_endmatch_votenextmap_wargames_nummaps",
-      "helperText": "Maximum number of maps to include in endmatch voting during War Games",
-      "type": "unknown_numeric",
-      "defaultValue": 3,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mp_endmatch_votenextmap_wargames_nummodes",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Maximum number of other War Games to include in endmatch voting during War Games",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mp_endmatch_votenextmap_wargames_nummodes",
-      "helperText": "Maximum number of other War Games to include in endmatch voting during War Games",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
       "requiresCheats": false,
       "hideFromDefaultView": true
     }
@@ -488,48 +511,6 @@
     }
   },
   {
-    "command": "mp_warmup_end",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "End warmup immediately.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mp_warmup_end",
-      "helperText": "End warmup immediately.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "mp_warmup_start",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "description": "Start warmup.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mp_warmup_start",
-      "helperText": "Start warmup.",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
     "command": "mp_weapon_next_owner_touch_time",
     "consoleData": {
       "defaultValue": "1.3",
@@ -553,6 +534,449 @@
         "maxValue": -1,
         "step": -1
       }
+    }
+  },
+  {
+    "command": "player_debug_print_damage",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "description": "When true, print amount and type of all damage received by player to console.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "player_debug_print_damage",
+      "helperText": "When true, print amount and type of all damage received by player to console.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": true,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_allchat",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "nf",
+        "release"
+      ],
+      "description": "Players can receive all other players' text chat, no death restrictions",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_allchat",
+      "helperText": "Players can receive all other players' text chat, no death restrictions",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_allow_votes",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Allow voting?",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_allow_votes",
+      "helperText": "Allow voting?",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_alltalk",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "nf",
+        "release"
+      ],
+      "description": "Players can hear all other players' voice communication, no team restrictions",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_alltalk",
+      "helperText": "Players can hear all other players' voice communication, no team restrictions",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_auto_cstrafe_kick",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Whether or not to kick players when counter-strafe input automation is detected.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_auto_cstrafe_kick",
+      "helperText": "Whether or not to kick players when counter-strafe input automation is detected.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_pausable",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "release"
+      ],
+      "description": "Is the server pausable.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_pausable",
+      "helperText": "Is the server pausable.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_pause_on_console_open",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a"
+      ],
+      "description": "1 = Pause the game when pressing ~ to open the console. CTRL+~ opens the console without pause.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_pause_on_console_open",
+      "helperText": "1 = Pause the game when pressing ~ to open the console. CTRL+~ opens the console without pause.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_predictable_damage_tag_ticks",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Delay player slowdown when damaged by # ticks to reduce misprediction effects",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_predictable_damage_tag_ticks",
+      "helperText": "Delay player slowdown when damaged by # ticks to reduce misprediction effects",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_pure_kick_clients",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "release"
+      ],
+      "description": "If set to 1, the server will kick clients with mismatching files. Otherwise, it will issue a warning to the client.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_pure_kick_clients",
+      "helperText": "If set to 1, the server will kick clients with mismatching files. Otherwise, it will issue a warning to the client.",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_unpause_on_console_close",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a"
+      ],
+      "description": "1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_unpause_on_console_close",
+      "helperText": "1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_allow_spectators",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Allow spectators to initiate votes?",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_allow_spectators",
+      "helperText": "Allow spectators to initiate votes?",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_command_delay",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "How long after a vote passes until the action happens",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_command_delay",
+      "helperText": "How long after a vote passes until the action happens",
+      "type": "unknown_numeric",
+      "defaultValue": 2,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_count_spectator_votes",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Allow spectators to vote on issues?",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_count_spectator_votes",
+      "helperText": "Allow spectators to vote on issues?",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_creation_timer",
+    "consoleData": {
+      "defaultValue": "120",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "How often someone can individually call a vote.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_creation_timer",
+      "helperText": "How often someone can individually call a vote.",
+      "type": "unknown_numeric",
+      "defaultValue": 120,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_disallow_kick_on_match_point",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Disallow vote kicking on the match point round.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_disallow_kick_on_match_point",
+      "helperText": "Disallow vote kicking on the match point round.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_failure_timer",
+    "consoleData": {
+      "defaultValue": "300",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "A vote that fails cannot be re-submitted for this long",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_failure_timer",
+      "helperText": "A vote that fails cannot be re-submitted for this long",
+      "type": "unknown_numeric",
+      "defaultValue": 300,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_issue_loadbackup_spec_authoritative",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "When enabled, admins load match from backup without players vote",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_issue_loadbackup_spec_authoritative",
+      "helperText": "When enabled, admins load match from backup without players vote",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_issue_loadbackup_spec_safe",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "When enabled, admins load match from backup in safe time of the round only",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_issue_loadbackup_spec_safe",
+      "helperText": "When enabled, admins load match from backup in safe time of the round only",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_issue_restart_game_allowed",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "Can people hold votes to restart the game?",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_issue_restart_game_allowed",
+      "helperText": "Can people hold votes to restart the game?",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "sv_vote_quorum_ratio",
+    "consoleData": {
+      "defaultValue": "0.501",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "The minimum ratio of players needed to vote on an issue to resolve it.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_quorum_ratio",
+      "helperText": "The minimum ratio of players needed to vote on an issue to resolve it.",
+      "type": "float",
+      "defaultValue": 0.501,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "range": {
+        "minValue": -1,
+        "maxValue": -1,
+        "step": -1
+      }
+    }
+  },
+  {
+    "command": "sv_vote_timer_duration",
+    "consoleData": {
+      "defaultValue": "15",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "description": "How long to allow voting on an issue",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_vote_timer_duration",
+      "helperText": "How long to allow voting on an issue",
+      "type": "unknown_numeric",
+      "defaultValue": 15,
+      "requiresCheats": false,
+      "hideFromDefaultView": true
+    }
+  },
+  {
+    "command": "unpause",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Clear the pause state of the server.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "unpause",
+      "helperText": "Clear the pause state of the server.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "hideFromDefaultView": true,
+      "arguments": []
     }
   }
 ]
