@@ -155,13 +155,9 @@
             {
                 ConfigStateService.ParseConfigFile(configContent, this);
                 RefreshConfigText();
+                StateHasChanged();
             }
         }
-
-        // We need to reset the underlying field directly and call StateHasChanged
-        // to avoid triggering the setter's logic again.
-        _selectedUserConfig = null;
-        await InvokeAsync(StateHasChanged);
     }
 
     private async Task DeleteSelectedConfig()
