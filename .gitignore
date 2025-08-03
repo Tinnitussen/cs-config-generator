@@ -420,3 +420,4 @@ FodyWeavers.xsd
 # My settings
 .vscode/
 dotnet-install.sh
+.dotnet/

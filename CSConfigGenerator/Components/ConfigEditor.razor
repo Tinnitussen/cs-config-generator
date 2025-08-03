@@ -94,7 +94,7 @@
                 _selectedUserConfig = value;
                 if (!string.IsNullOrEmpty(_selectedUserConfig))
                 {
-                    OnUserConfigSelected(_selectedUserConfig);
+                    _ = InvokeAsync(() => OnUserConfigSelected(_selectedUserConfig));
                 }
             }
         }
@@ -110,7 +110,7 @@
                 _selectedPreset = value;
                 if (!string.IsNullOrEmpty(_selectedPreset))
                 {
-                    OnPresetSelected(_selectedPreset);
+                    _ = InvokeAsync(() => OnPresetSelected(_selectedPreset));
                 }
             }
         }
