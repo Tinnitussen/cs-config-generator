@@ -55,20 +55,22 @@
                     </div>
                     <div class="col-md-2">
                         <div class="dropdown filter-dropdown">
-                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 filter-button" type="button" @onclick="() => showTypeDropdown = !showTypeDropdown">
+                            <button class="btn btn-sm btn-light dropdown-toggle w-100 filter-button text-start" type="button" @onclick="() => showTypeDropdown = !showTypeDropdown" aria-expanded="@showTypeDropdown">
                                 @GetTypeFilterText()
                             </button>
-                            <div class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
+                            <ul class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
                                 @foreach (var type in Enum.GetValues<SettingType>())
                                 {
-                                    <div class="dropdown-item px-2">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
-                                            <label class="form-check-label" for="type-@type">@type</label>
+                                    <li>
+                                        <div class="dropdown-item px-2" @onclick:stopPropagation="true">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
+                                                <label class="form-check-label" for="type-@type">@type</label>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </li>
                                 }
-                            </div>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -87,7 +89,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-sm btn-outline-danger w-100 filter-clear-btn" @onclick="ClearFilters">
+                        <button class="btn btn-sm btn-danger w-100 filter-clear-btn" @onclick="ClearFilters">
                             Clear Filters
                         </button>
                     </div>

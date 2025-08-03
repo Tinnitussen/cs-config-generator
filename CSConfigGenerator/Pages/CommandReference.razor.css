@@ -1,7 +1,7 @@
 /* Style for the filter card to make it clean and rounded */
 .card.bg-light {
     border-radius: 0.25rem;
-    border: 1px solid #dee2e6;
+    border: 0.0625rem solid #dee2e6;
 }
 
 .card-body.p-2 {
@@ -72,7 +72,7 @@
     line-height: 1.5;
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid var(--bs-border-color);
+    border: 0.0625rem solid var(--bs-border-color);
     border-radius: var(--bs-border-radius-sm);
 }
 
@@ -108,4 +108,35 @@
 
 .nav-tabs .nav-link.active {
     font-weight: 500;
+}
+
+/* Filter controls styling */
+.filter-button, .filter-select {
+    border-color: #dee2e6; /* Match Bootstrap's default border color */
+}
+
+.filter-button:hover {
+    background-color: #e9ecef; /* A light grey for hover, similar to Bootstrap's */
+}
+
+.filter-dropdown .dropdown-menu {
+    border-radius: 0.25rem;
+    border: 0.0625rem solid #dee2e6;
+    padding: 0.25rem 0;
+}
+
+.filter-dropdown .dropdown-item {
+    padding: 0.25rem 0.75rem;
+}
+
+.filter-dropdown .form-check-label {
+    cursor: pointer;
+}
+
+.filter-checkbox-wrapper {
+    height: 100%;
+}
+
+.filter-checkbox-wrapper .form-check {
+    height: 100%;
 }
