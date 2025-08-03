@@ -10,6 +10,14 @@ A web-based config generator for Counter-Strike 2, built with Blazor WebAssembly
 *   **Downloadable Configs:** Download your generated configuration as a `.cfg` file, ready to be used in-game.
 *   **Command Reference:** A reference guide for all available console commands.
 
+## Core Technologies
+
+*   **.NET 9** and **C#**
+*   **Blazor WebAssembly** for the frontend framework
+*   **Bootstrap 5** for UI styling
+*   **Bootstrap Icons** for the icon set
+*   **Python** for the command processing pipeline
+
 ## How to Use
 
 1.  Navigate to the deployed application on GitHub Pages.
