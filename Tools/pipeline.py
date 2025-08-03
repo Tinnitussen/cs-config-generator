@@ -10,12 +10,14 @@ This script streamlines the entire pipeline process:
 4. Subcategorize commands
 
 Each step waits for user review before continuing.
+Can be run non-interactively with the --non-interactive flag.
 """
 
 import os
 import sys
 import subprocess
 import glob
+import argparse
 from pathlib import Path
 
 class Colors:
@@ -51,11 +53,15 @@ def print_error(text):
     """Print error message"""
     print(f"{Colors.FAIL}✗ {text}{Colors.ENDC}")
 
-def wait_for_user_input(step_name):
+def wait_for_user_input(step_name, non_interactive=False):
     """
     Wait for user to review and continue or abort.
     Returns True to continue, False to abort.
     """
+    if non_interactive:
+        print(f"\n{Colors.OKCYAN}Non-interactive mode: skipping user input for {step_name}...{Colors.ENDC}")
+        return True
+
     print(f"\n{Colors.OKCYAN}Please review the {step_name} output above.{Colors.ENDC}")
     print("Press ENTER to continue, or 'q' + ENTER to quit: ", end="")
 
@@ -80,7 +86,7 @@ def find_command_files():
     files.sort(key=os.path.getmtime, reverse=True)
     return [Path(f).name for f in files]
 
-def select_command_file():
+def select_command_file(non_interactive=False):
     """Let user select a command snapshot file"""
     files = find_command_files()
 
@@ -88,6 +94,10 @@ def select_command_file():
         print_error("No command snapshot files found in Tools/data/")
         print("Expected format: all_commands-YYYY-DD-MM.txt")
         return None
+
+    if non_interactive:
+        print_success(f"Non-interactive mode: auto-selecting newest file: {files[0]}")
+        return files[0]
 
     print(f"\n{Colors.OKBLUE}Available command snapshot files:{Colors.ENDC}")
     for i, filename in enumerate(files, 1):
@@ -174,10 +184,13 @@ def update_script_input_file(script_path, new_filename):
         print_error(f"Failed to update script: {e}")
         return False
 
-def main():
+def main(args):
     """Main pipeline runner"""
     print_header("CS Commands Processing Pipeline")
-    print("This will guide you through the complete command processing pipeline.")
+    if args.non_interactive:
+        print(f"{Colors.WARNING}Running in non-interactive mode.{Colors.ENDC}")
+    else:
+        print("This will guide you through the complete command processing pipeline.")
 
     # Get the tools directory
     tools_dir = Path(__file__).parent
@@ -187,7 +200,7 @@ def main():
 
     # Step 0: Select input file
     print_step(0, "Select Command Snapshot File")
-    selected_file = select_command_file()
+    selected_file = select_command_file(args.non_interactive)
     if not selected_file:
         return 1
 
@@ -198,7 +211,7 @@ def main():
     if not update_script_input_file(parse_script, selected_file):
         return 1
 
-    if not wait_for_user_input("file selection"):
+    if not wait_for_user_input("file selection", args.non_interactive):
         return 1
 
     # Step 1: Parse commands
@@ -206,7 +219,7 @@ def main():
     if not run_script(str(parse_script), "Command parsing"):
         return 1
 
-    if not wait_for_user_input("command parsing"):
+    if not wait_for_user_input("command parsing", args.non_interactive):
         return 1
 
     # Step 2: Classify command types
@@ -215,7 +228,7 @@ def main():
     if not run_script(str(classification_script), "Command type classification"):
         return 1
 
-    if not wait_for_user_input("command classification"):
+    if not wait_for_user_input("command classification", args.non_interactive):
         return 1
 
     # Step 3: Split commands into categories
@@ -224,7 +237,7 @@ def main():
     if not run_script(str(split_script), "Command category splitting"):
         return 1
 
-    if not wait_for_user_input("command splitting"):
+    if not wait_for_user_input("command splitting", args.non_interactive):
         return 1
 
     # Step 4: Subcategorize commands
@@ -242,7 +255,7 @@ def main():
         if not run_script(str(script_path), description):
             return 1
 
-    if not wait_for_user_input("subcategorization"):
+    if not wait_for_user_input("subcategorization", args.non_interactive):
         return 1
 
     # Pipeline complete
@@ -257,8 +270,16 @@ def main():
     return 0
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="CS Commands Processing Pipeline Runner")
+    parser.add_argument(
+        '-n', '--non-interactive',
+        action='store_true',
+        help="Run the pipeline non-interactively, without user prompts."
+    )
+    args = parser.parse_args()
+
     try:
-        exit_code = main()
+        exit_code = main(args)
         sys.exit(exit_code)
     except KeyboardInterrupt:
         print(f"\n{Colors.WARNING}Pipeline interrupted by user.{Colors.ENDC}")
