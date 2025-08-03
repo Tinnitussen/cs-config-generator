@@ -115,6 +115,7 @@
     private async Task OnPresetSelected(ChangeEventArgs e)
     {
         var presetName = e.Value?.ToString();
+        Console.WriteLine($"OnPresetSelected called with value: {presetName}");
         if (string.IsNullOrEmpty(presetName) || PresetType == null)
         {
             return;
@@ -139,6 +140,7 @@
     private async Task OnUserConfigSelected(ChangeEventArgs e)
     {
         var configName = e.Value?.ToString();
+        Console.WriteLine($"OnUserConfigSelected called with value: {configName}");
         if (string.IsNullOrEmpty(configName) || PresetType == null)
         {
             return;
@@ -274,6 +276,7 @@
 
     private async Task ResetToDefaults()
     {
+        Console.WriteLine("ResetToDefaults called");
         confirmationModalTitle = "Reset to Defaults";
         confirmationModalBody = new RenderFragment(builder => builder.AddContent(0, "Are you sure you want to reset to default values? Any unsaved changes will be lost."));
         confirmationAction = () =>
