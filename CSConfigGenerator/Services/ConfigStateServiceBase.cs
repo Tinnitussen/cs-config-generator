@@ -121,12 +121,16 @@ public abstract class ConfigStateServiceBase : IConfigStateService
 
             commandsInFile.Add(commandName);
 
-            // Step 2: Validate the value against the command's type
-            var (isValid, _) = SettingValidator.Validate(command.UiData.Type, valueStr);
-            if (!isValid) continue; // Skip invalid values
-
-            // Step 3: Parse the value (now we know it's valid)
-            var parsedValue = SettingTypeHelpers.ParseFromString(command.UiData.Type, valueStr);
+            // Step 2 & 3: Parse the value, skipping if invalid
+            object parsedValue;
+            try
+            {
+                parsedValue = SettingTypeHelpers.ParseFromString(command.UiData.Type, valueStr);
+            }
+            catch (FormatException)
+            {
+                continue; // Skip invalid values
+            }
 
             // Step 4: Update the setting
             if (_settings.TryGetValue(commandName, out var setting))

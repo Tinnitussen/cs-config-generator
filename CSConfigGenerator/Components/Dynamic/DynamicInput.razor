@@ -33,19 +33,23 @@
                     <input type="checkbox" id="@ViewModel.Command.Command" class="form-check-input" @bind="BoolValue" />
                     break;
                 case SettingType.Int:
-                case SettingType.Float:
                 case SettingType.UnknownInteger:
-                case SettingType.UnknownNumeric:
-                    <input type="text"
+                    <input type="number"
                            id="@ViewModel.Command.Command"
-                           class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
-                           @oninput="OnInputChanged"
-                           value="@CurrentValue"
+                           class="form-control"
+                           @bind="IntValue"
+                           @bind:culture="CultureInfo.InvariantCulture"
                            spellcheck="false" />
-                    @if (!string.IsNullOrEmpty(ValidationMessage))
-                    {
-                        <div class="invalid-feedback d-block">@ValidationMessage</div>
-                    }
+                    break;
+                case SettingType.Float:
+                case SettingType.UnknownNumeric:
+                    <input type="number"
+                           step="any"
+                           id="@ViewModel.Command.Command"
+                           class="form-control"
+                           @bind="FloatValue"
+                           @bind:culture="CultureInfo.InvariantCulture"
+                           spellcheck="false" />
                     break;
                 case SettingType.Enum:
                     <select id="@ViewModel.Command.Command" class="form-control" @bind="StringValue">
@@ -75,61 +79,24 @@
     [Parameter, EditorRequired]
     public SettingViewModel ViewModel { get; set; } = null!;
 
-    private string CurrentValue { get; set; } = string.Empty;
-    private string? ValidationMessage { get; set; }
-
-    protected override void OnInitialized()
-    {
-        // Initialize CurrentValue with the value from the view model.
-        // Use InvariantCulture for consistent formatting of numbers.
-        CurrentValue = string.Format(CultureInfo.InvariantCulture, "{0}", ViewModel.Value);
-    }
-
     private bool BoolValue
     {
-        get => ViewModel.Value is bool b ? b : false; // Safely cast with pattern matching
+        get => ViewModel.Value is bool b && b;
         set => ViewModel.Value = value;
     }
     private int IntValue
     {
-        // The getter is now only used to reflect the underlying model state, not for binding.
-        get => ViewModel.Value is int i ? i : (ViewModel.Value is float f ? (int)f : 0);
+        get => Convert.ToInt32(ViewModel.Value, CultureInfo.InvariantCulture);
+        set => ViewModel.Value = value;
     }
     private float FloatValue
     {
-        // The getter is now only used to reflect the underlying model state, not for binding.
-        get => ViewModel.Value is float f ? f : (ViewModel.Value is int i ? (float)i : 0.0f);
+        get => Convert.ToSingle(ViewModel.Value, CultureInfo.InvariantCulture);
+        set => ViewModel.Value = value;
     }
     private string StringValue
     {
-        get => ViewModel.Value?.ToString() ?? string.Empty; // Safely convert to string
+        get => ViewModel.Value?.ToString() ?? string.Empty;
         set => ViewModel.Value = value;
-    }
-
-    private void OnInputChanged(ChangeEventArgs e)
-    {
-        CurrentValue = e.Value?.ToString() ?? string.Empty;
-        var (isValid, errorMessage) = SettingValidator.Validate(ViewModel.Command.UiData.Type, CurrentValue);
-
-        if (isValid)
-        {
-            ValidationMessage = null;
-            var settingType = ViewModel.Command.UiData.Type;
-
-            // The value is valid, so we can parse it and update the view model
-            object parsedValue = settingType switch
-            {
-                SettingType.Int or SettingType.UnknownInteger => int.Parse(CurrentValue, NumberStyles.Integer, CultureInfo.InvariantCulture),
-                SettingType.Float or SettingType.UnknownNumeric => float.Parse(CurrentValue, NumberStyles.Float, CultureInfo.InvariantCulture),
-                // For other types, the string value is sufficient
-                _ => CurrentValue
-            };
-            ViewModel.Value = parsedValue;
-        }
-        else
-        {
-            ValidationMessage = errorMessage;
-            // Do not update ViewModel.Value if validation fails
-        }
     }
 }
