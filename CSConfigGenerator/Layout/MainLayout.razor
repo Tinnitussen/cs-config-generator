@@ -1,4 +1,5 @@
 ﻿@using CSConfigGenerator.Components
+@using CSConfigGenerator.Interfaces
 @inherits LayoutComponentBase
 
 <div class="page">
@@ -7,12 +8,42 @@
     </div>
 
     <main>
-        
-
-        <article class="content px-4">
-            @Body
-        </article>
+        @if (_isInitialized)
+        {
+            <article class="content px-4">
+                @Body
+            </article>
+        }
+        else
+        {
+            <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                <div class="loading-progress"></div>
+            </div>
+        }
     </main>
 </div>
 
 <ToastContainer />
+
+@code {
+    private bool _isInitialized;
+
+    [Inject]
+    private ISchemaService SchemaService { get; set; } = default!;
+
+    [Inject]
+    private IServiceProvider ServiceProvider { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SchemaService.InitializeAsync();
+
+        var playerConfigStateService = ServiceProvider.GetRequiredKeyedService<IConfigStateService>("PlayerConfigStateServiceKey");
+        var serverConfigStateService = ServiceProvider.GetRequiredKeyedService<IConfigStateService>("ServerConfigStateServiceKey");
+
+        playerConfigStateService.InitializeDefaults();
+        serverConfigStateService.InitializeDefaults();
+
+        _isInitialized = true;
+    }
+}

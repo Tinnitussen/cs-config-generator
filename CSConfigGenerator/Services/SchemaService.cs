@@ -11,6 +11,8 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     private readonly List<ConfigSection> _serverSections = [];
     private readonly List<ConfigSection> _sharedSections = [];
     private readonly List<ConfigSection> _uncategorizedSections = [];
+    private readonly Dictionary<string, CommandDefinition> _playerCommands = [];
+    private readonly Dictionary<string, CommandDefinition> _serverCommands = [];
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
@@ -26,27 +28,35 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
 
             foreach (var filePath in manifest)
             {
-                var commands = await _httpClient.GetFromJsonAsync(filePath, JsonContext.Default.ListCommandDefinition);
+                var commands = await _httpClient.GetFromJsonAsync(filePath, JsonContext.Default.ListCommandDefinition)
+                    ?? [];
 
                 var sectionName = ExtractSectionName(filePath);
                 var section = new ConfigSection
                 {
                     Name = sectionName,
                     DisplayName = FormatDisplayName(sectionName),
-                    Commands = (commands ?? []).AsReadOnly()
+                    Commands = commands.AsReadOnly()
                 };
 
                 if (filePath.Contains("/player/"))
                 {
                     _playerSections.Add(section);
+                    foreach (var command in commands) { _playerCommands.TryAdd(command.Command, command); }
                 }
                 else if (filePath.Contains("/server/"))
                 {
                     _serverSections.Add(section);
+                    foreach (var command in commands) { _serverCommands.TryAdd(command.Command, command); }
                 }
                 else if (filePath.Contains("/shared/"))
                 {
                     _sharedSections.Add(section);
+                    foreach (var command in commands)
+                    {
+                        _playerCommands.TryAdd(command.Command, command);
+                        _serverCommands.TryAdd(command.Command, command);
+                    }
                 }
                 else if (filePath.Contains("/uncategorized/"))
                 {
@@ -65,16 +75,12 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     }
     public CommandDefinition? GetPlayerCommand(string name)
     {
-        return PlayerSections
-            .SelectMany(s => s.Commands)
-            .FirstOrDefault(c => c.Command == name);
+        return _playerCommands.GetValueOrDefault(name);
     }
 
     public CommandDefinition? GetServerCommand(string name)
     {
-        return ServerSections
-            .SelectMany(s => s.Commands)
-            .FirstOrDefault(c => c.Command == name);
+        return _serverCommands.GetValueOrDefault(name);
     }
 
     private static string ExtractSectionName(string filePath)

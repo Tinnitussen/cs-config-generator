@@ -14,24 +14,36 @@
         <div class="config-editor-actions">
             @if (PresetType != null)
             {
-                <div class="custom-select-wrapper">
-                    <select class="custom-select" @onchange="OnPresetSelected">
+                <div class="custom-select-wrapper d-flex align-items-center">
+                    <select class="custom-select" @onchange="OnPresetSelected" disabled="@_isLoadingPreset">
                         <option value="">Pro Configs</option>
                         @foreach (var preset in _presets)
                         {
                             <option value="@preset">@preset</option>
                         }
                     </select>
+                    @if (_isLoadingPreset)
+                    {
+                        <div class="spinner-border spinner-border-sm text-light ms-2" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    }
                 </div>
             }
-            <div class="custom-select-wrapper">
-                <select class="custom-select" @onchange="OnUserConfigSelected">
+            <div class="custom-select-wrapper d-flex align-items-center">
+                <select class="custom-select" @onchange="OnUserConfigSelected" disabled="@_isLoadingUserConfig">
                     <option value="">My Configs</option>
                     @foreach (var config in _userConfigs)
                     {
                         <option value="@config">@config</option>
                     }
                 </select>
+                @if (_isLoadingUserConfig)
+                {
+                    <div class="spinner-border spinner-border-sm text-light ms-2" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                }
             </div>
             <button class="btn btn-sm btn-outline-success" @onclick="SaveConfig" title="Save current config">
                 <i class="bi bi-save"></i>
@@ -85,6 +97,8 @@
     private List<string> _userConfigs = new();
     private InputFile? _inputFile;
     private bool isSaveModalVisible = false;
+    private bool _isLoadingPreset;
+    private bool _isLoadingUserConfig;
 
     protected override async Task OnInitializedAsync()
     {
@@ -104,7 +118,10 @@
     private async Task OnPresetSelected(ChangeEventArgs e)
     {
         var presetName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(presetName) && PresetType != null)
+        if (string.IsNullOrEmpty(presetName) || PresetType == null) return;
+
+        _isLoadingPreset = true;
+        try
         {
             var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
             if (!string.IsNullOrEmpty(presetContent))
@@ -114,12 +131,19 @@
                 StateHasChanged();
             }
         }
+        finally
+        {
+            _isLoadingPreset = false;
+        }
     }
 
     private async Task OnUserConfigSelected(ChangeEventArgs e)
     {
         var configName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
+        if (string.IsNullOrEmpty(configName) || PresetType == null) return;
+
+        _isLoadingUserConfig = true;
+        try
         {
             var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
             if (!string.IsNullOrEmpty(configContent))
@@ -128,6 +152,10 @@
                 RefreshConfigText();
                 StateHasChanged();
             }
+        }
+        finally
+        {
+            _isLoadingUserConfig = false;
         }
     }
 
