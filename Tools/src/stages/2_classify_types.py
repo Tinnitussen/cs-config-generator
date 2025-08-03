@@ -1,20 +1,14 @@
 import json
-import os
-import sys
 import argparse
 from typing import Dict, List, Any
+from pathlib import Path
+import sys
 
-# --- Path setup ---
-# Add the 'rules' directory to the Python path to import the classification rules.
-# This makes the script runnable from any directory.
-script_dir = os.path.dirname(os.path.abspath(__file__))
-rules_dir = os.path.join(os.path.dirname(script_dir), 'rules')
-if rules_dir not in sys.path:
-    sys.path.append(rules_dir)
+# Proper relative import
+sys.path.append(str(Path(__file__).parent.parent))
+from rules.classification_rules import CLASSIFICATION_RULES
 
-from type_classification_rules import CLASSIFICATION_RULES
-
-def load_commands(filepath: str) -> List[Dict]:
+def load_commands(filepath: Path) -> List[Dict]:
     """Load the commands.json file"""
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
@@ -80,7 +74,7 @@ def add_type_classification(commands: List[Dict], reclassify_all: bool = False) 
             
     return processed_commands, type_counts, updated_count, skipped_count
 
-def save_json(data: List[Dict], filepath: str):
+def save_json(data: List[Dict], filepath: Path):
     """Save data to JSON file"""
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
@@ -95,12 +89,12 @@ def main():
     args = parser.parse_args()
 
     # --- Path setup ---
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    tools_dir = os.path.dirname(script_dir)
-
-    input_file = os.path.join(tools_dir, "data", "commands.json")
-    output_file = os.path.join(tools_dir, "data", "commands.json")
+    tools_dir = Path(__file__).parent.parent.parent
+    data_dir = tools_dir / "data"
     
+    input_file = data_dir / "commands.json"
+    output_file = data_dir / "commands.json"
+
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
     

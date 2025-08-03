@@ -44,94 +44,9 @@ The application's UI is dynamically generated from a set of JSON files located i
 
 ## Tools Directory
 
-The `Tools/` directory contains Python scripts for parsing and processing Counter-Strike 2 console commands. These tools maintain the JSON schema files that power the config generator's UI.
+The `Tools/` directory contains a Python-based pipeline for parsing and processing Counter-Strike 2 console commands. These tools are responsible for maintaining the JSON schema files that power the config generator's UI.
 
-### Quick Start - Processing Pipeline
-
-To process a new command snapshot from Counter-Strike 2:
-
-1. Place your `all_commands-YYYY-DD-MM.txt` file in `Tools/data/`
-2. Run the pipeline: `python Tools/pipeline.py`
-3. Follow the interactive prompts to complete all processing steps
-
-The pipeline will guide you through:
-- **Parsing** - Extract commands from the snapshot file
-- **Classification** - Determine command types (bool, float, string, etc.)
-- **Categorization** - Split commands into player/server/shared groups
-- **Subcategorization** - Organize commands into UI sections
-
-### Directory Structure
-
-```
-Tools/
-├── pipeline.py              # Main pipeline runner (START HERE)
-├── rules/                   # Classification rules (separated from scripts)
-│   ├── type_classification_rules.py      # Rules for determining command types
-│   ├── splitting_rules.py                # Rules for player/server/shared classification
-│   ├── numeric_detection_rules.py        # Rules for detecting numeric types
-│   ├── player_subcategorization_rules.py # Rules for player command sections
-│   ├── server_subcategorization_rules.py # Rules for server command sections
-│   ├── shared_subcategorization_rules.py # Rules for shared command sections
-│   ├── popularity_rules.py               # Rules for marking popular commands
-│   └── parsing_validation_rules.json     # Validation rules for parsing
-├── scripts/                 # Processing scripts (called by pipeline)
-│   ├── parse_commands.py              # Step 1: Parse snapshot file
-│   ├── command_classification.py      # Step 2: Classify command types
-│   └── splitting/
-│       ├── classify_commands.py       # Step 3: Split into categories
-│       └── subcategorization/         # Step 4: Create UI sections
-│           ├── subcategorize_player.py
-│           ├── subcategorize_server.py
-│           └── subcategorize_shared.py
-├── scripts/classify-from-existing/    # Separate analysis tools (not part of main pipeline)
-│   ├── numeric_detection.py          # Analyze config files for numeric patterns
-│   └── command_popularity.py         # Mark popular commands based on pro configs
-└── data/                    # Input and intermediate data files
-    ├── all_commands-*.txt           # Command snapshots from CS2
-    ├── commands.json                # Main processed commands file
-    ├── classified_commands/         # Commands split by category
-    └── pro-player-configs/          # Pro player configs for analysis
-```
-
-### Pipeline Benefits
-
-- **Interactive**: Review each step before continuing
-- **Error Recovery**: Stops on failures so you can fix issues
-- **Automated**: No manual file editing required
-- **Visual Feedback**: Clear progress indicators and colored output
-- **Flexible**: Press 'q' to abort at any review point
-
-### Manual Script Usage
-
-If you need to run individual steps manually:
-
-```bash
-# Parse a specific snapshot
-python Tools/scripts/parse_commands.py
-
-# Classify command types
-python Tools/scripts/command_classification.py
-
-# Split into categories
-python Tools/scripts/splitting/classify_commands.py
-
-# Subcategorize (run all three)
-python Tools/scripts/splitting/subcategorization/subcategorize_player.py
-python Tools/scripts/splitting/subcategorization/subcategorize_server.py
-python Tools/scripts/splitting/subcategorization/subcategorize_shared.py
-```
-
-### Analysis Tools (Separate from Pipeline)
-
-These tools analyze existing data and are not part of the main processing pipeline:
-
-```bash
-# Detect numeric patterns from pro configs
-python Tools/scripts/classify-from-existing/numeric_detection.py
-
-# Mark popular commands based on usage
-python Tools/scripts/classify-from-existing/command_popularity.py
-```
+For detailed information on the pipeline's structure, functionality, and how to run it, please see the dedicated `Tools/README.md` file.
 
 ## Contributing
 

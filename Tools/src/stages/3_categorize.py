@@ -3,26 +3,20 @@ import os
 import sys
 from typing import Dict, List, Any
 from collections import defaultdict
+from pathlib import Path
 
-# --- Path setup ---
-# Add the 'rules' directory to the Python path to import the classification rules.
-# This makes the script runnable from any directory.
-script_dir = os.path.dirname(os.path.abspath(__file__))
-rules_dir = os.path.join(os.path.dirname(os.path.dirname(script_dir)), 'rules')
-if rules_dir not in sys.path:
-    sys.path.append(rules_dir)
+sys.path.append(str(Path(__file__).parent.parent))
+from rules.categorization_rules import get_command_category
 
-from splitting_rules import get_command_category
-
-def load_commands(filepath: str) -> List[Dict]:
+def load_commands(filepath: Path) -> List[Dict]:
     """Load the commands.json file"""
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def save_json(data: List[Dict], filepath: str):
+def save_json(data: List[Dict], filepath: Path):
     """Save data to JSON file"""
     # Create output directory if it doesn't exist
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    filepath.parent.mkdir(parents=True, exist_ok=True)
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
 
@@ -40,13 +34,13 @@ def classify_commands(commands: List[Dict]) -> Dict[str, List[Dict]]:
     return dict(classified_commands)
 
 def main():
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    tools_dir = os.path.dirname(os.path.dirname(script_dir))
-    input_file = os.path.join(tools_dir, "data", "commands.json")
-    output_dir = os.path.join(tools_dir, "data", "classified_commands")
+    tools_dir = Path(__file__).parent.parent.parent
+    data_dir = tools_dir / "data"
+    input_file = data_dir / "commands.json"
+    output_dir = data_dir / "classified_commands"
 
     # Check if input file exists
-    if not os.path.exists(input_file):
+    if not input_file.exists():
         print(f"Error: Input file '{input_file}' not found.")
         return
 
@@ -58,7 +52,7 @@ def main():
 
     # Save the classified commands into separate files
     for category, command_list in classified_commands.items():
-        output_file = os.path.join(output_dir, f"{category}_commands.json")
+        output_file = output_dir / f"{category}_commands.json"
         print(f"Saving {len(command_list)} {category} commands to '{output_file}'...")
         save_json(command_list, output_file)
 

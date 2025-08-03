@@ -2,12 +2,14 @@ import json
 import re
 from datetime import datetime
 import os
+import argparse
+from pathlib import Path
 
 def extract_date_from_filename(filename):
     """Extract date from filename and convert to ISO 8601 timestamp."""
     # Extract date pattern like "2025-30-07" from filename
     date_pattern = r"(\d{4})-(\d{2})-(\d{2})"
-    match = re.search(date_pattern, filename)
+    match = re.search(date_pattern, str(filename))
     
     if match:
         year, day, month = match.groups()
@@ -130,19 +132,21 @@ def unmark_deprecated_commands(existing_commands, current_commands, sourced_at):
     return unmarked_count
 
 def main():
-    # --- Path setup ---
-    # Get the directory of the current script
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    # Get the parent 'Tools' directory
-    tools_dir = os.path.dirname(script_dir)
+    parser = argparse.ArgumentParser(description="Parse commands from a snapshot file.")
+    parser.add_argument("input_filename", help="The name of the command snapshot file in Tools/data/")
+    args = parser.parse_args()
 
-    # Define file paths relative to the 'Tools' directory
-    input_file = os.path.join(tools_dir, "data", "all_commands-2025-30-07.txt")
-    output_file = os.path.join(tools_dir, "data", "commands.json")
-    rules_file = os.path.join(tools_dir, "rules", "parsing_validation_rules.json")
+    # --- Path setup ---
+    tools_dir = Path(__file__).parent.parent.parent
+    data_dir = tools_dir / "data"
+    rules_dir = tools_dir / "src" / "rules"
+
+    input_file = data_dir / args.input_filename
+    output_file = data_dir / "commands.json"
+    rules_file = rules_dir / "parsing_rules.json"
     
     # Extract timestamp from filename
-    sourced_at = extract_date_from_filename(input_file)
+    sourced_at = extract_date_from_filename(args.input_filename)
     print(f"Using timestamp: {sourced_at}")
     
     # Load existing data

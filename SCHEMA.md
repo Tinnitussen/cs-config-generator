@@ -19,7 +19,7 @@ The pipeline (`Tools/pipeline.py`) guides you through these steps:
 
 Command processing uses a rules-based system with logic separated into dedicated rule files:
 
-#### Type Classification (`Tools/rules/type_classification_rules.py`)
+#### Type Classification (`Tools/src/rules/classification_rules.py`)
 Commands are classified by applying these rules in order:
 1. **Action**: `defaultValue` is `null`
 2. **Bool**: `defaultValue` is `"true"` or `"false"`
@@ -28,16 +28,16 @@ Commands are classified by applying these rules in order:
 5. **Unknown Numeric**: Numeric `defaultValue` without decimal point
 6. **String**: Any other non-null `defaultValue`
 
-#### Category Classification (`Tools/rules/splitting_rules.py`)
+#### Category Classification (`Tools/src/rules/categorization_rules.py`)
 Commands are categorized using:
 1. **Console Flags**: `sv` → server, `cl` → player, `rep` → shared
 2. **Command Prefixes**: `cl_*` → player, `sv_*` → server, etc.
 3. **Fallback Rules**: `user`/`a` flags → player
 
-#### Subcategorization Rules
-- **Player** (`Tools/rules/player_subcategorization_rules.py`): crosshair, viewmodel, hud, audio, etc.
-- **Server** (`Tools/rules/server_subcategorization_rules.py`): setup, teams, rounds, economy, etc.
-- **Shared** (`Tools/rules/shared_subcategorization_rules.py`): Currently all commands go to "tbd"
+#### Subcategorization Rules (`Tools/src/rules/subcategorization_rules.py`)
+- **Player**: crosshair, viewmodel, hud, audio, etc.
+- **Server**: setup, teams, rounds, economy, etc.
+- **Shared**: Currently all commands go to "tbd"
 
 ### Manual Category Override
 
@@ -71,19 +71,19 @@ The pipeline will:
 
 ```
 all_commands-YYYY-DD-MM.txt (Raw CS2 data)
-    ↓ parse_commands.py
+    ↓ 1_parse.py
 commands.json (Structured with consoleData)
-    ↓ command_classification.py
+    ↓ 2_classify_types.py
 commands.json (+ uiData with types)
-    ↓ splitting/classify_commands.py
+    ↓ 3_categorize.py
 classified_commands/*.json (Split by category)
-    ↓ subcategorization/*.py
+    ↓ 4_subcategorize.py
 CSConfigGenerator/wwwroot/data/commandschema/*/*.json (Final UI schema)
 ```
 
 ## Command Classification
 
-Commands are classified into three main categories: `player`, `server`, and `shared`. This classification is done automatically by the `Tools/scripts/splitting/split.py` script, which uses a combination of flags and command prefixes to determine the category of each command.
+Commands are classified into three main categories: `player`, `server`, and `shared`. This classification is done automatically by the `Tools/src/stages/3_categorize.py` script, which uses a combination of flags and command prefixes to determine the category of each command.
 
 The classification logic is as follows:
 
