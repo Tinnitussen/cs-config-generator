@@ -1,3 +1,4 @@
+@using CSConfigGenerator.Components
 @using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.Models
 @using Microsoft.AspNetCore.Components.Forms
@@ -13,21 +14,25 @@
         <div class="config-editor-actions">
             @if (PresetType != null)
             {
-                <select class="form-select form-select-sm" @onchange="OnPresetSelected">
-                    <option value="">-- Select a Preset --</option>
-                    @foreach (var preset in _presets)
+                <div class="custom-select-wrapper">
+                    <select class="custom-select" @onchange="OnPresetSelected">
+                        <option value="">Pro Configs</option>
+                        @foreach (var preset in _presets)
+                        {
+                            <option value="@preset">@preset</option>
+                        }
+                    </select>
+                </div>
+            }
+            <div class="custom-select-wrapper">
+                <select class="custom-select" @onchange="OnUserConfigSelected">
+                    <option value="">My Configs</option>
+                    @foreach (var config in _userConfigs)
                     {
-                        <option value="@preset">@preset</option>
+                        <option value="@config">@config</option>
                     }
                 </select>
-            }
-            <select class="form-select form-select-sm" @onchange="OnUserConfigSelected">
-                <option value="">-- My Configs --</option>
-                @foreach (var config in _userConfigs)
-                {
-                    <option value="@config">@config</option>
-                }
-            </select>
+            </div>
             <button class="btn btn-sm btn-outline-success" @onclick="SaveConfig" title="Save current config">
                 <i class="bi bi-save"></i>
             </button>
@@ -61,6 +66,11 @@
               spellcheck="false" />
 </div>
 
+<Modal Title="Save Config"
+       IsOpen="@isSaveModalVisible"
+       OnSubmit="HandleSaveModalSubmit"
+       OnCancel="CloseSaveModal" />
+
 @code {
     [Parameter]
     [EditorRequired]
@@ -74,6 +84,7 @@
     private List<string> _presets = new();
     private List<string> _userConfigs = new();
     private InputFile? _inputFile;
+    private bool isSaveModalVisible = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -131,13 +142,25 @@
 
     private async Task SaveConfig()
     {
-        var configName = await JSRuntime.InvokeAsync<string>("prompt", "Enter a name for your config:");
+        isSaveModalVisible = true;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task HandleSaveModalSubmit(string configName)
+    {
         if (!string.IsNullOrEmpty(configName) && PresetType != null)
         {
             await UserConfigService.SaveConfigAsync(PresetType, configName, configText);
             await LoadUserConfigs();
             ToastService.ShowToast($"Config '{configName}' saved successfully.", ToastLevel.Success);
         }
+        await CloseSaveModal();
+    }
+
+    private async Task CloseSaveModal()
+    {
+        isSaveModalVisible = false;
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task OnUpload(InputFileChangeEventArgs e)

@@ -1,6 +1,16 @@
 import json
 import os
+import sys
 from collections import defaultdict
+
+# --- Path setup ---
+# Add the 'rules' directory to the Python path to import the classification rules.
+script_dir = os.path.dirname(os.path.abspath(__file__))
+rules_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(script_dir))), 'rules')
+if rules_dir not in sys.path:
+    sys.path.append(rules_dir)
+
+from player_subcategorization_rules import get_player_subcategory
 
 def load_commands(filepath: str):
     """Load the commands.json file"""
@@ -14,15 +24,8 @@ def save_json(data: list, filepath: str):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
 
-def get_prefix(command_name: str):
-    """Extracts the prefix from a command name."""
-    parts = command_name.split('_')
-    if len(parts) > 1:
-        return f"{parts[0]}_"
-    return None
-
 def subcategorize_player():
-    """Subcategorizes the player commands."""
+    """Subcategorizes the player commands using external rules."""
     commands = load_commands('Tools/data/classified_commands/player_commands.json')
 
     subcategories = {
@@ -44,47 +47,10 @@ def subcategorize_player():
     }
 
     for command in commands:
-        manual_category = command.get('uiData', {}).get('manual_category')
-        if manual_category:
-            _, subcategory = manual_category.split('/')
-            subcategories[subcategory].append(command)
-            continue
+        subcategory = get_player_subcategory(command)
+        subcategories[subcategory].append(command)
 
-        prefix = get_prefix(command['command'])
-        ui_type = command.get('uiData', {}).get('type')
-
-        if prefix == "crosshair_":
-            subcategories["crosshair"].append(command)
-        elif prefix == "viewmodel_":
-            subcategories["viewmodel"].append(command)
-        elif prefix == "hud_":
-            subcategories["hud"].append(command)
-        elif prefix == "radar_":
-            subcategories["radar"].append(command)
-        elif prefix in ["input_", "m_", "joy_"]:
-            subcategories["input"].append(command)
-        elif prefix in ["gameplay_", "option_"]:
-            subcategories["gameplay"].append(command)
-        elif prefix in ["snd_", "sound_", "voice_"]:
-            subcategories["audio"].append(command)
-        elif prefix in ["comm_", "chat_"]:
-            subcategories["communication"].append(command)
-        elif prefix == "net_":
-            subcategories["network"].append(command)
-        elif command.get('consoleData', {}).get('flags') and "cheat" in command.get('consoleData', {}).get('flags', []):
-            subcategories["cheats"].append(command)
-        elif ui_type == "action":
-            subcategories["actions"].append(command)
-        elif prefix == "r_":
-            subcategories["developer/rendering"].append(command)
-        elif prefix in ["debug_", "dev_"]:
-            subcategories["developer/debugging"].append(command)
-        elif prefix == "spec_":
-            subcategories["developer/spectator"].append(command)
-        else:
-            subcategories["misc"].append(command)
-
-    output_dir = "CSConfigGenerator/wwwroot/data/commandschema/player"
+    output_dir = os.path.join("CSConfigGenerator", "wwwroot", "data", "commandschema", "player")
     for category, command_list in subcategories.items():
         output_file = os.path.join(output_dir, f"{category}.json")
         print(f"Saving {len(command_list)} commands to '{output_file}'...")
