@@ -8,14 +8,14 @@ utils_dir = script_dir.parent / 'utils'
 if str(utils_dir) not in sys.path:
     sys.path.append(str(utils_dir))
 
-from paths import COMMANDS_JSON, UNCATEGORIZED_SCHEMA_DIR, ensure_output_dirs
+from paths import COMMANDS_JSON, ALL_SCHEMA_DIR, ensure_output_dirs
 
 def main():
     """
-    Copies the master commands.json file to the uncategorized schema directory
-    to be used by the 'All Commands' UI tab.
+    Copies the master commands.json file to the 'all' schema directory
+    to be used by a future version of the UI.
     """
-    print("--- Creating Uncategorized Data File ---")
+    print("--- Creating 'All Commands' Data File ---")
 
     # Ensure paths exist
     if not COMMANDS_JSON.exists():
@@ -25,12 +25,12 @@ def main():
     ensure_output_dirs()
 
     # Define destination path
-    destination_path = UNCATEGORIZED_SCHEMA_DIR / "data.json"
+    destination_path = ALL_SCHEMA_DIR / "all_commands.json"
 
     try:
         print(f"Copying '{COMMANDS_JSON}' to '{destination_path}'...")
         shutil.copy(COMMANDS_JSON, destination_path)
-        print("Successfully created uncategorized data file.")
+        print("Successfully created all_commands.json.")
     except Exception as e:
         print(f"Error: Failed to copy file. {e}")
         return 1

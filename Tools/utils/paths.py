@@ -40,12 +40,11 @@ SCHEMA_DIR = PROJECT_ROOT / "CSConfigGenerator" / "wwwroot" / "data" / "commands
 # Specific classified command files
 PLAYER_COMMANDS = CLASSIFIED_DIR / "player_commands.json"
 SERVER_COMMANDS = CLASSIFIED_DIR / "server_commands.json"
-UNCATEGORIZED_COMMANDS = CLASSIFIED_DIR / "uncategorized_commands.json"
 
 # Schema output directories
 PLAYER_SCHEMA_DIR = SCHEMA_DIR / "player"
 SERVER_SCHEMA_DIR = SCHEMA_DIR / "server"
-UNCATEGORIZED_SCHEMA_DIR = SCHEMA_DIR / "uncategorized"
+ALL_SCHEMA_DIR = SCHEMA_DIR / "all"
 
 def setup_rules_import():
     """
@@ -66,7 +65,7 @@ def ensure_output_dirs():
         SCHEMA_DIR,
         PLAYER_SCHEMA_DIR,
         SERVER_SCHEMA_DIR,
-        UNCATEGORIZED_SCHEMA_DIR
+        ALL_SCHEMA_DIR
     ]
 
     for directory in dirs_to_create:
