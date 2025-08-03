@@ -15,7 +15,7 @@
             @if (PresetType != null)
             {
                 <div class="custom-select-wrapper">
-                    <select class="custom-select" @onchange="OnPresetSelected">
+                    <select class="custom-select" @bind="SelectedPreset">
                         <option value="">Pro Configs</option>
                         @foreach (var preset in _presets)
                         {
@@ -25,7 +25,7 @@
                 </div>
             }
             <div class="custom-select-wrapper">
-                <select class="custom-select" @onchange="OnUserConfigSelected">
+                <select class="custom-select" @bind="SelectedUserConfig">
                     <option value="">My Configs</option>
                     @foreach (var config in _userConfigs)
                     {
@@ -66,10 +66,27 @@
               spellcheck="false" />
 </div>
 
-<Modal Title="Save Config"
+<Modal @ref="_saveModal"
+       Title="Save Config"
        IsOpen="@isSaveModalVisible"
        OnSubmit="HandleSaveModalSubmit"
-       OnCancel="CloseSaveModal" />
+       OnCancel="CloseSaveModal"
+       SubmitButtonText="Save">
+    <ChildContent>
+        <input type="text" class="form-control" @bind="_configNameToSave" @onkeydown="HandleSaveModalKeyDown" @onkeydown:preventDefault="true" placeholder="Enter name..." />
+    </ChildContent>
+</Modal>
+
+<Modal Title="@_confirmationTitle"
+       IsOpen="@_isConfirmationVisible"
+       OnSubmit="HandleConfirmationSubmit"
+       OnCancel="HandleConfirmationCancel"
+       SubmitButtonText="Confirm">
+    <ChildContent>
+        @_confirmationMessage
+    </ChildContent>
+</Modal>
+
 
 @code {
     [Parameter]
@@ -85,6 +102,55 @@
     private List<string> _userConfigs = new();
     private InputFile? _inputFile;
     private bool isSaveModalVisible = false;
+    private string _configNameToSave = "";
+    private Modal? _saveModal;
+
+    // Dropdown selections
+    private string _selectedPreset = "";
+    private string _selectedUserConfig = "";
+
+    // Confirmation modal state
+    private bool _isConfirmationVisible = false;
+    private string _confirmationTitle = "";
+    private RenderFragment? _confirmationMessage;
+    private Func<Task>? _confirmationAction;
+    private Action? _cancellationAction;
+
+    private string SelectedPreset
+    {
+        get => _selectedPreset;
+        set => HandleDestructiveAction(value, ref _selectedPreset, "Load pro config",
+            async (presetName) =>
+            {
+                if (string.IsNullOrEmpty(presetName) || PresetType == null) return;
+                var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
+                if (!string.IsNullOrEmpty(presetContent))
+                {
+                    ConfigStateService.ParseConfigFile(presetContent, this);
+                    RefreshConfigText();
+                    StateHasChanged();
+                }
+            });
+    }
+
+    private string SelectedUserConfig
+    {
+        get => _selectedUserConfig;
+        set => HandleDestructiveAction(value, ref _selectedUserConfig, "Load saved config",
+            async (configName) =>
+            {
+                if (string.IsNullOrEmpty(configName) || PresetType == null) return;
+
+                var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
+                if (!string.IsNullOrEmpty(configContent))
+                {
+                    ConfigStateService.ParseConfigFile(configContent, this);
+                    RefreshConfigText();
+                    StateHasChanged();
+                }
+            });
+    }
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -101,35 +167,31 @@
         }
     }
 
-    private async Task OnPresetSelected(ChangeEventArgs e)
+    private void HandleDestructiveAction(string? newValue, ref string currentValue, string actionName, Func<string, Task> action)
     {
-        var presetName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(presetName) && PresetType != null)
+        if (newValue == currentValue || string.IsNullOrEmpty(newValue))
         {
-            var presetContent = await PresetService.GetPresetContentAsync(PresetType, presetName);
-            if (!string.IsNullOrEmpty(presetContent))
-            {
-                ConfigStateService.ParseConfigFile(presetContent, this);
-                RefreshConfigText();
-                StateHasChanged();
-            }
+            // No real change, or selection was cleared
+            currentValue = newValue ?? "";
+            return;
         }
+
+        var previousValue = currentValue;
+        currentValue = newValue; // Temporarily update for UI to reflect change
+
+        _confirmationTitle = actionName;
+        _confirmationMessage = builder => builder.AddContent(0, $"Are you sure you want to {actionName.ToLower()} '{newValue}'? Your current changes will be lost.");
+        _confirmationAction = () => action(newValue);
+        _cancellationAction = () =>
+        {
+            currentValue = previousValue; // Revert on cancel
+            StateHasChanged();
+        };
+
+        _isConfirmationVisible = true;
+        StateHasChanged();
     }
 
-    private async Task OnUserConfigSelected(ChangeEventArgs e)
-    {
-        var configName = e.Value?.ToString();
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
-        {
-            var configContent = await UserConfigService.GetConfigContentAsync(PresetType, configName);
-            if (!string.IsNullOrEmpty(configContent))
-            {
-                ConfigStateService.ParseConfigFile(configContent, this);
-                RefreshConfigText();
-                StateHasChanged();
-            }
-        }
-    }
 
     private async Task LoadUserConfigs()
     {
@@ -146,27 +208,65 @@
         await InvokeAsync(StateHasChanged);
     }
 
-    private async Task HandleSaveModalSubmit(string configName)
+    private async Task HandleSaveModalKeyDown(KeyboardEventArgs e)
     {
-        if (!string.IsNullOrEmpty(configName) && PresetType != null)
+        if (_saveModal != null)
         {
-            await UserConfigService.SaveConfigAsync(PresetType, configName, configText);
+            await _saveModal.HandleKeyDown(e);
+        }
+    }
+
+    private async Task HandleSaveModalSubmit()
+    {
+        if (!string.IsNullOrEmpty(_configNameToSave) && PresetType != null)
+        {
+            await UserConfigService.SaveConfigAsync(PresetType, _configNameToSave, configText);
             await LoadUserConfigs();
-            ToastService.ShowToast($"Config '{configName}' saved successfully.", ToastLevel.Success);
+            ToastService.ShowToast($"Config '{_configNameToSave}' saved successfully.", ToastLevel.Success);
         }
         await CloseSaveModal();
     }
 
     private async Task CloseSaveModal()
     {
+        _configNameToSave = "";
         isSaveModalVisible = false;
         await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task HandleConfirmationSubmit()
+    {
+        if (_confirmationAction != null)
+        {
+            await _confirmationAction();
+        }
+        CloseConfirmationModal();
+    }
+
+    private void HandleConfirmationCancel()
+    {
+        _cancellationAction?.Invoke();
+        CloseConfirmationModal();
+    }
+
+    private void CloseConfirmationModal()
+    {
+        _isConfirmationVisible = false;
+        _confirmationTitle = "";
+        _confirmationMessage = null;
+        _confirmationAction = null;
+        _cancellationAction = null;
+        StateHasChanged();
     }
 
     private async Task OnUpload(InputFileChangeEventArgs e)
     {
         var file = e.File;
-        if (file != null)
+        if (file == null) return;
+
+        _confirmationTitle = "Upload Config";
+        _confirmationMessage = builder => builder.AddContent(0, $"Are you sure you want to load the config from '{file.Name}'? Your current changes will be lost.");
+        _confirmationAction = async () =>
         {
             try
             {
@@ -182,7 +282,10 @@
             {
                 ToastService.ShowToast($"Error uploading file: {ex.Message}", ToastLevel.Error);
             }
-        }
+        };
+        _cancellationAction = null; // No action on cancel
+        _isConfirmationVisible = true;
+        StateHasChanged();
     }
 
     private async Task DownloadConfig()
@@ -236,8 +339,17 @@
 
     private void ResetToDefaults()
     {
-        ConfigStateService.ResetToDefaults();
-        ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
+        _confirmationTitle = "Reset to Defaults";
+        _confirmationMessage = builder => builder.AddContent(0, "Are you sure you want to reset the configuration to its default values? All your current changes will be lost.");
+        _confirmationAction = () =>
+        {
+            ConfigStateService.ResetToDefaults();
+            ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
+            return Task.CompletedTask;
+        };
+        _cancellationAction = null;
+        _isConfirmationVisible = true;
+        StateHasChanged();
     }
 
     private async Task CopyToClipboard()
