@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ServiceWorker Include="wwwroot/service-worker.js"/>
+    <ServiceWorker Include="wwwroot/service-worker.js" PublishedContent="service-worker..js" />
   </ItemGroup>
 
   <!-- Exclude the massive bootstrap icons folder from the build -->
