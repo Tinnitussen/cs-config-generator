@@ -187,12 +187,12 @@ def main(args):
     if not wait_for_user_input("command usage classification", args.non_interactive):
         return 1
 
-    # Step 4: Create Uncategorized Data for UI
-    print_step(4, "Create Uncategorized Data File for UI")
-    uncategorized_script = scripts_dir / "create_uncategorized_data.py"
-    if not run_script(uncategorized_script, "Create uncategorized data"):
+    # Step 4: Create All Commands Data for UI
+    print_step(4, "Create 'All Commands' Data File")
+    all_commands_script = scripts_dir / "create_all_commands.py"
+    if not run_script(all_commands_script, "Create all_commands.json"):
         return 1
-    if not wait_for_user_input("uncategorized data creation", args.non_interactive):
+    if not wait_for_user_input("all commands data creation", args.non_interactive):
         return 1
 
     # Step 5: Subcategorize commands
