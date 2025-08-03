@@ -71,7 +71,7 @@ public static class SettingTypeHelpers
             SettingType.Int => int.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.Float => float.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.String => valueStr,
-            SettingType.Enum => int.Parse(valueStr, CultureInfo.InvariantCulture),
+            SettingType.Enum => valueStr, // Enums are treated as strings
             SettingType.Bitmask => int.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.UnknownNumeric => float.Parse(valueStr, CultureInfo.InvariantCulture),
             SettingType.UnknownInteger => int.Parse(valueStr, CultureInfo.InvariantCulture),
