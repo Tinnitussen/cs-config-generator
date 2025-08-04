@@ -21,7 +21,7 @@ public class ConfigStateService : IConfigStateService
     {
         _settings.Clear();
 
-        var allSections = _schemaService.PlayerSections.Concat(_schemaService.ServerSections);
+        var allSections = _schemaService.PlayerSections.Concat(_schemaService.ServerSections).Concat(_schemaService.AllCommandsSections);
         foreach (var section in allSections)
         {
             foreach (var command in section.Commands)
@@ -33,7 +33,7 @@ public class ConfigStateService : IConfigStateService
                     _settings[command.Command] = new Setting
                     {
                         Value = defaultValue,
-                        IsInConfigEditor = true
+                        IsInConfigEditor = false
                     };
                 }
             }

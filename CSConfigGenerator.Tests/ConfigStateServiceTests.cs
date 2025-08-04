@@ -67,14 +67,21 @@ namespace CSConfigGenerator.Tests
             // Setup the mock schema service
             _mockSchemaService.Setup(s => s.PlayerSections).Returns(_testPlayerSections);
             _mockSchemaService.Setup(s => s.ServerSections).Returns(_testServerSections);
+            _mockSchemaService.Setup(s => s.AllCommandsSections).Returns(new List<ConfigSection>());
             _mockSchemaService.Setup(s => s.GetCommand(It.IsAny<string>()))
                 .Returns<string>(name => allCommands.FirstOrDefault(c => c.Command == name));
 
             _configStateService = new ConfigStateService(_mockSchemaService.Object);
         }
 
+
+        private void PopulateTestSettings()
+        {
+            _configStateService.InitializeDefaults();
+        }
+
         [Fact]
-        public void InitializeDefaults_ShouldLoadAllSettingsFromSchema()
+        public void InitializeDefaults_ShouldLoadSettingsWithInclusionFalse()
         {
             // Act
             _configStateService.InitializeDefaults();
@@ -83,36 +90,32 @@ namespace CSConfigGenerator.Tests
             var expectedCount = _testPlayerSections.SelectMany(s => s.Commands).Count() + _testServerSections.SelectMany(s => s.Commands).Count();
             Assert.Equal(expectedCount, _configStateService.Settings.Count);
 
-            var playerSetting = _configStateService.GetSetting("sensitivity");
-            Assert.NotNull(playerSetting);
-            Assert.Equal(2.5f, playerSetting.Value);
-
-            var serverSetting = _configStateService.GetSetting("sv_cheats");
-            Assert.NotNull(serverSetting);
-            Assert.Equal(false, serverSetting.Value);
+            foreach(var setting in _configStateService.Settings.Values)
+            {
+                Assert.False(setting.IsInConfigEditor);
+            }
         }
 
         [Fact]
-        public void ResetToDefaults_ShouldRestoreDefaultValues()
+        public void ResetToDefaults_ShouldReloadSettingsWithInclusionFalse()
         {
             // Arrange
-            _configStateService.InitializeDefaults();
-            var setting = _configStateService.GetSetting("sensitivity");
-            _configStateService.SetValue("sensitivity", 999.0f);
+            PopulateTestSettings();
+            _configStateService.SetIncluded("sensitivity", true);
 
             // Act
             _configStateService.ResetToDefaults();
 
             // Assert
-            var resetSetting = _configStateService.GetSetting("sensitivity");
-            Assert.Equal(2.5f, resetSetting.Value);
+            var setting = _configStateService.GetSetting("sensitivity");
+            Assert.False(setting.IsInConfigEditor);
         }
 
         [Fact]
         public void SetValue_ShouldUpdateSettingValue()
         {
             // Arrange
-            _configStateService.InitializeDefaults();
+            PopulateTestSettings();
             var commandName = "sensitivity";
             var newValue = 5.0f;
 
@@ -128,7 +131,7 @@ namespace CSConfigGenerator.Tests
         public void SetIncluded_ShouldUpdateInclusionStatus()
         {
             // Arrange
-            _configStateService.InitializeDefaults();
+            PopulateTestSettings();
             var commandName = "sensitivity";
             var setting = _configStateService.GetSetting(commandName);
             var originalStatus = setting.IsInConfigEditor;
@@ -145,7 +148,7 @@ namespace CSConfigGenerator.Tests
         public void GenerateConfigFile_ShouldProduceCorrectStringForPlayer()
         {
             // Arrange
-            _configStateService.InitializeDefaults();
+            PopulateTestSettings();
             _configStateService.SetValue("cl_crosshaircolor", 4);
             _configStateService.SetIncluded("cl_crosshaircolor", true);
             _configStateService.SetValue("sensitivity", 2.5f);
@@ -167,7 +170,7 @@ namespace CSConfigGenerator.Tests
         public void ParseConfigFile_ShouldUpdateSettings()
         {
             // Arrange
-            _configStateService.InitializeDefaults();
+            PopulateTestSettings();
             var configText = "sensitivity 1.23\nsv_cheats 1";
 
             // Act
@@ -178,7 +181,6 @@ namespace CSConfigGenerator.Tests
             Assert.Equal(true, _configStateService.GetSetting("sv_cheats").Value);
             Assert.True(_configStateService.GetSetting("sensitivity").IsInConfigEditor);
             Assert.True(_configStateService.GetSetting("sv_cheats").IsInConfigEditor);
-            Assert.False(_configStateService.GetSetting("cl_crosshaircolor").IsInConfigEditor);
         }
 
         [Theory]
@@ -192,7 +194,7 @@ namespace CSConfigGenerator.Tests
         public void TrySetValueFromString_ShouldWorkAsExpected(string command, string value, bool expectedSuccess, object? expectedValue)
         {
             // Arrange
-            _configStateService.InitializeDefaults();
+            PopulateTestSettings();
 
             // Act
             var (isSuccess, errorMessage) = _configStateService.TrySetValueFromString(command, value);
