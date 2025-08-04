@@ -5,9 +5,10 @@ CS Commands Processing Pipeline Runner
 This script streamlines the entire pipeline process:
 1. Parse commands from a snapshot file.
 2. Classify command data types (bool, string, etc.).
-3. Classify commands into Player and Server categories based on config usage.
-4. Create a master data file for the 'All Commands' UI.
-5. Subcategorize Player and Server commands for the UI.
+3. Detect numeric types from Player and Server configs.
+4. Classify commands into Player and Server categories based on config usage.
+5. Create a master data file for the 'All Commands' UI.
+6. Subcategorize Player and Server commands for the UI.
 
 Each step waits for user review before continuing.
 Can be run non-interactively with the --non-interactive flag.
@@ -173,8 +174,22 @@ def main(args):
     if not wait_for_user_input("command type classification", args.non_interactive):
         return 1
 
-    # Step 3: Classify commands by usage
-    print_step(3, "Classify Commands by Usage")
+    # Step 3: Detect numeric types from configs
+    print_step(3, "Detect Numeric Types from Configs")
+    numeric_detection_script = scripts_dir / "numeric_detection.py"
+    
+    print(f"\n{Colors.OKCYAN}Running numeric detection for Player commands...{Colors.ENDC}")
+    if not run_script(numeric_detection_script, "Player numeric type detection", ["--type", "player"]):
+        return 1
+        
+    print(f"\n{Colors.OKCYAN}Running numeric detection for Server commands...{Colors.ENDC}")
+    if not run_script(numeric_detection_script, "Server numeric type detection", ["--type", "server"]):
+        return 1
+    if not wait_for_user_input("numeric type detection", args.non_interactive):
+        return 1
+
+    # Step 4: Classify commands by usage
+    print_step(4, "Classify Commands by Usage")
     popularity_script = scripts_dir / "command_popularity.py"
 
     print(f"\n{Colors.OKCYAN}Running for Player commands...{Colors.ENDC}")
@@ -187,16 +202,16 @@ def main(args):
     if not wait_for_user_input("command usage classification", args.non_interactive):
         return 1
 
-    # Step 4: Create All Commands Data for UI
-    print_step(4, "Create 'All Commands' Data File")
+    # Step 5: Create All Commands Data for UI
+    print_step(5, "Create 'All Commands' Data File")
     all_commands_script = scripts_dir / "create_all_commands.py"
     if not run_script(all_commands_script, "Create all_commands.json"):
         return 1
     if not wait_for_user_input("all commands data creation", args.non_interactive):
         return 1
 
-    # Step 5: Subcategorize commands
-    print_step(5, "Subcategorize Player and Server Commands")
+    # Step 6: Subcategorize commands
+    print_step(6, "Subcategorize Player and Server Commands")
     subcategorization_scripts = [
         ("subcategorize_player.py", "Player subcategorization"),
         ("subcategorize_server.py", "Server subcategorization")
