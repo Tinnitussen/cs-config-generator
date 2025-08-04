@@ -27,7 +27,6 @@ def create_ui_data_skeleton(command: Dict) -> Dict:
         "type": "unknown",
         "defaultValue": 0, # Generic placeholder, always overwritten
         "requiresCheats": "cheat" in command["consoleData"]["flags"],
-        "hideFromDefaultView": True
     }
 
 def add_type_classification(commands: List[Dict], reclassify_all: bool = False) -> tuple[List[Dict], Dict, int, int]:
@@ -40,7 +39,7 @@ def add_type_classification(commands: List[Dict], reclassify_all: bool = False) 
     type_counts = {}
     updated_count = 0
     skipped_count = 0
-    
+
     for cmd in commands:
         # If reclassify_all is False, skip commands that are already classified.
         if not reclassify_all and 'uiData' in cmd:
@@ -61,7 +60,7 @@ def add_type_classification(commands: List[Dict], reclassify_all: bool = False) 
             if result:
                 cmd_type, ui_default = result
                 break
-        
+
         # Update uiData with classification results
         cmd['uiData']['type'] = cmd_type
         cmd['uiData']['defaultValue'] = ui_default
@@ -77,7 +76,7 @@ def add_type_classification(commands: List[Dict], reclassify_all: bool = False) 
         processed_commands.append(cmd)
         type_counts[cmd_type] = type_counts.get(cmd_type, 0) + 1
         updated_count += 1
-            
+
     return processed_commands, type_counts, updated_count, skipped_count
 
 def save_json(data: List[Dict], filepath: str):
@@ -100,20 +99,20 @@ def main():
 
     input_file = os.path.join(tools_dir, "data", "commands.json")
     output_file = os.path.join(tools_dir, "data", "commands.json")
-    
+
     print(f"Loading commands from '{input_file}'...")
     commands = load_commands(input_file)
-    
+
     if args.reclassify_all:
         print("Re-classifying all commands...")
     else:
         print("Classifying new commands and building schema skeleton...")
 
     processed_commands, type_counts, updated_count, skipped_count = add_type_classification(commands, args.reclassify_all)
-    
+
     print(f"Saving updated file to '{output_file}'...")
     save_json(processed_commands, output_file)
-    
+
     total = len(commands)
     auto_classified = sum(v for k, v in type_counts.items() if 'unknown' not in k)
     unknown_total = type_counts.get('unknown', 0) + type_counts.get('unknown_numeric', 0)
@@ -124,11 +123,11 @@ def main():
     print(f"Commands skipped (already classified): {skipped_count}")
     print(f"Auto-classified: {auto_classified} ({auto_classified/total*100:.1f}%)")
     print(f"Marked as 'unknown' for manual review: {unknown_total} ({unknown_total/total*100:.1f}%)")
-    
+
     print("\nClassification breakdown:")
     for cmd_type, count in sorted(type_counts.items()):
         print(f"  - {cmd_type.replace('_', ' ').capitalize()}: {count}")
-    
+
     print(f"\nOutput file updated: {output_file}")
 
 

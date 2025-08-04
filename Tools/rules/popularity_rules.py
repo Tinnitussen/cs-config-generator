@@ -42,20 +42,3 @@ def should_mark_as_popular(command_count: int, total_configs: int) -> bool:
 
     usage_ratio = command_count / total_configs
     return usage_ratio > POPULARITY_THRESHOLD
-
-def should_update_visibility(entry: dict, is_popular: bool) -> bool:
-    """
-    Determine if a command entry should have its visibility updated.
-
-    Args:
-        entry: Command entry dictionary
-        is_popular: Whether the command is considered popular
-
-    Returns:
-        True if the entry should be updated, False otherwise
-    """
-    ui_data = entry.get("uiData", {})
-    current_hidden = ui_data.get("hideFromDefaultView", True)
-
-    # Only update if the command is popular and currently hidden
-    return is_popular and current_hidden
