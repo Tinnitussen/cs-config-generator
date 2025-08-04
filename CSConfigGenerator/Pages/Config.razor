@@ -20,7 +20,6 @@
                 @foreach (var section in Sections)
                 {
                     var viewModels = section.Commands
-                        .Where(c => !c.UiData.HideFromDefaultView)
                         .Select(c => _settingViewModels[c.Command])
                         .ToList();
 
@@ -52,16 +51,20 @@
     public string? ConfigType { get; set; }
 
     [Inject]
-    public IServiceProvider ServiceProvider { get; set; } = default!;
+    public IConfigStateService ConfigStateService { get; set; } = default!;
     [Inject]
     public ISchemaService SchemaService { get; set; } = default!;
 
-    private IConfigStateService ConfigStateService { get; set; } = default!;
     private IReadOnlyList<ConfigSection> Sections { get; set; } = new List<ConfigSection>();
     private string Title { get; set; } = "";
     private string Description { get; set; } = "";
 
     private readonly Dictionary<string, SettingViewModel> _settingViewModels = new();
+
+    protected override void OnInitialized()
+    {
+        ConfigStateService.OnStateChange += HandleStateHasChanged;
+    }
 
     protected override void OnParametersSet()
     {
@@ -71,17 +74,14 @@
             return;
         }
 
-        string serviceKey;
         if (string.Equals(ConfigType, "player", StringComparison.OrdinalIgnoreCase))
         {
-            serviceKey = "PlayerConfigStateServiceKey";
             Sections = SchemaService.PlayerSections;
             Title = "Player Settings";
             Description = "Configure your player settings. Changes are reflected in real-time in the config editor.";
         }
         else if (string.Equals(ConfigType, "server", StringComparison.OrdinalIgnoreCase))
         {
-            serviceKey = "ServerConfigStateServiceKey";
             Sections = SchemaService.ServerSections;
             Title = "Server Settings";
             Description = "Configure your server settings. Changes are reflected in real-time in the config editor.";
@@ -92,24 +92,15 @@
             return;
         }
 
-        var newConfigStateService = ServiceProvider.GetRequiredKeyedService<IConfigStateService>(serviceKey);
-        if (newConfigStateService != ConfigStateService)
-        {
-            if (ConfigStateService != null)
-            {
-                ConfigStateService.OnStateChange -= HandleStateHasChanged;
-            }
-            ConfigStateService = newConfigStateService;
-            ConfigStateService.OnStateChange += HandleStateHasChanged;
+        // Re-initialize view models since the sections have changed
+        _settingViewModels.Clear();
+        var allCommands = SchemaService.PlayerSections.SelectMany(s => s.Commands)
+            .Concat(SchemaService.ServerSections.SelectMany(s => s.Commands))
+            .DistinctBy(c => c.Command);
 
-            _settingViewModels.Clear();
-            foreach (var section in Sections)
-            {
-                foreach (var command in section.Commands.Where(c => !c.UiData.HideFromDefaultView))
-                {
-                    _settingViewModels[command.Command] = new SettingViewModel(command, ConfigStateService);
-                }
-            }
+        foreach (var command in allCommands)
+        {
+            _settingViewModels[command.Command] = new SettingViewModel(command, ConfigStateService);
         }
     }
 
@@ -125,9 +116,6 @@
 
     public void Dispose()
     {
-        if (ConfigStateService != null)
-        {
-            ConfigStateService.OnStateChange -= HandleStateHasChanged;
-        }
+        ConfigStateService.OnStateChange -= HandleStateHasChanged;
     }
 }

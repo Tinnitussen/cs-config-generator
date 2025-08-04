@@ -10,15 +10,16 @@ namespace CSConfigGenerator.Tests
     public class ConfigStateServiceTests
     {
         private readonly Mock<ISchemaService> _mockSchemaService;
-        private readonly PlayerConfigStateService _configStateService;
-        private readonly List<ConfigSection> _testSections;
+        private readonly ConfigStateService _configStateService;
+        private readonly List<ConfigSection> _testPlayerSections;
+        private readonly List<ConfigSection> _testServerSections;
 
         public ConfigStateServiceTests()
         {
             _mockSchemaService = new Mock<ISchemaService>();
 
             // Create some test command definitions
-            var commands = new List<CommandDefinition>
+            var playerCommands = new List<CommandDefinition>
             {
                 new() {
                     Command = "sensitivity",
@@ -29,44 +30,66 @@ namespace CSConfigGenerator.Tests
                     Command = "cl_crosshaircolor",
                     ConsoleData = new ConsoleData { DefaultValue = "1", Flags = [], Description = "", SourcedAt = DateTimeOffset.Now},
                     UiData = new UiData { Label = "Crosshair Color", Type = SettingType.Int, DefaultValue = JsonSerializer.SerializeToElement(1) }
-                },
-                new() {
-                    Command = "cl_crosshairdot",
-                    ConsoleData = new ConsoleData { DefaultValue = "false", Flags = [], Description = "", SourcedAt = DateTimeOffset.Now},
-                    UiData = new UiData { Label = "Crosshair Dot", Type = SettingType.Bool, DefaultValue = JsonSerializer.SerializeToElement(false) }
                 }
             };
 
-            _testSections =
+            var serverCommands = new List<CommandDefinition>
+            {
+                new() {
+                    Command = "sv_cheats",
+                    ConsoleData = new ConsoleData { DefaultValue = "0", Flags = [], Description = "", SourcedAt = DateTimeOffset.Now},
+                    UiData = new UiData { Label = "Enable Cheats", Type = SettingType.Bool, DefaultValue = JsonSerializer.SerializeToElement(false) }
+                }
+            };
+
+            var allCommands = playerCommands.Concat(serverCommands).ToList();
+
+            _testPlayerSections =
             [
                 new ConfigSection
                 {
-                    Name = "test_section",
-                    DisplayName = "Test Section",
-                    Commands = commands
+                    Name = "player_section",
+                    DisplayName = "Player Section",
+                    Commands = playerCommands
+                }
+            ];
+
+            _testServerSections =
+            [
+                new ConfigSection
+                {
+                    Name = "server_section",
+                    DisplayName = "Server Section",
+                    Commands = serverCommands
                 }
             ];
 
             // Setup the mock schema service
-            _mockSchemaService.Setup(s => s.PlayerSections).Returns(_testSections);
-            _mockSchemaService.Setup(s => s.GetPlayerCommand(It.IsAny<string>()))
-                .Returns<string>(name => commands.FirstOrDefault(c => c.Command == name));
+            _mockSchemaService.Setup(s => s.PlayerSections).Returns(_testPlayerSections);
+            _mockSchemaService.Setup(s => s.ServerSections).Returns(_testServerSections);
+            _mockSchemaService.Setup(s => s.GetCommand(It.IsAny<string>()))
+                .Returns<string>(name => allCommands.FirstOrDefault(c => c.Command == name));
 
-            _configStateService = new PlayerConfigStateService(_mockSchemaService.Object);
+            _configStateService = new ConfigStateService(_mockSchemaService.Object);
         }
 
         [Fact]
-        public void InitializeDefaults_ShouldLoadSettingsFromSchema()
+        public void InitializeDefaults_ShouldLoadAllSettingsFromSchema()
         {
             // Act
             _configStateService.InitializeDefaults();
 
             // Assert
-            Assert.Equal(_testSections.SelectMany(s => s.Commands).Count(), _configStateService.Settings.Count);
+            var expectedCount = _testPlayerSections.SelectMany(s => s.Commands).Count() + _testServerSections.SelectMany(s => s.Commands).Count();
+            Assert.Equal(expectedCount, _configStateService.Settings.Count);
 
-            var setting = _configStateService.GetSetting("sensitivity");
-            Assert.NotNull(setting);
-            Assert.Equal(2.5f, setting.Value);
+            var playerSetting = _configStateService.GetSetting("sensitivity");
+            Assert.NotNull(playerSetting);
+            Assert.Equal(2.5f, playerSetting.Value);
+
+            var serverSetting = _configStateService.GetSetting("sv_cheats");
+            Assert.NotNull(serverSetting);
+            Assert.Equal(false, serverSetting.Value);
         }
 
         [Fact]
@@ -119,7 +142,7 @@ namespace CSConfigGenerator.Tests
         }
 
         [Fact]
-        public void GenerateConfigFile_ShouldProduceCorrectString()
+        public void GenerateConfigFile_ShouldProduceCorrectStringForPlayer()
         {
             // Arrange
             _configStateService.InitializeDefaults();
@@ -127,17 +150,17 @@ namespace CSConfigGenerator.Tests
             _configStateService.SetIncluded("cl_crosshaircolor", true);
             _configStateService.SetValue("sensitivity", 2.5f);
             _configStateService.SetIncluded("sensitivity", true);
-            _configStateService.SetIncluded("cl_crosshairdot", false); // Ensure this is not in the config
+            _configStateService.SetIncluded("sv_cheats", false); // Ensure this is not in the player config
 
             // Act
-            var configFileContent = _configStateService.GenerateConfigFile();
+            var configFileContent = _configStateService.GenerateConfigFile("player");
 
             // Assert
             Assert.Contains("// Generated by CS Config Generator", configFileContent);
             Assert.Contains("// Player Configuration", configFileContent);
             Assert.Contains("cl_crosshaircolor 4", configFileContent);
             Assert.Contains("sensitivity 2.5", configFileContent);
-            Assert.DoesNotContain("cl_crosshairdot", configFileContent);
+            Assert.DoesNotContain("sv_cheats", configFileContent);
         }
 
         [Fact]
@@ -145,26 +168,26 @@ namespace CSConfigGenerator.Tests
         {
             // Arrange
             _configStateService.InitializeDefaults();
-            var configText = "sensitivity 1.23\ncl_crosshaircolor 5";
+            var configText = "sensitivity 1.23\nsv_cheats 1";
 
             // Act
             _configStateService.ParseConfigFile(configText);
 
             // Assert
             Assert.Equal(1.23f, _configStateService.GetSetting("sensitivity").Value);
-            Assert.Equal(5, _configStateService.GetSetting("cl_crosshaircolor").Value);
+            Assert.Equal(true, _configStateService.GetSetting("sv_cheats").Value);
             Assert.True(_configStateService.GetSetting("sensitivity").IsInConfigEditor);
-            Assert.True(_configStateService.GetSetting("cl_crosshaircolor").IsInConfigEditor);
-            Assert.False(_configStateService.GetSetting("cl_crosshairdot").IsInConfigEditor);
+            Assert.True(_configStateService.GetSetting("sv_cheats").IsInConfigEditor);
+            Assert.False(_configStateService.GetSetting("cl_crosshaircolor").IsInConfigEditor);
         }
 
         [Theory]
         [InlineData("sensitivity", "3.14", true, 3.14f)]
         [InlineData("cl_crosshaircolor", "3", true, 3)]
-        [InlineData("cl_crosshairdot", "true", true, true)]
+        [InlineData("sv_cheats", "true", true, true)]
         [InlineData("sensitivity", "invalid-float", false, null)]
         [InlineData("cl_crosshaircolor", "invalid-int", false, null)]
-        [InlineData("cl_crosshairdot", "invalid-bool", false, null)]
+        [InlineData("sv_cheats", "invalid-bool", false, null)]
         [InlineData("non_existent_command", "123", false, null)]
         public void TrySetValueFromString_ShouldWorkAsExpected(string command, string value, bool expectedSuccess, object? expectedValue)
         {

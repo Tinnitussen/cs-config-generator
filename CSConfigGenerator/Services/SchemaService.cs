@@ -74,16 +74,17 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
             throw new InvalidOperationException("Failed to initialize schema service", ex);
         }
     }
-    public CommandDefinition? GetPlayerCommand(string name)
+    public CommandDefinition? GetCommand(string name)
     {
-        _playerCommandsByName.TryGetValue(name, out var command);
-        return command;
-    }
-
-    public CommandDefinition? GetServerCommand(string name)
-    {
-        _serverCommandsByName.TryGetValue(name, out var command);
-        return command;
+        if (_playerCommandsByName.TryGetValue(name, out var command))
+        {
+            return command;
+        }
+        if (_serverCommandsByName.TryGetValue(name, out command))
+        {
+            return command;
+        }
+        return null;
     }
 
     private static string ExtractSectionName(string filePath)

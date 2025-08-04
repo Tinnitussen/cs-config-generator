@@ -290,7 +290,14 @@
 
     private void RefreshConfigText()
     {
-        configText = ConfigStateService.GenerateConfigFile();
+        if (PresetType != null)
+        {
+            configText = ConfigStateService.GenerateConfigFile(PresetType);
+        }
+        else
+        {
+            configText = "// Select a config type to see the preview";
+        }
     }
 
     private void OnTextInput(ChangeEventArgs e)

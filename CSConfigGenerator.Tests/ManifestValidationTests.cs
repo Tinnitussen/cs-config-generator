@@ -34,7 +34,7 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
             if (commands == null) continue;
 
             // Process the commands similar to SchemaService
-            if (filePath.Contains("/player/"))
+            if (filePath.Contains("/player/") || filePath.Contains("/all/"))
             {
                 // Add to player sections
                 var sectionName = Path.GetFileNameWithoutExtension(filePath);
@@ -71,6 +71,16 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
         return ServerSections
             .SelectMany(section => section.Commands)
             .FirstOrDefault(cmd => cmd.Command.Equals(name, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public CommandDefinition? GetCommand(string name)
+    {
+        var command = GetPlayerCommand(name);
+        if (command != null)
+        {
+            return command;
+        }
+        return GetServerCommand(name);
     }
 }
 
@@ -167,8 +177,9 @@ public class ManifestValidationTests : IDisposable
                 filePath.Contains("/player/") ||
                 filePath.Contains("/server/") ||
                 filePath.Contains("/shared/") ||
-                filePath.Contains("/uncategorized/"),
-                $"File path '{filePath}' should contain /player/, /server/, /shared/, or /uncategorized/ folder");
+                filePath.Contains("/uncategorized/") ||
+                filePath.Contains("/all/"),
+                $"File path '{filePath}' should contain /player/, /server/, /shared/, /uncategorized/, or /all/ folder");
         }
     }
 
@@ -268,8 +279,7 @@ public class ManifestValidationTests : IDisposable
 
     [Theory]
     [InlineData("player")]
-    [InlineData("server")]
-    [InlineData("shared")]
+    [InlineData("all")]
     public async Task ManifestPaths_ShouldContainExpectedSectionTypes(string sectionType)
     {
         // Arrange

@@ -77,7 +77,7 @@ The application follows a modern, service-oriented architecture that adapts the 
 
 -   **Services**: The core business logic is encapsulated in services, which are registered for dependency injection.
     -   `ISchemaService`: Responsible for loading the configuration schema from underlying data sources (like `schema.json`).
-    -   `IConfigStateService`: The "source of truth." It manages the complete state of the user's configuration, including all setting values. It handles validation, type conversion, and notifies the UI of any changes via a C# event (`OnStateChange`). This ensures the UI is always in sync with the application state.
+    -   `IConfigStateService`: The "source of truth." It is a single, unified service that manages the state for all commands, both player and server. It holds the current value of every setting, handles validation, and notifies the UI of any changes via a C# event (`OnStateChange`). This ensures the entire application is always in sync with a single state.
     -   Other services handle cross-cutting concerns like browser local storage persistence (`ILocalStorageService`) and user notifications (`IToastService`).
 
 ## Data Flow
