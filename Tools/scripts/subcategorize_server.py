@@ -2,10 +2,9 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
-# --- Path setup ---
 # Add the utils directory to path and import shared paths
 script_dir = Path(__file__).parent
-utils_dir = script_dir.parent.parent.parent / 'utils'
+utils_dir = script_dir.parent / 'utils'
 if str(utils_dir) not in sys.path:
     sys.path.append(str(utils_dir))
 

@@ -1,0 +1,40 @@
+[
+  {
+    "command": "bind",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Bind a key.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "bind",
+      "helperText": "Bind a key.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "arguments": []
+    }
+  },
+  {
+    "command": "unbindall",
+    "consoleData": {
+      "defaultValue": null,
+      "flags": [
+        "release"
+      ],
+      "description": "Unbind all keys.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "unbindall",
+      "helperText": "Unbind all keys.",
+      "type": "action",
+      "defaultValue": null,
+      "requiresCheats": false,
+      "arguments": []
+    }
+  }
+]

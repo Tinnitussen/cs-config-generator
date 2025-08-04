@@ -1,0 +1,62 @@
+[
+  {
+    "command": "cl_itemimages_dynamically_generated",
+    "consoleData": {
+      "defaultValue": "2",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "2: use render-targets, fallback to cache and disk; 1: no render targets, but use cache and fallback to disk; 0: disk assets only",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_itemimages_dynamically_generated",
+      "helperText": "2: use render-targets, fallback to cache and disk; 1: no render targets, but use cache and fallback to disk; 0: disk assets only",
+      "type": "unknown_integer",
+      "defaultValue": 2,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "r_drawtracers_firstperson",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "Toggle visibility of first person weapon tracers",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_drawtracers_firstperson",
+      "helperText": "Toggle visibility of first person weapon tracers",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "r_player_visibility_mode",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "r_player_visibility_mode",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false
+    }
+  }
+]
