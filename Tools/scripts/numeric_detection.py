@@ -7,13 +7,13 @@ from typing import List, Dict, Any
 
 # --- Path setup ---
 # Add the utils directory to path and import shared paths
-script_dir = Path(__file__).parent
-utils_dir = script_dir.parent.parent / 'utils'
+script_dir = Path(__file__).resolve().parent
+utils_dir = script_dir.parent / 'utils'
 if str(utils_dir) not in sys.path:
     sys.path.append(str(utils_dir))
 
 from paths import (
-    COMMANDS_JSON, CONFIGS_DIR, setup_rules_import,
+    COMMANDS_JSON, setup_rules_import, PRO_PLAYER_CONFIGS_DIR,
     load_json, save_json
 )
 
@@ -150,8 +150,8 @@ def main():
         print(f"Error: Commands file not found at {COMMANDS_JSON}")
         return 1
 
-    if not CONFIGS_DIR.exists():
-        print(f"Error: Configs directory not found at {CONFIGS_DIR}")
+    if not PRO_PLAYER_CONFIGS_DIR.exists():
+        print(f"Error: Configs directory not found at {PRO_PLAYER_CONFIGS_DIR}")
         return 1
 
     # Load existing data
@@ -163,7 +163,7 @@ def main():
 
     # Gather all values
     print("Gathering command values from config files...")
-    all_values = gather_all_values(CONFIGS_DIR, set(known_commands.keys()))
+    all_values = gather_all_values(PRO_PLAYER_CONFIGS_DIR, set(known_commands.keys()))
 
     # Create stats for commands with enough occurrences
     all_stats = []
