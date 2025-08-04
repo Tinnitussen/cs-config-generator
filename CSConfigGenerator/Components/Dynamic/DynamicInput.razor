@@ -2,70 +2,73 @@
 @using CSConfigGenerator.ViewModels
 @using System.Globalization
 
-<div class="mb-3">
-    <div class="d-flex justify-content-between align-items-center">
-        <div>
-            <label class="form-label @(ViewModel.Setting.IsInConfigEditor ? "" : "text-muted")" for="@ViewModel.Command.Command">
-                @ViewModel.Command.UiData.Label
-            </label>
-            @if (!ViewModel.Setting.IsInConfigEditor)
+@if (!ViewModel.Command.UiData.HideFromDefaultView)
+{
+    <div class="mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <label class="form-label @(ViewModel.Setting.IsInConfigEditor ? "" : "text-muted")" for="@ViewModel.Command.Command">
+                    @ViewModel.Command.UiData.Label
+                </label>
+                @if (!ViewModel.Setting.IsInConfigEditor)
+                {
+                    <span class="badge bg-secondary ms-2">Removed</span>
+                }
+            </div>
+            @if (ViewModel.Setting.IsInConfigEditor)
             {
-                <span class="badge bg-secondary ms-2">Removed</span>
+                <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
+            }
+            else
+            {
+                <button class="btn btn-sm btn-outline-success" @onclick="ViewModel.Restore">Restore</button>
             }
         </div>
+
         @if (ViewModel.Setting.IsInConfigEditor)
         {
-            <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
-        }
-        else
-        {
-            <button class="btn btn-sm btn-outline-success" @onclick="ViewModel.Restore">Restore</button>
-        }
-    </div>
-
-    @if (ViewModel.Setting.IsInConfigEditor)
-    {
-        @switch (ViewModel.Command.UiData.Type)
-        {
-            case SettingType.Bool:
-                <input type="checkbox" id="@ViewModel.Command.Command" class="form-check-input" @bind="BoolValue" />
-                break;
-            case SettingType.Int:
-            case SettingType.Float:
-            case SettingType.UnknownInteger:
-            case SettingType.UnknownNumeric:
-                <input type="text"
-                       id="@ViewModel.Command.Command"
-                       class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
-                       @oninput="OnInputChanged"
-                       value="@CurrentValue"
-                       spellcheck="false" />
-                @if (!string.IsNullOrEmpty(ValidationMessage))
-                {
-                    <div class="invalid-feedback d-block">@ValidationMessage</div>
-                }
-                break;
-            case SettingType.Enum:
-                <select id="@ViewModel.Command.Command" class="form-control" @bind="StringValue">
-                    @if (ViewModel.Command.UiData.Options != null)
+            @switch (ViewModel.Command.UiData.Type)
+            {
+                case SettingType.Bool:
+                    <input type="checkbox" id="@ViewModel.Command.Command" class="form-check-input" @bind="BoolValue" />
+                    break;
+                case SettingType.Int:
+                case SettingType.Float:
+                case SettingType.UnknownInteger:
+                case SettingType.UnknownNumeric:
+                    <input type="text"
+                           id="@ViewModel.Command.Command"
+                           class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
+                           @oninput="OnInputChanged"
+                           value="@CurrentValue"
+                           spellcheck="false" />
+                    @if (!string.IsNullOrEmpty(ValidationMessage))
                     {
-                        @foreach (var option in ViewModel.Command.UiData.Options)
-                        {
-                            <option value="@option.Key">@option.Value</option>
-                        }
+                        <div class="invalid-feedback d-block">@ValidationMessage</div>
                     }
-                </select>
-                break;
-            case SettingType.String:
-            case SettingType.Action:
-            default:
-                <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" @bind:event="oninput" spellcheck="false" />
-                break;
+                    break;
+                case SettingType.Enum:
+                    <select id="@ViewModel.Command.Command" class="form-control" @bind="StringValue">
+                        @if (ViewModel.Command.UiData.Options != null)
+                        {
+                            @foreach (var option in ViewModel.Command.UiData.Options)
+                            {
+                                <option value="@option.Key">@option.Value</option>
+                            }
+                        }
+                    </select>
+                    break;
+                case SettingType.String:
+                case SettingType.Action:
+                default:
+                    <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" @bind:event="oninput" spellcheck="false" />
+                    break;
+            }
         }
-    }
 
-    <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
-</div>
+        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
+    </div>
+}
 
 
 @code {
@@ -75,58 +78,45 @@
     private string CurrentValue { get; set; } = string.Empty;
     private string? ValidationMessage { get; set; }
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
-        // Initialize CurrentValue with the value from the view model.
-        // Use InvariantCulture for consistent formatting of numbers.
+        // This is the fix for the editor -> UI sync bug.
+        // It ensures that the local CurrentValue is updated whenever the parent component re-renders.
         CurrentValue = string.Format(CultureInfo.InvariantCulture, "{0}", ViewModel.Value);
     }
 
+    // Two-way binding for boolean values (checkboxes)
     private bool BoolValue
     {
-        get => ViewModel.Value is bool b ? b : false; // Safely cast with pattern matching
-        set => ViewModel.Value = value;
+        get => ViewModel.Value is bool b && b;
+        set => HandleChange(value.ToString().ToLowerInvariant());
     }
-    private int IntValue
-    {
-        // The getter is now only used to reflect the underlying model state, not for binding.
-        get => ViewModel.Value is int i ? i : (ViewModel.Value is float f ? (int)f : 0);
-    }
-    private float FloatValue
-    {
-        // The getter is now only used to reflect the underlying model state, not for binding.
-        get => ViewModel.Value is float f ? f : (ViewModel.Value is int i ? (float)i : 0.0f);
-    }
+
+    // Two-way binding for string-based values (selects, text inputs)
     private string StringValue
     {
-        get => ViewModel.Value?.ToString() ?? string.Empty; // Safely convert to string
-        set => ViewModel.Value = value;
+        get => ViewModel.Value?.ToString() ?? string.Empty;
+        set => HandleChange(value);
     }
 
+    // Handler for numeric inputs, which don't use @bind
     private void OnInputChanged(ChangeEventArgs e)
     {
-        CurrentValue = e.Value?.ToString() ?? string.Empty;
-        var (isValid, errorMessage) = SettingValidator.Validate(ViewModel.Command.UiData.Type, CurrentValue);
+        var value = e.Value?.ToString() ?? string.Empty;
+        CurrentValue = value; // Update the local value to show what the user is typing
+        HandleChange(value);
+    }
 
+    private void HandleChange(string value)
+    {
+        var (isValid, errorMessage) = ViewModel.TrySetValueFromString(value);
         if (isValid)
         {
             ValidationMessage = null;
-            var settingType = ViewModel.Command.UiData.Type;
-
-            // The value is valid, so we can parse it and update the view model
-            object parsedValue = settingType switch
-            {
-                SettingType.Int or SettingType.UnknownInteger => int.Parse(CurrentValue, NumberStyles.Integer, CultureInfo.InvariantCulture),
-                SettingType.Float or SettingType.UnknownNumeric => float.Parse(CurrentValue, NumberStyles.Float, CultureInfo.InvariantCulture),
-                // For other types, the string value is sufficient
-                _ => CurrentValue
-            };
-            ViewModel.Value = parsedValue;
         }
         else
         {
             ValidationMessage = errorMessage;
-            // Do not update ViewModel.Value if validation fails
         }
     }
 }

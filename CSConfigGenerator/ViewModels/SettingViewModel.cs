@@ -12,7 +12,12 @@ public class SettingViewModel(CommandDefinition command, IConfigStateService con
     public object Value
     {
         get => Setting.Value;
-        set => _configState.SetValue(Command.Command, value);
+        private set => _configState.SetValue(Command.Command, value);
+    }
+
+    public (bool, string?) TrySetValueFromString(string value)
+    {
+        return _configState.TrySetValueFromString(Command.Command, value);
     }
 
     public string StatusBadgeClass => Setting.IsInConfigEditor ? "bg-success" : "bg-secondary";

@@ -37,7 +37,7 @@ public abstract class ConfigStateServiceBase : IConfigStateService
                 _settings[command.Command] = new Setting
                 {
                     Value = defaultValue,
-                    IsInConfigEditor = true
+                    IsInConfigEditor = !command.UiData.HideFromDefaultView
                 };
             }
         }
@@ -173,6 +173,26 @@ public abstract class ConfigStateServiceBase : IConfigStateService
                 NotifyStateChanged(originator);
             }
         }
+    }
+
+    public (bool, string?) TrySetValueFromString(string commandName, string valueStr, object? originator = null)
+    {
+        var commandDef = GetCommandDefinition(commandName);
+        if (commandDef == null)
+        {
+            return (false, "Invalid command.");
+        }
+
+        var (isValid, errorMessage) = SettingValidator.Validate(commandDef.UiData.Type, valueStr);
+        if (!isValid)
+        {
+            return (false, errorMessage);
+        }
+
+        var parsedValue = SettingTypeHelpers.ParseFromString(commandDef.UiData.Type, valueStr);
+        SetValue(commandName, parsedValue, originator);
+
+        return (true, null);
     }
 
     public void SetIncluded(string commandName, bool IsInConfigEditor, object? originator = null)
