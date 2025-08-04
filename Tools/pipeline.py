@@ -147,7 +147,6 @@ def main(args):
 
     tools_dir = Path(__file__).parent.resolve()
     scripts_dir = tools_dir / "scripts"
-    subcategorization_dir = scripts_dir / "splitting" / "subcategorization"
 
     # Step 0: Select input file
     print_step(0, "Select Command Snapshot File")
@@ -177,11 +176,11 @@ def main(args):
     # Step 3: Detect numeric types from configs
     print_step(3, "Detect Numeric Types from Configs")
     numeric_detection_script = scripts_dir / "numeric_detection.py"
-    
+
     print(f"\n{Colors.OKCYAN}Running numeric detection for Player commands...{Colors.ENDC}")
     if not run_script(numeric_detection_script, "Player numeric type detection", ["--type", "player"]):
         return 1
-        
+
     print(f"\n{Colors.OKCYAN}Running numeric detection for Server commands...{Colors.ENDC}")
     if not run_script(numeric_detection_script, "Server numeric type detection", ["--type", "server"]):
         return 1
@@ -217,13 +216,18 @@ def main(args):
         ("subcategorize_server.py", "Server subcategorization")
     ]
     for script_name, description in subcategorization_scripts:
-        script_path = subcategorization_dir / script_name
+        script_path = scripts_dir / script_name
         if not script_path.exists():
             print_warning(f"Script not found, skipping: {script_path}")
             continue
+            
         print(f"\n{Colors.OKCYAN}Running {description}...{Colors.ENDC}")
+        if description == "Server subcategorization":
+            print(f"{Colors.WARNING}Note: Server configs might not be available yet. The script will handle this gracefully.{Colors.ENDC}")
+            
         if not run_script(script_path, description):
-            return 1
+            print_warning(f"{description} failed but pipeline will continue.")
+            continue
     if not wait_for_user_input("subcategorization", args.non_interactive):
         return 1
 

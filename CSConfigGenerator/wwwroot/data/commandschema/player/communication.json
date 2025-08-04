@@ -1,0 +1,617 @@
+[
+  {
+    "command": "cl_mute_all_but_friends_and_party",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "a",
+        "cl"
+      ],
+      "description": "Only allow communication from friends and matchmaking party members. Set to 1 to apply the in non-competitive game modes. Set to 2 will apply the setting in all modes.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_mute_all_but_friends_and_party",
+      "helperText": "Only allow communication from friends and matchmaking party members. Set to 1 to apply the in non-competitive game modes. Set to 2 will apply the setting in all modes.",
+      "type": "unknown_numeric",
+      "defaultValue": 0,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_mute_enemy_team",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "cl"
+      ],
+      "description": "Block all communication from players on the enemy team.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_mute_enemy_team",
+      "helperText": "Block all communication from players on the enemy team.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab",
+    "consoleData": {
+      "defaultValue": "0",
+      "flags": [
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 0,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_0_text_1",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_requestspend",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_0_text_1",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_requestspend",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_0_text_2",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_requestweapon",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_0_text_2",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_requestweapon",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_0_text_3",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_bplan",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_0_text_3",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_bplan",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_0_text_4",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_followingyou",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_0_text_4",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_followingyou",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_0_text_5",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_midplan",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_0_text_5",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_midplan",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_0_text_6",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_followme",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_0_text_6",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_followme",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_0_text_7",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_aplan",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_0_text_7",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_aplan",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_0_text_8",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_requestecoround",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_0_text_8",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_requestecoround",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_1_text_1",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_enemyspotted",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_1_text_1",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_enemyspotted",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_1_text_2",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_needbackup",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_1_text_2",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_needbackup",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_1_text_3",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_bplan",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_1_text_3",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_bplan",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_1_text_4",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_bombcarrierspotted",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_1_text_4",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_bombcarrierspotted",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_1_text_5",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_multipleenemieshere",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_1_text_5",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_multipleenemieshere",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_1_text_6",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_sniperspotted",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_1_text_6",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_sniperspotted",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_1_text_7",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_aplan",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_1_text_7",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_aplan",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_1_text_8",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_inposition",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_1_text_8",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_inposition",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_2_text_1",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_affirmative",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_2_text_1",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_affirmative",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_2_text_2",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_negative",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_2_text_2",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_negative",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_2_text_3",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_compliment",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_2_text_3",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_compliment",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_2_text_4",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_thanks",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_2_text_4",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_thanks",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_2_text_5",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_cheer",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_2_text_5",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_cheer",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_2_text_6",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_peptalk",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_2_text_6",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_peptalk",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_2_text_7",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_sorry",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_2_text_7",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_sorry",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tab_2_text_8",
+    "consoleData": {
+      "defaultValue": "#Chatwheel_sectorclear",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tab_2_text_8",
+      "helperText": "",
+      "type": "string",
+      "defaultValue": "#Chatwheel_sectorclear",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_tap_to_ping",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "When tapping the radial radio button, leave a ping if nothing is selected within the time in seconds set in cl_radial_menu_tap_duration",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_tap_to_ping",
+      "helperText": "When tapping the radial radio button, leave a ping if nothing is selected within the time in seconds set in cl_radial_menu_tap_duration",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_radial_radio_version_reset",
+    "consoleData": {
+      "defaultValue": "12",
+      "flags": [
+        "a",
+        "cl",
+        "release"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_radial_radio_version_reset",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 12,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "cl_sanitize_player_names",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "cl"
+      ],
+      "description": "Replace names of other players with something non-offensive.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "cl_sanitize_player_names",
+      "helperText": "Replace names of other players with something non-offensive.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "tv_nochat",
+    "consoleData": {
+      "defaultValue": "false",
+      "flags": [
+        "a",
+        "user"
+      ],
+      "description": "Don't receive chat messages from other SourceTV spectators",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "tv_nochat",
+      "helperText": "Don't receive chat messages from other SourceTV spectators",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false
+    }
+  }
+]
