@@ -37,7 +37,7 @@ public abstract class ConfigStateServiceBase : IConfigStateService
                 _settings[command.Command] = new Setting
                 {
                     Value = defaultValue,
-                    IsInConfigEditor = true
+                    IsInConfigEditor = !command.UiData.HideFromDefaultView
                 };
             }
         }
