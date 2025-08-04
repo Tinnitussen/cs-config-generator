@@ -1,0 +1,34 @@
+// This is a example, mimic default game mode file "key/value" entries in this override file gamemodes_server.txt
+
+"GameModes.txt"
+{
+// Make own maplist below
+
+
+
+	"mapgroups"
+	{
+		"mg_clsmaps"
+		{
+			"maps"
+			{
+				"de_dust2"			""
+				"de_inferno"		""
+				"de_mirage"			""
+				"de_vertigo"		""
+				"de_ancient"		""
+				"de_nuke"			""
+				"de_anubis"			""
+				"de_train"			""
+				"de_overpass"		""
+				"de_jura"			""
+				"de_edin"			""
+				"de_basalt"			""
+				"de_grail"			""
+				"cs_office"			""
+				"cs_italy"			""
+				"cs_agency"			""
+			}
+		}
+	}
+}
