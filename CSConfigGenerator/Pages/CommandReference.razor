@@ -196,8 +196,7 @@
 
     private void InitializeViewModels()
     {
-        var commands = SchemaService.PlayerSections.SelectMany(s => s.Commands)
-            .Concat(SchemaService.ServerSections.SelectMany(s => s.Commands))
+        var commands = SchemaService.AllCommandsSections.SelectMany(s => s.Commands)
             .DistinctBy(c => c.Command)
             .OrderBy(c => c.Command);
 

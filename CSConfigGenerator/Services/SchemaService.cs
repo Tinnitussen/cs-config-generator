@@ -9,15 +9,13 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     private readonly HttpClient _httpClient = httpClient;
     private readonly List<ConfigSection> _playerSections = [];
     private readonly List<ConfigSection> _serverSections = [];
-    private readonly List<ConfigSection> _sharedSections = [];
-    private readonly List<ConfigSection> _uncategorizedSections = [];
+    private readonly List<ConfigSection> _allCommandsSections = [];
     private readonly Dictionary<string, CommandDefinition> _playerCommandsByName = [];
     private readonly Dictionary<string, CommandDefinition> _serverCommandsByName = [];
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
-    public IReadOnlyList<ConfigSection> SharedSections => _sharedSections.AsReadOnly();
-    public IReadOnlyList<ConfigSection> UncategorizedSections => _uncategorizedSections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> AllCommandsSections => _allCommandsSections.AsReadOnly();
 
     public async Task InitializeAsync()
     {
@@ -55,17 +53,21 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
                         _serverCommandsByName[command.Command] = command;
                     }
                 }
-                else if (filePath.Contains("/shared/"))
+                else if (filePath.Contains("/all/"))
                 {
-                    _sharedSections.Add(section);
-                }
-                else if (filePath.Contains("/uncategorized/"))
-                {
-                    _uncategorizedSections.Add(section);
-                }
-                else
-                {
-                    throw new InvalidOperationException($"Unknown section type in file path: {filePath}");
+                    _allCommandsSections.Add(section);
+                    // Also add to player and server commands by name for lookup
+                    foreach (var command in commandList)
+                    {
+                        if (!_playerCommandsByName.ContainsKey(command.Command))
+                        {
+                            _playerCommandsByName[command.Command] = command;
+                        }
+                        if (!_serverCommandsByName.ContainsKey(command.Command))
+                        {
+                           _serverCommandsByName[command.Command] = command;
+                        }
+                    }
                 }
             }
         }

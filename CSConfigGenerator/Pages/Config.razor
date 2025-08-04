@@ -94,13 +94,12 @@
 
         // Re-initialize view models since the sections have changed
         _settingViewModels.Clear();
-        var allCommands = SchemaService.PlayerSections.SelectMany(s => s.Commands)
-            .Concat(SchemaService.ServerSections.SelectMany(s => s.Commands))
-            .DistinctBy(c => c.Command);
-
-        foreach (var command in allCommands)
+        foreach (var section in Sections)
         {
-            _settingViewModels[command.Command] = new SettingViewModel(command, ConfigStateService);
+            foreach (var command in section.Commands)
+            {
+                 _settingViewModels[command.Command] = new SettingViewModel(command, ConfigStateService);
+            }
         }
     }
 

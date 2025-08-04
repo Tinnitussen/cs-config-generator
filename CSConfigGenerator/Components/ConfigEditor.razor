@@ -3,14 +3,39 @@
 @using CSConfigGenerator.Models
 @using Microsoft.AspNetCore.Components.Forms
 @inject IJSRuntime JSRuntime
+@inject IPresetService PresetService
+@inject IUserConfigService UserConfigService
 @inject IToastService ToastService
-@inject IConfigStateService ConfigStateService
 @implements IDisposable
 
 <div class="config-editor">
     <div class="config-editor-header">
         <h3>Config Preview</h3>
         <div class="config-editor-actions">
+            @if (PresetType != null)
+            {
+                <div class="custom-select-wrapper">
+                    <select class="custom-select" @bind="_selectedPreset" @bind:after="OnPresetSelected">
+                        <option value="">Pro Configs</option>
+                        @foreach (var preset in _presets)
+                        {
+                            <option value="@preset">@preset</option>
+                        }
+                    </select>
+                </div>
+            }
+            <div class="custom-select-wrapper">
+                <select class="custom-select" @bind="_selectedUserConfig" @bind:after="OnUserConfigSelected">
+                    <option value="">My Configs</option>
+                    @foreach (var config in _userConfigs)
+                    {
+                        <option value="@config">@config</option>
+                    }
+                </select>
+            </div>
+            <button class="btn btn-sm btn-outline-success" @onclick="SaveConfig" title="Save current config">
+                <i class="bi bi-save"></i>
+            </button>
             <button class="btn btn-sm btn-outline-primary" @onclick="CopyToClipboard" title="Copy to clipboard">
                 @if (copied)
                 {
@@ -41,6 +66,20 @@
               spellcheck="false" />
 </div>
 
+<Modal Title="Save Config" IsOpen="@isSaveModalVisible" OnCancel="CloseSaveModal">
+    <Body>
+        <div class="modal-body">
+            <input type="text" class="form-control" @bind-value="configNameToSave" @onkeydown="HandleSaveModalKeyDown" placeholder="Enter name..." />
+        </div>
+    </Body>
+    <Footer>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @onclick="CloseSaveModal">Cancel</button>
+            <button type="button" class="btn btn-primary" @onclick="HandleSaveModalSubmit">Save</button>
+        </div>
+    </Footer>
+</Modal>
+
 <Modal Title="@_confirmationTitle" IsOpen="@_isConfirmationVisible" OnCancel="CancelConfirmation">
     <Body>
         <div class="modal-body">
@@ -56,9 +95,21 @@
 </Modal>
 
 @code {
+    [Inject]
+    private IConfigStateService ConfigStateService { get; set; } = default!;
+
+    [Parameter]
+    public string? PresetType { get; set; }
+
     private string configText = string.Empty;
     private bool copied = false;
+    private List<string> _presets = new();
+    private List<string> _userConfigs = new();
     private InputFile? _inputFile;
+    private bool isSaveModalVisible = false;
+    private string configNameToSave = "";
+    private string _selectedPreset = "";
+    private string _selectedUserConfig = "";
 
     private bool _isConfirmationVisible = false;
     private string _confirmationTitle = "";
@@ -66,10 +117,114 @@
     private Action? _confirmedAction;
     private Action? _cancelAction;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        if (ConfigStateService == null)
+            throw new InvalidOperationException("ConfigStateService is not set on ConfigEditor.");
+
         RefreshConfigText();
         ConfigStateService.OnStateChange += HandleStateChange;
+
+        if (PresetType != null)
+        {
+            _presets = await PresetService.GetPresetNamesAsync(PresetType);
+            await LoadUserConfigs();
+        }
+    }
+
+    private void OnPresetSelected()
+    {
+        if (string.IsNullOrEmpty(_selectedPreset))
+        {
+            return;
+        }
+
+        var presetName = _selectedPreset;
+        ShowConfirmation("Load Preset", $"Are you sure you want to load the preset '{presetName}'? Any unsaved changes will be lost.", async () =>
+        {
+            var presetContent = await PresetService.GetPresetContentAsync(PresetType!, presetName);
+            if (!string.IsNullOrEmpty(presetContent))
+            {
+                ConfigStateService.ParseConfigFile(presetContent, this);
+                RefreshConfigText();
+            }
+            _selectedPreset = "";
+            StateHasChanged();
+        }, () =>
+        {
+            _selectedPreset = "";
+            StateHasChanged();
+        });
+    }
+
+    private void OnUserConfigSelected()
+    {
+        if (string.IsNullOrEmpty(_selectedUserConfig))
+        {
+            return;
+        }
+
+        var configName = _selectedUserConfig;
+        ShowConfirmation("Load User Config", $"Are you sure you want to load '{configName}'? Any unsaved changes will be lost.", async () =>
+        {
+            var configContent = await UserConfigService.GetConfigContentAsync(PresetType!, configName);
+            if (!string.IsNullOrEmpty(configContent))
+            {
+                ConfigStateService.ParseConfigFile(configContent, this);
+                RefreshConfigText();
+            }
+            _selectedUserConfig = "";
+            StateHasChanged();
+        }, () =>
+        {
+            _selectedUserConfig = "";
+            StateHasChanged();
+        });
+    }
+
+    private async Task LoadUserConfigs()
+    {
+        if (PresetType != null)
+        {
+            _userConfigs = await UserConfigService.GetConfigNamesAsync(PresetType);
+            StateHasChanged();
+        }
+    }
+
+    private async Task SaveConfig()
+    {
+        isSaveModalVisible = true;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task HandleSaveModalSubmit()
+    {
+        if (!string.IsNullOrEmpty(configNameToSave) && PresetType != null)
+        {
+            await UserConfigService.SaveConfigAsync(PresetType, configNameToSave, configText);
+            await LoadUserConfigs();
+            ToastService.ShowToast($"Config '{configNameToSave}' saved successfully.", ToastLevel.Success);
+            await CloseSaveModal();
+        }
+    }
+
+    private async Task CloseSaveModal()
+    {
+        isSaveModalVisible = false;
+        configNameToSave = "";
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task HandleSaveModalKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await HandleSaveModalSubmit();
+        }
+        else if (e.Key == "Escape")
+        {
+            await CloseSaveModal();
+        }
     }
 
     private async Task OnUpload(InputFileChangeEventArgs e)
@@ -107,9 +262,12 @@
 
     private async Task DownloadConfig()
     {
-        var fileName = "config.cfg";
-        await JSRuntime.InvokeVoidAsync("downloadFile", fileName, configText);
-        ToastService.ShowToast("Config downloaded successfully.", ToastLevel.Success);
+        if (PresetType != null)
+        {
+            var fileName = $"{PresetType}_config.cfg";
+            await JSRuntime.InvokeVoidAsync("downloadFile", fileName, configText);
+            ToastService.ShowToast("Config downloaded successfully.", ToastLevel.Success);
+        }
     }
 
     private async Task TriggerUpload()
@@ -131,7 +289,14 @@
 
     private void RefreshConfigText()
     {
-        configText = ConfigStateService.GenerateConfigFile();
+        if (PresetType != null)
+        {
+            configText = ConfigStateService.GenerateConfigFile(PresetType);
+        }
+        else
+        {
+            configText = "// Select a config type to see the preview";
+        }
     }
 
     private void OnTextInput(ChangeEventArgs e)

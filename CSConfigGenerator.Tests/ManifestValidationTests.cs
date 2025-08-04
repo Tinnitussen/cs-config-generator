@@ -17,6 +17,7 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> AllCommandsSections { get; } = new List<ConfigSection>().AsReadOnly();
 
     public async Task InitializeAsync()
     {
@@ -34,7 +35,7 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
             if (commands == null) continue;
 
             // Process the commands similar to SchemaService
-            if (filePath.Contains("/player/") || filePath.Contains("/all/"))
+            if (filePath.Contains("/player/"))
             {
                 // Add to player sections
                 var sectionName = Path.GetFileNameWithoutExtension(filePath);
