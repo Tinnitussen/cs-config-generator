@@ -122,7 +122,10 @@
         if (ConfigStateService == null)
             throw new InvalidOperationException("ConfigStateService is not set on ConfigEditor.");
 
-        RefreshConfigText();
+        if (PresetType != null)
+        {
+            configText = ConfigStateService.GenerateConfigFile(PresetType);
+        }
         ConfigStateService.OnStateChange += HandleStateChange;
 
         if (PresetType != null)

@@ -71,10 +71,15 @@ public class ConfigStateService : IConfigStateService
             builder.AppendLine("// Player Configuration");
             sections = _schemaService.PlayerSections;
         }
-        else
+        else if (string.Equals(configType, "server", StringComparison.OrdinalIgnoreCase))
         {
             builder.AppendLine("// Server Configuration");
             sections = _schemaService.ServerSections;
+        }
+        else
+        {
+            builder.AppendLine("// All Commands");
+            sections = _schemaService.AllCommandsSections;
         }
         builder.AppendLine();
 
@@ -205,7 +210,7 @@ public class ConfigStateService : IConfigStateService
         {
             if (setting.IsInConfigEditor != IsInConfigEditor)
             {
-                setting.IsInConfigEditor = IsInConfigEditor;
+                _settings[commandName] = setting with { IsInConfigEditor = IsInConfigEditor };
                 NotifyStateChanged(originator);
             }
         }
