@@ -9,16 +9,12 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     private readonly HttpClient _httpClient = httpClient;
     private readonly List<ConfigSection> _playerSections = [];
     private readonly List<ConfigSection> _serverSections = [];
-    private readonly List<ConfigSection> _sharedSections = [];
-    private readonly List<ConfigSection> _uncategorizedSections = [];
+    private readonly List<ConfigSection> _allSections = [];
     private readonly Dictionary<string, CommandDefinition> _playerCommandsByName = [];
     private readonly Dictionary<string, CommandDefinition> _serverCommandsByName = [];
-
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
-    public IReadOnlyList<ConfigSection> SharedSections => _sharedSections.AsReadOnly();
-    public IReadOnlyList<ConfigSection> UncategorizedSections => _uncategorizedSections.AsReadOnly();
-
+    public IReadOnlyList<ConfigSection> AllSections => _allSections.AsReadOnly();
     public async Task InitializeAsync()
     {
         try
@@ -55,13 +51,9 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
                         _serverCommandsByName[command.Command] = command;
                     }
                 }
-                else if (filePath.Contains("/shared/"))
+                else if (filePath.Contains("/all/"))
                 {
-                    _sharedSections.Add(section);
-                }
-                else if (filePath.Contains("/uncategorized/"))
-                {
-                    _uncategorizedSections.Add(section);
+                    _allSections.Add(section);
                 }
                 else
                 {
