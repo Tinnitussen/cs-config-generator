@@ -58,15 +58,15 @@ The `Tools/` directory contains Python scripts for parsing and processing Counte
 
 To process a new command snapshot from Counter-Strike 2:
 
-1. Place your `all_commands-YYYY-DD-MM.txt` file in `Tools/data/`
-2. Run the pipeline: `python Tools/pipeline.py`
-3. Follow the interactive prompts to complete all processing steps
+1.  Place your `all_commands-YYYY-DD-MM.txt` file in `Tools/data/`
+2.  Run the pipeline: `python Tools/pipeline.py`
+3.  Follow the interactive prompts to complete all processing steps
 
 The pipeline will guide you through:
-- **Parsing** - Extract commands from the snapshot file
-- **Classification** - Determine command types (bool, float, string, etc.)
-- **Categorization** - Split commands into player/server/shared groups
-- **Subcategorization** - Organize commands into UI sections
+- **Parsing** - Extract commands from the snapshot file.
+- **Type Classification** - Determine command data types (bool, float, string, etc.).
+- **Popularity Classification** - Identify popular Player and Server commands by analyzing professional and community config files.
+- **Subcategorization** - Organize Player and Server commands into UI sections.
 
 ### Directory Structure
 
@@ -74,31 +74,26 @@ The pipeline will guide you through:
 Tools/
 ├── pipeline.py              # Main pipeline runner (START HERE)
 ├── rules/                   # Classification rules (separated from scripts)
-│   ├── type_classification_rules.py      # Rules for determining command types
-│   ├── splitting_rules.py                # Rules for player/server/shared classification
+│   ├── type_classification_rules.py      # Rules for determining command data types
 │   ├── numeric_detection_rules.py        # Rules for detecting numeric types
 │   ├── player_subcategorization_rules.py # Rules for player command sections
 │   ├── server_subcategorization_rules.py # Rules for server command sections
-│   ├── shared_subcategorization_rules.py # Rules for shared command sections
-│   ├── popularity_rules.py               # Rules for marking popular commands
-│   └── parsing_validation_rules.json     # Validation rules for parsing
+│   └── popularity_rules.py               # Rules for command popularity
 ├── scripts/                 # Processing scripts (called by pipeline)
 │   ├── parse_commands.py              # Step 1: Parse snapshot file
-│   ├── command_classification.py      # Step 2: Classify command types
+│   ├── command_classification.py      # Step 2: Classify command data types
+│   ├── command_popularity.py          # Step 3: Classify by usage in configs
+│   ├── create_all_commands.py         # Step 4: Create master command file for UI
 │   └── splitting/
-│       ├── classify_commands.py       # Step 3: Split into categories
-│       └── subcategorization/         # Step 4: Create UI sections
+│       └── subcategorization/         # Step 5: Create UI sections
 │           ├── subcategorize_player.py
-│           ├── subcategorize_server.py
-│           └── subcategorize_shared.py
-├── scripts/classify-from-existing/    # Separate analysis tools (not part of main pipeline)
-│   ├── numeric_detection.py          # Analyze config files for numeric patterns
-│   └── command_popularity.py         # Mark popular commands based on pro configs
+│           └── subcategorize_server.py
 └── data/                    # Input and intermediate data files
     ├── all_commands-*.txt           # Command snapshots from CS2
     ├── commands.json                # Main processed commands file
     ├── classified_commands/         # Commands split by category
-    └── pro-player-configs/          # Pro player configs for analysis
+    ├── pro-player-configs/          # Pro player configs for analysis
+    └── server-configs/              # Server configs for analysis
 ```
 
 ### Pipeline Benefits
@@ -115,30 +110,21 @@ If you need to run individual steps manually:
 
 ```bash
 # Parse a specific snapshot
-python Tools/scripts/parse_commands.py
+python Tools/scripts/parse_commands.py <snapshot_file.txt>
 
 # Classify command types
 python Tools/scripts/command_classification.py
 
-# Split into categories
-python Tools/scripts/splitting/classify_commands.py
+# Classify popular player/server commands
+python Tools/scripts/command_popularity.py --type player
+python Tools/scripts/command_popularity.py --type server
 
-# Subcategorize (run all three)
+# Create the master list of all commands for the UI
+python Tools/scripts/create_all_commands.py
+
+# Subcategorize (run both)
 python Tools/scripts/splitting/subcategorization/subcategorize_player.py
 python Tools/scripts/splitting/subcategorization/subcategorize_server.py
-python Tools/scripts/splitting/subcategorization/subcategorize_shared.py
-```
-
-### Analysis Tools (Separate from Pipeline)
-
-These tools analyze existing data and are not part of the main processing pipeline:
-
-```bash
-# Detect numeric patterns from pro configs
-python Tools/scripts/classify-from-existing/numeric_detection.py
-
-# Mark popular commands based on usage
-python Tools/scripts/classify-from-existing/command_popularity.py
 ```
 
 ## Contributing

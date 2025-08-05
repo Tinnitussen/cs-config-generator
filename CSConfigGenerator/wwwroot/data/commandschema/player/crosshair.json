@@ -4,8 +4,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "Draws a black outline around the crosshair for better visibility",
@@ -16,8 +16,7 @@
       "helperText": "Draws a black outline around the crosshair for better visibility",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -25,8 +24,8 @@
     "consoleData": {
       "defaultValue": "0.35",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "If using cl_crosshairstyle 2, this is the ratio used to determine how long the inner and outer xhair pips will be. [inner = cl_crosshairsize*(1-cl_crosshair_dynamic_maxdist_splitratio), outer = cl_crosshairsize*cl_crosshair_dynamic_maxdist_splitratio]  [0 - 1]",
@@ -38,80 +37,11 @@
       "type": "float",
       "defaultValue": 0.35,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
       "range": {
         "minValue": -1,
         "maxValue": -1,
         "step": -1
       }
-    }
-  },
-  {
-    "command": "cl_crosshair_dynamic_splitalpha_innermod",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "If using cl_crosshairstyle 2, this is the alpha modification that will be used for the INNER crosshair pips once they've split. [0 - 1]",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_crosshair_dynamic_splitalpha_innermod",
-      "helperText": "If using cl_crosshairstyle 2, this is the alpha modification that will be used for the INNER crosshair pips once they've split. [0 - 1]",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_crosshair_dynamic_splitalpha_outermod",
-    "consoleData": {
-      "defaultValue": "0.5",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "If using cl_crosshairstyle 2, this is the alpha modification that will be used for the OUTER crosshair pips once they've split. [0.3 - 1]",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_crosshair_dynamic_splitalpha_outermod",
-      "helperText": "If using cl_crosshairstyle 2, this is the alpha modification that will be used for the OUTER crosshair pips once they've split. [0.3 - 1]",
-      "type": "float",
-      "defaultValue": 0.5,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "cl_crosshair_dynamic_splitdist",
-    "consoleData": {
-      "defaultValue": "7",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "If using cl_crosshairstyle 2, this is the distance that the crosshair pips will split into 2. (default is 7)",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_crosshair_dynamic_splitdist",
-      "helperText": "If using cl_crosshairstyle 2, this is the distance that the crosshair pips will split into 2. (default is 7)",
-      "type": "unknown_numeric",
-      "defaultValue": 7,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
     }
   },
   {
@@ -119,8 +49,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "0: off, 1: on",
@@ -131,8 +61,7 @@
       "helperText": "0: off, 1: on",
       "type": "unknown_integer",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -140,8 +69,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "Set how thick you want your crosshair outline to draw (0-3)",
@@ -152,8 +81,7 @@
       "helperText": "Set how thick you want your crosshair outline to draw (0-3)",
       "type": "unknown_numeric",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -161,8 +89,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -173,8 +101,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -182,8 +109,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "If >1 sniper scope cross lines gain extra width (1 for single-pixel hairline)",
@@ -194,8 +121,7 @@
       "helperText": "If >1 sniper scope cross lines gain extra width (1 for single-pixel hairline)",
       "type": "unknown_integer",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -203,8 +129,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "T style crosshair",
@@ -215,8 +141,7 @@
       "helperText": "T style crosshair",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -224,8 +149,8 @@
     "consoleData": {
       "defaultValue": "200",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -236,8 +161,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 200,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -245,8 +169,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "Set crosshair color as defined in game_options.consoles.txt",
@@ -257,8 +181,7 @@
       "helperText": "Set crosshair color as defined in game_options.consoles.txt",
       "type": "unknown_integer",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -266,8 +189,8 @@
     "consoleData": {
       "defaultValue": "50",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -278,8 +201,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 50,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -287,8 +209,8 @@
     "consoleData": {
       "defaultValue": "250",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -299,8 +221,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 250,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -308,8 +229,8 @@
     "consoleData": {
       "defaultValue": "50",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -320,8 +241,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 50,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -329,8 +249,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -341,8 +261,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -350,8 +269,8 @@
     "consoleData": {
       "defaultValue": "-1",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -362,8 +281,7 @@
       "helperText": "",
       "type": "unknown_numeric",
       "defaultValue": -1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -371,8 +289,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "If set to 1, the gap will update dynamically based on which weapon is currently equipped",
@@ -383,8 +301,7 @@
       "helperText": "If set to 1, the gap will update dynamically based on which weapon is currently equipped",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -392,8 +309,8 @@
     "consoleData": {
       "defaultValue": "2",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -404,8 +321,7 @@
       "helperText": "",
       "type": "unknown_numeric",
       "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -413,8 +329,8 @@
     "consoleData": {
       "defaultValue": "4",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "0 = DEFAULT (DISABLED), 1 = DEFAULT STATIC (DISABLED), 2 = DEFAULT (accurate recoil/spread feedback with a fixed inner part), 3 = ACCURATE DYNAMIC (DISABLED) (accurate recoil/spread feedback), 4 = DEFAULT STATIC, 5 = LEGACY (fake recoil - inaccurate feedback)",
@@ -425,8 +341,7 @@
       "helperText": "0 = DEFAULT (DISABLED), 1 = DEFAULT STATIC (DISABLED), 2 = DEFAULT (accurate recoil/spread feedback with a fixed inner part), 3 = ACCURATE DYNAMIC (DISABLED) (accurate recoil/spread feedback), 4 = DEFAULT STATIC, 5 = LEGACY (fake recoil - inaccurate feedback)",
       "type": "unknown_integer",
       "defaultValue": 4,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -434,8 +349,8 @@
     "consoleData": {
       "defaultValue": "0.5",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -447,7 +362,6 @@
       "type": "float",
       "defaultValue": 0.5,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -460,8 +374,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -472,50 +386,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_fixedcrosshairgap",
-    "consoleData": {
-      "defaultValue": "3",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "For crosshair style 1: How big to make the gap between the pips in the fixed crosshair",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_fixedcrosshairgap",
-      "helperText": "For crosshair style 1: How big to make the gap between the pips in the fixed crosshair",
-      "type": "unknown_numeric",
-      "defaultValue": 3,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_ironsight_usecrosshaircolor",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "Should the scope dot match the user's crosshair color",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_ironsight_usecrosshaircolor",
-      "helperText": "Should the scope dot match the user's crosshair color",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -523,8 +394,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -535,8 +406,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   }
 ]

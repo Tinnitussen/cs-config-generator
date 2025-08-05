@@ -1,285 +1,11 @@
 [
   {
-    "command": "cl_auto_cursor_scale",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "a"
-      ],
-      "description": "Automatic cursor size scaling.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_auto_cursor_scale",
-      "helperText": "Automatic cursor size scaling.",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_borrow_music_from_player_slot",
-    "consoleData": {
-      "defaultValue": "-1",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_borrow_music_from_player_slot",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": -1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_buffer_incoming_net_messages",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": "true",
-      "flags": [
-        "release"
-      ],
-      "description": ""
-    },
-    "uiData": {
-      "label": "cl_buffer_incoming_net_messages",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_change_callback_limit",
-    "consoleData": {
-      "defaultValue": "0.2",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "change callback msec warning limit",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_change_callback_limit",
-      "helperText": "change callback msec warning limit",
-      "type": "float",
-      "defaultValue": 0.2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "cl_clock_recvmargin_spew_interval",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_clock_recvmargin_spew_interval",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_connectionretrytime_p2p",
-    "consoleData": {
-      "defaultValue": "20",
-      "flags": [
-        "release"
-      ],
-      "description": "Number of seconds over which to spread retry attempts for P2P.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_connectionretrytime_p2p",
-      "helperText": "Number of seconds over which to spread retry attempts for P2P.",
-      "type": "unknown_numeric",
-      "defaultValue": 20,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_cq_min_queue",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "user"
-      ],
-      "description": "Used by the client to inform the server of their desired queue length.  Derived from cl_tickpacket_recvmargin_desired and cl_tickpacket_desired_queuelength",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_cq_min_queue",
-      "helperText": "Used by the client to inform the server of their desired queue length.  Derived from cl_tickpacket_recvmargin_desired and cl_tickpacket_desired_queuelength",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_cursor_scale",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "a"
-      ],
-      "description": "Cursor size scaling factor.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_cursor_scale",
-      "helperText": "Cursor size scaling factor.",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_deathcam_audio_mix_phase1_fade_amount",
-    "consoleData": {
-      "defaultValue": "0.15",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Sets the amount of ducking to do on death cam fade out. When set to 1, full DeathFadeLayer is applied.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_deathcam_audio_mix_phase1_fade_amount",
-      "helperText": "Sets the amount of ducking to do on death cam fade out. When set to 1, full DeathFadeLayer is applied.",
-      "type": "float",
-      "defaultValue": 0.15,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "cl_deathcam_audio_mix_phase1_fade_time",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Sets the amount of time we fade out over.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_deathcam_audio_mix_phase1_fade_time",
-      "helperText": "Sets the amount of time we fade out over.",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_deathcam_audio_mix_phase2_fade_amount",
-    "consoleData": {
-      "defaultValue": "0.5",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Sets the amount of ducking to do on death cam fade out. When set to 1, full DeathFadeLayer is applied.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_deathcam_audio_mix_phase2_fade_amount",
-      "helperText": "Sets the amount of ducking to do on death cam fade out. When set to 1, full DeathFadeLayer is applied.",
-      "type": "float",
-      "defaultValue": 0.5,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "cl_deathcam_audio_mix_phase2_fade_time",
-    "consoleData": {
-      "defaultValue": "0.4",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Sets the amount of time we fade out over.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_deathcam_audio_mix_phase2_fade_time",
-      "helperText": "Sets the amount of time we fade out over.",
-      "type": "float",
-      "defaultValue": 0.4,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "cl_deathcampanel_position_dynamic",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "Turn on/off deathcam's kill panel dynamic Y movement",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_deathcampanel_position_dynamic",
-      "helperText": "Turn on/off deathcam's kill panel dynamic Y movement",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "cl_disable_round_end_report",
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -290,554 +16,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_drawhud_force_deathnotices",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "0: default; 1: draw deathnotices even if hud disabled; -1: force no deathnotices",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_drawhud_force_deathnotices",
-      "helperText": "0: default; 1: draw deathnotices even if hud disabled; -1: force no deathnotices",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_drawhud_force_radar",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "0: default; 1: draw radar even if hud disabled; -1: force no radar",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_drawhud_force_radar",
-      "helperText": "0: default; 1: draw radar even if hud disabled; -1: force no radar",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_drawhud_force_teamid_overhead",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "0: default; 1: draw teamid even if hud disabled; -1: force no teamid",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_drawhud_force_teamid_overhead",
-      "helperText": "0: default; 1: draw teamid even if hud disabled; -1: force no teamid",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_drawhud_specvote",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "1: default; 0: disables vote UI for spectators",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_drawhud_specvote",
-      "helperText": "1: default; 0: disables vote UI for spectators",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_enable_party_voice",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_enable_party_voice",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_error_report_time",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Minimum time in seconds that must elapse before printing prediction error summary. 0 to disable.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_error_report_time",
-      "helperText": "Minimum time in seconds that must elapse before printing prediction error summary. 0 to disable.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_frametime_summary_report_detailed",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "When a perf report is dumped at the end of the session, should it be detailed?",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_frametime_summary_report_detailed",
-      "helperText": "When a perf report is dumped at the end of the session, should it be detailed?",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_glow_item_far_b",
-    "consoleData": {
-      "defaultValue": "1",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_glow_item_far_b",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_glow_item_far_g",
-    "consoleData": {
-      "defaultValue": "0.4",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_glow_item_far_g",
-      "helperText": "",
-      "type": "float",
-      "defaultValue": 0.4,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "cl_glow_item_far_r",
-    "consoleData": {
-      "defaultValue": "0.3",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_glow_item_far_r",
-      "helperText": "",
-      "type": "float",
-      "defaultValue": 0.3,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "cl_graphics_driver_warning_dont_show_again",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_graphics_driver_warning_dont_show_again",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshair_decoy",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "Is the grenade crosshair enabled",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshair_decoy",
-      "helperText": "Is the grenade crosshair enabled",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshair_explosive",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "Is the grenade crosshair enabled",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshair_explosive",
-      "helperText": "Is the grenade crosshair enabled",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshair_fire",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "Is the grenade crosshair enabled",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshair_fire",
-      "helperText": "Is the grenade crosshair enabled",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshair_flash",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "Is the grenade crosshair enabled",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshair_flash",
-      "helperText": "Is the grenade crosshair enabled",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshair_keepusercrosshair",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "Keep the user's crosshair when the grenade crosshair is enabled",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshair_keepusercrosshair",
-      "helperText": "Keep the user's crosshair when the grenade crosshair is enabled",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshair_smoke",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "Is the grenade crosshair enabled",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshair_smoke",
-      "helperText": "Is the grenade crosshair enabled",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshairdelay_decoy",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "How long should the pin be pulled for before showing the grenade crosshair",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshairdelay_decoy",
-      "helperText": "How long should the pin be pulled for before showing the grenade crosshair",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshairdelay_explosive",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "How long should the pin be pulled for before showing the grenade crosshair",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshairdelay_explosive",
-      "helperText": "How long should the pin be pulled for before showing the grenade crosshair",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshairdelay_fire",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "How long should the pin be pulled for before showing the grenade crosshair",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshairdelay_fire",
-      "helperText": "How long should the pin be pulled for before showing the grenade crosshair",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshairdelay_flash",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "How long should the pin be pulled for before showing the grenade crosshair",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshairdelay_flash",
-      "helperText": "How long should the pin be pulled for before showing the grenade crosshair",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_grenadecrosshairdelay_smoke",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
-      ],
-      "description": "How long should the pin be pulled for before showing the grenade crosshair",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_grenadecrosshairdelay_smoke",
-      "helperText": "How long should the pin be pulled for before showing the grenade crosshair",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_http_log_enable",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "norecord",
-        "release",
-        "clientcmd_can_execute"
-      ],
-      "description": "Allows sending HTTP log from client main menu.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_http_log_enable",
-      "helperText": "Allows sending HTTP log from client main menu.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_import_csgo_config",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_import_csgo_config",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_interpolate_report",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "Enable to show interpolation profile timing",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_interpolate_report",
-      "helperText": "Enable to show interpolation profile timing",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_inventory_debug_tooltip",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_inventory_debug_tooltip",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -845,8 +24,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "In inventory selection radials. Select weapons the moment the cursor highlights them. Otherwise, only select the selected item on exit.",
@@ -857,8 +36,7 @@
       "helperText": "In inventory selection radials. Select weapons the moment the cursor highlights them. Otherwise, only select the selected item on exit.",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -866,8 +44,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "In inventory selection radials. Select weapons the moment the cursor highlights them. Otherwise, only select the selected item on exit.",
@@ -878,8 +56,7 @@
       "helperText": "In inventory selection radials. Select weapons the moment the cursor highlights them. Otherwise, only select the selected item on exit.",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -887,8 +64,8 @@
     "consoleData": {
       "defaultValue": "all",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -899,8 +76,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "all",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -908,8 +84,8 @@
     "consoleData": {
       "defaultValue": "inv_sort_age",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -920,8 +96,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "inv_sort_age",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -929,8 +104,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "If turned on, will ignore in-game invites from recent teammates or other non-friends",
@@ -941,8 +116,7 @@
       "helperText": "If turned on, will ignore in-game invites from recent teammates or other non-friends",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -950,8 +124,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "If turned on, will ignore all invites when user is playing a match",
@@ -962,189 +136,7 @@
       "helperText": "If turned on, will ignore all invites when user is playing a match",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_jitter_bad_threshold_up",
-    "consoleData": {
-      "defaultValue": "10",
-      "flags": [
-        "user"
-      ],
-      "description": "When upstream packet jitter in a frame exceeds this threshold (ms), the frame is considered to have 'irregular delivery'.  This is a derived value and should not be modified manually",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_jitter_bad_threshold_up",
-      "helperText": "When upstream packet jitter in a frame exceeds this threshold (ms), the frame is considered to have 'irregular delivery'.  This is a derived value and should not be modified manually",
-      "type": "unknown_numeric",
-      "defaultValue": 10,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_joystick_enabled",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a"
-      ],
-      "description": "Enable joystick input",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_joystick_enabled",
-      "helperText": "Enable joystick input",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_latch_report",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "Enable to output stats about latching",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_latch_report",
-      "helperText": "Enable to output stats about latching",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_loadout_saved_sort",
-    "consoleData": {
-      "defaultValue": "inv_sort_age",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_loadout_saved_sort",
-      "helperText": "",
-      "type": "string",
-      "defaultValue": "inv_sort_age",
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_low_latency_vsync_recommendation_dont_show_again",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_low_latency_vsync_recommendation_dont_show_again",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_max_particle_pvs_aabb_edge_length",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_max_particle_pvs_aabb_edge_length",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_net_buffer_ticks",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "Number of ticks of delay for server snapshots and user commands.  This value controls the value of cl_interp_ratio, which you should not modify directly.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_net_buffer_ticks",
-      "helperText": "Number of ticks of delay for server snapshots and user commands.  This value controls the value of cl_interp_ratio, which you should not modify directly.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_net_buffer_ticks_use_interp",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "If false, we smooth over packet loss by adjusting the clock synchronization to buffer packets.  If true, we process packets immediately and use cl_interp to delay their effects",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_net_buffer_ticks_use_interp",
-      "helperText": "If false, we smooth over packet loss by adjusting the clock synchronization to buffer packets.  If true, we process packets immediately and use cl_interp to delay their effects",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_new_user_phase",
-    "consoleData": {
-      "defaultValue": "-1",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "0: Not Started, 1: Needs Training, 2: Training Complete, -1: Disabled",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_new_user_phase",
-      "helperText": "0: Not Started, 1: Needs Training, 2: Training Complete, -1: Disabled",
-      "type": "unknown_numeric",
-      "defaultValue": -1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -1152,8 +144,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Enables interpolation between observer targets",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -1163,33 +155,7 @@
       "helperText": "Enables interpolation between observer targets",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_obs_interp_pos_rate",
-    "consoleData": {
-      "defaultValue": "0.27",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_obs_interp_pos_rate",
-      "helperText": "",
-      "type": "float",
-      "defaultValue": 0.27,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
+      "requiresCheats": false
     }
   },
   {
@@ -1197,8 +163,8 @@
     "consoleData": {
       "defaultValue": "2",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "Control the crosshair shown when observing a bot. 0: Show player crosshair. 1: Show player crosshair only when bot can be taken over, otherwise show default.. 2: Always show default crosshair for bots.",
@@ -1209,8 +175,7 @@
       "helperText": "Control the crosshair shown when observing a bot. 0: Show player crosshair. 1: Show player crosshair only when bot can be taken over, otherwise show default.. 2: Always show default crosshair for bots.",
       "type": "unknown_integer",
       "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -1218,8 +183,8 @@
     "consoleData": {
       "defaultValue": "60",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "Distance from the crosshair over which the ping is completely invisible",
@@ -1230,8 +195,7 @@
       "helperText": "Distance from the crosshair over which the ping is completely invisible",
       "type": "unknown_integer",
       "defaultValue": 60,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -1239,8 +203,8 @@
     "consoleData": {
       "defaultValue": "300",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "Distance from the crosshair over which the ping fades",
@@ -1251,150 +215,7 @@
       "helperText": "Distance from the crosshair over which the ping fades",
       "type": "unknown_integer",
       "defaultValue": 300,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_poll_network_early",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": "true",
-      "flags": [
-        "release"
-      ],
-      "description": "Enable polling for network messages every frame, instead of every tick"
-    },
-    "uiData": {
-      "label": "cl_poll_network_early",
-      "helperText": "Enable polling for network messages every frame, instead of every tick",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_pred_always_latch",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_pred_always_latch",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_pred_print_every_cmd",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Print something every time we predict a command",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_pred_print_every_cmd",
-      "helperText": "Print something every time we predict a command",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_predict_body_shot_fx",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_predict_body_shot_fx",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_predict_head_shot_fx",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_predict_head_shot_fx",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_predict_kill_ragdolls",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_predict_kill_ragdolls",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_prediction_savedata_postentitypacketreceived",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Experimental optimization.  If you are reading this in 2026, please delete this convar."
-    },
-    "uiData": {
-      "label": "cl_prediction_savedata_postentitypacketreceived",
-      "helperText": "Experimental optimization.  If you are reading this in 2026, please delete this convar.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -1402,8 +223,8 @@
     "consoleData": {
       "defaultValue": "1:1739182228855",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -1413,8 +234,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "1:1739182228855",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -1422,8 +242,8 @@
     "consoleData": {
       "defaultValue": "radial_quickinventory.txt",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -1434,8 +254,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "radial_quickinventory.txt",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -1443,8 +262,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -1455,8 +274,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -1464,8 +282,8 @@
     "consoleData": {
       "defaultValue": "65",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -1476,8 +294,7 @@
       "helperText": "",
       "type": "unknown_numeric",
       "defaultValue": 65,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -1497,7 +314,6 @@
       "type": "float",
       "defaultValue": 0.4,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -1510,8 +326,8 @@
     "consoleData": {
       "defaultValue": "0.17",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -1523,7 +339,6 @@
       "type": "float",
       "defaultValue": 0.17,
       "requiresCheats": false,
-      "hideFromDefaultView": false,
       "range": {
         "minValue": -1,
         "maxValue": -1,
@@ -1532,114 +347,12 @@
     }
   },
   {
-    "command": "cl_ragdoll_limit",
-    "consoleData": {
-      "defaultValue": "20",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "Maximum number of ragdolls to show (-1 disables limit)",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_ragdoll_limit",
-      "helperText": "Maximum number of ragdolls to show (-1 disables limit)",
-      "type": "unknown_numeric",
-      "defaultValue": 20,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_ragdoll_workaround_threshold",
-    "consoleData": {
-      "defaultValue": "4",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Mainly cosmetic, client-only effect: when client doesn't know the last position of another player that spawns a ragdoll, the ragdoll creation is simplified and ragdoll is created in the right place. If you increase this significantly, ragdoll positions on your client may be dramatically wrong, but it won't affect other clients",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_ragdoll_workaround_threshold",
-      "helperText": "Mainly cosmetic, client-only effect: when client doesn't know the last position of another player that spawns a ragdoll, the ragdoll creation is simplified and ragdoll is created in the right place. If you increase this significantly, ragdoll positions on your client may be dramatically wrong, but it won't affect other clients",
-      "type": "unknown_numeric",
-      "defaultValue": 4,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_redemption_reset_timestamp",
-    "consoleData": {
-      "defaultValue": "1753291187",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_redemption_reset_timestamp",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 1753291187,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_refresh_rate_recommendation_dont_show_again",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_refresh_rate_recommendation_dont_show_again",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_sanitize_muted_players",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Hide names and avatars of muted players.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_sanitize_muted_players",
-      "helperText": "Hide names and avatars of muted players.",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "cl_scoreboard_mouse_enable_binding",
     "consoleData": {
       "defaultValue": "+attack2",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Name of the binding to enable mouse selection in the scoreboard",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -1649,245 +362,7 @@
       "helperText": "Name of the binding to enable mouse selection in the scoreboard",
       "type": "string",
       "defaultValue": "+attack2",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_server_graphic1_enable",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "When enabled, 360x60 (<16kb) image file will be displayed to on-server spectators.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_server_graphic1_enable",
-      "helperText": "When enabled, 360x60 (<16kb) image file will be displayed to on-server spectators.",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_server_graphic2_enable",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "When enabled, 220x45 (<16kb) image file will be displayed to on-server spectators.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_server_graphic2_enable",
-      "helperText": "When enabled, 220x45 (<16kb) image file will be displayed to on-server spectators.",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_smooth_targetspeed",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": "150",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": ""
-    },
-    "uiData": {
-      "label": "cl_smooth_targetspeed",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 150,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_spec_show_bindings",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "release",
-        "clientcmd_can_execute"
-      ],
-      "description": "Toggle the visibility of the spectator bindings.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_spec_show_bindings",
-      "helperText": "Toggle the visibility of the spectator bindings.",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_spec_stats",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_spec_stats",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_spec_use_tournament_content_standards",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_spec_use_tournament_content_standards",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_tickpacket_desired_queuelength",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "user"
-      ],
-      "description": "This value, multiplied by the tick interval, is added to cl_tickpacket_recvmargin_desired to obtain the effective desired recv margin.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_tickpacket_desired_queuelength",
-      "helperText": "This value, multiplied by the tick interval, is added to cl_tickpacket_recvmargin_desired to obtain the effective desired recv margin.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_tickpacket_recvmargin_spew_interval",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_tickpacket_recvmargin_spew_interval",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_ticks_net_print_threshold",
-    "consoleData": {
-      "defaultValue": "2",
-      "flags": [
-        "release"
-      ],
-      "description": "Print a message if network issues cause problems with server snapshots of user commands not being available when needed, if the percentage (0...100) exceeds this value.  A value of 0 will cause the message to always print each time it is calculated",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_ticks_net_print_threshold",
-      "helperText": "Print a message if network issues cause problems with server snapshots of user commands not being available when needed, if the percentage (0...100) exceeds this value.  A value of 0 will cause the message to always print each time it is calculated",
-      "type": "unknown_numeric",
-      "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_ticks_warning_level",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "release"
-      ],
-      "description": "Print a message about problems with ticks and interpolation.  0=never, 1=warnings, 2=all, even if hidden by interpolation",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_ticks_warning_level",
-      "helperText": "Print a message about problems with ticks and interpolation.  0=never, 1=warnings, 2=all, even if hidden by interpolation",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_use_last_selected_weapon_slot_position",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "Use the last selected weapon slot position when switching back to a weapon slot."
-    },
-    "uiData": {
-      "label": "cl_use_last_selected_weapon_slot_position",
-      "helperText": "Use the last selected weapon slot position when switching back to a weapon slot.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_usercmd_max_per_movemsg",
-    "consoleData": {
-      "defaultValue": "4",
-      "flags": [
-        "release"
-      ],
-      "description": "max number of CUserCmds to send in one client move message",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_usercmd_max_per_movemsg",
-      "helperText": "max number of CUserCmds to send in one client move message",
-      "type": "unknown_numeric",
-      "defaultValue": 4,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -1895,8 +370,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -1907,94 +382,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_vrr_recommendation_dont_show_again",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_vrr_recommendation_dont_show_again",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cs_minimap_create_output_size",
-    "consoleData": {
-      "defaultValue": "960",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Size of minimap texture generated with cs_minimap_create (512 default)",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cs_minimap_create_output_size",
-      "helperText": "Size of minimap texture generated with cs_minimap_create (512 default)",
-      "type": "unknown_numeric",
-      "defaultValue": 960,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "csgo_map_preview_scale",
-    "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": "3.284",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": ""
-    },
-    "uiData": {
-      "label": "csgo_map_preview_scale",
-      "helperText": "",
-      "type": "float",
-      "defaultValue": 3.254,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "range": {
-        "minValue": -1,
-        "maxValue": -1,
-        "step": -1
-      }
-    }
-  },
-  {
-    "command": "enable_boneflex",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "enable_boneflex",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -2012,107 +400,27 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 20,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
-    "command": "english",
+    "command": "func_break_max_pieces",
     "consoleData": {
-      "defaultValue": "true",
+      "defaultValue": "15",
       "flags": [
-        "cl",
-        "user"
-      ],
-      "description": "If set to 1, running the english language set of assets.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "english",
-      "helperText": "If set to 1, running the english language set of assets.",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "eom_local_player_defeat_anim_enabled",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
         "a",
-        "release"
+        "rep",
+        "sv"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "eom_local_player_defeat_anim_enabled",
+      "label": "func_break_max_pieces",
       "helperText": "",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "fps_max",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "a",
-        "release"
-      ],
-      "description": "Frame rate limiter.  0=no limit.  Does not apply to dedicated server.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "fps_max",
-      "helperText": "Frame rate limiter.  0=no limit.  Does not apply to dedicated server.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "fps_max_tools",
-    "consoleData": {
-      "defaultValue": "120",
-      "flags": [
-        "a"
-      ],
-      "description": "Additional frame rate limit while in tools mode and a window other than the game window has focus. Note that fps_max still applies, this only allows the maximum frame rate for tools mode to be lower. 0=no tools specific limit.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "fps_max_tools",
-      "helperText": "Additional frame rate limit while in tools mode and a window other than the game window has focus. Note that fps_max still applies, this only allows the maximum frame rate for tools mode to be lower. 0=no tools specific limit.",
-      "type": "unknown_numeric",
-      "defaultValue": 120,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "fps_max_ui",
-    "consoleData": {
-      "defaultValue": "200",
-      "flags": [
-        "a"
-      ],
-      "description": "Frame rate limiter while the game UI is displayed.  0=no limit.  Does not apply to dedicated server.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "fps_max_ui",
-      "helperText": "Frame rate limiter while the game UI is displayed.  0=no limit.  Does not apply to dedicated server.",
-      "type": "unknown_numeric",
-      "defaultValue": 200,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "type": "unknown_integer",
+      "defaultValue": 15,
+      "requiresCheats": false
     }
   },
   {
@@ -2131,28 +439,7 @@
       "helperText": "Display in game lessons that teach new players.",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "install_dlc_workshoptools_cvar",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "DLC Install Status",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "install_dlc_workshoptools_cvar",
-      "helperText": "DLC Install Status",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -2160,8 +447,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "Lobby default permissions (0: private, 1: public)",
@@ -2172,8 +459,7 @@
       "helperText": "Lobby default permissions (0: private, 1: public)",
       "type": "unknown_integer",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -2181,8 +467,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -2192,28 +478,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "mapoverview_allow_client_draw",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Allow a client to draw on the map overview",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mapoverview_allow_client_draw",
-      "helperText": "Allow a client to draw on the map overview",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -2232,27 +497,7 @@
       "helperText": "When performing CSGO community matchmaking look for servers with at least so many human players",
       "type": "unknown_integer",
       "defaultValue": 3,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "mm_dedicated_force_servers",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "release"
-      ],
-      "description": "Comma delimited list of ip:port of servers used to search for dedicated servers instead of searching for public servers. Use syntax `publicip1:port|privateip1:port,publicip2:port|privateip2:port` if your server is behind NAT. If the server is behind NAT, you can specify `0.0.0.0|privateip:port` and if server port is in the list of `mm_server_search_lan_ports` its public address should be automatically detected.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mm_dedicated_force_servers",
-      "helperText": "Comma delimited list of ip:port of servers used to search for dedicated servers instead of searching for public servers. Use syntax `publicip1:port|privateip1:port,publicip2:port|privateip2:port` if your server is behind NAT. If the server is behind NAT, you can specify `0.0.0.0|privateip:port` and if server port is in the list of `mm_server_search_lan_ports` its public address should be automatically detected.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -2270,8 +515,7 @@
       "helperText": "Longest preferred ping to dedicated servers for games",
       "type": "unknown_numeric",
       "defaultValue": 150,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -2290,143 +534,7 @@
       "helperText": "Ports to scan during LAN games discovery. Also used to discover and correctly connect to dedicated LAN servers behind NATs.",
       "type": "string",
       "defaultValue": "27015,27016,27017,27018,27019,27020",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "mm_session_search_qos_timeout",
-    "consoleData": {
-      "defaultValue": "15",
-      "flags": [
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mm_session_search_qos_timeout",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 15,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mm_session_sys_kick_ban_duration",
-    "consoleData": {
-      "defaultValue": "180",
-      "flags": [
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mm_session_sys_kick_ban_duration",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 180,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mm_session_sys_pkey",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mm_session_sys_pkey",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mobile_fps_increase_during_charging",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a"
-      ],
-      "description": "MOBILE_FPS_CONTROL: If true we increase framerate limit while charging",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mobile_fps_increase_during_charging",
-      "helperText": "MOBILE_FPS_CONTROL: If true we increase framerate limit while charging",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mobile_fps_increase_during_touch",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "a"
-      ],
-      "description": "MOBILE_FPS_CONTROL: If true we increase framerate limit during touch",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mobile_fps_increase_during_touch",
-      "helperText": "MOBILE_FPS_CONTROL: If true we increase framerate limit during touch",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mobile_fps_limit",
-    "consoleData": {
-      "defaultValue": "30",
-      "flags": [
-        "a"
-      ],
-      "description": "MOBILE_FPS_CONTROL: Mobile FPS limit - 15, 30, 60",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mobile_fps_limit",
-      "helperText": "MOBILE_FPS_CONTROL: Mobile FPS limit - 15, 30, 60",
-      "type": "unknown_numeric",
-      "defaultValue": 30,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "mouse_inverty",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "user"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "mouse_inverty",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -2445,27 +553,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "Tinnitus",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "player0_using_joystick",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "player0_using_joystick",
-      "helperText": "",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -2473,8 +561,8 @@
     "consoleData": {
       "defaultValue": "2",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -2485,48 +573,7 @@
       "helperText": "",
       "type": "unknown_numeric",
       "defaultValue": 2,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "player_competitive_maplist_2v2_10_0_E7739BAE",
-    "consoleData": {
-      "defaultValue": "mg_de_overpass,mg_de_vertigo,mg_de_inferno",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "player_competitive_maplist_2v2_10_0_E7739BAE",
-      "helperText": "",
-      "type": "string",
-      "defaultValue": "mg_de_overpass,mg_de_vertigo,mg_de_inferno",
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "player_competitive_maplist_8_10_0_F1716344",
-    "consoleData": {
-      "defaultValue": "mg_de_nuke,mg_de_train,mg_de_overpass,mg_de_anubis,mg_de_vertigo",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "player_competitive_maplist_8_10_0_F1716344",
-      "helperText": "",
-      "type": "string",
-      "defaultValue": "mg_de_nuke,mg_de_train,mg_de_overpass,mg_de_anubis,mg_de_vertigo",
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -2534,8 +581,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -2546,8 +593,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -2555,8 +601,8 @@
     "consoleData": {
       "defaultValue": "mg_dz_blacksite,mg_dz_sirocco,mg_dz_vineyard,mg_dz_ember",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -2566,8 +612,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "mg_dz_blacksite,mg_dz_sirocco,mg_dz_vineyard,mg_dz_ember",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -2575,8 +620,8 @@
     "consoleData": {
       "defaultValue": "3",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user"
       ],
       "description": "",
@@ -2587,190 +632,311 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 3,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
-    "command": "player_wargames_list2_10_0_0",
+    "command": "sk_autoaim_mode",
     "consoleData": {
-      "defaultValue": "0",
+      "defaultValue": "1",
       "flags": [
+        "a",
         "cl",
-        "a"
+        "rep",
+        "sv"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "player_wargames_list2_10_0_0",
+      "label": "sk_autoaim_mode",
       "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false
     }
   },
   {
-    "command": "quit",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "release",
-        "vconsole_set_focus"
-      ],
-      "description": "Quit the game",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "quit",
-      "helperText": "Quit the game",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "rcon_address",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "norecord",
-        "release",
-        "server_cant_query"
-      ],
-      "description": "Address of remote server if sending unconnected rcon commands (format x.x.x.x:p)",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "rcon_address",
-      "helperText": "Address of remote server if sending unconnected rcon commands (format x.x.x.x:p)",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "rcon_password",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "norecord",
-        "release",
-        "server_cant_query"
-      ],
-      "description": "remote console password.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "rcon_password",
-      "helperText": "remote console password.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "reset_voice_on_input_stallout",
+    "command": "sv_log_onefile",
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "user"
+        "a",
+        "release"
       ],
-      "description": "If true, resets the input device when there was a long enough hitch between callbacks.",
+      "description": "Log server information to only one file.",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "reset_voice_on_input_stallout",
-      "helperText": "If true, resets the input device when there was a long enough hitch between callbacks.",
+      "label": "sv_log_onefile",
+      "helperText": "Log server information to only one file.",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
-    "command": "sc_aggregate_indirect_draw_compaction",
+    "command": "sv_logbans",
     "consoleData": {
-      "defaultValue": "true",
+      "defaultValue": "false",
       "flags": [
+        "a",
         "release"
       ],
-      "description": "Use multidrawindirect...count if the driver/hardware supports it",
+      "description": "Log server bans in the server logs.",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "sc_aggregate_indirect_draw_compaction",
-      "helperText": "Use multidrawindirect...count if the driver/hardware supports it",
+      "label": "sv_logbans",
+      "helperText": "Log server bans in the server logs.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_logecho",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Echo log information to the console.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_logecho",
+      "helperText": "Echo log information to the console.",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
-    "command": "sc_aggregate_indirect_draw_compaction_threshold",
+    "command": "sv_logfile",
     "consoleData": {
-      "defaultValue": "8",
+      "defaultValue": "false",
       "flags": [
+        "a",
         "release"
       ],
-      "description": "Threshold of indirect draws when we will do compaction",
+      "description": "Log server information in the log file.",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "sc_aggregate_indirect_draw_compaction_threshold",
-      "helperText": "Threshold of indirect draws when we will do compaction",
-      "type": "unknown_numeric",
-      "defaultValue": 8,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "label": "sv_logfile",
+      "helperText": "Log server information in the log file.",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false
     }
   },
   {
-    "command": "sensitivity_y_scale",
+    "command": "sv_logflush",
     "consoleData": {
-      "sourcedAt": "2025-07-30T00:00:00Z",
-      "defaultValue": "1",
+      "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
-        "user",
-        "per_user"
+        "release"
       ],
-      "description": "Multiplies the mouse Y axis for finer pitch vs yaw aim"
+      "description": "Flush the log file to disk on each write (slow).",
+      "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "sensitivity_y_scale",
-      "helperText": "Multiplies the mouse Y axis for finer pitch vs yaw aim",
-      "type": "unknown_numeric",
-      "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "label": "sv_logflush",
+      "helperText": "Flush the log file to disk on each write (slow).",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false
     }
   },
   {
-    "command": "steam_controller_haptics",
+    "command": "sv_logsdir",
+    "consoleData": {
+      "defaultValue": "logs",
+      "flags": [
+        "a",
+        "release"
+      ],
+      "description": "Folder in the game directory where server logs will be stored.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_logsdir",
+      "helperText": "Folder in the game directory where server logs will be stored.",
+      "type": "string",
+      "defaultValue": "logs",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_noclipaccelerate",
+    "consoleData": {
+      "defaultValue": "5",
+      "flags": [
+        "a",
+        "cl",
+        "nf",
+        "rep",
+        "sv"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_noclipaccelerate",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 5,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_noclipspeed",
+    "consoleData": {
+      "defaultValue": "1200",
+      "flags": [
+        "a",
+        "cl",
+        "nf",
+        "rep",
+        "sv"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_noclipspeed",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 1200,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_skyname",
+    "consoleData": {
+      "defaultValue": "sky_urb01",
+      "flags": [
+        "a",
+        "cl",
+        "rep",
+        "sv"
+      ],
+      "description": "Current name of the skybox texture",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_skyname",
+      "helperText": "Current name of the skybox texture",
+      "type": "string",
+      "defaultValue": "sky_urb01",
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_specaccelerate",
+    "consoleData": {
+      "defaultValue": "5",
+      "flags": [
+        "a",
+        "cl",
+        "nf",
+        "rep",
+        "sv"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_specaccelerate",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 5,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_specnoclip",
     "consoleData": {
       "defaultValue": "true",
       "flags": [
+        "a",
         "cl",
+        "nf",
+        "rep",
+        "sv"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_specnoclip",
+      "helperText": "",
+      "type": "bool",
+      "defaultValue": true,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_specspeed",
+    "consoleData": {
+      "defaultValue": "1200",
+      "flags": [
+        "a",
+        "cl",
+        "nf",
+        "rep",
+        "sv"
+      ],
+      "description": "",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_specspeed",
+      "helperText": "",
+      "type": "unknown_integer",
+      "defaultValue": 1200,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_unlockedchapters",
+    "consoleData": {
+      "defaultValue": "1",
+      "flags": [
+        "a"
+      ],
+      "description": "Highest unlocked game chapter.",
+      "sourcedAt": "2025-07-30T00:00:00Z"
+    },
+    "uiData": {
+      "label": "sv_unlockedchapters",
+      "helperText": "Highest unlocked game chapter.",
+      "type": "unknown_integer",
+      "defaultValue": 1,
+      "requiresCheats": false
+    }
+  },
+  {
+    "command": "sv_voiceenable",
+    "consoleData": {
+      "defaultValue": "true",
+      "flags": [
+        "a",
+        "nf",
         "release"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "steam_controller_haptics",
+      "label": "sv_voiceenable",
       "helperText": "",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -2778,8 +944,8 @@
     "consoleData": {
       "defaultValue": "0",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Trusted launch status",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -2789,8 +955,7 @@
       "helperText": "Trusted launch status",
       "type": "unknown_integer",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   }
 ]

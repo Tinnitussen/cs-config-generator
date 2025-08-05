@@ -23,17 +23,17 @@ namespace CSConfigGenerator.Tests
                 new() {
                     Command = "sensitivity",
                     ConsoleData = new ConsoleData { DefaultValue = "2.5", Flags = [], Description = "", SourcedAt = DateTimeOffset.Now},
-                    UiData = new UiData { Label = "Sensitivity", Type = SettingType.Float, DefaultValue = JsonSerializer.SerializeToElement(2.5f), HideFromDefaultView = false }
+                    UiData = new UiData { Label = "Sensitivity", Type = SettingType.Float, DefaultValue = JsonSerializer.SerializeToElement(2.5f) }
                 },
                 new() {
                     Command = "cl_crosshaircolor",
                     ConsoleData = new ConsoleData { DefaultValue = "1", Flags = [], Description = "", SourcedAt = DateTimeOffset.Now},
-                    UiData = new UiData { Label = "Crosshair Color", Type = SettingType.Int, DefaultValue = JsonSerializer.SerializeToElement(1), HideFromDefaultView = false }
+                    UiData = new UiData { Label = "Crosshair Color", Type = SettingType.Int, DefaultValue = JsonSerializer.SerializeToElement(1) }
                 },
                 new() {
                     Command = "cl_crosshairdot",
                     ConsoleData = new ConsoleData { DefaultValue = "false", Flags = [], Description = "", SourcedAt = DateTimeOffset.Now},
-                    UiData = new UiData { Label = "Crosshair Dot", Type = SettingType.Bool, DefaultValue = JsonSerializer.SerializeToElement(false), HideFromDefaultView = false }
+                    UiData = new UiData { Label = "Crosshair Dot", Type = SettingType.Bool, DefaultValue = JsonSerializer.SerializeToElement(false) }
                 }
             };
 
