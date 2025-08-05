@@ -10,10 +10,11 @@ Commands are processed through an automated pipeline that transforms raw CS2 con
 
 The pipeline (`Tools/pipeline.py`) guides you through these steps:
 
-1. **Parse Commands** - Extract and validate commands from CS2 snapshot files
-2. **Classify Types** - Determine command types (bool, float, string, etc.) using rule-based logic
-3. **Split Categories** - Organize commands into player/server/shared groups
-4. **Subcategorize** - Create UI sections within each category
+1.  **Parse Commands** - Extract and validate commands from CS2 snapshot files.
+2.  **Classify Types** - Determine command data types (bool, float, string, etc.) using rule-based logic.
+3.  **Classify by Popularity** - Identify popular `player` and `server` commands by analyzing professional and community config files.
+4.  **Create 'All Commands' File** - Generate a master JSON file containing all commands for the UI.
+5.  **Subcategorize** - Organize the popular Player and Server commands into UI sections (e.g., crosshair, viewmodel, etc.).
 
 ### Classification Rules
 
@@ -28,29 +29,12 @@ Commands are classified by applying these rules in order:
 5. **Unknown Numeric**: Numeric `defaultValue` without decimal point
 6. **String**: Any other non-null `defaultValue`
 
-#### Category Classification (`Tools/rules/splitting_rules.py`)
-Commands are categorized using:
-1. **Console Flags**: `sv` → server, `cl` → player, `rep` → shared
-2. **Command Prefixes**: `cl_*` → player, `sv_*` → server, etc.
-3. **Fallback Rules**: `user`/`a` flags → player
+#### Popularity Classification (`Tools/rules/popularity_rules.py`)
+A command is classified as `player` or `server` if it appears in a significant percentage of the respective configuration files. This is controlled by the `POPULARITY_THRESHOLD` in the rules file.
 
 #### Subcategorization Rules
 - **Player** (`Tools/rules/player_subcategorization_rules.py`): crosshair, viewmodel, hud, audio, etc.
 - **Server** (`Tools/rules/server_subcategorization_rules.py`): setup, teams, rounds, economy, etc.
-- **Shared** (`Tools/rules/shared_subcategorization_rules.py`): Currently all commands go to "tbd"
-
-### Manual Category Override
-
-Any command can have its automatic classification overridden by adding a `manual_category` field:
-
-```json
-"uiData": {
-  "manual_category": "player/crosshair",
-  // ... other fields
-}
-```
-
-This bypasses all automatic classification rules and places the command in the specified category and subcategory.
 
 ### Running the Pipeline
 
@@ -75,31 +59,15 @@ all_commands-YYYY-DD-MM.txt (Raw CS2 data)
 commands.json (Structured with consoleData)
     ↓ command_classification.py
 commands.json (+ uiData with types)
-    ↓ splitting/classify_commands.py
-classified_commands/*.json (Split by category)
-    ↓ subcategorization/*.py
-CSConfigGenerator/wwwroot/data/commandschema/*/*.json (Final UI schema)
+    ↓ command_popularity.py
+classified_commands/player_commands.json
+classified_commands/server_commands.json
+    ↓ subcategorization/subcategorize_*.py
+CSConfigGenerator/wwwroot/data/commandschema/player/*.json
+CSConfigGenerator/wwwroot/data/commandschema/server/*.json
+    ↓ create_all_commands.py
+CSConfigGenerator/wwwroot/data/commandschema/all/all_commands.json
 ```
-
-## Command Classification
-
-Commands are classified into three main categories: `player`, `server`, and `shared`. This classification is done automatically by the `Tools/scripts/splitting/split.py` script, which uses a combination of flags and command prefixes to determine the category of each command.
-
-The classification logic is as follows:
-
-1.  **Explicit Flags (`sv`, `cl`, `rep`):**
-    *   If a command has the `rep` flag, it's classified as **shared**.
-    *   If a command has both `sv` and `cl` flags, it's classified as **shared**.
-    *   If a command has only the `sv` flag, it's classified as **server**.
-    *   If a command has only the `cl` flag, it's classified as **player**.
-2.  **Prefix-Based Classification (for commands not classified by explicit flags):**
-    *   **Player Prefixes:** `cl_`, `ui_`, `joy_`, `cam_`, `c_`, `+`, `snd_`, `r_`, `mat_`, `demo_`
-    *   **Server Prefixes:** `sv_`, `mp_`, `bot_`, `nav_`, `ent_`, `script_`, `logaddress_`, `rr_`, `cast_`, `navspace_`, `markup_`, `spawn_`, `vis_`, `telemetry_`, `test_`, `soundscape_`, `scene_`, `particle_`, `shatterglass_`, `create_`, `debugoverlay_`, `prop_`, `g_`, `ff_`, `cash_`, `contributionscore_`
-    *   **Shared Prefixes:** `ai_`, `weapon_`, `ragdoll_`, `ik_`, `skeleton_`
-3.  **User-Specific Flags (`a`, `user`):**
-    *   If a command has the `a` or `user` flag, and is not already classified, it will be classified as **player**.
-4.  **Uncategorized:**
-    *   Any command that doesn't meet any of the above criteria will be classified as **uncategorized**.
 
 ## Project File Structure and UI Mapping
 
@@ -107,7 +75,7 @@ The organization of the JSON files directly maps to the layout of the config gen
 
 ### The Rule: Folders are Pages, Files are Sections
 
-*   **Top-Level Folders:** Each main folder (`PlayerConfig`, `ServerConfig`, etc.) represents a major page or navigation tab in the application.
+*   **Top-Level Folders:** Each main folder (`player`, `server`) represents a major page or navigation tab in the application.
 *   **JSON Files:** Each JSON file within a folder (`crosshair.json`, `teams.json`, etc.) becomes a distinct section on that page. The filename is used as the title for that section.
 
 ### File Structure
@@ -116,36 +84,35 @@ The organization of the JSON files directly maps to the layout of the config gen
 /
 ├── player/             (For autoexec.cfg)
 │   ├── crosshair.json
-│   ├── viewmodel.json        (Includes FOV and camera-related commands)
+│   ├── viewmodel.json
 │   ├── hud.json
 │   ├── radar.json
-│   ├── input.json            (Contains mouse settings)
-│   ├── gameplay.json            (Contains game behavior settings like autowepswitch)
+│   ├── input.json
+│   ├── gameplay.json
 │   ├── audio.json
-│   ├── communication.json    (Contains voice, radio and chat commands)
+│   ├── communication.json
 │   ├── network.json
-│   ├── cheats.json         (Commands for practice servers like giving items, noclip, etc.)
-│   ├── actions.json         (Commands with type actions)
+│   ├── cheats.json
+│   ├── actions.json
 │   └── misc.json
 │   │
 │   └── developer/            (Advanced group)
-│       ├── rendering.json      (Contains graphics, lighting, and fog commands)
+│       ├── rendering.json
 │       ├── debugging.json
-│       └── spectator.json    (Commands for Demo and Overwatch functionality)
+│       └── spectator.json
 │
 └── server/             (For server.cfg)
-    ├── setup.json            (Basic server settings like hostname, passwords)
+    ├── setup.json
     ├── teams.json
     ├── rounds.json
     ├── objectives.json
     ├── spawning.json
-    ├── rules.json            (Game rules like friendly fire, etc.)
+    ├── rules.json
     ├── economy.json
     ├── bots.json
     └── gotv.json
-└── shared/             (For commands that work on both server and client)
-    ├── tbd.json            (TODO: Need to map out the shared commands)
-    └── tbd.json
+└── all/
+    └── all_commands.json (Contains all commands for the 'All Commands' UI tab)
 ```
 
 ---
@@ -191,9 +158,7 @@ Used for simple on/off toggle switches.
   "type": "bool",
   "defaultValue": true,
   "requiresCheats": false,
-  "hideFromDefaultView": false, // If set to true, hide command from the main UI (not command reference page)
   "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
-  "manual_category": "player/crosshair", // Optional: Manually sets the category and subcategory.
   "visibilityCondition": { // Optional: Controls visibility based on another command.
     "command": "parent_command_name",
     "value": "required_value"
@@ -214,7 +179,6 @@ Used for whole numbers, typically with sliders or steppers.
   "type": "integer",
   "defaultValue": 10,
   "requiresCheats": false,
-  "hideFromDefaultView": false,
   "range": { // Required for this type
     "minValue": 0,
     "maxValue": 100,
@@ -240,7 +204,6 @@ Used for numbers with decimal points.
   "type": "float",
   "defaultValue": 1.5,
   "requiresCheats": false,
-  "hideFromDefaultView": false,
   "range": { // Required for this type
     "minValue": 0.0,
     "maxValue": 10.0,
@@ -262,7 +225,6 @@ Used for free-form text input.
   "type": "string",
   "defaultValue": "default_text",
   "requiresCheats": false,
-  "hideFromDefaultView": false,
   "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
 }
 ```
@@ -283,7 +245,6 @@ Used for dropdown menus or radio buttons with a predefined set of options.
     "1": "Display Value B"
   },
   "requiresCheats": false,
-  "hideFromDefaultView": false,
   "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
   "visibilityCondition": { // Optional: Controls visibility based on another command.
     "command": "parent_command_name",
@@ -304,7 +265,6 @@ Used for action commands that may take arguments.
   "type": "action",
   "defaultValue": null, // Must be null
   "requiresCheats": true,
-  "hideFromDefaultView": false,
   "arguments": [ // Optional
     {
       "name": "argument_name",
@@ -335,7 +295,6 @@ Used for commands where multiple checkbox options are combined into a single int
     "4": "Option C (Value 4)"
   },
   "requiresCheats": false,
-  "hideFromDefaultView": false,
   "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
 }
 ```

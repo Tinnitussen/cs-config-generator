@@ -420,3 +420,6 @@ FodyWeavers.xsd
 # My settings
 .vscode/
 dotnet-install.sh
+dotnet/
+dotnet-sdk/
+*.tar.gz

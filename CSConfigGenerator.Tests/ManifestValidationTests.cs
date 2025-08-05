@@ -17,6 +17,7 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
 
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
+    public IReadOnlyList<ConfigSection> AllCommandsSections { get; } = new List<ConfigSection>().AsReadOnly();
 
     public async Task InitializeAsync()
     {
@@ -71,6 +72,16 @@ public class TestSchemaService(string wwwrootPath) : ISchemaService
         return ServerSections
             .SelectMany(section => section.Commands)
             .FirstOrDefault(cmd => cmd.Command.Equals(name, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public CommandDefinition? GetCommand(string name)
+    {
+        var command = GetPlayerCommand(name);
+        if (command != null)
+        {
+            return command;
+        }
+        return GetServerCommand(name);
     }
 }
 
@@ -167,8 +178,9 @@ public class ManifestValidationTests : IDisposable
                 filePath.Contains("/player/") ||
                 filePath.Contains("/server/") ||
                 filePath.Contains("/shared/") ||
-                filePath.Contains("/uncategorized/"),
-                $"File path '{filePath}' should contain /player/, /server/, /shared/, or /uncategorized/ folder");
+                filePath.Contains("/uncategorized/") ||
+                filePath.Contains("/all/"),
+                $"File path '{filePath}' should contain /player/, /server/, /shared/, /uncategorized/, or /all/ folder");
         }
     }
 
@@ -268,8 +280,7 @@ public class ManifestValidationTests : IDisposable
 
     [Theory]
     [InlineData("player")]
-    [InlineData("server")]
-    [InlineData("shared")]
+    [InlineData("all")]
     public async Task ManifestPaths_ShouldContainExpectedSectionTypes(string sectionType)
     {
         // Arrange

@@ -1,71 +1,11 @@
 [
   {
-    "command": "autobuy",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "clientcmd_can_execute"
-      ],
-      "description": "Attempt to purchase items with the order listed in cl_autobuy",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "autobuy",
-      "helperText": "Attempt to purchase items with the order listed in cl_autobuy",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "battery_saver",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "a"
-      ],
-      "description": "OBSOLETE replaced by mobile_fps_* - Battery saver mode. 0=off, 1=on",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "battery_saver",
-      "helperText": "OBSOLETE replaced by mobile_fps_* - Battery saver mode. 0=off, 1=on",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_autobuy",
-    "consoleData": {
-      "defaultValue": "vesthelm vest m4a1 ak47 famas galilar mp7 nova defuser",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "The order in which autobuy will attempt to purchase items",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_autobuy",
-      "helperText": "The order in which autobuy will attempt to purchase items",
-      "type": "string",
-      "defaultValue": "vesthelm vest m4a1 ak47 famas galilar mp7 nova defuser",
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
     "command": "cl_autohelp",
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "user"
       ],
       "description": "Auto-help",
@@ -76,96 +16,7 @@
       "helperText": "Auto-help",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_buymenu_ct_nextround_high",
-    "consoleData": {
-      "defaultValue": "5000",
-      "flags": [
-        "cl",
-        "a",
-        "per_user",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_buymenu_ct_nextround_high",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 5000,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_buymenu_ct_nextround_low",
-    "consoleData": {
-      "defaultValue": "1400",
-      "flags": [
-        "cl",
-        "a",
-        "per_user",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_buymenu_ct_nextround_low",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 1400,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_buymenu_t_nextround_high",
-    "consoleData": {
-      "defaultValue": "5000",
-      "flags": [
-        "cl",
-        "a",
-        "per_user",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_buymenu_t_nextround_high",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 5000,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_buymenu_t_nextround_low",
-    "consoleData": {
-      "defaultValue": "1400",
-      "flags": [
-        "cl",
-        "a",
-        "per_user",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_buymenu_t_nextround_low",
-      "helperText": "",
-      "type": "unknown_numeric",
-      "defaultValue": 1400,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -173,8 +24,8 @@
     "consoleData": {
       "defaultValue": "0",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user",
         "release"
       ],
@@ -186,8 +37,7 @@
       "helperText": "Set the key to use for donation in the buy menu. 0: Left Control; 1: Left Alt; 2: Left Shift.",
       "type": "unknown_integer",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -195,8 +45,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "per_user",
         "release"
       ],
@@ -208,8 +58,7 @@
       "helperText": "Set non-zero to prevent buy wheel from purchasing via number keys",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -217,8 +66,8 @@
     "consoleData": {
       "defaultValue": "0",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "user"
       ],
       "description": "Preferred teammate color",
@@ -229,30 +78,7 @@
       "helperText": "Preferred teammate color",
       "type": "unknown_numeric",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_debounce_zoom",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "a",
-        "user",
-        "per_user"
-      ],
-      "description": "Whether or not to disable holding secondary fire to cycle zoom levels",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_debounce_zoom",
-      "helperText": "Whether or not to disable holding secondary fire to cycle zoom levels",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -260,8 +86,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "Player will automatically receive a random weapon on spawn in deathmatch if this is set to 1 (otherwise, they will receive the last weapon)",
@@ -272,8 +98,7 @@
       "helperText": "Player will automatically receive a random weapon on spawn in deathmatch if this is set to 1 (otherwise, they will receive the last weapon)",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -281,8 +106,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Advertise joinable game in progress to Steam friends, otherwise need a Steam invite (2: all servers, 1: official servers, 0: none)",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -292,114 +117,7 @@
       "helperText": "Advertise joinable game in progress to Steam friends, otherwise need a Steam invite (2: all servers, 1: official servers, 0: none)",
       "type": "unknown_numeric",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cl_playerspraydisable",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "description": "Disable player sprays.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_playerspraydisable",
-      "helperText": "Disable player sprays.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_prefer_lefthanded",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "a",
-        "user",
-        "per_user"
-      ],
-      "description": "Left handed preference",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_prefer_lefthanded",
-      "helperText": "Left handed preference",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_rebuy",
-    "consoleData": {
-      "defaultValue": "Armor PrimaryWeapon Flashbang SmokeGrenade Defuser HEGrenade Flashbang SecondaryWeapon Molotov IncGrenade Decoy Taser",
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "The order in which rebuy will attempt to repurchase items",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_rebuy",
-      "helperText": "The order in which rebuy will attempt to repurchase items",
-      "type": "string",
-      "defaultValue": "Armor PrimaryWeapon Flashbang SmokeGrenade Defuser HEGrenade Flashbang SecondaryWeapon Molotov IncGrenade Decoy Taser",
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_silencer_mode",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "a",
-        "user",
-        "per_user"
-      ],
-      "description": "0: cannot detach; 1: press secondary fire to detach",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_silencer_mode",
-      "helperText": "0: cannot detach; 1: press secondary fire to detach",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "cl_sniper_auto_rezoom",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "cl",
-        "a",
-        "user",
-        "per_user"
-      ],
-      "description": "Auto-rezoom snipers after a shot",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cl_sniper_auto_rezoom",
-      "helperText": "Auto-rezoom snipers after a shot",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -407,8 +125,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -419,8 +137,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -428,10 +145,10 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
-        "user",
-        "per_user"
+        "cl",
+        "per_user",
+        "user"
       ],
       "description": "Pressing the +use key will open the buy menu if in a buy zone (just as if you pressed the 'buy' key).",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -441,71 +158,7 @@
       "helperText": "Pressing the +use key will open the buy menu if in a buy zone (just as if you pressed the 'buy' key).",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "invnext",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "server_can_execute"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "invnext",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "invprev",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "server_can_execute"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "invprev",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "lastinv",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "server_can_execute"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "lastinv",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
+      "requiresCheats": false
     }
   },
   {
@@ -513,10 +166,10 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
-        "user",
-        "per_user"
+        "cl",
+        "per_user",
+        "user"
       ],
       "description": "Input toggle control",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -526,8 +179,7 @@
       "helperText": "Input toggle control",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -535,10 +187,10 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
         "a",
-        "user",
-        "per_user"
+        "cl",
+        "per_user",
+        "user"
       ],
       "description": "Input toggle control",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -548,168 +200,7 @@
       "helperText": "Input toggle control",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "rebuy",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "clientcmd_can_execute"
-      ],
-      "description": "Attempt to repurchase items with the order listed in cl_rebuy",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "rebuy",
-      "helperText": "Attempt to repurchase items with the order listed in cl_rebuy",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "switchhands",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "switchhands",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "switchhandsleft",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "switchhandsleft",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "switchhandsright",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "switchhandsright",
-      "helperText": "",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "violence_ablood",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "a"
-      ],
-      "description": "Draw alien blood",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "violence_ablood",
-      "helperText": "Draw alien blood",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "violence_agibs",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "a"
-      ],
-      "description": "Show alien gib entities",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "violence_agibs",
-      "helperText": "Show alien gib entities",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "violence_hblood",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "a"
-      ],
-      "description": "Draw human blood",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "violence_hblood",
-      "helperText": "Draw human blood",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "violence_hgibs",
-    "consoleData": {
-      "defaultValue": "true",
-      "flags": [
-        "a"
-      ],
-      "description": "Show human gib entities",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "violence_hgibs",
-      "helperText": "Show human gib entities",
-      "type": "bool",
-      "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   }
 ]

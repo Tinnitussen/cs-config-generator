@@ -4,8 +4,8 @@
     "consoleData": {
       "defaultValue": "200",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -15,8 +15,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 200,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -24,8 +23,8 @@
     "consoleData": {
       "defaultValue": "90",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -35,8 +34,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 90,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -44,8 +42,8 @@
     "consoleData": {
       "defaultValue": "135",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -55,8 +53,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 135,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -64,8 +61,8 @@
     "consoleData": {
       "defaultValue": "30",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -75,8 +72,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 30,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -84,8 +80,8 @@
     "consoleData": {
       "defaultValue": "0",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -95,8 +91,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -104,8 +99,8 @@
     "consoleData": {
       "defaultValue": "-135",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -115,8 +110,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": -135,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -124,8 +118,8 @@
     "consoleData": {
       "defaultValue": "100",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -135,8 +129,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 100,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -144,8 +137,8 @@
     "consoleData": {
       "defaultValue": "100",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -155,8 +148,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 100,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -164,8 +156,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -175,8 +167,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -184,8 +175,8 @@
     "consoleData": {
       "defaultValue": "120",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -195,8 +186,7 @@
       "helperText": "",
       "type": "float",
       "defaultValue": 120,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -204,8 +194,8 @@
     "consoleData": {
       "defaultValue": "40",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -215,8 +205,7 @@
       "helperText": "",
       "type": "float",
       "defaultValue": 40,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -224,8 +213,8 @@
     "consoleData": {
       "defaultValue": "5",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -235,8 +224,7 @@
       "helperText": "",
       "type": "float",
       "defaultValue": 5,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -244,8 +232,8 @@
     "consoleData": {
       "defaultValue": "20",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -255,8 +243,7 @@
       "helperText": "",
       "type": "float",
       "defaultValue": 20,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -264,8 +251,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "When in thirdperson and cam_collision is set to 1, an attempt is made to keep the camera from passing though walls.",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -275,29 +262,7 @@
       "helperText": "When in thirdperson and cam_collision is set to 1, an attempt is made to keep the camera from passing though walls.",
       "type": "unknown_integer",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cam_command",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "description": "Tells camera to change modes",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cam_command",
-      "helperText": "Tells camera to change modes",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "arguments": []
+      "requiresCheats": false
     }
   },
   {
@@ -305,8 +270,8 @@
     "consoleData": {
       "defaultValue": "4",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Controls the speed when matching offset to ideal angles in thirdperson view",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -316,8 +281,7 @@
       "helperText": "Controls the speed when matching offset to ideal angles in thirdperson view",
       "type": "float",
       "defaultValue": 4,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -325,8 +289,8 @@
     "consoleData": {
       "defaultValue": "150",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -336,8 +300,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 150,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -345,8 +308,8 @@
     "consoleData": {
       "defaultValue": "4",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Amount of lag used when matching offset to ideal angles in thirdperson view",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -356,8 +319,7 @@
       "helperText": "Amount of lag used when matching offset to ideal angles in thirdperson view",
       "type": "float",
       "defaultValue": 4,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -365,8 +327,8 @@
     "consoleData": {
       "defaultValue": "0",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -376,8 +338,7 @@
       "helperText": "",
       "type": "unknown_numeric",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -385,8 +346,8 @@
     "consoleData": {
       "defaultValue": "0",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -396,28 +357,7 @@
       "helperText": "",
       "type": "unknown_numeric",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "cam_showangles",
-    "consoleData": {
-      "defaultValue": "false",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "description": "When in thirdperson, print viewangles/idealangles/cameraoffsets to the console.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "cam_showangles",
-      "helperText": "When in thirdperson, print viewangles/idealangles/cameraoffsets to the console.",
-      "type": "bool",
-      "defaultValue": false,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -425,8 +365,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -436,49 +376,7 @@
       "helperText": "",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
-    }
-  },
-  {
-    "command": "fov_cs_debug",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "description": "Sets the view fov if cheats are on.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "fov_cs_debug",
-      "helperText": "Sets the view fov if cheats are on.",
-      "type": "unknown_numeric",
-      "defaultValue": 0,
-      "requiresCheats": true,
-      "hideFromDefaultView": true
-    }
-  },
-  {
-    "command": "fov_desired",
-    "consoleData": {
-      "defaultValue": "75",
-      "flags": [
-        "cl",
-        "a",
-        "user"
-      ],
-      "description": "Sets the base field-of-view.",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "fov_desired",
-      "helperText": "Sets the base field-of-view.",
-      "type": "unknown_numeric",
-      "defaultValue": 75,
-      "requiresCheats": false,
-      "hideFromDefaultView": true
+      "requiresCheats": false
     }
   },
   {
@@ -486,10 +384,10 @@
     "consoleData": {
       "defaultValue": "60",
       "flags": [
-        "cl",
         "a",
-        "user",
-        "per_user"
+        "cl",
+        "per_user",
+        "user"
       ],
       "description": "Viewmodel FOV",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -499,8 +397,7 @@
       "helperText": "Viewmodel FOV",
       "type": "unknown_numeric",
       "defaultValue": 60,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -508,10 +405,10 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
         "a",
-        "user",
-        "per_user"
+        "cl",
+        "per_user",
+        "user"
       ],
       "description": "viewmodel_offset_x",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -521,8 +418,7 @@
       "helperText": "viewmodel_offset_x",
       "type": "float",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -530,10 +426,10 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
         "a",
-        "user",
-        "per_user"
+        "cl",
+        "per_user",
+        "user"
       ],
       "description": "viewmodel_offset_y",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -543,8 +439,7 @@
       "helperText": "viewmodel_offset_y",
       "type": "unknown_numeric",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -552,10 +447,10 @@
     "consoleData": {
       "defaultValue": "-1",
       "flags": [
-        "cl",
         "a",
-        "user",
-        "per_user"
+        "cl",
+        "per_user",
+        "user"
       ],
       "description": "viewmodel_offset_z",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -565,8 +460,7 @@
       "helperText": "viewmodel_offset_z",
       "type": "float",
       "defaultValue": -1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -574,8 +468,8 @@
     "consoleData": {
       "defaultValue": "1",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "1:'Desktop', 2:'Classic'",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -585,8 +479,7 @@
       "helperText": "1:'Desktop', 2:'Classic'",
       "type": "unknown_integer",
       "defaultValue": 1,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   }
 ]

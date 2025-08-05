@@ -95,9 +95,8 @@
 </Modal>
 
 @code {
-    [Parameter]
-    [EditorRequired]
-    public IConfigStateService ConfigStateService { get; set; } = default!;
+    [Inject]
+    private IConfigStateService ConfigStateService { get; set; } = default!;
 
     [Parameter]
     public string? PresetType { get; set; }
@@ -123,7 +122,10 @@
         if (ConfigStateService == null)
             throw new InvalidOperationException("ConfigStateService is not set on ConfigEditor.");
 
-        RefreshConfigText();
+        if (PresetType != null)
+        {
+            configText = ConfigStateService.GenerateConfigFile(PresetType);
+        }
         ConfigStateService.OnStateChange += HandleStateChange;
 
         if (PresetType != null)
@@ -290,7 +292,14 @@
 
     private void RefreshConfigText()
     {
-        configText = ConfigStateService.GenerateConfigFile();
+        if (PresetType != null)
+        {
+            configText = ConfigStateService.GenerateConfigFile(PresetType);
+        }
+        else
+        {
+            configText = "// Select a config type to see the preview";
+        }
     }
 
     private void OnTextInput(ChangeEventArgs e)

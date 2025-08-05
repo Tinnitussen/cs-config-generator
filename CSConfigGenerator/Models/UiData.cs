@@ -21,9 +21,6 @@ public record UiData
     [JsonPropertyName("requiresCheats")]
     public bool RequiresCheats { get; init; }
 
-    [JsonPropertyName("hideFromDefaultView")]
-    public bool HideFromDefaultView { get; init; }
-
     [JsonPropertyName("range")]
     public NumericRange? Range { get; init; }
 

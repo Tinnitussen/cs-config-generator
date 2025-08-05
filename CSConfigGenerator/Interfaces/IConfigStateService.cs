@@ -13,7 +13,7 @@ public interface IConfigStateService
     (bool, string?) TrySetValueFromString(string commandName, string valueStr, object? originator = null);
     void SetIncluded(string commandName, bool IsInConfigEditor, object? originator = null);
 
-    string GenerateConfigFile();
+    string GenerateConfigFile(string configType);
     void ParseConfigFile(string configText, object? originator = null);
     void ResetToDefaults();
 }
