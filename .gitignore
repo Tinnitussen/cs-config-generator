@@ -418,7 +418,6 @@ FodyWeavers.xsd
 *.msp
 
 # My settings
-.vscode/
 dotnet-install.sh
 dotnet/
 dotnet-sdk/
