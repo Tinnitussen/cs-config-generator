@@ -10,8 +10,7 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
     private readonly List<ConfigSection> _playerSections = [];
     private readonly List<ConfigSection> _serverSections = [];
     private readonly List<ConfigSection> _allSections = [];
-    private readonly Dictionary<string, CommandDefinition> _playerCommandsByName = [];
-    private readonly Dictionary<string, CommandDefinition> _serverCommandsByName = [];
+    private readonly Dictionary<string, CommandDefinition> _allCommands = [];
     public IReadOnlyList<ConfigSection> PlayerSections => _playerSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> ServerSections => _serverSections.AsReadOnly();
     public IReadOnlyList<ConfigSection> AllSections => _allSections.AsReadOnly();
@@ -38,22 +37,18 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
                 if (filePath.Contains("/player/"))
                 {
                     _playerSections.Add(section);
-                    foreach (var command in commandList)
-                    {
-                        _playerCommandsByName[command.Command] = command;
-                    }
                 }
                 else if (filePath.Contains("/server/"))
                 {
                     _serverSections.Add(section);
-                    foreach (var command in commandList)
-                    {
-                        _serverCommandsByName[command.Command] = command;
-                    }
                 }
                 else if (filePath.Contains("/all/"))
                 {
                     _allSections.Add(section);
+                    foreach (var command in commandList)
+                    {
+                        _allCommands[command.Command] = command;
+                    }
                 }
                 else
                 {
@@ -66,15 +61,10 @@ public class SchemaService(HttpClient httpClient) : ISchemaService
             throw new InvalidOperationException("Failed to initialize schema service", ex);
         }
     }
-    public CommandDefinition? GetPlayerCommand(string name)
-    {
-        _playerCommandsByName.TryGetValue(name, out var command);
-        return command;
-    }
 
-    public CommandDefinition? GetServerCommand(string name)
+    public CommandDefinition? GetCommand(string name)
     {
-        _serverCommandsByName.TryGetValue(name, out var command);
+        _allCommands.TryGetValue(name, out var command);
         return command;
     }
 

@@ -6,6 +6,7 @@
 @using CSConfigGenerator.ViewModels
 @using CSConfigGenerator.Models
 @implements IDisposable
+@inject IConfigStateService ConfigStateService
 
 <PageTitle>@Title</PageTitle>
 
@@ -42,7 +43,7 @@
         </div>
     </div>
     <div class="col-lg-4 sticky-editor">
-        <ConfigEditor @key="ConfigType" ConfigStateService="@ConfigStateService" PresetType="@ConfigType?.ToLower()" />
+        <ConfigEditor @key="ConfigType" PresetType="@ConfigType?.ToLower()" />
     </div>
 </div>
 
@@ -51,16 +52,17 @@
     public string? ConfigType { get; set; }
 
     [Inject]
-    public IServiceProvider ServiceProvider { get; set; } = default!;
-    [Inject]
     public ISchemaService SchemaService { get; set; } = default!;
-
-    private IConfigStateService ConfigStateService { get; set; } = default!;
     private IReadOnlyList<ConfigSection> Sections { get; set; } = new List<ConfigSection>();
     private string Title { get; set; } = "";
     private string Description { get; set; } = "";
 
     private readonly Dictionary<string, SettingViewModel> _settingViewModels = new();
+
+    protected override void OnInitialized()
+    {
+        ConfigStateService.OnStateChange += HandleStateHasChanged;
+    }
 
     protected override void OnParametersSet()
     {
@@ -70,19 +72,16 @@
             return;
         }
 
-        string serviceKey;
         if (string.Equals(ConfigType, "player", StringComparison.OrdinalIgnoreCase))
         {
-            serviceKey = "PlayerConfigStateServiceKey";
             Sections = SchemaService.PlayerSections;
-            Title = "Player Settings";
+            Title = "Popular player settings";
             Description = "Configure your player settings. Changes are reflected in real-time in the config editor.";
         }
         else if (string.Equals(ConfigType, "server", StringComparison.OrdinalIgnoreCase))
         {
-            serviceKey = "ServerConfigStateServiceKey";
             Sections = SchemaService.ServerSections;
-            Title = "Server Settings";
+            Title = "Popular server settings";
             Description = "Configure your server settings. Changes are reflected in real-time in the config editor.";
         }
         else
@@ -91,23 +90,13 @@
             return;
         }
 
-        var newConfigStateService = ServiceProvider.GetRequiredKeyedService<IConfigStateService>(serviceKey);
-        if (newConfigStateService != ConfigStateService)
+        // Rebuild view models for the current section
+        _settingViewModels.Clear();
+        foreach (var section in Sections)
         {
-            if (ConfigStateService != null)
+            foreach (var command in section.Commands)
             {
-                ConfigStateService.OnStateChange -= HandleStateHasChanged;
-            }
-            ConfigStateService = newConfigStateService;
-            ConfigStateService.OnStateChange += HandleStateHasChanged;
-
-            _settingViewModels.Clear();
-            foreach (var section in Sections)
-            {
-                foreach (var command in section.Commands)
-                {
-                    _settingViewModels[command.Command] = new SettingViewModel(command, ConfigStateService);
-                }
+                _settingViewModels[command.Command] = new SettingViewModel(command, ConfigStateService);
             }
         }
     }
@@ -124,9 +113,6 @@
 
     public void Dispose()
     {
-        if (ConfigStateService != null)
-        {
-            ConfigStateService.OnStateChange -= HandleStateHasChanged;
-        }
+        ConfigStateService.OnStateChange -= HandleStateHasChanged;
     }
 }
