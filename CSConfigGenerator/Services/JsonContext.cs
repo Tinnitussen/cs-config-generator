@@ -13,6 +13,15 @@ namespace CSConfigGenerator.Services;
 [JsonSerializable(typeof(ConsoleData))]
 [JsonSerializable(typeof(UiData))]
 [JsonSerializable(typeof(NumericRange))]
+[JsonSerializable(typeof(UiDataAction))]
+[JsonSerializable(typeof(UiDataBitmask))]
+[JsonSerializable(typeof(UiDataBool))]
+[JsonSerializable(typeof(UiDataEnum))]
+[JsonSerializable(typeof(UiDataFloat))]
+[JsonSerializable(typeof(UiDataInteger))]
+[JsonSerializable(typeof(UiDataString))]
+[JsonSerializable(typeof(UiDataUnknownInteger))]
+[JsonSerializable(typeof(UiDataUnknownNumeric))]
 public partial class JsonContext : JsonSerializerContext
 {
 }
