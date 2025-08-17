@@ -4,8 +4,8 @@
     "consoleData": {
       "defaultValue": "0",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Only allow communication from friends and matchmaking party members. Set to 1 to apply the in non-competitive game modes. Set to 2 will apply the setting in all modes.",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -15,8 +15,7 @@
       "helperText": "Only allow communication from friends and matchmaking party members. Set to 1 to apply the in non-competitive game modes. Set to 2 will apply the setting in all modes.",
       "type": "unknown_numeric",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -24,8 +23,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Block all communication from players on the enemy team.",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -35,8 +34,7 @@
       "helperText": "Block all communication from players on the enemy team.",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -55,8 +53,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 0,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -64,8 +61,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_requestspend",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -76,8 +73,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_requestspend",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -85,8 +81,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_requestweapon",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -97,8 +93,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_requestweapon",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -106,8 +101,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_bplan",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -118,8 +113,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_bplan",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -127,8 +121,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_followingyou",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -139,8 +133,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_followingyou",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -148,8 +141,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_midplan",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -160,8 +153,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_midplan",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -169,8 +161,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_followme",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -181,8 +173,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_followme",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -190,8 +181,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_aplan",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -202,8 +193,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_aplan",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -211,8 +201,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_requestecoround",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -223,8 +213,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_requestecoround",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -232,8 +221,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_enemyspotted",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -244,8 +233,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_enemyspotted",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -253,8 +241,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_needbackup",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -265,8 +253,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_needbackup",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -274,8 +261,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_bplan",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -286,8 +273,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_bplan",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -295,8 +281,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_bombcarrierspotted",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -307,8 +293,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_bombcarrierspotted",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -316,8 +301,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_multipleenemieshere",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -328,8 +313,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_multipleenemieshere",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -337,8 +321,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_sniperspotted",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -349,8 +333,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_sniperspotted",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -358,8 +341,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_aplan",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -370,8 +353,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_aplan",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -379,8 +361,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_inposition",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -391,8 +373,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_inposition",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -400,8 +381,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_affirmative",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -412,8 +393,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_affirmative",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -421,8 +401,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_negative",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -433,8 +413,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_negative",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -442,8 +421,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_compliment",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -454,8 +433,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_compliment",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -463,8 +441,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_thanks",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -475,8 +453,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_thanks",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -484,8 +461,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_cheer",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -496,8 +473,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_cheer",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -505,8 +481,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_peptalk",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -517,8 +493,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_peptalk",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -526,8 +501,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_sorry",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -538,8 +513,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_sorry",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -547,8 +521,8 @@
     "consoleData": {
       "defaultValue": "#Chatwheel_sectorclear",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -559,8 +533,7 @@
       "helperText": "",
       "type": "string",
       "defaultValue": "#Chatwheel_sectorclear",
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -568,8 +541,8 @@
     "consoleData": {
       "defaultValue": "true",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "When tapping the radial radio button, leave a ping if nothing is selected within the time in seconds set in cl_radial_menu_tap_duration",
@@ -580,8 +553,7 @@
       "helperText": "When tapping the radial radio button, leave a ping if nothing is selected within the time in seconds set in cl_radial_menu_tap_duration",
       "type": "bool",
       "defaultValue": true,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -589,8 +561,8 @@
     "consoleData": {
       "defaultValue": "12",
       "flags": [
-        "cl",
         "a",
+        "cl",
         "release"
       ],
       "description": "",
@@ -601,8 +573,7 @@
       "helperText": "",
       "type": "unknown_integer",
       "defaultValue": 12,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
@@ -610,8 +581,8 @@
     "consoleData": {
       "defaultValue": "false",
       "flags": [
-        "cl",
-        "a"
+        "a",
+        "cl"
       ],
       "description": "Replace names of other players with something non-offensive.",
       "sourcedAt": "2025-07-30T00:00:00Z"
@@ -621,134 +592,26 @@
       "helperText": "Replace names of other players with something non-offensive.",
       "type": "bool",
       "defaultValue": false,
-      "requiresCheats": false,
-      "hideFromDefaultView": false
+      "requiresCheats": false
     }
   },
   {
-    "command": "clutch_mode_toggle",
+    "command": "tv_nochat",
     "consoleData": {
-      "defaultValue": null,
+      "defaultValue": "false",
       "flags": [
-        "cl",
-        "release"
+        "a",
+        "user"
       ],
-      "description": "Toggle clutch mode convar",
+      "description": "Don't receive chat messages from other SourceTV spectators",
       "sourcedAt": "2025-07-30T00:00:00Z"
     },
     "uiData": {
-      "label": "clutch_mode_toggle",
-      "helperText": "Toggle clutch mode convar",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "hidehud",
-    "consoleData": {
-      "defaultValue": "0",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "description": "bitmask: 1=weapon selection, 2=flashlight, 4=all, 8=health, 16=player dead, 32=needssuit, 64=misc, 128=chat, 256=crosshair, 512=vehicle crosshair, 1024=in vehicle",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "hidehud",
-      "helperText": "bitmask: 1=weapon selection, 2=flashlight, 4=all, 8=health, 16=player dead, 32=needssuit, 64=misc, 128=chat, 256=crosshair, 512=vehicle crosshair, 1024=in vehicle",
-      "type": "bitmask",
-      "defaultValue": 0,
-      "requiresCheats": true,
-      "hideFromDefaultView": true,
-      "options": {}
-    }
-  },
-  {
-    "command": "radio",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio1",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio1",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio2",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio2",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
-    }
-  },
-  {
-    "command": "radio3",
-    "consoleData": {
-      "defaultValue": null,
-      "flags": [
-        "cl",
-        "release"
-      ],
-      "description": "Opens a radio menu",
-      "sourcedAt": "2025-07-30T00:00:00Z"
-    },
-    "uiData": {
-      "label": "radio3",
-      "helperText": "Opens a radio menu",
-      "type": "action",
-      "defaultValue": null,
-      "requiresCheats": false,
-      "hideFromDefaultView": true,
-      "arguments": []
+      "label": "tv_nochat",
+      "helperText": "Don't receive chat messages from other SourceTV spectators",
+      "type": "bool",
+      "defaultValue": false,
+      "requiresCheats": false
     }
   }
 ]

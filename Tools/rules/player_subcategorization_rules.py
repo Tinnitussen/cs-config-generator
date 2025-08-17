@@ -7,6 +7,11 @@ def get_player_subcategory(command: dict) -> str:
     Determines the subcategory of a player command based on a set of rules.
     The rules are processed in order, and the first match wins.
     """
+    # --- Actions (null default) ---
+    # Commands with no default value are typically actions (e.g., +jump)
+    if command.get('consoleData', {}).get('defaultValue') is None:
+        return "actions"
+
     cmd_name = command.get('command', '')
     ui_type = command.get('uiData', {}).get('type')
     flags = command.get('consoleData', {}).get('flags', [])

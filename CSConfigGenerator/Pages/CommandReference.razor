@@ -5,7 +5,7 @@
 @using CSConfigGenerator.ViewModels
 @using CSConfigGenerator.Components
 @using System.Text.RegularExpressions
-
+@inject IConfigStateService ConfigStateService
 @inject ISchemaService SchemaService
 @inject IToastService ToastService
 
@@ -15,20 +15,6 @@
     <div class="col-lg-8 pe-2">
         <h1>Command Reference</h1>
         <p class="text-muted">Browse, search, and manage all available commands for your configuration.</p>
-
-        <ul class="nav nav-tabs mb-3">
-            <li class="nav-item">
-                <a class="nav-link @(currentConfigType == ConfigType.Player ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Player)">
-                    Player Commands
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @(currentConfigType == ConfigType.Server ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Server)">
-                    Server Commands
-                </a>
-            </li>
-        </ul>
-
         <div class="card bg-light mb-2">
             <div class="card-body p-2">
                 <div class="row g-2 align-items-center">
@@ -157,27 +143,13 @@
         }
     </div>
     <div class="col-lg-4 sticky-editor">
-        <ConfigEditor ConfigStateService="@CurrentConfigStateService" PresetType="@currentConfigType.ToString().ToLower()" @key="currentConfigType"/>
+        <ConfigEditor PresetType="@currentPresetType" @key="currentPresetType"/>
     </div>
 </div>
 
 @code {
-    private enum ConfigType
-    {
-        Player,
-        Server
-    }
-
-    private ConfigType currentConfigType = ConfigType.Player;
-
-    [Inject(Key="PlayerConfigStateServiceKey")]
-    public IConfigStateService PlayerConfigStateService { get; set; } = default!;
-
-    [Inject(Key="ServerConfigStateServiceKey")]
-    public IConfigStateService ServerConfigStateService { get; set; } = default!;
-
-    private IConfigStateService CurrentConfigStateService =>
-        currentConfigType == ConfigType.Player ? PlayerConfigStateService : ServerConfigStateService;
+    // Using a string instead of enum for preset type to match with ConfigEditor's PresetType parameter
+    private string currentPresetType = "player";
 
     // Private fields - no need for complex properties
     private string searchTerm = string.Empty;
@@ -208,9 +180,9 @@
             selectedTypes.Add(type, false);
         }
 
-        PlayerConfigStateService.OnStateChange += HandleStateChanged;
-        ServerConfigStateService.OnStateChange += HandleStateChanged;
+        ConfigStateService.OnStateChange += HandleStateChanged;
 
+        // Initialize with all commands from the unified service
         InitializeViewModels();
         ApplyFilters();
     }
@@ -224,11 +196,11 @@
         });
     }
 
-    private void SwitchConfigType(ConfigType configType)
+    private void SwitchPresetType(string presetType)
     {
-        if (currentConfigType != configType)
+        if (currentPresetType != presetType)
         {
-            currentConfigType = configType;
+            currentPresetType = presetType;
             InitializeViewModels();
             ApplyFilters();
         }
@@ -236,25 +208,14 @@
 
     private void InitializeViewModels()
     {
-        IEnumerable<CommandDefinition> commands;
-        IConfigStateService configStateService = CurrentConfigStateService;
-
-        if (currentConfigType == ConfigType.Player)
-        {
-            commands = SchemaService.PlayerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
-        }
-        else
-        {
-            commands = SchemaService.ServerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
-        }
-
-        allViewModels = commands.Select(c => new SettingViewModel(c, configStateService)).ToList();
+        // Using AllSections for the unified editor approach
+        IEnumerable<CommandDefinition> commands = SchemaService.AllSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+        allViewModels = commands.Select(c => new SettingViewModel(c, ConfigStateService)).ToList();
     }
 
     public void Dispose()
     {
-        PlayerConfigStateService.OnStateChange -= HandleStateChanged;
-        ServerConfigStateService.OnStateChange -= HandleStateChanged;
+        ConfigStateService.OnStateChange -= HandleStateChanged;
     }
 
     private void OnSearchInput(ChangeEventArgs e)

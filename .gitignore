@@ -419,3 +419,6 @@ FodyWeavers.xsd
 
 # My settings
 dotnet-install.sh
+dotnet/
+dotnet-sdk/
+*.tar.gz

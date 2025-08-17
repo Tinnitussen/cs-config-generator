@@ -4,6 +4,7 @@
 @using Microsoft.AspNetCore.Components.Forms
 @inject IJSRuntime JSRuntime
 @inject IPresetService PresetService
+@inject IConfigStateService ConfigStateService
 @inject IUserConfigService UserConfigService
 @inject IToastService ToastService
 @implements IDisposable
@@ -95,10 +96,6 @@
 </Modal>
 
 @code {
-    [Parameter]
-    [EditorRequired]
-    public IConfigStateService ConfigStateService { get; set; } = default!;
-
     [Parameter]
     public string? PresetType { get; set; }
 

@@ -15,17 +15,14 @@ builder.Services.AddScoped<IPresetService, PresetService>();
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 builder.Services.AddScoped<IUserConfigService, UserConfigService>();
 builder.Services.AddScoped<IToastService, ToastService>();
-builder.Services.AddKeyedScoped<IConfigStateService, PlayerConfigStateService>("PlayerConfigStateServiceKey");
-builder.Services.AddKeyedScoped<IConfigStateService, ServerConfigStateService>("ServerConfigStateServiceKey");
+builder.Services.AddScoped<IConfigStateService, ConfigStateService>();
 
 // Initialize services
 var host = builder.Build();
 var schemaService = host.Services.GetRequiredService<ISchemaService>();
-var playerConfigStateService = host.Services.GetRequiredKeyedService<IConfigStateService>("PlayerConfigStateServiceKey");
-var serverConfigStateService = host.Services.GetRequiredKeyedService<IConfigStateService>("ServerConfigStateServiceKey");
+var configStateService = host.Services.GetRequiredService<IConfigStateService>();
 
 await schemaService.InitializeAsync();
-playerConfigStateService.InitializeDefaults();
-serverConfigStateService.InitializeDefaults();
+configStateService.InitializeDefaults();
 
 await host.RunAsync();
