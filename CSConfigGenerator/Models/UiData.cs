@@ -26,4 +26,13 @@ public record UiData
 
     [JsonPropertyName("options")]
     public Dictionary<string, string>? Options { get; init; }
+
+    [JsonPropertyName("aliasFor")]
+    public string? AliasFor { get; init; }
+
+    [JsonPropertyName("visibilityCondition")]
+    public VisibilityCondition? VisibilityCondition { get; init; }
+
+    [JsonPropertyName("deprecated")]
+    public bool Deprecated { get; init; }
 }
