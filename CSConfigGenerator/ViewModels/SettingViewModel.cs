@@ -24,5 +24,4 @@ public class SettingViewModel(CommandDefinition command, IConfigStateService con
 
     public void Add() => _configState.SetIncluded(Command.Command, true);
     public void Remove() => _configState.SetIncluded(Command.Command, false);
-    public void Restore() => _configState.SetIncluded(Command.Command, true);
 }
