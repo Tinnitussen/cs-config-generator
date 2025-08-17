@@ -65,7 +65,9 @@ To process a new command snapshot from Counter-Strike 2:
 The pipeline will guide you through:
 - **Parsing** - Extract commands from the snapshot file.
 - **Type Classification** - Determine command data types (bool, float, string, etc.).
+- **Numeric Type Detection** - Fine-tune numeric types by analyzing player and server configs.
 - **Popularity Classification** - Identify popular Player and Server commands by analyzing professional and community config files.
+- **Master File Creation** - Create a master `commands.json` file for the 'All Commands' UI page.
 - **Subcategorization** - Organize Player and Server commands into UI sections.
 
 ### Directory Structure
@@ -78,16 +80,19 @@ Tools/
 │   ├── numeric_detection_rules.py        # Rules for detecting numeric types
 │   ├── player_subcategorization_rules.py # Rules for player command sections
 │   ├── server_subcategorization_rules.py # Rules for server command sections
-│   └── popularity_rules.py               # Rules for command popularity
+│   ├── popularity_rules.py               # Rules for command popularity
+│   └── parsing_validation_rules.json     # Rules for validating command parsing
 ├── scripts/                 # Processing scripts (called by pipeline)
 │   ├── parse_commands.py              # Step 1: Parse snapshot file
 │   ├── command_classification.py      # Step 2: Classify command data types
-│   ├── command_popularity.py          # Step 3: Classify by usage in configs
-│   ├── create_all_commands.py         # Step 4: Create master command file for UI
-│   └── splitting/
-│       └── subcategorization/         # Step 5: Create UI sections
-│           ├── subcategorize_player.py
-│           └── subcategorize_server.py
+│   ├── numeric_detection.py           # Step 3: Detect numeric types from configs
+│   ├── command_popularity.py          # Step 4: Classify by usage in configs
+│   ├── create_all_commands.py         # Step 5: Create master command file for UI
+│   ├── subcategorize_player.py        # Step 6a: Create Player UI sections
+│   ├── subcategorize_server.py        # Step 6b: Create Server UI sections
+│   └── parsing_rules.md               # Documentation for command parsing rules
+├── utils/                   # Utility scripts and modules
+│   └── paths.py                     # Shared path definitions
 └── data/                    # Input and intermediate data files
     ├── all_commands-*.txt           # Command snapshots from CS2
     ├── commands.json                # Main processed commands file
@@ -115,6 +120,10 @@ python Tools/scripts/parse_commands.py <snapshot_file.txt>
 # Classify command types
 python Tools/scripts/command_classification.py
 
+# Detect numeric types (run for both player and server)
+python Tools/scripts/numeric_detection.py --type player
+python Tools/scripts/numeric_detection.py --type server
+
 # Classify popular player/server commands
 python Tools/scripts/command_popularity.py --type player
 python Tools/scripts/command_popularity.py --type server
@@ -123,8 +132,8 @@ python Tools/scripts/command_popularity.py --type server
 python Tools/scripts/create_all_commands.py
 
 # Subcategorize (run both)
-python Tools/scripts/splitting/subcategorization/subcategorize_player.py
-python Tools/scripts/splitting/subcategorization/subcategorize_server.py
+python Tools/scripts/subcategorize_player.py
+python Tools/scripts/subcategorize_server.py
 ```
 
 ## Contributing
