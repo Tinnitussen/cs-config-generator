@@ -1,9 +1,16 @@
-namespace CSConfigGenerator.Models;
-
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
-public record UiData
+namespace CSConfigGenerator.Models;
+
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
+[JsonDerivedType(typeof(UiDataBool), typeDiscriminator: "bool")]
+[JsonDerivedType(typeof(UiDataInteger), typeDiscriminator: "integer")]
+[JsonDerivedType(typeof(UiDataFloat), typeDiscriminator: "float")]
+[JsonDerivedType(typeof(UiDataString), typeDiscriminator: "string")]
+[JsonDerivedType(typeof(UiDataEnum), typeDiscriminator: "enum")]
+[JsonDerivedType(typeof(UiDataAction), typeDiscriminator: "action")]
+[JsonDerivedType(typeof(UiDataBitmask), typeDiscriminator: "bitmask")]
+public abstract record UiData
 {
     [JsonPropertyName("label")]
     public required string Label { get; init; }
@@ -11,28 +18,26 @@ public record UiData
     [JsonPropertyName("helperText")]
     public string HelperText { get; init; } = string.Empty;
 
-    [JsonPropertyName("type")]
-    [JsonConverter(typeof(SettingTypeJsonConverter))]
-    public required SettingType Type { get; init; }
-
-    [JsonPropertyName("defaultValue")]
-    public required JsonElement DefaultValue { get; init; }
-
     [JsonPropertyName("requiresCheats")]
     public bool RequiresCheats { get; init; }
-
-    [JsonPropertyName("range")]
-    public NumericRange? Range { get; init; }
-
-    [JsonPropertyName("options")]
-    public Dictionary<string, string>? Options { get; init; }
 
     [JsonPropertyName("aliasFor")]
     public string? AliasFor { get; init; }
 
-    [JsonPropertyName("visibilityCondition")]
-    public VisibilityCondition? VisibilityCondition { get; init; }
-
     [JsonPropertyName("deprecated")]
     public bool Deprecated { get; init; }
+
+    [JsonIgnore]
+    public SettingType Type { get; protected set; }
+
+    public abstract bool TryParse(string value, out object? parsedValue);
+}
+
+public record VisibilityCondition
+{
+    [JsonPropertyName("command")]
+    public required string Command { get; init; }
+
+    [JsonPropertyName("value")]
+    public required object Value { get; init; }
 }
