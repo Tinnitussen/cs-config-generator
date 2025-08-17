@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CSConfigGenerator.Models;
@@ -5,7 +6,7 @@ namespace CSConfigGenerator.Models;
 public record UiDataAction : UiData
 {
     [JsonPropertyName("defaultValue")]
-    public object? DefaultValue { get; init; }
+    public required JsonElement DefaultValue { get; init; }
 
     [JsonPropertyName("arguments")]
     public List<Argument>? Arguments { get; init; }
@@ -22,4 +23,6 @@ public record UiDataAction : UiData
         parsedValue = value;
         return true;
     }
+
+    public override object GetTypedDefaultValue() => DefaultValue.ValueKind == JsonValueKind.Null ? string.Empty : DefaultValue.GetString() ?? string.Empty;
 }

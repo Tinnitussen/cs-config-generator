@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CSConfigGenerator.Models;
@@ -5,7 +6,7 @@ namespace CSConfigGenerator.Models;
 public record UiDataBitmask : UiData
 {
     [JsonPropertyName("defaultValue")]
-    public required int DefaultValue { get; init; }
+    public required JsonElement DefaultValue { get; init; }
 
     [JsonPropertyName("options")]
     public required Dictionary<string, string> Options { get; init; }
@@ -28,4 +29,6 @@ public record UiDataBitmask : UiData
         parsedValue = null;
         return false;
     }
+
+    public override object GetTypedDefaultValue() => DefaultValue.GetInt32();
 }

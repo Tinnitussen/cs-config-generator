@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CSConfigGenerator.Models;
@@ -5,7 +6,7 @@ namespace CSConfigGenerator.Models;
 public record UiDataBool : UiData
 {
     [JsonPropertyName("defaultValue")]
-    public required bool DefaultValue { get; init; }
+    public required JsonElement DefaultValue { get; init; }
 
     [JsonPropertyName("visibilityCondition")]
     public VisibilityCondition? VisibilityCondition { get; init; }
@@ -35,4 +36,6 @@ public record UiDataBool : UiData
         parsedValue = null;
         return false;
     }
+
+    public override object GetTypedDefaultValue() => DefaultValue.GetBoolean();
 }

@@ -10,6 +10,8 @@ namespace CSConfigGenerator.Models;
 [JsonDerivedType(typeof(UiDataEnum), typeDiscriminator: "enum")]
 [JsonDerivedType(typeof(UiDataAction), typeDiscriminator: "action")]
 [JsonDerivedType(typeof(UiDataBitmask), typeDiscriminator: "bitmask")]
+[JsonDerivedType(typeof(UiDataUnknownNumeric), typeDiscriminator: "unknown_numeric")]
+[JsonDerivedType(typeof(UiDataUnknownInteger), typeDiscriminator: "unknown_integer")]
 public abstract record UiData
 {
     [JsonPropertyName("label")]
@@ -31,6 +33,7 @@ public abstract record UiData
     public SettingType Type { get; protected set; }
 
     public abstract bool TryParse(string value, out object? parsedValue);
+    public abstract object GetTypedDefaultValue();
 }
 
 public record VisibilityCondition

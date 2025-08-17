@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace CSConfigGenerator.Models;
@@ -5,7 +6,7 @@ namespace CSConfigGenerator.Models;
 public record UiDataFloat : UiData
 {
     [JsonPropertyName("defaultValue")]
-    public required float DefaultValue { get; init; }
+    public required JsonElement DefaultValue { get; init; }
 
     [JsonPropertyName("range")]
     public required NumericRange Range { get; init; }
@@ -31,4 +32,6 @@ public record UiDataFloat : UiData
         parsedValue = null;
         return false;
     }
+
+    public override object GetTypedDefaultValue() => DefaultValue.GetSingle();
 }
