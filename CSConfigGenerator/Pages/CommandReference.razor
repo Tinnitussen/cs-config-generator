@@ -45,13 +45,13 @@
                                 @GetTypeFilterText()
                             </button>
                             <ul class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
-                                @foreach (var typeName in availableTypes)
+                                @foreach (var type in Enum.GetValues<SettingType>())
                                 {
                                     <li>
                                         <div class="dropdown-item px-2" @onclick:stopPropagation="true">
                                             <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="type-@typeName" @bind="selectedTypes[typeName]" @bind:after="ApplyFilters" />
-                                                <label class="form-check-label" for="type-@typeName">@typeName</label>
+                                                <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
+                                                <label class="form-check-label" for="type-@type">@type</label>
                                             </div>
                                         </div>
                                     </li>
@@ -155,8 +155,7 @@
     private string searchTerm = string.Empty;
     private string? selectedInclusion;
     private bool requiresCheatsFilter;
-    private Dictionary<string, bool> selectedTypes = new();
-    private readonly List<string> availableTypes = ["bool", "integer", "float", "string", "enum", "bitmask", "action"];
+    private Dictionary<SettingType, bool> selectedTypes = new();
     private bool showTypeDropdown = false;
     private bool showStatusDropdown = false;
     private bool isAnyFilterActive = false;
@@ -177,8 +176,8 @@
 
     protected override void OnInitialized()
     {
-        foreach (var typeName in availableTypes) {
-            selectedTypes.Add(typeName, false);
+        foreach (var type in Enum.GetValues<SettingType>()) {
+            selectedTypes.Add(type, false);
         }
 
         ConfigStateService.OnStateChange += HandleStateChanged;
@@ -294,20 +293,12 @@
 
     private List<SettingViewModel> GetFilteredViewModels()
     {
-        var activeTypeFilters = selectedTypes.Where(st => st.Value).Select(st => st.Key).ToList();
-
         return allViewModels
             .Where(vm => string.IsNullOrWhiteSpace(searchTerm) ||
                         vm.Command.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
                         vm.Command.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-            .Where(vm => !activeTypeFilters.Any() ||
-                        (vm.Command.UiData is UiDataBool && activeTypeFilters.Contains("bool")) ||
-                        (vm.Command.UiData is UiDataInteger && activeTypeFilters.Contains("integer")) ||
-                        (vm.Command.UiData is UiDataFloat && activeTypeFilters.Contains("float")) ||
-                        (vm.Command.UiData is UiDataString && activeTypeFilters.Contains("string")) ||
-                        (vm.Command.UiData is UiDataEnum && activeTypeFilters.Contains("enum")) ||
-                        (vm.Command.UiData is UiDataBitmask && activeTypeFilters.Contains("bitmask")) ||
-                        (vm.Command.UiData is UiDataAction && activeTypeFilters.Contains("action")))
+            .Where(vm => !selectedTypes.Any(st => st.Value) ||
+                        selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(vm.Command.UiData.Type))
             .Where(vm => string.IsNullOrEmpty(selectedInclusion) ||
                         vm.Setting.IsInConfigEditor.ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase))
             .Where(vm => !requiresCheatsFilter || vm.Command.UiData.RequiresCheats)
@@ -369,7 +360,7 @@
         return selectedCount switch
         {
             0 => "All Types",
-            1 => selectedTypes.First(st => st.Value).Key,
+            1 => selectedTypes.First(st => st.Value).Key.ToString(),
             _ => $"{selectedCount} Types"
         };
     }

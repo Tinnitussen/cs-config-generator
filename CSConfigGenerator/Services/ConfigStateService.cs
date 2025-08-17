@@ -30,18 +30,7 @@ public class ConfigStateService : IConfigStateService
         {
             foreach (var command in section.Commands)
             {
-                object defaultValue = command.UiData switch
-                {
-                    UiDataBool b => b.DefaultValue,
-                    UiDataInteger i => i.DefaultValue,
-                    UiDataFloat f => f.DefaultValue,
-                    UiDataString s => s.DefaultValue,
-                    UiDataEnum e => e.DefaultValue,
-                    UiDataBitmask bm => bm.DefaultValue,
-                    UiDataAction a => a.DefaultValue ?? string.Empty,
-                    _ => throw new InvalidOperationException("Unknown UiData type")
-                };
-
+                var defaultValue = SettingTypeHelpers.ConvertFromJson(command.UiData.Type, command.UiData.DefaultValue);
                 _settings[command.Command] = new Setting
                 {
                     Value = defaultValue,
@@ -92,15 +81,7 @@ public class ConfigStateService : IConfigStateService
                         builder.AppendLine($"// {section.DisplayName} Settings");
                         sectionHasContent = true;
                     }
-                    var formattedValue = setting.Value switch
-                    {
-                        bool b => b ? "true" : "false",
-                        float f => f.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                        int i => i.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                        string s when s.Contains(' ') || s.Contains(';') => $"\"{s}\"",
-                        string s => s,
-                        _ => setting.Value.ToString() ?? string.Empty
-                    };
+                    var formattedValue = SettingTypeHelpers.FormatForConfig(command.UiData.Type, setting.Value);
                     builder.AppendLine($"{command.Command} {formattedValue}");
                 }
             }
@@ -134,16 +115,19 @@ public class ConfigStateService : IConfigStateService
 
             commandsInFile.Add(commandName);
 
-            // Step 2: Validate and parse the value using the polymorphic UiData model
-            if (command.UiData.TryParse(valueStr, out var parsedValue))
+            // Step 2: Validate the value against the command's type
+            var (isValid, _) = SettingValidator.Validate(command.UiData.Type, valueStr);
+            if (!isValid) continue; // Skip invalid values
+
+            // Step 3: Parse the value (now we know it's valid)
+            var parsedValue = SettingTypeHelpers.ParseFromString(command.UiData.Type, valueStr);
+
+            // Step 4: Update the setting
+            if (_settings.TryGetValue(commandName, out var setting))
             {
-                // Step 3: Update the setting
-                if (_settings.TryGetValue(commandName, out var setting))
-                {
-                    setting.Value = parsedValue!;
-                    // If a command is present in the file, it is considered included.
-                    setting.IsInConfigEditor = true;
-                }
+                setting.Value = parsedValue;
+                // If a command is present in the file, it is considered included.
+                setting.IsInConfigEditor = true;
             }
         }
 
@@ -168,13 +152,12 @@ public class ConfigStateService : IConfigStateService
             if (commandDef != null)
             {
                 // Convert the value to the appropriate type
-                var targetType = setting.Value.GetType();
-                var convertedValue = Convert.ChangeType(value, targetType, System.Globalization.CultureInfo.InvariantCulture);
+                var typedValue = SettingTypeHelpers.ConvertToType(commandDef.UiData.Type, value);
 
                 // Only update if the value has changed
-                if (!setting.Value.Equals(convertedValue))
+                if (!setting.Value.Equals(typedValue))
                 {
-                    setting.Value = convertedValue;
+                    setting.Value = typedValue;
                     NotifyStateChanged(originator);
                 }
             }
@@ -194,14 +177,16 @@ public class ConfigStateService : IConfigStateService
             return (false, "Invalid command.");
         }
 
-        if (commandDef.UiData.TryParse(valueStr, out var parsedValue))
+        var (isValid, errorMessage) = SettingValidator.Validate(commandDef.UiData.Type, valueStr);
+        if (!isValid)
         {
-            SetValue(commandName, parsedValue!, originator);
-            return (true, null);
+            return (false, errorMessage);
         }
 
-        // TODO: Provide more specific error messages based on the type
-        return (false, "Invalid value.");
+        var parsedValue = SettingTypeHelpers.ParseFromString(commandDef.UiData.Type, valueStr);
+        SetValue(commandName, parsedValue, originator);
+
+        return (true, null);
     }
 
     public void SetIncluded(string commandName, bool IsInConfigEditor, object? originator = null)
