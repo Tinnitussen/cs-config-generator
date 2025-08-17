@@ -5,7 +5,7 @@
 @using CSConfigGenerator.ViewModels
 @using CSConfigGenerator.Components
 @using System.Text.RegularExpressions
-
+@inject IConfigStateService ConfigStateService
 @inject ISchemaService SchemaService
 @inject IToastService ToastService
 
@@ -15,20 +15,6 @@
     <div class="col-lg-8 pe-2">
         <h1>Command Reference</h1>
         <p class="text-muted">Browse, search, and manage all available commands for your configuration.</p>
-
-        <ul class="nav nav-tabs mb-3">
-            <li class="nav-item">
-                <a class="nav-link @(currentConfigType == ConfigType.Player ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Player)">
-                    Player Commands
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @(currentConfigType == ConfigType.Server ? "active" : "")" @onclick="() => SwitchConfigType(ConfigType.Server)">
-                    Server Commands
-                </a>
-            </li>
-        </ul>
-
         <div class="card bg-light mb-2">
             <div class="card-body p-2">
                 <div class="row g-2 align-items-center">
@@ -55,39 +41,46 @@
                     </div>
                     <div class="col-md-2">
                         <div class="dropdown filter-dropdown">
-                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 filter-button" type="button" @onclick="() => showTypeDropdown = !showTypeDropdown">
+                            <button class="btn btn-sm btn-light dropdown-toggle w-100 filter-button text-start" type="button" @onclick="() => showTypeDropdown = !showTypeDropdown" aria-expanded="@showTypeDropdown">
                                 @GetTypeFilterText()
                             </button>
-                            <div class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
+                            <ul class="dropdown-menu @(showTypeDropdown ? "show" : "")" style="width: 100%;">
                                 @foreach (var type in Enum.GetValues<SettingType>())
                                 {
-                                    <div class="dropdown-item px-2">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
-                                            <label class="form-check-label" for="type-@type">@type</label>
+                                    <li>
+                                        <div class="dropdown-item px-2" @onclick:stopPropagation="true">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="type-@type" @bind="selectedTypes[type]" @bind:after="ApplyFilters" />
+                                                <label class="form-check-label" for="type-@type">@type</label>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </li>
                                 }
-                            </div>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <select @bind="selectedInclusion" @bind:after="ApplyFilters" class="form-select form-select-sm filter-select">
-                            <option value="">All Statuses</option>
-                            <option value="true">Included</option>
-                            <option value="false">Not Included</option>
-                        </select>
+                        <div class="dropdown filter-dropdown">
+                            <button class="btn btn-sm btn-light dropdown-toggle w-100 filter-button text-start" type="button" @onclick="() => showStatusDropdown = !showStatusDropdown" aria-expanded="@showStatusDropdown">
+                                @GetStatusFilterText()
+                            </button>
+                            <ul class="dropdown-menu @(showStatusDropdown ? "show" : "")" style="width: 100%;">
+                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus(null)' @onclick:preventDefault>All Statuses</a></li>
+                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus("true")' @onclick:preventDefault>Included</a></li>
+                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus("false")' @onclick:preventDefault>Not Included</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-md-2">
                         <div class="filter-checkbox-wrapper">
-                            <div class="form-check d-flex align-items-center justify-content-center">
-                                <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input me-2" type="checkbox" id="cheatsFilter" />
+                            <div class="form-check form-switch d-flex flex-column align-items-center justify-content-center">
                                 <label class="form-check-label" for="cheatsFilter">Cheats Only</label>
+                                <input @bind="requiresCheatsFilter" @bind:after="ApplyFilters" class="form-check-input" type="checkbox" role="switch" id="cheatsFilter" />
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-sm btn-outline-danger w-100 filter-clear-btn" @onclick="ClearFilters">
+                        <button class="btn btn-sm btn-outline-danger w-100 filter-clear-btn" @onclick="ClearFilters" disabled="@(!isAnyFilterActive)">
                             Clear Filters
                         </button>
                     </div>
@@ -150,27 +143,13 @@
         }
     </div>
     <div class="col-lg-4 sticky-editor">
-        <ConfigEditor ConfigStateService="@CurrentConfigStateService" PresetType="@currentConfigType.ToString().ToLower()" @key="currentConfigType"/>
+        <ConfigEditor PresetType="@currentPresetType" @key="currentPresetType"/>
     </div>
 </div>
 
 @code {
-    private enum ConfigType
-    {
-        Player,
-        Server
-    }
-
-    private ConfigType currentConfigType = ConfigType.Player;
-
-    [Inject(Key="PlayerConfigStateServiceKey")]
-    public IConfigStateService PlayerConfigStateService { get; set; } = default!;
-
-    [Inject(Key="ServerConfigStateServiceKey")]
-    public IConfigStateService ServerConfigStateService { get; set; } = default!;
-
-    private IConfigStateService CurrentConfigStateService =>
-        currentConfigType == ConfigType.Player ? PlayerConfigStateService : ServerConfigStateService;
+    // Using a string instead of enum for preset type to match with ConfigEditor's PresetType parameter
+    private string currentPresetType = "player";
 
     // Private fields - no need for complex properties
     private string searchTerm = string.Empty;
@@ -178,6 +157,8 @@
     private bool requiresCheatsFilter;
     private Dictionary<SettingType, bool> selectedTypes = new();
     private bool showTypeDropdown = false;
+    private bool showStatusDropdown = false;
+    private bool isAnyFilterActive = false;
 
     private List<SettingViewModel> allViewModels = [];
     private List<SettingViewModel> paginatedViewModels = [];
@@ -199,9 +180,9 @@
             selectedTypes.Add(type, false);
         }
 
-        PlayerConfigStateService.OnStateChange += HandleStateChanged;
-        ServerConfigStateService.OnStateChange += HandleStateChanged;
+        ConfigStateService.OnStateChange += HandleStateChanged;
 
+        // Initialize with all commands from the unified service
         InitializeViewModels();
         ApplyFilters();
     }
@@ -215,11 +196,11 @@
         });
     }
 
-    private void SwitchConfigType(ConfigType configType)
+    private void SwitchPresetType(string presetType)
     {
-        if (currentConfigType != configType)
+        if (currentPresetType != presetType)
         {
-            currentConfigType = configType;
+            currentPresetType = presetType;
             InitializeViewModels();
             ApplyFilters();
         }
@@ -227,25 +208,14 @@
 
     private void InitializeViewModels()
     {
-        IEnumerable<CommandDefinition> commands;
-        IConfigStateService configStateService = CurrentConfigStateService;
-
-        if (currentConfigType == ConfigType.Player)
-        {
-            commands = SchemaService.PlayerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
-        }
-        else
-        {
-            commands = SchemaService.ServerSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
-        }
-
-        allViewModels = commands.Select(c => new SettingViewModel(c, configStateService)).ToList();
+        // Using AllSections for the unified editor approach
+        IEnumerable<CommandDefinition> commands = SchemaService.AllSections.SelectMany(s => s.Commands).OrderBy(c => c.Command);
+        allViewModels = commands.Select(c => new SettingViewModel(c, ConfigStateService)).ToList();
     }
 
     public void Dispose()
     {
-        PlayerConfigStateService.OnStateChange -= HandleStateChanged;
-        ServerConfigStateService.OnStateChange -= HandleStateChanged;
+        ConfigStateService.OnStateChange -= HandleStateChanged;
     }
 
     private void OnSearchInput(ChangeEventArgs e)
@@ -310,6 +280,15 @@
         var filtered = GetFilteredViewModels();
         totalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
         UpdatePagination(filtered);
+        UpdateFilterActiveStatus();
+    }
+
+    private void UpdateFilterActiveStatus()
+    {
+        isAnyFilterActive = !string.IsNullOrEmpty(searchTerm) ||
+                            !string.IsNullOrEmpty(selectedInclusion) ||
+                            requiresCheatsFilter ||
+                            selectedTypes.Any(st => st.Value);
     }
 
     private List<SettingViewModel> GetFilteredViewModels()
@@ -384,6 +363,23 @@
             1 => selectedTypes.First(st => st.Value).Key.ToString(),
             _ => $"{selectedCount} Types"
         };
+    }
+
+    private string GetStatusFilterText()
+    {
+        return selectedInclusion switch
+        {
+            "true" => "Included",
+            "false" => "Not Included",
+            _ => "All Statuses",
+        };
+    }
+
+    private void SelectStatus(string? status)
+    {
+        selectedInclusion = status;
+        showStatusDropdown = false;
+        ApplyFilters();
     }
 
     private void AddCommand(SettingViewModel vm)

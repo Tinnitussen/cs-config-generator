@@ -1,5 +1,6 @@
 import re
 import sys
+import argparse
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -7,13 +8,13 @@ from typing import List, Dict, Any
 
 # --- Path setup ---
 # Add the utils directory to path and import shared paths
-script_dir = Path(__file__).parent
-utils_dir = script_dir.parent.parent / 'utils'
+script_dir = Path(__file__).resolve().parent
+utils_dir = script_dir.parent / 'utils'
 if str(utils_dir) not in sys.path:
     sys.path.append(str(utils_dir))
 
 from paths import (
-    COMMANDS_JSON, CONFIGS_DIR, setup_rules_import,
+    COMMANDS_JSON, setup_rules_import, PRO_PLAYER_CONFIGS_DIR, SERVER_CONFIGS_DIR,
     load_json, save_json
 )
 
@@ -114,6 +115,17 @@ def find_anomalies(all_stats: List[CommandStats]) -> List[CommandStats]:
             stats.current_type not in ("float",) + UNKNOWN_TYPES)
     ]
 
+def get_config_paths(config_type: str):
+    """
+    Determines the input directory based on the config type.
+    """
+    if config_type == "player":
+        return PRO_PLAYER_CONFIGS_DIR
+    elif config_type == "server":
+        return SERVER_CONFIGS_DIR
+    else:
+        raise ValueError(f"Invalid config type: {config_type}")
+
 def print_sanity_check(all_stats: List[CommandStats]) -> None:
     """Print sanity check information for interesting classifications"""
     # Find commands that will be classified as float or unknown_integer
@@ -144,15 +156,32 @@ def print_sanity_check(all_stats: List[CommandStats]) -> None:
 
 def main():
     """Main function to detect and reclassify numeric command types."""
+    parser = argparse.ArgumentParser(
+        description="Detect and classify numeric command types based on usage patterns."
+    )
+    parser.add_argument(
+        "--type",
+        required=True,
+        choices=["player", "server"],
+        help="The type of configuration to process (e.g., 'player' or 'server')."
+    )
+    args = parser.parse_args()
+    config_type = args.type
+
+    # 1. Determine paths based on type
+    configs_dir = get_config_paths(config_type)
+    print(f"--- Processing {config_type.capitalize()} Commands Numeric Detection ---")
+    print(f"Input directory: {configs_dir}")
 
     # Verify required paths exist
     if not COMMANDS_JSON.exists():
         print(f"Error: Commands file not found at {COMMANDS_JSON}")
         return 1
 
-    if not CONFIGS_DIR.exists():
-        print(f"Error: Configs directory not found at {CONFIGS_DIR}")
-        return 1
+    if not configs_dir.exists():
+        print(f"Error: Configs directory not found at {configs_dir}")
+        configs_dir.mkdir(parents=True, exist_ok=True)
+        print(f"Created empty directory at {configs_dir}")
 
     # Load existing data
     print(f"Loading commands from {COMMANDS_JSON}...")
@@ -163,7 +192,7 @@ def main():
 
     # Gather all values
     print("Gathering command values from config files...")
-    all_values = gather_all_values(CONFIGS_DIR, set(known_commands.keys()))
+    all_values = gather_all_values(configs_dir, set(known_commands.keys()))
 
     # Create stats for commands with enough occurrences
     all_stats = []
@@ -174,6 +203,10 @@ def main():
             all_stats.append(stats)
 
     print(f"Found {len(all_stats)} commands with >= {MIN_OCCURRENCES} occurrences")
+
+    if len(all_stats) == 0:
+        print(f"No commands with enough occurrences found in {config_type} configs. Skipping.")
+        return 0
 
     # Print sanity check
     print_sanity_check(all_stats)
@@ -201,7 +234,7 @@ def main():
     save_json(commands_data, COMMANDS_JSON)
 
     # Print summary
-    print(f"\nProcessing Summary:")
+    print(f"\nProcessing Summary for {config_type.capitalize()} Config:")
     print(f"- Processed {len(all_stats)} commands with enough occurrences")
     print(f"- Updated {updated_float} commands to type 'float'")
     print(f"- Updated {updated_integer} commands to type 'unknown_integer'")

@@ -2,73 +2,70 @@
 @using CSConfigGenerator.ViewModels
 @using System.Globalization
 
-@if (!ViewModel.Command.UiData.HideFromDefaultView)
-{
-    <div class="mb-3">
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <label class="form-label @(ViewModel.Setting.IsInConfigEditor ? "" : "text-muted")" for="@ViewModel.Command.Command">
-                    @ViewModel.Command.UiData.Label
-                </label>
-                @if (!ViewModel.Setting.IsInConfigEditor)
-                {
-                    <span class="badge bg-secondary ms-2">Removed</span>
-                }
-            </div>
-            @if (ViewModel.Setting.IsInConfigEditor)
+<div class="mb-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <label class="form-label @(ViewModel.Setting.IsInConfigEditor ? "" : "text-muted")" for="@ViewModel.Command.Command">
+                @ViewModel.Command.UiData.Label
+            </label>
+            @if (!ViewModel.Setting.IsInConfigEditor)
             {
-                <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
-            }
-            else
-            {
-                <button class="btn btn-sm btn-outline-success" @onclick="ViewModel.Restore">Restore</button>
+                <span class="badge bg-secondary ms-2">Removed</span>
             }
         </div>
-
         @if (ViewModel.Setting.IsInConfigEditor)
         {
-            @switch (ViewModel.Command.UiData.Type)
-            {
-                case SettingType.Bool:
-                    <input type="checkbox" id="@ViewModel.Command.Command" class="form-check-input" @bind="BoolValue" />
-                    break;
-                case SettingType.Int:
-                case SettingType.Float:
-                case SettingType.UnknownInteger:
-                case SettingType.UnknownNumeric:
-                    <input type="text"
-                           id="@ViewModel.Command.Command"
-                           class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
-                           @oninput="OnInputChanged"
-                           value="@CurrentValue"
-                           spellcheck="false" />
-                    @if (!string.IsNullOrEmpty(ValidationMessage))
-                    {
-                        <div class="invalid-feedback d-block">@ValidationMessage</div>
-                    }
-                    break;
-                case SettingType.Enum:
-                    <select id="@ViewModel.Command.Command" class="form-control" @bind="StringValue">
-                        @if (ViewModel.Command.UiData.Options != null)
-                        {
-                            @foreach (var option in ViewModel.Command.UiData.Options)
-                            {
-                                <option value="@option.Key">@option.Value</option>
-                            }
-                        }
-                    </select>
-                    break;
-                case SettingType.String:
-                case SettingType.Action:
-                default:
-                    <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" @bind:event="oninput" spellcheck="false" />
-                    break;
-            }
+            <button class="btn btn-sm btn-outline-danger" @onclick="ViewModel.Remove">Remove</button>
         }
-
-        <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
+        else
+        {
+            <button class="btn btn-sm btn-outline-success" @onclick="ViewModel.Restore">Restore</button>
+        }
     </div>
-}
+
+    @if (ViewModel.Setting.IsInConfigEditor)
+    {
+        @switch (ViewModel.Command.UiData.Type)
+        {
+            case SettingType.Bool:
+                <input type="checkbox" id="@ViewModel.Command.Command" class="form-check-input" @bind="BoolValue" />
+                break;
+            case SettingType.Int:
+            case SettingType.Float:
+            case SettingType.UnknownInteger:
+            case SettingType.UnknownNumeric:
+                <input type="text"
+                        id="@ViewModel.Command.Command"
+                        class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
+                        @oninput="OnInputChanged"
+                        value="@CurrentValue"
+                        spellcheck="false" />
+                @if (!string.IsNullOrEmpty(ValidationMessage))
+                {
+                    <div class="invalid-feedback d-block">@ValidationMessage</div>
+                }
+                break;
+            case SettingType.Enum:
+                <select id="@ViewModel.Command.Command" class="form-control" @bind="StringValue">
+                    @if (ViewModel.Command.UiData.Options != null)
+                    {
+                        @foreach (var option in ViewModel.Command.UiData.Options)
+                        {
+                            <option value="@option.Key">@option.Value</option>
+                        }
+                    }
+                </select>
+                break;
+            case SettingType.String:
+            case SettingType.Action:
+            default:
+                <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" @bind:event="oninput" spellcheck="false" />
+                break;
+        }
+    }
+
+    <small class="form-text text-muted">Command: <code>@ViewModel.Command.Command</code></small>
+</div>
 
 
 @code {
