@@ -11,7 +11,7 @@ namespace CSConfigGenerator.Services;
 [JsonSerializable(typeof(List<string>))]
 [JsonSerializable(typeof(List<CommandDefinition>))]
 [JsonSerializable(typeof(ConsoleData))]
-[JsonSerializable(typeof(UiData), GenerationMode = JsonSourceGenerationMode.Metadata)]
+[JsonSerializable(typeof(UiData))]
 [JsonSerializable(typeof(NumericRange))]
 [JsonSerializable(typeof(UiDataAction))]
 [JsonSerializable(typeof(UiDataBitmask))]
