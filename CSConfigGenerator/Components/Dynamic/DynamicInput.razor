@@ -25,17 +25,21 @@
 
     @if (ViewModel.Setting.IsInConfigEditor)
     {
-        @switch (ViewModel.Command.UiData.Type)
+        @switch (ViewModel.Command.UiData)
         {
-            case SettingType.Bool:
+            case UiDataBool:
                 <input type="checkbox" id="@ViewModel.Command.Command" class="form-check-input" @bind="BoolValue" />
                 break;
-            case SettingType.Int:
-            case SettingType.Float:
-            case SettingType.UnknownInteger:
-            case SettingType.UnknownNumeric:
+            case UiDataInteger intData:
+                <input type="range"
+                       id="@ViewModel.Command.Command"
+                       class="form-range"
+                       min="@intData.Range.MinValue"
+                       max="@intData.Range.MaxValue"
+                       step="@intData.Range.Step"
+                       @oninput="OnInputChanged"
+                       value="@CurrentValue" />
                 <input type="text"
-                        id="@ViewModel.Command.Command"
                         class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
                         @oninput="OnInputChanged"
                         value="@CurrentValue"
@@ -45,19 +49,35 @@
                     <div class="invalid-feedback d-block">@ValidationMessage</div>
                 }
                 break;
-            case SettingType.Enum:
-                <select id="@ViewModel.Command.Command" class="form-control" @bind="StringValue">
-                    @if (ViewModel.Command.UiData.Options != null)
+            case UiDataFloat floatData:
+                 <input type="range"
+                       id="@ViewModel.Command.Command"
+                       class="form-range"
+                       min="@floatData.Range.MinValue"
+                       max="@floatData.Range.MaxValue"
+                       step="@floatData.Range.Step"
+                       @oninput="OnInputChanged"
+                       value="@CurrentValue" />
+                <input type="text"
+                        class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
+                        @oninput="OnInputChanged"
+                        value="@CurrentValue"
+                        spellcheck="false" />
+                @if (!string.IsNullOrEmpty(ValidationMessage))
+                {
+                    <div class="invalid-feedback d-block">@ValidationMessage</div>
+                }
+                break;
+            case UiDataEnum enumData:
+                <select id="@ViewModel.Command.Command" class="form-select" @bind="StringValue">
+                    @foreach (var option in enumData.Options)
                     {
-                        @foreach (var option in ViewModel.Command.UiData.Options)
-                        {
-                            <option value="@option.Key">@option.Value</option>
-                        }
+                        <option value="@option.Key">@option.Value</option>
                     }
                 </select>
                 break;
-            case SettingType.String:
-            case SettingType.Action:
+            case UiDataString:
+            case UiDataAction:
             default:
                 <input type="text" id="@ViewModel.Command.Command" class="form-control" @bind="StringValue" @bind:event="oninput" spellcheck="false" />
                 break;
