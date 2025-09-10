@@ -17,7 +17,7 @@
   <!-- Exclude the massive bootstrap icons folder from the build -->
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.8" />
-    <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="9.0.8" />
+    <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="9.0.9" />
     <Content Remove="wwwroot/lib/bootstrap-icons/icons/**" />
   </ItemGroup>
 
