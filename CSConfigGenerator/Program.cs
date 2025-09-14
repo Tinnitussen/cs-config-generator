@@ -18,7 +18,7 @@ builder.Services.AddScoped<IToastService, ToastService>();
 builder.Services.AddScoped<IConfigStateService, ConfigStateService>();
 
 // Initialize services
-var host = builder.Build();
+WebAssemblyHost host = builder.Build();
 var schemaService = host.Services.GetRequiredService<ISchemaService>();
 var configStateService = host.Services.GetRequiredService<IConfigStateService>();
 
