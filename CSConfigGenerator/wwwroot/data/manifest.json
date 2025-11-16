@@ -1,17 +1,3 @@
 [
-  "data/commandschema/player/actions.json",
-  "data/commandschema/player/audio.json",
-  "data/commandschema/player/communication.json",
-  "data/commandschema/player/crosshair.json",
-  "data/commandschema/player/developer/debugging.json",
-  "data/commandschema/player/developer/rendering.json",
-  "data/commandschema/player/developer/spectator.json",
-  "data/commandschema/player/gameplay.json",
-  "data/commandschema/player/hud.json",
-  "data/commandschema/player/input.json",
-  "data/commandschema/player/misc.json",
-  "data/commandschema/player/network.json",
-  "data/commandschema/player/radar.json",
-  "data/commandschema/player/viewmodel.json",
-  "data/commandschema/all/all_commands.json"
+  "data/commandschema/all_commands.json"
 ]

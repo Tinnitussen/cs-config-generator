@@ -198,7 +198,7 @@ def main(args):
     print(f"\n{Colors.OKGREEN}Commands have been processed and are ready for use.{Colors.ENDC}")
     print("\nOutput locations:")
     print("  • Main commands file: CommandPipeline/data/commands.json")
-    print("  • UI command schema: CSConfigGenerator/wwwroot/data/commandschema/all/all_commands.json")
+    print("  • UI command schema: CSConfigGenerator/wwwroot/data/commandschema/all_commands.json")
 
     return 0
 

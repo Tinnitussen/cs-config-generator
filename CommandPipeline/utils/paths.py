@@ -37,7 +37,7 @@ SNAPSHOT_GLOB = str(DATA_DIR / SNAPSHOT_PATTERN)
 SCHEMA_DIR = PROJECT_ROOT / "CSConfigGenerator" / "wwwroot" / "data" / "commandschema"
 
 # Schema output directories
-ALL_SCHEMA_DIR = SCHEMA_DIR / "all"
+ALL_SCHEMA_DIR = SCHEMA_DIR / ""
 
 def setup_rules_import():
     """

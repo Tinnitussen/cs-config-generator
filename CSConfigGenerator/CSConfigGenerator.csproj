@@ -23,5 +23,8 @@
     <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="9.0.10" />
     <Content Remove="wwwroot/lib/bootstrap-icons/icons/**" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\data\commandschema\" />
+  </ItemGroup>
 
 </Project>

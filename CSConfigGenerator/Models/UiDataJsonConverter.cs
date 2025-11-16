@@ -31,6 +31,6 @@ public class UiDataJsonConverter : JsonConverter<UiData>
 
     public override void Write(Utf8JsonWriter writer, UiData value, JsonSerializerOptions options)
     {
-        JsonSerializer.Serialize(writer, (object)value, options);
+        JsonSerializer.Serialize(writer, (object) value, options);
     }
 }
