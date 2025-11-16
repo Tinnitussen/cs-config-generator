@@ -185,8 +185,8 @@ def main(args):
         return 1
 
 
-    # Step 3: Create All Commands Data for UI
-    print_step(3, "Create 'All Commands' Data File")
+    # Step 4: Create All Commands Data for UI
+    print_step(4, "Create 'All Commands' Data File")
     all_commands_script = scripts_dir / "create_all_commands.py"
     if not run_script(all_commands_script, "Create all_commands.json"):
         return 1
