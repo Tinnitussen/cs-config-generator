@@ -21,6 +21,10 @@ DATA_DIR = PIPELINE_DIR / "data"
 RULES_DIR = PIPELINE_DIR / "rules"
 SCRIPTS_DIR = PIPELINE_DIR / "scripts"
 
+# Config source directories
+PRO_PLAYER_CONFIGS_DIR = DATA_DIR / "pro-player-configs" / "unzipped-configs"
+SERVER_CONFIGS_DIR = DATA_DIR / "server-configs"
+
 # --- Main Data Files ---
 COMMANDS_JSON = DATA_DIR / "commands.json"
 PARSING_RULES_JSON = RULES_DIR / "parsing_validation_rules.json"
@@ -125,6 +129,18 @@ def verify_paths():
     print(f"DATA_DIR: {DATA_DIR} (exists: {DATA_DIR.exists()})")
     print(f"RULES_DIR: {RULES_DIR} (exists: {RULES_DIR.exists()})")
     print(f"COMMANDS_JSON: {COMMANDS_JSON} (exists: {COMMANDS_JSON.exists()})")
+
+    if PRO_PLAYER_CONFIGS_DIR.exists():
+        cfg_count = len(list(PRO_PLAYER_CONFIGS_DIR.glob("*.cfg")))
+        print(f"PRO_PLAYER_CONFIGS_DIR: {PRO_PLAYER_CONFIGS_DIR} (exists: True, .cfg files: {cfg_count})")
+    else:
+        print(f"PRO_PLAYER_CONFIGS_DIR: {PRO_PLAYER_CONFIGS_DIR} (exists: False)")
+
+    if SERVER_CONFIGS_DIR.exists():
+        cfg_count = len(list(SERVER_CONFIGS_DIR.glob("*.cfg")))
+        print(f"SERVER_CONFIGS_DIR: {SERVER_CONFIGS_DIR} (exists: True, .cfg files: {cfg_count})")
+    else:
+        print(f"SERVER_CONFIGS_DIR: {SERVER_CONFIGS_DIR} (exists: False)")
 
     snapshot_files = find_snapshot_files()
     print(f"Snapshot files found: {len(snapshot_files)}")

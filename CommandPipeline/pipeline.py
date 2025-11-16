@@ -170,6 +170,21 @@ def main(args):
     if not wait_for_user_input("command type classification", args.non_interactive):
         return 1
 
+    # Step 3: Detect numeric types from configs
+    print_step(3, "Detect Numeric Types from Configs")
+    numeric_detection_script = scripts_dir / "numeric_detection.py"
+
+    print(f"\n{Colors.OKCYAN}Running numeric detection for Player commands...{Colors.ENDC}")
+    if not run_script(numeric_detection_script, "Player numeric type detection", ["--type", "player"]):
+        return 1
+
+    print(f"\n{Colors.OKCYAN}Running numeric detection for Server commands...{Colors.ENDC}")
+    if not run_script(numeric_detection_script, "Server numeric type detection", ["--type", "server"]):
+        return 1
+    if not wait_for_user_input("numeric type detection", args.non_interactive):
+        return 1
+
+
     # Step 3: Create All Commands Data for UI
     print_step(3, "Create 'All Commands' Data File")
     all_commands_script = scripts_dir / "create_all_commands.py"
