@@ -115,12 +115,12 @@ public static class SettingTypeHelpers
         return settingType switch
         {
             SettingType.Bool => ConvertToBoolean(value),
-            SettingType.Int => Convert.ToInt32(value),
-            SettingType.Float => Convert.ToSingle(value),
+            SettingType.Int => Convert.ToInt32(value, CultureInfo.InvariantCulture),
+            SettingType.Float => Convert.ToSingle(value, CultureInfo.InvariantCulture),
             SettingType.String => value.ToString() ?? string.Empty,
-            SettingType.Enum => Convert.ToInt32(value),
-            SettingType.Bitmask => Convert.ToInt32(value),
-            SettingType.Unknown => Convert.ToSingle(value),
+            SettingType.Enum => Convert.ToInt32(value, CultureInfo.InvariantCulture),
+            SettingType.Bitmask => Convert.ToInt32(value, CultureInfo.InvariantCulture),
+            SettingType.Unknown => Convert.ToSingle(value, CultureInfo.InvariantCulture),
             SettingType.Action => value.ToString() ?? string.Empty,
             _ => throw new ArgumentException($"Unsupported setting type: {settingType}")
         };
