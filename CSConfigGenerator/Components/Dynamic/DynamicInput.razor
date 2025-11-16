@@ -32,8 +32,7 @@
                 break;
             case SettingType.Int:
             case SettingType.Float:
-            case SettingType.UnknownInteger:
-            case SettingType.UnknownNumeric:
+            case SettingType.Unknown:
                 <input type="text"
                         id="@ViewModel.Command.Command"
                         class="form-control @(string.IsNullOrEmpty(ValidationMessage) ? "" : "is-invalid")"
