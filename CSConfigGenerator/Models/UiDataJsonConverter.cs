@@ -18,7 +18,7 @@ public class UiDataJsonConverter : JsonConverter<UiData>
         return type switch
         {
             SettingType.Bool => JsonSerializer.Deserialize<BoolUiData>(jsonObject.ToJsonString(), options),
-            SettingType.Integer => JsonSerializer.Deserialize<IntegerUiData>(jsonObject.ToJsonString(), options),
+            SettingType.Int => JsonSerializer.Deserialize<IntegerUiData>(jsonObject.ToJsonString(), options),
             SettingType.Float => JsonSerializer.Deserialize<FloatUiData>(jsonObject.ToJsonString(), options),
             SettingType.String => JsonSerializer.Deserialize<StringUiData>(jsonObject.ToJsonString(), options),
             SettingType.Enum => JsonSerializer.Deserialize<EnumUiData>(jsonObject.ToJsonString(), options),

@@ -12,7 +12,7 @@ public record BoolUiData : UiData
 
 public record IntegerUiData : UiData
 {
-    public override SettingType Type => SettingType.Integer;
+    public override SettingType Type => SettingType.Int;
 
     [JsonPropertyName("defaultValue")]
     public int DefaultValue { get; init; }
