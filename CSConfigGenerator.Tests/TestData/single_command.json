@@ -1,0 +1,16 @@
+[
+  {
+    "command": "+cl_show_team_equipment",
+    "consoleData": {
+      "defaultValue": ""
+    },
+    "uiData": {
+      "label": "+cl_show_team_equipment",
+      "helperText": "Sample action command",
+      "type": "action",
+      "requiresCheats": false,
+      "defaultValue": null
+    }
+  }
+]
+

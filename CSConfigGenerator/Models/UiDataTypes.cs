@@ -2,6 +2,7 @@ namespace CSConfigGenerator.Models;
 
 using System;
 using System.Globalization;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 public record BoolUiData : UiData
@@ -11,6 +12,7 @@ public record BoolUiData : UiData
     [JsonPropertyName("defaultValue")]
     public bool DefaultValueProperty { get; init; }
 
+    [JsonIgnore]
     public override object DefaultValue => DefaultValueProperty;
 
     public override object ParseFromString(string value) => value switch
@@ -24,14 +26,8 @@ public record BoolUiData : UiData
 
     public override object ConvertToType(object value)
     {
-        if (value is int intValue)
-        {
-            return intValue != 0;
-        }
-        if (value is string strValue)
-        {
-            return ParseFromString(strValue);
-        }
+        if (value is int i) return i != 0;
+        if (value is string s) return ParseFromString(s);
         return Convert.ToBoolean(value);
     }
 }
@@ -41,12 +37,13 @@ public record IntegerUiData : UiData
     public override SettingType Type => SettingType.Int;
 
     [JsonPropertyName("defaultValue")]
-    public int DefaultValueProperty { get; init; }
+    public int RawDefaultValue { get; init; }
 
-    public override object DefaultValue => DefaultValueProperty;
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
 
     [JsonPropertyName("range")]
-    public required NumericRange Range { get; init; }
+    public NumericRange? Range { get; init; }
 
     public override object ParseFromString(string value) => int.Parse(value, CultureInfo.InvariantCulture);
 
@@ -60,12 +57,13 @@ public record FloatUiData : UiData
     public override SettingType Type => SettingType.Float;
 
     [JsonPropertyName("defaultValue")]
-    public float DefaultValueProperty { get; init; }
+    public float RawDefaultValue { get; init; }
 
-    public override object DefaultValue => DefaultValueProperty;
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
 
     [JsonPropertyName("range")]
-    public required NumericRange Range { get; init; }
+    public NumericRange? Range { get; init; }
 
     public override object ParseFromString(string value) => float.Parse(value, CultureInfo.InvariantCulture);
 
@@ -79,20 +77,17 @@ public record StringUiData : UiData
     public override SettingType Type => SettingType.String;
 
     [JsonPropertyName("defaultValue")]
-    public required string DefaultValueProperty { get; init; }
+    public required string RawDefaultValue { get; init; }
 
-    public override object DefaultValue => DefaultValueProperty;
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
 
     public override object ParseFromString(string value) => value;
 
     public override string FormatForConfig(object value)
     {
-        var strValue = (string)value;
-        if (strValue.Contains(' ') || strValue.Contains(';'))
-        {
-            return $"\"{strValue}\"";
-        }
-        return strValue;
+        var str = (string)value;
+        return (str.Contains(' ') || str.Contains(';')) ? $"\"{str}\"" : str;
     }
 
     public override object ConvertToType(object value) => value.ToString() ?? string.Empty;
@@ -103,9 +98,10 @@ public record EnumUiData : UiData
     public override SettingType Type => SettingType.Enum;
 
     [JsonPropertyName("defaultValue")]
-    public required string DefaultValueProperty { get; init; }
+    public required string RawDefaultValue { get; init; }
 
-    public override object DefaultValue => int.Parse(DefaultValueProperty, CultureInfo.InvariantCulture);
+    [JsonIgnore]
+    public override object DefaultValue => int.Parse(RawDefaultValue, CultureInfo.InvariantCulture);
 
     [JsonPropertyName("options")]
     public required Dictionary<string, string> Options { get; init; }
@@ -121,6 +117,7 @@ public record ActionUiData : UiData
 {
     public override SettingType Type => SettingType.Action;
 
+    [JsonIgnore]
     public override object DefaultValue => string.Empty;
 
     public override object ParseFromString(string value) => value;
@@ -135,9 +132,10 @@ public record BitmaskUiData : UiData
     public override SettingType Type => SettingType.Bitmask;
 
     [JsonPropertyName("defaultValue")]
-    public int DefaultValueProperty { get; init; }
+    public int RawDefaultValue { get; init; }
 
-    public override object DefaultValue => DefaultValueProperty;
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
 
     [JsonPropertyName("options")]
     public required Dictionary<string, string> Options { get; init; }
@@ -154,9 +152,15 @@ public record UnknownUiData : UiData
     public override SettingType Type => SettingType.Unknown;
 
     [JsonPropertyName("defaultValue")]
-    public required string DefaultValueProperty { get; init; }
+    public JsonElement RawDefaultValue { get; init; }
 
-    public override object DefaultValue => float.Parse(DefaultValueProperty, CultureInfo.InvariantCulture);
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue.ValueKind switch
+    {
+        JsonValueKind.Number => (float)RawDefaultValue.GetDouble(),
+        JsonValueKind.String => float.TryParse(RawDefaultValue.GetString(), NumberStyles.Float, CultureInfo.InvariantCulture, out var f) ? f : 0f,
+        _ => 0f
+    };
 
     public override object ParseFromString(string value) => float.Parse(value, CultureInfo.InvariantCulture);
 
