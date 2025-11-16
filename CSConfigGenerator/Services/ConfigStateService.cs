@@ -30,10 +30,9 @@ public class ConfigStateService : IConfigStateService
         {
             foreach (var command in section.Commands)
             {
-                var defaultValue = SettingTypeHelpers.ConvertFromJson(command.UiData.Type, command.UiData.DefaultValue);
                 _settings[command.Command] = new Setting
                 {
-                    Value = defaultValue,
+                    Value = command.UiData.DefaultValue,
                     IsInConfigEditor = false
                 };
             }
@@ -81,7 +80,7 @@ public class ConfigStateService : IConfigStateService
                         builder.AppendLine($"// {section.DisplayName} Settings");
                         sectionHasContent = true;
                     }
-                    var formattedValue = SettingTypeHelpers.FormatForConfig(command.UiData.Type, setting.Value);
+                    var formattedValue = command.UiData.FormatForConfig(setting.Value);
                     builder.AppendLine($"{command.Command} {formattedValue}");
                 }
             }
@@ -120,7 +119,7 @@ public class ConfigStateService : IConfigStateService
             if (!isValid) continue; // Skip invalid values
 
             // Step 3: Parse the value (now we know it's valid)
-            var parsedValue = SettingTypeHelpers.ParseFromString(command.UiData.Type, valueStr);
+            var parsedValue = command.UiData.ParseFromString(valueStr);
 
             // Step 4: Update the setting
             if (_settings.TryGetValue(commandName, out var setting))
@@ -152,7 +151,7 @@ public class ConfigStateService : IConfigStateService
             if (commandDef != null)
             {
                 // Convert the value to the appropriate type
-                var typedValue = SettingTypeHelpers.ConvertToType(commandDef.UiData.Type, value);
+                var typedValue = commandDef.UiData.ConvertToType(value);
 
                 // Only update if the value has changed
                 if (!setting.Value.Equals(typedValue))
@@ -183,7 +182,7 @@ public class ConfigStateService : IConfigStateService
             return (false, errorMessage);
         }
 
-        var parsedValue = SettingTypeHelpers.ParseFromString(commandDef.UiData.Type, valueStr);
+        var parsedValue = commandDef.UiData.ParseFromString(valueStr);
         SetValue(commandName, parsedValue, originator);
 
         return (true, null);
