@@ -10,10 +10,10 @@ public record BoolUiData : UiData
     public override SettingType Type => SettingType.Bool;
 
     [JsonPropertyName("defaultValue")]
-    public bool DefaultValueProperty { get; init; }
+    public bool RawDefaultValue { get; init; }
 
     [JsonIgnore]
-    public override object DefaultValue => DefaultValueProperty;
+    public override object DefaultValue => RawDefaultValue;
 
     public override object ParseFromString(string value) => value switch
     {
@@ -43,7 +43,7 @@ public record IntegerUiData : UiData
     public override object DefaultValue => RawDefaultValue;
 
     [JsonPropertyName("range")]
-    public NumericRange? Range { get; init; }
+    public required NumericRange Range { get; init; }
 
     public override object ParseFromString(string value) => int.Parse(value, CultureInfo.InvariantCulture);
 
@@ -63,7 +63,7 @@ public record FloatUiData : UiData
     public override object DefaultValue => RawDefaultValue;
 
     [JsonPropertyName("range")]
-    public NumericRange? Range { get; init; }
+    public required NumericRange Range { get; init; }
 
     public override object ParseFromString(string value) => float.Parse(value, CultureInfo.InvariantCulture);
 

@@ -15,6 +15,28 @@ public class UiDataJsonConverter : JsonConverter<UiData>
 
         var type = Enum.Parse<SettingType>(typeString, true);
 
+        // Add default ranges for numeric types if not present
+        if (type == SettingType.Int && jsonObject["range"] is null)
+        {
+            jsonObject["range"] = JsonNode.Parse("""
+                {
+                    "minValue": 0,
+                    "maxValue": 100,
+                    "step": 1
+                }
+                """);
+        }
+        else if (type == SettingType.Float && jsonObject["range"] is null)
+        {
+            jsonObject["range"] = JsonNode.Parse("""
+                {
+                    "minValue": 0.0,
+                    "maxValue": 1.0,
+                    "step": 0.01
+                }
+                """);
+        }
+
         return type switch
         {
             SettingType.Bool => JsonSerializer.Deserialize<BoolUiData>(jsonObject.ToJsonString(), options),
