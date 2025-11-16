@@ -172,6 +172,8 @@ This command type has no additional properties.
 
 #### For `type: "unknown"`
 
+This type is used for commands that appear to be numeric but cannot be definitively classified as `integer` or `float` from the console data alone. It is safe to assume this is a numeric type.
+
 | Property       | Type   | Description                   |
 | :------------- | :----- | :---------------------------- |
-| `defaultValue` | String | The default value of the command. |
+| `defaultValue` | Number | The default value of the command. |
