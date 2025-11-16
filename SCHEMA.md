@@ -8,7 +8,7 @@ Commands are processed through an automated pipeline that transforms raw CS2 con
 
 ### Processing Steps
 
-The pipeline (`Tools/pipeline.py`) guides you through these steps:
+The pipeline (`CommandPipeline/pipeline.py`) guides you through these steps:
 
 1.  **Parse Commands** - Extract and validate commands from CS2 snapshot files.
 2.  **Classify Types** - Determine command data types (bool, float, string, etc.) using rule-based logic.
@@ -20,7 +20,7 @@ The pipeline (`Tools/pipeline.py`) guides you through these steps:
 
 Command processing uses a rules-based system with logic separated into dedicated rule files:
 
-#### Type Classification (`Tools/rules/type_classification_rules.py`)
+#### Type Classification (`CommandPipeline/rules/type_classification_rules.py`)
 Commands are classified by applying these rules in order:
 1. **Action**: `defaultValue` is `null`
 2. **Bool**: `defaultValue` is `"true"` or `"false"`
@@ -28,19 +28,19 @@ Commands are classified by applying these rules in order:
 4. **Float**: Numeric `defaultValue` with decimal point
 5. **String**: Any other non-null `defaultValue`
 
-#### Popularity Classification (`Tools/rules/popularity_rules.py`)
+#### Popularity Classification (`CommandPipeline/rules/popularity_rules.py`)
 A command is classified as `player` or `server` if it appears in a significant percentage of the respective configuration files. This is controlled by the `POPULARITY_THRESHOLD` in the rules file.
 
 #### Subcategorization Rules
-- **Player** (`Tools/rules/player_subcategorization_rules.py`): crosshair, viewmodel, hud, audio, etc.
-- **Server** (`Tools/rules/server_subcategorization_rules.py`): setup, teams, rounds, economy, etc.
+- **Player** (`CommandPipeline/rules/player_subcategorization_rules.py`): crosshair, viewmodel, hud, audio, etc.
+- **Server** (`CommandPipeline/rules/server_subcategorization_rules.py`): setup, teams, rounds, economy, etc.
 
 ### Running the Pipeline
 
 To process a new command snapshot:
 
 ```bash
-cd Tools/
+cd CommandPipeline/
 python pipeline.py
 ```
 
