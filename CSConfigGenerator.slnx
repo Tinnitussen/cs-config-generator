@@ -1,4 +1,13 @@
 <Solution>
-  <Project Path="CSConfigGenerator/CSConfigGenerator.csproj" />
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
+    <File Path="README.md" />
+    <File Path="SCHEMA.md" />
+    <File Path="CSConfigGenerator\CSConfigGenerator.csproj" />
+  </Folder>
   <Project Path="CSConfigGenerator.Tests/CSConfigGenerator.Tests.csproj" />
+  <Project Path="CSConfigGenerator/CSConfigGenerator.csproj" />
 </Solution>

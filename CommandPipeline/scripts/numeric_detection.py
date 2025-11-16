@@ -128,7 +128,7 @@ def get_config_paths(config_type: str):
 
 def print_sanity_check(all_stats: List[CommandStats]) -> None:
     """Print sanity check information for interesting classifications"""
-    # Find commands that will be classified as float or unknown_integer
+    # Find commands that will be classified as float or unknown
     float_candidates = []
     int_candidates = []
 
@@ -136,7 +136,7 @@ def print_sanity_check(all_stats: List[CommandStats]) -> None:
         new_type = classify_command_by_usage(stats)
         if new_type == "float" and new_type != stats.current_type:
             float_candidates.append((stats, new_type))
-        elif new_type == "unknown_integer" and new_type != stats.current_type:
+        elif new_type == "unknown" and new_type != stats.current_type:
             int_candidates.append((stats, new_type))
 
     print("Sanity check: Commands that will be reclassified")
@@ -146,13 +146,13 @@ def print_sanity_check(all_stats: List[CommandStats]) -> None:
               f"total={stats.total}, float_ratio={stats.float_ratio:.2f}, "
               f"sample_values={stats.values[:5]}")
 
-    print(f"\nUnknown integer candidates (showing up to 5):")
+    print(f"\nUnknown candidates (showing up to 5):")
     for i, (stats, new_type) in enumerate(int_candidates[:5]):
         print(f"{stats.command}: {stats.current_type} -> {new_type}, "
               f"total={stats.total}, all_int={stats.is_all_int}, "
               f"sample_values={stats.values[:5]}")
 
-    print(f"\nSummary: {len(float_candidates)} float candidates, {len(int_candidates)} integer candidates")
+    print(f"\nSummary: {len(float_candidates)} float candidates, {len(int_candidates)} unknown candidates")
 
 def main():
     """Main function to detect and reclassify numeric command types."""
@@ -213,7 +213,7 @@ def main():
 
     # Classify commands and track changes
     updated_float = 0
-    updated_integer = 0
+    updated_unknown = 0
     anomalies = find_anomalies(all_stats)
 
     for stats in all_stats:
@@ -226,8 +226,8 @@ def main():
 
             if new_type == "float":
                 updated_float += 1
-            elif new_type == "unknown_integer":
-                updated_integer += 1
+            elif new_type == "unknown":
+                updated_unknown += 1
 
     # Save updated commands
     print(f"Saving updated commands to {COMMANDS_JSON}...")
@@ -237,7 +237,7 @@ def main():
     print(f"\nProcessing Summary for {config_type.capitalize()} Config:")
     print(f"- Processed {len(all_stats)} commands with enough occurrences")
     print(f"- Updated {updated_float} commands to type 'float'")
-    print(f"- Updated {updated_integer} commands to type 'unknown_integer'")
+    print(f"- Updated {updated_unknown} commands to type 'unknown'")
 
     if anomalies:
         print(f"\nAnomalies found ({len(anomalies)} commands classified as non-float but used as float):")

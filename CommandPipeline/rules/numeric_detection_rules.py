@@ -6,7 +6,7 @@ from typing import Any
 FLOAT_RATIO = 0.5
 MIN_INT_OCCURRENCES = 15
 PROTECTED_TYPES = ("float", "bool", "bitmask", "action")
-UNKNOWN_TYPES = ("unknown", "unknown_numeric")
+UNKNOWN_TYPES = ("unknown",)
 
 def classify_command_by_usage(stats: Any) -> str:
     """
@@ -26,11 +26,11 @@ def classify_command_by_usage(stats: Any) -> str:
     if stats.float_ratio > FLOAT_RATIO:
         return "float"
 
-    # Classify as unknown_integer if all values are integers and it appears often
+    # Classify as unknown if all values are integers and it appears often
     if (stats.total >= MIN_INT_OCCURRENCES and
         stats.is_all_int and
-        stats.current_type not in ("int", "unknown_integer")):
-        return "unknown_integer"
+        stats.current_type not in ("int", "unknown")):
+        return "unknown"
 
     # If no specific rule matches, keep the existing type
     return stats.current_type

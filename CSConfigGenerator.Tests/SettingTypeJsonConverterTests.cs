@@ -22,8 +22,7 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.String, "\"string\"")]
         [InlineData(SettingType.Enum, "\"enum\"")]
         [InlineData(SettingType.Bitmask, "\"bitmask\"")]
-        [InlineData(SettingType.UnknownNumeric, "\"unknown_numeric\"")]
-        [InlineData(SettingType.UnknownInteger, "\"unknown_integer\"")]
+        [InlineData(SettingType.Unknown, "\"unknown\"")]
         [InlineData(SettingType.Action, "\"action\"")]
         public void Write_ShouldSerializeCorrectly(SettingType type, string expectedJson)
         {
@@ -41,8 +40,7 @@ namespace CSConfigGenerator.Tests
         [InlineData("\"string\"", SettingType.String)]
         [InlineData("\"enum\"", SettingType.Enum)]
         [InlineData("\"bitmask\"", SettingType.Bitmask)]
-        [InlineData("\"unknown_numeric\"", SettingType.UnknownNumeric)]
-        [InlineData("\"unknown_integer\"", SettingType.UnknownInteger)]
+        [InlineData("\"unknown\"", SettingType.Unknown)]
         [InlineData("\"action\"", SettingType.Action)]
         public void Read_ShouldDeserializeCorrectly(string json, SettingType expectedType)
         {

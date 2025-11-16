@@ -165,7 +165,7 @@ def main(args):
     # Step 2: Classify command types
     print_step(2, "Classify Command Data Types")
     classification_script = scripts_dir / "command_classification.py"
-    if not run_script(classification_script, "Command type classification"):
+    if not run_script(classification_script, "Command type classification", ["--reclassify-all"]):
         return 1
     if not wait_for_user_input("command type classification", args.non_interactive):
         return 1

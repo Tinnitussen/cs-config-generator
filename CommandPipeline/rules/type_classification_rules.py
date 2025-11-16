@@ -50,7 +50,7 @@ def rule_numeric(cmd):
         if '.' in str(console_default):
             return 'float', float(console_default)
         else:
-            return 'unknown_numeric', int(float(console_default))
+            return 'unknown', int(float(console_default))
     return None
 
 def rule_string(cmd):

@@ -17,8 +17,6 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.String, "hello", "hello")]
         [InlineData(SettingType.Enum, "1", 1)]
         [InlineData(SettingType.Bitmask, "2", 2)]
-        [InlineData(SettingType.UnknownNumeric, "99.9", 99.9f)]
-        [InlineData(SettingType.UnknownInteger, "789", 789)]
         [InlineData(SettingType.Action, "my_action", "my_action")]
         public void ParseFromString_ShouldReturnCorrectType(SettingType type, string input, object expected)
         {
@@ -39,8 +37,6 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.String, "hello;world", "\"hello;world\"")]
         [InlineData(SettingType.Enum, 1, "1")]
         [InlineData(SettingType.Bitmask, 2, "2")]
-        [InlineData(SettingType.UnknownNumeric, 99.9f, "99.9")]
-        [InlineData(SettingType.UnknownInteger, 789, "789")]
         [InlineData(SettingType.Action, "my_action", "my_action")]
         public void FormatForConfig_ShouldReturnCorrectString(SettingType type, object value, string expected)
         {
@@ -58,8 +54,6 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.String, "")]
         [InlineData(SettingType.Enum, 0)]
         [InlineData(SettingType.Bitmask, 0)]
-        [InlineData(SettingType.UnknownNumeric, 0.0f)]
-        [InlineData(SettingType.UnknownInteger, 0)]
         [InlineData(SettingType.Action, "")]
         public void GetDefaultValue_ShouldReturnCorrectDefault(SettingType type, object expected)
         {
@@ -87,8 +81,6 @@ namespace CSConfigGenerator.Tests
         [InlineData(SettingType.Enum, 1, 1)]
         [InlineData(SettingType.Enum, "1", 1)]
         [InlineData(SettingType.Bitmask, 2, 2)]
-        [InlineData(SettingType.UnknownNumeric, 99.9f, 99.9f)]
-        [InlineData(SettingType.UnknownInteger, 789, 789)]
         [InlineData(SettingType.Action, "my_action", "my_action")]
         public void ConvertToType_ShouldReturnCorrectType(SettingType type, object input, object expected)
         {
@@ -115,8 +107,6 @@ namespace CSConfigGenerator.Tests
             Assert.Equal("hello", (string) SettingTypeHelpers.ConvertFromJson(SettingType.String, jsonString));
             Assert.Equal(123, (int) SettingTypeHelpers.ConvertFromJson(SettingType.Enum, jsonInt));
             Assert.Equal(123, (int) SettingTypeHelpers.ConvertFromJson(SettingType.Bitmask, jsonInt));
-            Assert.Equal(123.45f, (float) SettingTypeHelpers.ConvertFromJson(SettingType.UnknownNumeric, jsonFloat));
-            Assert.Equal(123, (int) SettingTypeHelpers.ConvertFromJson(SettingType.UnknownInteger, jsonInt));
             Assert.Equal("hello", (string) SettingTypeHelpers.ConvertFromJson(SettingType.Action, jsonString));
         }
 

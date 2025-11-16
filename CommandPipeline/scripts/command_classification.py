@@ -115,7 +115,7 @@ def main():
 
     total = len(commands)
     auto_classified = sum(v for k, v in type_counts.items() if 'unknown' not in k)
-    unknown_total = type_counts.get('unknown', 0) + type_counts.get('unknown_numeric', 0)
+    unknown_total = type_counts.get('unknown', 0)
 
     print("\n--- SCRIPT EXECUTION SUMMARY ---")
     print(f"Total commands processed: {total}")

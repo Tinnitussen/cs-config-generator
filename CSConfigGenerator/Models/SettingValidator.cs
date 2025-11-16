@@ -32,7 +32,7 @@ public static class SettingValidator
         var rangeAttr = GetEnumAttribute<RangeAttribute>(settingType);
         if (rangeAttr != null)
         {
-            if (settingType is SettingType.Int or SettingType.Bitmask or SettingType.UnknownInteger)
+            if (settingType is SettingType.Int or SettingType.Bitmask)
             {
                 if (!int.TryParse(valueStr, NumberStyles.Integer, CultureInfo.InvariantCulture, out int intValue))
                 {
@@ -44,7 +44,7 @@ public static class SettingValidator
                     return (false, rangeAttr.ErrorMessage);
                 }
             }
-            else if (settingType is SettingType.Float or SettingType.UnknownNumeric)
+            else if (settingType is SettingType.Float or SettingType.Unknown)
             {
                 if (!float.TryParse(valueStr, NumberStyles.Float, CultureInfo.InvariantCulture, out float floatValue))
                 {
