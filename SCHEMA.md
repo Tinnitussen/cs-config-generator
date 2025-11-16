@@ -69,48 +69,14 @@ CSConfigGenerator/wwwroot/data/commandschema/server/*.json
 CSConfigGenerator/wwwroot/data/commandschema/all/all_commands.json
 ```
 
-## Project File Structure and UI Mapping
+## Project File Structure
 
-The organization of the JSON files directly maps to the layout of the config generator's user interface. This creates a logical and predictable structure for both developers and users.
-
-### The Rule: Folders are Pages, Files are Sections
-
-*   **Top-Level Folders:** Each main folder (`player`, `server`) represents a major page or navigation tab in the application.
-*   **JSON Files:** Each JSON file within a folder (`crosshair.json`, `teams.json`, etc.) becomes a distinct section on that page. The filename is used as the title for that section.
+The `all_commands.json` file, located in the `all/` directory, contains a comprehensive list of all commands for the 'All Commands' UI tab. This file serves as the primary data source for the application's user interface.
 
 ### File Structure
 
 ```
 /
-├── player/             (For autoexec.cfg)
-│   ├── crosshair.json
-│   ├── viewmodel.json
-│   ├── hud.json
-│   ├── radar.json
-│   ├── input.json
-│   ├── gameplay.json
-│   ├── audio.json
-│   ├── communication.json
-│   ├── network.json
-│   ├── cheats.json
-│   ├── actions.json
-│   └── misc.json
-│   │
-│   └── developer/            (Advanced group)
-│       ├── rendering.json
-│       ├── debugging.json
-│       └── spectator.json
-│
-└── server/             (For server.cfg)
-    ├── setup.json
-    ├── teams.json
-    ├── rounds.json
-    ├── objectives.json
-    ├── spawning.json
-    ├── rules.json
-    ├── economy.json
-    ├── bots.json
-    └── gotv.json
 └── all/
     └── all_commands.json (Contains all commands for the 'All Commands' UI tab)
 ```
@@ -142,159 +108,65 @@ This object serves as the "source of truth," containing only data parsed directl
 
 -----
 
-## `uiData` Variations by Type
+## `uiData` Object Structure
 
-The structure of the `uiData` object changes based on its `type` property. Below are the definitions for each possible type.
+The `uiData` object is designed to be flexible and cater to the specific needs of different command types. This is achieved through a class hierarchy where a base `UiData` class holds the common properties, and concrete subclasses add the properties that are specific to that command type.
 
-### 1\. For `type: "bool"`
+### Common Properties
 
-Used for simple on/off toggle switches.
+All `uiData` objects, regardless of their type, will have the following properties:
 
-```json
-"uiData": {
-  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
-  "label": "Boolean Label",
-  "helperText": "Helpful description for this boolean setting.",
-  "type": "bool",
-  "defaultValue": true,
-  "requiresCheats": false,
-  "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
-  "visibilityCondition": { // Optional: Controls visibility based on another command.
-    "command": "parent_command_name",
-    "value": "required_value"
-  },
-  "deprecated": true // Optional: If the command was removed from the game, can be added to any command
-}
-```
+| Property         | Type    | Description                                       |
+| :--------------- | :------ | :------------------------------------------------ |
+| `label`          | String  | The user-friendly name for the command.           |
+| `helperText`     | String  | A description of the command's purpose.           |
+| `type`           | String  | The type of the command (e.g., "bool", "integer"). |
+| `requiresCheats` | Boolean | Whether the command requires `sv_cheats` to be enabled. |
 
-### 2\. For `type: "integer"`
+### Type-Specific Properties
 
-Used for whole numbers, typically with sliders or steppers.
+Depending on the `type` of the command, the `uiData` object will have additional properties.
 
-```json
-"uiData": {
-  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
-  "label": "Integer Label",
-  "helperText": "Helpful description for this integer setting.",
-  "type": "integer",
-  "defaultValue": 10,
-  "requiresCheats": false,
-  "range": { // Required for this type
-    "minValue": 0,
-    "maxValue": 100,
-    "step": 1
-  },
-  "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
-  "visibilityCondition": { // Optional: Controls visibility based on another command.
-    "command": "parent_command_name",
-    "value": "required_value"
-  }
-}
-```
+#### For `type: "bool"`
 
-### 3\. For `type: "float"`
+| Property       | Type    | Description                   |
+| :------------- | :------ | :---------------------------- |
+| `defaultValue` | Boolean | The default value of the command. |
 
-Used for numbers with decimal points.
+#### For `type: "integer"`
 
-```json
-"uiData": {
-  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
-  "label": "Float Label",
-  "helperText": "Helpful description for this float setting.",
-  "type": "float",
-  "defaultValue": 1.5,
-  "requiresCheats": false,
-  "range": { // Required for this type
-    "minValue": 0.0,
-    "maxValue": 10.0,
-    "step": 0.1
-  },
-  "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
-}
-```
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | Int    | The default value of the command. |
+| `range`        | Object | The range of allowed values.  |
 
-### 4\. For `type: "string"`
+#### For `type: "float"`
 
-Used for free-form text input.
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | Float  | The default value of the command. |
+| `range`        | Object | The range of allowed values.  |
 
-```json
-"uiData": {
-  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
-  "label": "String Label",
-  "helperText": "Helpful description for this string setting.",
-  "type": "string",
-  "defaultValue": "default_text",
-  "requiresCheats": false,
-  "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
-}
-```
+#### For `type: "string"`
 
-### 5\. For `type: "enum"`
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | String | The default value of the command. |
 
-Used for dropdown menus or radio buttons with a predefined set of options.
+#### For `type: "enum"`
 
-```json
-"uiData": {
-  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
-  "label": "Enum Label",
-  "helperText": "Helpful description for this enum setting.",
-  "type": "enum",
-  "defaultValue": "1",
-  "options": { // Required for this type
-    "0": "Display Value A",
-    "1": "Display Value B"
-  },
-  "requiresCheats": false,
-  "aliasFor": "actual_command_name", // Optional: Indicates this is an alias.
-  "visibilityCondition": { // Optional: Controls visibility based on another command.
-    "command": "parent_command_name",
-    "value": "required_value"
-  }
-}
-```
+| Property       | Type   | Description                        |
+| :------------- | :----- | :--------------------------------- |
+| `defaultValue` | String | The default value of the command.      |
+| `options`      | Object | The available options for the command. |
 
-### 6\. For `type: "action"`
+#### For `type: "action"`
 
-Used for action commands that may take arguments.
+This command type has no additional properties.
 
-```json
-"uiData": {
-  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
-  "label": "Action Label",
-  "helperText": "Helpful description for this action.",
-  "type": "action",
-  "defaultValue": null, // Must be null
-  "requiresCheats": true,
-  "arguments": [ // Optional
-    {
-      "name": "argument_name",
-      "label": "Argument Label",
-      "type": "string",
-      "placeholder": "e.g. weapon_ak47",
-      "required": true
-    }
-  ],
-  "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
-}
-```
+#### For `type: "bitmask"`
 
-### 7\. For `type: "bitmask"`
-
-Used for commands where multiple checkbox options are combined into a single integer value.
-
-```json
-"uiData": {
-  "lastModified": "2025-07-29T05:49:01Z", // ISO 8601 timestamp for when this command was last updated
-  "label": "Bitmask Label",
-  "helperText": "Select which options to enable.",
-  "type": "bitmask",
-  "defaultValue": 0,
-  "options": { // Required for this type
-    "1": "Option A (Value 1)",
-    "2": "Option B (Value 2)",
-    "4": "Option C (Value 4)"
-  },
-  "requiresCheats": false,
-  "aliasFor": "actual_command_name" // Optional: Indicates this is an alias.
-}
-```
+| Property       | Type   | Description                        |
+| :------------- | :----- | :--------------------------------- |
+| `defaultValue` | Int    | The default value of the command.      |
+| `options`      | Object | The available options for the command. |
