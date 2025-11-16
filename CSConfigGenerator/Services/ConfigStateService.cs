@@ -6,8 +6,7 @@ namespace CSConfigGenerator.Services;
 
 /// <summary>
 /// ConfigStateService handles the state of configuration settings.
-/// This is a unified service that replaces both PlayerConfigStateService and ServerConfigStateService.
-/// It no longer distinguishes between player and server commands, treating all commands uniformly.
+/// Treats all commands uniformly using a flat list from ISchemaService.
 /// </summary>
 public class ConfigStateService : IConfigStateService
 {
@@ -26,22 +25,17 @@ public class ConfigStateService : IConfigStateService
     {
         _settings.Clear();
 
-        foreach (var section in _schemaService.AllSections)
+        foreach (var command in _schemaService.Commands)
         {
-            foreach (var command in section.Commands)
+            _settings[command.Command] = new Setting
             {
-                _settings[command.Command] = new Setting
-                {
-                    Value = command.UiData.DefaultValue,
-                    IsInConfigEditor = false
-                };
-            }
+                Value = command.UiData.DefaultValue,
+                IsInConfigEditor = false
+            };
         }
 
         NotifyStateChanged();
     }
-
-    private IReadOnlyList<ConfigSection> GetSections() => _schemaService.AllSections;
 
     private CommandDefinition? GetCommandDefinition(string commandName) => _schemaService.GetCommand(commandName);
 
@@ -67,25 +61,13 @@ public class ConfigStateService : IConfigStateService
         builder.AppendLine($"// Generated on: {DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss}");
         builder.AppendLine();
 
-        foreach (var section in GetSections().OrderBy(s => s.DisplayName))
+        foreach (var command in _schemaService.Commands.OrderBy(c => c.Command))
         {
-            var sectionHasContent = false;
-
-            foreach (var command in section.Commands.OrderBy(c => c.Command))
+            if (_settings.TryGetValue(command.Command, out var setting) && setting.IsInConfigEditor)
             {
-                if (_settings.TryGetValue(command.Command, out var setting) && setting.IsInConfigEditor)
-                {
-                    if (!sectionHasContent)
-                    {
-                        builder.AppendLine($"// {section.DisplayName} Settings");
-                        sectionHasContent = true;
-                    }
-                    var formattedValue = command.UiData.FormatForConfig(setting.Value);
-                    builder.AppendLine($"{command.Command} {formattedValue}");
-                }
+                var formattedValue = command.UiData.FormatForConfig(setting.Value);
+                builder.AppendLine($"{command.Command} {formattedValue}");
             }
-
-            if (sectionHasContent) builder.AppendLine();
         }
 
         return builder.ToString();
@@ -108,29 +90,23 @@ public class ConfigStateService : IConfigStateService
             var commandName = trimmedLine[..firstSpaceIndex].Trim();
             var valueStr = trimmedLine[(firstSpaceIndex + 1)..].Trim().Trim('"');
 
-            // Step 1: Check if this is a valid command
             var command = GetCommandDefinition(commandName);
             if (command == null) continue;
 
             commandsInFile.Add(commandName);
 
-            // Step 2: Validate the value against the command's type
             var (isValid, _) = SettingValidator.Validate(command.UiData.Type, valueStr);
-            if (!isValid) continue; // Skip invalid values
+            if (!isValid) continue;
 
-            // Step 3: Parse the value (now we know it's valid)
             var parsedValue = command.UiData.ParseFromString(valueStr);
 
-            // Step 4: Update the setting
             if (_settings.TryGetValue(commandName, out var setting))
             {
                 setting.Value = parsedValue;
-                // If a command is present in the file, it is considered included.
                 setting.IsInConfigEditor = true;
             }
         }
 
-        // For any setting that was NOT in the config file, mark it as not included.
         foreach (var (commandName, setting) in _settings)
         {
             if (!commandsInFile.Contains(commandName))
@@ -146,21 +122,17 @@ public class ConfigStateService : IConfigStateService
     {
         if (_settings.TryGetValue(commandName, out var setting))
         {
-            // Get the command definition to validate against
             var commandDef = GetCommandDefinition(commandName);
             if (commandDef != null)
             {
-                // Convert the value to the appropriate type
                 var typedValue = commandDef.UiData.ConvertToType(value);
-
-                // Only update if the value has changed
                 if (!setting.Value.Equals(typedValue))
                 {
                     setting.Value = typedValue;
                     NotifyStateChanged(originator);
                 }
             }
-            else if (!setting.Value.Equals(value)) // Fallback if no command definition
+            else if (!setting.Value.Equals(value))
             {
                 setting.Value = value;
                 NotifyStateChanged(originator);
