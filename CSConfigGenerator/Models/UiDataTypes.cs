@@ -90,7 +90,7 @@ public record StringUiData : UiData
         return (str.Contains(' ') || str.Contains(';')) ? $"\"{str}\"" : str;
     }
 
-    public override object ConvertToType(object value) => value.ToString() ?? string.Empty;
+    public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
 }
 
 public record EnumUiData : UiData
@@ -124,7 +124,7 @@ public record ActionUiData : UiData
 
     public override string FormatForConfig(object value) => (string)value;
 
-    public override object ConvertToType(object value) => value.ToString() ?? string.Empty;
+    public override object ConvertToType(object value) => value?.ToString() ?? string.Empty;
 }
 
 public record BitmaskUiData : UiData
