@@ -44,8 +44,14 @@ jobs:
       - name: Create .nojekyll file
         run: touch ./publish/wwwroot/.nojekyll
 
-      - name: Rewrite base href
-        run: sed -i 's|<base href="/" />|<base href="/cs-config-generator/" />|' ./publish/wwwroot/index.html
+      - name: Rewrite base href for GitHub Pages subpath
+        run: sed -i -E 's|<base href="[^"]*" */>|<base href="/cs-config-generator/" />|' ./publish/wwwroot/index.html
+
+      - name: Verify base href rewrite
+        run: |
+          grep -q '<base href="/cs-config-generator/" />' ./publish/wwwroot/index.html || (echo "Base href rewrite failed" && exit 1)
+          COUNT=$(grep -c '<base href="' ./publish/wwwroot/index.html)
+          [ "$COUNT" -eq 1 ] || (echo "Unexpected number of <base href> tags: $COUNT" && exit 1)
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v5
