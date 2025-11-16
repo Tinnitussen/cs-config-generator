@@ -16,4 +16,13 @@ public abstract record UiData
 
     [JsonPropertyName("requiresCheats")]
     public bool RequiresCheats { get; init; }
+
+    [JsonIgnore]
+    public abstract object DefaultValue { get; }
+
+    public abstract object ParseFromString(string value);
+
+    public abstract string FormatForConfig(object value);
+
+    public abstract object ConvertToType(object value);
 }
