@@ -6,7 +6,7 @@ import os
 import sys
 from pathlib import Path
 
-# Add the scripts directory to the Python path
+# Add the scripts and rules directory to the Python path
 sys.path.append(str(Path(__file__).resolve().parent.parent / 'scripts'))
 sys.path.append(str(Path(__file__).resolve().parent.parent / 'rules'))
 
@@ -24,27 +24,22 @@ class TestCommandPipeline(unittest.TestCase):
 [Console] cl_showfps : 1 : a, cl : Draws framerate in corner of screen.
 [Console] host_timescale : 1.0 : sv, cheat : Prescale the clock by this amount.
 [Console] sv_gravity : 800.0 : sv, rep, nolog : World gravity.
+[Console] an_invalid_command! : 1 : a : Invalid command.
+[Console] another_valid_command : test : invalid_flag : Invalid flag.
 """
         )
         self.temp_input_file.close()
 
-        # Create a temporary file for validation rules
-        self.temp_rules_file = tempfile.NamedTemporaryFile(mode='w', delete=False, encoding='utf-8')
-        json.dump({
-            "valid_command_regex": "^[a-zA-Z0-9_]+$",
-            "valid_default_value_regex": "^.{0,256}$",
-            "valid_flags": ["a", "sv", "rep", "nolog", "release", "clientcmd_can_execute", "cl", "cheat"]
-        }, self.temp_rules_file)
-        self.temp_rules_file.close()
+        # Path to the actual rules file
+        self.rules_file = str(Path(__file__).resolve().parent.parent / 'rules' / 'parsing_validation_rules.json')
 
     def tearDown(self):
         # Clean up the temporary files
         os.remove(self.temp_input_file.name)
-        os.remove(self.temp_rules_file.name)
 
-    def test_parse_input_file(self):
+    def test_parse_input_file_with_actual_rules(self):
         current_commands, parsed_commands = parse_input_file(
-            self.temp_input_file.name, self.temp_rules_file.name
+            self.temp_input_file.name, self.rules_file
         )
 
         # Check that the valid commands were parsed correctly
@@ -57,6 +52,10 @@ class TestCommandPipeline(unittest.TestCase):
         self.assertIsNone(parsed_commands["version"]["defaultValue"])
         self.assertEqual(parsed_commands["version"]["flags"], ["clientcmd_can_execute", "release"])
         self.assertEqual(parsed_commands["version"]["description"], "Print version info string.")
+
+        # Check that invalid commands are skipped
+        self.assertNotIn("an_invalid_command!", parsed_commands)
+        self.assertNotIn("another_valid_command", parsed_commands)
 
         # Check the set of current commands
         self.assertEqual(current_commands, {"sv_cheats", "version", "cl_showfps", "host_timescale", "sv_gravity"})
