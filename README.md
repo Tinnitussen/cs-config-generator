@@ -70,7 +70,6 @@ CommandPipeline/
 │   ├── command_classification.py      # Step 2: Classify command data types
 │   ├── numeric_detection.py           # Step 3: Refine numeric types
 │   ├── create_all_commands.py         # Step 4: Create master command file for UI
-│   └── parsing_rules.md               # Documentation for command parsing rules
 ├── utils/                   # Utility scripts and modules
 │   └── paths.py                     # Shared path definitions
 └── data/                    # Input and intermediate data files
