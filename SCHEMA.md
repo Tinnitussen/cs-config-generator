@@ -12,28 +12,21 @@ The pipeline (`CommandPipeline/pipeline.py`) guides you through these steps:
 
 1.  **Parse Commands** - Extract and validate commands from CS2 snapshot files.
 2.  **Classify Types** - Determine command data types (bool, float, string, etc.) using rule-based logic.
-3.  **Classify by Popularity** - Identify popular `player` and `server` commands by analyzing professional and community config files.
+3.  **Detect Numeric Types** - Refine `unknown` types into `integer` or `float` by analyzing professional and community config files.
 4.  **Create 'All Commands' File** - Generate a master JSON file containing all commands for the UI.
-5.  **Subcategorize** - Organize the popular Player and Server commands into UI sections (e.g., crosshair, viewmodel, etc.).
 
-### Classification Rules
+### Type Classification Rules
 
 Command processing uses a rules-based system with logic separated into dedicated rule files:
 
-#### Type Classification (`CommandPipeline/rules/type_classification_rules.py`)
+#### `CommandPipeline/rules/type_classification_rules.py`
 Commands are classified by applying these rules in order:
 1. **Action**: `defaultValue` is `null`
 2. **Bool**: `defaultValue` is `"true"` or `"false"`
 3. **Bitmask**: Description contains `"bitmask"`
-4. **Float**: Numeric `defaultValue` with decimal point
-5. **String**: Any other non-null `defaultValue`
-
-#### Popularity Classification (`CommandPipeline/rules/popularity_rules.py`)
-A command is classified as `player` or `server` if it appears in a significant percentage of the respective configuration files. This is controlled by the `POPULARITY_THRESHOLD` in the rules file.
-
-#### Subcategorization Rules
-- **Player** (`CommandPipeline/rules/player_subcategorization_rules.py`): crosshair, viewmodel, hud, audio, etc.
-- **Server** (`CommandPipeline/rules/server_subcategorization_rules.py`): setup, teams, rounds, economy, etc.
+4. **Float**: Numeric `defaultValue` with a decimal point.
+5. **Unknown**: Any other numeric `defaultValue` (e.g., `"0"`, `"100"`). The `numeric_detection.py` script later refines this.
+6. **String**: Any other non-null `defaultValue`.
 
 ### Running the Pipeline
 
@@ -57,13 +50,9 @@ all_commands-YYYY-DD-MM.txt (Raw CS2 data)
     ↓ parse_commands.py
 commands.json (Structured with consoleData)
     ↓ command_classification.py
-commands.json (+ uiData with types)
-    ↓ command_popularity.py
-classified_commands/player_commands.json
-classified_commands/server_commands.json
-    ↓ subcategorization/subcategorize_*.py
-CSConfigGenerator/wwwroot/data/commandschema/player/*.json
-CSConfigGenerator/wwwroot/data/commandschema/server/*.json
+commands.json (+ uiData with types, including 'unknown')
+    ↓ numeric_detection.py
+commands.json ('unknown' types refined to 'integer' or 'float')
     ↓ create_all_commands.py
 CSConfigGenerator/wwwroot/data/commandschema/all/all_commands.json
 ```

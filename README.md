@@ -54,6 +54,7 @@ To process a new command snapshot from Counter-Strike 2:
 The pipeline will guide you through:
 - **Parsing** - Extract commands from the snapshot file.
 - **Type Classification** - Determine command data types (bool, float, string, etc.).
+- **Numeric Type Detection** - Refine numeric types by analyzing config files.
 - **Master File Creation** - Create a master `commands.json` file for the 'All Commands' UI page.
 
 ### Directory Structure
@@ -67,7 +68,8 @@ CommandPipeline/
 ├── scripts/                 # Processing scripts (called by pipeline)
 │   ├── parse_commands.py              # Step 1: Parse snapshot file
 │   ├── command_classification.py      # Step 2: Classify command data types
-│   ├── create_all_commands.py         # Step 3: Create master command file for UI
+│   ├── numeric_detection.py           # Step 3: Refine numeric types
+│   ├── create_all_commands.py         # Step 4: Create master command file for UI
 │   └── parsing_rules.md               # Documentation for command parsing rules
 ├── utils/                   # Utility scripts and modules
 │   └── paths.py                     # Shared path definitions
