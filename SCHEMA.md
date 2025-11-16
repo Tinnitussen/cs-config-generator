@@ -176,4 +176,4 @@ This type is used for commands that appear to be numeric but cannot be definitiv
 
 | Property       | Type   | Description                   |
 | :------------- | :----- | :---------------------------- |
-| `defaultValue` | Number | The default value of the command. |
+| `defaultValue` | Int    | The default value of the command. |
