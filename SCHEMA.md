@@ -26,8 +26,7 @@ Commands are classified by applying these rules in order:
 2. **Bool**: `defaultValue` is `"true"` or `"false"`
 3. **Bitmask**: Description contains `"bitmask"`
 4. **Float**: Numeric `defaultValue` with decimal point
-5. **Unknown Numeric**: Numeric `defaultValue` without decimal point
-6. **String**: Any other non-null `defaultValue`
+5. **String**: Any other non-null `defaultValue`
 
 #### Popularity Classification (`Tools/rules/popularity_rules.py`)
 A command is classified as `player` or `server` if it appears in a significant percentage of the respective configuration files. This is controlled by the `POPULARITY_THRESHOLD` in the rules file.
@@ -170,3 +169,9 @@ This command type has no additional properties.
 | :------------- | :----- | :--------------------------------- |
 | `defaultValue` | Int    | The default value of the command.      |
 | `options`      | Object | The available options for the command. |
+
+#### For `type: "unknown"`
+
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | String | The default value of the command. |
