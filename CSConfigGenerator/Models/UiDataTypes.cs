@@ -72,10 +72,8 @@ public record FloatUiData : UiData
     public override object ConvertToType(object value) => Convert.ToSingle(value);
 }
 
-public record ColorUiData : UiData
+public abstract record StringBasedUiData : UiData
 {
-    public override SettingType Type => SettingType.Color;
-
     [JsonPropertyName("defaultValue")]
     public required string RawDefaultValue { get; init; }
 
@@ -87,6 +85,11 @@ public record ColorUiData : UiData
     public override string FormatForConfig(object value) => $"\"{(string)value}\"";
 
     public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
+}
+
+public record ColorUiData : StringBasedUiData
+{
+    public override SettingType Type => SettingType.Color;
 }
 
 public record UInt32UiData : UiData
@@ -123,41 +126,59 @@ public record UInt64UiData : UiData
     public override object ConvertToType(object value) => Convert.ToUInt64(value);
 }
 
-public record Vector2UiData : UiData
+public record Vector2UiData : StringBasedUiData
 {
     public override SettingType Type => SettingType.Vector2;
-
-    [JsonPropertyName("defaultValue")]
-    public required string RawDefaultValue { get; init; }
-
-    [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
-
-    public override object ParseFromString(string value) => value;
-
-    public override string FormatForConfig(object value) => $"\"{(string)value}\"";
-
-    public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
 }
 
-public record Vector3UiData : UiData
+public record Vector3UiData : StringBasedUiData
 {
     public override SettingType Type => SettingType.Vector3;
-
-    [JsonPropertyName("defaultValue")]
-    public required string RawDefaultValue { get; init; }
-
-    [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
 
     [JsonPropertyName("range")]
     public required NumericRange Range { get; init; }
 
-    public override object ParseFromString(string value) => value;
+    // Helper to parse a vector string "x y z" into a float array
+    private static float[] ParseVector3(string value)
+    {
+        var parts = value.Split(' ');
+        if (parts.Length != 3)
+            throw new FormatException("Vector3 value must have three components separated by spaces.");
+        return new float[]
+        {
+            float.Parse(parts[0], CultureInfo.InvariantCulture),
+            float.Parse(parts[1], CultureInfo.InvariantCulture),
+            float.Parse(parts[2], CultureInfo.InvariantCulture)
+        };
+    }
+    public override object ParseFromString(string value)
+    {
+        var vector = ParseVector3(value);
+        if (Range.MinValue.HasValue && (vector[0] < Range.MinValue.Value || vector[1] < Range.MinValue.Value || vector[2] < Range.MinValue.Value))
+        {
+            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
+        }
+        if (Range.MaxValue.HasValue && (vector[0] > Range.MaxValue.Value || vector[1] > Range.MaxValue.Value || vector[2] > Range.MaxValue.Value))
+        {
+            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
+        }
+        return value;
+    }
 
-    public override string FormatForConfig(object value) => $"\"{(string)value}\"";
-
-    public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
+    public override object ConvertToType(object? value)
+    {
+        var str = value?.ToString() ?? string.Empty;
+        var vector = ParseVector3(str);
+        if (Range.MinValue.HasValue && (vector[0] < Range.MinValue.Value || vector[1] < Range.MinValue.Value || vector[2] < Range.MinValue.Value))
+        {
+            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
+        }
+        if (Range.MaxValue.HasValue && (vector[0] > Range.MaxValue.Value || vector[1] > Range.MaxValue.Value || vector[2] > Range.MaxValue.Value))
+        {
+            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
+        }
+        return str;
+    }
 }
 
 public record StringUiData : UiData
