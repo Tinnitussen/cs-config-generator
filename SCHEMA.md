@@ -21,7 +21,7 @@ Command processing uses a rules-based system with logic separated into dedicated
 
 #### `CommandPipeline/rules/type_classification_rules.py`
 Commands are classified by applying these rules in order:
-1. **Action**: `defaultValue` is `null`
+1. **Command**: `defaultValue` is `null`
 2. **Bool**: `defaultValue` is `"true"` or `"false"`
 3. **Bitmask**: Description contains `"bitmask"`
 4. **Float**: Numeric `defaultValue` with a decimal point.
@@ -148,7 +148,7 @@ Depending on the `type` of the command, the `uiData` object will have additional
 | `defaultValue` | String | The default value of the command.      |
 | `options`      | Object | The available options for the command. |
 
-#### For `type: "action"`
+#### For `type: "command"`
 
 This command type has no additional properties.
 
