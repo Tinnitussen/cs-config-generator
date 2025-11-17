@@ -27,31 +27,47 @@ def scrape_types(html_file_path, output_json_path):
 
     headers = [th.text.strip() for th in table.find_all('th')]
 
-    try:
-        name_index = headers.index('Name')
-        type_index = headers.index('Type')
-    except ValueError as e:
-        print(f"Error: Missing required columns in the table - {e}")
+    name_index = headers.index('Name') if 'Name' in headers else -1
+    type_index = headers.index('Type') if 'Type' in headers else -1
+    description_index = headers.index('Description') if 'Description' in headers else -1
+    flags_index = headers.index('Flags') if 'Flags' in headers else -1
+
+    if name_index == -1:
+        print("Error: 'Name' column not found in the table.")
         return
 
     data = {}
     for row in table.find_all('tr')[1:]:  # Skip header row
         cols = row.find_all('td')
-        if len(cols) > max(name_index, type_index):
-            name = cols[name_index].text.strip()
-            # The type can be a simple string or contain a tooltip with more details
+        if not cols:
+            continue
+
+        # Extract command name, stripping any default value
+        name_raw = cols[name_index].text.strip()
+        name = name_raw.split(' ')[0]
+
+        # Initialize data structure for the command
+        command_info = {}
+
+        # Extract type, description, and flags if they exist
+        if type_index != -1 and len(cols) > type_index:
             type_tag = cols[type_index]
             type_value = type_tag.find('span', {'data-tip': True})
             if type_value:
                 type_text = type_value['data-tip']
             else:
                 type_text = type_tag.text.strip()
-
-            # Clean up the type text if necessary
             if ':' in type_text:
                 type_text = type_text.split(':', 1)[0].strip()
+            command_info['type'] = type_text
 
-            data[name] = type_text
+        if description_index != -1 and len(cols) > description_index:
+            command_info['description'] = cols[description_index].text.strip()
+
+        if flags_index != -1 and len(cols) > flags_index:
+            command_info['flags'] = cols[flags_index].text.strip().split()
+
+        data[name] = command_info
 
     with open(output_json_path, 'w') as f:
         json.dump(data, f, indent=4)
