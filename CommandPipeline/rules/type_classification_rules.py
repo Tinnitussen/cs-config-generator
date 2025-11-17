@@ -19,10 +19,12 @@ def is_numeric_string(value: any) -> bool:
 
 # --- Classification Rules ---
 
-def rule_action(cmd):
-    """Rule 1: A command is an 'action' if its defaultValue is null."""
+# Rename: previously 'action' type, now 'command'.
+
+def rule_command(cmd):
+    """Rule 1: A command is a 'command' if its defaultValue is null."""
     if cmd['consoleData']['defaultValue'] is None:
-        return 'action', None
+        return 'command', None
     return None
 
 def rule_bool(cmd):
@@ -64,7 +66,7 @@ def rule_string(cmd):
 # The ordered list of rules to be applied.
 # The first rule to match will determine the type.
 CLASSIFICATION_RULES = [
-    rule_action,
+    rule_command,
     rule_bool,
     rule_bitmask,
     rule_numeric,
