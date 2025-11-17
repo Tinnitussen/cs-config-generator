@@ -44,7 +44,7 @@ public class UiDataJsonConverter : JsonConverter<UiData>
             SettingType.Float => JsonSerializer.Deserialize<FloatUiData>(jsonObject.ToJsonString(), options),
             SettingType.String => JsonSerializer.Deserialize<StringUiData>(jsonObject.ToJsonString(), options),
             SettingType.Enum => JsonSerializer.Deserialize<EnumUiData>(jsonObject.ToJsonString(), options),
-            SettingType.Action => JsonSerializer.Deserialize<ActionUiData>(jsonObject.ToJsonString(), options),
+            SettingType.Command => JsonSerializer.Deserialize<CommandUiData>(jsonObject.ToJsonString(), options),
             SettingType.Bitmask => JsonSerializer.Deserialize<BitmaskUiData>(jsonObject.ToJsonString(), options),
             SettingType.Unknown => JsonSerializer.Deserialize<UnknownUiData>(jsonObject.ToJsonString(), options),
             _ => throw new JsonException($"Unknown UiData type: {type}"),

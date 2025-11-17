@@ -113,9 +113,9 @@ public record EnumUiData : UiData
     public override object ConvertToType(object value) => Convert.ToInt32(value);
 }
 
-public record ActionUiData : UiData
+public record CommandUiData : UiData
 {
-    public override SettingType Type => SettingType.Action;
+    public override SettingType Type => SettingType.Command;
 
     [JsonIgnore]
     public override object DefaultValue => string.Empty;
