@@ -5,7 +5,7 @@ from typing import Any
 # Configuration for numeric type classification
 FLOAT_RATIO = 0.5
 MIN_INT_OCCURRENCES = 15
-PROTECTED_TYPES = ("float", "bool", "bitmask", "action")
+PROTECTED_TYPES = ("float", "bool", "bitmask", "command")  # renamed from 'action'
 UNKNOWN_TYPES = ("unknown",)
 
 def classify_command_by_usage(stats: Any) -> str:

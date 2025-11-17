@@ -75,7 +75,7 @@ class TestCommandPipeline(unittest.TestCase):
         processed_commands, _, _, _ = add_type_classification(commands, reclassify_all=True)
 
         self.assertEqual(processed_commands[0]['uiData']['type'], 'unknown') # 0 is numeric, but without context it's unknown
-        self.assertEqual(processed_commands[1]['uiData']['type'], 'action')
+        self.assertEqual(processed_commands[1]['uiData']['type'], 'command')
         self.assertEqual(processed_commands[2]['uiData']['type'], 'unknown') # 1 is numeric, but without context it's unknown
         self.assertEqual(processed_commands[3]['uiData']['type'], 'float')
         self.assertEqual(processed_commands[4]['uiData']['type'], 'float')

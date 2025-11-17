@@ -19,6 +19,8 @@ def is_numeric_string(value: any) -> bool:
 
 # --- Classification Rules ---
 
+# Rename: previously 'action' type, now 'command'.
+
 def rule_command(cmd):
     """Rule 1: A command is a 'command' if its defaultValue is null."""
     if cmd['consoleData']['defaultValue'] is None:
