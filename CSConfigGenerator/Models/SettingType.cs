@@ -29,7 +29,7 @@ public enum SettingType
     [Range(float.MinValue, float.MaxValue, ErrorMessage = "Value must be a valid numeric value")]
     Unknown,
 
-    Action
+    Command
 }
 
 /// <summary>
@@ -49,7 +49,7 @@ public class SettingTypeJsonConverter : JsonConverter<SettingType>
             "enum" => SettingType.Enum,
             "bitmask" => SettingType.Bitmask,
             "unknown" => SettingType.Unknown,
-            "action" => SettingType.Action,
+            "command" => SettingType.Command,
             _ => throw new JsonException($"Unknown setting type: {value}")
         };
     }
@@ -65,7 +65,7 @@ public class SettingTypeJsonConverter : JsonConverter<SettingType>
             SettingType.Enum => "enum",
             SettingType.Bitmask => "bitmask",
             SettingType.Unknown => "unknown",
-            SettingType.Action => "action",
+            SettingType.Command => "command",
             _ => throw new ArgumentException($"Unknown setting type: {value}")
         };
         writer.WriteStringValue(stringValue);

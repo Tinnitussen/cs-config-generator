@@ -32,8 +32,8 @@ public class SchemaServiceTests
     {
         var handler = new MockHttpMessageHandler();
         handler.AddJson("http://localhost/data/manifest.json", "[\n  \"data/commandschema/all_commands.json\"\n]");
-        // Use action type to avoid defaultValue property collision in serialization
-        handler.AddJson("http://localhost/data/commandschema/all_commands.json", "[ { \n  \"command\": \"test_command\", \n  \"consoleData\": { \"defaultValue\": \"1\" }, \n  \"uiData\": { \n    \"label\": \"Test Command\", \n    \"helperText\": \"A test command\", \n    \"type\": \"action\", \n    \"requiresCheats\": false \n  } \n} ]");
+        // Use command type to avoid defaultValue property collision in serialization
+        handler.AddJson("http://localhost/data/commandschema/all_commands.json", "[ { \n  \"command\": \"test_command\", \n  \"consoleData\": { \"defaultValue\": \"1\" }, \n  \"uiData\": { \n    \"label\": \"Test Command\", \n    \"helperText\": \"A test command\", \n    \"type\": \"command\", \n    \"requiresCheats\": false \n  } \n} ]");
 
         var httpClient = new HttpClient(handler) { BaseAddress = new Uri("http://localhost") };
         ISchemaService schemaService = new SchemaService(httpClient);
@@ -64,9 +64,9 @@ public class SchemaServiceTests
     }
 
     [Fact]
-    public void Deserialize_Action_With_Null_DefaultValue_Should_Work()
+    public void Deserialize_Command_With_Null_DefaultValue_Should_Work()
     {
-        const string json = "[ { \n  \"command\": \"+cl_show_team_equipment\", \n  \"consoleData\": { \"defaultValue\": \"\" }, \n  \"uiData\": { \n    \"label\": \"+cl_show_team_equipment\", \n    \"helperText\": \"Sample action command\", \n    \"type\": \"action\", \n    \"requiresCheats\": false, \n    \"defaultValue\": null \n  } \n} ]";
+        const string json = "[ { \n  \"command\": \"+cl_show_team_equipment\", \n  \"consoleData\": { \"defaultValue\": \"\" }, \n  \"uiData\": { \n    \"label\": \"+cl_show_team_equipment\", \n    \"helperText\": \"Sample command\", \n    \"type\": \"command\", \n    \"requiresCheats\": false, \n    \"defaultValue\": null \n  } \n} ]";
         var options = new System.Text.Json.JsonSerializerOptions(System.Text.Json.JsonSerializerDefaults.Web)
         {
             TypeInfoResolver = JsonContext.Default
