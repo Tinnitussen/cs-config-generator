@@ -126,6 +126,36 @@ Depending on the `type` of the command, the `uiData` object will have additional
 | Property       | Type   | Description                   |
 | :------------- | :----- | :---------------------------- |
 | `defaultValue` | Int    | The default value of the command. |
+
+#### For `type: "color"`
+
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | String | A space-separated string of numbers representing the color (e.g., "R G B"). |
+
+#### For `type: "uint32"`
+
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | Int    | The default value of the command. |
+
+#### For `type: "uint64"`
+
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | Int    | The default value of the command. |
+
+#### For `type: "vector2"`
+
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | String | A space-separated string of two numbers (e.g., "X Y"). |
+
+#### For `type: "vector3"`
+
+| Property       | Type   | Description                   |
+| :------------- | :----- | :---------------------------- |
+| `defaultValue` | String | A space-separated string of three numbers (e.g., "X Y Z"). |
 | `range`        | Object | The range of allowed values.  |
 
 #### For `type: "float"`
