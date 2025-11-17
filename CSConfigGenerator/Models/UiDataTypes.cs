@@ -72,6 +72,94 @@ public record FloatUiData : UiData
     public override object ConvertToType(object value) => Convert.ToSingle(value);
 }
 
+public record ColorUiData : UiData
+{
+    public override SettingType Type => SettingType.Color;
+
+    [JsonPropertyName("defaultValue")]
+    public required string RawDefaultValue { get; init; }
+
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
+
+    public override object ParseFromString(string value) => value;
+
+    public override string FormatForConfig(object value) => $"\"{(string)value}\"";
+
+    public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
+}
+
+public record UInt32UiData : UiData
+{
+    public override SettingType Type => SettingType.UInt32;
+
+    [JsonPropertyName("defaultValue")]
+    public uint RawDefaultValue { get; init; }
+
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
+
+    public override object ParseFromString(string value) => uint.Parse(value, CultureInfo.InvariantCulture);
+
+    public override string FormatForConfig(object value) => ((uint)value).ToString(CultureInfo.InvariantCulture);
+
+    public override object ConvertToType(object value) => Convert.ToUInt32(value);
+}
+
+public record UInt64UiData : UiData
+{
+    public override SettingType Type => SettingType.UInt64;
+
+    [JsonPropertyName("defaultValue")]
+    public ulong RawDefaultValue { get; init; }
+
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
+
+    public override object ParseFromString(string value) => ulong.Parse(value, CultureInfo.InvariantCulture);
+
+    public override string FormatForConfig(object value) => ((ulong)value).ToString(CultureInfo.InvariantCulture);
+
+    public override object ConvertToType(object value) => Convert.ToUInt64(value);
+}
+
+public record Vector2UiData : UiData
+{
+    public override SettingType Type => SettingType.Vector2;
+
+    [JsonPropertyName("defaultValue")]
+    public required string RawDefaultValue { get; init; }
+
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
+
+    public override object ParseFromString(string value) => value;
+
+    public override string FormatForConfig(object value) => $"\"{(string)value}\"";
+
+    public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
+}
+
+public record Vector3UiData : UiData
+{
+    public override SettingType Type => SettingType.Vector3;
+
+    [JsonPropertyName("defaultValue")]
+    public required string RawDefaultValue { get; init; }
+
+    [JsonIgnore]
+    public override object DefaultValue => RawDefaultValue;
+
+    [JsonPropertyName("range")]
+    public required NumericRange Range { get; init; }
+
+    public override object ParseFromString(string value) => value;
+
+    public override string FormatForConfig(object value) => $"\"{(string)value}\"";
+
+    public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
+}
+
 public record StringUiData : UiData
 {
     public override SettingType Type => SettingType.String;

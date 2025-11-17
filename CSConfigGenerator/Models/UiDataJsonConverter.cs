@@ -47,6 +47,11 @@ public class UiDataJsonConverter : JsonConverter<UiData>
             SettingType.Command => JsonSerializer.Deserialize<CommandUiData>(jsonObject.ToJsonString(), options),
             SettingType.Bitmask => JsonSerializer.Deserialize<BitmaskUiData>(jsonObject.ToJsonString(), options),
             SettingType.Unknown => JsonSerializer.Deserialize<UnknownUiData>(jsonObject.ToJsonString(), options),
+            SettingType.Color => JsonSerializer.Deserialize<ColorUiData>(jsonObject.ToJsonString(), options),
+            SettingType.UInt32 => JsonSerializer.Deserialize<UInt32UiData>(jsonObject.ToJsonString(), options),
+            SettingType.UInt64 => JsonSerializer.Deserialize<UInt64UiData>(jsonObject.ToJsonString(), options),
+            SettingType.Vector2 => JsonSerializer.Deserialize<Vector2UiData>(jsonObject.ToJsonString(), options),
+            SettingType.Vector3 => JsonSerializer.Deserialize<Vector3UiData>(jsonObject.ToJsonString(), options),
             _ => throw new JsonException($"Unknown UiData type: {type}"),
         };
     }
