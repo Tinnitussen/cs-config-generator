@@ -37,53 +37,20 @@ This project is built with .NET 9 and Blazor WebAssembly. The core of the applic
 
 ### JSON Schema
 
-The application's UI is dynamically generated from a set of JSON files located in `CSConfigGenerator/wwwroot/data/commandschema/`. To add or modify settings, you will need to edit these files. The structure of these files is documented in `SCHEMA.md`.
+The application's UI is dynamically generated from a set of JSON files located in `CSConfigGenerator/wwwroot/data/commandschema/`. The structure of these files is documented in `SCHEMA.md`.
 
-## Command Pipeline Directory
+### Data Processing Pipeline
 
-The `CommandPipeline/` directory contains Python scripts for parsing and processing Counter-Strike 2 console commands. These tools maintain the JSON schema files that power the application's UI.
+The `CommandPipeline/` directory contains a standalone Python project for processing Counter-Strike 2 console commands and generating the JSON schema files.
 
-### Quick Start - Processing Pipeline
+**For maintainers**: If you need to update the command data from a new CS2 snapshot, see `PIPELINE.md` for complete documentation on running the data processing pipeline.
 
-To process a new command snapshot from Counter-Strike 2:
+## Documentation
 
-1.  Place your `all_commands-YYYY-DD-MM.txt` file in `CommandPipeline/data/`
-2.  Run the pipeline: `python CommandPipeline/pipeline.py`
-3.  Follow the interactive prompts to complete all processing steps
-
-The pipeline will guide you through:
-- **Parsing** - Extract commands from the snapshot file.
-- **Type Classification** - Determine command data types (bool, float, string, etc.).
-- **Numeric Type Detection** - Refine numeric types by analyzing config files.
-- **Master File Creation** - Create a master `commands.json` file for the 'All Commands' UI page.
-
-### Directory Structure
-
-```
-CommandPipeline/
-├── pipeline.py              # Main pipeline runner (START HERE)
-├── rules/                   # Classification rules (separated from scripts)
-│   ├── type_classification_rules.py      # Rules for determining command data types
-│   └── parsing_validation_rules.json     # Rules for validating command parsing
-├── scripts/                 # Processing scripts (called by pipeline)
-│   ├── parse_commands.py              # Step 1: Parse snapshot file
-│   ├── command_classification.py      # Step 2: Classify command data types
-│   ├── numeric_detection.py           # Step 3: Refine numeric types
-│   ├── create_all_commands.py         # Step 4: Create master command file for UI
-├── utils/                   # Utility scripts and modules
-│   └── paths.py                     # Shared path definitions
-└── data/                    # Input and intermediate data files
-    ├── all_commands-*.txt           # Command snapshots from CS2
-    ├── commands.json                # Main processed commands file
-```
-
-### Pipeline Benefits
-
-- **Interactive**: Review each step before continuing
-- **Error Recovery**: Stops on failures so you can fix issues
-- **Automated**: No manual file editing required
-- **Visual Feedback**: Clear progress indicators and colored output
-- **Flexible**: Press 'q' to abort at any review point
+- **[SCHEMA.md](SCHEMA.md)** - JSON schema specification for command data files
+- **[PIPELINE.md](PIPELINE.md)** - Command processing pipeline documentation (for maintainers)
+- **[PROPOSAL.md](PROPOSAL.md)** - Technical design decisions and architecture rationale
+- **[AGENTS.md](AGENTS.md)** - Project context for AI coding assistants
 
 ## Contributing
 
