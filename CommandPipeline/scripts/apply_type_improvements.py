@@ -139,16 +139,42 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
 
     return commands, stats
 
+def export_unknown_overrides(data_dir, commands):
+    """Append unknown uiData.type commands to manual_type_overrides.json with value 'unknown'."""
+    overrides_path = os.path.join(data_dir, 'manual_type_overrides.json')
+    if not os.path.exists(overrides_path):
+        create_manual_overrides_file(data_dir)
+    with open(overrides_path, 'r', encoding='utf-8') as f:
+        overrides = json.load(f)
+    # Collect existing (excluding meta keys)
+    existing_keys = {k for k in overrides.keys() if not k.startswith('_')}
+    unknown_cmds = [c['command'] for c in commands if c.get('uiData', {}).get('type') == 'unknown']
+    added = []
+    for cmd in unknown_cmds:
+        if cmd not in existing_keys:
+            overrides[cmd] = 'unknown'
+            added.append(cmd)
+    if added:
+        with open(overrides_path, 'w', encoding='utf-8') as f:
+            json.dump(overrides, f, indent=2)
+    print(f"Export unknown overrides: {len(added)} added, {len(unknown_cmds)} unknown total.")
+    if added:
+        print("Added unknown placeholders:")
+        for a in added:
+            print(f"  - {a}")
+    else:
+        print("No new unknown commands to add.")
+
 def main():
     parser = argparse.ArgumentParser(description="Apply type improvements to commands.json")
     parser.add_argument('--dry-run', action='store_true', help="Show what would be changed without modifying files")
+    parser.add_argument('--export-unknown', action='store_true', help="Append remaining unknown commands to manual_type_overrides.json with REVIEW placeholders")
     args = parser.parse_args()
 
     # Setup paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
     tools_dir = os.path.dirname(script_dir)
     data_dir = os.path.join(tools_dir, 'data')
-
     commands_path = os.path.join(data_dir, 'commands.json')
 
     print("=" * 60)
@@ -156,25 +182,25 @@ def main():
     print("=" * 60)
 
     if args.dry_run:
-        print("\n[!] DRY RUN MODE - No files will be modified\n")
+        print("\n[!] DRY RUN MODE - No files will be modified (except export of unknown overrides, which always writes)\n")
 
     # Load data
     print("\n1. Loading data files...")
     manual_overrides = load_manual_overrides(data_dir)
     print(f"   Loaded {len(manual_overrides)} manual overrides")
-
     scraped_types = load_scraped_types(data_dir)
     print(f"   Loaded {len(scraped_types)} scraped types")
-
     with open(commands_path, 'r', encoding='utf-8') as f:
         commands = json.load(f)
     print(f"   Loaded {len(commands)} commands")
 
+    if args.export_unknown:
+        print("\n[EXPORT] Appending unknown commands to manual_type_overrides.json ...")
+        export_unknown_overrides(data_dir, commands)
+
     # Apply improvements
     print("\n2. Applying type improvements...")
-    updated_commands, stats = apply_type_improvements(
-        commands, manual_overrides, scraped_types, dry_run=args.dry_run
-    )
+    updated_commands, stats = apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=args.dry_run)
 
     # Save results
     if not args.dry_run:
@@ -185,7 +211,7 @@ def main():
     else:
         print("\n3. Skipping save (dry run mode)")
 
-    # Print summary
+    # Summary
     print("\n" + "=" * 60)
     print("SUMMARY")
     print("=" * 60)
@@ -194,11 +220,8 @@ def main():
     print(f"Scraped types applied: {stats['scraped_types_applied']}")
     print(f"Unknown types remaining: {stats['unknown_remaining']}")
     print(f"Commands without uiData: {stats['skipped_no_uidata']}")
-
     if stats['unknown_remaining'] > 0:
         print(f"\n[!] {stats['unknown_remaining']} commands still have 'unknown' type")
-        print("   These may need manual review or additional scraped data")
-
     if args.dry_run:
         print("\n[OK] Dry run complete - run without --dry-run to apply changes")
     else:
@@ -206,4 +229,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

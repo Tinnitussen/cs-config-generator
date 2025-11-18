@@ -180,7 +180,11 @@ Depending on the `type` of the command, the `uiData` object will have additional
 
 #### For `type: "command"`
 
-This command type has no additional properties.
+Commands represent console actions rather than configurable variables. They may accept arguments.
+
+| Property    | Type  | Description                                                                                      |
+| :---------- | :---- | :----------------------------------------------------------------------------------------------- |
+| `arguments` | Array | An array of argument definitions. Empty by default; can be manually populated for known commands. |
 
 #### For `type: "bitmask"`
 
