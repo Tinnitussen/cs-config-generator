@@ -2,7 +2,7 @@
   "_comment": "Manual type overrides for commands where automated classification needs correction. Takes precedence over all other sources.",
   "ai_debug_scripted_sequence": "bool",
   "demo_pauseatservertick": "command",
-  "skill": "int",
+  "skill": "uint32",
   "fog_color": "vector3",
   "fog_colorskybox": "color",
   "hidehud": "int",

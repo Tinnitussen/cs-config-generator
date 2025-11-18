@@ -21,6 +21,11 @@ namespace CSConfigGenerator.Services;
 [JsonSerializable(typeof(BitmaskUiData))]
 [JsonSerializable(typeof(UnknownUiData))]
 [JsonSerializable(typeof(NumericRange))]
+[JsonSerializable(typeof(UInt32UiData))]
+[JsonSerializable(typeof(UInt64UiData))]
+[JsonSerializable(typeof(ColorUiData))]
+[JsonSerializable(typeof(Vector2UiData))]
+[JsonSerializable(typeof(Vector3UiData))]
 public partial class JsonContext : JsonSerializerContext
 {
 }
