@@ -166,17 +166,32 @@ public record Vector3UiData : UiData
             float.Parse(parts[2], CultureInfo.InvariantCulture)
         };
     }
+
+    // Helper to validate vector components against the range
+    private void ValidateVectorRange(float[] vector)
+    {
+        if (Range.MinValue.HasValue || Range.MaxValue.HasValue)
+        {
+            for (int i = 0; i < vector.Length; i++)
+            {
+                if (Range.MinValue.HasValue && vector[i] < Range.MinValue.Value)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(vector),
+                        $"Vector3 component {i} ({vector[i]}) is below minimum value {Range.MinValue.Value}.");
+                }
+                if (Range.MaxValue.HasValue && vector[i] > Range.MaxValue.Value)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(vector),
+                        $"Vector3 component {i} ({vector[i]}) is above maximum value {Range.MaxValue.Value}.");
+                }
+            }
+        }
+    }
+
     public override object ParseFromString(string value)
     {
         var vector = ParseVector3(value);
-        if (Range.MinValue.HasValue && (vector[0] < Range.MinValue.Value || vector[1] < Range.MinValue.Value || vector[2] < Range.MinValue.Value))
-        {
-            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
-        }
-        if (Range.MaxValue.HasValue && (vector[0] > Range.MaxValue.Value || vector[1] > Range.MaxValue.Value || vector[2] > Range.MaxValue.Value))
-        {
-            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
-        }
+        ValidateVectorRange(vector);
         return value;
     }
 
@@ -186,14 +201,7 @@ public record Vector3UiData : UiData
     {
         var str = value?.ToString() ?? string.Empty;
         var vector = ParseVector3(str);
-        if (Range.MinValue.HasValue && (vector[0] < Range.MinValue.Value || vector[1] < Range.MinValue.Value || vector[2] < Range.MinValue.Value))
-        {
-            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
-        }
-        if (Range.MaxValue.HasValue && (vector[0] > Range.MaxValue.Value || vector[1] > Range.MaxValue.Value || vector[2] > Range.MaxValue.Value))
-        {
-            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
-        }
+        ValidateVectorRange(vector);
         return str;
     }
 }
