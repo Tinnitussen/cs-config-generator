@@ -5,7 +5,9 @@ CS Commands Processing Pipeline Runner
 This script streamlines the entire pipeline process:
 1. Parse commands from a snapshot file.
 2. Classify command data types (bool, string, etc.).
-3. Create a master data file for the 'All Commands' UI.
+3. Detect numeric types from player/server configs.
+3.5. Apply type improvements (manual overrides + scraped types).
+4. Create a master data file for the 'All Commands' UI.
 
 Each step waits for user review before continuing.
 Can be run non-interactively with the --non-interactive flag.
@@ -184,6 +186,14 @@ def main(args):
     if not wait_for_user_input("numeric type detection", args.non_interactive):
         return 1
 
+    # Step 3.5: Apply type improvements (manual overrides + scraped types)
+    print_step("3.5", "Apply Type Improvements")
+    print(f"\n{Colors.OKCYAN}Applying manual overrides and scraped types to remaining unknown commands...{Colors.ENDC}")
+    type_improvements_script = scripts_dir / "apply_type_improvements.py"
+    if not run_script(type_improvements_script, "Type improvements"):
+        return 1
+    if not wait_for_user_input("type improvements", args.non_interactive):
+        return 1
 
     # Step 4: Create All Commands Data for UI
     print_step(4, "Create 'All Commands' Data File")
@@ -217,3 +227,4 @@ if __name__ == "__main__":
     except Exception as e:
         print_error(f"An unexpected error occurred: {e}")
         sys.exit(1)
+

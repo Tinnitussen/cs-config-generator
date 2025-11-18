@@ -157,7 +157,7 @@ public class UiDataJsonConverter : JsonConverter<UiData>
 
 ## 3. "Before and After" Comparison
 
-Here is a comparison of the current and proposed datastructures for an `"integer"` command.
+Here is a comparison of the current and proposed datastructures for an `"int"` command.
 
 ### Before
 
@@ -180,7 +180,7 @@ public record UiData
 {
   "uiData": {
     "label": "Integer Label",
-    "type": "integer",
+    "type": "int",
     "defaultValue": 10,
     "range": {
       "minValue": 0,
@@ -198,7 +198,7 @@ public record UiData
 ```csharp
 public record IntegerUiData : UiData
 {
-    public override SettingType Type => SettingType.Integer;
+    public override SettingType Type => SettingType.Int;
     public int DefaultValue { get; init; }
     public required NumericRange Range { get; init; }
 }
@@ -206,13 +206,13 @@ public record IntegerUiData : UiData
 
 **JSON**
 
-The JSON structure will remain the same, which means we won't need to make any changes to our existing data files.
+The JSON structure remains the same, which means no changes are needed to existing data files.
 
 ```json
 {
   "uiData": {
     "label": "Integer Label",
-    "type": "integer",
+    "type": "int",
     "defaultValue": 10,
     "range": {
       "minValue": 0,
