@@ -70,9 +70,6 @@ def add_type_classification(commands: List[Dict], reclassify_all: bool = False) 
             cmd['uiData']['range'] = {"minValue": -1, "maxValue": -1, "step": -1}
         elif cmd_type == 'bitmask' and 'options' not in cmd['uiData']:
             cmd['uiData']['options'] = {}
-        elif cmd_type == 'command' and 'arguments' not in cmd['uiData']:
-            # Provide empty arguments list for command-type items (previously 'action')
-            cmd['uiData']['arguments'] = []
 
         processed_commands.append(cmd)
         type_counts[cmd_type] = type_counts.get(cmd_type, 0) + 1
