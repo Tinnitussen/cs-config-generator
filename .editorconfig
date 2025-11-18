@@ -40,14 +40,14 @@ csharp_space_between_method_call_parameter_list_parentheses = false
 csharp_space_between_parentheses_and_empty_parameter_list = false
 
 # Expression-bodied members
-csharp_style_expression_bodied_methods = false
-csharp_style_expression_bodied_constructors = false
-csharp_style_expression_bodied_operators = false
-csharp_style_expression_bodied_properties = false
-csharp_style_expression_bodied_indexers = false
-csharp_style_expression_bodied_accessors = false
-csharp_style_expression_bodied_lambdas = true
-csharp_style_expression_bodied_local_functions = false
+csharp_style_expression_bodied_methods = false:none
+csharp_style_expression_bodied_constructors = false:none
+csharp_style_expression_bodied_operators = false:none
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_expression_bodied_indexers = true:suggestion
+csharp_style_expression_bodied_accessors = true:suggestion
+csharp_style_expression_bodied_lambdas = true:silent
+csharp_style_expression_bodied_local_functions = false:none
 
 # var preferences
 csharp_style_var_for_built_in_types = true
