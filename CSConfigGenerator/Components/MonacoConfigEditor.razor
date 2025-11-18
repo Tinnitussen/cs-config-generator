@@ -1,0 +1,110 @@
+@using BlazorMonaco
+@using BlazorMonaco.Editor
+@using BlazorMonaco.Languages
+@inject IJSRuntime JSRuntime
+
+<StandaloneCodeEditor @ref="_editor" Id="monaco-editor" ConstructionOptions="EditorConstructionOptions" OnDidInit="EditorOnDidInit" />
+
+@code {
+    private StandaloneCodeEditor _editor = null!;
+    private const string LanguageId = "cs2-config";
+
+    private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
+    {
+        return new StandaloneEditorConstructionOptions
+        {
+            AutomaticLayout = true,
+            Language = LanguageId,
+            Theme = "vs-dark",
+            Value = "// Welcome to the new CS2 Config Editor!\n" +
+                    "// Type a command to see autocompletion.\n\n" +
+                    "cl_crosshaircolor 5\n" +
+                    "bind \"w\" \"+forward\"\n" +
+                    "alias \"jumpthrow\" \"+jump;-attack;-jump\""
+        };
+    }
+
+    private async Task EditorOnDidInit()
+    {
+        await BlazorMonaco.Languages.Global.Register(JSRuntime, LanguageId);
+        await BlazorMonaco.Languages.Global.SetLanguageConfiguration(JSRuntime, LanguageId, GetLanguageConfiguration());
+        await BlazorMonaco.Languages.Global.SetMonarchTokensProvider(JSRuntime, LanguageId, GetMonarchTokensProvider());
+        await BlazorMonaco.Languages.Global.RegisterCompletionItemProvider(JSRuntime, LanguageId, new CompletionItemProvider
+        {
+            TriggerCharacters = new List<string> { " " },
+            ProvideCompletionItems = "GetCompletionItems"
+        });
+    }
+
+    [JSInvokable]
+    public static Task<CompletionList> GetCompletionItems(TextModel model, Position position, CompletionContext context, CancellationToken token)
+    {
+        var suggestions = GetCommands().Select(command => new CompletionItem
+        {
+            Label = command,
+            Kind = CompletionItemKind.Keyword,
+            InsertText = command
+        }).ToList();
+
+        return Task.FromResult(new CompletionList { Suggestions = suggestions });
+    }
+
+    private static List<string> GetCommands()
+    {
+        return new List<string>
+        {
+            "alias", "bind", "cl_crosshaircolor", "cl_crosshairdot", "cl_crosshairsize", "cl_crosshairstyle",
+            "cl_crosshairthickness", "cl_drawhud", "cl_hud_color", "cl_showfps", "con_enable", "disconnect",
+            "echo", "exec", "exit", "fov_cs_debug", "fps_max", "host_writeconfig", "hud_scaling", "jointeam",
+            "kill", "net_graph", "quit", "r_drawtracers_firstperson", "say", "say_team", "sensitivity",
+            "sv_cheats", "toggle", "unbindall", "voice_enable", "volume"
+        };
+    }
+
+    private LanguageConfiguration GetLanguageConfiguration()
+    {
+        return new LanguageConfiguration
+        {
+            Comments = new CommentRule
+            {
+                LineComment = "//"
+            },
+            AutoClosingPairs = new List<AutoClosingPair>
+            {
+                new AutoClosingPair { Open = "\"", Close = "\""}
+            }
+        };
+    }
+
+    private MonarchTokensProvider GetMonarchTokensProvider()
+    {
+        return new MonarchTokensProvider
+        {
+            Keywords = new List<string> { "bind", "alias", "exec", "echo", "toggle" },
+            Tokenizer = new Dictionary<string, MonarchRule[]>
+            {
+                {
+                    "root", new MonarchRule[]
+                    {
+                        new MonarchRule { Regex = @"^\s*\/\/.*$", Action = new MonarchAction { Token = "comment" } },
+                        new MonarchRule
+                        {
+                            Regex = @"@keywords",
+                            Action = new MonarchAction { Token = "keyword" }
+                        },
+                        new MonarchRule { Regex = @"[a-zA-Z_][\w\.]*", Action = new MonarchAction { Token = "identifier" } },
+                        new MonarchRule { Regex = @"-?[\d\.]+", Action = new MonarchAction { Token = "number" } },
+                        new MonarchRule { Regex = @"""", Action = new MonarchAction { Token = "string", Bracket = "@open", Next = "@string" } }
+                    }
+                },
+                {
+                    "string", new MonarchRule[]
+                    {
+                        new MonarchRule { Regex = @"[^""]+", Action = new MonarchAction { Token = "string" } },
+                        new MonarchRule { Regex = @"""", Action = new MonarchAction { Token = "string", Bracket = "@close", Next = "@pop" } }
+                    }
+                }
+            }
+        };
+    }
+}
