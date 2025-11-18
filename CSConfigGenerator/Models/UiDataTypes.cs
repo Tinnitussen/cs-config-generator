@@ -153,11 +153,49 @@ public record Vector3UiData : UiData
     [JsonPropertyName("range")]
     public required NumericRange Range { get; init; }
 
-    public override object ParseFromString(string value) => value;
+    // Helper to parse a vector string "x y z" into a float array
+    private static float[] ParseVector3(string value)
+    {
+        var parts = value.Split(' ');
+        if (parts.Length != 3)
+            throw new FormatException("Vector3 value must have three components separated by spaces.");
+        return new float[]
+        {
+            float.Parse(parts[0], CultureInfo.InvariantCulture),
+            float.Parse(parts[1], CultureInfo.InvariantCulture),
+            float.Parse(parts[2], CultureInfo.InvariantCulture)
+        };
+    }
+    public override object ParseFromString(string value)
+    {
+        var vector = ParseVector3(value);
+        if (Range.MinValue.HasValue && (vector[0] < Range.MinValue.Value || vector[1] < Range.MinValue.Value || vector[2] < Range.MinValue.Value))
+        {
+            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
+        }
+        if (Range.MaxValue.HasValue && (vector[0] > Range.MaxValue.Value || vector[1] > Range.MaxValue.Value || vector[2] > Range.MaxValue.Value))
+        {
+            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
+        }
+        return value;
+    }
 
     public override string FormatForConfig(object value) => $"\"{(string)value}\"";
 
-    public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
+    public override object ConvertToType(object? value)
+    {
+        var str = value?.ToString() ?? string.Empty;
+        var vector = ParseVector3(str);
+        if (Range.MinValue.HasValue && (vector[0] < Range.MinValue.Value || vector[1] < Range.MinValue.Value || vector[2] < Range.MinValue.Value))
+        {
+            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
+        }
+        if (Range.MaxValue.HasValue && (vector[0] > Range.MaxValue.Value || vector[1] > Range.MaxValue.Value || vector[2] > Range.MaxValue.Value))
+        {
+            throw new ArgumentOutOfRangeException($"Vector3 component out of range [{Range.MinValue.Value}, {Range.MaxValue.Value}].");
+        }
+        return str;
+    }
 }
 
 public record StringUiData : UiData
