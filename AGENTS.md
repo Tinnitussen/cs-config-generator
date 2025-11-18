@@ -1,30 +1,30 @@
-# Environment Setup
+# Project Context
 
-This is a Blazor standalone WASM project.
+## Overview
 
-## .NET Core SDK Installation
+Blazor WebAssembly application for Counter-Strike 2 console command reference. Deployed to GitHub Pages.
 
-To build and test this project, you will need to install the .NET Core SDK.
+**Tech Stack:**
+- .NET 9.0 Blazor WASM (standalone)
+- Bootstrap 5 + Bootstrap Icons
 
+## Setup
+
+Install .NET 9.0 SDK:
 ```bash
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 chmod +x ./dotnet-install.sh
 ./dotnet-install.sh --channel 9.0
-```
-
-## Environment variables
-
-After installation, you need to add the `.dotnet` directory to your path.
-
-```bash
 export PATH=$PATH:$HOME/.dotnet
 ```
 
-## Build and Test
-
-Once the SDK is installed and configured, you can build and test the project using the following commands:
-
+Build/Test:
 ```bash
 dotnet build
 dotnet test
 ```
+
+## Coding Standards
+
+**CSS Units:** Prefer `rem` (global sizing) and `em` (component-relative) over `px` (use only for borders/fixed elements).
+
