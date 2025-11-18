@@ -186,14 +186,14 @@ def main(args):
     if not wait_for_user_input("numeric type detection", args.non_interactive):
         return 1
 
-    # Step 3.5: Apply type improvements (manual overrides + scraped types)
-    print_step("3.5", "Apply Type Improvements")
-    print(f"\n{Colors.OKCYAN}Applying manual overrides and scraped types to remaining unknown commands...{Colors.ENDC}")
-    type_improvements_script = scripts_dir / "apply_type_improvements.py"
-    if not run_script(type_improvements_script, "Type improvements"):
-        return 1
-    if not wait_for_user_input("type improvements", args.non_interactive):
-        return 1
+    # # Step 3.5: Apply type improvements (manual overrides + scraped types)
+    # print_step("3.5", "Apply Type Improvements")
+    # print(f"\n{Colors.OKCYAN}Applying manual overrides and scraped types to remaining unknown commands...{Colors.ENDC}")
+    # type_improvements_script = scripts_dir / "apply_type_improvements.py"
+    # if not run_script(type_improvements_script, "Type improvements"):
+    #     return 1
+    # if not wait_for_user_input("type improvements", args.non_interactive):
+    #     return 1
 
     # Step 4: Create All Commands Data for UI
     print_step(4, "Create 'All Commands' Data File")
