@@ -1,0 +1,14 @@
+{
+  "_comment": "Manual type overrides for commands where automated classification needs correction. Takes precedence over all other sources.",
+  "ai_debug_scripted_sequence": "bool",
+  "demo_pauseatservertick": "command",
+  "skill": "int",
+  "fog_color": "vector3",
+  "fog_colorskybox": "color",
+  "hidehud": "int",
+  "mat_overdraw_color": "color",
+  "mat_shading_complexity_color": "color",
+  "r_light_probe_volume_debug_colors": "bool",
+  "r_light_probe_volume_debug_grid_albedo": "color"
+}
+
