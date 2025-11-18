@@ -66,9 +66,18 @@ class TestScraping(unittest.TestCase):
             data = json.load(f)
 
         self.assertEqual(data, {
-            "sv_cheats": "Bool",
-            "version": "Action",
-            "cl_showfps": "Enum"
+            "sv_cheats": {
+                "type": "Bool",
+                "description": "Enables cheats on the server."
+            },
+            "version": {
+                "type": "Action",
+                "description": "Print version info string."
+            },
+            "cl_showfps": {
+                "type": "Enum",
+                "description": "Draws framerate in corner of screen."
+            }
         })
 
 if __name__ == '__main__':
