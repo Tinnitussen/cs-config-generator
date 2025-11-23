@@ -7,7 +7,7 @@ The current command datastructure, while functional, suffers from a lack of type
 This approach has several disadvantages:
 
 *   **Lack of Type Safety:** There is no way to enforce at compile time that a `UiData` object of type `"integer"` will have a `range` property. This can lead to runtime errors and makes the code more difficult to reason about.
-*   **Difficult to Validate:** It's challenging to validate that a given `UiData` object is well-formed. For example, an `enum` command must have an `options` property, but this is not enforced by the C# type system.
+*   **Difficult to Validate:** It's challenging to validate that a given `UiData` object is well-formed. For example, a `bitmask` command must have an `options` property, but this is not enforced by the C# type system.
 *   **Poor Discoverability:** When working with a `UiData` object, it's not immediately clear which properties are relevant for a given command type. This makes the code harder to understand and maintain.
 *   **Scalability Issues:** Adding a new command type requires modifying the `UiData` class and adding more optional properties, further complicating the structure.
 
@@ -97,27 +97,12 @@ public record StringUiData : UiData
 }
 ```
 
-**For `type: "enum"`**
+**For `type: "command"`**
 
 ```csharp
-public record EnumUiData : UiData
+public record CommandUiData : UiData
 {
-    public override SettingType Type => SettingType.Enum;
-
-    [JsonPropertyName("defaultValue")]
-    public required string DefaultValue { get; init; }
-
-    [JsonPropertyName("options")]
-    public required Dictionary<string, string> Options { get; init; }
-}
-```
-
-**For `type: "action"`**
-
-```csharp
-public record ActionUiData : UiData
-{
-    public override SettingType Type => SettingType.Action;
+    public override SettingType Type => SettingType.Command;
 }
 ```
 

@@ -227,26 +227,6 @@ public record StringUiData : UiData
     public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
 }
 
-public record EnumUiData : UiData
-{
-    public override SettingType Type => SettingType.Enum;
-
-    [JsonPropertyName("defaultValue")]
-    public required string RawDefaultValue { get; init; }
-
-    [JsonIgnore]
-    public override object DefaultValue => int.Parse(RawDefaultValue, CultureInfo.InvariantCulture);
-
-    [JsonPropertyName("options")]
-    public required Dictionary<string, string> Options { get; init; }
-
-    public override object ParseFromString(string value) => int.Parse(value, CultureInfo.InvariantCulture);
-
-    public override string FormatForConfig(object value) => ((int)value).ToString(CultureInfo.InvariantCulture);
-
-    public override object ConvertToType(object value) => Convert.ToInt32(value);
-}
-
 public record CommandUiData : UiData
 {
     public override SettingType Type => SettingType.Command;
