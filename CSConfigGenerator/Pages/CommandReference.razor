@@ -15,7 +15,7 @@
         <div class="card bg-light mb-2">
             <div class="card-body p-2">
                 <div class="row g-2 align-items-center">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="search-input-wrapper">
                             <div class="autocomplete-wrapper">
                                 <input class="autocomplete-ghost" type="text" value="@GhostText" readonly tabindex="-1" />
@@ -57,18 +57,6 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <div class="dropdown filter-dropdown">
-                            <button class="btn btn-sm btn-light dropdown-toggle w-100 filter-button text-start" type="button" @onclick="() => showStatusDropdown = !showStatusDropdown" aria-expanded="@showStatusDropdown">
-                                @GetStatusFilterText()
-                            </button>
-                            <ul class="dropdown-menu @(showStatusDropdown ? "show" : "")" style="width: 100%;">
-                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus(null)' @onclick:preventDefault>All Statuses</a></li>
-                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus("true")' @onclick:preventDefault>Included</a></li>
-                                <li><a class="dropdown-item" href="#" @onclick='() => SelectStatus("false")' @onclick:preventDefault>Not Included</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
                         <div class="filter-checkbox-wrapper">
                             <div class="form-check form-switch d-flex flex-column align-items-center justify-content-center">
                                 <label class="form-check-label" for="cheatsFilter">Cheats Only</label>
@@ -93,35 +81,14 @@
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var command in paginatedCommands)
                         {
-                            <tr @onclick="() => selectedCommand = command" @ondblclick="() => ToggleCommand(command)" class="@(selectedCommand == command ? "table-active" : "")">
+                            <tr @onclick="() => selectedCommand = command" class="@(selectedCommand == command ? "table-active" : "")">
                                 <td><code><HighlightText Text="@command.Command" Highlight="@searchTerm" /></code></td>
                                 <td><HighlightText Text="@command.UiData.HelperText" Highlight="@searchTerm" /></td>
-                                <td class="text-center">
-                                    <span class="badge @GetStatusBadgeClass(command)">
-                                        @(IsInConfig(command) ? "Included" : "Not Included")
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    @if (!IsInConfig(command))
-                                    {
-                                        <button class="btn btn-xs btn-outline-success" @onclick="() => AddCommand(command)">
-                                            Add
-                                        </button>
-                                    }
-                                    else
-                                    {
-                                        <button class="btn btn-xs btn-outline-danger" @onclick="() => RemoveCommand(command)">
-                                            Remove
-                                        </button>
-                                    }
-                                </td>
                             </tr>
                         }
                     </tbody>
@@ -140,21 +107,16 @@
         }
     </div>
     <div class="col-lg-4 sticky-editor">
-        <ConfigEditor PresetType="@currentPresetType" @key="currentPresetType"/>
+        <ConfigEditor PresetType="player" />
     </div>
 </div>
 
 @code {
-    // Using a string instead of enum for preset type to match with ConfigEditor's PresetType parameter
-    private string currentPresetType = "player";
-
     // Private fields - no need for complex properties
     private string searchTerm = string.Empty;
-    private string? selectedInclusion;
     private bool requiresCheatsFilter;
     private Dictionary<SettingType, bool> selectedTypes = new();
     private bool showTypeDropdown = false;
-    private bool showStatusDropdown = false;
     private bool isAnyFilterActive = false;
 
     private List<CommandDefinition> allCommands = [];
@@ -191,16 +153,6 @@
             ApplyFiltersWithoutPageReset();
             StateHasChanged();
         });
-    }
-
-    private void SwitchPresetType(string presetType)
-    {
-        if (currentPresetType != presetType)
-        {
-            currentPresetType = presetType;
-            InitializeCommands();
-            ApplyFilters();
-        }
     }
 
     private void InitializeCommands()
@@ -282,7 +234,6 @@
     private void UpdateFilterActiveStatus()
     {
         isAnyFilterActive = !string.IsNullOrEmpty(searchTerm) ||
-                            !string.IsNullOrEmpty(selectedInclusion) ||
                             requiresCheatsFilter ||
                             selectedTypes.Any(st => st.Value);
     }
@@ -295,8 +246,6 @@
                         c.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
             .Where(c => !selectedTypes.Any(st => st.Value) ||
                         selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(c.UiData.Type))
-            .Where(c => string.IsNullOrEmpty(selectedInclusion) ||
-                        IsInConfig(c).ToString().Equals(selectedInclusion, StringComparison.OrdinalIgnoreCase))
             .Where(c => !requiresCheatsFilter || c.UiData.RequiresCheats)
             .ToList();
     }
@@ -320,22 +269,9 @@
         }
     }
 
-    private void ToggleCommand(CommandDefinition command)
-    {
-        if (IsInConfig(command))
-        {
-            RemoveCommand(command);
-        }
-        else
-        {
-            AddCommand(command);
-        }
-    }
-
     private void ClearFilters()
     {
         searchTerm = string.Empty;
-        selectedInclusion = null;
         requiresCheatsFilter = false;
 
         // Clear all type selections
@@ -358,45 +294,5 @@
             1 => selectedTypes.First(st => st.Value).Key.ToString(),
             _ => $"{selectedCount} Types"
         };
-    }
-
-    private string GetStatusFilterText()
-    {
-        return selectedInclusion switch
-        {
-            "true" => "Included",
-            "false" => "Not Included",
-            _ => "All Statuses",
-        };
-    }
-
-    private void SelectStatus(string? status)
-    {
-        selectedInclusion = status;
-        showStatusDropdown = false;
-        ApplyFilters();
-    }
-
-    private void AddCommand(CommandDefinition command)
-    {
-        ConfigStateService.SetValue(command.Command, command.ConsoleData.DefaultValue);
-        ConfigStateService.SetIncluded(command.Command, true);
-        ToastService.ShowToast($"'{command.Command}' has been added to your config.", ToastLevel.Success);
-    }
-
-    private void RemoveCommand(CommandDefinition command)
-    {
-        ConfigStateService.SetIncluded(command.Command, false);
-        ToastService.ShowToast($"'{command.Command}' has been removed from your config.", ToastLevel.Warning);
-    }
-
-    private bool IsInConfig(CommandDefinition command)
-    {
-        return ConfigStateService.GetSetting(command.Command).IsInConfigEditor;
-    }
-
-    private string GetStatusBadgeClass(CommandDefinition command)
-    {
-        return IsInConfig(command) ? "bg-success" : "bg-secondary";
     }
 }
