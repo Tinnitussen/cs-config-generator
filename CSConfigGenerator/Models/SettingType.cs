@@ -20,8 +20,6 @@ public enum SettingType
     Float,
 
     String,
-    [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
-    Enum,
 
     [Range(int.MinValue, int.MaxValue, ErrorMessage = "Value must be a valid integer")]
     Bitmask,
@@ -51,7 +49,6 @@ public class SettingTypeJsonConverter : JsonConverter<SettingType>
             "int" => SettingType.Int,
             "float" => SettingType.Float,
             "string" => SettingType.String,
-            "enum" => SettingType.Enum,
             "bitmask" => SettingType.Bitmask,
             "unknown" => SettingType.Unknown,
             "command" => SettingType.Command,
@@ -72,7 +69,6 @@ public class SettingTypeJsonConverter : JsonConverter<SettingType>
             SettingType.Int => "int",
             SettingType.Float => "float",
             SettingType.String => "string",
-            SettingType.Enum => "enum",
             SettingType.Bitmask => "bitmask",
             SettingType.Unknown => "unknown",
             SettingType.Command => "command",

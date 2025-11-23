@@ -1,0 +1,6232 @@
+[
+  {
+    "command": "CS_WarnFriendlyDamageInterval",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "adsp_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ai_debug_dyninteractions",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ai_debug_los",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ai_debug_shoot_positions",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_338mag_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_357sig_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "52",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_357sig_min_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "12",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_357sig_p250_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "26",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_357sig_small_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "24",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_45acp_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_50AE_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "35",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_556mm_box_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "200",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_556mm_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "90",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_556mm_small_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "40",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_57mm_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_762mm_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "90",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_9mm_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "120",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_buckshot_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "32",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_grenade_limit_default",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_grenade_limit_flashbang",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_grenade_limit_total",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_item_limit_adrenaline",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "ammo_item_limit_healthshot",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "animgraph_debug_entindex",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_coop_idle_max_vision_distance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1400",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_debug_target",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_difficulty",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_eco_limit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2000",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_max_visible_smoke_length",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "200",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_max_vision_distance_override",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_mimic",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_mimic_yaw_offset",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "180",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_quota",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "bot_traceview",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "buddha_reset_hp",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "c_maxdistance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "200",
+    "source": "scraped"
+  },
+  {
+    "command": "c_maxpitch",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "90",
+    "source": "scraped"
+  },
+  {
+    "command": "c_maxyaw",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "135",
+    "source": "scraped"
+  },
+  {
+    "command": "c_mindistance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "c_minpitch",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "c_minyaw",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-135",
+    "source": "scraped"
+  },
+  {
+    "command": "c_orthoheight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "c_orthowidth",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "cam_collision",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cam_idealdist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "150",
+    "source": "scraped"
+  },
+  {
+    "command": "cam_idealpitch",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cam_idealyaw",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_bomb_defused",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "300",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_bomb_planted",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "300",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_damage_hostage",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-30",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_get_killed",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_interact_with_hostage",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "300",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_killed_enemy_default",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "300",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_killed_enemy_factor",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_killed_hostage",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1000",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_killed_teammate",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-300",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_rescued_hostage",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_player_respawn_amount",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_bonus_shorthanded",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_elimination_bomb_map",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3250",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_elimination_hostage_map_ct",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3000",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_elimination_hostage_map_t",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3000",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_hostage_alive",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_hostage_interaction",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "600",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_loser_bonus",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1400",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_loser_bonus_consecutive_rounds",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "500",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_planted_bomb_but_defused",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "600",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_rescued_hostage",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "600",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_terrorist_win_bomb",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3500",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_win_by_defusing_bomb",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3500",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_win_by_hostage_rescue",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2900",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_win_by_time_running_out_bomb",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3250",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_win_by_time_running_out_hostage",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3250",
+    "source": "scraped"
+  },
+  {
+    "command": "cash_team_winner_bonus_consecutive_rounds",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cc_vr_caption_speed",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cc_vr_font_size",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cc_vr_width",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_borrow_music_from_player_slot",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_buymenu_ct_nextround_high",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "5000",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_buymenu_ct_nextround_low",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1400",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_buymenu_t_nextround_high",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "5000",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_buymenu_t_nextround_low",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1400",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_buywheel_donate_key",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_clock_recvmargin_spew_interval",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_color",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_connectionretrytime_p2p",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_cq_min_queue",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshair_dynamic_splitalpha_innermod",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshair_dynamic_splitdist",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "7",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshair_friendly_warning",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshair_outlinethickness",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshair_sniper_width",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshairalpha",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "200",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshaircolor",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshaircolor_b",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshaircolor_g",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "250",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshaircolor_r",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshairgap",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshairsize",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_crosshairstyle",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_cursor_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_dangerzone_approaching_sound_radius",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "700",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_deathcam_audio_mix_phase1_fade_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_deathcampanel_position_dynamic",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_deathnotices_show_numbers",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_drawhud_force_deathnotices",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_drawhud_force_radar",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_drawhud_force_teamid_overhead",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ent_pivot_size",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ent_showonlyhitbox",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ent_text_flags_active",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_error_report_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_fixedcrosshairgap",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_flushentitypacket",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_glow_brightness",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_glow_item_far_b",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_grenadecrosshairdelay_decoy",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_grenadecrosshairdelay_explosive",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_grenadecrosshairdelay_fire",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_grenadecrosshairdelay_flash",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_grenadecrosshairdelay_smoke",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hide_avatar_images",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_color",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_radar_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_frametime_poor",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_frametime_show",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_net_detailed",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_net_misdelivery_poor",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_net_misdelivery_show",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_net_quality_graph_show",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_ping_poor",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_ping_show",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_hud_telemetry_serverrecvmargin_graph_show",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_interp_ratio",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_itemimages_dynamically_generated",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_jitter_bad_threshold_up",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_join_advertise",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_leveloverview",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_max_particle_pvs_aabb_edge_length",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_mute_all_but_friends_and_party",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_net_buffer_ticks",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_new_user_phase",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_observed_bot_crosshair",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_particle_retire_cost",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_pdump",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ping_fade_deadzone",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ping_fade_distance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "300",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_pitchdown",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "89",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_pitchup",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "89",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_player_ping_mute",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_quickinventory_line_update_speed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "65",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_radar_scale_alternate",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_radial_radio_tab",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_radial_radio_version_reset",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "12",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ragdoll_limit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ragdoll_workaround_threshold",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_show_observer_crosshair",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_showerror",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_showfps",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_showmem",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_showpos",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_silencer_mode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_smooth_targetspeed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "150",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_teamid_overhead_maxdist",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "6000",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_teamid_overhead_maxdist_spec",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4000",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_teamid_overhead_mode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_teammate_colors_show",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_tickpacket_desired_queuelength",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_tickpacket_recvmargin_spew_interval",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ticks_net_print_threshold",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_ticks_warning_level",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_timeout",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_usercmd_max_per_movemsg",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_wallbang_heavy_threshold",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "22",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_weapon_clip_thinwalls_pitchlimit_down",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "67",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_weapon_clip_thinwalls_pitchlimit_up",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "77",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_weapon_debug_show_accuracy",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cl_weapon_debug_show_accuracy_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "clientport",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_assist",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_assist_reqs",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_bomb_defuse_major",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_bomb_defuse_minor",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_bomb_exploded",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_bomb_planted",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_cash_bundle",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_crate_break",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_hostage_kill",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-2",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_hostage_rescue_major",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_hostage_rescue_minor",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_kill",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_kill_factor",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_kill_reqs",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_objective_kill",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_participation",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_suicide",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-2",
+    "source": "scraped"
+  },
+  {
+    "command": "contributionscore_team_kill",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-2",
+    "source": "scraped"
+  },
+  {
+    "command": "cq_buffer_bloat_msecs_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "64",
+    "source": "scraped"
+  },
+  {
+    "command": "cq_logging_interval",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "cq_max_starved_substitute_commands",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "cs_ShowStateTransitions",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-2",
+    "source": "scraped"
+  },
+  {
+    "command": "cs_hostage_near_rescue_music_distance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2000",
+    "source": "scraped"
+  },
+  {
+    "command": "cs_logtouchexpansion",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-2",
+    "source": "scraped"
+  },
+  {
+    "command": "cs_minimap_create_output_size",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "960",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_bias_override_0",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_bias_override_1",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_bias_override_2",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_bias_override_3",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_cascade0_override_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_cascade1_override_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_cascade2_override_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_cascade3_override_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_cascade_viewdir_shadow_bias_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_max_dist_between_caster_and_receiver",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15000",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_max_visible_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "7500",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_res_override_0",
+    "old_type": "unknown",
+    "new_type": "uint32",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_res_override_1",
+    "old_type": "unknown",
+    "new_type": "uint32",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_res_override_2",
+    "old_type": "unknown",
+    "new_type": "uint32",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_res_override_3",
+    "old_type": "unknown",
+    "new_type": "uint32",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_sst_max_visible_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2000",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_sst_pushback_distance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1500",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_sst_shadow_focus_region_maxz",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2000",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_sst_shadow_focus_region_minz",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-2000",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_viewdir_shadow_bias",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_viewmodel_farz",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_viewmodel_max_shadow_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "21",
+    "source": "scraped"
+  },
+  {
+    "command": "csm_viewmodel_max_visible_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "custom_bot_difficulty",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "cv_bot_ai_bt_debug_target",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "debug_visibility_monitor",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "debugoverlay_text_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "default_fov",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "90",
+    "source": "scraped"
+  },
+  {
+    "command": "demo_highlight_seconds_after",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "demo_highlight_seconds_before",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "6",
+    "source": "scraped"
+  },
+  {
+    "command": "demo_skip_to_shot_seconds_before",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "demo_ui_mode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "developer",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "dota_spatial_audio_mix",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "dsp_dist_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1440",
+    "source": "scraped"
+  },
+  {
+    "command": "dsp_dist_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "engine_no_focus_sleep",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "ent_actornames_fontsize",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "24",
+    "source": "scraped"
+  },
+  {
+    "command": "ent_pivot_size",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "ent_skeleton_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ent_text_flags_active",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "entity_log_load_unserialize",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ff_damage_bullet_penetration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ff_damage_reduction_grenade_self",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_end",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_endskybox",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_hdrcolorscale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_hdrcolorscaleskybox",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_maxdensity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_maxdensityskybox",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_override",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_override_end",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3500",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_override_exponent",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_override_start",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_start",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "fog_startskybox",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "fov_cs_debug",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "fov_desired",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "75",
+    "source": "scraped"
+  },
+  {
+    "command": "fps_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "fps_max_tools",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "120",
+    "source": "scraped"
+  },
+  {
+    "command": "fps_max_ui",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "200",
+    "source": "scraped"
+  },
+  {
+    "command": "fs_fake_read_delay_ms",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "fs_report_sync_opens",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "func_break_max_pieces",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "game_mode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "game_type",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "gameinstructor_verbose",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "glow_outline_width",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "6",
+    "source": "scraped"
+  },
+  {
+    "command": "healthshot_health",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "healthshot_healthboost_damage_multiplier",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "healthshot_healthboost_speed_multiplier",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "healthshot_healthboost_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "host_framerate",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "host_timescale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "hostage_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "hostip",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "hostport",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "27015",
+    "source": "scraped"
+  },
+  {
+    "command": "hud_fastswitch",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ik_hinge_debug_bone_index",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "imgui_default_font_size",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_child_spawn_max_depth",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_damage",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "40",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_damage_ct",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "40",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_dlight_spacing",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "7200",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_flame_lifetime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "7",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_flame_spacing",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "42",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_friendly_fire_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "6",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_max_flames",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "16",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_max_range",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "150",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_max_range_ct",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "110",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_per_flame_spawn_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_spawn_angle",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "45",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_surface_offset",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "inferno_velocity_normal_factor",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "input_forceuser",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_advaxisr",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_advaxisu",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_advaxisv",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_advaxisx",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_advaxisy",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_advaxisz",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_circle_correct_mode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_circle_correct_mode_vehicle",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_forward_sensitivity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_pitch_sensitivity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_pitchsensitivity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_response_look",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_response_move",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "9",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_side_sensitivity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_sidesensitivity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_yaw_sensitivity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "joy_yawsensitivity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "labelled_debug_helper_arc_segments",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "labelled_debug_helper_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_fullbright",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_max_lighting_complexity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "8",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_overdraw",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_shading_complexity_max_instruction_count",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1024",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_shading_complexity_max_register_count",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "128",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_show_distance_field",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_bloom_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_bloom_start_value",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_accelerate_exposure_down",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_average_lum_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_log_lum_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_log_lum_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_percent_bright_pixels",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_percent_target",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_rate",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_force_use_alpha",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_tonemap_uncap_exposure",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mat_wireframe",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mesh_calculate_curvature_smooth_pass_count",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "mesh_calculate_curvature_smooth_weight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mm_csgo_community_search_players_min",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "mm_dedicated_search_maxping",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "150",
+    "source": "scraped"
+  },
+  {
+    "command": "mm_session_search_qos_timeout",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "mm_session_sys_kick_ban_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "180",
+    "source": "scraped"
+  },
+  {
+    "command": "mobile_fps_limit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "molotov_throw_detonate_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_afterroundmoney",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_buy_allow_guns",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "255",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_buy_anywhere",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_buy_during_immunity",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_buytime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_c4timer",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "40",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_competitive_endofmatch_extra_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_consecutive_loss_aversion",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_consecutive_loss_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_coopmission_bot_difficulty_offset",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_damage_scale_ct_body",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_damage_scale_ct_head",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_damage_scale_t_body",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_damage_scale_t_head",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_damage_vampiric_amount",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_death_drop_grenade",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_death_drop_gun",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_default_team_winner_no_objective",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_defuser_allocation",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_bonus_length_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_bonus_length_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_bonus_percent",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_bonusweapon_dogtags",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_dogtag_score",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_healthshot_killcount",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_kill_base_score",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_teammode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_teammode_bonus_score",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_teammode_dogtag_score",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_teammode_kill_score",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_time_between_bonus_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "40",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dm_time_between_bonus_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dogtag_despawn_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "120",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_dogtag_pickup_rule",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_economy_reset_rounds",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_endmatch_votenextleveltime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_endmatch_votenextmap_wargames_nummaps",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_endmatch_votenextmap_wargames_nummodes",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_endwarmup_player_count",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_equipment_reset_rounds",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_force_pick_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_forcecamera",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_fraglimit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_free_armor",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_freezetime",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_global_damage_per_second",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_guardian_force_collect_hostages_timeout",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_guardian_target_site",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_halftime_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_halftime_pausematch",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_halftime_pausetimer",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_hostages_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_hostages_rescuetime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_hostages_run_speed_modifier",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_join_grace_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_limitteams",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_logdetail",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_match_restart_delay",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "25",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_max_armor",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_maxmoney",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "16000",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_maxrounds",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "24",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_overtime_halftime_pausetimer",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_overtime_limit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_overtime_maxrounds",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "6",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_overtime_startmoney",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "10000",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_playerid",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_randomspawn",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_randomspawn_dist",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_respawn_immunitytime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_respawnwavetime_ct",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_respawnwavetime_t",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_restartgame",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_retake_ct_count",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_retake_max_consecutive_rounds_same_target_site",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_retake_t_count",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_round_restart_delay",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "7",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_shorthanded_cash_bonus_round_delay",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_solid_teammates",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_spawnprotectiontime",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_spectators_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_starting_losses",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_startmoney",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "800",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_tagging_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_taser_recharge_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_td_dmgtokick",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "300",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_td_dmgtowarn",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "200",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_td_spawndmgthreshold",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_team_timeout_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_team_timeout_ot_add_each",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_team_timeout_ot_add_once",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_team_timeout_ot_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_team_timeout_time",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_teammatchstat_cycletime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "45",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_teammatchstat_holdtime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_teamprediction_pct",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_teamscore_1",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_teamscore_2",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_teamscore_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_technical_timeout_duration_s",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "120",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_technical_timeout_per_team",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_timelimit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_tkpunish",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_use_respawn_waves",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_verbose_changelevel_spew",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_warmup_items_drop_policy",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "247",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_warmup_items_nocount_policy",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "42",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_warmup_pausetimer",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_warmuptime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "120",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_warmuptime_all_players_connected",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_warmuptime_match_cancelled",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_weapon_self_inflict_amount",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_weapons_allow_heavy",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_weapons_allow_pistols",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_weapons_allow_rifles",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_weapons_allow_smgs",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_weapons_allow_typecount",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_weapons_allow_zeus",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_weapons_max_gun_purchases_per_weapon_per_match",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "mp_win_panel_display_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_bfs_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_corner_adjust_adjacent",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "18",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_curve_iter",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_curve_lock",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_curve_max_step",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_curve_set",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_draw_area_inset_margin",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_draw_connected_area_radius",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_draw_limit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "300",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_draw_mesh_offset",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_draw_space_neighbors",
+    "old_type": "unknown",
+    "new_type": "bool",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_draw_space_radius",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_edit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_connect_dist_a",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_markup_split_expand",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_markup_split_tol_base",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_markup_split_tol_nonav",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_markup_split_tol_nonentity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "8",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_max_bottleneck_width",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "128",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_max_edge_len",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "512",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_max_edge_len_split_tol",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "24",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_opt_to_quads_angle_limit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "8",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_opt_to_quads_num_steps",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "6",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_opt_to_quads_planar_deviation_limit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_opt_to_quads_weld_limit_start",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_oriented_angle_tol",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_oriented_max_region_range",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_gen_vertical_limit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "88",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_max_view_distance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_max_vis_delta_list_length",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "64",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_obstruction_draw",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_obstruction_draw_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_obstruction_draw_island",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_obstruction_draw_island_hull",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_path_debug_compute_with_open_goal",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_path_draw_tick",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_path_optimizer_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_pathfind_debug_log",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_pathfind_draw",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_pathfind_draw_blocked",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_pathfind_draw_fail",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_pathfind_inadmissable_heuristic_factor",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_select_area_id",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_select_block_id",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_select_hull",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_show_potentially_visible",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_constrain_spring",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_draw_accel",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_draw_boundary",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_draw_constraint_spring",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_draw_speed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_const_override",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_factor_deriv",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_factor_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_factor_speed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_forward_dist_base",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_forward_dist_time_limit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_max_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "36",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_tension_max_override",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_timestep_factor_accel",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_timestep_factor_speed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_yaw_rotation_speed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_smooth_spring_yaw_threshold",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_space_select_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_bfs_lattice_dist_0",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_bfs_lattice_dist_1",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_bfs_lattice_dist_2",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_bfs_lattice_mark",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_bfs_lattice_spacing_0",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "24",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_bfs_lattice_spacing_1",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "48",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_bfs_lattice_spacing_2",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "96",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_boundary_zone_circle",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_boundary_zone_grid_dim",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "90",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_boundary_zone_path",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_boundary_zone_rays",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_boundary_zone_rays_margin",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_boundary_zone_sphere",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_curve_opt",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_find_random_connected_dist_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_find_random_connected_dist_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_find_z",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_npc_area",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_npc_collision",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_npc_collision_range",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "250",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_path_expansion_search",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_path_space",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_ray_space",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_smooth_extern_push",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_smooth_in_speed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "120",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_smooth_in_yaw",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_smooth_path_speed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_smooth_separating_dist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_smooth_spring_const",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_smooth_spring_tension_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_spline",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_split_obstacle",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_test_split_obstacle_size",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_validate",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "nav_volume_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "navspace_debug_pathfind",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "navspace_debug_stringpull",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "navspace_debug_trace",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "navspace_debug_transition_calc",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "net_client_steamdatagram_enable_override",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "net_limit_sv_recv_max_message_size_kb",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "32",
+    "source": "scraped"
+  },
+  {
+    "command": "net_limit_sv_recv_segments_per_packet",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "net_limit_sv_recvbuffer_kb",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "128",
+    "source": "scraped"
+  },
+  {
+    "command": "net_limit_sv_recvbuffer_msg",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "particle_test_attach_attachment",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "particles_multiplier",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "phys_expensive_shape_threshold",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "6",
+    "source": "scraped"
+  },
+  {
+    "command": "phys_length_damping_ratio",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "phys_length_frequency",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "player_ping_token_cooldown",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "player_teamplayedlast",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "player_use_radius",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "80",
+    "source": "scraped"
+  },
+  {
+    "command": "pvs_debugentity",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "pvs_flowtype",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "pwatchent",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_AirboatViewDampenDamp",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_AirboatViewDampenFreq",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "7",
+    "source": "scraped"
+  },
+  {
+    "command": "r_AirboatViewZHeight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_JeepViewDampenDamp",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_JeepViewDampenFreq",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "7",
+    "source": "scraped"
+  },
+  {
+    "command": "r_JeepViewZHeight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_depth_prepass_cull_threshold",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_depth_prepass_small_cull_threshold",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_mixed_resolution_particles_scale",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_reconstruct_normals_method",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_render_dither_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_render_post_bloom",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_render_post_bloom_strength",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_render_post_colorcorrection",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_render_post_film_grain",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_render_post_mirror_horizontal",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_render_post_mirror_vertical",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_csgo_shadows_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_cubemap_debug_colors",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_dof_override_far_blurry",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2000",
+    "source": "scraped"
+  },
+  {
+    "command": "r_dof_override_far_crisp",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "180",
+    "source": "scraped"
+  },
+  {
+    "command": "r_dof_override_near_blurry",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-100",
+    "source": "scraped"
+  },
+  {
+    "command": "r_dof_override_near_crisp",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_draw_particle_children_with_parents",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_extra_render_frames",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_fallback_texture_lod_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "r_farz",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightambient",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightbrightness",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightconstant",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightfar",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1500",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightfov",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "53",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightladderdist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "40",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightlinear",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightmuzzleflashfov",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "120",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightnear",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightnearoffsetscale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightoffsetforward",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightoffsetright",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightoffsetup",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-5",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlightquadratic",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlighttracedistcutoff",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "128",
+    "source": "scraped"
+  },
+  {
+    "command": "r_flashlighttracedistwatercutoff",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "80",
+    "source": "scraped"
+  },
+  {
+    "command": "r_force_zprepass",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_light_probe_volume_debug_grid",
+    "old_type": "unknown",
+    "new_type": "bool",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_light_probe_volume_debug_grid_metalness",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_light_probe_volume_debug_grid_prim",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "r_light_probe_volume_debug_grid_samplesize",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "r_mapextents",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "16384",
+    "source": "scraped"
+  },
+  {
+    "command": "r_nearz",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_player_visibility_mode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_replay_post_effect",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "r_texture_lod_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "radarvisdistance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "radarvismethod",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "ragdoll_gravity_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "ragdoll_lru_min_age",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "rate",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "786432",
+    "source": "scraped"
+  },
+  {
+    "command": "recast_partitioning",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "replay_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "rr_followup_maxdist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1800",
+    "source": "scraped"
+  },
+  {
+    "command": "rr_thenany_score_slop",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "save_maxarray_spew",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "sc_aggregate_indirect_draw_compaction_threshold",
+    "old_type": "unknown",
+    "new_type": "uint32",
+    "raw_default": "8",
+    "source": "scraped"
+  },
+  {
+    "command": "sc_fade_distance_scale_override",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "sc_force_lod_level",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "sc_screen_size_lod_scale_override",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "screenmessage_show",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "shatterglass_cleanup_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "200",
+    "source": "scraped"
+  },
+  {
+    "command": "shatterglass_hit_tolerance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "shatterglass_shard_lifetime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "sk_autoaim_mode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_dsp_distance_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2000",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_dsp_distance_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_foliage_db_loss",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_gain",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_gain_max",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_gamevoicevolume",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_gamevolume",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_headphone_eq",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_headphone_eq_active",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_mainmenu_music_break_time_max",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_mainmenu_music_break_time_min",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_mapobjective_volume",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_mixer_master_dsp",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_mixer_master_level",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_occlusion_bounces",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_occlusion_min_wall_thickness",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_occlusion_rays",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_op_test_convar",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "720",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_rear_stereo_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_refdb",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_refdist",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "36",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_roundaction_volume",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_roundend_volume",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_roundstart_volume",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_showclassname",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_showstart",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_soundmixer_update_maximum_frame_rate",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_spatialize_lerp",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_enable_reverb",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_ir_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_max_convolution_sources",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_max_occlusion_samples",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "64",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_num_bounces",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "128",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_num_diffuse_samples",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2048",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_num_rays",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "65536",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_num_threads",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_pathing_order",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_pathing_order_rendering",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_steamaudio_reverb_level_db",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-3",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_toolvolume",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_use_baked_occlusion",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_vmix_override_mix_decay_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "snd_voipvolume",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "soundscape_fadetime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "speaker_config",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_freeze_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_freeze_time_lock",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_glow_decay_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_glow_full_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_glow_spike_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_replay_enable",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_replay_rate_base",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_replay_rate_limit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_replay_round_delay",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_replay_winddown_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "spec_show_xray",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "splitscreen_mode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "suspicious_hit_player_radius",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "8",
+    "source": "scraped"
+  },
+  {
+    "command": "suspicious_hit_strategy",
+    "old_type": "unknown",
+    "new_type": "uint32",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_air_max_wishspeed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_airaccelerate",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "12",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_auto_cstrafe_attempt_window",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_auto_cstrafe_logging",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_auto_cstrafe_lower_overlap_pct_threshold",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_auto_cstrafe_min_attempts",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_auto_cstrafe_sequence_length",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_auto_cstrafe_success_threshold",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_auto_cstrafe_upper_overlap_pct_threshold",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_bot_buy_decoy_weight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_bot_buy_flash_weight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_bot_buy_grenade_chance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "33",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_bot_buy_hegrenade_weight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "6",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_bot_buy_molotov_weight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_bot_buy_smoke_weight",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_bots_get_easier_each_win",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_bounce",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_buy_status_override",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_chat_proximity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_clockcorrection_msecs",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_cluster",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_cq_trim_bloat_remainder",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_cq_trim_bloat_space",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_cq_trim_catchup_remainder",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_cs_player_speed_has_hostage",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "200",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_debug_overlays_bandwidth",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "65536",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_deltaticks_enforce",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_deltaticks_log",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_disable_radar",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_disconnected_player_data_hold_time",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_disconnected_players_cleanup_delay",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_dz_cash_bundle_size",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "50",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_dz_cash_mega_bundle_size",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "13",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_dz_contractkill_reward",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_dz_hostage_rescue_reward",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "18",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_dz_squad_wipe_reward",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_enable_alternate_baselines",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_ent_showonlyhitbox",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_ents_write_alarm",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_falldamage_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_falldamage_to_below_player_multiplier",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_falldamage_to_below_player_ratio",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_game_mode_flags",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_gravity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "800",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_grenade_trajectory_prac_trailtime",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_grenade_trajectory_time_spectator",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_guardian_spawn_health_ct",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_guardian_spawn_health_t",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "100",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_health_approach_speed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_hegrenade_damage_multiplier",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_hegrenade_radius_multiplier",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_hibernate_postgame_delay",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_hide_roundtime_until_seconds",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_highlight_distance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "500",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_human_autojoin_team",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_infinite_ammo",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_kick_ban_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_kick_players_with_cooldown",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_late_commands_allowed",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_max_deathmatch_respawns_per_tick",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_max_queries_sec",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_max_queries_sec_global",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_max_queries_window",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "30",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_maxrate",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_maxspeed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "320",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_maxuptimelimit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_maxvelocity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3500",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_memlimit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_merge_changes_after_tick_with_calcdelta",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_min_jump_landing_sound",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "260",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_minimum_desired_chicken_count",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_minrate",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "98304",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_noclipaccelerate",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_noclipfriction",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_noclipspeed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1200",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_parallel_checktransmit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_parallel_packentities",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_parallel_sendsnapshot",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_pausable",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_predictable_damage_tag_ticks",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_pure_trace",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_pushaway_hostage_force",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20000",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_pushaway_max_hostage_force",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1000",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_pvs_max_distance",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_radio_throttle_window",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_region",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_showbullethits",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_showhitregistration",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_showimpacts",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_showimpacts_penetration",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_showimpacts_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_skirmish_id",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_spawn_afk_bomb_drop_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_spec_hear",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_specaccelerate",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_specspeed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1200",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_staminamax",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "80",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_staminarecoveryrate",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_steamauth_enforce",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_step_move_vel_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "64",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_stopspeed",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "80",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_talk_after_dying_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_teamid_overhead_maxdist",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_teamid_overhead_maxdist_spec",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_turning_inaccuracy_angle_min",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_unlockedchapters",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_use_hi_pri_context_switch_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_usercmd_execute_warning_ms",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "5",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_versus_screen_scene_id",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_visiblemaxplayers",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_voice_proximity",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_vote_command_delay",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_vote_creation_timer",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "120",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_vote_failure_timer",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "300",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_vote_kick_ban_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_vote_timer_duration",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_vote_to_changelevel_rndmin",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_warmup_to_freezetime_delay",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "4",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_watchtransmit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-2",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_wateraccelerate",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_waterfriction",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_weapon_require_use_grace_period",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "sv_weapon_swap_difficulty_near_hi_pri",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "sys_minidumpspewlines",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2000",
+    "source": "scraped"
+  },
+  {
+    "command": "think_limit",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "trusted_launch",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_allow_autorecording_index",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "-1",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_allow_camera_man_steamid",
+    "old_type": "unknown",
+    "new_type": "uint64",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_allow_camera_man_steamid2",
+    "old_type": "unknown",
+    "new_type": "uint64",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_broadcast_keyframe_interval",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_broadcast_keyframe_interval1",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "3",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_broadcast_max_requests",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_broadcast_max_requests1",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_broadcast_startup_resend_interval",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "10",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_chatgroupsize",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_debug",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_delay",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "105",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_delay1",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "15",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_deltacache",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_dispatchmode",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_listen_voice_indices",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_listen_voice_indices_h",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_maxclients",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "128",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_maxclients_relayreserved",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_maxrate",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_playcast_delay_resync",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_playcast_retry_timeout",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "25",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_port",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "27020",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_port1",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "27021",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_record_immediate",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_spectator_port_offset",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_timeout",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "20",
+    "source": "scraped"
+  },
+  {
+    "command": "tv_window_size",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "16",
+    "source": "scraped"
+  },
+  {
+    "command": "ui_render_task_fps",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "ui_setting_advertiseforhire_auto",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "ui_steam_overlay_notification_position_horz",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "ui_steam_overlay_notification_position_vert",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "view_punch_decay",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "18",
+    "source": "scraped"
+  },
+  {
+    "command": "viewmodel_fov",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "60",
+    "source": "scraped"
+  },
+  {
+    "command": "viewmodel_offset_y",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "viewmodel_presetpos",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "vismon_trace_limit",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "12",
+    "source": "scraped"
+  },
+  {
+    "command": "voice_input_stallout",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "2",
+    "source": "scraped"
+  },
+  {
+    "command": "voice_threshold",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "-120",
+    "source": "scraped"
+  },
+  {
+    "command": "voice_vox",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "volume_fog_dither_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "weapon_accuracy_forcespread",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "weapon_air_spread_scale",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  },
+  {
+    "command": "weapon_auto_cleanup_time",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "weapon_debug_spread_show",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "weapon_max_before_cleanup",
+    "old_type": "unknown",
+    "new_type": "int",
+    "raw_default": "0",
+    "source": "scraped"
+  },
+  {
+    "command": "weapon_sound_falloff_multiplier",
+    "old_type": "unknown",
+    "new_type": "float",
+    "raw_default": "1",
+    "source": "scraped"
+  }
+]
