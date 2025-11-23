@@ -6,7 +6,7 @@ High-level context for the CS2 Config Generator project.
 
 **Type**: Blazor WebAssembly standalone app (no backend)
 **Purpose**: Counter-Strike 2 console command reference and config tool
-**Stack**: .NET 9.0, Bootstrap 5, System.Text.Json
+**Stack**: .NET 10.0, Bootstrap 5, System.Text.Json
 **Deployment**: GitHub Pages (static hosting)
 
 ## Architecture
@@ -41,11 +41,11 @@ See `PROPOSAL.md` for class hierarchy rationale.
 
 ## Setup
 
-Install .NET 9.0 SDK:
+Install .NET 10 SDK:
 ```bash
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 chmod +x ./dotnet-install.sh
-./dotnet-install.sh --channel 9.0
+./dotnet-install.sh --channel 10.0
 export PATH=$PATH:$HOME/.dotnet
 ```
 
