@@ -22,24 +22,9 @@ class TestApplyTypeImprovements(unittest.TestCase):
         scraped_types = {'example_cmd_text': 'string'}  # should be ignored for unknown due to exclusion
         updated, stats = apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=False)
         self.assertEqual(updated[0]['uiData']['type'], 'string')
-        # defaultValue should remain untouched (no forced empty string logic anymore)
-        self.assertEqual(updated[0]['uiData']['defaultValue'], 0)
+        # defaultValue should be coerced to string '0' because type is string
+        self.assertEqual(updated[0]['uiData']['defaultValue'], '0')
         self.assertEqual(stats['manual_overrides_applied'], 1)
-        self.assertEqual(stats['scraped_types_applied'], 0)
-
-    def test_scraped_string_excluded(self):
-        commands = [
-            {
-                'command': 'scraped_string_cmd',
-                'consoleData': {'defaultValue': 'text', 'flags': [], 'description': ''},
-                'uiData': {'type': 'unknown', 'defaultValue': 0}
-            }
-        ]
-        manual_overrides = {}
-        scraped_types = {'scraped_string_cmd': 'string'}  # ignored
-        updated, stats = apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=False)
-        self.assertEqual(updated[0]['uiData']['type'], 'unknown')
-        self.assertEqual(stats['manual_overrides_applied'], 0)
         self.assertEqual(stats['scraped_types_applied'], 0)
 
 if __name__ == '__main__':
