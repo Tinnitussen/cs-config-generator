@@ -5,6 +5,7 @@ Apply Type Improvements Script
 This script applies type improvements to commands.json using:
 1. Manual type overrides (highest priority)
 2. Scraped types from scraped_types.json (for 'unknown' types), excluding 'string' classifications
+3. Vector heuristics: Detects vector2/vector3 by splitting default values (splits into 2 or 3 numbers)
 
 Strict Validation Logic:
 - Rejects scraped 'bool' if raw defaultValue is not boolean-compatible (0/1/true/false).
@@ -31,6 +32,7 @@ TYPE_NORMALIZATION = {
     'enum': 'int',  # Map enum to int since we dropped Enum support
     'string': 'string',
     'vector': 'vector3',
+    'vector2': 'vector2',
     'vector3': 'vector3',
     'color': 'color'
 }
@@ -53,6 +55,29 @@ def is_valid_bool_value(val) -> bool:
     if isinstance(val, str):
         return val.strip().lower() in ALLOWED_BOOL_STRINGS
     return False
+
+def detect_vector_type(val) -> Optional[str]:
+    """
+    Detect if a value is a vector2 or vector3 based on splitting the string.
+    Returns 'vector2', 'vector3', or None.
+    """
+    if not isinstance(val, str):
+        # If it's not a string, it's unlikely to be a vector in our data model
+        # (unless it's some other object, but console data usually comes as string/numbers)
+        return None
+
+    parts = val.strip().split()
+    if len(parts) not in (2, 3):
+        return None
+
+    # Verify all parts are numbers
+    try:
+        for p in parts:
+            float(p)
+    except ValueError:
+        return None
+
+    return 'vector3' if len(parts) == 3 else 'vector2'
 
 def coerce_default_value(new_type: str, current_value):
     """Coerce a defaultValue to the JSON shape expected by the C# UiData subtype."""
@@ -133,6 +158,7 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
         'total': len(commands),
         'manual_overrides_applied': 0,
         'scraped_types_applied': 0,
+        'heuristic_vectors_applied': 0,
         'scraped_rejected': 0,
         'unknown_remaining': 0,
         'skipped_no_uidata': 0,
@@ -202,6 +228,27 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
                 stats['scraped_rejected'] += 1
                 if dry_run:
                     print(f"  [REJECT] {cmd_name}: scraped '{candidate_type}' rejected. {rejection_reason}")
+
+        # 3. Vector Heuristics
+        # If no type determined yet, or explicitly checking to upgrade 'string'/'unknown'
+        candidate_type = new_type if new_type else current_type
+
+        if candidate_type in ('string', 'unknown'):
+            val_to_check = raw_default if raw_default is not None else current_default
+            vector_type = detect_vector_type(val_to_check)
+
+            if vector_type:
+                new_type = vector_type
+                source = 'heuristic_vector'
+                stats['heuristic_vectors_applied'] += 1
+
+                manifest_entries.append({
+                    "command": cmd_name,
+                    "old_type": current_type,
+                    "new_type": new_type,
+                    "raw_default": raw_default,
+                    "source": "heuristic"
+                })
 
         # Apply changes
         if new_type and new_type != current_type:
@@ -276,6 +323,7 @@ def main():
     print(f"Total commands: {stats['total']}")
     print(f"Manual overrides applied: {stats['manual_overrides_applied']}")
     print(f"Scraped types applied: {stats['scraped_types_applied']}")
+    print(f"Heuristic vectors applied: {stats['heuristic_vectors_applied']}")
     print(f"Scraped types rejected: {stats['scraped_rejected']}")
     print(f"Unknown types remaining: {stats['unknown_remaining']}")
 
