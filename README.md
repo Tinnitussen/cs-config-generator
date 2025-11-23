@@ -9,7 +9,7 @@ A web-based command reference for Counter-Strike 2, built with Blazor WebAssembl
 
 ## Core Technologies
 
-*   **.NET 9** and **C#**
+*   **.NET 10** and **C#**
 *   **Blazor WebAssembly** for the frontend framework
 *   **Bootstrap 5** for UI styling
 *   **Bootstrap Icons** for the icon set
@@ -17,7 +17,7 @@ A web-based command reference for Counter-Strike 2, built with Blazor WebAssembl
 
 ## For Developers
 
-This project is built with .NET 9 and Blazor WebAssembly. The core of the application is the `CSConfigGenerator` project.
+This project is built with .NET 10 and Blazor WebAssembly. The core of the application is the `CSConfigGenerator` project.
 
 ### Project Structure
 
@@ -31,7 +31,7 @@ This project is built with .NET 9 and Blazor WebAssembly. The core of the applic
 ### Getting Started
 
 1.  Clone the repository.
-2.  Install the .NET 9 SDK.
+2.  Install the .NET 10 SDK.
 3.  Open the `CSConfigGenerator.slnx` solution file in your preferred IDE.
 4.  Run the `CSConfigGenerator` project.
 
