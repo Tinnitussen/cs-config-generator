@@ -27429,7 +27429,7 @@
     "uiData": {
       "label": "nav_create_indirect_connection_set_from",
       "helperText": "Set the 'from' location of an indirect connection.",
-      "type": "string",
+      "type": "vector3",
       "defaultValue": "0.000000 0.000000 0.000000",
       "requiresCheats": true
     }
@@ -27468,7 +27468,7 @@
     "uiData": {
       "label": "nav_create_indirect_connection_set_to",
       "helperText": "Set the 'to' location of an indirect connection.",
-      "type": "string",
+      "type": "vector3",
       "defaultValue": "0.000000 0.000000 0.000000",
       "requiresCheats": true
     }
