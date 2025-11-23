@@ -39,20 +39,6 @@
     font-size: 0.9em;
 }
 
-/* Action button styling */
-.command-table .btn {
-    padding: 0.05rem 0.4rem;
-    font-size: 0.7rem;
-}
-
-/* Status badge styling for uniform look */
-.command-table .badge {
-    min-width: 5rem;
-    font-size: 0.65rem;
-    padding: 0.3em 0.5em;
-    font-weight: 500;
-}
-
 /* Highlight style for the selected row */
 .table-active {
     background-color: rgba(0, 123, 255, 0.25) !important;
@@ -97,21 +83,8 @@
     display: none !important;
 }
 
-/* Tabs styling */
-.nav-tabs {
-    margin-bottom: 1rem;
-}
-
-.nav-tabs .nav-link {
-    cursor: pointer;
-}
-
-.nav-tabs .nav-link.active {
-    font-weight: 500;
-}
-
 /* Filter controls styling */
-.filter-button, .filter-select {
+.filter-button {
     border-color: #dee2e6; /* Match Bootstrap's default border color */
 }
 

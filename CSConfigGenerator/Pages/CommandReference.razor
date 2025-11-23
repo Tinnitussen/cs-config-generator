@@ -2,16 +2,18 @@
 @using CSConfigGenerator.Models
 @using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.Components
-@inject IConfigStateService ConfigStateService
 @inject ISchemaService SchemaService
 @inject IToastService ToastService
 
 <PageTitle>Command Reference</PageTitle>
 
 <div class="row g-0 h-100">
-    <div class="col-lg-8 pe-2">
+    <!-- Command List Column -->
+    <div class="col-lg-7 pe-2 d-flex flex-column h-100">
         <h1>Command Reference</h1>
-        <p class="text-muted">Browse, search, and manage all available commands for your configuration.</p>
+        <p class="text-muted">Browse and search all available console commands and variables.</p>
+
+        <!-- Filters -->
         <div class="card bg-light mb-2">
             <div class="card-body p-2">
                 <div class="row g-2 align-items-center">
@@ -73,11 +75,12 @@
             </div>
         </div>
 
+        <!-- Command List -->
         @if (paginatedCommands.Any())
         {
-            <div class="table-responsive">
-                <table class="table table-sm table-striped table-hover command-table">
-                    <thead class="table-dark">
+            <div class="table-responsive flex-grow-1" style="overflow-y: auto;">
+                <table class="table table-sm table-striped table-hover command-table mb-0">
+                    <thead class="table-dark sticky-top">
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
@@ -86,16 +89,17 @@
                     <tbody>
                         @foreach (var command in paginatedCommands)
                         {
-                            <tr @onclick="() => selectedCommand = command" class="@(selectedCommand == command ? "table-active" : "")">
+                            <tr @onclick="() => SelectCommand(command)" class="@(selectedCommand == command ? "table-active" : "")" style="cursor: pointer;">
                                 <td><code><HighlightText Text="@command.Command" Highlight="@searchTerm" /></code></td>
-                                <td><HighlightText Text="@command.UiData.HelperText" Highlight="@searchTerm" /></td>
+                                <td><HighlightText Text="@GetShortDescription(command)" Highlight="@searchTerm" /></td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mt-3">
+            <!-- Pagination -->
+            <div class="d-flex justify-content-between align-items-center mt-2">
                 <button class="btn btn-sm btn-outline-secondary" @onclick="() => ChangePage(-1)" disabled="@(currentPage <= 1)">Previous</button>
                 <span>Page @currentPage of @totalPages</span>
                 <button class="btn btn-sm btn-outline-secondary" @onclick="() => ChangePage(1)" disabled="@(currentPage >= totalPages)">Next</button>
@@ -103,16 +107,89 @@
         }
         else
         {
-            <p>No commands found matching your criteria.</p>
+            <div class="alert alert-info mt-3">No commands found matching your criteria.</div>
         }
     </div>
-    <div class="col-lg-4 sticky-editor">
-        <ConfigEditor PresetType="player" />
+
+    <!-- Details Column -->
+    <div class="col-lg-5 ps-3 border-start">
+        <div class="sticky-top pt-3" style="top: 1rem; z-index: 1000;">
+            @if (selectedCommand != null)
+            {
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="card-title mb-0 text-break">@selectedCommand.Command</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Badges -->
+                        <div class="mb-3">
+                            <span class="badge bg-secondary me-1">@selectedCommand.UiData.Type</span>
+                            @if (selectedCommand.UiData.RequiresCheats)
+                            {
+                                <span class="badge bg-warning text-dark me-1">Cheats Required</span>
+                            }
+                            @if (selectedCommand.ConsoleData.Flags != null && selectedCommand.ConsoleData.Flags.Any())
+                            {
+                                @foreach(var flag in selectedCommand.ConsoleData.Flags)
+                                {
+                                     <span class="badge bg-info text-dark me-1">@flag</span>
+                                }
+                            }
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small fw-bold">Description</h6>
+                            <p class="card-text">
+                                @if (!string.IsNullOrEmpty(selectedCommand.UiData.HelperText))
+                                {
+                                    @selectedCommand.UiData.HelperText
+                                }
+                                else if (!string.IsNullOrEmpty(selectedCommand.ConsoleData.Description))
+                                {
+                                    @selectedCommand.ConsoleData.Description
+                                }
+                                else
+                                {
+                                    <em class="text-muted">No description available.</em>
+                                }
+                            </p>
+                        </div>
+
+                        <!-- Default Value -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small fw-bold">Default Value</h6>
+                            <div class="p-2 bg-light border rounded">
+                                <code>@selectedCommand.ConsoleData.DefaultValue</code>
+                            </div>
+                        </div>
+
+                        <!-- Technical Details -->
+                        @if (selectedCommand.ConsoleData.SourcedAt.HasValue)
+                        {
+                            <div class="mt-4 pt-3 border-top">
+                                <small class="text-muted">
+                                    Last verified: @selectedCommand.ConsoleData.SourcedAt.Value.ToString("yyyy-MM-dd")
+                                </small>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-secondary text-center mt-5">
+                    <i class="bi bi-arrow-left-circle display-4 d-block mb-3"></i>
+                    <h5>Select a command</h5>
+                    <p>Click on any command in the list to view its details here.</p>
+                </div>
+            }
+        </div>
     </div>
 </div>
 
 @code {
-    // Private fields - no need for complex properties
+    // Private fields
     private string searchTerm = string.Empty;
     private bool requiresCheatsFilter;
     private Dictionary<SettingType, bool> selectedTypes = new();
@@ -139,20 +216,9 @@
             selectedTypes.Add(type, false);
         }
 
-        ConfigStateService.OnStateChange += HandleStateChanged;
-
         // Initialize with all commands from the unified service
         InitializeCommands();
         ApplyFilters();
-    }
-
-    private void HandleStateChanged(object? originator)
-    {
-        InvokeAsync(() =>
-        {
-            ApplyFiltersWithoutPageReset();
-            StateHasChanged();
-        });
     }
 
     private void InitializeCommands()
@@ -161,9 +227,18 @@
         allCommands = commands.ToList();
     }
 
-    public void Dispose()
+    private void SelectCommand(CommandDefinition command)
     {
-        ConfigStateService.OnStateChange -= HandleStateChanged;
+        selectedCommand = command;
+    }
+
+    private string GetShortDescription(CommandDefinition command)
+    {
+        var text = !string.IsNullOrEmpty(command.UiData.HelperText) ? command.UiData.HelperText : command.ConsoleData.Description;
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+
+        // Truncate if too long for the table view
+        return text.Length > 100 ? text.Substring(0, 97) + "..." : text;
     }
 
     private void OnSearchInput(ChangeEventArgs e)
@@ -196,21 +271,6 @@
         ApplyFiltersInternal();
     }
 
-    private void ApplyFiltersWithoutPageReset()
-    {
-        // Preserve the current page, but make sure it's still valid after filtering
-        int originalPage = currentPage;
-        ApplyFiltersInternal();
-
-        // Check if the original page is still valid after filtering
-        if (originalPage <= totalPages && originalPage > 0)
-        {
-            currentPage = originalPage;
-            var filtered = GetFilteredCommands();
-            UpdatePagination(filtered);
-        }
-    }
-
     private void ApplyFiltersInternal()
     {
         // Update autocomplete suggestion
@@ -227,8 +287,13 @@
 
         var filtered = GetFilteredCommands();
         totalPages = (int)Math.Ceiling(filtered.Count / (double)PageSize);
+        if (totalPages < 1) totalPages = 1;
+
         UpdatePagination(filtered);
         UpdateFilterActiveStatus();
+
+        // Clear selection if it's no longer in the filtered list (optional, maybe we want to keep it even if filtered out?)
+        // Let's keep it for now as reference might be useful while searching for another.
     }
 
     private void UpdateFilterActiveStatus()
@@ -243,7 +308,8 @@
         return allCommands
             .Where(c => string.IsNullOrWhiteSpace(searchTerm) ||
                         c.Command.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                        c.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                        (!string.IsNullOrEmpty(c.UiData.HelperText) && c.UiData.HelperText.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)) ||
+                        (!string.IsNullOrEmpty(c.ConsoleData.Description) && c.ConsoleData.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
             .Where(c => !selectedTypes.Any(st => st.Value) ||
                         selectedTypes.Where(st => st.Value).Select(st => st.Key).Contains(c.UiData.Type))
             .Where(c => !requiresCheatsFilter || c.UiData.RequiresCheats)
