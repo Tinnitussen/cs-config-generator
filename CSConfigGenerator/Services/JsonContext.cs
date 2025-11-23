@@ -16,7 +16,6 @@ namespace CSConfigGenerator.Services;
 [JsonSerializable(typeof(IntegerUiData))]
 [JsonSerializable(typeof(FloatUiData))]
 [JsonSerializable(typeof(StringUiData))]
-[JsonSerializable(typeof(EnumUiData))]
 [JsonSerializable(typeof(CommandUiData))]
 [JsonSerializable(typeof(BitmaskUiData))]
 [JsonSerializable(typeof(UnknownUiData))]

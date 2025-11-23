@@ -113,13 +113,6 @@ Depending on the `type` of the command, the `uiData` object will have additional
 | :------------- | :----- | :---------------------------- |
 | `defaultValue` | String | The default value of the command. |
 
-#### For `type: "enum"`
-
-| Property       | Type   | Description                        |
-| :------------- | :----- | :--------------------------------- |
-| `defaultValue` | String | The default value of the command.      |
-| `options`      | Object | The available options for the command. |
-
 #### For `type: "command"`
 
 Commands represent console actions rather than configurable variables. They may accept arguments.
