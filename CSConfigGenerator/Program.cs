@@ -15,14 +15,11 @@ builder.Services.AddScoped<IPresetService, PresetService>();
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 builder.Services.AddScoped<IUserConfigService, UserConfigService>();
 builder.Services.AddScoped<IToastService, ToastService>();
-builder.Services.AddScoped<IConfigStateService, ConfigStateService>();
 
 // Initialize services
 WebAssemblyHost host = builder.Build();
 var schemaService = host.Services.GetRequiredService<ISchemaService>();
-var configStateService = host.Services.GetRequiredService<IConfigStateService>();
 
 await schemaService.InitializeAsync();
-configStateService.InitializeDefaults();
 
 await host.RunAsync();
