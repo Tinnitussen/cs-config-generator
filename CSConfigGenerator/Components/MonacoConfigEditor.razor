@@ -1,179 +1,68 @@
 @using BlazorMonaco.Editor
 @inject IJSRuntime JSRuntime
 
-<div class="monaco-editor-container">
-    <div class="editor-tabs">
-        @foreach (var tab in Tabs)
-        {
-            <div class="editor-tab @(tab.Id == ActiveTabId ? "active" : "")" @onclick="() => SwitchTab(tab.Id)">
-                <span class="tab-title">@tab.Title</span>
-                <span class="tab-close" @onclick="() => CloseTab(tab.Id)" @onclick:stopPropagation="true">×</span>
-            </div>
-        }
-        <div class="editor-tab add-tab" @onclick="AddNewTab">+</div>
-    </div>
-
-    <StandaloneCodeEditor @ref="_editor" Id="my-editor" ConstructionOptions="EditorConstructionOptions" OnDidInit="EditorOnDidInit" />
+<div class="monaco-editor-wrapper">
+    <StandaloneCodeEditor @ref="_editor" Id="config-editor" ConstructionOptions="EditorConstructionOptions" OnDidInit="EditorOnDidInit" />
 </div>
 
 <style>
-    .monaco-editor-container {
-        display: flex;
-        flex-direction: column;
-        height: 600px; /* Adjust as needed */
+    .monaco-editor-wrapper {
+        height: 100%;
+        width: 100%;
+        min-height: 400px;
         border: 1px solid #ccc;
-    }
-
-    .editor-tabs {
-        display: flex;
-        background-color: #252526; /* VS Code-like dark background */
-        overflow-x: auto;
-    }
-
-    .editor-tab {
-        padding: 8px 16px;
-        color: #969696;
-        background-color: #2d2d2d;
-        border-right: 1px solid #1e1e1e;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        user-select: none;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        font-size: 13px;
-    }
-
-    .editor-tab:hover {
-        background-color: #3e3e42;
-    }
-
-    .editor-tab.active {
-        color: #ffffff;
-        background-color: #1e1e1e;
-        border-top: 1px solid #007acc; /* Active tab highlight */
-    }
-
-    .tab-title {
-        margin-right: 8px;
-    }
-
-    .tab-close {
-        border-radius: 3px;
-        padding: 0 4px;
-    }
-
-    .tab-close:hover {
-        background-color: #4e4e52;
-        color: white;
-    }
-
-    .add-tab {
-        font-weight: bold;
-        font-size: 16px;
     }
 </style>
 
 @code {
     private StandaloneCodeEditor _editor = null!;
-    private List<EditorTab> Tabs = new List<EditorTab>();
-    private string ActiveTabId = null!;
-    private int _tabCounter = 1;
 
-    private class EditorTab
-    {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-        public required string Title { get; set; }
-        public required TextModel Model { get; set; }
-    }
+    [Parameter]
+    public TextModel? Model { get; set; }
+
+    [Parameter]
+    public EventCallback OnEditorInit { get; set; }
 
     private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
     {
         return new StandaloneEditorConstructionOptions
         {
             AutomaticLayout = true,
-            Language = "plaintext", // Default to plaintext for now, can be "csharp", "json", etc.
-            Theme = "vs-dark"
+            Language = "plaintext",
+            Theme = "vs-dark",
+            Minimap = new EditorMinimapOptions { Enabled = false }
         };
     }
 
     private async Task EditorOnDidInit()
     {
-        // Initialize with one tab
-        await AddNewTab();
-    }
-
-    private async Task AddNewTab()
-    {
-        var uriStr = $"inmemory://tab{_tabCounter}.cfg";
-        var title = $"Untitled-{_tabCounter}";
-        _tabCounter++;
-
-        // Create the model
-        // We use the JSRuntime overload to avoid obsolescence warnings if possible,
-        // but currently standard usage for BlazorMonaco 3.x is Global.CreateModel(jsRuntime, ...)
-        // The warning said: 'Global.CreateModel(string, string, string)' is obsolete: 'Use the overload that takes an IJSRuntime parameter.'
-        // So we will guess the signature is Global.CreateModel(JSRuntime, value, language, uri)
-        var model = await Global.CreateModel(JSRuntime, "", "plaintext", uriStr);
-
-        var newTab = new EditorTab
+        if (Model != null)
         {
-            Title = title,
-            Model = model
-        };
-
-        Tabs.Add(newTab);
-        await SwitchTab(newTab.Id);
-    }
-
-    private async Task SwitchTab(string tabId)
-    {
-        if (ActiveTabId == tabId) return;
-
-        var tab = Tabs.FirstOrDefault(t => t.Id == tabId);
-        if (tab != null && _editor != null)
-        {
-            ActiveTabId = tabId;
-            await _editor.SetModel(tab.Model);
-            StateHasChanged();
+            await _editor.SetModel(Model);
         }
+
+        await OnEditorInit.InvokeAsync();
     }
 
-    private async Task CloseTab(string tabId)
+    protected override async Task OnParametersSetAsync()
     {
-        var tab = Tabs.FirstOrDefault(t => t.Id == tabId);
-        if (tab == null) return;
-
-        Tabs.Remove(tab);
-
-        // Dispose the model to free resources
-        if (tab.Model != null)
+        if (_editor != null && Model != null)
         {
-            // TextModel doesn't expose Dispose in C# wrapper apparently (based on build error).
-            // We'll manually call dispose on the JS side using the URI.
-            try
+            // We need to check if the current model is different to avoid unnecessary calls
+            // typically checking the uri is enough
+            var currentModel = await _editor.GetModel();
+            if (currentModel == null || currentModel.Uri != Model.Uri)
             {
-                 // We need to parse the URI string in JS to get the model
-                 await JSRuntime.InvokeVoidAsync("eval", $"monaco.editor.getModel(monaco.Uri.parse('{tab.Model.Uri}')).dispose()");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error disposing model: {ex.Message}");
+                await _editor.SetModel(Model);
             }
         }
+    }
 
-        if (Tabs.Count == 0)
+    public async Task Layout()
+    {
+        if (_editor != null)
         {
-            // If all tabs closed, create a new empty one
-            await AddNewTab();
-        }
-        else if (ActiveTabId == tabId)
-        {
-            // Switch to the last tab if the active one was closed
-            await SwitchTab(Tabs.Last().Id);
-        }
-        else
-        {
-            StateHasChanged();
+            await _editor.Layout();
         }
     }
 }

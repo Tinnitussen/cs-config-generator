@@ -1,0 +1,347 @@
+@page "/editor"
+@using BlazorMonaco.Editor
+@using CSConfigGenerator.Components
+@inject IJSRuntime JSRuntime
+
+<div class="config-workspace">
+    <!-- Sidebar -->
+    <div class="workspace-sidebar">
+        <div class="sidebar-header">
+            Explorer
+        </div>
+        <div class="sidebar-section">
+            <div class="section-title">Presets</div>
+            @foreach (var preset in Presets)
+            {
+                <div class="file-item" @onclick="() => OpenPreset(preset)">
+                    <span class="file-icon">📄</span> @preset
+                </div>
+            }
+        </div>
+        <div class="sidebar-section">
+            <div class="section-title">My Configs</div>
+             <div class="file-item" @onclick="CreateNewFile">
+                <span class="file-icon">+</span> New File...
+            </div>
+            <!-- Future: List User Configs -->
+        </div>
+    </div>
+
+    <!-- Main Editor Area -->
+    <div class="workspace-main">
+        <!-- Tabs -->
+        <div class="workspace-tabs">
+            @foreach (var file in OpenFiles)
+            {
+                <div class="editor-tab @(file == ActiveFile ? "active" : "")"
+                     @onclick="() => SwitchToFile(file)"
+                     @onclick:preventDefault
+                     @onclick:stopPropagation>
+                    <span class="tab-title">@file.Name</span>
+                    <span class="tab-close" @onclick="() => CloseFile(file)" @onclick:stopPropagation="true">×</span>
+                </div>
+            }
+        </div>
+
+        <!-- Toolbar -->
+        <div class="workspace-toolbar">
+            <button class="btn-tool" @onclick="SaveActiveFile" disabled="@(ActiveFile == null)">
+                <i class="bi bi-save"></i> Save
+            </button>
+            <button class="btn-tool" @onclick="DownloadActiveFile" disabled="@(ActiveFile == null)">
+                <i class="bi bi-download"></i> Download
+            </button>
+        </div>
+
+        <!-- Editor -->
+        <div class="workspace-editor-container">
+            @if (ActiveFile != null)
+            {
+                <MonacoConfigEditor Model="@ActiveFile.Model" />
+            }
+            else
+            {
+                <div class="empty-state">
+                    <p>Select a file to edit</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .config-workspace {
+        display: flex;
+        height: calc(100vh - 60px); /* Adjust based on navbar height */
+        overflow: hidden;
+        border: 1px solid #333;
+        color: #ccc;
+        background-color: #1e1e1e;
+    }
+
+    /* Sidebar */
+    .workspace-sidebar {
+        width: 250px;
+        background-color: #252526;
+        border-right: 1px solid #333;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-header {
+        padding: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .sidebar-section {
+        padding-bottom: 10px;
+    }
+
+    .section-title {
+        padding: 5px 10px;
+        font-weight: bold;
+        color: #bbb;
+        font-size: 12px;
+    }
+
+    .file-item {
+        padding: 3px 20px;
+        cursor: pointer;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+
+    .file-item:hover {
+        background-color: #2a2d2e;
+        color: #fff;
+    }
+
+    .file-icon {
+        margin-right: 6px;
+        opacity: 0.7;
+    }
+
+    /* Main Area */
+    .workspace-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0; /* Prevent flex child overflow */
+    }
+
+    /* Tabs */
+    .workspace-tabs {
+        display: flex;
+        background-color: #252526;
+        overflow-x: auto;
+        height: 35px;
+    }
+
+    .editor-tab {
+        padding: 0 10px;
+        min-width: 120px;
+        max-width: 200px;
+        background-color: #2d2d2d;
+        border-right: 1px solid #252526;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        color: #969696;
+        user-select: none;
+    }
+
+    .editor-tab.active {
+        background-color: #1e1e1e;
+        color: #fff;
+        border-top: 1px solid #007acc;
+    }
+
+    .editor-tab:hover {
+        background-color: #3e3e42; /* Slightly lighter on hover */
+    }
+
+    .editor-tab.active:hover {
+        background-color: #1e1e1e; /* Keep active color on hover */
+    }
+
+    .tab-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 5px;
+    }
+
+    .tab-close {
+        border-radius: 3px;
+        padding: 0 4px;
+        font-size: 16px;
+        line-height: 14px;
+    }
+
+    .tab-close:hover {
+        background-color: #4e4e52;
+        color: white;
+    }
+
+    /* Toolbar */
+    .workspace-toolbar {
+        height: 30px;
+        background-color: #333333;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .btn-tool {
+        background: none;
+        border: none;
+        color: #ccc;
+        font-size: 12px;
+        cursor: pointer;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .btn-tool:hover {
+        color: #fff;
+    }
+
+    .btn-tool:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    /* Editor Container */
+    .workspace-editor-container {
+        flex: 1;
+        position: relative;
+        background-color: #1e1e1e;
+    }
+
+    .empty-state {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #555;
+    }
+</style>
+
+@code {
+    private List<string> Presets = new List<string> { "autoexec.cfg", "practice.cfg", "jumpthrow.cfg" }; // Mock data
+    private List<ConfigFile> OpenFiles = new List<ConfigFile>();
+    private ConfigFile? ActiveFile;
+    private int _newFileCounter = 1;
+
+    private class ConfigFile
+    {
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Name { get; set; } = "Untitled";
+        public TextModel Model { get; set; } = null!;
+        public string Content { get; set; } = ""; // Initial content
+    }
+
+    private async Task OpenPreset(string presetName)
+    {
+        // Check if already open
+        var existing = OpenFiles.FirstOrDefault(f => f.Name == presetName);
+        if (existing != null)
+        {
+            await SwitchToFile(existing);
+            return;
+        }
+
+        // Create new file
+        // In real app, fetch content here
+        var content = $"// {presetName}\n// Loaded from presets\n\necho \"{presetName} loaded\"";
+
+        await CreateAndOpenFile(presetName, content);
+    }
+
+    private async Task CreateNewFile()
+    {
+        var name = $"Untitled-{_newFileCounter++}.cfg";
+        await CreateAndOpenFile(name, "");
+    }
+
+    private async Task CreateAndOpenFile(string name, string content)
+    {
+        // Unique URI for Monaco
+        var uri = $"inmemory://{Guid.NewGuid()}/{name}";
+
+        // Create Monaco Model
+        // We use JSRuntime to invoke global BlazorMonaco method if needed,
+        // but since we are in a component, we can try to use Global helper if available or standard pattern.
+        // Assuming Global.CreateModel is available from `using BlazorMonaco.Editor;`
+
+        TextModel model;
+        try
+        {
+             model = await Global.CreateModel(JSRuntime, content, "plaintext", uri);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error creating model: {ex.Message}");
+            return;
+        }
+
+        var newFile = new ConfigFile
+        {
+            Name = name,
+            Content = content,
+            Model = model
+        };
+
+        OpenFiles.Add(newFile);
+        await SwitchToFile(newFile);
+    }
+
+    private async Task SwitchToFile(ConfigFile file)
+    {
+        ActiveFile = file;
+        StateHasChanged();
+    }
+
+    private async Task CloseFile(ConfigFile file)
+    {
+        OpenFiles.Remove(file);
+
+        // Dispose model
+        // TODO: Dispose properly via JS
+
+        if (ActiveFile == file)
+        {
+            ActiveFile = OpenFiles.LastOrDefault();
+        }
+        StateHasChanged();
+    }
+
+    private async Task SaveActiveFile()
+    {
+        if (ActiveFile != null)
+        {
+            // Here we would get the value from the model
+            var content = await ActiveFile.Model.GetValue(preserveBOM: true, eol: null);
+            // Save logic (mock)
+            Console.WriteLine($"Saving {ActiveFile.Name}: {content}");
+            await JSRuntime.InvokeVoidAsync("alert", $"Saved {ActiveFile.Name} (Mock)");
+        }
+    }
+
+    private async Task DownloadActiveFile()
+    {
+         if (ActiveFile != null)
+        {
+            var content = await ActiveFile.Model.GetValue(preserveBOM: true, eol: null);
+            await JSRuntime.InvokeVoidAsync("downloadFile", ActiveFile.Name, content);
+        }
+    }
+}
