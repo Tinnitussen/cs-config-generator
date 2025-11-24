@@ -4,10 +4,8 @@
 @using Microsoft.AspNetCore.Components.Forms
 @inject IJSRuntime JSRuntime
 @inject IPresetService PresetService
-@inject IConfigStateService ConfigStateService
 @inject IUserConfigService UserConfigService
 @inject IToastService ToastService
-@implements IDisposable
 
 <div class="config-editor">
     <div class="config-editor-header">
@@ -53,9 +51,6 @@
             </button>
             <button class="btn btn-sm btn-outline-info" @onclick="DownloadConfig" title="Download current config">
                 <i class="bi bi-download"></i>
-            </button>
-            <button class="btn btn-sm btn-outline-secondary" @onclick="ResetToDefaults" title="Reset to defaults">
-                <i class="bi bi-arrow-clockwise"></i>
             </button>
         </div>
     </div>
@@ -117,12 +112,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        if (ConfigStateService == null)
-            throw new InvalidOperationException("ConfigStateService is not set on ConfigEditor.");
-
-        RefreshConfigText();
-        ConfigStateService.OnStateChange += HandleStateChange;
-
         if (PresetType != null)
         {
             _presets = await PresetService.GetPresetNamesAsync(PresetType);
@@ -143,8 +132,7 @@
             var presetContent = await PresetService.GetPresetContentAsync(PresetType!, presetName);
             if (!string.IsNullOrEmpty(presetContent))
             {
-                ConfigStateService.ParseConfigFile(presetContent, this);
-                RefreshConfigText();
+                configText = presetContent;
             }
             _selectedPreset = "";
             StateHasChanged();
@@ -168,8 +156,7 @@
             var configContent = await UserConfigService.GetConfigContentAsync(PresetType!, configName);
             if (!string.IsNullOrEmpty(configContent))
             {
-                ConfigStateService.ParseConfigFile(configContent, this);
-                RefreshConfigText();
+                configText = configContent;
             }
             _selectedUserConfig = "";
             StateHasChanged();
@@ -240,8 +227,7 @@
                 using var stream = file.OpenReadStream(file.Size);
                 using var reader = new StreamReader(stream);
                 var content = await reader.ReadToEndAsync();
-                ConfigStateService.ParseConfigFile(content, this);
-                RefreshConfigText();
+                configText = content;
                 StateHasChanged();
                 ToastService.ShowToast($"Config '{file.Name}' uploaded successfully.", ToastLevel.Success);
             }
@@ -276,45 +262,13 @@
         }
     }
 
-    private void HandleStateChange(object? originator)
-    {
-        if (originator != this)
-        {
-            RefreshConfigText();
-            StateHasChanged();
-        }
-    }
-
-    private void RefreshConfigText()
-    {
-        configText = ConfigStateService.GenerateConfigFile();
-    }
-
     private void OnTextInput(ChangeEventArgs e)
     {
         string? newValue = e.Value?.ToString();
         if (newValue != null && newValue != configText)
         {
             configText = newValue;
-            try
-            {
-                ConfigStateService.ParseConfigFile(configText, this);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error parsing config: {ex.Message}");
-            }
         }
-    }
-
-    private void ResetToDefaults()
-    {
-        ShowConfirmation("Reset to Defaults", "Are you sure you want to reset all values to their defaults? This action cannot be undone.", () =>
-        {
-            ConfigStateService.ResetToDefaults();
-            ToastService.ShowToast("Config reset to default values.", ToastLevel.Info);
-            StateHasChanged();
-        });
     }
 
     private async Task CopyToClipboard()
@@ -355,10 +309,5 @@
         _cancelAction?.Invoke();
         _isConfirmationVisible = false;
         StateHasChanged();
-    }
-
-    public void Dispose()
-    {
-        ConfigStateService.OnStateChange -= HandleStateChange;
     }
 }

@@ -16,14 +16,13 @@ High-level context for the CS2 Config Generator project.
 ```
 JSON Data (wwwroot/data/)
   → SchemaService (command definitions)
-  → ConfigStateService (selected commands)
   → UserConfigService (user values)
   → LocalStorageService (browser persistence)
   → UI Components
 ```
 
 **Key Layers**:
-- `Services/` - Business logic (6 scoped services)
+- `Services/` - Business logic (5 scoped services)
 - `Components/` - Reusable UI (ConfigEditor, Modal, ToastContainer, etc.)
 - `Pages/` - Routable views (Home, CommandReference)
 - `Models/` - Data structures (class hierarchy for type safety)
@@ -74,4 +73,3 @@ dotnet test
 - `SCHEMA.md` - JSON schema spec
 - `PIPELINE.md` - Data generation pipeline
 - `PROPOSAL.md` - Design decisions
-
