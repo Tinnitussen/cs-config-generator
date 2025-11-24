@@ -5,6 +5,7 @@ Apply Type Improvements Script
 This script applies type improvements to commands.json using:
 1. Manual type overrides (highest priority)
 2. Scraped types from scraped_types.json (for 'unknown' types), excluding 'string' classifications
+3. Vector heuristics: Detects vector2/vector3 by splitting default values (splits into 2 or 3 numbers)
 
 Strict Validation Logic:
 - Rejects scraped 'bool' if raw defaultValue is not boolean-compatible (0/1/true/false).
@@ -18,7 +19,7 @@ Usage:
 import json
 import os
 import argparse
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 
 # Type normalization map
 TYPE_NORMALIZATION = {
@@ -31,6 +32,7 @@ TYPE_NORMALIZATION = {
     'enum': 'int',  # Map enum to int since we dropped Enum support
     'string': 'string',
     'vector': 'vector3',
+    'vector2': 'vector2',
     'vector3': 'vector3',
     'color': 'color'
 }
@@ -53,6 +55,29 @@ def is_valid_bool_value(val) -> bool:
     if isinstance(val, str):
         return val.strip().lower() in ALLOWED_BOOL_STRINGS
     return False
+
+def detect_vector_type(val) -> Optional[str]:
+    """
+    Detect if a value is a vector2 or vector3 based on splitting the string.
+    Returns 'vector2', 'vector3', or None.
+    """
+    if not isinstance(val, str):
+        # If it's not a string, it's unlikely to be a vector in our data model
+        # (unless it's some other object, but console data usually comes as string/numbers)
+        return None
+
+    parts = val.strip().split()
+    if len(parts) not in (2, 3):
+        return None
+
+    # Verify all parts are numbers
+    try:
+        for p in parts:
+            float(p)
+    except ValueError:
+        return None
+
+    return 'vector3' if len(parts) == 3 else 'vector2'
 
 def coerce_default_value(new_type: str, current_value):
     """Coerce a defaultValue to the JSON shape expected by the C# UiData subtype."""
@@ -133,12 +158,13 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
         'total': len(commands),
         'manual_overrides_applied': 0,
         'scraped_types_applied': 0,
+        'heuristic_vectors_applied': 0,
         'scraped_rejected': 0,
         'unknown_remaining': 0,
         'skipped_no_uidata': 0,
     }
 
-    manifest_entries = []
+    manifest_changes = []
 
     for cmd in commands:
         cmd_name = cmd.get('command')
@@ -191,7 +217,7 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
                 source = 'scraped_type'
                 stats['scraped_types_applied'] += 1
 
-                manifest_entries.append({
+                manifest_changes.append({
                     "command": cmd_name,
                     "old_type": current_type,
                     "new_type": new_type,
@@ -202,6 +228,27 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
                 stats['scraped_rejected'] += 1
                 if dry_run:
                     print(f"  [REJECT] {cmd_name}: scraped '{candidate_type}' rejected. {rejection_reason}")
+
+        # 3. Vector Heuristics
+        # If no type determined yet, or explicitly checking to upgrade 'string'/'unknown'
+        candidate_type = new_type if new_type else current_type
+
+        if candidate_type in ('string', 'unknown'):
+            val_to_check = raw_default if raw_default is not None else current_default
+            vector_type = detect_vector_type(val_to_check)
+
+            if vector_type:
+                new_type = vector_type
+                source = 'heuristic_vector'
+                stats['heuristic_vectors_applied'] += 1
+
+                manifest_changes.append({
+                    "command": cmd_name,
+                    "old_type": current_type,
+                    "new_type": new_type,
+                    "raw_default": raw_default,
+                    "source": "heuristic"
+                })
 
         # Apply changes
         if new_type and new_type != current_type:
@@ -219,7 +266,7 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
         if final_type == 'unknown':
             stats['unknown_remaining'] += 1
 
-    return commands, stats, manifest_entries
+    return commands, stats, manifest_changes
 
 def main():
     parser = argparse.ArgumentParser(description="Apply type improvements to commands.json")
@@ -253,9 +300,25 @@ def main():
     print(f"   Loaded {len(scraped_types)} scraped types")
     print(f"   Loaded {len(manual_overrides)} manual overrides")
 
+    # Load existing manifest to preserve history
+    manifest_map = {}
+    if os.path.exists(manifest_path):
+        try:
+            with open(manifest_path, 'r', encoding='utf-8') as f:
+                existing_manifest = json.load(f)
+                for entry in existing_manifest:
+                    manifest_map[entry['command']] = entry
+            print(f"   Loaded {len(manifest_map)} existing manifest entries")
+        except json.JSONDecodeError:
+             print(f"   Warning: Could not parse existing manifest at {manifest_path}. Starting fresh.")
+
     # Apply improvements
     print("\n2. Applying type improvements...")
-    updated_commands, stats, manifest = apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=args.dry_run)
+    updated_commands, stats, manifest_changes = apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=args.dry_run)
+
+    # Update manifest map with changes (overwriting old ones for same command)
+    for entry in manifest_changes:
+        manifest_map[entry['command']] = entry
 
     # Save results
     if not args.dry_run:
@@ -265,9 +328,11 @@ def main():
         print(f"   Saved to: {commands_path}")
 
         print(f"   Saving classification manifest...")
+        # Convert map back to list and sort by command for stability
+        final_manifest = sorted(list(manifest_map.values()), key=lambda x: x['command'])
         with open(manifest_path, 'w', encoding='utf-8') as f:
-            json.dump(manifest, f, indent=2)
-        print(f"   Saved to: {manifest_path}")
+            json.dump(final_manifest, f, indent=2)
+        print(f"   Saved to: {manifest_path} ({len(final_manifest)} entries)")
 
     # Summary
     print("\n" + "=" * 60)
@@ -276,6 +341,7 @@ def main():
     print(f"Total commands: {stats['total']}")
     print(f"Manual overrides applied: {stats['manual_overrides_applied']}")
     print(f"Scraped types applied: {stats['scraped_types_applied']}")
+    print(f"Heuristic vectors applied: {stats['heuristic_vectors_applied']}")
     print(f"Scraped types rejected: {stats['scraped_rejected']}")
     print(f"Unknown types remaining: {stats['unknown_remaining']}")
 
