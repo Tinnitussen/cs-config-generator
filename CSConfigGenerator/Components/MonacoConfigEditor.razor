@@ -15,7 +15,13 @@
 </style>
 
 @code {
-    private StandaloneCodeEditor _editor = null!;
+    // NOTE: @ref is assigned before the underlying JS editor exists. We must not call any
+    // BlazorMonaco JS interop until OnDidInit fires.
+    private StandaloneCodeEditor? _editor;
+    private bool _isEditorInitialized;
+    private TextModel? _pendingModel;
+    private string? _currentModelUri;
+    private bool _disposed;
 
     [Parameter]
     public TextModel? Model { get; set; }
@@ -36,33 +42,69 @@
 
     private async Task EditorOnDidInit()
     {
-        if (Model != null)
+        _isEditorInitialized = true;
+
+        // Prefer the latest incoming parameter value; fallback to any pending value captured
+        // before the editor was initialized.
+        var modelToApply = Model ?? _pendingModel;
+        _pendingModel = null;
+
+        if (modelToApply != null)
         {
-            await _editor.SetModel(Model);
+            await ApplyModelIfNeeded(modelToApply);
         }
 
-        await OnEditorInit.InvokeAsync();
+        if (!_disposed)
+        {
+            await OnEditorInit.InvokeAsync();
+        }
     }
 
     protected override async Task OnParametersSetAsync()
     {
-        if (_editor != null && Model != null)
+        if (_disposed)
+            return;
+
+        if (Model == null)
+            return;
+
+        // If the editor JS instance isn't created yet, defer model application until OnDidInit.
+        if (!_isEditorInitialized)
         {
-            // We need to check if the current model is different to avoid unnecessary calls
-            // typically checking the uri is enough
-            var currentModel = await _editor.GetModel();
-            if (currentModel == null || currentModel.Uri != Model.Uri)
-            {
-                await _editor.SetModel(Model);
-            }
+            _pendingModel = Model;
+            return;
         }
+
+        await ApplyModelIfNeeded(Model);
     }
 
     public async Task Layout()
     {
-        if (_editor != null)
+        if (_disposed)
+            return;
+
+        if (_editor != null && _isEditorInitialized)
         {
             await _editor.Layout();
         }
+    }
+
+    private async Task ApplyModelIfNeeded(TextModel model)
+    {
+        if (_disposed || _editor == null || !_isEditorInitialized)
+            return;
+
+        // Avoid calling GetModel() here: it's a JS interop call and can race during init.
+        var modelUri = model.Uri;
+        if (_currentModelUri == modelUri)
+            return;
+
+        _currentModelUri = modelUri;
+        await _editor.SetModel(model);
+    }
+
+    public void Dispose()
+    {
+        _disposed = true;
     }
 }

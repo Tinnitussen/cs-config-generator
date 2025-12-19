@@ -329,7 +329,8 @@
         if (ActiveFile != null)
         {
             // Here we would get the value from the model
-            var content = await ActiveFile.Model.GetValue(preserveBOM: true, eol: null);
+            // Preserve the model's existing EOL; passing `eol: null` breaks Monaco ("Unknown EOL preference").
+            var content = await ActiveFile.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
             // Save logic (mock)
             Console.WriteLine($"Saving {ActiveFile.Name}: {content}");
             await JSRuntime.InvokeVoidAsync("alert", $"Saved {ActiveFile.Name} (Mock)");
@@ -340,7 +341,8 @@
     {
          if (ActiveFile != null)
         {
-            var content = await ActiveFile.Model.GetValue(preserveBOM: true, eol: null);
+            // Preserve the model's existing EOL; passing `eol: null` breaks Monaco ("Unknown EOL preference").
+            var content = await ActiveFile.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
             await JSRuntime.InvokeVoidAsync("downloadFile", ActiveFile.Name, content);
         }
     }
