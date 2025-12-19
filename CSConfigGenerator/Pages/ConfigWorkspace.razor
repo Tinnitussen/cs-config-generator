@@ -1,0 +1,791 @@
+@page "/editor"
+@using BlazorMonaco.Editor
+@using CSConfigGenerator.Components
+@using CSConfigGenerator.Interfaces
+@using CSConfigGenerator.Models
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Web
+@using System.IO
+@inject IJSRuntime JSRuntime
+@inject IPresetService PresetService
+@inject IUserConfigService UserConfigService
+@inject IToastService ToastService
+
+<div class="config-workspace">
+    <!-- Sidebar -->
+    <div class="workspace-sidebar">
+        <div class="sidebar-header">
+            Explorer
+        </div>
+        <div class="sidebar-section">
+            <div class="section-title">Presets</div>
+            @if (PlayerPresets.Count > 0)
+            {
+                <div class="section-subtitle">Players</div>
+                @foreach (var preset in PlayerPresets)
+                {
+                    <div class="file-item" @onclick='@(() => OpenPreset("player", preset))'>
+                        <span class="file-icon">📄</span> @($"{preset}.cfg")
+                    </div>
+                }
+            }
+            @if (ServerPresets.Count > 0)
+            {
+                <div class="section-subtitle">Server</div>
+                @foreach (var preset in ServerPresets)
+                {
+                    <div class="file-item" @onclick='@(() => OpenPreset("server", preset))'>
+                        <span class="file-icon">📄</span> @($"{preset}.cfg")
+                    </div>
+                }
+            }
+            @if (PlayerPresets.Count == 0 && ServerPresets.Count == 0)
+            {
+                <div class="file-item text-muted">
+                    <span class="file-icon">…</span> Loading presets
+                </div>
+            }
+        </div>
+        <div class="sidebar-section">
+            <div class="section-title">My Configs</div>
+            @foreach (var configName in MyConfigs)
+            {
+                <div class="file-item d-flex justify-content-between align-items-center"
+                     @onclick="() => OpenUserConfig(configName)">
+                    <span class="d-flex align-items-center">
+                        <span class="file-icon">💾</span> @configName
+                    </span>
+                    <button class="btn btn-sm btn-link text-secondary p-0"
+                            title="Delete"
+                            @onclick="(e) => DeleteUserConfig(e, configName)"
+                            @onclick:stopPropagation="true">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            }
+
+            @if (MyConfigs.Count == 0)
+            {
+                <div class="file-item text-muted">
+                    <span class="file-icon">…</span> No saved configs yet
+                </div>
+            }
+
+            <div class="file-item" @onclick="ShowNewFileDialog">
+                <span class="file-icon">+</span> New File...
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Editor Area -->
+    <div class="workspace-main">
+        <!-- Tabs -->
+        <div class="workspace-tabs">
+            @foreach (var file in OpenFiles)
+            {
+                <div class="editor-tab @(file == ActiveFile ? "active" : "")"
+                     @onclick="() => SwitchToFile(file)"
+                     @onclick:preventDefault
+                     @onclick:stopPropagation>
+                    <span class="tab-title">@file.Name</span>
+                    <span class="tab-close" @onclick="() => CloseFile(file)" @onclick:stopPropagation="true">×</span>
+                </div>
+            }
+        </div>
+
+        <!-- Toolbar -->
+        <div class="workspace-toolbar">
+            <button class="btn-tool" @onclick="SaveActiveFile" disabled="@(ActiveFile == null)">
+                <i class="bi bi-save"></i> Save
+            </button>
+            <button class="btn-tool" @onclick="SaveActiveFileAs" disabled="@(ActiveFile == null)">
+                <i class="bi bi-pencil-square"></i> Save As
+            </button>
+            <button class="btn-tool" @onclick="DownloadActiveFile" disabled="@(ActiveFile == null)">
+                <i class="bi bi-download"></i> Download
+            </button>
+            <button class="btn-tool" @onclick="CopyActiveFileToClipboard" disabled="@(ActiveFile == null)">
+                <i class="bi bi-clipboard"></i> Copy
+            </button>
+            <button class="btn-tool" @onclick="TriggerUpload">
+                <i class="bi bi-upload"></i> Upload
+            </button>
+
+            <InputFile @key="_uploadInputKey"
+                       OnChange="OnUpload"
+                       class="d-none"
+                       accept=".cfg"
+                       @ref="_uploadInputFile" />
+        </div>
+
+        <!-- Editor -->
+        <div class="workspace-editor-container">
+            @if (ActiveFile != null)
+            {
+                <MonacoConfigEditor @ref="_monacoEditor" Model="@ActiveFile.Model" OnEditorInit="HandleEditorInit" />
+            }
+            else
+            {
+                <div class="empty-state">
+                    <p>Select a file to edit</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<Modal IsOpen="_isFileNameDialogOpen"
+       Title="@_fileNameDialogTitle"
+       OnCancel="CloseFileNameDialog">
+    <Body>
+        <div class="modal-body">
+            <label class="form-label" for="fileNameInput">Filename</label>
+            <input id="fileNameInput"
+                   class="form-control"
+                   @bind="_fileNameInput"
+                   @bind:event="oninput"
+                   placeholder="e.g. autoexec.cfg" />
+            @if (!string.IsNullOrWhiteSpace(_fileNameError))
+            {
+                <div class="text-danger mt-2">@_fileNameError</div>
+            }
+            @if (_willOverwriteExisting)
+            {
+                <div class="text-warning mt-2">This will overwrite an existing saved config.</div>
+            }
+        </div>
+    </Body>
+    <Footer>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" @onclick="CloseFileNameDialog">Cancel</button>
+            <button class="btn btn-primary" @onclick="ConfirmFileNameDialog">OK</button>
+        </div>
+    </Footer>
+</Modal>
+
+<style>
+    .config-workspace {
+        display: flex;
+        height: calc(100vh - 60px); /* Adjust based on navbar height */
+        overflow: hidden;
+        border: 1px solid #333;
+        color: #ccc;
+        background-color: #1e1e1e;
+    }
+
+    /* Sidebar */
+    .workspace-sidebar {
+        width: 250px;
+        background-color: #252526;
+        border-right: 1px solid #333;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-header {
+        padding: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .sidebar-section {
+        padding-bottom: 10px;
+    }
+
+    .section-title {
+        padding: 5px 10px;
+        font-weight: bold;
+        color: #bbb;
+        font-size: 12px;
+    }
+
+    .file-item {
+        padding: 3px 20px;
+        cursor: pointer;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+
+    .file-item:hover {
+        background-color: #2a2d2e;
+        color: #fff;
+    }
+
+    .file-icon {
+        margin-right: 6px;
+        opacity: 0.7;
+    }
+
+    /* Main Area */
+    .workspace-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0; /* Prevent flex child overflow */
+    }
+
+    /* Tabs */
+    .workspace-tabs {
+        display: flex;
+        background-color: #252526;
+        overflow-x: auto;
+        height: 35px;
+    }
+
+    .editor-tab {
+        padding: 0 10px;
+        min-width: 120px;
+        max-width: 200px;
+        background-color: #2d2d2d;
+        border-right: 1px solid #252526;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        color: #969696;
+        user-select: none;
+    }
+
+    .editor-tab.active {
+        background-color: #1e1e1e;
+        color: #fff;
+        border-top: 1px solid #007acc;
+    }
+
+    .editor-tab:hover {
+        background-color: #3e3e42; /* Slightly lighter on hover */
+    }
+
+    .editor-tab.active:hover {
+        background-color: #1e1e1e; /* Keep active color on hover */
+    }
+
+    .tab-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 5px;
+    }
+
+    .tab-close {
+        border-radius: 3px;
+        padding: 0 4px;
+        font-size: 16px;
+        line-height: 14px;
+    }
+
+    .tab-close:hover {
+        background-color: #4e4e52;
+        color: white;
+    }
+
+    /* Toolbar */
+    .workspace-toolbar {
+        height: 30px;
+        background-color: #333333;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .btn-tool {
+        background: none;
+        border: none;
+        color: #ccc;
+        font-size: 12px;
+        cursor: pointer;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .btn-tool:hover {
+        color: #fff;
+    }
+
+    .btn-tool:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    /* Editor Container */
+    .workspace-editor-container {
+        flex: 1;
+        position: relative;
+        background-color: #1e1e1e;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .empty-state {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #555;
+    }
+
+    .section-subtitle {
+        padding: 2px 10px;
+        font-size: 11px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+@code {
+    private List<ConfigFile> OpenFiles = new List<ConfigFile>();
+    private ConfigFile? ActiveFile;
+
+    private const string UserConfigType = "config-workspace";
+    private List<string> PlayerPresets = new();
+    private List<string> ServerPresets = new();
+    private List<string> MyConfigs = new();
+
+    private MonacoConfigEditor? _monacoEditor;
+    private bool _pendingEditorLayout;
+    private bool _pendingEnsureActiveFileModel;
+
+    private InputFile? _uploadInputFile;
+    private int _uploadInputKey;
+
+    private bool _isFileNameDialogOpen;
+    private string _fileNameDialogTitle = "Save As";
+    private string _fileNameInput = string.Empty;
+    private string? _fileNameError;
+    private bool _willOverwriteExisting;
+    private FileNameDialogMode _fileNameDialogMode = FileNameDialogMode.SaveAs;
+    private ConfigFile? _fileNameDialogTargetFile;
+
+    private enum FileNameDialogMode
+    {
+        NewFile,
+        SaveAs
+    }
+
+    private class ConfigFile
+    {
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Name { get; set; } = "Untitled";
+        public string ModelUri { get; set; } = string.Empty;
+        public TextModel? Model { get; set; }
+        public string Content { get; set; } = ""; // Initial content
+        public bool IsSavedToMyConfigs { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        PlayerPresets = await PresetService.GetPresetNamesAsync("player");
+        ServerPresets = await PresetService.GetPresetNamesAsync("server");
+        await RefreshMyConfigsAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_pendingEnsureActiveFileModel)
+        {
+            _pendingEnsureActiveFileModel = false;
+            await EnsureActiveFileModelAsync();
+        }
+
+        if (_pendingEditorLayout)
+        {
+            _pendingEditorLayout = false;
+            if (_monacoEditor != null)
+            {
+                await _monacoEditor.Layout();
+            }
+        }
+    }
+
+    private Task HandleEditorInit()
+    {
+        // Ensure a layout after init; Monaco can initialize at 0px width in some Blazor render timings.
+        _pendingEnsureActiveFileModel = true;
+        _pendingEditorLayout = true;
+        return Task.CompletedTask;
+    }
+
+    private async Task RefreshMyConfigsAsync()
+    {
+        MyConfigs = await UserConfigService.GetConfigNamesAsync(UserConfigType);
+        MyConfigs.Sort(StringComparer.OrdinalIgnoreCase);
+        StateHasChanged();
+    }
+
+    private async Task OpenPreset(string presetType, string presetName)
+    {
+        var fileName = NormalizeFileName(presetName);
+
+        // Check if already open
+        var existing = OpenFiles.FirstOrDefault(f => f.Name == fileName);
+        if (existing != null)
+        {
+            await SwitchToFile(existing);
+            return;
+        }
+
+        var content = await PresetService.GetPresetContentAsync(presetType, presetName);
+
+        await CreateAndOpenFile(fileName, content);
+    }
+
+    private void ShowNewFileDialog()
+    {
+        _fileNameDialogMode = FileNameDialogMode.NewFile;
+        _fileNameDialogTitle = "New File";
+        _fileNameDialogTargetFile = null;
+        _fileNameInput = "autoexec.cfg";
+        _fileNameError = null;
+        _willOverwriteExisting = false;
+        _isFileNameDialogOpen = true;
+    }
+
+    private async Task CreateAndOpenFile(string name, string content)
+    {
+        var id = Guid.NewGuid().ToString();
+        var newFile = new ConfigFile
+        {
+            Id = id,
+            Name = name,
+            Content = content,
+            ModelUri = $"inmemory://{id}/{name}",
+            Model = null
+        };
+
+        OpenFiles.Add(newFile);
+        await SwitchToFile(newFile);
+    }
+
+    private async Task SwitchToFile(ConfigFile file)
+    {
+        ActiveFile = file;
+        if (ActiveFile.Model == null)
+        {
+            _pendingEnsureActiveFileModel = true;
+        }
+        _pendingEditorLayout = true;
+        StateHasChanged();
+    }
+
+    private async Task CloseFile(ConfigFile file)
+    {
+        OpenFiles.Remove(file);
+
+        // Dispose model
+        // TODO: Dispose properly via JS
+
+        if (ActiveFile == file)
+        {
+            ActiveFile = OpenFiles.LastOrDefault();
+        }
+        StateHasChanged();
+    }
+
+    private async Task SaveActiveFile()
+    {
+        if (ActiveFile == null)
+            return;
+
+        if (!ActiveFile.IsSavedToMyConfigs && IsUntitledName(ActiveFile.Name))
+        {
+            ShowSaveAsDialog(ActiveFile);
+            return;
+        }
+
+        await SaveFileToMyConfigsAsync(ActiveFile, ActiveFile.Name);
+    }
+
+    private Task SaveActiveFileAs()
+    {
+        if (ActiveFile == null)
+            return Task.CompletedTask;
+
+        ShowSaveAsDialog(ActiveFile);
+        return Task.CompletedTask;
+    }
+
+    private async Task DownloadActiveFile()
+    {
+         if (ActiveFile?.Model != null)
+        {
+            // Preserve the model's existing EOL; passing `eol: null` breaks Monaco ("Unknown EOL preference").
+            var content = await ActiveFile.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
+            await JSRuntime.InvokeVoidAsync("downloadFile", ActiveFile.Name, content);
+        }
+    }
+
+    private async Task CopyActiveFileToClipboard()
+    {
+        if (ActiveFile?.Model == null)
+        {
+            ToastService.ShowToast("No active file (or editor not ready yet).", ToastLevel.Warning);
+            return;
+        }
+
+        try
+        {
+            var content = await ActiveFile.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
+            await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", content);
+            ToastService.ShowToast("Copied to clipboard.", ToastLevel.Success);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to copy to clipboard: {ex.Message}");
+            ToastService.ShowToast("Failed to copy to clipboard. Your browser may block clipboard access.", ToastLevel.Error);
+        }
+    }
+
+    private async Task TriggerUpload()
+    {
+        if (_uploadInputFile?.Element != null)
+        {
+            await JSRuntime.InvokeVoidAsync("clickElement", _uploadInputFile.Element);
+        }
+        else
+        {
+            ToastService.ShowToast("Upload control is not ready yet. Try again in a moment.", ToastLevel.Warning);
+        }
+    }
+
+    private async Task OnUpload(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file == null)
+            return;
+
+        // Reset the <InputFile> so selecting the same file again still triggers OnChange.
+        _uploadInputKey++;
+
+        try
+        {
+            const long maxAllowedSize = 10 * 1024 * 1024; // 10 MB
+            if (file.Size > maxAllowedSize)
+            {
+                ToastService.ShowToast("File is too large to upload (max 10 MB).", ToastLevel.Error);
+                return;
+            }
+
+            await using var stream = file.OpenReadStream(maxAllowedSize);
+            using var reader = new StreamReader(stream);
+            var content = await reader.ReadToEndAsync();
+
+            var normalizedName = NormalizeFileName(file.Name);
+            var uniqueName = MakeUniqueTabName(normalizedName);
+
+            await CreateAndOpenFile(uniqueName, content);
+            ToastService.ShowToast($"Uploaded {uniqueName}", ToastLevel.Success);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error uploading file: {ex.Message}");
+            ToastService.ShowToast($"Error uploading file: {ex.Message}", ToastLevel.Error);
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task OpenUserConfig(string configName)
+    {
+        var existing = OpenFiles.FirstOrDefault(f => f.Name == configName);
+        if (existing != null)
+        {
+            await SwitchToFile(existing);
+            return;
+        }
+
+        var content = await UserConfigService.GetConfigContentAsync(UserConfigType, configName);
+        var file = await CreateAndOpenFileReturning(configName, content);
+        if (file != null)
+        {
+            file.IsSavedToMyConfigs = true;
+        }
+    }
+
+    private async Task DeleteUserConfig(MouseEventArgs _, string configName)
+    {
+        await UserConfigService.DeleteConfigAsync(UserConfigType, configName);
+        await RefreshMyConfigsAsync();
+        ToastService.ShowToast($"Deleted {configName}", ToastLevel.Info);
+    }
+
+    private void ShowSaveAsDialog(ConfigFile file)
+    {
+        _fileNameDialogMode = FileNameDialogMode.SaveAs;
+        _fileNameDialogTitle = "Save As";
+        _fileNameDialogTargetFile = file;
+        _fileNameInput = file.Name;
+        _fileNameError = null;
+        _willOverwriteExisting = MyConfigs.Any(n => string.Equals(n, file.Name, StringComparison.OrdinalIgnoreCase));
+        _isFileNameDialogOpen = true;
+    }
+
+    private void CloseFileNameDialog()
+    {
+        _isFileNameDialogOpen = false;
+        _fileNameError = null;
+        _willOverwriteExisting = false;
+        _fileNameDialogTargetFile = null;
+        StateHasChanged();
+    }
+
+    private async Task ConfirmFileNameDialog()
+    {
+        var raw = _fileNameInput?.Trim() ?? string.Empty;
+        var normalized = NormalizeFileName(raw);
+
+        if (!TryValidateFileName(normalized, out var error))
+        {
+            _fileNameError = error;
+            _willOverwriteExisting = false;
+            return;
+        }
+
+        _willOverwriteExisting = MyConfigs.Any(n => string.Equals(n, normalized, StringComparison.OrdinalIgnoreCase));
+
+        if (_fileNameDialogMode == FileNameDialogMode.NewFile)
+        {
+            CloseFileNameDialog();
+            await CreateAndOpenFile(normalized, string.Empty);
+            return;
+        }
+
+        var target = _fileNameDialogTargetFile;
+        if (target == null)
+        {
+            CloseFileNameDialog();
+            return;
+        }
+
+        CloseFileNameDialog();
+        await SaveFileToMyConfigsAsync(target, normalized);
+    }
+
+    private async Task SaveFileToMyConfigsAsync(ConfigFile file, string configName)
+    {
+        if (file.Model == null)
+        {
+            ToastService.ShowToast("Editor is not ready yet. Try again in a moment.", ToastLevel.Warning);
+            return;
+        }
+
+        var content = await file.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
+        await UserConfigService.SaveConfigAsync(UserConfigType, configName, content);
+
+        file.Name = configName;
+        file.Content = content;
+        file.IsSavedToMyConfigs = true;
+
+        await RefreshMyConfigsAsync();
+        ToastService.ShowToast($"Saved {configName}", ToastLevel.Success);
+    }
+
+    private static bool IsUntitledName(string name) =>
+        name.StartsWith("Untitled-", StringComparison.OrdinalIgnoreCase);
+
+    private static string NormalizeFileName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            return name;
+
+        // Strip common path separators; we only store a flat name.
+        name = name.Replace("\\", "").Replace("/", "").Replace(":", "");
+        if (!name.EndsWith(".cfg", StringComparison.OrdinalIgnoreCase))
+            name += ".cfg";
+        return name;
+    }
+
+    private string MakeUniqueTabName(string desiredName)
+    {
+        if (string.IsNullOrWhiteSpace(desiredName))
+            return desiredName;
+
+        if (!OpenFiles.Any(f => string.Equals(f.Name, desiredName, StringComparison.OrdinalIgnoreCase)))
+            return desiredName;
+
+        var ext = Path.GetExtension(desiredName);
+        var baseName = string.IsNullOrEmpty(ext) ? desiredName : desiredName[..^ext.Length];
+
+        var counter = 2;
+        while (true)
+        {
+            var candidate = $"{baseName} ({counter}){ext}";
+            if (!OpenFiles.Any(f => string.Equals(f.Name, candidate, StringComparison.OrdinalIgnoreCase)))
+                return candidate;
+            counter++;
+        }
+    }
+
+    private bool TryValidateFileName(string fileName, out string error)
+    {
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            error = "Filename is required.";
+            return false;
+        }
+
+        if (fileName.Length > 64)
+        {
+            error = "Filename is too long (max 64 characters).";
+            return false;
+        }
+
+        if (fileName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+        {
+            error = "Filename contains invalid characters.";
+            return false;
+        }
+
+        error = string.Empty;
+        return true;
+    }
+
+    private async Task<ConfigFile?> CreateAndOpenFileReturning(string name, string content)
+    {
+        var id = Guid.NewGuid().ToString();
+        var newFile = new ConfigFile
+        {
+            Id = id,
+            Name = name,
+            Content = content,
+            ModelUri = $"inmemory://{id}/{name}",
+            Model = null
+        };
+
+        OpenFiles.Add(newFile);
+        await SwitchToFile(newFile);
+        return newFile;
+    }
+
+    private async Task EnsureActiveFileModelAsync()
+    {
+        var file = ActiveFile;
+        if (file == null)
+            return;
+
+        if (file.Model != null)
+            return;
+
+        // Monaco (and thus Global.CreateModel) isn't reliably available until the editor has been initialized.
+        // We create the model lazily when the file becomes active.
+        try
+        {
+            file.Model = await Global.CreateModel(JSRuntime, file.Content, "plaintext", file.ModelUri);
+            _pendingEditorLayout = true;
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error creating model: {ex.Message}");
+            ToastService.ShowToast("Failed to create editor model. Try refreshing the page.", ToastLevel.Error);
+        }
+    }
+}

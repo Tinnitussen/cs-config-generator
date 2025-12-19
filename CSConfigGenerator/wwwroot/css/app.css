@@ -9,6 +9,25 @@ h1, h2, h3, h4, h5, h6 {
     color: #111;
 }
 
+/* Shared page typography (keep to two sizes: title + body) */
+:root {
+    --cscg-page-title-size: 2rem;
+    --cscg-page-body-size: 1rem;
+}
+
+.page-title {
+    font-family: inherit;
+    font-size: var(--cscg-page-title-size);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 0.75rem 0;
+}
+
+.page-content {
+    font-family: inherit;
+    font-size: var(--cscg-page-body-size);
+}
+
 .main-content {
     padding: 0;
 }

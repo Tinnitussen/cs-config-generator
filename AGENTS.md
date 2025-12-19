@@ -22,9 +22,9 @@ JSON Data (wwwroot/data/)
 ```
 
 **Key Layers**:
-- `Services/` - Business logic (5 scoped services)
-- `Components/` - Reusable UI (ConfigEditor, Modal, ToastContainer, etc.)
-- `Pages/` - Routable views (Home, CommandReference)
+- `Services/` - Business logic (6 scoped services)
+- `Components/` - Reusable UI (MonacoConfigEditor, Modal, ToastContainer, etc.)
+- `Pages/` - Routable views (Home, CommandReference, ConfigWorkspace)
 - `Models/` - Data structures (class hierarchy for type safety)
 
 ## Data Model
@@ -61,6 +61,21 @@ dotnet test
 **C# Conventions**: File-scoped namespaces, records for immutability, nullable enabled, init properties
 **Blazor Patterns**: No code-behind, use `.razor.css` for scoped styles, `@inject` for services
 **Naming**: `IServiceName` interfaces, `ServiceNameService` implementations
+
+### Accessibility & Semantic HTML (Required)
+
+This app is a documentation/config tool, so it must be usable with keyboard + screen readers.
+
+- **Use semantic landmarks first**: prefer `<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`, `<aside>` over generic `<div>`/`<span>`. (`MainLayout` already provides `<main>` + `<article>`.)
+- **Avoid “div soup” wrappers**: only introduce a `<div>` when it is truly necessary for Bootstrap grid/layout or styling hooks; otherwise use semantic elements.
+- **Headings must be structured**: one clear page `<h1>`, then descend in order (`h2`, `h3`, …). Don’t jump levels.
+- **Associate sections with headings**: when using `<section>`, prefer `aria-labelledby` pointing at the section’s heading id.
+- **Use the correct interactive element**:
+  - actions → `<button>`
+  - navigation → `<a href>`
+  - form fields → `<label for>` (or `aria-label` / `aria-labelledby` when a visible label isn’t appropriate)
+- **Don’t rely on color alone** for meaning; ensure text alternatives exist where needed.
+- **Icons need accessible names** if they convey meaning (otherwise mark as decorative).
 
 ## Quick Reference
 
