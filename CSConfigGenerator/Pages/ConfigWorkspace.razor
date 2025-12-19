@@ -3,6 +3,7 @@
 @using CSConfigGenerator.Components
 @using CSConfigGenerator.Interfaces
 @using CSConfigGenerator.Models
+@using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Web
 @using System.IO
 @inject IJSRuntime JSRuntime
@@ -103,6 +104,18 @@
             <button class="btn-tool" @onclick="DownloadActiveFile" disabled="@(ActiveFile == null)">
                 <i class="bi bi-download"></i> Download
             </button>
+            <button class="btn-tool" @onclick="CopyActiveFileToClipboard" disabled="@(ActiveFile == null)">
+                <i class="bi bi-clipboard"></i> Copy
+            </button>
+            <button class="btn-tool" @onclick="TriggerUpload">
+                <i class="bi bi-upload"></i> Upload
+            </button>
+
+            <InputFile @key="_uploadInputKey"
+                       OnChange="OnUpload"
+                       class="d-none"
+                       accept=".cfg"
+                       @ref="_uploadInputFile" />
         </div>
 
         <!-- Editor -->
@@ -339,6 +352,9 @@
     private bool _pendingEditorLayout;
     private bool _pendingEnsureActiveFileModel;
 
+    private InputFile? _uploadInputFile;
+    private int _uploadInputKey;
+
     private bool _isFileNameDialogOpen;
     private string _fileNameDialogTitle = "Save As";
     private string _fileNameInput = string.Empty;
@@ -505,6 +521,78 @@
         }
     }
 
+    private async Task CopyActiveFileToClipboard()
+    {
+        if (ActiveFile?.Model == null)
+        {
+            ToastService.ShowToast("No active file (or editor not ready yet).", ToastLevel.Warning);
+            return;
+        }
+
+        try
+        {
+            var content = await ActiveFile.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
+            await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", content);
+            ToastService.ShowToast("Copied to clipboard.", ToastLevel.Success);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to copy to clipboard: {ex.Message}");
+            ToastService.ShowToast("Failed to copy to clipboard. Your browser may block clipboard access.", ToastLevel.Error);
+        }
+    }
+
+    private async Task TriggerUpload()
+    {
+        if (_uploadInputFile?.Element != null)
+        {
+            await JSRuntime.InvokeVoidAsync("clickElement", _uploadInputFile.Element);
+        }
+        else
+        {
+            ToastService.ShowToast("Upload control is not ready yet. Try again in a moment.", ToastLevel.Warning);
+        }
+    }
+
+    private async Task OnUpload(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file == null)
+            return;
+
+        // Reset the <InputFile> so selecting the same file again still triggers OnChange.
+        _uploadInputKey++;
+
+        try
+        {
+            const long maxAllowedSize = 10 * 1024 * 1024; // 10 MB
+            if (file.Size > maxAllowedSize)
+            {
+                ToastService.ShowToast("File is too large to upload (max 10 MB).", ToastLevel.Error);
+                return;
+            }
+
+            await using var stream = file.OpenReadStream(maxAllowedSize);
+            using var reader = new StreamReader(stream);
+            var content = await reader.ReadToEndAsync();
+
+            var normalizedName = NormalizeFileName(file.Name);
+            var uniqueName = MakeUniqueTabName(normalizedName);
+
+            await CreateAndOpenFile(uniqueName, content);
+            ToastService.ShowToast($"Uploaded {uniqueName}", ToastLevel.Success);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error uploading file: {ex.Message}");
+            ToastService.ShowToast($"Error uploading file: {ex.Message}", ToastLevel.Error);
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
+
     private async Task OpenUserConfig(string configName)
     {
         var existing = OpenFiles.FirstOrDefault(f => f.Name == configName);
@@ -613,6 +701,27 @@
         if (!name.EndsWith(".cfg", StringComparison.OrdinalIgnoreCase))
             name += ".cfg";
         return name;
+    }
+
+    private string MakeUniqueTabName(string desiredName)
+    {
+        if (string.IsNullOrWhiteSpace(desiredName))
+            return desiredName;
+
+        if (!OpenFiles.Any(f => string.Equals(f.Name, desiredName, StringComparison.OrdinalIgnoreCase)))
+            return desiredName;
+
+        var ext = Path.GetExtension(desiredName);
+        var baseName = string.IsNullOrEmpty(ext) ? desiredName : desiredName[..^ext.Length];
+
+        var counter = 2;
+        while (true)
+        {
+            var candidate = $"{baseName} ({counter}){ext}";
+            if (!OpenFiles.Any(f => string.Equals(f.Name, candidate, StringComparison.OrdinalIgnoreCase)))
+                return candidate;
+            counter++;
+        }
     }
 
     private bool TryValidateFileName(string fileName, out string error)
