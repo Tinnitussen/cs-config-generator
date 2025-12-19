@@ -1,7 +1,14 @@
 @page "/editor"
 @using BlazorMonaco.Editor
 @using CSConfigGenerator.Components
+@using CSConfigGenerator.Interfaces
+@using CSConfigGenerator.Models
+@using Microsoft.AspNetCore.Components.Web
+@using System.IO
 @inject IJSRuntime JSRuntime
+@inject IPresetService PresetService
+@inject IUserConfigService UserConfigService
+@inject IToastService ToastService
 
 <div class="config-workspace">
     <!-- Sidebar -->
@@ -11,19 +18,61 @@
         </div>
         <div class="sidebar-section">
             <div class="section-title">Presets</div>
-            @foreach (var preset in Presets)
+            @if (PlayerPresets.Count > 0)
             {
-                <div class="file-item" @onclick="() => OpenPreset(preset)">
-                    <span class="file-icon">📄</span> @preset
+                <div class="section-subtitle">Players</div>
+                @foreach (var preset in PlayerPresets)
+                {
+                    <div class="file-item" @onclick='@(() => OpenPreset("player", preset))'>
+                        <span class="file-icon">📄</span> @($"{preset}.cfg")
+                    </div>
+                }
+            }
+            @if (ServerPresets.Count > 0)
+            {
+                <div class="section-subtitle">Server</div>
+                @foreach (var preset in ServerPresets)
+                {
+                    <div class="file-item" @onclick='@(() => OpenPreset("server", preset))'>
+                        <span class="file-icon">📄</span> @($"{preset}.cfg")
+                    </div>
+                }
+            }
+            @if (PlayerPresets.Count == 0 && ServerPresets.Count == 0)
+            {
+                <div class="file-item text-muted">
+                    <span class="file-icon">…</span> Loading presets
                 </div>
             }
         </div>
         <div class="sidebar-section">
             <div class="section-title">My Configs</div>
-             <div class="file-item" @onclick="CreateNewFile">
+            @foreach (var configName in MyConfigs)
+            {
+                <div class="file-item d-flex justify-content-between align-items-center"
+                     @onclick="() => OpenUserConfig(configName)">
+                    <span class="d-flex align-items-center">
+                        <span class="file-icon">💾</span> @configName
+                    </span>
+                    <button class="btn btn-sm btn-link text-secondary p-0"
+                            title="Delete"
+                            @onclick="(e) => DeleteUserConfig(e, configName)"
+                            @onclick:stopPropagation="true">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            }
+
+            @if (MyConfigs.Count == 0)
+            {
+                <div class="file-item text-muted">
+                    <span class="file-icon">…</span> No saved configs yet
+                </div>
+            }
+
+            <div class="file-item" @onclick="ShowNewFileDialog">
                 <span class="file-icon">+</span> New File...
             </div>
-            <!-- Future: List User Configs -->
         </div>
     </div>
 
@@ -48,6 +97,9 @@
             <button class="btn-tool" @onclick="SaveActiveFile" disabled="@(ActiveFile == null)">
                 <i class="bi bi-save"></i> Save
             </button>
+            <button class="btn-tool" @onclick="SaveActiveFileAs" disabled="@(ActiveFile == null)">
+                <i class="bi bi-pencil-square"></i> Save As
+            </button>
             <button class="btn-tool" @onclick="DownloadActiveFile" disabled="@(ActiveFile == null)">
                 <i class="bi bi-download"></i> Download
             </button>
@@ -57,7 +109,7 @@
         <div class="workspace-editor-container">
             @if (ActiveFile != null)
             {
-                <MonacoConfigEditor Model="@ActiveFile.Model" />
+                <MonacoConfigEditor @ref="_monacoEditor" Model="@ActiveFile.Model" OnEditorInit="HandleEditorInit" />
             }
             else
             {
@@ -68,6 +120,35 @@
         </div>
     </div>
 </div>
+
+<Modal IsOpen="_isFileNameDialogOpen"
+       Title="@_fileNameDialogTitle"
+       OnCancel="CloseFileNameDialog">
+    <Body>
+        <div class="modal-body">
+            <label class="form-label" for="fileNameInput">Filename</label>
+            <input id="fileNameInput"
+                   class="form-control"
+                   @bind="_fileNameInput"
+                   @bind:event="oninput"
+                   placeholder="e.g. autoexec.cfg" />
+            @if (!string.IsNullOrWhiteSpace(_fileNameError))
+            {
+                <div class="text-danger mt-2">@_fileNameError</div>
+            }
+            @if (_willOverwriteExisting)
+            {
+                <div class="text-warning mt-2">This will overwrite an existing saved config.</div>
+            }
+        </div>
+    </Body>
+    <Footer>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" @onclick="CloseFileNameDialog">Cancel</button>
+            <button class="btn btn-primary" @onclick="ConfirmFileNameDialog">OK</button>
+        </div>
+    </Footer>
+</Modal>
 
 <style>
     .config-workspace {
@@ -224,6 +305,8 @@
         flex: 1;
         position: relative;
         background-color: #1e1e1e;
+        min-width: 0;
+        overflow: hidden;
     }
 
     .empty-state {
@@ -233,71 +316,131 @@
         height: 100%;
         color: #555;
     }
+
+    .section-subtitle {
+        padding: 2px 10px;
+        font-size: 11px;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
 </style>
 
 @code {
-    private List<string> Presets = new List<string> { "autoexec.cfg", "practice.cfg", "jumpthrow.cfg" }; // Mock data
     private List<ConfigFile> OpenFiles = new List<ConfigFile>();
     private ConfigFile? ActiveFile;
-    private int _newFileCounter = 1;
+
+    private const string UserConfigType = "config-workspace";
+    private List<string> PlayerPresets = new();
+    private List<string> ServerPresets = new();
+    private List<string> MyConfigs = new();
+
+    private MonacoConfigEditor? _monacoEditor;
+    private bool _pendingEditorLayout;
+    private bool _pendingEnsureActiveFileModel;
+
+    private bool _isFileNameDialogOpen;
+    private string _fileNameDialogTitle = "Save As";
+    private string _fileNameInput = string.Empty;
+    private string? _fileNameError;
+    private bool _willOverwriteExisting;
+    private FileNameDialogMode _fileNameDialogMode = FileNameDialogMode.SaveAs;
+    private ConfigFile? _fileNameDialogTargetFile;
+
+    private enum FileNameDialogMode
+    {
+        NewFile,
+        SaveAs
+    }
 
     private class ConfigFile
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; } = "Untitled";
-        public TextModel Model { get; set; } = null!;
+        public string ModelUri { get; set; } = string.Empty;
+        public TextModel? Model { get; set; }
         public string Content { get; set; } = ""; // Initial content
+        public bool IsSavedToMyConfigs { get; set; }
     }
 
-    private async Task OpenPreset(string presetName)
+    protected override async Task OnInitializedAsync()
     {
+        PlayerPresets = await PresetService.GetPresetNamesAsync("player");
+        ServerPresets = await PresetService.GetPresetNamesAsync("server");
+        await RefreshMyConfigsAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_pendingEnsureActiveFileModel)
+        {
+            _pendingEnsureActiveFileModel = false;
+            await EnsureActiveFileModelAsync();
+        }
+
+        if (_pendingEditorLayout)
+        {
+            _pendingEditorLayout = false;
+            if (_monacoEditor != null)
+            {
+                await _monacoEditor.Layout();
+            }
+        }
+    }
+
+    private Task HandleEditorInit()
+    {
+        // Ensure a layout after init; Monaco can initialize at 0px width in some Blazor render timings.
+        _pendingEnsureActiveFileModel = true;
+        _pendingEditorLayout = true;
+        return Task.CompletedTask;
+    }
+
+    private async Task RefreshMyConfigsAsync()
+    {
+        MyConfigs = await UserConfigService.GetConfigNamesAsync(UserConfigType);
+        MyConfigs.Sort(StringComparer.OrdinalIgnoreCase);
+        StateHasChanged();
+    }
+
+    private async Task OpenPreset(string presetType, string presetName)
+    {
+        var fileName = NormalizeFileName(presetName);
+
         // Check if already open
-        var existing = OpenFiles.FirstOrDefault(f => f.Name == presetName);
+        var existing = OpenFiles.FirstOrDefault(f => f.Name == fileName);
         if (existing != null)
         {
             await SwitchToFile(existing);
             return;
         }
 
-        // Create new file
-        // In real app, fetch content here
-        var content = $"// {presetName}\n// Loaded from presets\n\necho \"{presetName} loaded\"";
+        var content = await PresetService.GetPresetContentAsync(presetType, presetName);
 
-        await CreateAndOpenFile(presetName, content);
+        await CreateAndOpenFile(fileName, content);
     }
 
-    private async Task CreateNewFile()
+    private void ShowNewFileDialog()
     {
-        var name = $"Untitled-{_newFileCounter++}.cfg";
-        await CreateAndOpenFile(name, "");
+        _fileNameDialogMode = FileNameDialogMode.NewFile;
+        _fileNameDialogTitle = "New File";
+        _fileNameDialogTargetFile = null;
+        _fileNameInput = "autoexec.cfg";
+        _fileNameError = null;
+        _willOverwriteExisting = false;
+        _isFileNameDialogOpen = true;
     }
 
     private async Task CreateAndOpenFile(string name, string content)
     {
-        // Unique URI for Monaco
-        var uri = $"inmemory://{Guid.NewGuid()}/{name}";
-
-        // Create Monaco Model
-        // We use JSRuntime to invoke global BlazorMonaco method if needed,
-        // but since we are in a component, we can try to use Global helper if available or standard pattern.
-        // Assuming Global.CreateModel is available from `using BlazorMonaco.Editor;`
-
-        TextModel model;
-        try
-        {
-             model = await Global.CreateModel(JSRuntime, content, "plaintext", uri);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error creating model: {ex.Message}");
-            return;
-        }
-
+        var id = Guid.NewGuid().ToString();
         var newFile = new ConfigFile
         {
+            Id = id,
             Name = name,
             Content = content,
-            Model = model
+            ModelUri = $"inmemory://{id}/{name}",
+            Model = null
         };
 
         OpenFiles.Add(newFile);
@@ -307,6 +450,11 @@
     private async Task SwitchToFile(ConfigFile file)
     {
         ActiveFile = file;
+        if (ActiveFile.Model == null)
+        {
+            _pendingEnsureActiveFileModel = true;
+        }
+        _pendingEditorLayout = true;
         StateHasChanged();
     }
 
@@ -326,24 +474,209 @@
 
     private async Task SaveActiveFile()
     {
-        if (ActiveFile != null)
+        if (ActiveFile == null)
+            return;
+
+        if (!ActiveFile.IsSavedToMyConfigs && IsUntitledName(ActiveFile.Name))
         {
-            // Here we would get the value from the model
-            // Preserve the model's existing EOL; passing `eol: null` breaks Monaco ("Unknown EOL preference").
-            var content = await ActiveFile.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
-            // Save logic (mock)
-            Console.WriteLine($"Saving {ActiveFile.Name}: {content}");
-            await JSRuntime.InvokeVoidAsync("alert", $"Saved {ActiveFile.Name} (Mock)");
+            ShowSaveAsDialog(ActiveFile);
+            return;
         }
+
+        await SaveFileToMyConfigsAsync(ActiveFile, ActiveFile.Name);
+    }
+
+    private Task SaveActiveFileAs()
+    {
+        if (ActiveFile == null)
+            return Task.CompletedTask;
+
+        ShowSaveAsDialog(ActiveFile);
+        return Task.CompletedTask;
     }
 
     private async Task DownloadActiveFile()
     {
-         if (ActiveFile != null)
+         if (ActiveFile?.Model != null)
         {
             // Preserve the model's existing EOL; passing `eol: null` breaks Monaco ("Unknown EOL preference").
             var content = await ActiveFile.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
             await JSRuntime.InvokeVoidAsync("downloadFile", ActiveFile.Name, content);
+        }
+    }
+
+    private async Task OpenUserConfig(string configName)
+    {
+        var existing = OpenFiles.FirstOrDefault(f => f.Name == configName);
+        if (existing != null)
+        {
+            await SwitchToFile(existing);
+            return;
+        }
+
+        var content = await UserConfigService.GetConfigContentAsync(UserConfigType, configName);
+        var file = await CreateAndOpenFileReturning(configName, content);
+        if (file != null)
+        {
+            file.IsSavedToMyConfigs = true;
+        }
+    }
+
+    private async Task DeleteUserConfig(MouseEventArgs _, string configName)
+    {
+        await UserConfigService.DeleteConfigAsync(UserConfigType, configName);
+        await RefreshMyConfigsAsync();
+        ToastService.ShowToast($"Deleted {configName}", ToastLevel.Info);
+    }
+
+    private void ShowSaveAsDialog(ConfigFile file)
+    {
+        _fileNameDialogMode = FileNameDialogMode.SaveAs;
+        _fileNameDialogTitle = "Save As";
+        _fileNameDialogTargetFile = file;
+        _fileNameInput = file.Name;
+        _fileNameError = null;
+        _willOverwriteExisting = MyConfigs.Any(n => string.Equals(n, file.Name, StringComparison.OrdinalIgnoreCase));
+        _isFileNameDialogOpen = true;
+    }
+
+    private void CloseFileNameDialog()
+    {
+        _isFileNameDialogOpen = false;
+        _fileNameError = null;
+        _willOverwriteExisting = false;
+        _fileNameDialogTargetFile = null;
+        StateHasChanged();
+    }
+
+    private async Task ConfirmFileNameDialog()
+    {
+        var raw = _fileNameInput?.Trim() ?? string.Empty;
+        var normalized = NormalizeFileName(raw);
+
+        if (!TryValidateFileName(normalized, out var error))
+        {
+            _fileNameError = error;
+            _willOverwriteExisting = false;
+            return;
+        }
+
+        _willOverwriteExisting = MyConfigs.Any(n => string.Equals(n, normalized, StringComparison.OrdinalIgnoreCase));
+
+        if (_fileNameDialogMode == FileNameDialogMode.NewFile)
+        {
+            CloseFileNameDialog();
+            await CreateAndOpenFile(normalized, string.Empty);
+            return;
+        }
+
+        var target = _fileNameDialogTargetFile;
+        if (target == null)
+        {
+            CloseFileNameDialog();
+            return;
+        }
+
+        CloseFileNameDialog();
+        await SaveFileToMyConfigsAsync(target, normalized);
+    }
+
+    private async Task SaveFileToMyConfigsAsync(ConfigFile file, string configName)
+    {
+        if (file.Model == null)
+        {
+            ToastService.ShowToast("Editor is not ready yet. Try again in a moment.", ToastLevel.Warning);
+            return;
+        }
+
+        var content = await file.Model.GetValue(EndOfLinePreference.TextDefined, preserveBOM: true);
+        await UserConfigService.SaveConfigAsync(UserConfigType, configName, content);
+
+        file.Name = configName;
+        file.Content = content;
+        file.IsSavedToMyConfigs = true;
+
+        await RefreshMyConfigsAsync();
+        ToastService.ShowToast($"Saved {configName}", ToastLevel.Success);
+    }
+
+    private static bool IsUntitledName(string name) =>
+        name.StartsWith("Untitled-", StringComparison.OrdinalIgnoreCase);
+
+    private static string NormalizeFileName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            return name;
+
+        // Strip common path separators; we only store a flat name.
+        name = name.Replace("\\", "").Replace("/", "").Replace(":", "");
+        if (!name.EndsWith(".cfg", StringComparison.OrdinalIgnoreCase))
+            name += ".cfg";
+        return name;
+    }
+
+    private bool TryValidateFileName(string fileName, out string error)
+    {
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            error = "Filename is required.";
+            return false;
+        }
+
+        if (fileName.Length > 64)
+        {
+            error = "Filename is too long (max 64 characters).";
+            return false;
+        }
+
+        if (fileName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+        {
+            error = "Filename contains invalid characters.";
+            return false;
+        }
+
+        error = string.Empty;
+        return true;
+    }
+
+    private async Task<ConfigFile?> CreateAndOpenFileReturning(string name, string content)
+    {
+        var id = Guid.NewGuid().ToString();
+        var newFile = new ConfigFile
+        {
+            Id = id,
+            Name = name,
+            Content = content,
+            ModelUri = $"inmemory://{id}/{name}",
+            Model = null
+        };
+
+        OpenFiles.Add(newFile);
+        await SwitchToFile(newFile);
+        return newFile;
+    }
+
+    private async Task EnsureActiveFileModelAsync()
+    {
+        var file = ActiveFile;
+        if (file == null)
+            return;
+
+        if (file.Model != null)
+            return;
+
+        // Monaco (and thus Global.CreateModel) isn't reliably available until the editor has been initialized.
+        // We create the model lazily when the file becomes active.
+        try
+        {
+            file.Model = await Global.CreateModel(JSRuntime, file.Content, "plaintext", file.ModelUri);
+            _pendingEditorLayout = true;
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error creating model: {ex.Message}");
+            ToastService.ShowToast("Failed to create editor model. Try refreshing the page.", ToastLevel.Error);
         }
     }
 }

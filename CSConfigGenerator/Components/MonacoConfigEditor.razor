@@ -9,8 +9,21 @@
     .monaco-editor-wrapper {
         height: 100%;
         width: 100%;
+        display: flex;
+        flex-direction: column;
         min-height: 400px;
         border: 1px solid #ccc;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    /* BlazorMonaco renders a host div with this id; ensure it can actually grow inside flex layouts. */
+    #config-editor {
+        flex: 1 1 auto;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
     }
 </style>
 
@@ -22,6 +35,7 @@
     private TextModel? _pendingModel;
     private string? _currentModelUri;
     private bool _disposed;
+    private bool _didInitialLayout;
 
     [Parameter]
     public TextModel? Model { get; set; }
@@ -54,9 +68,27 @@
             await ApplyModelIfNeeded(modelToApply);
         }
 
+        // Monaco sometimes initializes while its container is at 0 width/height in Blazor.
+        // Force a layout once the editor is fully initialized.
+        _didInitialLayout = false;
+
         if (!_disposed)
         {
             await OnEditorInit.InvokeAsync();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_disposed)
+            return;
+
+        if (_isEditorInitialized && !_didInitialLayout)
+        {
+            _didInitialLayout = true;
+            // Let the browser apply layout first, then force Monaco to re-measure.
+            await Task.Yield();
+            await Layout();
         }
     }
 
@@ -101,6 +133,8 @@
 
         _currentModelUri = modelUri;
         await _editor.SetModel(model);
+        // Immediately re-layout after model swaps; this fixes the "2px wide editor" glitch in practice.
+        await _editor.Layout();
     }
 
     public void Dispose()
