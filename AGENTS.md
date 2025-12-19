@@ -16,7 +16,6 @@ High-level context for the CS2 Config Generator project.
 ```
 JSON Data (wwwroot/data/)
   → SchemaService (command definitions)
-  → ConfigStateService (selected commands)
   → UserConfigService (user values)
   → LocalStorageService (browser persistence)
   → UI Components
@@ -24,8 +23,8 @@ JSON Data (wwwroot/data/)
 
 **Key Layers**:
 - `Services/` - Business logic (6 scoped services)
-- `Components/` - Reusable UI (ConfigEditor, Modal, ToastContainer, etc.)
-- `Pages/` - Routable views (Home, CommandReference)
+- `Components/` - Reusable UI (MonacoConfigEditor, Modal, ToastContainer, etc.)
+- `Pages/` - Routable views (Home, CommandReference, ConfigWorkspace)
 - `Models/` - Data structures (class hierarchy for type safety)
 
 ## Data Model
