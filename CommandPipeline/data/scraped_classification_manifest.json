@@ -3290,6 +3290,20 @@
     "source": "scraped"
   },
   {
+    "command": "nav_create_indirect_connection_set_from",
+    "old_type": "string",
+    "new_type": "vector3",
+    "raw_default": "0.000000 0.000000 0.000000",
+    "source": "heuristic"
+  },
+  {
+    "command": "nav_create_indirect_connection_set_to",
+    "old_type": "string",
+    "new_type": "vector3",
+    "raw_default": "0.000000 0.000000 0.000000",
+    "source": "heuristic"
+  },
+  {
     "command": "nav_curve_iter",
     "old_type": "unknown",
     "new_type": "int",

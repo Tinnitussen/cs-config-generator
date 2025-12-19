@@ -88,4 +88,3 @@ This app is a documentation/config tool, so it must be usable with keyboard + sc
 - `SCHEMA.md` - JSON schema spec
 - `PIPELINE.md` - Data generation pipeline
 - `PROPOSAL.md` - Design decisions
-
