@@ -7,6 +7,8 @@
     // Store command data passed from Blazor
     let commandData = [];
     let commandMap = new Map();
+    let commandList = [];   // Commands of type "command"
+    let cvarList = [];      // Console variables (all other types)
     let isLanguageRegistered = false;
 
     /**
@@ -22,10 +24,19 @@
 
         commandData = commands;
         commandMap.clear();
+        commandList = [];
+        cvarList = [];
 
-        // Build lookup map for hover provider
+        // Build lookup map and categorize commands vs cvars
         for (const cmd of commands) {
-            commandMap.set(cmd.command.toLowerCase(), cmd);
+            const cmdLower = cmd.command.toLowerCase();
+            commandMap.set(cmdLower, cmd);
+
+            if (cmd.type === 'command') {
+                commandList.push(cmdLower);
+            } else {
+                cvarList.push(cmdLower);
+            }
         }
 
         // Register language only once
@@ -61,18 +72,30 @@
         });
 
         // Register Monarch tokenizer for syntax highlighting
-        // Design: Quotes are optional in CS2 configs, so "0.01" and 0.01 are the same.
-        // We use 'string' for all values (quoted or numeric) so they appear consistently.
         monaco.languages.setMonarchTokensProvider('cs2config', {
+            ignoreCase: true,
+
+            // Define the word lists for classification
+            commands: commandList,
+            cvars: cvarList,
+
             tokenizer: {
                 root: [
-                    [/"[^"]*"/, 'string'],               // Quoted values first (handles // inside quotes)
-                    [/"[^"]*$/, 'string.invalid'],       // Unclosed quote (visual error indicator)
-                    [/\/\/.*$/, 'comment'],              // Comments (only matches if not inside quotes)
-                    [/\b-?\d+\.?\d*\b/, 'string'],       // Numeric values - same style as quoted
-                    [/\b(bind|unbind|alias|exec|echo|toggle|incrementvar|say)\b/i, 'keyword'],
-                    [/[a-zA-Z_][\w]*/, 'identifier'],    // Command/cvar names
-                    [/;/, 'delimiter'],                  // Semicolon command separator
+                    // Quoted strings first (handles // inside quotes)
+                    [/"[^"]*"/, ''],
+                    [/"[^"]*$/, ''],
+
+                    // Comments
+                    [/\/\/.*$/, 'comment'],
+
+                    // Identifiers - classify as command, cvar, or nothing
+                    [/[+\-]?[a-zA-Z_][\w]*/, {
+                        cases: {
+                            '@commands': 'keyword',
+                            '@cvars': 'type.identifier',
+                            '@default': ''
+                        }
+                    }],
                 ]
             }
         });
