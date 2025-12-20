@@ -66,9 +66,9 @@
         monaco.languages.setMonarchTokensProvider('cs2config', {
             tokenizer: {
                 root: [
-                    [/\/\/.*$/, 'comment'],              // Comments
-                    [/"[^"]*"/, 'string'],               // Quoted values (e.g., "255", "+forward")
+                    [/"[^"]*"/, 'string'],               // Quoted values first (handles // inside quotes)
                     [/"[^"]*$/, 'string.invalid'],       // Unclosed quote (visual error indicator)
+                    [/\/\/.*$/, 'comment'],              // Comments (only matches if not inside quotes)
                     [/\b-?\d+\.?\d*\b/, 'string'],       // Numeric values - same style as quoted
                     [/\b(bind|unbind|alias|exec|echo|toggle|incrementvar|say)\b/i, 'keyword'],
                     [/[a-zA-Z_][\w]*/, 'identifier'],    // Command/cvar names
@@ -268,8 +268,8 @@
             return markers;
         }
 
-        // Remove trailing comment for validation
-        const commentIndex = lineContent.indexOf('//');
+        // Remove trailing comment for validation (only if // is outside quotes)
+        const commentIndex = findCommentStart(lineContent);
         const codeContent = commentIndex >= 0 ? lineContent.substring(0, commentIndex) : lineContent;
 
         // Check for unclosed quotes
@@ -324,6 +324,24 @@
         }
 
         return null;
+    }
+
+    /**
+     * Find the start of a comment (//) that is outside of quotes.
+     * @returns {number} Index of comment start, or -1 if no comment
+     */
+    function findCommentStart(lineContent) {
+        let inQuote = false;
+
+        for (let i = 0; i < lineContent.length - 1; i++) {
+            if (lineContent[i] === '"') {
+                inQuote = !inQuote;
+            } else if (!inQuote && lineContent[i] === '/' && lineContent[i + 1] === '/') {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     /**
@@ -419,7 +437,7 @@
     window.setupCs2ConfigValidation = function (editorId) {
         // Find the editor by looking for Monaco editors
         const editors = monaco.editor.getEditors();
-        
+
         for (const editor of editors) {
             const container = editor.getContainerDomNode();
             if (container && container.closest('#' + editorId)) {
