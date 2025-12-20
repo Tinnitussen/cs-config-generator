@@ -198,7 +198,7 @@ def main():
     all_stats = []
     for cmd, values in all_values.items():
         if len(values) >= MIN_OCCURRENCES:
-            current_type = known_commands[cmd].get("uiData", {}).get("type", "unknown")
+            current_type = known_commands[cmd].get("typeInfo", {}).get("type", "unknown")
             stats = create_command_stats(cmd, values, current_type)
             all_stats.append(stats)
 
@@ -222,7 +222,7 @@ def main():
 
         # Update type if it changed
         if new_type != stats.current_type:
-            entry.setdefault("uiData", {})["type"] = new_type
+            entry.setdefault("typeInfo", {})["type"] = new_type
 
             if new_type == "float":
                 updated_float += 1

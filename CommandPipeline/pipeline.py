@@ -212,6 +212,23 @@ def main(args):
 
     return 0
 
+def clean_generated_files():
+    """Delete generated files to force a fresh regeneration."""
+    tools_dir = Path(__file__).parent.resolve()
+    project_root = tools_dir.parent
+    
+    files_to_clean = [
+        tools_dir / "data" / "commands.json",
+        project_root / "CSConfigGenerator" / "wwwroot" / "data" / "commandschema" / "all_commands.json",
+    ]
+    
+    for file_path in files_to_clean:
+        if file_path.exists():
+            file_path.unlink()
+            print_success(f"Deleted: {file_path}")
+        else:
+            print_warning(f"Already clean: {file_path}")
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="CS Commands Processing Pipeline Runner")
     parser.add_argument(
@@ -219,7 +236,17 @@ if __name__ == "__main__":
         action='store_true',
         help="Run the pipeline non-interactively, without user prompts."
     )
+    parser.add_argument(
+        '-c', '--clean',
+        action='store_true',
+        help="Delete generated files before running the pipeline (forces full regeneration)."
+    )
     args = parser.parse_args()
+    
+    if args.clean:
+        print_header("Cleaning Generated Files")
+        clean_generated_files()
+        print()
 
     try:
         exit_code = main(args)

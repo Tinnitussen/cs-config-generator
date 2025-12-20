@@ -2,18 +2,14 @@ namespace CSConfigGenerator.Models;
 
 using System;
 using System.Globalization;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
-public record BoolUiData : UiData
+public record BoolTypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Bool;
 
-    [JsonPropertyName("defaultValue")]
-    public bool RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => false;
 
     public override object ParseFromString(string value) => value switch
     {
@@ -32,15 +28,12 @@ public record BoolUiData : UiData
     }
 }
 
-public record IntegerUiData : UiData
+public record IntegerTypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Int;
 
-    [JsonPropertyName("defaultValue")]
-    public int RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => 0;
 
     [JsonPropertyName("range")]
     public required NumericRange Range { get; init; }
@@ -52,15 +45,12 @@ public record IntegerUiData : UiData
     public override object ConvertToType(object value) => Convert.ToInt32(value);
 }
 
-public record FloatUiData : UiData
+public record FloatTypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Float;
 
-    [JsonPropertyName("defaultValue")]
-    public float RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => 0f;
 
     [JsonPropertyName("range")]
     public required NumericRange Range { get; init; }
@@ -72,15 +62,12 @@ public record FloatUiData : UiData
     public override object ConvertToType(object value) => Convert.ToSingle(value);
 }
 
-public record ColorUiData : UiData
+public record ColorTypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Color;
 
-    [JsonPropertyName("defaultValue")]
-    public required string RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => string.Empty;
 
     public override object ParseFromString(string value) => value;
 
@@ -89,15 +76,12 @@ public record ColorUiData : UiData
     public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
 }
 
-public record UInt32UiData : UiData
+public record UInt32TypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.UInt32;
 
-    [JsonPropertyName("defaultValue")]
-    public uint RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => 0u;
 
     public override object ParseFromString(string value) => uint.Parse(value, CultureInfo.InvariantCulture);
 
@@ -106,15 +90,12 @@ public record UInt32UiData : UiData
     public override object ConvertToType(object value) => Convert.ToUInt32(value);
 }
 
-public record UInt64UiData : UiData
+public record UInt64TypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.UInt64;
 
-    [JsonPropertyName("defaultValue")]
-    public ulong RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => 0ul;
 
     public override object ParseFromString(string value) => ulong.Parse(value, CultureInfo.InvariantCulture);
 
@@ -123,15 +104,12 @@ public record UInt64UiData : UiData
     public override object ConvertToType(object value) => Convert.ToUInt64(value);
 }
 
-public record Vector2UiData : UiData
+public record Vector2TypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Vector2;
 
-    [JsonPropertyName("defaultValue")]
-    public required string RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => "0 0";
 
     public override object ParseFromString(string value) => value;
 
@@ -140,15 +118,12 @@ public record Vector2UiData : UiData
     public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
 }
 
-public record Vector3UiData : UiData
+public record Vector3TypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Vector3;
 
-    [JsonPropertyName("defaultValue")]
-    public required string RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => "0 0 0";
 
     [JsonPropertyName("range")]
     public required NumericRange Range { get; init; }
@@ -206,15 +181,12 @@ public record Vector3UiData : UiData
     }
 }
 
-public record StringUiData : UiData
+public record StringTypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.String;
 
-    [JsonPropertyName("defaultValue")]
-    public required string RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => string.Empty;
 
     public override object ParseFromString(string value) => value;
 
@@ -227,7 +199,7 @@ public record StringUiData : UiData
     public override object ConvertToType(object? value) => value?.ToString() ?? string.Empty;
 }
 
-public record CommandUiData : UiData
+public record CommandTypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Command;
 
@@ -241,15 +213,12 @@ public record CommandUiData : UiData
     public override object ConvertToType(object value) => value?.ToString() ?? string.Empty;
 }
 
-public record BitmaskUiData : UiData
+public record BitmaskTypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Bitmask;
 
-    [JsonPropertyName("defaultValue")]
-    public int RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue;
+    public override object DefaultValue => 0;
 
     [JsonPropertyName("options")]
     public required Dictionary<string, string> Options { get; init; }
@@ -261,20 +230,12 @@ public record BitmaskUiData : UiData
     public override object ConvertToType(object value) => Convert.ToInt32(value);
 }
 
-public record UnknownUiData : UiData
+public record UnknownTypeInfo : TypeInfo
 {
     public override SettingType Type => SettingType.Unknown;
 
-    [JsonPropertyName("defaultValue")]
-    public JsonElement RawDefaultValue { get; init; }
-
     [JsonIgnore]
-    public override object DefaultValue => RawDefaultValue.ValueKind switch
-    {
-        JsonValueKind.Number => (float)RawDefaultValue.GetDouble(),
-        JsonValueKind.String => float.TryParse(RawDefaultValue.GetString(), NumberStyles.Float, CultureInfo.InvariantCulture, out var f) ? f : 0f,
-        _ => 0f
-    };
+    public override object DefaultValue => 0f;
 
     public override object ParseFromString(string value) => float.Parse(value, CultureInfo.InvariantCulture);
 
@@ -282,3 +243,4 @@ public record UnknownUiData : UiData
 
     public override object ConvertToType(object value) => Convert.ToSingle(value);
 }
+

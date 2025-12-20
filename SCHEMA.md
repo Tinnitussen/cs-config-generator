@@ -19,7 +19,7 @@ Each command data file is a JSON array of objects with the following shape:
 | --- | --- | --- |
 | `command` | string | Exact console command/cvar name. |
 | `consoleData` | object | Raw-ish data from the console snapshot. |
-| `uiData` | object | Curated UI + typing info used by the app. |
+| `typeInfo` | object | Type classification and metadata used by the app. |
 
 ## `consoleData`
 
@@ -41,20 +41,23 @@ Example:
 }
 ```
 
-## `uiData` (common fields)
+## `typeInfo` (common fields)
 
-All `uiData` objects share these fields:
+All `typeInfo` objects share these fields:
 
 | Property | Type | Notes |
 | --- | --- | --- |
-| `label` | string | Display label (often same as `command`). |
-| `helperText` | string | Human-friendly description (often derived from `consoleData.description`). |
 | `type` | string | One of the supported types listed below. |
-| `requiresCheats` | boolean | Whether the command requires cheats (typically derived from flags). |
+| `description` | string \| null | Optional custom description. If null/empty, use `consoleData.description`. |
 
-## Supported `uiData.type` values
+**Derived at runtime** (not stored in JSON):
+- **Display label**: Use the root `command` field directly.
+- **Requires cheats**: Check if `consoleData.flags` contains `"cheat"`.
+- **Typed default value**: Parse `consoleData.defaultValue` using the `type`.
 
-These are the types implemented in the app (`CSConfigGenerator/Models/*UiData`):
+## Supported `typeInfo.type` values
+
+These are the types implemented in the app (`CSConfigGenerator/Models/*TypeInfo`):
 
 - `bool`
 - `int`
@@ -71,59 +74,57 @@ These are the types implemented in the app (`CSConfigGenerator/Models/*UiData`):
 
 ### Type-specific fields
 
+Note: `defaultValue` is **not** stored in `typeInfo`. The typed default is derived at runtime
+by parsing `consoleData.defaultValue` according to the type.
+
 #### `bool`
 
-- `defaultValue`: boolean
+No additional fields.
 
 #### `int`
 
-- `defaultValue`: number (integer)
-- `range` (optional in JSON): `{ "minValue": number|null, "maxValue": number|null, "step": number|null }`
-  - The app will supply a default range if omitted.
+- `range` (optional): `{ "minValue": number|null, "maxValue": number|null, "step": number|null }`
+  - The app supplies a default range if omitted.
 
 #### `float`
 
-- `defaultValue`: number
-- `range` (optional in JSON): `{ "minValue": number|null, "maxValue": number|null, "step": number|null }`
-  - The app will supply a default range if omitted.
+- `range` (optional): `{ "minValue": number|null, "maxValue": number|null, "step": number|null }`
+  - The app supplies a default range if omitted.
 
 #### `string`
 
-- `defaultValue`: string
+No additional fields.
 
 #### `command`
 
-- `defaultValue`: typically `null` in generated data (the app ignores it).
-- `arguments`: typically `[]` in generated data (currently ignored by the app; reserved for future UI).
+- `arguments`: typically `[]` (currently ignored by the app; reserved for future UI).
 
 #### `bitmask`
 
-- `defaultValue`: number (integer)
 - `options`: object (string→string map, may be empty)
 
 #### `unknown`
 
-- `defaultValue`: number or string (the app treats it as numeric but keeps the type “unknown”)
+No additional fields. The app treats the value as numeric.
 
 #### `color`
 
-- `defaultValue`: string (usually a space-separated triple, e.g. `"-1.0 -1.0 -1.0"`)
+No additional fields. Expects `consoleData.defaultValue` to be a space-separated triple (e.g. `"-1.0 -1.0 -1.0"`).
 
 #### `uint32` / `uint64`
 
-- `defaultValue`: number (unsigned integer)
+No additional fields.
 
 #### `vector2`
 
-- `defaultValue`: string (space-separated pair, e.g. `"0.0 1.0"`)
+No additional fields. Expects `consoleData.defaultValue` to be a space-separated pair (e.g. `"0.0 1.0"`).
 
 #### `vector3`
 
-- `defaultValue`: string (space-separated triple, e.g. `"0.0 1.0 2.0"`)
-- `range` (optional in JSON): `{ "minValue": number|null, "maxValue": number|null, "step": number|null }`
-  - The app will supply a permissive default if omitted.
+- `range` (optional): `{ "minValue": number|null, "maxValue": number|null, "step": number|null }`
+  - The app supplies a permissive default if omitted.
 
 ## Related
 
 - **[PIPELINE.md](PIPELINE.md)**: How the JSON is generated
-- **[PROPOSAL.md](PROPOSAL.md)**: Rationale for the polymorphic `UiData` model
+- **[PROPOSAL.md](PROPOSAL.md)**: Rationale for the polymorphic `TypeInfo` model

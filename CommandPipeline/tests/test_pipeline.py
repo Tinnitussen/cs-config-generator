@@ -74,16 +74,17 @@ class TestCommandPipeline(unittest.TestCase):
 
         processed_commands, _, _, _ = add_type_classification(commands, reclassify_all=True)
 
-        self.assertEqual(processed_commands[0]['uiData']['type'], 'unknown') # 0 is numeric, but without context it's unknown
-        self.assertEqual(processed_commands[1]['uiData']['type'], 'command')
-        self.assertEqual(processed_commands[2]['uiData']['type'], 'unknown') # 1 is numeric, but without context it's unknown
-        self.assertEqual(processed_commands[3]['uiData']['type'], 'float')
-        self.assertEqual(processed_commands[4]['uiData']['type'], 'float')
-        self.assertEqual(processed_commands[5]['uiData']['type'], 'string')
-        self.assertEqual(processed_commands[6]['uiData']['type'], 'bool')
-        self.assertEqual(processed_commands[6]['uiData']['defaultValue'], True)
-        self.assertEqual(processed_commands[7]['uiData']['type'], 'bool')
-        self.assertEqual(processed_commands[7]['uiData']['defaultValue'], False)
+        self.assertEqual(processed_commands[0]['typeInfo']['type'], 'unknown') # 0 is numeric, but without context it's unknown
+        self.assertEqual(processed_commands[1]['typeInfo']['type'], 'command')
+        self.assertEqual(processed_commands[2]['typeInfo']['type'], 'unknown') # 1 is numeric, but without context it's unknown
+        self.assertEqual(processed_commands[3]['typeInfo']['type'], 'float')
+        self.assertEqual(processed_commands[4]['typeInfo']['type'], 'float')
+        self.assertEqual(processed_commands[5]['typeInfo']['type'], 'string')
+        self.assertEqual(processed_commands[6]['typeInfo']['type'], 'bool')
+        # defaultValue is no longer in typeInfo - it's derived from consoleData.defaultValue at runtime
+        self.assertEqual(processed_commands[6]['consoleData']['defaultValue'], 'true')
+        self.assertEqual(processed_commands[7]['typeInfo']['type'], 'bool')
+        self.assertEqual(processed_commands[7]['consoleData']['defaultValue'], 'false')
 
 if __name__ == '__main__':
     unittest.main()
