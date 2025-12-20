@@ -146,6 +146,9 @@
         await _editor.SetModel(model);
         // Immediately re-layout after model swaps; this fixes the "2px wide editor" glitch in practice.
         await _editor.Layout();
+
+        // Set up validation for syntax errors and unknown commands
+        await JSRuntime.InvokeVoidAsync("setupCs2ConfigValidation", "config-editor");
     }
 
     public void Dispose()
