@@ -90,7 +90,7 @@
     <h2 id="commands-heading" class="visually-hidden">Command List</h2>
     
     <div class="quickgrid-wrapper">
-        <QuickGrid @key="filterVersion" Items="@FilteredCommands" Virtualize="true" ItemSize="40" Class="table table-sm table-striped table-hover table-bordered commands-table">
+        <QuickGrid @key="filterVersion" Items="@FilteredCommands" Virtualize="true" ItemSize="40" Class="table table-sm table-hover table-bordered commands-table">
             <PropertyColumn Property="@(c => c.Command)" Title="Command" Class="col-command" />
             <PropertyColumn Property="@(c => c.UiData.Type)" Title="Type" Class="col-type" />
             <TemplateColumn Title="Description" Class="col-description">

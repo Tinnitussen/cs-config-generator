@@ -2,7 +2,7 @@
 
 /* Filter groups styling */
 .filter-groups {
-    padding: 0.5rem 0;
+    padding: var(--space-sm) 0;
 }
 
 .filter-group .dropdown-toggle {
@@ -17,11 +17,11 @@
 
 .filter-dropdown-menu .dropdown-item {
     cursor: pointer;
-    padding: 0.375rem 0.75rem;
+    padding: var(--space-sm) var(--space-md);
 }
 
 .filter-dropdown-menu .dropdown-item:hover {
-    background-color: var(--bs-tertiary-bg);
+    background-color: var(--color-bg-elevated);
 }
 
 .filter-dropdown-menu .form-check-input {
@@ -42,42 +42,42 @@
     min-height: 400px;
     max-height: 70vh;
     overflow: auto;
-    border: 1px solid #495057;
-    border-radius: 0.375rem;
-    background-color: #ffffff;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-surface);
 }
 
 /* Style the table within QuickGrid */
 ::deep .commands-table {
     margin-bottom: 0;
     table-layout: fixed;
-    background-color: #ffffff;
+    background-color: var(--color-bg-surface);
 }
 
 ::deep .commands-table thead {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: #343a40;
-    color: #ffffff;
+    background-color: var(--color-bg-base);
 }
 
 ::deep .commands-table thead th {
-    border: 1px solid #495057 !important;
+    border: 1px solid var(--color-border);
     font-weight: 600;
-    font-size: 0.875rem;
-    padding: 0.75rem 0.5rem;
-    background-color: #343a40;
-    color: #ffffff;
+    font-size: var(--text-sm);
+    padding: var(--space-md) var(--space-sm);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
 }
 
 /* Column widths */
 ::deep .col-command {
     width: 25%;
     min-width: 12rem;
-    font-family: var(--bs-font-monospace);
-    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
     font-weight: 500;
+    color: var(--color-primary);
 }
 
 ::deep .col-type {
@@ -87,6 +87,7 @@
 
 ::deep .col-description {
     width: 55%;
+    color: var(--color-text-secondary);
 }
 
 ::deep .col-badges {
@@ -95,18 +96,30 @@
     text-align: end;
 }
 
-/* Cell styling - solid borders */
+/* Cell styling - solid borders, good readability */
 ::deep .commands-table tbody td {
     vertical-align: middle;
-    padding: 0.5rem;
-    font-size: 0.875rem;
-    border: 1px solid #dee2e6 !important;
-    background-color: #ffffff;
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--text-sm);
+    border-bottom: 1px solid var(--color-border);
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    color: var(--color-text-primary);
 }
 
-/* Row hover - solid color, not transparent */
+/* First and last cell borders */
+::deep .commands-table tbody td:first-child {
+    border-left: 1px solid var(--color-border);
+}
+
+::deep .commands-table tbody td:last-child {
+    border-right: 1px solid var(--color-border);
+}
+
+/* Row hover - visible highlight */
 ::deep .commands-table tbody tr:hover td {
-    background-color: #cfe2ff !important;
+    background-color: var(--color-primary-muted);
 }
 
 /* Responsive adjustments */

@@ -166,57 +166,60 @@
 <style>
     .config-workspace {
         display: flex;
-        height: calc(100vh - 60px); /* Adjust based on navbar height */
+        height: calc(100vh - 60px);
         overflow: hidden;
-        border: 1px solid #333;
-        color: #ccc;
-        background-color: #1e1e1e;
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
+        background-color: var(--color-bg-base);
     }
 
     /* Sidebar */
     .workspace-sidebar {
         width: 250px;
-        background-color: #252526;
-        border-right: 1px solid #333;
+        background-color: var(--color-bg-surface);
+        border-right: 1px solid var(--color-border);
         display: flex;
         flex-direction: column;
     }
 
     .sidebar-header {
-        padding: 10px;
-        font-weight: bold;
+        padding: var(--space-md);
+        font-weight: 700;
         text-transform: uppercase;
-        font-size: 11px;
-        letter-spacing: 1px;
+        font-size: var(--text-xs);
+        letter-spacing: 0.1em;
+        color: var(--color-text-secondary);
     }
 
     .sidebar-section {
-        padding-bottom: 10px;
+        padding-bottom: var(--space-md);
     }
 
     .section-title {
-        padding: 5px 10px;
-        font-weight: bold;
-        color: #bbb;
-        font-size: 12px;
+        padding: var(--space-xs) var(--space-md);
+        font-weight: 600;
+        color: var(--color-text-primary);
+        font-size: var(--text-sm);
     }
 
     .file-item {
-        padding: 3px 20px;
+        padding: var(--space-xs) var(--space-lg);
         cursor: pointer;
-        font-size: 13px;
+        font-size: var(--text-sm);
         display: flex;
         align-items: center;
+        color: var(--color-text-secondary);
+        transition: all var(--transition-fast);
     }
 
     .file-item:hover {
-        background-color: #2a2d2e;
-        color: #fff;
+        background-color: var(--color-bg-elevated);
+        color: var(--color-text-primary);
     }
 
     .file-icon {
-        margin-right: 6px;
-        opacity: 0.7;
+        margin-right: var(--space-sm);
+        opacity: 0.8;
     }
 
     /* Main Area */
@@ -224,92 +227,98 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        min-width: 0; /* Prevent flex child overflow */
+        min-width: 0;
     }
 
     /* Tabs */
     .workspace-tabs {
         display: flex;
-        background-color: #252526;
+        background-color: var(--color-bg-surface);
         overflow-x: auto;
-        height: 35px;
+        height: 2.25rem;
+        border-bottom: 1px solid var(--color-border);
     }
 
     .editor-tab {
-        padding: 0 10px;
-        min-width: 120px;
-        max-width: 200px;
-        background-color: #2d2d2d;
-        border-right: 1px solid #252526;
+        padding: 0 var(--space-md);
+        min-width: 7.5rem;
+        max-width: 12.5rem;
+        background-color: var(--color-bg-elevated);
+        border-right: 1px solid var(--color-border);
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: 13px;
-        color: #969696;
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
         user-select: none;
+        transition: all var(--transition-fast);
     }
 
     .editor-tab.active {
-        background-color: #1e1e1e;
-        color: #fff;
-        border-top: 1px solid #007acc;
+        background-color: var(--color-bg-base);
+        color: var(--color-text-primary);
+        border-top: 2px solid var(--color-primary);
     }
 
     .editor-tab:hover {
-        background-color: #3e3e42; /* Slightly lighter on hover */
+        background-color: var(--color-bg-base);
+        color: var(--color-text-secondary);
     }
 
     .editor-tab.active:hover {
-        background-color: #1e1e1e; /* Keep active color on hover */
+        background-color: var(--color-bg-base);
     }
 
     .tab-title {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        margin-right: 5px;
+        margin-right: var(--space-sm);
     }
 
     .tab-close {
-        border-radius: 3px;
-        padding: 0 4px;
-        font-size: 16px;
-        line-height: 14px;
+        border-radius: var(--border-radius);
+        padding: 0 var(--space-xs);
+        font-size: 1rem;
+        line-height: 1;
+        transition: all var(--transition-fast);
     }
 
     .tab-close:hover {
-        background-color: #4e4e52;
-        color: white;
+        background-color: var(--color-bg-elevated);
+        color: var(--color-text-primary);
     }
 
     /* Toolbar */
     .workspace-toolbar {
-        height: 30px;
-        background-color: #333333;
+        height: 2rem;
+        background-color: var(--color-bg-surface);
         display: flex;
         align-items: center;
-        padding: 0 10px;
+        padding: 0 var(--space-md);
+        border-bottom: 1px solid var(--color-border);
     }
 
     .btn-tool {
         background: none;
         border: none;
-        color: #ccc;
-        font-size: 12px;
+        color: var(--color-text-secondary);
+        font-size: var(--text-xs);
         cursor: pointer;
-        margin-right: 15px;
+        margin-right: var(--space-lg);
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: var(--space-sm);
+        transition: color var(--transition-fast);
     }
 
     .btn-tool:hover {
-        color: #fff;
+        color: var(--color-text-primary);
     }
 
     .btn-tool:disabled {
-        opacity: 0.5;
+        opacity: 0.4;
         cursor: default;
     }
 
@@ -317,7 +326,7 @@
     .workspace-editor-container {
         flex: 1;
         position: relative;
-        background-color: #1e1e1e;
+        background-color: var(--color-bg-base);
         min-width: 0;
         overflow: hidden;
     }
@@ -327,15 +336,16 @@
         align-items: center;
         justify-content: center;
         height: 100%;
-        color: #555;
+        color: var(--color-text-muted);
+        font-size: var(--text-lg);
     }
 
     .section-subtitle {
-        padding: 2px 10px;
-        font-size: 11px;
-        color: #888;
+        padding: var(--space-xs) var(--space-md);
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.05em;
     }
 </style>
 
