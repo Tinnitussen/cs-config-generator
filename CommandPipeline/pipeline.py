@@ -87,8 +87,8 @@ def select_command_file(non_interactive=False):
     files = [p.name for p in find_snapshot_files()]
 
     if not files:
-        print_error("No command snapshot files found in Tools/data/")
-        print("Expected format: all_commands-YYYY-DD-MM.txt")
+        print_error("No command snapshot files found in CommandPipeline/data/")
+        print("Expected format: all_commands-*.txt (recommended: all_commands-YYYY-MM-DD.txt)")
         return None
 
     if non_interactive:

@@ -1,12 +1,14 @@
 # Proposal: Redesigning the Command Datastructure
 
+> Status: This design is implemented. See `CSConfigGenerator/Models/UiData.cs`, `CSConfigGenerator/Models/UiDataTypes.cs`, and `CSConfigGenerator/Models/UiDataJsonConverter.cs`.
+
 ## 1. The Problem with the Current Datastructure
 
 The current command datastructure, while functional, suffers from a lack of type safety and clarity. The `UiData` class uses a single, monolithic structure to represent all command types, from simple booleans to complex bitmasks. This is achieved by using a `type` property and a number of optional properties that may or may not be relevant for a given command.
 
 This approach has several disadvantages:
 
-*   **Lack of Type Safety:** There is no way to enforce at compile time that a `UiData` object of type `"integer"` will have a `range` property. This can lead to runtime errors and makes the code more difficult to reason about.
+*   **Lack of Type Safety:** There is no way to enforce at compile time that a `UiData` object of type `"int"` will have a `range` property. This can lead to runtime errors and makes the code more difficult to reason about.
 *   **Difficult to Validate:** It's challenging to validate that a given `UiData` object is well-formed. For example, a `bitmask` command must have an `options` property, but this is not enforced by the C# type system.
 *   **Poor Discoverability:** When working with a `UiData` object, it's not immediately clear which properties are relevant for a given command type. This makes the code harder to understand and maintain.
 *   **Scalability Issues:** Adding a new command type requires modifying the `UiData` class and adding more optional properties, further complicating the structure.
@@ -43,6 +45,8 @@ Each command type will have its own concrete subclass that inherits from the `Ui
 
 Here are the proposed subclasses:
 
+Note: the current codebase includes additional concrete types beyond the “core” ones shown here (e.g. `color`, `vector2`, `vector3`, `uint32`, `uint64`, and `unknown`). See `CSConfigGenerator/Models/SettingType.cs` for the full list.
+
 **For `type: "bool"`**
 
 ```csharp
@@ -55,12 +59,12 @@ public record BoolUiData : UiData
 }
 ```
 
-**For `type: "integer"`**
+**For `type: "int"`**
 
 ```csharp
 public record IntegerUiData : UiData
 {
-    public override SettingType Type => SettingType.Integer;
+    public override SettingType Type => SettingType.Int;
 
     [JsonPropertyName("defaultValue")]
     public int DefaultValue { get; init; }
@@ -123,19 +127,19 @@ public record BitmaskUiData : UiData
 
 ### 2.3. Custom `JsonConverter`
 
-To make this work with `System.Text.Json`, we will need to create a custom `JsonConverter` that can deserialize the JSON into the correct subclass based on the `type` property.
+To make this work with `System.Text.Json`, we need a custom `JsonConverter` that deserializes the correct subclass based on the `type` discriminator.
 
 ```csharp
 public class UiDataJsonConverter : JsonConverter<UiData>
 {
     public override UiData Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        // Implementation details omitted for brevity
+        // See CSConfigGenerator/Models/UiDataJsonConverter.cs
     }
 
     public override void Write(Utf8JsonWriter writer, UiData value, JsonSerializerOptions options)
     {
-        // Implementation details omitted for brevity
+        // See CSConfigGenerator/Models/UiDataJsonConverter.cs
     }
 }
 ```

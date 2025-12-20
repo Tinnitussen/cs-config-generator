@@ -1,5 +1,3 @@
-@using System.Text.RegularExpressions
-
 @if (!string.IsNullOrEmpty(Text))
 {
     if (string.IsNullOrWhiteSpace(Highlight))
@@ -8,16 +6,15 @@
     }
     else
     {
-        var parts = Regex.Split(Text, $"({Regex.Escape(Highlight)})", RegexOptions.IgnoreCase);
-        foreach (var part in parts)
+        foreach (var segment in GetSegments(Text, Highlight))
         {
-            if (part.Equals(Highlight, StringComparison.OrdinalIgnoreCase))
+            if (segment.IsHighlight)
             {
-                <span class="search-highlight">@part</span>
+                <span class="search-highlight">@segment.Text</span>
             }
             else
             {
-                @part
+                @segment.Text
             }
         }
     }
@@ -29,4 +26,37 @@
 
     [Parameter]
     public string? Highlight { get; set; }
+
+    private readonly record struct Segment(string Text, bool IsHighlight);
+
+    private static IEnumerable<Segment> GetSegments(string text, string highlight)
+    {
+        if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(highlight))
+        {
+            yield return new Segment(text, IsHighlight: false);
+            yield break;
+        }
+
+        var currentIndex = 0;
+        while (true)
+        {
+            var matchIndex = text.IndexOf(highlight, currentIndex, StringComparison.OrdinalIgnoreCase);
+            if (matchIndex < 0)
+            {
+                if (currentIndex < text.Length)
+                {
+                    yield return new Segment(text[currentIndex..], IsHighlight: false);
+                }
+                yield break;
+            }
+
+            if (matchIndex > currentIndex)
+            {
+                yield return new Segment(text.Substring(currentIndex, matchIndex - currentIndex), IsHighlight: false);
+            }
+
+            yield return new Segment(text.Substring(matchIndex, highlight.Length), IsHighlight: true);
+            currentIndex = matchIndex + highlight.Length;
+        }
+    }
 }
