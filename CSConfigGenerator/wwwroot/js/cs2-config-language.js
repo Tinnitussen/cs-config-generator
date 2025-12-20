@@ -55,14 +55,11 @@
         // Register the language
         monaco.languages.register({ id: 'cs2config' });
 
-        // Set language configuration (comments, brackets, etc.)
+        // Set language configuration (comments, auto-closing quotes)
         monaco.languages.setLanguageConfiguration('cs2config', {
             comments: {
                 lineComment: '//'
             },
-            brackets: [
-                ['"', '"']
-            ],
             autoClosingPairs: [
                 { open: '"', close: '"' }
             ],
