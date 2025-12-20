@@ -2,6 +2,7 @@
 @using CSConfigGenerator.Models
 @using CSConfigGenerator.Interfaces
 @using Microsoft.AspNetCore.Components.QuickGrid
+@using System.Reflection
 @inject ISchemaService SchemaService
 
 <PageTitle>Commands</PageTitle>
@@ -14,9 +15,10 @@
 <!-- Filters -->
 <section aria-labelledby="filters-heading" class="mb-3">
     <h2 id="filters-heading" class="visually-hidden">Filters</h2>
-    <div class="row g-2 align-items-end">
-        <!-- Search -->
-        <div class="col-md-4">
+    
+    <!-- Search Row -->
+    <div class="row g-2 align-items-end mb-2">
+        <div class="col-md-6">
             <label for="search-input" class="form-label small text-muted mb-1">Search</label>
             <div class="input-group input-group-sm">
                 <span class="input-group-text"><i class="bi bi-search" aria-hidden="true"></i></span>
@@ -35,29 +37,7 @@
                 }
             </div>
         </div>
-
-        <!-- Type Filter -->
-        <div class="col-md-3">
-            <label for="type-filter" class="form-label small text-muted mb-1">Type</label>
-            <select id="type-filter" class="form-select form-select-sm" @bind="selectedType" @bind:after="ApplyFilters">
-                <option value="">All Types</option>
-                @foreach (var type in Enum.GetValues<SettingType>())
-                {
-                    <option value="@type">@type</option>
-                }
-            </select>
-        </div>
-
-        <!-- Cheats Toggle -->
-        <div class="col-md-2">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="cheats-toggle" @bind="cheatsOnly" @bind:after="ApplyFilters" />
-                <label class="form-check-label small" for="cheats-toggle">Cheats only</label>
-            </div>
-        </div>
-
-        <!-- Clear Filters -->
-        <div class="col-md-3 text-end">
+        <div class="col-md-6 text-end">
             @if (HasActiveFilters)
             {
                 <button class="btn btn-sm btn-outline-secondary" @onclick="ClearAllFilters">
@@ -66,6 +46,42 @@
             }
             <span class="ms-2 small text-muted">@FilteredCount results</span>
         </div>
+    </div>
+
+    <!-- Dynamic Filter Groups -->
+    <div class="filter-groups d-flex flex-wrap gap-3">
+        @foreach (var filterGroup in filterGroups)
+        {
+            <div class="filter-group">
+                <div class="dropdown">
+                    <button class="btn btn-sm @(IsFilterGroupActive(filterGroup) ? "btn-primary" : "btn-outline-secondary") dropdown-toggle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside"
+                            aria-expanded="false">
+                        @filterGroup.DisplayName
+                        @if (IsFilterGroupActive(filterGroup))
+                        {
+                            <span class="badge bg-light text-primary ms-1">@GetActiveFilterCount(filterGroup)</span>
+                        }
+                    </button>
+                    <ul class="dropdown-menu filter-dropdown-menu">
+                        @foreach (var option in filterGroup.Options)
+                        {
+                            <li>
+                                <label class="dropdown-item d-flex align-items-center gap-2">
+                                    <input type="checkbox"
+                                           class="form-check-input m-0"
+                                           checked="@IsOptionSelected(filterGroup, option)"
+                                           @onchange="@(e => ToggleFilterOption(filterGroup, option, (bool)(e.Value ?? false)))" />
+                                    @option.DisplayName
+                                </label>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
     </div>
 </section>
 
@@ -81,7 +97,7 @@
                 @GetDescription(context)
             </TemplateColumn>
             <TemplateColumn Title="" Class="col-badges">
-                @if (context.UiData.RequiresCheats)
+                @if (context.ConsoleData.Flags?.Contains("cheat") == true)
                 {
                     <span class="badge bg-warning text-dark" title="Requires sv_cheats 1">Cheat</span>
                 }
@@ -94,22 +110,161 @@
     private List<CommandDefinition> allCommands = [];
     private IQueryable<CommandDefinition> filteredCommands = Enumerable.Empty<CommandDefinition>().AsQueryable();
     private string searchTerm = string.Empty;
-    private string selectedType = string.Empty;
-    private bool cheatsOnly;
     private int filterVersion;
+
+    // Dynamic filter system
+    private List<FilterGroup> filterGroups = [];
+    private Dictionary<string, HashSet<string>> activeFilters = new();
+
+    protected override void OnInitialized()
+    {
+        allCommands = SchemaService.Commands.OrderBy(c => c.Command).ToList();
+        DiscoverFilters();
+        ApplyFilters();
+    }
+
+    /// <summary>
+    /// Discovers filterable properties using reflection and builds filter groups.
+    /// Runs once at initialization.
+    /// </summary>
+    private void DiscoverFilters()
+    {
+        filterGroups = [];
+        
+        // Properties to skip (not useful as filters)
+        var skipProperties = new HashSet<string> 
+        { 
+            "Label", "HelperText", "Description", "DefaultValue", "RawDefaultValue",
+            "SourcedAt", "Range", "Options", "Arguments"
+        };
+
+        // Discover from UiData
+        DiscoverPropertiesFromType(typeof(UiData), "UiData", cmd => cmd.UiData, skipProperties);
+        
+        // Discover from ConsoleData
+        DiscoverPropertiesFromType(typeof(ConsoleData), "ConsoleData", cmd => cmd.ConsoleData, skipProperties);
+    }
+
+    private void DiscoverPropertiesFromType(Type type, string sourceName, Func<CommandDefinition, object> accessor, HashSet<string> skipProperties)
+    {
+        foreach (var prop in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+        {
+            if (skipProperties.Contains(prop.Name))
+                continue;
+
+            var propType = prop.PropertyType;
+            var underlyingType = Nullable.GetUnderlyingType(propType) ?? propType;
+
+            FilterGroup? group = null;
+
+            if (underlyingType.IsEnum)
+            {
+                // Enum -> create option for each enum value
+                group = new FilterGroup
+                {
+                    Key = $"{sourceName}.{prop.Name}",
+                    DisplayName = FormatPropertyName(prop.Name),
+                    PropertyName = prop.Name,
+                    SourceAccessor = accessor,
+                    FilterType = FilterType.Enum,
+                    Options = Enum.GetNames(underlyingType)
+                        .Select(name => new FilterOption { Key = name, DisplayName = name })
+                        .ToList()
+                };
+            }
+            else if (underlyingType == typeof(bool))
+            {
+                // Bool -> create Yes/No options
+                group = new FilterGroup
+                {
+                    Key = $"{sourceName}.{prop.Name}",
+                    DisplayName = FormatPropertyName(prop.Name),
+                    PropertyName = prop.Name,
+                    SourceAccessor = accessor,
+                    FilterType = FilterType.Bool,
+                    Options = [
+                        new FilterOption { Key = "true", DisplayName = "Yes" },
+                        new FilterOption { Key = "false", DisplayName = "No" }
+                    ]
+                };
+            }
+            else if (propType == typeof(List<string>))
+            {
+                // List<string> -> discover unique values from data
+                var uniqueValues = allCommands
+                    .Select(cmd => accessor(cmd))
+                    .SelectMany(obj => (prop.GetValue(obj) as List<string>) ?? [])
+                    .Distinct()
+                    .OrderBy(v => v)
+                    .ToList();
+
+                if (uniqueValues.Count > 0 && uniqueValues.Count <= 50) // Only if reasonable number of options
+                {
+                    group = new FilterGroup
+                    {
+                        Key = $"{sourceName}.{prop.Name}",
+                        DisplayName = FormatPropertyName(prop.Name),
+                        PropertyName = prop.Name,
+                        SourceAccessor = accessor,
+                        FilterType = FilterType.StringList,
+                        Options = uniqueValues
+                            .Select(v => new FilterOption { Key = v, DisplayName = v })
+                            .ToList()
+                    };
+                }
+            }
+
+            if (group != null)
+            {
+                filterGroups.Add(group);
+                activeFilters[group.Key] = new HashSet<string>();
+            }
+        }
+    }
+
+    private static string FormatPropertyName(string name)
+    {
+        // Convert PascalCase to "Title Case"
+        var result = new System.Text.StringBuilder();
+        foreach (var c in name)
+        {
+            if (char.IsUpper(c) && result.Length > 0)
+                result.Append(' ');
+            result.Append(c);
+        }
+        return result.ToString();
+    }
 
     private bool HasActiveFilters =>
         !string.IsNullOrEmpty(searchTerm) ||
-        !string.IsNullOrEmpty(selectedType) ||
-        cheatsOnly;
+        activeFilters.Values.Any(set => set.Count > 0);
 
     private IQueryable<CommandDefinition> FilteredCommands => filteredCommands;
 
     private int FilteredCount => filteredCommands.Count();
 
-    protected override void OnInitialized()
+    private bool IsFilterGroupActive(FilterGroup group) =>
+        activeFilters.TryGetValue(group.Key, out var selected) && selected.Count > 0;
+
+    private int GetActiveFilterCount(FilterGroup group) =>
+        activeFilters.TryGetValue(group.Key, out var selected) ? selected.Count : 0;
+
+    private bool IsOptionSelected(FilterGroup group, FilterOption option) =>
+        activeFilters.TryGetValue(group.Key, out var selected) && selected.Contains(option.Key);
+
+    private void ToggleFilterOption(FilterGroup group, FilterOption option, bool isSelected)
     {
-        allCommands = SchemaService.Commands.OrderBy(c => c.Command).ToList();
+        if (!activeFilters.TryGetValue(group.Key, out var selected))
+        {
+            selected = new HashSet<string>();
+            activeFilters[group.Key] = selected;
+        }
+
+        if (isSelected)
+            selected.Add(option.Key);
+        else
+            selected.Remove(option.Key);
+
         ApplyFilters();
     }
 
@@ -127,20 +282,40 @@
                 c.ConsoleData.Description.Contains(term, StringComparison.OrdinalIgnoreCase));
         }
 
-        // Type filter
-        if (!string.IsNullOrEmpty(selectedType) && Enum.TryParse<SettingType>(selectedType, out var type))
+        // Dynamic filters (AND across groups, OR within group)
+        foreach (var group in filterGroups)
         {
-            query = query.Where(c => c.UiData.Type == type);
+            if (!activeFilters.TryGetValue(group.Key, out var selectedOptions) || selectedOptions.Count == 0)
+                continue;
+
+            query = group.FilterType switch
+            {
+                FilterType.Enum => query.Where(cmd =>
+                {
+                    var targetObj = group.SourceAccessor(cmd);
+                    var prop = targetObj?.GetType().GetProperty(group.PropertyName);
+                    var value = prop?.GetValue(targetObj)?.ToString();
+                    return value != null && selectedOptions.Contains(value);
+                }),
+                FilterType.Bool => query.Where(cmd =>
+                {
+                    var targetObj = group.SourceAccessor(cmd);
+                    var prop = targetObj?.GetType().GetProperty(group.PropertyName);
+                    var value = prop?.GetValue(targetObj);
+                    var strValue = value?.ToString()?.ToLowerInvariant() ?? "false";
+                    return selectedOptions.Contains(strValue);
+                }),
+                FilterType.StringList => query.Where(cmd =>
+                {
+                    var targetObj = group.SourceAccessor(cmd);
+                    var prop = targetObj?.GetType().GetProperty(group.PropertyName);
+                    var list = prop?.GetValue(targetObj) as List<string>;
+                    return list != null && list.Any(v => selectedOptions.Contains(v));
+                }),
+                _ => query
+            };
         }
 
-        // Cheats filter
-        if (cheatsOnly)
-        {
-            query = query.Where(c => c.UiData.RequiresCheats);
-        }
-
-        // Materialize to a new list and convert to IQueryable
-        // This ensures QuickGrid sees a new reference and re-renders
         filteredCommands = query.ToList().AsQueryable();
         filterVersion++;
     }
@@ -154,8 +329,10 @@
     private void ClearAllFilters()
     {
         searchTerm = string.Empty;
-        selectedType = string.Empty;
-        cheatsOnly = false;
+        foreach (var key in activeFilters.Keys)
+        {
+            activeFilters[key].Clear();
+        }
         ApplyFilters();
     }
 
@@ -167,5 +344,29 @@
 
         if (string.IsNullOrEmpty(text)) return "—";
         return text.Length > 100 ? text[..97] + "..." : text;
+    }
+
+    // Filter model classes
+    private record FilterGroup
+    {
+        public required string Key { get; init; }
+        public required string DisplayName { get; init; }
+        public required string PropertyName { get; init; }
+        public required Func<CommandDefinition, object> SourceAccessor { get; init; }
+        public required FilterType FilterType { get; init; }
+        public required List<FilterOption> Options { get; init; }
+    }
+
+    private record FilterOption
+    {
+        public required string Key { get; init; }
+        public required string DisplayName { get; init; }
+    }
+
+    private enum FilterType
+    {
+        Enum,
+        Bool,
+        StringList
     }
 }

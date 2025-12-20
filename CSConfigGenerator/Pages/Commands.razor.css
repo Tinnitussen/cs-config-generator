@@ -1,5 +1,33 @@
 /* Commands page scoped styles */
 
+/* Filter groups styling */
+.filter-groups {
+    padding: 0.5rem 0;
+}
+
+.filter-group .dropdown-toggle {
+    min-width: 8rem;
+}
+
+.filter-dropdown-menu {
+    max-height: 20rem;
+    overflow-y: auto;
+    min-width: 12rem;
+}
+
+.filter-dropdown-menu .dropdown-item {
+    cursor: pointer;
+    padding: 0.375rem 0.75rem;
+}
+
+.filter-dropdown-menu .dropdown-item:hover {
+    background-color: var(--bs-tertiary-bg);
+}
+
+.filter-dropdown-menu .form-check-input {
+    cursor: pointer;
+}
+
 /* Grid container - fill available height */
 .commands-grid-container {
     display: flex;
