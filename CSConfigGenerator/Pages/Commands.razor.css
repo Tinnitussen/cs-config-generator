@@ -1,33 +1,5 @@
 /* Commands page scoped styles */
 
-/* Filter groups styling */
-.filter-groups {
-    padding: var(--space-sm) 0;
-}
-
-.filter-group .dropdown-toggle {
-    min-width: 8rem;
-}
-
-.filter-dropdown-menu {
-    max-height: 20rem;
-    overflow-y: auto;
-    min-width: 12rem;
-}
-
-.filter-dropdown-menu .dropdown-item {
-    cursor: pointer;
-    padding: var(--space-sm) var(--space-md);
-}
-
-.filter-dropdown-menu .dropdown-item:hover {
-    background-color: var(--color-bg-elevated);
-}
-
-.filter-dropdown-menu .form-check-input {
-    cursor: pointer;
-}
-
 /* Grid container - fill available height */
 .commands-grid-container {
     display: flex;
@@ -72,8 +44,8 @@
 
 /* Column widths */
 ::deep .col-command {
-    width: 25%;
-    min-width: 12rem;
+    width: 20%;
+    min-width: 10rem;
     font-family: var(--font-mono);
     font-size: var(--text-sm);
     font-weight: 500;
@@ -81,19 +53,93 @@
 }
 
 ::deep .col-type {
-    width: 10%;
+    width: 8%;
     min-width: 5rem;
 }
 
 ::deep .col-description {
-    width: 55%;
+    width: 30%;
     color: var(--color-text-secondary);
 }
 
-::deep .col-badges {
-    width: 6%;
-    min-width: 4rem;
-    text-align: end;
+::deep .col-default {
+    width: 10%;
+    min-width: 5rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+}
+
+::deep .col-flags {
+    width: 22%;
+    min-width: 10rem;
+}
+
+::deep .col-sourced {
+    width: 10%;
+    min-width: 6rem;
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+}
+
+/* Column options panel (filter dropdowns) */
+::deep .column-options-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+::deep .column-option-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    color: var(--color-text-primary);
+}
+
+::deep .column-option-item:hover {
+    background-color: var(--color-bg-elevated);
+}
+
+::deep .column-option-item input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+/* QuickGrid column options button (the filter icon) */
+::deep .col-options-button {
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
+}
+
+::deep .col-options-button:hover {
+    color: var(--color-primary);
+    opacity: 1;
+}
+
+::deep .col-options-button svg {
+    fill: currentColor;
+}
+
+/* QuickGrid column options popup */
+::deep .col-options {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: var(--color-text-primary);
 }
 
 /* Cell styling - solid borders, good readability */
@@ -128,19 +174,21 @@
         max-height: 60vh;
     }
 
-    ::deep .col-description {
+    ::deep .col-description,
+    ::deep .col-default,
+    ::deep .col-sourced {
         display: none;
     }
 
     ::deep .col-command {
-        width: 60%;
+        width: 40%;
     }
 
     ::deep .col-type {
         width: 20%;
     }
 
-    ::deep .col-badges {
-        width: 20%;
+    ::deep .col-flags {
+        width: 40%;
     }
 }
