@@ -1,0 +1,258 @@
+@page "/commands"
+@using CSConfigGenerator.Models
+@using CSConfigGenerator.Interfaces
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject ISchemaService SchemaService
+
+<PageTitle>Commands</PageTitle>
+
+<header class="mb-3">
+    <h1>Commands</h1>
+    <p class="text-muted">Browse and search all @allCommands.Count console commands and variables.</p>
+</header>
+
+<!-- Filters -->
+<section aria-labelledby="filters-heading" class="mb-3">
+    <h2 id="filters-heading" class="visually-hidden">Filters</h2>
+    <div class="row g-2 align-items-end">
+        <!-- Search -->
+        <div class="col-md-4">
+            <label for="search-input" class="form-label small text-muted mb-1">Search</label>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search" aria-hidden="true"></i></span>
+                <input id="search-input"
+                       type="text"
+                       class="form-control"
+                       placeholder="Command name or description..."
+                       @bind="searchTerm"
+                       @bind:event="oninput"
+                       @bind:after="OnFilterChanged" />
+                @if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    <button class="btn btn-outline-secondary" type="button" @onclick="ClearSearch" aria-label="Clear search">
+                        <i class="bi bi-x" aria-hidden="true"></i>
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Type Filter -->
+        <div class="col-md-3">
+            <label for="type-filter" class="form-label small text-muted mb-1">Type</label>
+            <select id="type-filter" class="form-select form-select-sm" @bind="selectedType" @bind:after="OnFilterChanged">
+                <option value="">All Types</option>
+                @foreach (var type in Enum.GetValues<SettingType>())
+                {
+                    <option value="@type">@type</option>
+                }
+            </select>
+        </div>
+
+        <!-- Cheats Toggle -->
+        <div class="col-md-2">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="cheats-toggle" @bind="cheatsOnly" @bind:after="OnFilterChanged" />
+                <label class="form-check-label small" for="cheats-toggle">Cheats only</label>
+            </div>
+        </div>
+
+        <!-- Clear Filters -->
+        <div class="col-md-3 text-end">
+            @if (HasActiveFilters)
+            {
+                <button class="btn btn-sm btn-outline-secondary" @onclick="ClearAllFilters">
+                    <i class="bi bi-x-circle me-1" aria-hidden="true"></i>Clear Filters
+                </button>
+            }
+            <span class="ms-2 small text-muted">@FilteredCount results</span>
+        </div>
+    </div>
+</section>
+
+<!-- Commands Grid -->
+<section aria-labelledby="commands-heading" class="commands-grid-container">
+    <h2 id="commands-heading" class="visually-hidden">Command List</h2>
+    
+    <div class="quickgrid-wrapper">
+        <QuickGrid @key="filterVersion" Items="@FilteredCommands" Virtualize="true" ItemSize="48" Class="table table-sm table-hover">
+            <TemplateColumn Title="Command" Class="col-command">
+                <button class="btn btn-link p-0 text-start w-100 command-name" @onclick="() => ToggleExpand(context)">
+                    <code>@context.Command</code>
+                    <i class="bi @(IsExpanded(context) ? "bi-chevron-up" : "bi-chevron-down") ms-2 expand-icon" aria-hidden="true"></i>
+                </button>
+            </TemplateColumn>
+            <PropertyColumn Property="@(c => c.UiData.Type)" Title="Type" Class="col-type" />
+            <TemplateColumn Title="Description" Class="col-description">
+                @GetShortDescription(context)
+            </TemplateColumn>
+            <TemplateColumn Title="" Class="col-badges">
+                @if (context.UiData.RequiresCheats)
+                {
+                    <span class="badge bg-warning text-dark" title="Requires sv_cheats 1">Cheat</span>
+                }
+            </TemplateColumn>
+        </QuickGrid>
+    </div>
+
+    <!-- Expanded Details -->
+    @if (expandedCommand != null)
+    {
+        <div class="command-details card mt-2" role="region" aria-label="Command details for @expandedCommand.Command">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="h6 mb-0"><code>@expandedCommand.Command</code></h3>
+                <button class="btn btn-sm btn-outline-secondary" @onclick="() => expandedCommand = null" aria-label="Close details">
+                    <i class="bi bi-x" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Left column: Description & Default -->
+                    <div class="col-md-8">
+                        <h4 class="h6 text-muted">Description</h4>
+                        <p>@GetFullDescription(expandedCommand)</p>
+                        
+                        @if (!string.IsNullOrEmpty(expandedCommand.ConsoleData.DefaultValue))
+                        {
+                            <h4 class="h6 text-muted mt-3">Default Value</h4>
+                            <code class="d-block p-2 bg-light rounded">@expandedCommand.ConsoleData.DefaultValue</code>
+                        }
+                    </div>
+                    
+                    <!-- Right column: Metadata -->
+                    <div class="col-md-4">
+                        <h4 class="h6 text-muted">Type</h4>
+                        <span class="badge bg-secondary">@expandedCommand.UiData.Type</span>
+                        
+                        @if (expandedCommand.UiData.RequiresCheats)
+                        {
+                            <h4 class="h6 text-muted mt-3">Requirements</h4>
+                            <span class="badge bg-warning text-dark">sv_cheats 1</span>
+                        }
+                        
+                        @if (expandedCommand.ConsoleData.Flags?.Any() == true)
+                        {
+                            <h4 class="h6 text-muted mt-3">Flags</h4>
+                            <div class="d-flex flex-wrap gap-1">
+                                @foreach (var flag in expandedCommand.ConsoleData.Flags)
+                                {
+                                    <span class="badge bg-info text-dark">@flag</span>
+                                }
+                            </div>
+                        }
+                        
+                        @if (expandedCommand.ConsoleData.SourcedAt.HasValue)
+                        {
+                            <h4 class="h6 text-muted mt-3">Last Updated</h4>
+                            <small class="text-muted">@expandedCommand.ConsoleData.SourcedAt.Value.ToString("yyyy-MM-dd")</small>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+
+@code {
+    private List<CommandDefinition> allCommands = [];
+    private IQueryable<CommandDefinition> filteredCommands = Enumerable.Empty<CommandDefinition>().AsQueryable();
+    private string searchTerm = string.Empty;
+    private string selectedType = string.Empty;
+    private bool cheatsOnly;
+    private CommandDefinition? expandedCommand;
+    private int filterVersion;
+
+    private bool HasActiveFilters =>
+        !string.IsNullOrEmpty(searchTerm) ||
+        !string.IsNullOrEmpty(selectedType) ||
+        cheatsOnly;
+
+    private IQueryable<CommandDefinition> FilteredCommands => filteredCommands;
+
+    private int FilteredCount => filteredCommands.Count();
+
+    protected override void OnInitialized()
+    {
+        allCommands = SchemaService.Commands.OrderBy(c => c.Command).ToList();
+        ApplyFilters();
+    }
+
+    private void ApplyFilters()
+    {
+        IEnumerable<CommandDefinition> query = allCommands;
+
+        // Search filter
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            var term = searchTerm.Trim();
+            query = query.Where(c =>
+                c.Command.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                c.UiData.HelperText.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                c.ConsoleData.Description.Contains(term, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // Type filter
+        if (!string.IsNullOrEmpty(selectedType) && Enum.TryParse<SettingType>(selectedType, out var type))
+        {
+            query = query.Where(c => c.UiData.Type == type);
+        }
+
+        // Cheats filter
+        if (cheatsOnly)
+        {
+            query = query.Where(c => c.UiData.RequiresCheats);
+        }
+
+        // Materialize to a new list and convert to IQueryable
+        // This ensures QuickGrid sees a new reference and re-renders
+        filteredCommands = query.ToList().AsQueryable();
+        filterVersion++;
+    }
+
+    private void OnFilterChanged()
+    {
+        // Close expanded details when filters change
+        expandedCommand = null;
+        ApplyFilters();
+    }
+
+    private void ClearSearch()
+    {
+        searchTerm = string.Empty;
+        OnFilterChanged();
+    }
+
+    private void ClearAllFilters()
+    {
+        searchTerm = string.Empty;
+        selectedType = string.Empty;
+        cheatsOnly = false;
+        OnFilterChanged();
+    }
+
+    private void ToggleExpand(CommandDefinition command)
+    {
+        expandedCommand = expandedCommand == command ? null : command;
+    }
+
+    private bool IsExpanded(CommandDefinition command) => expandedCommand == command;
+
+    private string GetShortDescription(CommandDefinition command)
+    {
+        var text = !string.IsNullOrEmpty(command.UiData.HelperText)
+            ? command.UiData.HelperText
+            : command.ConsoleData.Description;
+
+        if (string.IsNullOrEmpty(text)) return "—";
+        return text.Length > 80 ? text[..77] + "..." : text;
+    }
+
+    private string GetFullDescription(CommandDefinition command)
+    {
+        var text = !string.IsNullOrEmpty(command.UiData.HelperText)
+            ? command.UiData.HelperText
+            : command.ConsoleData.Description;
+
+        return string.IsNullOrEmpty(text) ? "No description available." : text;
+    }
+}
+
