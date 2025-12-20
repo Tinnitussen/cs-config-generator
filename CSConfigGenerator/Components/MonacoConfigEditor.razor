@@ -1,5 +1,7 @@
 @using BlazorMonaco.Editor
+@using CSConfigGenerator.Interfaces
 @inject IJSRuntime JSRuntime
+@inject IEditorIntellisenseService IntellisenseService
 
 <div class="monaco-editor-wrapper">
     <StandaloneCodeEditor @ref="_editor" Id="config-editor" ConstructionOptions="EditorConstructionOptions" OnDidInit="EditorOnDidInit" />
@@ -50,10 +52,17 @@
         return new StandaloneEditorConstructionOptions
         {
             AutomaticLayout = true,
-            Language = "plaintext",
+            Language = "cs2config",
             Theme = "vs-dark",
-            Minimap = new EditorMinimapOptions { Enabled = false }
+            Minimap = new EditorMinimapOptions { Enabled = false },
+            AutoIndent = "none"
         };
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Initialize intellisense before the editor renders to ensure the language is registered
+        await IntellisenseService.InitializeAsync();
     }
 
     private async Task EditorOnDidInit()
