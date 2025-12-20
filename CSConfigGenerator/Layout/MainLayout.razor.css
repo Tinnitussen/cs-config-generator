@@ -1,26 +1,31 @@
+/* MainLayout scoped styles */
+
 .page {
     display: flex;
-    height: 100vh; /* Ensure page takes full viewport height */
+    min-height: 100vh;
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
-    width: 15rem; /* Use rem for sidebar width */
+    width: var(--sidebar-width);
     flex-shrink: 0;
+    background: linear-gradient(180deg, var(--color-bg-surface) 0%, var(--color-bg-base) 100%);
+    border-right: 1px solid var(--color-border);
 }
 
 main {
-    flex: 1; /* Main content area takes remaining space */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: auto; /* Allow main content to scroll if needed */
+    overflow: auto;
+    background-color: var(--color-bg-base);
 }
 
 article {
-    flex: 1; /* Article takes remaining space within main */
-    padding: 1rem; /* Use rem for padding */
+    flex: 1;
+    padding: var(--space-lg);
 }
 
+/* Responsive: stack on mobile */
 @media (max-width: 768px) {
     .page {
         flex-direction: column;
@@ -28,6 +33,7 @@ article {
 
     .sidebar {
         width: 100%;
-        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
     }
 }
