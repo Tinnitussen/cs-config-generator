@@ -1,61 +1,76 @@
 # Counter-Strike 2 Config Generator
 
-A web-based command reference for Counter-Strike 2, built with Blazor WebAssembly. This tool provides a user-friendly interface to browse and search for console commands.
+Blazor WebAssembly app for browsing CS2 console commands and building `.cfg` files in a VS Code–style editor.
 
-## Features
+## What it does
 
-*   **Dynamic UI:** The user interface is dynamically generated from a JSON schema, ensuring that the available settings are always up-to-date.
-*   **Command Reference:** A reference guide for all available console commands.
+- **Command reference**: Browse/search CS2 cvars/commands.
+- **Config workspace**: Edit configs, save them to browser storage, download/copy/upload `.cfg` files.
+- **Presets**: Load example `.cfg` presets (players + servers).
+- **Schema-driven UI**: Command UI is generated from JSON data in `CSConfigGenerator/wwwroot/data/`.
 
-## Core Technologies
+## How data loading works
 
-*   **.NET 10** and **C#**
-*   **Blazor WebAssembly** for the frontend framework
-*   **Bootstrap 5** for UI styling
-*   **Bootstrap Icons** for the icon set
-*   **Python** for the command processing pipeline
+- **Entry point**: `CSConfigGenerator/wwwroot/data/manifest.json` lists one or more command data JSON files.
+- **Command data**: Currently `CSConfigGenerator/wwwroot/data/commandschema/all_commands.json`.
+- **Runtime loader**: `SchemaService` reads the manifest and loads each listed file.
 
-## For Developers
+The command data format is documented in `SCHEMA.md`.
 
-This project is built with .NET 10 and Blazor WebAssembly. The core of the application is the `CSConfigGenerator` project.
+## Repository layout
 
-### Project Structure
+- **`CSConfigGenerator/`**: Blazor WebAssembly frontend app.
+- **`CSConfigGenerator/wwwroot/data/`**: Static data shipped with the app (manifest, command schema, presets).
+- **`CommandPipeline/`**: Python pipeline to regenerate command data from a CS2 snapshot.
+- **`CSConfigGenerator.Tests/`**: Unit tests for core logic.
 
-*   `CSConfigGenerator/`: The main Blazor WebAssembly project.
-*   `CSConfigGenerator/wwwroot/data/commandschema/`: Contains the JSON schema files that define the available settings. This is the "source of truth" for the application.
-*   `CSConfigGenerator/Services/`: Contains the services that manage the application's state and logic.
-*   `CSConfigGenerator/Components/`: Contains the reusable Blazor components that make up the UI.
-*   `CommandPipeline/`: Contains Python scripts for parsing and classifying commands from the game.
-*   `SCHEMA.md`: Provides detailed documentation on the JSON schema used for the command configuration files.
+## Quick start (dev)
 
-### Getting Started
+Prerequisite: **.NET SDK 10**.
 
-1.  Clone the repository.
-2.  Install the .NET 10 SDK.
-3.  Open the `CSConfigGenerator.slnx` solution file in your preferred IDE.
-4.  Run the `CSConfigGenerator` project.
+```bash
+dotnet restore
+dotnet run --project CSConfigGenerator
+```
 
-### JSON Schema
+## Updating the command data (maintainers)
 
-The application's UI is dynamically generated from a set of JSON files located in `CSConfigGenerator/wwwroot/data/commandschema/`. The structure of these files is documented in `SCHEMA.md`.
+1. Put a CS2 `dump_commands` snapshot into `CommandPipeline/data/` (file name must match `all_commands-*.txt`).
+2. Run the pipeline:
 
-### Data Processing Pipeline
+```bash
+python CommandPipeline/pipeline.py
+```
 
-The `CommandPipeline/` directory contains a standalone Python project for processing Counter-Strike 2 console commands and generating the JSON schema files.
+See `PIPELINE.md` for details (including non-interactive mode and optional scraping inputs).
 
-**For maintainers**: If you need to update the command data from a new CS2 snapshot, see `PIPELINE.md` for complete documentation on running the data processing pipeline.
+## Data sources & attribution notes
+
+This repo may include third-party data files under `CommandPipeline/data/` (for example config samples and an HTML snapshot used for scraping). If you redistribute the repository or the generated data, make sure you’re comfortable with the provenance and licensing of those inputs.
+
+## Deploying to GitHub Pages
+
+This repo is set up as a static site (Blazor WASM) and includes `CSConfigGenerator/wwwroot/404.html` to support client-side routing on GitHub Pages.
+
+For **project pages** (`https://username.github.io/repo-name/`), publish with a base href:
+
+```bash
+dotnet publish CSConfigGenerator -c Release -p:BaseHref=/repo-name/
+```
+
+Then serve the publish output via GitHub Pages (for example from a `gh-pages` branch or a `docs/` folder, depending on your Pages settings).
 
 ## Documentation
 
-- **[SCHEMA.md](SCHEMA.md)** - JSON schema specification for command data files
-- **[PIPELINE.md](PIPELINE.md)** - Command processing pipeline documentation (for maintainers)
-- **[PROPOSAL.md](PROPOSAL.md)** - Technical design decisions and architecture rationale
-- **[AGENTS.md](AGENTS.md)** - Project context for AI coding assistants
+- **[SCHEMA.md](SCHEMA.md)**: JSON format consumed by the app
+- **[PIPELINE.md](PIPELINE.md)**: How to regenerate `wwwroot/data/commandschema/*.json`
+- **[PROPOSAL.md](PROPOSAL.md)**: Rationale for the polymorphic `UiData` model
+- **[AGENTS.md](AGENTS.md)**: Project context + conventions (for AI coding assistants)
 
 ## Contributing
 
-Contributions are welcome! If you have a suggestion or find a bug, please open an issue. If you would like to contribute code, please open a pull request.
+Open an issue for bugs/ideas; PRs welcome.
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+MIT — see `LICENSE`.

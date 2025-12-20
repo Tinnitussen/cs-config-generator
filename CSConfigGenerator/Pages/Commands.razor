@@ -1,0 +1,171 @@
+@page "/commands"
+@using CSConfigGenerator.Models
+@using CSConfigGenerator.Interfaces
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject ISchemaService SchemaService
+
+<PageTitle>Commands</PageTitle>
+
+<header class="mb-3">
+    <h1>Commands</h1>
+    <p class="text-muted">Browse and search all @allCommands.Count console commands and variables.</p>
+</header>
+
+<!-- Filters -->
+<section aria-labelledby="filters-heading" class="mb-3">
+    <h2 id="filters-heading" class="visually-hidden">Filters</h2>
+    <div class="row g-2 align-items-end">
+        <!-- Search -->
+        <div class="col-md-4">
+            <label for="search-input" class="form-label small text-muted mb-1">Search</label>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text"><i class="bi bi-search" aria-hidden="true"></i></span>
+                <input id="search-input"
+                       type="text"
+                       class="form-control"
+                       placeholder="Command name or description..."
+                       @bind="searchTerm"
+                       @bind:event="oninput"
+                       @bind:after="ApplyFilters" />
+                @if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    <button class="btn btn-outline-secondary" type="button" @onclick="ClearSearch" aria-label="Clear search">
+                        <i class="bi bi-x" aria-hidden="true"></i>
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Type Filter -->
+        <div class="col-md-3">
+            <label for="type-filter" class="form-label small text-muted mb-1">Type</label>
+            <select id="type-filter" class="form-select form-select-sm" @bind="selectedType" @bind:after="ApplyFilters">
+                <option value="">All Types</option>
+                @foreach (var type in Enum.GetValues<SettingType>())
+                {
+                    <option value="@type">@type</option>
+                }
+            </select>
+        </div>
+
+        <!-- Cheats Toggle -->
+        <div class="col-md-2">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="cheats-toggle" @bind="cheatsOnly" @bind:after="ApplyFilters" />
+                <label class="form-check-label small" for="cheats-toggle">Cheats only</label>
+            </div>
+        </div>
+
+        <!-- Clear Filters -->
+        <div class="col-md-3 text-end">
+            @if (HasActiveFilters)
+            {
+                <button class="btn btn-sm btn-outline-secondary" @onclick="ClearAllFilters">
+                    <i class="bi bi-x-circle me-1" aria-hidden="true"></i>Clear Filters
+                </button>
+            }
+            <span class="ms-2 small text-muted">@FilteredCount results</span>
+        </div>
+    </div>
+</section>
+
+<!-- Commands Grid -->
+<section aria-labelledby="commands-heading" class="commands-grid-container">
+    <h2 id="commands-heading" class="visually-hidden">Command List</h2>
+    
+    <div class="quickgrid-wrapper">
+        <QuickGrid @key="filterVersion" Items="@FilteredCommands" Virtualize="true" ItemSize="40" Class="table table-sm table-striped table-hover table-bordered commands-table">
+            <PropertyColumn Property="@(c => c.Command)" Title="Command" Class="col-command" />
+            <PropertyColumn Property="@(c => c.UiData.Type)" Title="Type" Class="col-type" />
+            <TemplateColumn Title="Description" Class="col-description">
+                @GetDescription(context)
+            </TemplateColumn>
+            <TemplateColumn Title="" Class="col-badges">
+                @if (context.UiData.RequiresCheats)
+                {
+                    <span class="badge bg-warning text-dark" title="Requires sv_cheats 1">Cheat</span>
+                }
+            </TemplateColumn>
+        </QuickGrid>
+    </div>
+</section>
+
+@code {
+    private List<CommandDefinition> allCommands = [];
+    private IQueryable<CommandDefinition> filteredCommands = Enumerable.Empty<CommandDefinition>().AsQueryable();
+    private string searchTerm = string.Empty;
+    private string selectedType = string.Empty;
+    private bool cheatsOnly;
+    private int filterVersion;
+
+    private bool HasActiveFilters =>
+        !string.IsNullOrEmpty(searchTerm) ||
+        !string.IsNullOrEmpty(selectedType) ||
+        cheatsOnly;
+
+    private IQueryable<CommandDefinition> FilteredCommands => filteredCommands;
+
+    private int FilteredCount => filteredCommands.Count();
+
+    protected override void OnInitialized()
+    {
+        allCommands = SchemaService.Commands.OrderBy(c => c.Command).ToList();
+        ApplyFilters();
+    }
+
+    private void ApplyFilters()
+    {
+        IEnumerable<CommandDefinition> query = allCommands;
+
+        // Search filter
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            var term = searchTerm.Trim();
+            query = query.Where(c =>
+                c.Command.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                c.UiData.HelperText.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                c.ConsoleData.Description.Contains(term, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // Type filter
+        if (!string.IsNullOrEmpty(selectedType) && Enum.TryParse<SettingType>(selectedType, out var type))
+        {
+            query = query.Where(c => c.UiData.Type == type);
+        }
+
+        // Cheats filter
+        if (cheatsOnly)
+        {
+            query = query.Where(c => c.UiData.RequiresCheats);
+        }
+
+        // Materialize to a new list and convert to IQueryable
+        // This ensures QuickGrid sees a new reference and re-renders
+        filteredCommands = query.ToList().AsQueryable();
+        filterVersion++;
+    }
+
+    private void ClearSearch()
+    {
+        searchTerm = string.Empty;
+        ApplyFilters();
+    }
+
+    private void ClearAllFilters()
+    {
+        searchTerm = string.Empty;
+        selectedType = string.Empty;
+        cheatsOnly = false;
+        ApplyFilters();
+    }
+
+    private string GetDescription(CommandDefinition command)
+    {
+        var text = !string.IsNullOrEmpty(command.UiData.HelperText)
+            ? command.UiData.HelperText
+            : command.ConsoleData.Description;
+
+        if (string.IsNullOrEmpty(text)) return "—";
+        return text.Length > 100 ? text[..97] + "..." : text;
+    }
+}

@@ -34,7 +34,7 @@ JSON Data (wwwroot/data/)
 - `consoleData` - Raw CS2 console data
 - `uiData` - Type-specific UI data (polymorphic class hierarchy)
 
-**Type System**: Abstract `UiData` base class with 13 concrete types (BoolUiData, IntegerUiData, FloatUiData, etc.). Custom JSON converter handles polymorphic deserialization.
+**Type System**: Abstract `UiData` base class with 12 concrete types (BoolUiData, IntegerUiData, FloatUiData, etc.). Custom JSON converter handles polymorphic deserialization.
 
 See `PROPOSAL.md` for class hierarchy rationale.
 
@@ -79,7 +79,7 @@ This app is a documentation/config tool, so it must be usable with keyboard + sc
 
 ## Quick Reference
 
-**Data Location**: `CSConfigGenerator/wwwroot/data/commandschema/all_commands.json`
+**Data Location**: `CSConfigGenerator/wwwroot/data/manifest.json` (lists one or more command JSON files, currently `data/commandschema/all_commands.json`)
 **Pipeline**: Separate Python project - see `PIPELINE.md`
 
 ## Documentation

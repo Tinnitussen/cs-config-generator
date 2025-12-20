@@ -164,3 +164,40 @@ h1, h2, h3, h4, h5, h6 {
 .modal.show {
     display: block;
 }
+
+/* ============================================
+   Accessibility: Solid colors for visibility
+   ============================================ */
+
+/* Form controls - solid borders */
+.form-control,
+.form-select,
+.input-group-text {
+    border: 1px solid #495057 !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0d6efd !important;
+    box-shadow: 0 0 0 2px #0d6efd40 !important;
+}
+
+/* Commands table - solid hover background */
+.commands-table tbody tr:hover td {
+    background-color: #cfe2ff !important;
+}
+
+/* Ensure table borders are solid and visible */
+.table-bordered > :not(caption) > * > * {
+    border-color: #495057 !important;
+}
+
+/* Switch/toggle - solid colors */
+.form-check-input {
+    border: 2px solid #495057 !important;
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}

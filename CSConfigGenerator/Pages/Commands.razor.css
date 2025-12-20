@@ -1,0 +1,105 @@
+/* Commands page scoped styles */
+
+/* Grid container - fill available height */
+.commands-grid-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+}
+
+/* QuickGrid wrapper for proper scrolling with virtualization */
+.quickgrid-wrapper {
+    flex: 1;
+    min-height: 400px;
+    max-height: 70vh;
+    overflow: auto;
+    border: 1px solid #495057;
+    border-radius: 0.375rem;
+    background-color: #ffffff;
+}
+
+/* Style the table within QuickGrid */
+::deep .commands-table {
+    margin-bottom: 0;
+    table-layout: fixed;
+    background-color: #ffffff;
+}
+
+::deep .commands-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+::deep .commands-table thead th {
+    border: 1px solid #495057 !important;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 0.5rem;
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+/* Column widths */
+::deep .col-command {
+    width: 25%;
+    min-width: 12rem;
+    font-family: var(--bs-font-monospace);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+::deep .col-type {
+    width: 10%;
+    min-width: 5rem;
+}
+
+::deep .col-description {
+    width: 55%;
+}
+
+::deep .col-badges {
+    width: 6%;
+    min-width: 4rem;
+    text-align: end;
+}
+
+/* Cell styling - solid borders */
+::deep .commands-table tbody td {
+    vertical-align: middle;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid #dee2e6 !important;
+    background-color: #ffffff;
+}
+
+/* Row hover - solid color, not transparent */
+::deep .commands-table tbody tr:hover td {
+    background-color: #cfe2ff !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .quickgrid-wrapper {
+        max-height: 60vh;
+    }
+
+    ::deep .col-description {
+        display: none;
+    }
+
+    ::deep .col-command {
+        width: 60%;
+    }
+
+    ::deep .col-type {
+        width: 20%;
+    }
+
+    ::deep .col-badges {
+        width: 20%;
+    }
+}
