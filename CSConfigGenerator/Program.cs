@@ -15,6 +15,7 @@ builder.Services.AddScoped<IPresetService, PresetService>();
 builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 builder.Services.AddScoped<IUserConfigService, UserConfigService>();
 builder.Services.AddScoped<IToastService, ToastService>();
+builder.Services.AddScoped<IEditorIntellisenseService, EditorIntellisenseService>();
 
 // Initialize services
 WebAssemblyHost host = builder.Build();
