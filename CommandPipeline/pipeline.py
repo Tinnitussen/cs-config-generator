@@ -186,9 +186,9 @@ def main(args):
     if not wait_for_user_input("numeric type detection", args.non_interactive):
         return 1
 
-    # # Step 3.5: Apply type improvements (manual overrides + scraped types)
+    # Step 3.5: Apply type improvements (manual overrides + vector heuristics)
     print_step("3.5", "Apply Type Improvements")
-    print(f"\n{Colors.OKCYAN}Applying manual overrides and scraped types to remaining unknown commands...{Colors.ENDC}")
+    print(f"\n{Colors.OKCYAN}Applying manual overrides and vector heuristics...{Colors.ENDC}")
     type_improvements_script = scripts_dir / "apply_type_improvements.py"
     if not run_script(type_improvements_script, "Type improvements"):
         return 1
