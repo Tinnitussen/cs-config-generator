@@ -67,7 +67,7 @@ def compare_files():
     suppressed_unknown_mismatches = 0
 
     for name, details in commands_dict.items():
-        original_type = details.get('uiData', {}).get('type')
+        original_type = details.get('typeInfo', {}).get('type')
         if name in scraped_data:
             commands_in_scraped += 1
             scraped_type = scraped_data[name].get('type')
@@ -99,7 +99,7 @@ def compare_files():
                 missing_non_command.append(name)
 
     for name, details in commands_dict.items():
-        if details.get('uiData', {}).get('type') == 'unknown':
+        if details.get('typeInfo', {}).get('type') == 'unknown':
             if name in scraped_data:
                 unknown_and_in_scraped += 1
             else:
@@ -126,7 +126,7 @@ def compare_files():
     print(f"Type mismatches shown (excluding unknown original type): {len(mismatched_commands_filtered)}")
     print(f"Type mismatches suppressed (unknown original type): {suppressed_unknown_mismatches}")
     print(f"Missing commands shown (non-'command' type): {len(missing_non_command)}")
-    print(f"Missing commands suppressed (uiData.type == 'command'): {suppressed_missing_command_type}")
+    print(f"Missing commands suppressed (typeInfo.type == 'command'): {suppressed_missing_command_type}")
     total_unknown = unknown_and_in_scraped + unknown_and_not_in_scraped
     print(f"Total 'unknown' original types: {total_unknown} (in scraped: {unknown_and_in_scraped}, not in scraped: {unknown_and_not_in_scraped})")
     print("END SUMMARY")
@@ -134,7 +134,7 @@ def compare_files():
 
     if missing_non_command:
         print("SECTION: MISSING (Non-Command)")
-        print("Criteria: Present in commands.json, absent in scraped_types.json, and uiData.type != 'command'.")
+        print("Criteria: Present in commands.json, absent in scraped_types.json, and typeInfo.type != 'command'.")
         print(f"Count: {len(missing_non_command)}")
         for cmd in sorted(missing_non_command):
             print(f"  - {cmd}")
@@ -143,7 +143,7 @@ def compare_files():
 
     if mismatched_commands_filtered:
         print("SECTION: TYPE MISMATCHES (Excluding Unknown)")
-        print("Criteria: Present in both, types differ, and commands.json uiData.type != 'unknown'.")
+        print("Criteria: Present in both, types differ, and commands.json typeInfo.type != 'unknown'.")
         print(f"Count: {len(mismatched_commands_filtered)}")
         for item in mismatched_commands_filtered:
             print(f"  - {item['command']}: commands.json='{item['original_type']}' scraped_types.json='{item['scraped_type']}'")

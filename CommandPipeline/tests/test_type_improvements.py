@@ -15,15 +15,15 @@ class TestApplyTypeImprovements(unittest.TestCase):
             {
                 'command': 'example_cmd_text',
                 'consoleData': {'defaultValue': 'hello_world', 'flags': [], 'description': ''},
-                'uiData': {'type': 'unknown', 'defaultValue': 0}
+                'typeInfo': {'type': 'unknown', 'defaultValue': 0}
             }
         ]
         manual_overrides = {'example_cmd_text': 'string'}
         scraped_types = {'example_cmd_text': 'string'}  # should be ignored for unknown due to exclusion
         updated, stats, manifest = apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=False)
-        self.assertEqual(updated[0]['uiData']['type'], 'string')
+        self.assertEqual(updated[0]['typeInfo']['type'], 'string')
         # defaultValue is coerced to string in new logic
-        self.assertEqual(updated[0]['uiData']['defaultValue'], "0")
+        self.assertEqual(updated[0]['typeInfo']['defaultValue'], "0")
         self.assertEqual(stats['manual_overrides_applied'], 1)
         self.assertEqual(stats['scraped_types_applied'], 0)
 
@@ -32,13 +32,13 @@ class TestApplyTypeImprovements(unittest.TestCase):
             {
                 'command': 'scraped_string_cmd',
                 'consoleData': {'defaultValue': 'text', 'flags': [], 'description': ''},
-                'uiData': {'type': 'unknown', 'defaultValue': 0}
+                'typeInfo': {'type': 'unknown', 'defaultValue': 0}
             }
         ]
         manual_overrides = {}
         scraped_types = {'scraped_string_cmd': 'string'}  # ignored
         updated, stats, manifest = apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=False)
-        self.assertEqual(updated[0]['uiData']['type'], 'unknown')
+        self.assertEqual(updated[0]['typeInfo']['type'], 'unknown')
         self.assertEqual(stats['manual_overrides_applied'], 0)
         self.assertEqual(stats['scraped_types_applied'], 0)
 

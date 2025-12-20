@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 public record ConsoleData
 {
     [JsonPropertyName("defaultValue")]
-    public required string DefaultValue { get; init; }
+    public string? DefaultValue { get; init; }
 
     [JsonPropertyName("flags")]
     public List<string>? Flags { get; init; }

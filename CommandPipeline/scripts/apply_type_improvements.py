@@ -8,9 +8,12 @@ This script applies type improvements to commands.json using:
 3. Vector heuristics: Detects vector2/vector3 by splitting default values (splits into 2 or 3 numbers)
 
 Strict Validation Logic:
-- Rejects scraped 'bool' if raw defaultValue is not boolean-compatible (0/1/true/false).
-- Rejects scraped 'command' if raw defaultValue is not null (implies it's a variable).
+- Rejects scraped 'bool' if raw consoleData.defaultValue is not boolean-compatible (0/1/true/false).
+- Rejects scraped 'command' if raw consoleData.defaultValue is not null (implies it's a variable).
 - Maps 'enum' to 'int' or 'unknown'.
+
+Note: defaultValue is no longer stored in typeInfo. The C# app derives typed defaults
+from consoleData.defaultValue at runtime using the type.
 
 Usage:
   python apply_type_improvements.py [--dry-run]
@@ -79,51 +82,6 @@ def detect_vector_type(val) -> Optional[str]:
 
     return 'vector3' if len(parts) == 3 else 'vector2'
 
-def coerce_default_value(new_type: str, current_value):
-    """Coerce a defaultValue to the JSON shape expected by the C# UiData subtype."""
-    try:
-        if new_type == 'bool':
-            if isinstance(current_value, bool): return current_value
-            if isinstance(current_value, (int, float)): return current_value != 0
-            if isinstance(current_value, str):
-                v = current_value.strip().lower()
-                if v in ('1', 'true', 'yes', 'on'): return True
-                return False
-            return False
-
-        if new_type in ('int', 'bitmask', 'uint32', 'uint64'):
-            if isinstance(current_value, int): return current_value
-            if isinstance(current_value, float): return int(current_value)
-            if isinstance(current_value, bool): return 1 if current_value else 0
-            if isinstance(current_value, str):
-                # Try parsing float then int to handle "1.0000"
-                try:
-                    return int(float(current_value))
-                except ValueError:
-                    return 0
-            return 0
-
-        if new_type == 'float':
-            if isinstance(current_value, (int, float)): return float(current_value)
-            if isinstance(current_value, bool): return 1.0 if current_value else 0.0
-            if isinstance(current_value, str):
-                try:
-                    return float(current_value)
-                except ValueError:
-                    return 0.0
-            return 0.0
-
-        if new_type in ('string', 'vector2', 'vector3', 'color', 'command'):
-            if current_value is None: return ''
-            return str(current_value)
-
-        return current_value
-    except Exception:
-        if new_type == 'bool': return False
-        if new_type in ('int', 'bitmask', 'uint32', 'uint64'): return 0
-        if new_type == 'float': return 0.0
-        return ''
-
 def load_manual_overrides(data_dir):
     """Load manual type overrides."""
     overrides_path = os.path.join(data_dir, 'manual_type_overrides.json')
@@ -168,19 +126,14 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
 
     for cmd in commands:
         cmd_name = cmd.get('command')
-        if 'uiData' not in cmd:
+        if 'typeInfo' not in cmd:
             stats['skipped_no_uidata'] += 1
             continue
 
-        current_type = cmd['uiData'].get('type')
-        current_default = cmd['uiData'].get('defaultValue')
+        current_type = cmd['typeInfo'].get('type')
 
-        # Determine raw default value (trust consoleData primarily if available)
-        raw_default = None
-        if 'consoleData' in cmd:
-            raw_default = cmd['consoleData'].get('defaultValue')
-        else:
-            raw_default = current_default # Fallback if consoleData missing (unlikely)
+        # Get raw default value from consoleData (source of truth)
+        raw_default = cmd.get('consoleData', {}).get('defaultValue')
 
         new_type = None
         source = None
@@ -234,8 +187,7 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
         candidate_type = new_type if new_type else current_type
 
         if candidate_type in ('string', 'unknown'):
-            val_to_check = raw_default if raw_default is not None else current_default
-            vector_type = detect_vector_type(val_to_check)
+            vector_type = detect_vector_type(raw_default)
 
             if vector_type:
                 new_type = vector_type
@@ -253,11 +205,8 @@ def apply_type_improvements(commands, manual_overrides, scraped_types, dry_run=F
         # Apply changes
         if new_type and new_type != current_type:
             if not dry_run:
-                old_type_val = cmd['uiData']['type']
-                cmd['uiData']['type'] = new_type
-                # Coerce default value
-                coerced = coerce_default_value(new_type, current_default)
-                cmd['uiData']['defaultValue'] = coerced
+                old_type_val = cmd['typeInfo']['type']
+                cmd['typeInfo']['type'] = new_type
                 print(f"  {cmd_name}: {old_type_val} -> {new_type} (source: {source})")
             else:
                 print(f"  [DRY RUN] {cmd_name}: {current_type} -> {new_type} (source: {source})")

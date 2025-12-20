@@ -20,20 +20,23 @@ def load_commands(filepath: str) -> List[Dict]:
         return json.load(f)
 
 def create_ui_data_skeleton(command: Dict) -> Dict:
-    """Creates a lean, base uiData object with default values."""
+    """Creates a lean, base typeInfo object.
+    
+    Note: These fields are no longer generated (derived at runtime by C# app):
+    - label: Uses command name directly
+    - helperText/description: Falls back to consoleData.description
+    - requiresCheats: Derived from consoleData.flags
+    - defaultValue: Parsed from consoleData.defaultValue using the type
+    """
     return {
-        "label": command["command"],
-        "helperText": command["consoleData"]["description"],
         "type": "unknown",
-        "defaultValue": 0, # Generic placeholder, always overwritten
-        "requiresCheats": "cheat" in command["consoleData"]["flags"],
     }
 
 def add_type_classification(commands: List[Dict], reclassify_all: bool = False) -> tuple[List[Dict], Dict, int, int]:
     """
-    Adds a uiData skeleton to each command and classifies its type using
+    Adds a typeInfo skeleton to each command and classifies its type using
     an ordered set of rules from an external file.
-    By default, it skips commands that already have a 'uiData' field.
+    By default, it skips commands that already have a 'typeInfo' field.
     """
     processed_commands = []
     type_counts = {}
@@ -42,37 +45,35 @@ def add_type_classification(commands: List[Dict], reclassify_all: bool = False) 
 
     for cmd in commands:
         # If reclassify_all is False, skip commands that are already classified.
-        if not reclassify_all and 'uiData' in cmd:
+        if not reclassify_all and 'typeInfo' in cmd:
             skipped_count += 1
-            type_counts[cmd['uiData'].get('type', 'unknown')] = type_counts.get(cmd['uiData'].get('type', 'unknown'), 0) + 1
+            type_counts[cmd['typeInfo'].get('type', 'unknown')] = type_counts.get(cmd['typeInfo'].get('type', 'unknown'), 0) + 1
             processed_commands.append(cmd)
             continue
 
-        # Create or reset uiData
-        cmd['uiData'] = create_ui_data_skeleton(cmd)
+        # Create or reset typeInfo
+        cmd['typeInfo'] = create_ui_data_skeleton(cmd)
 
         cmd_type = "unknown"
-        ui_default: Any = None
 
         # Apply rules from the external file in order
         for rule in CLASSIFICATION_RULES:
             result = rule(cmd)
             if result:
-                cmd_type, ui_default = result
+                cmd_type, _ = result  # Ignore ui_default, it's derived from consoleData at runtime
                 break
 
-        # Update uiData with classification results
-        cmd['uiData']['type'] = cmd_type
-        cmd['uiData']['defaultValue'] = ui_default
+        # Update typeInfo with classification results
+        cmd['typeInfo']['type'] = cmd_type
 
         # Conditionally add type-specific placeholders
-        if cmd_type == 'float' and 'range' not in cmd['uiData']:
-            cmd['uiData']['range'] = {"minValue": -1, "maxValue": -1, "step": -1}
-        elif cmd_type == 'bitmask' and 'options' not in cmd['uiData']:
-            cmd['uiData']['options'] = {}
-        elif cmd_type == 'command' and 'arguments' not in cmd['uiData']:
+        if cmd_type == 'float' and 'range' not in cmd['typeInfo']:
+            cmd['typeInfo']['range'] = {"minValue": -1, "maxValue": -1, "step": -1}
+        elif cmd_type == 'bitmask' and 'options' not in cmd['typeInfo']:
+            cmd['typeInfo']['options'] = {}
+        elif cmd_type == 'command' and 'arguments' not in cmd['typeInfo']:
             # Provide empty arguments list for command-type items
-            cmd['uiData']['arguments'] = []
+            cmd['typeInfo']['arguments'] = []
 
         processed_commands.append(cmd)
         type_counts[cmd_type] = type_counts.get(cmd_type, 0) + 1

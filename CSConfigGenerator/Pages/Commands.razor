@@ -92,7 +92,7 @@
     <div class="quickgrid-wrapper">
         <QuickGrid @key="filterVersion" Items="@FilteredCommands" Virtualize="true" ItemSize="40" Class="table table-sm table-hover table-bordered commands-table">
             <PropertyColumn Property="@(c => c.Command)" Title="Command" Class="col-command" />
-            <PropertyColumn Property="@(c => c.UiData.Type)" Title="Type" Class="col-type" />
+            <PropertyColumn Property="@(c => c.TypeInfo.Type)" Title="Type" Class="col-type" />
             <TemplateColumn Title="Description" Class="col-description">
                 @GetDescription(context)
             </TemplateColumn>
@@ -134,12 +134,12 @@
         // Properties to skip (not useful as filters)
         var skipProperties = new HashSet<string> 
         { 
-            "Label", "HelperText", "Description", "DefaultValue", "RawDefaultValue",
+            "Description", "DefaultValue", "RawDefaultValue",
             "SourcedAt", "Range", "Options", "Arguments"
         };
 
-        // Discover from UiData
-        DiscoverPropertiesFromType(typeof(UiData), "UiData", cmd => cmd.UiData, skipProperties);
+        // Discover from TypeInfo
+        DiscoverPropertiesFromType(typeof(Models.TypeInfo), "TypeInfo", cmd => cmd.TypeInfo, skipProperties);
         
         // Discover from ConsoleData
         DiscoverPropertiesFromType(typeof(ConsoleData), "ConsoleData", cmd => cmd.ConsoleData, skipProperties);
@@ -278,8 +278,7 @@
             var term = searchTerm.Trim();
             query = query.Where(c =>
                 c.Command.Contains(term, StringComparison.OrdinalIgnoreCase) ||
-                c.UiData.HelperText.Contains(term, StringComparison.OrdinalIgnoreCase) ||
-                c.ConsoleData.Description.Contains(term, StringComparison.OrdinalIgnoreCase));
+                c.DisplayDescription.Contains(term, StringComparison.OrdinalIgnoreCase));
         }
 
         // Dynamic filters (AND across groups, OR within group)
@@ -338,10 +337,7 @@
 
     private string GetDescription(CommandDefinition command)
     {
-        var text = !string.IsNullOrEmpty(command.UiData.HelperText)
-            ? command.UiData.HelperText
-            : command.ConsoleData.Description;
-
+        var text = command.DisplayDescription;
         if (string.IsNullOrEmpty(text)) return "—";
         return text.Length > 100 ? text[..97] + "..." : text;
     }
